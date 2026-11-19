@@ -1,0 +1,22 @@
+DesignVariation : Cj_1='2.0000000000000002e-15farad' Lj_1='1.2000000000000002e-08H'
+Setup : Setup1
+
+==================
+Number of Passes
+Completed : 4
+Maximum   : 10
+Minimum   : 3
+==================
+Criterion : Max Mag. Delta S
+Target    : 0.02
+Current   : 0.002614
+Target Consecutive Passes  : 2
+Current Consecutive Passes : 2
+Converged : Yes
+==================
+Pass Number|Solved Elements|Max Mag. Delta S|
+          1|         163495|             N/A|
+          2|         212544|         0.02092|
+          3|         276312|       0.0068428|
+          4|         359210|        0.002614|
+

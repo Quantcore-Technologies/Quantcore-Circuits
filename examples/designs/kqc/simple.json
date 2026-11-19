@@ -1,0 +1,230 @@
+{
+  "schema": "qcc/0.1",
+  "name": "simple",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      0.0,
+      0.0,
+      10000.0,
+      10000.0
+    ],
+    "launchers": {
+      "type": "SMA8",
+      "assign": {},
+      "enabled": [
+        "WN",
+        "EN",
+        "SE"
+      ]
+    },
+    "params": {
+      "with_grid": true,
+      "name_chip": "Simple"
+    }
+  },
+  "instances": {
+    "QB": {
+      "cell": "Swissmon",
+      "params": {
+        "cpl_length": [
+          0,
+          150,
+          0
+        ],
+        "junction_type": "Quantcore Squid",
+        "junction_width": 0.25
+      },
+      "place": {
+        "at": [
+          2500.0,
+          7200.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 6.7344,
+        "Cj_fF": 15.0
+      }
+    },
+    "C1": {
+      "cell": "FingerCapacitorSquare",
+      "params": {
+        "finger_width": 20,
+        "finger_length": 100,
+        "finger_number": 7
+      },
+      "place": {
+        "at": [
+          5000.0,
+          7200.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "C2": {
+      "cell": "FingerCapacitorSquare",
+      "params": {
+        "finger_width": 20,
+        "finger_length": 100,
+        "finger_number": 7
+      },
+      "place": {
+        "at": [
+          7200.0,
+          5000.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "T": {
+      "cell": "WaveguideCoplanarSplitter",
+      "params": {
+        "lengths": [
+          11,
+          11,
+          11
+        ],
+        "port_names": [
+          "right",
+          "left",
+          "bottom"
+        ]
+      },
+      "place": {
+        "at": [
+          7200.0,
+          7200.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    }
+  },
+  "routes": {
+    "FLUX": {
+      "from": "chip.WN",
+      "to": "QB.flux",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "W1": {
+      "from": "QB.cplr1",
+      "to": "C1.a",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "W2": {
+      "from": "C1.b",
+      "to": "T.left",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "W3": {
+      "from": "T.right",
+      "to": "chip.EN",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "W4": {
+      "from": "T.bottom",
+      "to": "C2.a",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "W5": {
+      "from": "C2.b",
+      "to": "chip.SE",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    }
+  },
+  "nets": "derived",
+  "targets": {},
+  "sim_groups": {
+    "QB_C1": {
+      "select": [
+        "QB",
+        "C1"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "q3d_cmatrix",
+        "eigenmode_epr"
+      ],
+      "ports": {},
+      "settings": {}
+    }
+  }
+}

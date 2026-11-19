@@ -1,0 +1,198 @@
+{
+  "analysis": "eigenmode_epr",
+  "design_hash": "ec1833ebdcdfc0d9",
+  "group": "SUBQ",
+  "raw_files": [
+    "t02_ibm_bowtie_5q_SUBQ_eigenmode_epr_project_qcc.json",
+    "t02_ibm_bowtie_5q_SUBQ_eigenmode_epr_project_modes.eig",
+    "t02_ibm_bowtie_5q_SUBQ_eigenmode_epr_project_convergence.txt",
+    "t02_ibm_bowtie_5q_SUBQ_eigenmode_epr_project_Solution_Convergence.csv"
+  ],
+  "aedt": {
+    "aedt": "2024.1.0",
+    "python": "2.7.4",
+    "tool": "eigenmode",
+    "solve_seconds": 179.2,
+    "convergence_file": "t02_ibm_bowtie_5q_SUBQ_eigenmode_epr_project_convergence.txt"
+  },
+  "eigenmodes": [
+    {
+      "mode": 1,
+      "f_GHz": 5.23639452679,
+      "Q": 936.103,
+      "f_extrapolated": null
+    },
+    {
+      "mode": 2,
+      "f_GHz": 15.5419374254,
+      "Q": 28222100.0,
+      "f_extrapolated": null
+    },
+    {
+      "mode": 3,
+      "f_GHz": 15.6370648267,
+      "Q": 1686670.0,
+      "f_extrapolated": null
+    }
+  ],
+  "convergence": {
+    "file": "t02_ibm_bowtie_5q_SUBQ_eigenmode_epr_project_convergence.txt",
+    "converged": false,
+    "criterion": "Max Delta Freq. %",
+    "target": 1.0,
+    "passes": [
+      1,
+      2
+    ],
+    "elements": [
+      82727,
+      91000
+    ],
+    "delta": [
+      null,
+      1.4128
+    ],
+    "mode_GHz": {
+      "1": [
+        5.16344619695406,
+        5.2363945267934
+      ],
+      "2": [
+        15.362890458422001,
+        15.5419374253774
+      ],
+      "3": [
+        15.4628006890295,
+        15.6370648267443
+      ]
+    },
+    "report": "t02_ibm_bowtie_5q_SUBQ_eigenmode_epr_project_Solution_Convergence.csv"
+  },
+  "epr": {
+    "method": "pyEPR line_voltage, renormalised (field integrals from qcc_solve.py)",
+    "junctions": [
+      "1"
+    ],
+    "Lj_nH": [
+      6.6024
+    ],
+    "Cj_fF": [
+      15.300000000000002
+    ],
+    "p_mj": [
+      [
+        0.9922786982579193
+      ],
+      [
+        0.0
+      ],
+      [
+        0.0
+      ]
+    ],
+    "p_mj_raw": [
+      [
+        0.9914933748490566
+      ],
+      [
+        3.744061726487634e-06
+      ],
+      [
+        1.2069218361608772e-05
+      ]
+    ],
+    "s_mj": [
+      [
+        1
+      ],
+      [
+        1
+      ],
+      [
+        -1
+      ]
+    ],
+    "U_diff": [
+      0.00039433895125166857,
+      0.9999059798513535,
+      0.999952639407485
+    ],
+    "p_volume": [
+      {
+        "substrate_1": 0.9105475102744556
+      },
+      {
+        "substrate_1": 0.9095867004515885
+      },
+      {
+        "substrate_1": 0.9306978279602499
+      }
+    ],
+    "f_linear_GHz": [
+      5.23639452679,
+      15.5419374254,
+      15.6370648267
+    ],
+    "f_GHz": [
+      5.096300516179292,
+      15.5419374254,
+      15.6370648267
+    ],
+    "chi_MHz": [
+      [
+        -145.28508547777938,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "f_O1_GHz": [
+      5.100084316381274,
+      15.5419374254,
+      15.6370648267
+    ],
+    "chi_O1_MHz": [
+      [
+        -136.31021040872562,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0
+      ]
+    ],
+    "junction_self_modes": [
+      1,
+      2
+    ],
+    "Q": [
+      936.103,
+      28222100.0,
+      1686670.0
+    ],
+    "Q_dielectric": [
+      1098240.332015824,
+      1099400.419447122,
+      1074462.5913564612
+    ],
+    "junction_names": [
+      "Q2.junction"
+    ]
+  }
+}

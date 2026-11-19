@@ -1,0 +1,187 @@
+{
+  "schema": "qcc-job/0.1",
+  "created": "2026-11-14T17:03:59+00:00",
+  "design": "t01_chip12",
+  "design_hash": "626dc04220ebd0f1",
+  "group": "chip",
+  "analysis": "q3d_cmatrix",
+  "solver": "ansys",
+  "simulation_name": "t01_chip12_chip_q3d_cmatrix",
+  "settings": {
+    "percent_error": 2.0,
+    "maximum_passes": 8,
+    "minimum_passes": 1,
+    "minimum_converged_passes": 1
+  },
+  "box_um": [
+    0.0,
+    0.0,
+    7500.0,
+    7500.0
+  ],
+  "ports": [
+    {
+      "number": 1,
+      "kind": "junction",
+      "name": "Q0.junction",
+      "excitation": "Q0.island"
+    },
+    {
+      "number": 2,
+      "kind": "junction",
+      "name": "Q1.junction",
+      "excitation": "Q1.island"
+    },
+    {
+      "number": 3,
+      "kind": "junction",
+      "name": "Q2.junction",
+      "excitation": "Q2.island"
+    },
+    {
+      "number": 4,
+      "kind": "junction",
+      "name": "Q3.junction",
+      "excitation": "Q3.island"
+    },
+    {
+      "number": 5,
+      "kind": "junction",
+      "name": "Q4.junction",
+      "excitation": "Q4.island"
+    },
+    {
+      "number": 6,
+      "kind": "junction",
+      "name": "Q5.junction",
+      "excitation": "Q5.island"
+    },
+    {
+      "number": 7,
+      "kind": "junction",
+      "name": "Q6.junction",
+      "excitation": "Q6.island"
+    },
+    {
+      "number": 8,
+      "kind": "junction",
+      "name": "Q7.junction",
+      "excitation": "Q7.island"
+    },
+    {
+      "number": 9,
+      "kind": "junction",
+      "name": "Q8.junction",
+      "excitation": "Q8.island"
+    },
+    {
+      "number": 10,
+      "kind": "lumped",
+      "name": "P1_C.pad",
+      "excitation": "P1_C.pad"
+    },
+    {
+      "number": 11,
+      "kind": "lumped",
+      "name": "P2_C.pad",
+      "excitation": "P2_C.pad"
+    },
+    {
+      "number": 12,
+      "kind": "lumped",
+      "name": "LP_TB_00.pad",
+      "excitation": "LP_TB_00.pad"
+    },
+    {
+      "number": 13,
+      "kind": "lumped",
+      "name": "LP_TB_01.pad",
+      "excitation": "LP_TB_01.pad"
+    },
+    {
+      "number": 14,
+      "kind": "lumped",
+      "name": "LP_TB_02.pad",
+      "excitation": "LP_TB_02.pad"
+    },
+    {
+      "number": 15,
+      "kind": "lumped",
+      "name": "LP_TB_10.pad",
+      "excitation": "LP_TB_10.pad"
+    },
+    {
+      "number": 16,
+      "kind": "lumped",
+      "name": "LP_TB_11.pad",
+      "excitation": "LP_TB_11.pad"
+    },
+    {
+      "number": 17,
+      "kind": "lumped",
+      "name": "LP_TB_12.pad",
+      "excitation": "LP_TB_12.pad"
+    },
+    {
+      "number": 18,
+      "kind": "lumped",
+      "name": "LP_LR_00.pad",
+      "excitation": "LP_LR_00.pad"
+    },
+    {
+      "number": 19,
+      "kind": "lumped",
+      "name": "LP_LR_10.pad",
+      "excitation": "LP_LR_10.pad"
+    },
+    {
+      "number": 20,
+      "kind": "lumped",
+      "name": "LP_LR_01.pad",
+      "excitation": "LP_LR_01.pad"
+    },
+    {
+      "number": 21,
+      "kind": "lumped",
+      "name": "LP_LR_11.pad",
+      "excitation": "LP_LR_11.pad"
+    }
+  ],
+  "nets": {
+    "1": "Q0.island",
+    "2": "Q1.island",
+    "3": "Q2.island",
+    "4": "Q3.island",
+    "5": "Q4.island",
+    "6": "Q5.island",
+    "7": "Q6.island",
+    "8": "Q7.island",
+    "9": "Q8.island",
+    "10": "P1_C.pad",
+    "11": "Q4.bus_drive",
+    "12": "Q7.bus_drive",
+    "13": "Q0.bus_drive",
+    "14": "Q2.bus_drive",
+    "15": "Q3.bus_drive"
+  },
+  "waveguide_length_um": 100.0,
+  "geometry": {
+    "ground_grid_shapes": 0,
+    "airbridge_shapes": 0,
+    "airbridges": "dropped"
+  },
+  "notes": [],
+  "versions": {
+    "quantcore-circuits": "0.2.0",
+    "kqcircuits": "0.0.1",
+    "klayout": "0.30.5",
+    "pdk": "quantcore_nb_sapphire_v1@3"
+  },
+  "status": "done",
+  "fem_fast": true,
+  "started": 1794676286.8495748,
+  "returncode": 0,
+  "solve_seconds": 139.1,
+  "finished": 1794676426.2861168,
+  "aedt_mode": "batch"
+}

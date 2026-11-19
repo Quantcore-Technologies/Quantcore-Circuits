@@ -1,0 +1,14 @@
+python 2.7.4 | aedt 2024.1.0 | mode solve
+step import
+ok import 16.2 s
+step pi_model
+ok pi_model 0.0 s
+step reports
+ok reports 0.2 s
+saved q1_r1_feedline_Q1R1_q3d_cmatrix_project.aedt
+step solve
+ok solve 125.1 s
+step export
+ok export 0.2 s
+wrote q1_r1_feedline_Q1R1_q3d_cmatrix_project_qcc.json
+done

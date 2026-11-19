@@ -1,0 +1,45 @@
+# Local upstream checkouts and tool sources (editable installs; never committed).
+# Never run `git clean -x/-X` here: other-libs/ is ignored too and would be deleted.
+other-libs/
+pyaedt-main/
+qibo-main/
+qibolab-main
+pyPalace-main/
+gmsh-4.15.2-source/
+.history/
+
+# Local-only folders
+/components/
+/cloud/
+
+# Python and tool caches
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+*/node_modules/
+reviewer/node_modules/
+
+# Generated outputs: anything the library, the scripts or the notebooks write again is not tracked.
+build/
+**/build/
+results.sqlite
+*.oas
+*.gds
+*.qcc.json
+*.aedt
+*.aedtresults/
+*.lock
+*.sqlite
+# snapshots and figures written by the notebooks and snapshot tools
+examples/**/*.png
+examples/tutorials/img/
+examples/fem_loop/results.json
+examples/fem_loop/results.md
+# reference layouts are inputs, not outputs: keep them
+!examples/designs/community/*_sample.oas
+
+# Wheels (pip wheel / python -m build) and the Sphinx HTML output
+/dist/
+docs/_build/
+docs/reference/api/

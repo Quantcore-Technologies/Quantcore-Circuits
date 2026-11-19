@@ -1,0 +1,1105 @@
+{
+  "schema": "qcc/0.1",
+  "name": "chip_04_test_chip_tl",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      0.0,
+      0.0,
+      7500.0,
+      7500.0
+    ],
+    "launchers": null,
+    "params": {
+      "with_grid": false,
+      "name_chip": "CHIP04 TL JJ"
+    }
+  },
+  "instances": {
+    "TP_0_0": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.46,
+        "second_finger_width": 0.4
+      },
+      "place": {
+        "at": [
+          950.0,
+          6150.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_0_1": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.46,
+        "second_finger_width": 0.5
+      },
+      "place": {
+        "at": [
+          950.0,
+          4950.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_0_2": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.46,
+        "second_finger_width": 0.6
+      },
+      "place": {
+        "at": [
+          950.0,
+          3750.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_0_3": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.46,
+        "second_finger_width": 0.7
+      },
+      "place": {
+        "at": [
+          950.0,
+          2550.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_0_4": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.46,
+        "second_finger_width": 0.8
+      },
+      "place": {
+        "at": [
+          950.0,
+          1350.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_1_0": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.56,
+        "second_finger_width": 0.4
+      },
+      "place": {
+        "at": [
+          1650.0,
+          6150.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_1_1": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.56,
+        "second_finger_width": 0.5
+      },
+      "place": {
+        "at": [
+          1650.0,
+          4950.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_1_2": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.56,
+        "second_finger_width": 0.6
+      },
+      "place": {
+        "at": [
+          1650.0,
+          3750.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_1_3": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.56,
+        "second_finger_width": 0.7
+      },
+      "place": {
+        "at": [
+          1650.0,
+          2550.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_1_4": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.56,
+        "second_finger_width": 0.8
+      },
+      "place": {
+        "at": [
+          1650.0,
+          1350.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_2_0": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.6100000000000001,
+        "second_finger_width": 0.4
+      },
+      "place": {
+        "at": [
+          2350.0,
+          6150.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_2_1": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.6100000000000001,
+        "second_finger_width": 0.5
+      },
+      "place": {
+        "at": [
+          2350.0,
+          4950.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_2_2": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.6100000000000001,
+        "second_finger_width": 0.6
+      },
+      "place": {
+        "at": [
+          2350.0,
+          3750.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_2_3": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.6100000000000001,
+        "second_finger_width": 0.7
+      },
+      "place": {
+        "at": [
+          2350.0,
+          2550.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_2_4": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.6100000000000001,
+        "second_finger_width": 0.8
+      },
+      "place": {
+        "at": [
+          2350.0,
+          1350.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_3_0": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.6599999999999999,
+        "second_finger_width": 0.4
+      },
+      "place": {
+        "at": [
+          3050.0,
+          6150.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_3_1": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.6599999999999999,
+        "second_finger_width": 0.5
+      },
+      "place": {
+        "at": [
+          3050.0,
+          4950.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_3_2": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.6599999999999999,
+        "second_finger_width": 0.6
+      },
+      "place": {
+        "at": [
+          3050.0,
+          3750.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_3_3": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.6599999999999999,
+        "second_finger_width": 0.7
+      },
+      "place": {
+        "at": [
+          3050.0,
+          2550.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_3_4": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.6599999999999999,
+        "second_finger_width": 0.8
+      },
+      "place": {
+        "at": [
+          3050.0,
+          1350.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_4_0": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.76,
+        "second_finger_width": 0.4
+      },
+      "place": {
+        "at": [
+          3750.0,
+          6150.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_4_1": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.76,
+        "second_finger_width": 0.5
+      },
+      "place": {
+        "at": [
+          3750.0,
+          4950.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_4_2": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.76,
+        "second_finger_width": 0.6
+      },
+      "place": {
+        "at": [
+          3750.0,
+          3750.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_4_3": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.76,
+        "second_finger_width": 0.7
+      },
+      "place": {
+        "at": [
+          3750.0,
+          2550.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_4_4": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.76,
+        "second_finger_width": 0.8
+      },
+      "place": {
+        "at": [
+          3750.0,
+          1350.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_5_0": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.81,
+        "second_finger_width": 0.4
+      },
+      "place": {
+        "at": [
+          4450.0,
+          6150.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_5_1": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.81,
+        "second_finger_width": 0.5
+      },
+      "place": {
+        "at": [
+          4450.0,
+          4950.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_5_2": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.81,
+        "second_finger_width": 0.6
+      },
+      "place": {
+        "at": [
+          4450.0,
+          3750.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_5_3": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.81,
+        "second_finger_width": 0.7
+      },
+      "place": {
+        "at": [
+          4450.0,
+          2550.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_5_4": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.81,
+        "second_finger_width": 0.8
+      },
+      "place": {
+        "at": [
+          4450.0,
+          1350.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_6_0": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.8600000000000001,
+        "second_finger_width": 0.4
+      },
+      "place": {
+        "at": [
+          5150.0,
+          6150.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_6_1": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.8600000000000001,
+        "second_finger_width": 0.5
+      },
+      "place": {
+        "at": [
+          5150.0,
+          4950.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_6_2": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.8600000000000001,
+        "second_finger_width": 0.6
+      },
+      "place": {
+        "at": [
+          5150.0,
+          3750.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_6_3": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.8600000000000001,
+        "second_finger_width": 0.7
+      },
+      "place": {
+        "at": [
+          5150.0,
+          2550.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_6_4": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.8600000000000001,
+        "second_finger_width": 0.8
+      },
+      "place": {
+        "at": [
+          5150.0,
+          1350.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_7_0": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.96,
+        "second_finger_width": 0.4
+      },
+      "place": {
+        "at": [
+          5850.0,
+          6150.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_7_1": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.96,
+        "second_finger_width": 0.5
+      },
+      "place": {
+        "at": [
+          5850.0,
+          4950.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_7_2": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.96,
+        "second_finger_width": 0.6
+      },
+      "place": {
+        "at": [
+          5850.0,
+          3750.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_7_3": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.96,
+        "second_finger_width": 0.7
+      },
+      "place": {
+        "at": [
+          5850.0,
+          2550.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_7_4": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 0.96,
+        "second_finger_width": 0.8
+      },
+      "place": {
+        "at": [
+          5850.0,
+          1350.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_8_0": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 1.06,
+        "second_finger_width": 0.4
+      },
+      "place": {
+        "at": [
+          6550.0,
+          6150.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_8_1": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 1.06,
+        "second_finger_width": 0.5
+      },
+      "place": {
+        "at": [
+          6550.0,
+          4950.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_8_2": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 1.06,
+        "second_finger_width": 0.6
+      },
+      "place": {
+        "at": [
+          6550.0,
+          3750.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_8_3": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 1.06,
+        "second_finger_width": 0.7
+      },
+      "place": {
+        "at": [
+          6550.0,
+          2550.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_8_4": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "upper_pad_height": 300,
+        "lower_pad_height": 300,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "finger_width": 1.06,
+        "second_finger_width": 0.8
+      },
+      "place": {
+        "at": [
+          6550.0,
+          1350.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    }
+  },
+  "routes": {},
+  "nets": "derived",
+  "targets": {},
+  "sim_groups": {}
+}

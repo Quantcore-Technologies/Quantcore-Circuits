@@ -1,0 +1,123 @@
+{
+  "schema": "qcc/0.1",
+  "name": "two_transmon",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      -2650.0,
+      -2850.0,
+      4850.0,
+      4650.0
+    ],
+    "launchers": null,
+    "params": {
+      "with_grid": false,
+      "name_chip": "SQD-2T"
+    }
+  },
+  "instances": {
+    "Q1": {
+      "cell": "metal:TransmonPocket",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 7.482691894823213
+        },
+        "connection_pads": {
+          "readout": {
+            "loc_W": 1,
+            "loc_H": 1,
+            "pad_width": 200
+          }
+        },
+        "pad_width": 425,
+        "pocket_height": 650
+      },
+      "place": {
+        "at": [
+          600.0,
+          900.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 7.4827,
+        "Cj_fF": 13.5
+      }
+    },
+    "Q2": {
+      "cell": "metal:TransmonPocket",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.986153515858571
+        },
+        "connection_pads": {
+          "readout": {
+            "loc_W": -1,
+            "loc_H": 1,
+            "pad_width": 200
+          }
+        },
+        "pad_width": 425,
+        "pocket_height": 650
+      },
+      "place": {
+        "at": [
+          1600.0,
+          900.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 6.0129,
+        "Cj_fF": 16.8
+      }
+    }
+  },
+  "routes": {
+    "COUPLER": {
+      "from": "Q1.readout",
+      "to": "Q2.readout",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 20.0,
+      "airbridges": "none",
+      "params": {}
+    }
+  },
+  "nets": "derived",
+  "targets": {},
+  "sim_groups": {
+    "Q1Q2": {
+      "select": [
+        "Q1",
+        "Q2",
+        "COUPLER"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "eigenmode_epr",
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    }
+  }
+}

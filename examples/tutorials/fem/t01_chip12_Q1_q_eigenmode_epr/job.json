@@ -1,0 +1,135 @@
+{
+  "schema": "qcc-job/0.1",
+  "created": "2026-11-14T21:24:39+00:00",
+  "design": "t01_chip12",
+  "design_hash": "626dc04220ebd0f1",
+  "group": "Q1_q",
+  "group_hash": "b36bcce286493cc2",
+  "select": [
+    "Q1"
+  ],
+  "routes_in_sim": [
+    "DRV_Q0",
+    "DRV_Q2",
+    "DRV_Q3",
+    "DRV_Q4",
+    "DRV_Q7",
+    "FLX_Q1",
+    "FLX_Q2",
+    "FLX_Q5",
+    "FLX_Q6",
+    "FLX_Q8",
+    "R0",
+    "R1",
+    "R2",
+    "R3",
+    "R4",
+    "R5",
+    "R6",
+    "R7",
+    "R8",
+    "cpw_main"
+  ],
+  "analysis": "eigenmode_epr",
+  "solver": "ansys",
+  "simulation_name": "t01_chip12_Q1_q_eigenmode_epr",
+  "settings": {
+    "n_modes": 2,
+    "min_frequency": 3.0,
+    "max_delta_f": 1.0,
+    "maximum_passes": 3,
+    "minimum_passes": 1,
+    "minimum_converged_passes": 1,
+    "percent_refinement": 30,
+    "integrate_energies": false,
+    "mesh_size": {
+      "1t1_gap": 40.0,
+      "*_signal_1": 10.0
+    },
+    "pyepr": {
+      "substrate_loss_tangent": 1e-06,
+      "dielectric_surfaces": {
+        "layerMA": {
+          "tan_delta_surf": 0.001,
+          "th": 3e-09,
+          "eps_r": 10
+        },
+        "layerMS": {
+          "tan_delta_surf": 0.001,
+          "th": 3e-09,
+          "eps_r": 10
+        },
+        "layerSA": {
+          "tan_delta_surf": 0.001,
+          "th": 3e-09,
+          "eps_r": 10
+        }
+      }
+    }
+  },
+  "box_um": [
+    3110.0,
+    5211.0,
+    3890.0,
+    6179.0
+  ],
+  "ports": [
+    {
+      "number": 1,
+      "kind": "junction",
+      "name": "Q1.junction",
+      "excitation": "Q1.island"
+    },
+    {
+      "number": 2,
+      "kind": "edge_lumped",
+      "name": "FLX_Q1",
+      "excitation": "FLX_Q1"
+    },
+    {
+      "number": 3,
+      "kind": "edge_lumped",
+      "name": "FLX_Q2",
+      "excitation": "FLX_Q2"
+    },
+    {
+      "number": 4,
+      "kind": "edge_lumped",
+      "name": "FLX_Q2",
+      "excitation": "FLX_Q2"
+    },
+    {
+      "number": 5,
+      "kind": "edge_lumped",
+      "name": "R1",
+      "excitation": "R1"
+    }
+  ],
+  "nets": {
+    "1": "Q1.island",
+    "2": "FLX_Q1",
+    "3": "FLX_Q2",
+    "4": "FLX_Q2#2",
+    "5": "R1"
+  },
+  "waveguide_length_um": 100.0,
+  "geometry": {
+    "ground_grid_shapes": 0,
+    "airbridge_shapes": 0,
+    "airbridges": "dropped"
+  },
+  "notes": [],
+  "versions": {
+    "quantcore-circuits": "0.2.0",
+    "kqcircuits": "0.0.1",
+    "klayout": "0.30.5",
+    "pdk": "quantcore_nb_sapphire_v1@3"
+  },
+  "status": "done",
+  "fem_fast": true,
+  "started": 1794691480.5924978,
+  "returncode": 0,
+  "solve_seconds": 123.6,
+  "finished": 1794691604.2427537,
+  "aedt_mode": "batch"
+}

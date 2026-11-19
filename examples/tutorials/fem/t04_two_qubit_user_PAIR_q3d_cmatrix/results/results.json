@@ -1,0 +1,96 @@
+{
+  "analysis": "q3d_cmatrix",
+  "design_hash": "4d95486a29400348",
+  "group": "PAIR",
+  "raw_files": [
+    "t04_two_qubit_user_PAIR_q3d_cmatrix_project_qcc.json",
+    "t04_two_qubit_user_PAIR_q3d_cmatrix_project_results.json",
+    "t04_two_qubit_user_PAIR_q3d_cmatrix_project_convergence.txt"
+  ],
+  "aedt": {
+    "aedt": "2024.1.0",
+    "python": "2.7.4",
+    "tool": "q3d",
+    "solve_seconds": 24.8,
+    "convergence_file": "t04_two_qubit_user_PAIR_q3d_cmatrix_project_convergence.txt"
+  },
+  "cmatrix": {
+    "labels": [
+      "Q1.island",
+      "Q2.island",
+      "Q1.claw_n",
+      "Q2.claw_n"
+    ],
+    "unit": "fF",
+    "matrix": [
+      [
+        83.0751158979244,
+        -0.3545446244981027,
+        -3.0404481212731573,
+        -0.07131121741176867
+      ],
+      [
+        -0.3545446244981027,
+        87.07395298895757,
+        -0.07760413994574605,
+        -3.037953152689722
+      ],
+      [
+        -3.0404481212731573,
+        -0.07760413994574605,
+        85.25366999609709,
+        -0.02894777924447495
+      ],
+      [
+        -0.07131121741176867,
+        -3.037953152689722,
+        -0.02894777924447495,
+        85.17249667988052
+      ]
+    ],
+    "form": "maxwell",
+    "source_convention": "mutual",
+    "aedt_nets": [
+      "Net1",
+      "Net2",
+      "Net3",
+      "Net4"
+    ]
+  },
+  "convergence": {
+    "file": "t04_two_qubit_user_PAIR_q3d_cmatrix_project_convergence.txt",
+    "converged": false,
+    "criterion": "Delta %",
+    "target": 2.0,
+    "passes": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "elements": [
+      270,
+      802,
+      2322,
+      3158,
+      4296,
+      5840,
+      7922,
+      10744
+    ],
+    "delta": [
+      null,
+      4.7833,
+      8.0176,
+      4.68,
+      3.3837,
+      3.3808,
+      2.4667,
+      2.3794
+    ]
+  }
+}

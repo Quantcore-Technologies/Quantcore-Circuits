@@ -1,0 +1,160 @@
+{
+  "schema": "qcc/0.1",
+  "name": "sqchip_em",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      0.0,
+      0.0,
+      7500.0,
+      7500.0
+    ],
+    "launchers": null,
+    "params": {
+      "with_grid": false,
+      "name_chip": "SQCHIP-1Q"
+    }
+  },
+  "instances": {
+    "Q1": {
+      "cell": "metal:TransmonPocket",
+      "params": {
+        "pad_width": 520,
+        "pocket_height": 780,
+        "connection_pads": {
+          "readout": {
+            "loc_W": 1,
+            "loc_H": 1,
+            "pad_width": 180,
+            "pad_height": 150,
+            "pad_gap": 1.4
+          }
+        },
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 12.0
+        }
+      },
+      "place": {
+        "at": [
+          3152.0,
+          2847.8
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 12.0258,
+        "Cj_fF": 8.4
+      }
+    },
+    "RO_TEE": {
+      "cell": "metal:CapNInterdigitalTee",
+      "params": {
+        "prime_width": 14,
+        "prime_gap": 6,
+        "second_width": 10,
+        "second_gap": 6,
+        "cap_gap": 1.2,
+        "cap_width": 8,
+        "finger_length": 160,
+        "finger_count": 12,
+        "cap_distance": 220
+      },
+      "place": {
+        "at": [
+          4577.0,
+          5029.2
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "LP_RO": {
+      "cell": "metal:LaunchpadWirebond",
+      "params": {
+        "trace_width": 10,
+        "trace_gap": 6
+      },
+      "place": {
+        "at": [
+          2081.0,
+          5029.2
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "w"
+      },
+      "ports": null,
+      "junction": null
+    }
+  },
+  "routes": {
+    "RO_RES": {
+      "from": "RO_TEE.second_end",
+      "to": "Q1.readout",
+      "type": "meander",
+      "nodes": [],
+      "length": 8500.0,
+      "meander_segment": null,
+      "meanders": 6,
+      "a": null,
+      "b": null,
+      "r": 25.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RO_FEED": {
+      "from": "LP_RO.tie",
+      "to": "RO_TEE.prime_start",
+      "type": "meander",
+      "nodes": [],
+      "length": 5500.0,
+      "meander_segment": null,
+      "meanders": 4,
+      "a": null,
+      "b": null,
+      "r": 25.0,
+      "airbridges": "none",
+      "params": {}
+    }
+  },
+  "nets": "derived",
+  "targets": {
+    "Q1": {
+      "f_q_GHz": 4.734
+    },
+    "RO_RES": {
+      "f_GHz": 6.099
+    }
+  },
+  "sim_groups": {
+    "Q1R": {
+      "select": [
+        "Q1",
+        "RO_RES",
+        "RO_TEE"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "eigenmode_epr",
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    }
+  }
+}

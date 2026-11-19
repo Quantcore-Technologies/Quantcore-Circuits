@@ -1,0 +1,190 @@
+{
+  "schema": "qcc/0.1",
+  "name": "fem_loop_rev0",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      0.0,
+      0.0,
+      7500.0,
+      7500.0
+    ],
+    "launchers": null,
+    "params": {
+      "with_grid": false,
+      "name_chip": "FL2R0"
+    }
+  },
+  "instances": {
+    "PAD_W": {
+      "cell": "BondPad",
+      "params": {},
+      "place": {
+        "at": [
+          1125.0,
+          3750.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "w"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PAD_E": {
+      "cell": "BondPad",
+      "params": {},
+      "place": {
+        "at": [
+          6375.0,
+          3750.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "e"
+      },
+      "ports": null,
+      "junction": null
+    }
+  },
+  "routes": {
+    "FL": {
+      "from": "PAD_W.a",
+      "to": "PAD_E.a",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "R1": {
+      "from": {
+        "at": [
+          2600.0,
+          4900.0
+        ],
+        "dir": 270.0,
+        "term": 6.0
+      },
+      "to": {
+        "hanger": "FL",
+        "length": 250.0,
+        "near": [
+          2725.0,
+          3700.0
+        ],
+        "side": "left",
+        "ground_gap": 6.0,
+        "direction": "forward",
+        "end": "short",
+        "open_gap": 6.0
+      },
+      "type": "meander",
+      "nodes": [],
+      "length": 4501.195722294178,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "R2": {
+      "from": {
+        "at": [
+          3900.0,
+          5600.0
+        ],
+        "dir": 270.0,
+        "term": 6.0
+      },
+      "to": {
+        "hanger": "FL",
+        "length": 250.0,
+        "near": [
+          4025.0,
+          3700.0
+        ],
+        "side": "left",
+        "ground_gap": 6.0,
+        "direction": "forward",
+        "end": "open",
+        "open_gap": 6.0
+      },
+      "type": "meander",
+      "nodes": [],
+      "length": 8291.676324749662,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    }
+  },
+  "nets": "derived",
+  "targets": {
+    "R1": {
+      "f_GHz": 7.0
+    },
+    "R2": {
+      "f_GHz": 7.6
+    }
+  },
+  "sim_groups": {
+    "FL2R": {
+      "select": [
+        "R1",
+        "R2"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "q3d_cmatrix",
+        "eigenmode_epr",
+        "hfss_driven"
+      ],
+      "ports": {
+        "FL": "edge",
+        "R1": "keep",
+        "R2": "keep"
+      },
+      "settings": {
+        "q3d_cmatrix": {
+          "percent_error": 1.0
+        },
+        "eigenmode_epr": {
+          "n_modes": 4,
+          "min_frequency": 6.0,
+          "max_delta_f": 0.2,
+          "maximum_passes": 14
+        },
+        "hfss_driven": {
+          "mesh_size": {
+            "1t1_gap": 10
+          },
+          "frequency": 7.3,
+          "maximum_passes": 10,
+          "minimum_passes": 3,
+          "sweep_start": 6.5,
+          "sweep_end": 8.4,
+          "sweep_count": 24001,
+          "sweep_type": "fast"
+        }
+      }
+    }
+  }
+}

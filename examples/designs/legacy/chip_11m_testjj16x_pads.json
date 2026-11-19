@@ -1,0 +1,51 @@
+{
+  "schema": "qcc/0.1",
+  "name": "chip_11m_testjj16x_pads",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      0.0,
+      0.0,
+      7500.0,
+      7500.0
+    ],
+    "launchers": null,
+    "params": {
+      "with_grid": false,
+      "name_chip": "CHIP11M"
+    }
+  },
+  "instances": {
+    "JX": {
+      "cell": "ProbePadPair",
+      "params": {
+        "junction_type": "Trilayer Junction Compact",
+        "junction_params": {
+          "finger_width": 0.5,
+          "second_finger_width": 0.6
+        }
+      },
+      "place": {
+        "at": [
+          3750.0,
+          3750.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 6.7344,
+        "Cj_fF": 15.0
+      }
+    }
+  },
+  "routes": {},
+  "nets": "derived",
+  "targets": {},
+  "sim_groups": {}
+}

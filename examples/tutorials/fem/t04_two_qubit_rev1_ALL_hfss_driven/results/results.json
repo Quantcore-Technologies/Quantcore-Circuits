@@ -1,0 +1,82 @@
+{
+  "analysis": "hfss_driven",
+  "design_hash": "00877dc54e5e7103",
+  "group": "ALL",
+  "raw_files": [
+    "t04_two_qubit_rev1_ALL_hfss_driven_project_qcc.json",
+    "t04_two_qubit_rev1_ALL_hfss_driven_project_convergence.txt",
+    "t04_two_qubit_rev1_ALL_hfss_driven_project_SMatrix.s2p"
+  ],
+  "aedt": {
+    "aedt": "2024.1.0",
+    "python": "2.7.4",
+    "tool": "hfss",
+    "solve_seconds": 611.4,
+    "convergence_file": "t04_two_qubit_rev1_ALL_hfss_driven_project_convergence.txt"
+  },
+  "convergence": {
+    "file": "t04_two_qubit_rev1_ALL_hfss_driven_project_convergence.txt",
+    "converged": true,
+    "criterion": "Max Mag. Delta S",
+    "target": 0.05,
+    "passes": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "elements": [
+      135339,
+      175942,
+      228725,
+      297344
+    ],
+    "delta": [
+      null,
+      0.10188,
+      0.092271,
+      0.018153
+    ]
+  },
+  "sparams": {
+    "file": "t04_two_qubit_rev1_ALL_hfss_driven_project_SMatrix.s2p",
+    "ports": [
+      "FL",
+      "FL"
+    ],
+    "port_numbers": [
+      3,
+      4
+    ],
+    "z0_ohm": 50.0,
+    "f_GHz": [
+      6.7,
+      7.5
+    ],
+    "n_points": 10001,
+    "notch": {
+      "S21": {
+        "f0_GHz": 6.946414920274308,
+        "Q_loaded": 20906.607110115223,
+        "Q_coupling": 21519.323056655172,
+        "Q_internal": 734265.2577621464,
+        "kappa_MHz": 0.33225931322512064,
+        "kappa_ext_MHz": 0.3227989515277074,
+        "phi": -0.00018474006822136876,
+        "residual_rms": 0.00021649626030967165,
+        "depth": 0.9064582195946264
+      },
+      "S21#2": {
+        "f0_GHz": 7.394212933300225,
+        "Q_loaded": 17458.26585244458,
+        "Q_coupling": 17738.736524714346,
+        "Q_internal": 1104170.9838277309,
+        "kappa_MHz": 0.4235365067639211,
+        "kappa_ext_MHz": 0.4168398872714694,
+        "phi": 0.00045648088952833445,
+        "residual_rms": 0.0003645505533772281,
+        "depth": 0.8727973249699982
+      }
+    }
+  }
+}

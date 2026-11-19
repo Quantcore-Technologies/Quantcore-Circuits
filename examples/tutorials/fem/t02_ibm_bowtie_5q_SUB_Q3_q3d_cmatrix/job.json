@@ -1,0 +1,104 @@
+{
+  "schema": "qcc-job/0.1",
+  "created": "2026-11-14T18:56:32+00:00",
+  "design": "t02_ibm_bowtie_5q",
+  "design_hash": "2a9d08a7f82ebe3f",
+  "group": "SUB_Q3",
+  "group_hash": "5de476fd59c7b0e1",
+  "select": [
+    "Q3",
+    "R_Q3",
+    "C_Q3"
+  ],
+  "routes_in_sim": [
+    "BusA",
+    "BusA_Q0",
+    "BusA_Q1",
+    "BusB",
+    "BusB_Q4",
+    "L_Q0",
+    "L_Q1",
+    "L_Q2",
+    "L_Q3",
+    "L_Q4",
+    "R_Q0",
+    "R_Q1",
+    "R_Q2",
+    "R_Q4"
+  ],
+  "analysis": "q3d_cmatrix",
+  "solver": "ansys",
+  "simulation_name": "t02_ibm_bowtie_5q_SUB_Q3_q3d_cmatrix",
+  "settings": {
+    "percent_error": 2.0,
+    "maximum_passes": 8,
+    "minimum_passes": 1,
+    "minimum_converged_passes": 1
+  },
+  "box_um": [
+    6025.0,
+    4290.0,
+    7175.0,
+    6736.0
+  ],
+  "ports": [
+    {
+      "number": 1,
+      "kind": "junction",
+      "name": "Q3.junction",
+      "excitation": "Q3.island2"
+    },
+    {
+      "number": 2,
+      "kind": "waveguide",
+      "name": "Q3.bus",
+      "excitation": "Q3.bus"
+    },
+    {
+      "number": 3,
+      "kind": "waveguide",
+      "name": "Q3.ro",
+      "excitation": "Q3.ro"
+    },
+    {
+      "number": 4,
+      "kind": "waveguide",
+      "name": "C_Q3.a",
+      "excitation": "C_Q3.a"
+    },
+    {
+      "number": 5,
+      "kind": "edge",
+      "name": "L_Q3",
+      "excitation": "L_Q3"
+    }
+  ],
+  "nets": {
+    "1": "Q3.island2",
+    "2": "Q3.bus",
+    "3": "Q3.ro",
+    "4": "C_Q3.a",
+    "5": "L_Q3",
+    "6": "Q3.island1"
+  },
+  "waveguide_length_um": 100.0,
+  "geometry": {
+    "ground_grid_shapes": 0,
+    "airbridge_shapes": 0,
+    "airbridges": "dropped"
+  },
+  "notes": [],
+  "versions": {
+    "quantcore-circuits": "0.2.0",
+    "kqcircuits": "0.0.1",
+    "klayout": "0.30.5",
+    "pdk": "quantcore_nb_sapphire_v1@3"
+  },
+  "status": "done",
+  "fem_fast": true,
+  "started": 1794682646.471584,
+  "returncode": 0,
+  "solve_seconds": 54.6,
+  "finished": 1794682701.0906694,
+  "aedt_mode": "batch"
+}

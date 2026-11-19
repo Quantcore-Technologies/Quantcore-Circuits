@@ -1,0 +1,18 @@
+python 2.7.4 | aedt 2024.1.0 | mode solve
+step import
+ok import 16.0 s
+fix Port2: 50 ohm termination (Lumped RLC R=50 ohm)
+fix Port3: 50 ohm termination (Lumped RLC R=50 ohm)
+step reports
+ok reports 0.2 s
+saved q1_r1_feedline_Q1R1_eigenmode_epr_project.aedt
+step solve
+ok solve 620.4 s
+step export
+ok export 0.1 s
+step epr
+epr mode 1: U_E 3.8493e-25 U_H 4.3643e-27 (1 junction lines)
+epr mode 2: U_E 1.1897e-25 U_H 1.1879e-25 (1 junction lines)
+ok epr 53.1 s
+wrote q1_r1_feedline_Q1R1_eigenmode_epr_project_qcc.json
+done

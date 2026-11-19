@@ -1,0 +1,122 @@
+{
+  "schema": "qcc/0.1",
+  "name": "ki_twpa_serpentine",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      0.0,
+      0.0,
+      7500.0,
+      7500.0
+    ],
+    "launchers": null,
+    "params": {
+      "with_grid": false,
+      "name_chip": "KITWPA"
+    }
+  },
+  "instances": {
+    "P_IN": {
+      "cell": "BondPad",
+      "params": {},
+      "place": {
+        "at": [
+          400.0,
+          4212.0
+        ],
+        "rot": -90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "P_OUT": {
+      "cell": "BondPad",
+      "params": {},
+      "place": {
+        "at": [
+          400.0,
+          3288.0
+        ],
+        "rot": -90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "KIT": {
+      "cell": "KiTwpaSerpentine",
+      "params": {
+        "rows": 4,
+        "periods_per_row": 55
+      },
+      "place": {
+        "at": [
+          4000.0,
+          3750.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    }
+  },
+  "routes": {
+    "L_IN": {
+      "from": "P_IN.a",
+      "to": "KIT.a",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "L_OUT": {
+      "from": "P_OUT.a",
+      "to": "KIT.b",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    }
+  },
+  "nets": "derived",
+  "targets": {},
+  "sim_groups": {
+    "launch": {
+      "select": [
+        "KIT"
+      ],
+      "margin_um": 40.0,
+      "analyses": [
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    }
+  }
+}

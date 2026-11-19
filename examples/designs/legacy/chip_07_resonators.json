@@ -1,0 +1,731 @@
+{
+  "schema": "qcc/0.1",
+  "name": "chip_07_resonators",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      0.0,
+      0.0,
+      7500.0,
+      7500.0
+    ],
+    "launchers": null,
+    "params": {
+      "with_grid": false,
+      "name_chip": "CHIP07",
+      "cheese": "original"
+    }
+  },
+  "instances": {
+    "PL": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 400,
+        "pad_gap": 225,
+        "pad_height": 450,
+        "taper_length": 450,
+        "a": 10,
+        "b": 6,
+        "rounded": false
+      },
+      "place": {
+        "at": [
+          1125.0,
+          3900.5
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "FL": {
+      "cell": "CpwSegment",
+      "params": {
+        "length": 5050.0,
+        "a": 10,
+        "b": 6,
+        "lc_thickness": 2,
+        "rc_thickness": 2
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "FL.a",
+        "to": "PL.a",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PR": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 400,
+        "pad_gap": 225,
+        "pad_height": 450,
+        "taper_length": 450,
+        "a": 10,
+        "b": 6,
+        "rounded": false
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "PR.a",
+        "to": "FL.b",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "R2": {
+      "cell": "CoupledResonator",
+      "params": {
+        "cpw_len": 6200,
+        "width": 300,
+        "arc_length": 300,
+        "neck_length": 500,
+        "cgap": 4,
+        "clength": 200,
+        "ground": true,
+        "flip": false,
+        "tail": true,
+        "tail_len": 0,
+        "tail_end": false,
+        "arc_points": 256,
+        "a": 10,
+        "b": 6
+      },
+      "place": {
+        "at": [
+          1750.0,
+          3874.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "R3": {
+      "cell": "CoupledResonator",
+      "params": {
+        "cpw_len": 5840,
+        "width": 300,
+        "arc_length": 300,
+        "neck_length": 500,
+        "cgap": 4,
+        "clength": 300,
+        "ground": true,
+        "flip": true,
+        "tail": true,
+        "tail_len": 0,
+        "tail_end": false,
+        "arc_points": 256,
+        "a": 10,
+        "b": 6
+      },
+      "place": {
+        "at": [
+          2400.0,
+          3926.5
+        ],
+        "rot": 0.0,
+        "mirror": true,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "R6": {
+      "cell": "CoupledResonator",
+      "params": {
+        "cpw_len": 5590,
+        "width": 300,
+        "arc_length": 300,
+        "neck_length": 500,
+        "cgap": 4,
+        "clength": 400,
+        "ground": true,
+        "flip": true,
+        "tail": true,
+        "tail_len": 0,
+        "tail_end": false,
+        "arc_points": 256,
+        "a": 10,
+        "b": 6
+      },
+      "place": {
+        "at": [
+          5100.0,
+          3874.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "R8": {
+      "cell": "CoupledResonator",
+      "params": {
+        "cpw_len": 5200,
+        "width": 300,
+        "arc_length": 300,
+        "neck_length": 500,
+        "cgap": 6,
+        "clength": 300,
+        "ground": true,
+        "flip": false,
+        "tail": true,
+        "tail_len": 0,
+        "tail_end": false,
+        "arc_points": 256,
+        "a": 10,
+        "b": 6
+      },
+      "place": {
+        "at": [
+          3400.0,
+          3872.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "R9": {
+      "cell": "CoupledResonator",
+      "params": {
+        "cpw_len": 4920,
+        "width": 300,
+        "arc_length": 300,
+        "neck_length": 400,
+        "cgap": 4,
+        "clength": 300,
+        "ground": true,
+        "flip": false,
+        "tail": true,
+        "tail_len": 0,
+        "tail_end": false,
+        "arc_points": 256,
+        "a": 10,
+        "b": 6
+      },
+      "place": {
+        "at": [
+          4200.0,
+          3926.5
+        ],
+        "rot": 0.0,
+        "mirror": true,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "R12": {
+      "cell": "CoupledResonator",
+      "params": {
+        "cpw_len": 4740,
+        "width": 300,
+        "arc_length": 300,
+        "neck_length": 400,
+        "cgap": 6,
+        "clength": 600,
+        "ground": true,
+        "flip": true,
+        "tail": true,
+        "tail_len": 0,
+        "tail_end": false,
+        "arc_points": 256,
+        "a": 10,
+        "b": 6
+      },
+      "place": {
+        "at": [
+          5850.0,
+          3928.5
+        ],
+        "rot": 0.0,
+        "mirror": true,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "FH0": {
+      "cell": "FluxHoleArray",
+      "params": {
+        "hole_size": 5,
+        "pitch_x": 20,
+        "pitch_y": 15,
+        "nx": 42,
+        "ny": 2
+      },
+      "place": {
+        "at": [
+          1230.0,
+          3933.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "FH1": {
+      "cell": "FluxHoleArray",
+      "params": {
+        "hole_size": 5,
+        "pitch_x": 20,
+        "pitch_y": 15,
+        "nx": 57,
+        "ny": 2
+      },
+      "place": {
+        "at": [
+          1900.0,
+          3855.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "FH2": {
+      "cell": "FluxHoleArray",
+      "params": {
+        "hole_size": 5,
+        "pitch_x": 20,
+        "pitch_y": 15,
+        "nx": 54,
+        "ny": 2
+      },
+      "place": {
+        "at": [
+          2800.0,
+          3933.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "FH3": {
+      "cell": "FluxHoleArray",
+      "params": {
+        "hole_size": 5,
+        "pitch_x": 20,
+        "pitch_y": 15,
+        "nx": 47,
+        "ny": 2
+      },
+      "place": {
+        "at": [
+          3800.0,
+          3855.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "FH4": {
+      "cell": "FluxHoleArray",
+      "params": {
+        "hole_size": 5,
+        "pitch_x": 20,
+        "pitch_y": 15,
+        "nx": 45,
+        "ny": 2
+      },
+      "place": {
+        "at": [
+          4500.0,
+          3933.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "FH5": {
+      "cell": "FluxHoleArray",
+      "params": {
+        "hole_size": 5,
+        "pitch_x": 20,
+        "pitch_y": 15,
+        "nx": 41,
+        "ny": 2
+      },
+      "place": {
+        "at": [
+          5470.0,
+          3855.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "LBL_CHIP": {
+      "cell": "TextLabel",
+      "params": {
+        "text": "WSK_TLW07",
+        "mag": 300,
+        "inverted": false
+      },
+      "place": {
+        "at": [
+          4550.0,
+          900.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "LBL_50": {
+      "cell": "TextLabel",
+      "params": {
+        "text": "50",
+        "mag": 200,
+        "inverted": true
+      },
+      "place": {
+        "at": [
+          1700.0,
+          4176.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "LBL_52": {
+      "cell": "TextLabel",
+      "params": {
+        "text": "52",
+        "mag": 200,
+        "inverted": true
+      },
+      "place": {
+        "at": [
+          2500.0,
+          3624.5
+        ],
+        "rot": 180.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "LBL_60": {
+      "cell": "TextLabel",
+      "params": {
+        "text": "60",
+        "mag": 200,
+        "inverted": true
+      },
+      "place": {
+        "at": [
+          3350.0,
+          4176.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "LBL_62": {
+      "cell": "TextLabel",
+      "params": {
+        "text": "62",
+        "mag": 200,
+        "inverted": true
+      },
+      "place": {
+        "at": [
+          4250.0,
+          3624.5
+        ],
+        "rot": 180.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "LBL_55": {
+      "cell": "TextLabel",
+      "params": {
+        "text": "55",
+        "mag": 200,
+        "inverted": true
+      },
+      "place": {
+        "at": [
+          5050.0,
+          4176.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "LBL_65": {
+      "cell": "TextLabel",
+      "params": {
+        "text": "65",
+        "mag": 200,
+        "inverted": true
+      },
+      "place": {
+        "at": [
+          6000.0,
+          3624.5
+        ],
+        "rot": 180.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    }
+  },
+  "routes": {},
+  "nets": "derived",
+  "targets": {
+    "R2": {
+      "f_GHz": 5.0
+    },
+    "R3": {
+      "f_GHz": 5.25
+    },
+    "R6": {
+      "f_GHz": 5.5
+    },
+    "R8": {
+      "f_GHz": 6.0
+    },
+    "R9": {
+      "f_GHz": 6.25
+    },
+    "R12": {
+      "f_GHz": 6.5
+    }
+  },
+  "sim_groups": {
+    "R2": {
+      "select": [
+        "R2",
+        "FL"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "q3d_cmatrix",
+        "eigenmode_epr"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "R3": {
+      "select": [
+        "R3",
+        "FL"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "q3d_cmatrix",
+        "eigenmode_epr"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "R6": {
+      "select": [
+        "R6",
+        "FL"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "q3d_cmatrix",
+        "eigenmode_epr"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "R8": {
+      "select": [
+        "R8",
+        "FL"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "q3d_cmatrix",
+        "eigenmode_epr"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "R9": {
+      "select": [
+        "R9",
+        "FL"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "q3d_cmatrix",
+        "eigenmode_epr"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "R12": {
+      "select": [
+        "R12",
+        "FL"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "q3d_cmatrix",
+        "eigenmode_epr"
+      ],
+      "ports": {},
+      "settings": {}
+    }
+  },
+  "couplings": {
+    "K_R2": {
+      "between": [
+        "R2",
+        "FL"
+      ],
+      "type": "C",
+      "value": null,
+      "fem": true,
+      "note": "200 \u00b5m coupler beside the feedline"
+    },
+    "K_R3": {
+      "between": [
+        "R3",
+        "FL"
+      ],
+      "type": "C",
+      "value": null,
+      "fem": true,
+      "note": "300 \u00b5m coupler beside the feedline"
+    },
+    "K_R6": {
+      "between": [
+        "R6",
+        "FL"
+      ],
+      "type": "C",
+      "value": null,
+      "fem": true,
+      "note": "400 \u00b5m coupler beside the feedline"
+    },
+    "K_R8": {
+      "between": [
+        "R8",
+        "FL"
+      ],
+      "type": "C",
+      "value": null,
+      "fem": true,
+      "note": "300 \u00b5m coupler beside the feedline"
+    },
+    "K_R9": {
+      "between": [
+        "R9",
+        "FL"
+      ],
+      "type": "C",
+      "value": null,
+      "fem": true,
+      "note": "300 \u00b5m coupler beside the feedline"
+    },
+    "K_R12": {
+      "between": [
+        "R12",
+        "FL"
+      ],
+      "type": "C",
+      "value": null,
+      "fem": true,
+      "note": "600 \u00b5m coupler beside the feedline"
+    }
+  }
+}

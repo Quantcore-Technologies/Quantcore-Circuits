@@ -1,0 +1,195 @@
+{
+  "schema": "qcc/0.1",
+  "name": "twpa_sim_jpa",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      0.0,
+      0.0,
+      7500.0,
+      7500.0
+    ],
+    "launchers": null,
+    "params": {
+      "with_grid": false,
+      "name_chip": "LJPA"
+    }
+  },
+  "instances": {
+    "P_C": {
+      "cell": "BondPad",
+      "params": {},
+      "place": {
+        "at": [
+          400.0,
+          4600.0
+        ],
+        "rot": -90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "P_L": {
+      "cell": "BondPad",
+      "params": {},
+      "place": {
+        "at": [
+          7100.0,
+          2900.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "CC": {
+      "cell": "FingerCapacitorSquare",
+      "params": {
+        "finger_number": 12,
+        "finger_length": 80,
+        "finger_width": 5,
+        "finger_gap": 3
+      },
+      "place": {
+        "at": [
+          3100.0,
+          4600.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "JC": {
+      "cell": "LumpedJpa",
+      "params": {
+        "junction_params": {
+          "finger_width": 2.0,
+          "second_finger_width": 2.0
+        },
+        "shunt_fingers": 30,
+        "finger_length": 150,
+        "finger_width": 4,
+        "finger_gap": 4
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "JC.signal",
+        "to": "CC.b",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 0.50508,
+        "Cj_fF": 200.0
+      }
+    },
+    "JL": {
+      "cell": "LumpedJpa",
+      "params": {
+        "coupling": "inductive",
+        "tap_width": 8,
+        "junction_params": {
+          "finger_width": 2.0,
+          "second_finger_width": 2.0
+        },
+        "shunt_fingers": 30,
+        "finger_length": 150,
+        "finger_width": 4,
+        "finger_gap": 4
+      },
+      "place": {
+        "at": [
+          4400.0,
+          2900.0
+        ],
+        "rot": 180.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 0.50508,
+        "Cj_fF": 200.0
+      }
+    }
+  },
+  "routes": {
+    "L_C": {
+      "from": "P_C.a",
+      "to": "CC.a",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "L_L": {
+      "from": "P_L.a",
+      "to": "JL.signal",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    }
+  },
+  "nets": "derived",
+  "targets": {},
+  "sim_groups": {
+    "jpa_c": {
+      "select": [
+        "CC",
+        "JC"
+      ],
+      "margin_um": 100.0,
+      "analyses": [
+        "q3d_cmatrix",
+        "eigenmode_epr"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "jpa_l": {
+      "select": [
+        "JL"
+      ],
+      "margin_um": 100.0,
+      "analyses": [
+        "q3d_cmatrix",
+        "eigenmode_epr"
+      ],
+      "ports": {},
+      "settings": {}
+    }
+  }
+}

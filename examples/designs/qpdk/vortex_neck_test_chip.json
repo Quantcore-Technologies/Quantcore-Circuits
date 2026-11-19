@@ -1,0 +1,322 @@
+{
+  "schema": "qcc/0.1",
+  "name": "vortex_neck_test_chip",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      -1350.0,
+      -950.0,
+      6150.0,
+      6550.0
+    ],
+    "launchers": null,
+    "params": {
+      "with_grid": false,
+      "name_chip": "QPDK-VNT"
+    }
+  },
+  "instances": {
+    "PW": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 200,
+        "pad_height": 200,
+        "pad_gap": 110,
+        "taper_length": 100
+      },
+      "place": {
+        "at": [
+          410.0,
+          2800.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PE": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 200,
+        "pad_height": 200,
+        "pad_gap": 110,
+        "taper_length": 100
+      },
+      "place": {
+        "at": [
+          4390.0,
+          2800.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "N_p600": {
+      "cell": "NeckTermination",
+      "params": {},
+      "place": {
+        "at": [
+          1643.919,
+          600.0
+        ],
+        "rot": -90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "N_m300": {
+      "cell": "NeckTermination",
+      "params": {},
+      "place": {
+        "at": [
+          2215.347,
+          5000.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "N_p300": {
+      "cell": "NeckTermination",
+      "params": {},
+      "place": {
+        "at": [
+          3201.061,
+          600.0
+        ],
+        "rot": -90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "N_0": {
+      "cell": "NeckTermination",
+      "params": {},
+      "place": {
+        "at": [
+          3858.204,
+          5000.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    }
+  },
+  "routes": {
+    "FL": {
+      "from": "PW.a",
+      "to": "PE.a",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 100.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "R_p600": {
+      "from": "N_p600.o1",
+      "to": {
+        "hanger": "FL",
+        "length": 200.0,
+        "near": [
+          1206.0,
+          2800.0
+        ],
+        "side": "right",
+        "ground_gap": 8.0,
+        "direction": "backward",
+        "end": "open",
+        "open_gap": 6.0,
+        "coupler_gap": null,
+        "line_gap": null
+      },
+      "type": "meander",
+      "nodes": [
+        [
+          1643.919,
+          2400.0
+        ],
+        [
+          1306.0,
+          2400.0
+        ]
+      ],
+      "length": 5677.139632679489,
+      "meander_segment": null,
+      "meanders": 6,
+      "a": null,
+      "b": null,
+      "r": 100.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "R_m300": {
+      "from": "N_m300.o1",
+      "to": {
+        "hanger": "FL",
+        "length": 200.0,
+        "near": [
+          1906.0,
+          2800.0
+        ],
+        "side": "left",
+        "ground_gap": 8.0,
+        "direction": "backward",
+        "end": "open",
+        "open_gap": 6.0,
+        "coupler_gap": null,
+        "line_gap": null
+      },
+      "type": "meander",
+      "nodes": [
+        [
+          2215.347,
+          3200.0
+        ],
+        [
+          2006.0,
+          3200.0
+        ]
+      ],
+      "length": 4777.139632679489,
+      "meander_segment": null,
+      "meanders": 6,
+      "a": null,
+      "b": null,
+      "r": 100.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "R_p300": {
+      "from": "N_p300.o1",
+      "to": {
+        "hanger": "FL",
+        "length": 200.0,
+        "near": [
+          2806.0,
+          2800.0
+        ],
+        "side": "right",
+        "ground_gap": 8.0,
+        "direction": "backward",
+        "end": "open",
+        "open_gap": 6.0,
+        "coupler_gap": null,
+        "line_gap": null
+      },
+      "type": "meander",
+      "nodes": [
+        [
+          3201.061,
+          2400.0
+        ],
+        [
+          2906.0,
+          2400.0
+        ]
+      ],
+      "length": 5377.139632679489,
+      "meander_segment": null,
+      "meanders": 6,
+      "a": null,
+      "b": null,
+      "r": 100.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "R_0": {
+      "from": "N_0.o1",
+      "to": {
+        "hanger": "FL",
+        "length": 200.0,
+        "near": [
+          3506.0,
+          2800.0
+        ],
+        "side": "left",
+        "ground_gap": 8.0,
+        "direction": "backward",
+        "end": "open",
+        "open_gap": 6.0,
+        "coupler_gap": null,
+        "line_gap": null
+      },
+      "type": "meander",
+      "nodes": [
+        [
+          3858.204,
+          3200.0
+        ],
+        [
+          3606.0,
+          3200.0
+        ]
+      ],
+      "length": 5077.139632679489,
+      "meander_segment": null,
+      "meanders": 6,
+      "a": null,
+      "b": null,
+      "r": 100.0,
+      "airbridges": "none",
+      "params": {}
+    }
+  },
+  "nets": "derived",
+  "targets": {},
+  "sim_groups": {
+    "ALL": {
+      "select": [
+        "FL",
+        "R_p600",
+        "N_p600",
+        "R_m300",
+        "N_m300",
+        "R_p300",
+        "N_p300",
+        "R_0",
+        "N_0"
+      ],
+      "margin_um": 200.0,
+      "analyses": [
+        "eigenmode_epr"
+      ],
+      "ports": {},
+      "settings": {}
+    }
+  }
+}

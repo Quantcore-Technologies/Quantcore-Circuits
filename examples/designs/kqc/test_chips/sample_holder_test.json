@@ -1,0 +1,1446 @@
+{
+  "schema": "qcc/0.1",
+  "name": "sample_holder_test",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      0.0,
+      0.0,
+      10000.0,
+      10000.0
+    ],
+    "launchers": null,
+    "params": {
+      "with_grid": true,
+      "name_chip": "CTest"
+    }
+  },
+  "instances": {
+    "PL1_IN": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          2142.5,
+          9480.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL2_IN": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          2777.5,
+          9480.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL3_IN": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          3412.5,
+          9480.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL4_IN": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          4047.5,
+          9480.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL5_IN": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          4682.5,
+          9480.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL6_IN": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          5317.5,
+          9480.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL7_IN": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          5952.5,
+          9480.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL8_IN": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          6587.5,
+          9480.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL9_IN": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          7222.5,
+          9480.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL10_IN": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          7857.5,
+          9480.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL10_OUT": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          9480.0,
+          7857.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL9_OUT": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          9480.0,
+          7222.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL8_OUT": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          9480.0,
+          6587.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL7_OUT": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          9480.0,
+          5952.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL6_OUT": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          9480.0,
+          5317.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL5_OUT": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          9480.0,
+          4682.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL4_OUT": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          9480.0,
+          4047.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL3_OUT": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          9480.0,
+          3412.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL2_OUT": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          9480.0,
+          2777.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL1_OUT": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          9480.0,
+          2142.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL11_OUT": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          7857.5,
+          520.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL12_OUT": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          7222.5,
+          520.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL13_OUT": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          6587.5,
+          520.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL14_OUT": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          5952.5,
+          520.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL15_OUT": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          5317.5,
+          520.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL16_OUT": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          4682.5,
+          520.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL17_OUT": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          4047.5,
+          520.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL18_OUT": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          3412.5,
+          520.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL19_OUT": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          2777.5,
+          520.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL20_OUT": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          2142.5,
+          520.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL20_IN": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          520.0,
+          2142.5
+        ],
+        "rot": 180.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL19_IN": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          520.0,
+          2777.5
+        ],
+        "rot": 180.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL18_IN": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          520.0,
+          3412.5
+        ],
+        "rot": 180.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL17_IN": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          520.0,
+          4047.5
+        ],
+        "rot": 180.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL16_IN": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          520.0,
+          4682.5
+        ],
+        "rot": 180.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL15_IN": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          520.0,
+          5317.5
+        ],
+        "rot": 180.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL14_IN": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          520.0,
+          5952.5
+        ],
+        "rot": 180.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL13_IN": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          520.0,
+          6587.5
+        ],
+        "rot": 180.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL12_IN": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          520.0,
+          7222.5
+        ],
+        "rot": 180.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL11_IN": {
+      "cell": "Launcher",
+      "params": {
+        "s": 160,
+        "l": 160,
+        "a_launcher": 160,
+        "b_launcher": 96,
+        "launcher_frame_gap": 96
+      },
+      "place": {
+        "at": [
+          520.0,
+          7857.5
+        ],
+        "rot": 180.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    }
+  },
+  "routes": {
+    "PL1": {
+      "from": "PL1_IN.port",
+      "to": "PL1_OUT.port",
+      "type": "cpw",
+      "nodes": [
+        [
+          2142.5,
+          8184.0
+        ],
+        [
+          8184.0,
+          2142.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PL2": {
+      "from": "PL2_IN.port",
+      "to": "PL2_OUT.port",
+      "type": "cpw",
+      "nodes": [
+        [
+          2777.5,
+          8184.0
+        ],
+        [
+          8184.0,
+          2777.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PL3": {
+      "from": "PL3_IN.port",
+      "to": "PL3_OUT.port",
+      "type": "cpw",
+      "nodes": [
+        [
+          3412.5,
+          8184.0
+        ],
+        [
+          8184.0,
+          3412.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PL4": {
+      "from": "PL4_IN.port",
+      "to": "PL4_OUT.port",
+      "type": "cpw",
+      "nodes": [
+        [
+          4047.5,
+          8184.0
+        ],
+        [
+          8184.0,
+          4047.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PL5": {
+      "from": "PL5_IN.port",
+      "to": "PL5_OUT.port",
+      "type": "cpw",
+      "nodes": [
+        [
+          4682.5,
+          8184.0
+        ],
+        [
+          8184.0,
+          4682.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PL6": {
+      "from": "PL6_IN.port",
+      "to": "PL6_OUT.port",
+      "type": "cpw",
+      "nodes": [
+        [
+          5317.5,
+          8184.0
+        ],
+        [
+          8184.0,
+          5317.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PL7": {
+      "from": "PL7_IN.port",
+      "to": "PL7_OUT.port",
+      "type": "cpw",
+      "nodes": [
+        [
+          5952.5,
+          8184.0
+        ],
+        [
+          8184.0,
+          5952.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PL8": {
+      "from": "PL8_IN.port",
+      "to": "PL8_OUT.port",
+      "type": "cpw",
+      "nodes": [
+        [
+          6587.5,
+          8184.0
+        ],
+        [
+          8184.0,
+          6587.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PL9": {
+      "from": "PL9_IN.port",
+      "to": "PL9_OUT.port",
+      "type": "cpw",
+      "nodes": [
+        [
+          7222.5,
+          8184.0
+        ],
+        [
+          8184.0,
+          7222.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PL10": {
+      "from": "PL10_IN.port",
+      "to": "PL10_OUT.port",
+      "type": "cpw",
+      "nodes": [
+        [
+          7857.5,
+          8184.0
+        ],
+        [
+          8184.0,
+          7857.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PL11": {
+      "from": "PL11_OUT.port",
+      "to": "PL11_IN.port",
+      "type": "cpw",
+      "nodes": [
+        [
+          7857.5,
+          1816.0
+        ],
+        [
+          1816.0,
+          7857.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PL12": {
+      "from": "PL12_OUT.port",
+      "to": "PL12_IN.port",
+      "type": "cpw",
+      "nodes": [
+        [
+          7222.5,
+          1816.0
+        ],
+        [
+          1816.0,
+          7222.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PL13": {
+      "from": "PL13_OUT.port",
+      "to": "PL13_IN.port",
+      "type": "cpw",
+      "nodes": [
+        [
+          6587.5,
+          1816.0
+        ],
+        [
+          1816.0,
+          6587.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PL14": {
+      "from": "PL14_OUT.port",
+      "to": "PL14_IN.port",
+      "type": "cpw",
+      "nodes": [
+        [
+          5952.5,
+          1816.0
+        ],
+        [
+          1816.0,
+          5952.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PL15": {
+      "from": "PL15_OUT.port",
+      "to": "PL15_IN.port",
+      "type": "cpw",
+      "nodes": [
+        [
+          5317.5,
+          1816.0
+        ],
+        [
+          1816.0,
+          5317.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PL16": {
+      "from": "PL16_OUT.port",
+      "to": "PL16_IN.port",
+      "type": "cpw",
+      "nodes": [
+        [
+          4682.5,
+          1816.0
+        ],
+        [
+          1816.0,
+          4682.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PL17": {
+      "from": "PL17_OUT.port",
+      "to": "PL17_IN.port",
+      "type": "cpw",
+      "nodes": [
+        [
+          4047.5,
+          1816.0
+        ],
+        [
+          1816.0,
+          4047.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PL18": {
+      "from": "PL18_OUT.port",
+      "to": "PL18_IN.port",
+      "type": "cpw",
+      "nodes": [
+        [
+          3412.5,
+          1816.0
+        ],
+        [
+          1816.0,
+          3412.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PL19": {
+      "from": "PL19_OUT.port",
+      "to": "PL19_IN.port",
+      "type": "cpw",
+      "nodes": [
+        [
+          2777.5,
+          1816.0
+        ],
+        [
+          1816.0,
+          2777.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PL20": {
+      "from": "PL20_OUT.port",
+      "to": "PL20_IN.port",
+      "type": "cpw",
+      "nodes": [
+        [
+          2142.5,
+          1816.0
+        ],
+        [
+          1816.0,
+          2142.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    }
+  },
+  "nets": "derived",
+  "targets": {},
+  "sim_groups": {}
+}

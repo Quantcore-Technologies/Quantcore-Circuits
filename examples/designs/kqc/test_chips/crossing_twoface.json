@@ -1,0 +1,450 @@
+{
+  "schema": "qcc/0.1",
+  "name": "crossing_twoface",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      0.0,
+      0.0,
+      10000.0,
+      10000.0
+    ],
+    "launchers": {
+      "type": "SMA8",
+      "assign": {
+        "1": "PL-1-IN",
+        "2": "PL-2-IN",
+        "3": "PL-4-IN",
+        "4": "PL-4-OUT",
+        "5": "PL-2-OUT",
+        "6": "PL-1-OUT",
+        "7": "PL-3-OUT",
+        "8": "PL-3-IN"
+      },
+      "enabled": null
+    },
+    "params": {
+      "with_grid": true,
+      "name_chip": "CTest"
+    }
+  },
+  "instances": {},
+  "routes": {
+    "PL1": {
+      "from": "chip.PL-1-IN",
+      "to": "chip.PL-1-OUT",
+      "type": "cpw",
+      "nodes": [
+        [
+          2800.0,
+          8820.0
+        ],
+        [
+          4300.0,
+          8820.0
+        ],
+        {
+          "at": [
+            4300.0,
+            8500.0
+          ],
+          "airbridge": false,
+          "a": 10.0,
+          "b": 10.0,
+          "params": {}
+        },
+        {
+          "at": [
+            4300.0,
+            1600.0
+          ],
+          "airbridge": false,
+          "a": 10.0,
+          "b": 6.0,
+          "params": {}
+        },
+        [
+          4300.0,
+          1180.0
+        ],
+        [
+          2800.0,
+          1180.0
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PL2": {
+      "from": "chip.PL-2-IN",
+      "to": "chip.PL-2-OUT",
+      "type": "cpw",
+      "nodes": [
+        [
+          7200.0,
+          8820.0
+        ],
+        [
+          5700.0,
+          8820.0
+        ],
+        {
+          "at": [
+            5700.0,
+            8500.0
+          ],
+          "airbridge": false,
+          "a": 10.0,
+          "b": 10.0,
+          "params": {}
+        },
+        {
+          "at": [
+            5700.0,
+            1600.0
+          ],
+          "airbridge": false,
+          "a": 10.0,
+          "b": 6.0,
+          "params": {}
+        },
+        [
+          5700.0,
+          1180.0
+        ],
+        [
+          7200.0,
+          1180.0
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PL3": {
+      "from": "chip.PL-3-IN",
+      "to": "chip.PL-3-OUT",
+      "type": "cpw",
+      "nodes": [
+        {
+          "at": [
+            1500.0,
+            7200.0
+          ],
+          "airbridge": false,
+          "a": 10.0,
+          "b": 10.0,
+          "params": {}
+        },
+        [
+          3850.0,
+          7200.0
+        ],
+        {
+          "at": [
+            4100.0,
+            7200.0
+          ],
+          "airbridge": false,
+          "a": null,
+          "b": null,
+          "params": {
+            "face_id": "2b1"
+          }
+        },
+        {
+          "at": [
+            4500.0,
+            7200.0
+          ],
+          "airbridge": false,
+          "a": null,
+          "b": null,
+          "params": {
+            "face_id": "1t1"
+          }
+        },
+        [
+          4750.0,
+          7200.0
+        ],
+        [
+          4750.0,
+          6320.0
+        ],
+        {
+          "at": [
+            4500.0,
+            6320.0
+          ],
+          "airbridge": false,
+          "a": null,
+          "b": null,
+          "params": {
+            "face_id": "2b1"
+          }
+        },
+        {
+          "at": [
+            4100.0,
+            6320.0
+          ],
+          "airbridge": false,
+          "a": null,
+          "b": null,
+          "params": {
+            "face_id": "1t1"
+          }
+        },
+        [
+          3850.0,
+          6320.0
+        ],
+        [
+          3850.0,
+          5440.0
+        ],
+        {
+          "at": [
+            4100.0,
+            5440.0
+          ],
+          "airbridge": false,
+          "a": null,
+          "b": null,
+          "params": {
+            "face_id": "2b1"
+          }
+        },
+        {
+          "at": [
+            4500.0,
+            5440.0
+          ],
+          "airbridge": false,
+          "a": null,
+          "b": null,
+          "params": {
+            "face_id": "1t1"
+          }
+        },
+        [
+          4750.0,
+          5440.0
+        ],
+        [
+          4750.0,
+          4560.0
+        ],
+        {
+          "at": [
+            4500.0,
+            4560.0
+          ],
+          "airbridge": false,
+          "a": null,
+          "b": null,
+          "params": {
+            "face_id": "2b1"
+          }
+        },
+        {
+          "at": [
+            4100.0,
+            4560.0
+          ],
+          "airbridge": false,
+          "a": null,
+          "b": null,
+          "params": {
+            "face_id": "1t1"
+          }
+        },
+        [
+          3850.0,
+          4560.0
+        ],
+        [
+          3850.0,
+          3680.0
+        ],
+        {
+          "at": [
+            4100.0,
+            3680.0
+          ],
+          "airbridge": false,
+          "a": null,
+          "b": null,
+          "params": {
+            "face_id": "2b1"
+          }
+        },
+        {
+          "at": [
+            4500.0,
+            3680.0
+          ],
+          "airbridge": false,
+          "a": null,
+          "b": null,
+          "params": {
+            "face_id": "1t1"
+          }
+        },
+        [
+          4750.0,
+          3680.0
+        ],
+        [
+          4750.0,
+          2800.0
+        ],
+        {
+          "at": [
+            4500.0,
+            2800.0
+          ],
+          "airbridge": false,
+          "a": null,
+          "b": null,
+          "params": {
+            "face_id": "2b1"
+          }
+        },
+        {
+          "at": [
+            4100.0,
+            2800.0
+          ],
+          "airbridge": false,
+          "a": null,
+          "b": null,
+          "params": {
+            "face_id": "1t1"
+          }
+        },
+        [
+          3850.0,
+          2800.0
+        ],
+        {
+          "at": [
+            1600.0,
+            2800.0
+          ],
+          "airbridge": false,
+          "a": 10.0,
+          "b": 6.0,
+          "params": {}
+        }
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PL4": {
+      "from": "chip.PL-4-IN",
+      "to": "chip.PL-4-OUT",
+      "type": "cpw",
+      "nodes": [
+        {
+          "at": [
+            8500.0,
+            7200.0
+          ],
+          "airbridge": false,
+          "a": 10.0,
+          "b": 10.0,
+          "params": {}
+        },
+        [
+          6900.0,
+          7200.0
+        ],
+        [
+          6000.0,
+          7200.0
+        ],
+        [
+          6000.0,
+          6320.0
+        ],
+        [
+          6900.0,
+          6320.0
+        ],
+        [
+          6900.0,
+          5440.0
+        ],
+        [
+          6000.0,
+          5440.0
+        ],
+        [
+          6000.0,
+          4560.0
+        ],
+        [
+          6900.0,
+          4560.0
+        ],
+        [
+          6900.0,
+          3680.0
+        ],
+        [
+          6000.0,
+          3680.0
+        ],
+        [
+          6000.0,
+          2800.0
+        ],
+        [
+          6900.0,
+          2800.0
+        ],
+        {
+          "at": [
+            8400.0,
+            2800.0
+          ],
+          "airbridge": false,
+          "a": 10.0,
+          "b": 6.0,
+          "params": {}
+        }
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    }
+  },
+  "nets": "derived",
+  "targets": {},
+  "sim_groups": {}
+}

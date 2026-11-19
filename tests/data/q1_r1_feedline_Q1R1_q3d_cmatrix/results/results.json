@@ -1,0 +1,27 @@
+{
+  "analysis": "q3d_cmatrix",
+  "design_hash": "58689d836b50b61e",
+  "group": "Q1R1",
+  "raw_files": [
+    "q1_r1_feedline_Q1R1_q3d_cmatrix_project_results.json"
+  ],
+  "cmatrix": {
+    "labels": [
+      "Q1.island",
+      "Q1.claw_n"
+    ],
+    "unit": "fF",
+    "matrix": [
+      [
+        74.39510458144487,
+        -3.510925166263152
+      ],
+      [
+        -3.510925166263152,
+        104.00345456538234
+      ]
+    ],
+    "form": "maxwell",
+    "source_convention": "mutual"
+  }
+}

@@ -1,0 +1,89 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "quantcore-circuits"
+version = "0.3.0"
+description = "Quantcore circuits: KQCircuits-native superconducting-qubit layout, routing, simulation and analysis loop"
+readme = "README.md"
+license = "GPL-3.0-or-later"  # imports KQCircuits (GPL-3.0-or-later)
+license-files = ["LICENSE"]
+authors = [{ name = "Quantcore" }]
+maintainers = [{ name = "Quantcore" }]
+keywords = ["superconducting qubits", "quantum computing", "chip layout", "KLayout", "KQCircuits", "circuit quantization", "EPR", "HFSS"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+]
+
+requires-python = ">=3.11"
+# Lower bounds are what the tests run with (requirements/tested.txt has exact versions); upper bounds are the next major.
+dependencies = [
+    "klayout==0.30.5",     # exact: KLayout's Python API changes between minor releases
+    "kqcircuits>=4.9.14,<5",
+    "numpy>=2.4,<3",
+    "scipy>=1.17,<2",
+    "networkx>=3.6,<4",
+    "pydantic>=2.14,<3",
+    "typer>=0.27,<1",
+]
+
+[project.urls]
+Homepage = "https://github.com/Quantcore-Technologies/Quantcore-Circuits"
+Documentation = "https://quantcore-technologies.github.io/Quantcore-Circuits/"
+Source = "https://github.com/Quantcore-Technologies/Quantcore-Circuits"
+Issues = "https://github.com/Quantcore-Technologies/Quantcore-Circuits/issues"
+Changelog = "https://github.com/Quantcore-Technologies/Quantcore-Circuits/blob/main/CHANGELOG.md"
+"KLayout plugin" = "https://github.com/Quantcore-Technologies/Quantcore-Circuits/tree/klayout-plugin"
+
+[project.optional-dependencies]
+analysis = [
+    "quantum-metal>=0.10.1,<1",  # the headless qiskit-metal fork
+    "pyEPR-quantum>=1.0.2,<2",
+    "scqubits>=4.3,<5",
+    "qutip>=5.3,<6",
+    "sqcircuit>=1.0.0,<2",  # pulls in torch: see the install guide for a CPU build
+    "qucat>=1.0.3,<2",
+]
+sim = ["gmsh>=4.15,<5", "pyaedt>=1.10,<2", "scikit-rf>=0.32,<1"]
+notebook = ["ipykernel>=7.4", "nbclient>=0.11", "matplotlib>=3.11,<4"]  # Jupyter kernel + headless notebook runs
+all = ["quantcore-circuits[analysis,sim,notebook]"]  # everything a simulation PC needs (torch: see the install guide)
+dev = ["pytest>=9.2", "ruff>=0.17", "pre-commit>=4.7"]
+
+[project.scripts]
+qcc = "quantcore_circuits.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+quantcore_circuits = ["review/static/**/*", "data/*.json"]  # the built dashboard (qcc dashboard / qcc review); the selftest chip
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+extend-exclude = ["other-libs", "components", ".history"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["E741", "B905"]
+
+[tool.ruff.lint.per-file-ignores]
+"src/quantcore_circuits/cli.py" = ["B008"]  # typer.Option defaults are the typer idiom
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = [
+    "solver: needs an external solver binary (ansysedt, ElmerSolver, palace); skipped if unavailable",
+    "analysis: needs the optional analysis stack (quantum-metal, scqubits, qutip, ...)",
+    "slow: takes more than a few seconds",
+    "aedt_fixture: reads the local AEDT projects (*.aedt, *.aedtresults) in tests/data/aedt_2024r1; dev checkout only, skipped without them",
+]
+filterwarnings = ["ignore::DeprecationWarning"]

@@ -1,0 +1,76 @@
+{
+  "analysis": "q3d_cmatrix",
+  "design_hash": "626dc04220ebd0f1",
+  "group": "Q1_R1",
+  "raw_files": [
+    "t01_chip12_Q1_R1_q3d_cmatrix_project_qcc.json",
+    "t01_chip12_Q1_R1_q3d_cmatrix_project_results.json",
+    "t01_chip12_Q1_R1_q3d_cmatrix_project_convergence.txt"
+  ],
+  "aedt": {
+    "aedt": "2024.1.0",
+    "python": "2.7.4",
+    "tool": "q3d",
+    "solve_seconds": 28.2,
+    "convergence_file": "t01_chip12_Q1_R1_q3d_cmatrix_project_convergence.txt"
+  },
+  "cmatrix": {
+    "labels": [
+      "Q1.island",
+      "Q1.a"
+    ],
+    "unit": "fF",
+    "matrix": [
+      [
+        121.43139008151536,
+        -10.88334751005002
+      ],
+      [
+        -10.88334751005002,
+        111.38783440507987
+      ]
+    ],
+    "form": "maxwell",
+    "source_convention": "mutual",
+    "aedt_nets": [
+      "Net1",
+      "Net2"
+    ]
+  },
+  "convergence": {
+    "file": "t01_chip12_Q1_R1_q3d_cmatrix_project_convergence.txt",
+    "converged": false,
+    "criterion": "Delta %",
+    "target": 2.0,
+    "passes": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "elements": [
+      842,
+      2048,
+      2758,
+      3692,
+      5022,
+      6600,
+      8592,
+      11402
+    ],
+    "delta": [
+      null,
+      5.3554,
+      2.8348,
+      4.7478,
+      3.3077,
+      2.9783,
+      2.0209,
+      1.2408
+    ]
+  }
+}

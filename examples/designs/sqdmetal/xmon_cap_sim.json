@@ -1,0 +1,165 @@
+{
+  "schema": "qcc/0.1",
+  "name": "xmon_cap_sim",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      -1450.0,
+      -2550.0,
+      6050.0,
+      4950.0
+    ],
+    "launchers": null,
+    "params": {
+      "with_grid": false,
+      "name_chip": "SQD-XCS"
+    }
+  },
+  "instances": {
+    "LP1": {
+      "cell": "metal:LaunchpadWirebond",
+      "params": {
+        "lead_length": 30,
+        "pad_height": 103,
+        "pad_width": 103,
+        "pad_gap": 60
+      },
+      "place": {
+        "at": [
+          300.0,
+          1986.2
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "w"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "LP2": {
+      "cell": "metal:LaunchpadWirebond",
+      "params": {
+        "lead_length": 30,
+        "pad_height": 103,
+        "pad_width": 103,
+        "pad_gap": 60
+      },
+      "place": {
+        "at": [
+          4300.0,
+          1986.2
+        ],
+        "rot": 180.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "e"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "Q1": {
+      "cell": "metal:TransmonCross",
+      "params": {
+        "connection_pads": {
+          "bus_01": {
+            "connector_location": "180",
+            "claw_length": 95
+          },
+          "readout": {
+            "connector_location": "0"
+          }
+        },
+        "junction_type": "Quantcore Junction"
+      },
+      "place": {
+        "at": [
+          2907.5,
+          522.2
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 6.7344,
+        "Cj_fF": 15.0
+      }
+    }
+  },
+  "routes": {
+    "TL": {
+      "from": "LP1.tie",
+      "to": "LP2.tie",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 90.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "R1": {
+      "from": "Q1.readout",
+      "to": {
+        "hanger": "TL",
+        "length": 400.0,
+        "near": [
+          1900.0,
+          1986.2
+        ],
+        "side": "right",
+        "ground_gap": 18.0,
+        "direction": "forward",
+        "end": "open",
+        "open_gap": 6.0,
+        "coupler_gap": null,
+        "line_gap": null
+      },
+      "type": "meander",
+      "nodes": [
+        [
+          1700.0,
+          522.2
+        ]
+      ],
+      "length": 3700.0,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 99.9,
+      "airbridges": "none",
+      "params": {}
+    }
+  },
+  "nets": "derived",
+  "targets": {},
+  "sim_groups": {
+    "Q1R1": {
+      "select": [
+        "Q1",
+        "R1",
+        "TL"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "eigenmode_epr",
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    }
+  }
+}

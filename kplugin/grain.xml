@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<salt-grain>
+ <name>quantcore-circuits</name>
+ <token/>
+ <hidden>false</hidden>
+ <version>0.3.0</version>
+ <api-version>0.30</api-version>
+ <title>Quantcore Circuits</title>
+ <doc>KLayout front end of quantcore-circuits (pip install quantcore-circuits): open and live-rebuild a design.json, place components, connect ports with routes, hang readout resonators off feedlines, move and snap instances port to port, check the design (DRC), run the lumped-circuit model (LOM), export simulation jobs and fab files, and show the values beside each instance. The GUI only edits design.json; the qcc command builds the layout. Tool structure derived from KQCircuits' edit_node_plugin.py (GPL-3.0).</doc>
+ <doc-url>https://quantcore-technologies.github.io/Quantcore-Circuits/plugin/index.html</doc-url>
+ <url>git+https://github.com/Quantcore-Technologies/Quantcore-Circuits.git[klayout-plugin]</url>
+ <license>GPL-3.0-or-later</license>
+ <author>Quantcore</author>
+ <author-contact>https://github.com/Quantcore-Technologies/Quantcore-Circuits/issues</author-contact>
+ <authored-time/>
+ <installed-time/>
+ <dependencies/>
+</salt-grain>

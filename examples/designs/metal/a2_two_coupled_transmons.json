@@ -1,0 +1,300 @@
+{
+  "schema": "qcc/0.1",
+  "name": "a2_two_coupled_transmons",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      0.0,
+      0.0,
+      14000.0,
+      9000.0
+    ],
+    "launchers": null,
+    "params": {
+      "with_grid": false,
+      "name_chip": "MetalA2"
+    }
+  },
+  "instances": {
+    "LP1": {
+      "cell": "metal:LaunchpadWirebond",
+      "params": {},
+      "place": {
+        "at": [
+          1000.0,
+          6113.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "w"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "LP2": {
+      "cell": "metal:LaunchpadWirebond",
+      "params": {},
+      "place": {
+        "at": [
+          13000.0,
+          6113.5
+        ],
+        "rot": 180.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "e"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "Q1": {
+      "cell": "metal:TransmonPocket",
+      "params": {
+        "connection_pads": {
+          "readout": {
+            "loc_W": -1,
+            "loc_H": 1
+          },
+          "coupler": {
+            "loc_W": 1,
+            "loc_H": -1
+          }
+        },
+        "pad_width": 425,
+        "pocket_height": 650,
+        "junction_type": "Quantcore Junction"
+      },
+      "place": {
+        "at": [
+          4500.0,
+          3113.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 6.7344,
+        "Cj_fF": 15.0
+      }
+    },
+    "Q2": {
+      "cell": "metal:TransmonPocket",
+      "params": {
+        "connection_pads": {
+          "readout": {
+            "loc_W": 1,
+            "loc_H": 1
+          },
+          "coupler": {
+            "loc_W": -1,
+            "loc_H": -1
+          }
+        },
+        "pad_width": 425,
+        "pocket_height": 650,
+        "junction_type": "Quantcore Junction"
+      },
+      "place": {
+        "at": [
+          9500.0,
+          3113.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 6.7344,
+        "Cj_fF": 15.0
+      }
+    },
+    "clt1": {
+      "cell": "metal:CoupledLineTee",
+      "params": {
+        "coupling_length": 350,
+        "down_length": 300,
+        "fillet": 90,
+        "open_termination": false
+      },
+      "place": {
+        "at": [
+          4500.0,
+          6113.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "clt2": {
+      "cell": "metal:CoupledLineTee",
+      "params": {
+        "coupling_length": 350,
+        "down_length": 300,
+        "fillet": 90,
+        "open_termination": false
+      },
+      "place": {
+        "at": [
+          9500.0,
+          6113.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    }
+  },
+  "routes": {
+    "feed_L": {
+      "from": "LP1.tie",
+      "to": "clt1.prime_start",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 90.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "feed_M": {
+      "from": "clt1.prime_end",
+      "to": "clt2.prime_start",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 90.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "feed_R": {
+      "from": "clt2.prime_end",
+      "to": "LP2.tie",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 90.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "read1": {
+      "from": "clt1.second_end",
+      "to": "Q1.readout",
+      "type": "meander",
+      "nodes": [],
+      "length": 7000.0,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 90.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "read2": {
+      "from": "clt2.second_end",
+      "to": "Q2.readout",
+      "type": "meander",
+      "nodes": [],
+      "length": 7200.0,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 90.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "coupler_bus": {
+      "from": "Q1.coupler",
+      "to": "Q2.coupler",
+      "type": "meander",
+      "nodes": [],
+      "length": 8000.0,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 90.0,
+      "airbridges": "none",
+      "params": {}
+    }
+  },
+  "nets": "derived",
+  "targets": {},
+  "sim_groups": {
+    "Q1_Q2_bus": {
+      "select": [
+        "Q1",
+        "Q2",
+        "coupler_bus"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "Q1_read1": {
+      "select": [
+        "Q1",
+        "read1",
+        "clt1"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "q3d_cmatrix",
+        "eigenmode_epr"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "Q2_read2": {
+      "select": [
+        "Q2",
+        "read2",
+        "clt2"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "q3d_cmatrix",
+        "eigenmode_epr"
+      ],
+      "ports": {},
+      "settings": {}
+    }
+  }
+}

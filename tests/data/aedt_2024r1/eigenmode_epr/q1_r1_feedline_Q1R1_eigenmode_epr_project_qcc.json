@@ -1,0 +1,85 @@
+{
+ "tool": "eigenmode", 
+ "solve_seconds": 620.4, 
+ "boundaries": [
+  "PerfE1", 
+  "Perfect E", 
+  "LumpRLC_jj_1", 
+  "Lumped RLC", 
+  "LumpRLC_term_2", 
+  "Lumped RLC", 
+  "LumpRLC_term_3", 
+  "Lumped RLC"
+ ], 
+ "convergence_file": "q1_r1_feedline_Q1R1_eigenmode_epr_project_convergence.txt", 
+ "epr": {
+  "modes": [
+   {
+    "junctions": {
+     "1": {
+      "Cj_F": 2.0000000000000002e-15, 
+      "V_re": 2.2652953073135701e-06, 
+      "Lj_H": 1.2000000000000002e-08, 
+      "line": "Junction1", 
+      "V_im": -1.21235702173812e-14
+     }
+    }, 
+    "U_E": 3.8493156629801899e-25, 
+    "freq_Hz": 5266534238.68546, 
+    "U_H": 4.36430260347497e-27, 
+    "mode": 1, 
+    "U_E_volumes": {
+     "substrate_1": 3.4999941149557202e-25
+    }
+   }, 
+   {
+    "junctions": {
+     "1": {
+      "Cj_F": 2.0000000000000002e-15, 
+      "V_re": -6.2471574426628296e-08, 
+      "Lj_H": 1.2000000000000002e-08, 
+      "line": "Junction1", 
+      "V_im": 3.8778936000260903e-12
+     }
+    }, 
+    "U_E": 1.1896611542984601e-25, 
+    "freq_Hz": 6631188882.87108, 
+    "U_H": 1.1878640683803501e-25, 
+    "mode": 2, 
+    "U_E_volumes": {
+     "substrate_1": 1.07949675338822e-25
+    }
+   }
+  ], 
+  "setup": "Setup1 : LastAdaptive", 
+  "lines": [
+   "Junction1"
+  ], 
+  "volumes": [
+   "substrate_1"
+  ], 
+  "variables": [
+   "Lj_1:=", 
+   "1.2e-08H", 
+   "Cj_1:=", 
+   "2e-15farad"
+  ]
+ }, 
+ "variables": [
+  "Lj_1:=", 
+  "1.2e-08H", 
+  "Cj_1:=", 
+  "2e-15farad"
+ ], 
+ "messages": [
+  "Project: q1_r1_feedline_Q1R1_eigenmode_epr_project, Design: EigenmodeDesign (Eigenmode), [warning]  Adaptive Passes did not converge based on specified criteria. (01:50:16 PM  Nov 03, 2026)"
+ ], 
+ "convergence_reports": {
+  "Solution Convergence": "q1_r1_feedline_Q1R1_eigenmode_epr_project_Solution_Convergence.csv"
+ }, 
+ "design_type": "HFSS", 
+ "excitations": [], 
+ "python": "2.7.4", 
+ "aedt": "2024.1.0", 
+ "mode": "solve"
+}

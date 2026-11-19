@@ -1,0 +1,7 @@
+# The docs toolchain (docs/hosting.md), the versions the site was built with on 2026-11-17 (conda env qcc-docs,
+# Python 3.11). The library itself is not installed: the API pages are read from the source.
+sphinx==9.0.4
+myst-parser==5.2.0
+furo==2025.12.19
+sphinx-autoapi==3.9.0
+sphinx-copybutton==0.5.2

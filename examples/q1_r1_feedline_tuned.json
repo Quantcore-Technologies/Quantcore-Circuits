@@ -1,0 +1,198 @@
+{
+  "schema": "qcc/0.1",
+  "name": "q1_r1_feedline",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      0.0,
+      0.0,
+      7500.0,
+      7500.0
+    ],
+    "launchers": null,
+    "params": {
+      "with_grid": false,
+      "name_chip": "Q1R1"
+    }
+  },
+  "instances": {
+    "PAD_W": {
+      "cell": "BondPad",
+      "params": {},
+      "place": {
+        "at": [
+          1125.0,
+          3750.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PAD_E": {
+      "cell": "BondPad",
+      "params": {},
+      "place": {
+        "at": [
+          6375.0,
+          3750.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PAD_F": {
+      "cell": "BondPad",
+      "params": {
+        "a": 4,
+        "b": 6,
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 150,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          2964.5,
+          750.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "Q1": {
+      "cell": "Xmon",
+      "params": {
+        "cross_length": 410.0,
+        "arm_width": 25,
+        "gap": 25,
+        "claws": [
+          "n"
+        ],
+        "flux_port": true,
+        "junction_type": "Trilayer Squid"
+      },
+      "place": {
+        "at": [
+          2975.0,
+          2200.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 9.259,
+        "Cj_fF": 2.0
+      }
+    }
+  },
+  "routes": {
+    "FL": {
+      "from": "PAD_W.a",
+      "to": "PAD_E.a",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "R1": {
+      "from": "Q1.claw_n",
+      "to": {
+        "hanger": "FL",
+        "s": 2000.0,
+        "length": 300.0,
+        "side": "right",
+        "ground_gap": 6.0,
+        "direction": "forward",
+        "end": "short",
+        "open_gap": 6.0
+      },
+      "type": "meander",
+      "nodes": [],
+      "length": 4376.2,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FLUX": {
+      "from": "PAD_F.a",
+      "to": "Q1.flux",
+      "type": "cpw",
+      "nodes": [
+        {
+          "at": [
+            2964.5,
+            1967.0
+          ],
+          "airbridge": false,
+          "a": 1.0,
+          "b": 7.5,
+          "params": {}
+        }
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 4.0,
+      "b": 6.0,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    }
+  },
+  "nets": "derived",
+  "targets": {
+    "Q1": {
+      "f_q_GHz": 5.1,
+      "alpha_MHz": -220.0
+    },
+    "R1": {
+      "f_GHz": 7.2,
+      "g_MHz": 90.0
+    }
+  },
+  "sim_groups": {
+    "Q1R1": {
+      "select": [
+        "Q1",
+        "R1"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "q3d_cmatrix",
+        "eigenmode_epr"
+      ],
+      "ports": {},
+      "settings": {}
+    }
+  }
+}

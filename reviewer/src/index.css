@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 6.7%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 6.7%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 6.7%;
+    --primary: 0 0% 6.7%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 96.5%;
+    --secondary-foreground: 0 0% 6.7%;
+    --muted: 0 0% 96.5%;
+    --muted-foreground: 0 0% 42%;
+    --accent: 0 0% 96.5%;
+    --accent-foreground: 0 0% 6.7%;
+    --destructive: 345 100% 42.7%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 83.1%;
+    --ring: 0 0% 6.7%;
+    --radius: 0;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-size: 13px;
+    line-height: 1.45;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum" 1, "cv11" 1;
+  }
+
+  ::selection {
+    background: #111;
+    color: #fff;
+  }
+}
+
+@layer components {
+  /* Small uppercase letter-spaced label */
+  .label {
+    @apply text-2xs font-semibold uppercase tracking-label text-muted-foreground;
+  }
+  .num {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Recharts: keep the SVG text in the app font and tabular. */
+.recharts-wrapper,
+.recharts-surface {
+  font-family: Inter, "Segoe UI", system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+.recharts-wrapper:focus,
+.recharts-surface:focus {
+  outline: none;
+}
+
+/* KaTeX inherits the text colour; keep display equations left-aligned (flush-left grid). */
+.tex-left .katex-display {
+  margin: 0;
+  text-align: left;
+}
+.tex-left .katex-display > .katex {
+  text-align: left;
+}
+
+/* ---- Parameters tab ------------------------------------------------------------------------------------------- */
+
+/* Card grid columns follow the width of the card area (not the viewport), so the summary column never squeezes cards:
+   1 column, 2 from 680 px, 3 from 840 px, 4 from 1140 px of card area. */
+.pgrid-wrap {
+  container-type: inline-size;
+}
+.pgrid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: minmax(0, 1fr);
+}
+@container (min-width: 680px) {
+  .pgrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@container (min-width: 840px) {
+  .pgrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+@container (min-width: 1140px) {
+  .pgrid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Jump targets clear the sticky header and the sticky element selector (heights published as --sticky-h, --sel-h). */
+.pscroll {
+  scroll-margin-top: calc(var(--sticky-h, 88px) + var(--sel-h, 0px) + 16px);
+}
+
+/* KaTeX inside cards: no vertical scrollbar from the display wrapper. */
+.pgrid .katex-display {
+  overflow-y: hidden;
+}

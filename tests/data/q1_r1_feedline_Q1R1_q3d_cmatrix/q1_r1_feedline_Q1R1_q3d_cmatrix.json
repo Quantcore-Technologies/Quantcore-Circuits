@@ -1,0 +1,353 @@
+{
+    "name": "q1_r1_feedline_Q1R1_q3d_cmatrix",
+    "solution_name": "",
+    "ansys_tool": "q3d",
+    "analysis_setup": {
+        "percent_refinement": 30.0,
+        "maximum_passes": 18,
+        "minimum_passes": 2,
+        "minimum_converged_passes": 2,
+        "frequency_units": "GHz",
+        "frequency": 5,
+        "percent_error": 0.5
+    },
+    "mesh_size": {},
+    "simulation_flags": [],
+    "use_floating_islands": false,
+    "simulation_name": "q1_r1_feedline_Q1R1_q3d_cmatrix",
+    "parent_simulation": "",
+    "units": "um",
+    "layers": {
+        "1t1_signal_2": {
+            "z": 0.0,
+            "thickness": 0.0,
+            "layer": 1000,
+            "material": "pec",
+            "excitation": 2
+        },
+        "1t1_signal_1": {
+            "z": 0.0,
+            "thickness": 0.0,
+            "layer": 1001,
+            "material": "pec",
+            "excitation": 1
+        },
+        "1t1_gap": {
+            "z": 0.0,
+            "thickness": 0.0,
+            "layer": 1002
+        },
+        "1t1_ground": {
+            "z": 0.0,
+            "thickness": 0.0,
+            "layer": 1003,
+            "material": "pec",
+            "excitation": 0
+        },
+        "substrate_1": {
+            "z": -525.0,
+            "thickness": 525.0,
+            "material": "silicon"
+        },
+        "vacuum": {
+            "z": 0.0,
+            "thickness": 1000.0,
+            "material": "vacuum"
+        }
+    },
+    "material_dict": {
+        "silicon": {
+            "permittivity": 11.45,
+            "dielectric_loss_tangent": 1e-06
+        }
+    },
+    "box": {
+        "_pya_type": "DBox",
+        "p1": {
+            "_pya_type": "DPoint",
+            "x": 2500.0,
+            "y": 1720.0
+        },
+        "p2": {
+            "_pya_type": "DPoint",
+            "x": 3450.0,
+            "y": 2754.0
+        }
+    },
+    "ports": [
+        {
+            "number": 1,
+            "resistance": 50,
+            "reactance": 0,
+            "inductance": 1.2000000000000002e-08,
+            "capacitance": 2e-15,
+            "face": 0,
+            "junction": true,
+            "renormalization": 50,
+            "type": "InternalPort",
+            "signal_location": [
+                2975.0,
+                2045.0,
+                0.0
+            ],
+            "ground_location": [
+                2975.0,
+                2037.0,
+                0.0
+            ],
+            "floating": false,
+            "polygon": [
+                [
+                    2971.0,
+                    2037.0,
+                    0.0
+                ],
+                [
+                    2971.0,
+                    2045.0,
+                    0.0
+                ],
+                [
+                    2979.0,
+                    2045.0,
+                    0.0
+                ],
+                [
+                    2979.0,
+                    2037.0,
+                    0.0
+                ]
+            ],
+            "signal_edge": [
+                [
+                    2979.0,
+                    2045.0,
+                    0.0
+                ],
+                [
+                    2971.0,
+                    2045.0,
+                    0.0
+                ]
+            ],
+            "ground_edge": [
+                [
+                    2971.0,
+                    2037.0,
+                    0.0
+                ],
+                [
+                    2979.0,
+                    2037.0,
+                    0.0
+                ]
+            ]
+        },
+        {
+            "number": 2,
+            "resistance": 50,
+            "reactance": 0,
+            "inductance": 0,
+            "capacitance": 0,
+            "face": 0,
+            "junction": false,
+            "renormalization": 50,
+            "type": "InternalPort",
+            "signal_location": [
+                2975.0,
+                2554.0,
+                0.0
+            ],
+            "ground_location": [
+                2975.0,
+                2564.0,
+                0.0
+            ],
+            "etch_width": 16,
+            "floating": false,
+            "polygon": [
+                [
+                    2970.0,
+                    2554.0,
+                    0.0
+                ],
+                [
+                    2970.0,
+                    2564.0,
+                    0.0
+                ],
+                [
+                    2980.0,
+                    2564.0,
+                    0.0
+                ],
+                [
+                    2980.0,
+                    2554.0,
+                    0.0
+                ]
+            ],
+            "signal_edge": [
+                [
+                    2970.0,
+                    2554.0,
+                    0.0
+                ],
+                [
+                    2980.0,
+                    2554.0,
+                    0.0
+                ]
+            ],
+            "ground_edge": [
+                [
+                    2980.0,
+                    2564.0,
+                    0.0
+                ],
+                [
+                    2970.0,
+                    2564.0,
+                    0.0
+                ]
+            ]
+        }
+    ],
+    "gds_file": "q1_r1_feedline_Q1R1_q3d_cmatrix.gds",
+    "gds_scaling": 1.0,
+    "parameters": {
+        "box": {
+            "_pya_type": "DBox",
+            "p1": {
+                "_pya_type": "DPoint",
+                "x": 2500.0,
+                "y": 1720.0
+            },
+            "p2": {
+                "_pya_type": "DPoint",
+                "x": 3450.0,
+                "y": 2754.0
+            }
+        },
+        "ground_grid_box": {
+            "_pya_type": "DBox",
+            "p1": {
+                "_pya_type": "DPoint",
+                "x": 0.0,
+                "y": 0.0
+            },
+            "p2": {
+                "_pya_type": "DPoint",
+                "x": 10000.0,
+                "y": 10000.0
+            }
+        },
+        "with_grid": false,
+        "use_ports": true,
+        "use_internal_ports": true,
+        "port_size": 400.0,
+        "upper_box_height": 1000.0,
+        "lower_box_height": 0.0,
+        "fixed_level_stackup": true,
+        "face_stack": [
+            "1t1"
+        ],
+        "substrate_height": [
+            525.0
+        ],
+        "substrate_box": [
+            null
+        ],
+        "substrate_material": [
+            "silicon"
+        ],
+        "material_dict": "{'silicon': {'permittivity': 11.45, 'dielectric_loss_tangent': 1e-06}}",
+        "chip_distance": [
+            8.0
+        ],
+        "airbridge_height": 3.4,
+        "metal_height": [
+            0.0
+        ],
+        "metal_material": [
+            "pec"
+        ],
+        "dielectric_height": [
+            0.0
+        ],
+        "dielectric_material": [
+            "silicon"
+        ],
+        "waveguide_length": 100,
+        "over_etching": 0,
+        "vertical_over_etching": 0,
+        "hollow_tsv": 0,
+        "partition_regions": [],
+        "tls_layer_thickness": [
+            0.0
+        ],
+        "tls_layer_material": [
+            "vacuum",
+            "silicon",
+            "silicon"
+        ],
+        "tls_sheet_approximation": false,
+        "detach_tls_sheets_from_body": true,
+        "minimum_point_spacing": 0.01,
+        "polygon_tolerance": 0.004,
+        "small_shape_area": 1.0,
+        "base_metal_addition_layers": [
+            "base_metal_addition"
+        ],
+        "parent_simulation": "",
+        "extra_json_data": null,
+        "junction_total_length": 33,
+        "junction_upper_pad_width": 8,
+        "junction_upper_pad_length": 13,
+        "junction_lower_pad_width": 8,
+        "junction_lower_pad_length": 12,
+        "include_background_gap": true,
+        "a": 10,
+        "b": 6,
+        "n": 64,
+        "r": 100,
+        "margin": 5,
+        "face_ids": [
+            "1t1",
+            "2b1",
+            "1b1",
+            "2t1"
+        ],
+        "display_name": "",
+        "protect_opposite_face": false,
+        "opposing_face_id_groups": [
+            [
+                "1t1",
+                "2b1"
+            ]
+        ],
+        "duplicate_face_ids": [],
+        "duplicate_layers": [
+            "base_metal_gap",
+            "base_metal_gap_wo_grid",
+            "base_metal_addition"
+        ],
+        "etch_opposite_face": false,
+        "etch_opposite_face_margin": 5,
+        "_epr_show": false,
+        "_epr_cross_section_cut": false,
+        "_epr_counter": 0,
+        "ansys_tool": "q3d",
+        "frequency": 5,
+        "percent_error": 0.5,
+        "use_floating_islands": false,
+        "percent_refinement": 30.0,
+        "maximum_passes": 18,
+        "minimum_passes": 2,
+        "minimum_converged_passes": 2,
+        "frequency_units": "GHz",
+        "mesh_size": null,
+        "simulation_flags": null,
+        "ansys_project_template": null
+    }
+}

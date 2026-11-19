@@ -1,0 +1,44 @@
+{
+  "schema": "qcc/0.1",
+  "name": "q1_r1_feedline",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "box": [0, 0, 7500, 7500],
+    "params": {"with_grid": false, "name_chip": "Q1R1"}
+  },
+  "instances": {
+    "PAD_W": {"cell": "BondPad", "place": {"at": [1125, 3750], "rot": 270}},
+    "PAD_E": {"cell": "BondPad", "place": {"at": [6375, 3750], "rot": 90}},
+    "PAD_F": {"cell": "BondPad", "params": {"a": 4, "b": 6, "pad_width": 300, "pad_height": 300, "pad_gap": 150,
+                                             "taper_length": 300}, "place": {"at": [2964.5, 750], "rot": 0}},
+    "Q1": {
+      "cell": "Xmon",
+      "params": {"cross_length": 300, "arm_width": 25, "gap": 25, "claws": ["n"], "flux_port": true,
+                 "junction_type": "Trilayer Squid"},
+      "place": {"at": [2975, 2200]},
+      "junction": {"Lj_nH": 12.0, "Cj_fF": 2.0}
+    }
+  },
+  "routes": {
+    "FL": {"from": "PAD_W.a", "to": "PAD_E.a", "type": "cpw", "airbridges": "none"},
+    "R1": {
+      "from": "Q1.claw_n",
+      "to": {"hanger": "FL", "s": 2000, "length": 300, "side": "right", "ground_gap": 6},
+      "type": "meander",
+      "length": 4200
+    },
+    "FLUX": {
+      "from": "PAD_F.a",
+      "to": "Q1.flux",
+      "a": 4, "b": 6,
+      "nodes": [{"at": [2964.5, 1967.0], "a": 1, "b": 7.5}]
+    }
+  },
+  "targets": {
+    "Q1": {"f_q_GHz": 5.1, "alpha_MHz": -220},
+    "R1": {"f_GHz": 7.2, "g_MHz": 90}
+  },
+  "sim_groups": {
+    "Q1R1": {"select": ["Q1", "R1"], "margin_um": 300, "analyses": ["q3d_cmatrix", "eigenmode_epr"]}
+  }
+}

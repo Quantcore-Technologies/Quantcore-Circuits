@@ -1,0 +1,36 @@
+DesignVariation : Cj_1='2.0000000000000002e-15farad' Lj_1='1.2000000000000002e-08H'
+Setup : Setup1
+
+==================
+Number of Passes
+Completed : 18
+Maximum   : 18
+Minimum   : 1
+==================
+Criterion : Max Delta Freq. %
+Target    : 0.1
+Current   : 0.51901
+Target Consecutive Passes  : 2
+Current Consecutive Passes : 0
+Converged : No
+==================
+Pass Number|Solved Elements|Max Delta Freq. %|
+          1|           3660|              N/A|
+          2|           4004|           19.424|
+          3|           4682|           52.796|
+          4|           5621|            13.47|
+          5|           7311|           18.271|
+          6|           9505|           35.408|
+          7|          12360|           62.692|
+          8|          16077|           19.982|
+          9|          20913|           13.596|
+         10|          27192|           9.0187|
+         11|          35354|           3.0684|
+         12|          45968|            2.101|
+         13|          59761|           1.3476|
+         14|          77704|           1.2697|
+         15|         101020|           1.0615|
+         16|         131331|          0.68117|
+         17|         170738|          0.44804|
+         18|         221962|          0.51901|
+

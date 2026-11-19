@@ -1,0 +1,109 @@
+{
+  "analysis": "q3d_cmatrix",
+  "design_hash": "8a30231f62e30663",
+  "group": "SUB",
+  "raw_files": [
+    "t03_demoqpu17_SUB_q3d_cmatrix_project_qcc.json",
+    "t03_demoqpu17_SUB_q3d_cmatrix_project_results.json",
+    "t03_demoqpu17_SUB_q3d_cmatrix_project_convergence.txt"
+  ],
+  "aedt": {
+    "aedt": "2024.1.0",
+    "python": "2.7.4",
+    "tool": "q3d",
+    "solve_seconds": 33.4,
+    "convergence_file": "t03_demoqpu17_SUB_q3d_cmatrix_project_convergence.txt"
+  },
+  "cmatrix": {
+    "labels": [
+      "T_Q23.second_end",
+      "FL2_2",
+      "XY_Q13_1",
+      "XY_Q23_1",
+      "Q23.island"
+    ],
+    "unit": "fF",
+    "matrix": [
+      [
+        32.52785040143442,
+        -24.640006782753648,
+        -0.00156453644069461,
+        -0.018595364682438078,
+        -0.0014039644126729142
+      ],
+      [
+        -24.640006782753648,
+        93.45371563860134,
+        -0.0037344656513055782,
+        -0.0469983423984386,
+        -0.003218122990854949
+      ],
+      [
+        -0.00156453644069461,
+        -0.0037344656513055782,
+        44.002383993941514,
+        -0.002716373886810806,
+        -0.002072273422361022
+      ],
+      [
+        -0.018595364682438078,
+        -0.0469983423984386,
+        -0.002716373886810806,
+        259.8364159070737,
+        -0.1099670498409395
+      ],
+      [
+        -0.0014039644126729142,
+        -0.003218122990854949,
+        -0.002072273422361022,
+        -0.1099670498409395,
+        87.43036666056415
+      ]
+    ],
+    "form": "maxwell",
+    "source_convention": "mutual",
+    "aedt_nets": [
+      "Net1",
+      "Net2",
+      "Net3",
+      "Net4",
+      "Net5"
+    ]
+  },
+  "convergence": {
+    "file": "t03_demoqpu17_SUB_q3d_cmatrix_project_convergence.txt",
+    "converged": false,
+    "criterion": "Delta %",
+    "target": 2.0,
+    "passes": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "elements": [
+      2162,
+      2880,
+      3870,
+      5144,
+      6828,
+      9226,
+      12480,
+      16936
+    ],
+    "delta": [
+      null,
+      9.6283,
+      8.9544,
+      8.5663,
+      5.9848,
+      5.0783,
+      4.7519,
+      2.6882
+    ]
+  }
+}

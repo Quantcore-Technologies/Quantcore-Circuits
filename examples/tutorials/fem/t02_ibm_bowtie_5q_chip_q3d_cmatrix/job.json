@@ -1,0 +1,148 @@
+{
+  "schema": "qcc-job/0.1",
+  "created": "2026-11-14T21:20:00+00:00",
+  "design": "t02_ibm_bowtie_5q",
+  "design_hash": "ec1833ebdcdfc0d9",
+  "group": "chip",
+  "group_hash": "c04d628592cef058",
+  "select": null,
+  "routes_in_sim": [
+    "BusA",
+    "BusA_Q0",
+    "BusA_Q1",
+    "BusB",
+    "BusB_Q3",
+    "BusB_Q4",
+    "L_Q0",
+    "L_Q1",
+    "L_Q2",
+    "L_Q3",
+    "L_Q4",
+    "R_Q0",
+    "R_Q1",
+    "R_Q2",
+    "R_Q3",
+    "R_Q4"
+  ],
+  "analysis": "q3d_cmatrix",
+  "solver": "ansys",
+  "simulation_name": "t02_ibm_bowtie_5q_chip_q3d_cmatrix",
+  "settings": {
+    "percent_error": 2.0,
+    "maximum_passes": 8,
+    "minimum_passes": 1,
+    "minimum_converged_passes": 1
+  },
+  "box_um": [
+    0.0,
+    0.0,
+    9000.0,
+    8000.0
+  ],
+  "ports": [
+    {
+      "number": 1,
+      "kind": "junction",
+      "name": "Q0.junction",
+      "excitation": "Q0.island2"
+    },
+    {
+      "number": 2,
+      "kind": "junction",
+      "name": "Q1.junction",
+      "excitation": "Q1.island2"
+    },
+    {
+      "number": 3,
+      "kind": "junction",
+      "name": "Q2.junction",
+      "excitation": "Q2.island2"
+    },
+    {
+      "number": 4,
+      "kind": "junction",
+      "name": "Q3.junction",
+      "excitation": "Q3.island2"
+    },
+    {
+      "number": 5,
+      "kind": "junction",
+      "name": "Q4.junction",
+      "excitation": "Q4.island2"
+    },
+    {
+      "number": 6,
+      "kind": "lumped",
+      "name": "P_Q0.pad",
+      "excitation": "P_Q0.pad"
+    },
+    {
+      "number": 7,
+      "kind": "lumped",
+      "name": "P_Q1.pad",
+      "excitation": "P_Q1.pad"
+    },
+    {
+      "number": 8,
+      "kind": "lumped",
+      "name": "P_Q2.pad",
+      "excitation": "P_Q2.pad"
+    },
+    {
+      "number": 9,
+      "kind": "lumped",
+      "name": "P_Q3.pad",
+      "excitation": "P_Q3.pad"
+    },
+    {
+      "number": 10,
+      "kind": "lumped",
+      "name": "P_Q4.pad",
+      "excitation": "P_Q4.pad"
+    }
+  ],
+  "nets": {
+    "1": "Q0.island2",
+    "2": "Q1.island2",
+    "3": "Q2.island2",
+    "4": "Q3.island2",
+    "5": "Q4.island2",
+    "6": "P_Q0.pad",
+    "7": "P_Q1.pad",
+    "8": "P_Q2.pad",
+    "9": "P_Q3.pad",
+    "10": "P_Q4.pad",
+    "11": "C_Q1.b",
+    "12": "C_Q4.b",
+    "13": "Q1.island1",
+    "14": "Q4.island1",
+    "15": "C_Q2.b",
+    "16": "Q2.island1",
+    "17": "Q0.bus",
+    "18": "Q2.be",
+    "19": "Q0.island1",
+    "20": "Q3.island1",
+    "21": "C_Q0.a",
+    "22": "C_Q3.a"
+  },
+  "waveguide_length_um": 100.0,
+  "geometry": {
+    "ground_grid_shapes": 0,
+    "airbridge_shapes": 0,
+    "airbridges": "dropped"
+  },
+  "notes": [],
+  "versions": {
+    "quantcore-circuits": "0.2.0",
+    "kqcircuits": "0.0.1",
+    "klayout": "0.30.5",
+    "pdk": "quantcore_nb_sapphire_v1@3"
+  },
+  "status": "done",
+  "fem_fast": true,
+  "started": 1794691200.9699767,
+  "returncode": 0,
+  "solve_seconds": 180.2,
+  "finished": 1794691381.5951552,
+  "aedt_mode": "batch"
+}

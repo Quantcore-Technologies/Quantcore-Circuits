@@ -1,0 +1,1198 @@
+{
+  "schema": "qcc/0.1",
+  "name": "chip_03_trilayer",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      0.0,
+      0.0,
+      7500.0,
+      7500.0
+    ],
+    "launchers": null,
+    "params": {
+      "with_grid": false,
+      "name_chip": "QCG_Nb03_W",
+      "cheese": "original"
+    }
+  },
+  "instances": {
+    "PL": {
+      "cell": "ConnectorPad",
+      "params": {
+        "pad_width": 600,
+        "pad_height": 200,
+        "taper_length": 500,
+        "rounded": true,
+        "a": 10,
+        "b": 6
+      },
+      "place": {
+        "at": [
+          1250.0,
+          3896.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "FL": {
+      "cell": "CpwSegment",
+      "params": {
+        "length": 5160.0,
+        "a": 10,
+        "b": 6,
+        "lc_thickness": 2,
+        "rc_thickness": 2
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "FL.a",
+        "to": "PL.a",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PR": {
+      "cell": "ConnectorPad",
+      "params": {
+        "pad_width": 600,
+        "pad_height": 200,
+        "taper_length": 500,
+        "rounded": true,
+        "a": 10,
+        "b": 6
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "PR.a",
+        "to": "FL.b",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "R1": {
+      "cell": "CoupledResonator",
+      "params": {
+        "cpw_len": 4740,
+        "width": 250,
+        "arc_length": 300,
+        "neck_length": 400,
+        "cgap": 7,
+        "clength": 200,
+        "ground": false,
+        "flip": false,
+        "tail": true,
+        "tail_len": 0,
+        "tail_end": false,
+        "arc_points": 256,
+        "a": 10,
+        "b": 10
+      },
+      "place": {
+        "at": [
+          1550.0,
+          3929.0
+        ],
+        "rot": 0.0,
+        "mirror": true,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "Q1": {
+      "cell": "Xmon",
+      "params": {
+        "claws": [
+          "n"
+        ],
+        "arm_width": 50,
+        "cross_length": 600,
+        "ground_sliver": 3,
+        "gap": 20,
+        "claw_spacing": 10,
+        "claw_base": 30,
+        "claw_finger_width": 30,
+        "claw_length": 100,
+        "claw_tail": true,
+        "claw_ground": false,
+        "claw_ground_gap": 15,
+        "claw_tail_length": 50,
+        "claw_tail_gap": 10,
+        "junction_type": "Trilayer Junction HSQ",
+        "junction_params": {
+          "finger_width": 0.8,
+          "second_finger_width": 0.5
+        }
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "Q1.claw_n",
+        "to": "R1.end",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.0508,
+        "Cj_fF": 20.0
+      }
+    },
+    "R2": {
+      "cell": "CoupledResonator",
+      "params": {
+        "cpw_len": 4410,
+        "width": 250,
+        "arc_length": 300,
+        "neck_length": 400,
+        "cgap": 7,
+        "clength": 200,
+        "ground": false,
+        "flip": true,
+        "tail": true,
+        "tail_len": 0,
+        "tail_end": false,
+        "arc_points": 256,
+        "a": 10,
+        "b": 10
+      },
+      "place": {
+        "at": [
+          1550.0,
+          3863.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "Q2": {
+      "cell": "Xmon",
+      "params": {
+        "claws": [
+          "n"
+        ],
+        "arm_width": 50,
+        "cross_length": 400,
+        "ground_sliver": 3,
+        "gap": 20,
+        "claw_spacing": 10,
+        "claw_base": 30,
+        "claw_finger_width": 30,
+        "claw_length": 100,
+        "claw_tail": true,
+        "claw_ground": false,
+        "claw_ground_gap": 15,
+        "claw_tail_length": 50,
+        "claw_tail_gap": 10,
+        "junction_type": "Trilayer Junction HSQ",
+        "junction_params": {
+          "finger_width": 0.5,
+          "second_finger_width": 0.5
+        }
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "Q2.claw_n",
+        "to": "R2.end",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 8.0813,
+        "Cj_fF": 12.5
+      }
+    },
+    "R5": {
+      "cell": "CoupledResonator",
+      "params": {
+        "cpw_len": 5840,
+        "width": 250,
+        "arc_length": 300,
+        "neck_length": 400,
+        "cgap": 7,
+        "clength": 200,
+        "ground": false,
+        "flip": false,
+        "tail": true,
+        "tail_len": 0,
+        "tail_end": false,
+        "arc_points": 256,
+        "a": 10,
+        "b": 10
+      },
+      "place": {
+        "at": [
+          2700.0,
+          3929.0
+        ],
+        "rot": 0.0,
+        "mirror": true,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "Q5": {
+      "cell": "Xmon",
+      "params": {
+        "claws": [
+          "n"
+        ],
+        "arm_width": 50,
+        "cross_length": 400,
+        "ground_sliver": 3,
+        "gap": 20,
+        "claw_spacing": 10,
+        "claw_base": 30,
+        "claw_finger_width": 30,
+        "claw_length": 100,
+        "claw_tail": true,
+        "claw_ground": false,
+        "claw_ground_gap": 15,
+        "claw_tail_length": 50,
+        "claw_tail_gap": 10,
+        "junction_type": "Trilayer Junction HSQ",
+        "junction_params": {
+          "finger_width": 0.8,
+          "second_finger_width": 0.5
+        }
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "Q5.claw_n",
+        "to": "R5.end",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.0508,
+        "Cj_fF": 20.0
+      }
+    },
+    "R6": {
+      "cell": "CoupledResonator",
+      "params": {
+        "cpw_len": 6200,
+        "width": 250,
+        "arc_length": 300,
+        "neck_length": 400,
+        "cgap": 7,
+        "clength": 200,
+        "ground": false,
+        "flip": true,
+        "tail": true,
+        "tail_len": 0,
+        "tail_end": false,
+        "arc_points": 256,
+        "a": 10,
+        "b": 10
+      },
+      "place": {
+        "at": [
+          2700.0,
+          3863.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "Q6": {
+      "cell": "Xmon",
+      "params": {
+        "claws": [
+          "n"
+        ],
+        "arm_width": 50,
+        "cross_length": 400,
+        "ground_sliver": 3,
+        "gap": 20,
+        "claw_spacing": 10,
+        "claw_base": 30,
+        "claw_finger_width": 30,
+        "claw_length": 100,
+        "claw_tail": true,
+        "claw_ground": false,
+        "claw_ground_gap": 15,
+        "claw_tail_length": 50,
+        "claw_tail_gap": 10,
+        "junction_type": "Trilayer Junction HSQ",
+        "junction_params": {
+          "finger_width": 0.5,
+          "second_finger_width": 0.5
+        }
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "Q6.claw_n",
+        "to": "R6.end",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 8.0813,
+        "Cj_fF": 12.5
+      }
+    },
+    "R7": {
+      "cell": "CoupledResonator",
+      "params": {
+        "cpw_len": 6790,
+        "width": 250,
+        "arc_length": 300,
+        "neck_length": 400,
+        "cgap": 7,
+        "clength": 200,
+        "ground": true,
+        "flip": true,
+        "tail": true,
+        "tail_len": 0,
+        "tail_end": false,
+        "arc_points": 256,
+        "a": 10,
+        "b": 10
+      },
+      "place": {
+        "at": [
+          3800.0,
+          3929.0
+        ],
+        "rot": 0.0,
+        "mirror": true,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "R8": {
+      "cell": "CoupledResonator",
+      "params": {
+        "cpw_len": 5590,
+        "width": 250,
+        "arc_length": 300,
+        "neck_length": 400,
+        "cgap": 7,
+        "clength": 200,
+        "ground": false,
+        "flip": false,
+        "tail": true,
+        "tail_len": 0,
+        "tail_end": false,
+        "arc_points": 256,
+        "a": 10,
+        "b": 10
+      },
+      "place": {
+        "at": [
+          3800.0,
+          3863.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "Q8": {
+      "cell": "Xmon",
+      "params": {
+        "claws": [
+          "n"
+        ],
+        "arm_width": 50,
+        "cross_length": 400,
+        "ground_sliver": 3,
+        "gap": 20,
+        "claw_spacing": 10,
+        "claw_base": 30,
+        "claw_finger_width": 30,
+        "claw_length": 100,
+        "claw_tail": true,
+        "claw_ground": false,
+        "claw_ground_gap": 15,
+        "claw_tail_length": 50,
+        "claw_tail_gap": 10,
+        "junction_type": "Trilayer Junction HSQ",
+        "junction_params": {
+          "finger_width": 0.8,
+          "second_finger_width": 0.5
+        }
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "Q8.claw_n",
+        "to": "R8.end",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.0508,
+        "Cj_fF": 20.0
+      }
+    },
+    "R9": {
+      "cell": "CoupledResonator",
+      "params": {
+        "cpw_len": 5340,
+        "width": 250,
+        "arc_length": 300,
+        "neck_length": 400,
+        "cgap": 7,
+        "clength": 200,
+        "ground": false,
+        "flip": false,
+        "tail": true,
+        "tail_len": 0,
+        "tail_end": false,
+        "arc_points": 256,
+        "a": 10,
+        "b": 10
+      },
+      "place": {
+        "at": [
+          4900.0,
+          3929.0
+        ],
+        "rot": 0.0,
+        "mirror": true,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "Q9": {
+      "cell": "Xmon",
+      "params": {
+        "claws": [
+          "n"
+        ],
+        "arm_width": 50,
+        "cross_length": 400,
+        "ground_sliver": 3,
+        "gap": 20,
+        "claw_spacing": 10,
+        "claw_base": 30,
+        "claw_finger_width": 30,
+        "claw_length": 100,
+        "claw_tail": true,
+        "claw_ground": false,
+        "claw_ground_gap": 15,
+        "claw_tail_length": 50,
+        "claw_tail_gap": 10,
+        "junction_type": "Trilayer Junction HSQ",
+        "junction_params": {
+          "finger_width": 0.5,
+          "second_finger_width": 0.5
+        }
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "Q9.claw_n",
+        "to": "R9.end",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 8.0813,
+        "Cj_fF": 12.5
+      }
+    },
+    "R10": {
+      "cell": "CoupledResonator",
+      "params": {
+        "cpw_len": 5200,
+        "width": 250,
+        "arc_length": 300,
+        "neck_length": 400,
+        "cgap": 7,
+        "clength": 200,
+        "ground": false,
+        "flip": true,
+        "tail": true,
+        "tail_len": 0,
+        "tail_end": false,
+        "arc_points": 256,
+        "a": 10,
+        "b": 10
+      },
+      "place": {
+        "at": [
+          4900.0,
+          3863.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "Q10": {
+      "cell": "Xmon",
+      "params": {
+        "claws": [
+          "n"
+        ],
+        "arm_width": 50,
+        "cross_length": 400,
+        "ground_sliver": 3,
+        "gap": 20,
+        "claw_spacing": 10,
+        "claw_base": 30,
+        "claw_finger_width": 30,
+        "claw_length": 100,
+        "claw_tail": true,
+        "claw_ground": false,
+        "claw_ground_gap": 15,
+        "claw_tail_length": 50,
+        "claw_tail_gap": 10,
+        "junction_type": "Trilayer Junction HSQ",
+        "junction_params": {
+          "finger_width": 0.5,
+          "second_finger_width": 0.5
+        }
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "Q10.claw_n",
+        "to": "R10.end",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 8.0813,
+        "Cj_fF": 12.5
+      }
+    },
+    "R11": {
+      "cell": "CoupledResonator",
+      "params": {
+        "cpw_len": 4410,
+        "width": 250,
+        "arc_length": 300,
+        "neck_length": 400,
+        "cgap": 7,
+        "clength": 200,
+        "ground": false,
+        "flip": true,
+        "tail": true,
+        "tail_len": 0,
+        "tail_end": false,
+        "arc_points": 256,
+        "a": 10,
+        "b": 10
+      },
+      "place": {
+        "at": [
+          5950.0,
+          3929.0
+        ],
+        "rot": 0.0,
+        "mirror": true,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "Q11": {
+      "cell": "Xmon",
+      "params": {
+        "claws": [
+          "n"
+        ],
+        "arm_width": 50,
+        "cross_length": 600,
+        "ground_sliver": 3,
+        "gap": 20,
+        "claw_spacing": 10,
+        "claw_base": 30,
+        "claw_finger_width": 30,
+        "claw_length": 100,
+        "claw_tail": true,
+        "claw_ground": false,
+        "claw_ground_gap": 15,
+        "claw_tail_length": 50,
+        "claw_tail_gap": 10,
+        "junction_type": "Trilayer Junction HSQ",
+        "junction_params": {
+          "finger_width": 0.5,
+          "second_finger_width": 0.5
+        }
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "Q11.claw_n",
+        "to": "R11.end",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 8.0813,
+        "Cj_fF": 12.5
+      }
+    },
+    "R12": {
+      "cell": "CoupledResonator",
+      "params": {
+        "cpw_len": 4120,
+        "width": 250,
+        "arc_length": 300,
+        "neck_length": 400,
+        "cgap": 7,
+        "clength": 200,
+        "ground": false,
+        "flip": false,
+        "tail": true,
+        "tail_len": 0,
+        "tail_end": false,
+        "arc_points": 256,
+        "a": 10,
+        "b": 10
+      },
+      "place": {
+        "at": [
+          5950.0,
+          3863.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "Q12": {
+      "cell": "Xmon",
+      "params": {
+        "claws": [
+          "n"
+        ],
+        "arm_width": 50,
+        "cross_length": 400,
+        "ground_sliver": 3,
+        "gap": 20,
+        "claw_spacing": 10,
+        "claw_base": 30,
+        "claw_finger_width": 30,
+        "claw_length": 100,
+        "claw_tail": true,
+        "claw_ground": false,
+        "claw_ground_gap": 15,
+        "claw_tail_length": 50,
+        "claw_tail_gap": 10,
+        "junction_type": "Trilayer Junction HSQ",
+        "junction_params": {
+          "finger_width": 0.5,
+          "second_finger_width": 0.5
+        }
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "Q12.claw_n",
+        "to": "R12.end",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 8.0813,
+        "Cj_fF": 12.5
+      }
+    },
+    "H0N": {
+      "cell": "FluxHoleArray",
+      "params": {
+        "hole_size": 20,
+        "pitch_x": 100,
+        "pitch_y": 100,
+        "nx": 4,
+        "ny": 15
+      },
+      "place": {
+        "at": [
+          2000.0,
+          4196.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "H0S": {
+      "cell": "FluxHoleArray",
+      "params": {
+        "hole_size": 20,
+        "pitch_x": 100,
+        "pitch_y": 100,
+        "nx": 4,
+        "ny": 15
+      },
+      "place": {
+        "at": [
+          2000.0,
+          2096.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "H1N": {
+      "cell": "FluxHoleArray",
+      "params": {
+        "hole_size": 20,
+        "pitch_x": 100,
+        "pitch_y": 100,
+        "nx": 4,
+        "ny": 15
+      },
+      "place": {
+        "at": [
+          3125.0,
+          4196.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "H1S": {
+      "cell": "FluxHoleArray",
+      "params": {
+        "hole_size": 20,
+        "pitch_x": 100,
+        "pitch_y": 100,
+        "nx": 4,
+        "ny": 15
+      },
+      "place": {
+        "at": [
+          3125.0,
+          2096.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "H2N": {
+      "cell": "FluxHoleArray",
+      "params": {
+        "hole_size": 20,
+        "pitch_x": 100,
+        "pitch_y": 100,
+        "nx": 4,
+        "ny": 15
+      },
+      "place": {
+        "at": [
+          4185.0,
+          4196.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "H2S": {
+      "cell": "FluxHoleArray",
+      "params": {
+        "hole_size": 20,
+        "pitch_x": 100,
+        "pitch_y": 100,
+        "nx": 4,
+        "ny": 15
+      },
+      "place": {
+        "at": [
+          4185.0,
+          2096.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "H3N": {
+      "cell": "FluxHoleArray",
+      "params": {
+        "hole_size": 20,
+        "pitch_x": 100,
+        "pitch_y": 100,
+        "nx": 4,
+        "ny": 15
+      },
+      "place": {
+        "at": [
+          5275.0,
+          4196.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "H3S": {
+      "cell": "FluxHoleArray",
+      "params": {
+        "hole_size": 20,
+        "pitch_x": 100,
+        "pitch_y": 100,
+        "nx": 4,
+        "ny": 15
+      },
+      "place": {
+        "at": [
+          5275.0,
+          2096.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    }
+  },
+  "routes": {},
+  "nets": "derived",
+  "targets": {
+    "R1": {
+      "f_GHz": 6.5
+    },
+    "R2": {
+      "f_GHz": 7.0
+    },
+    "R5": {
+      "f_GHz": 5.25
+    },
+    "R6": {
+      "f_GHz": 5.0
+    },
+    "R7": {
+      "f_GHz": 4.5
+    },
+    "R8": {
+      "f_GHz": 5.5
+    },
+    "R9": {
+      "f_GHz": 5.75
+    },
+    "R10": {
+      "f_GHz": 6.0
+    },
+    "R11": {
+      "f_GHz": 7.0
+    },
+    "R12": {
+      "f_GHz": 7.5
+    }
+  },
+  "sim_groups": {
+    "Q1R1": {
+      "select": [
+        "Q1",
+        "R1"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "eigenmode_epr",
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "Q2R2": {
+      "select": [
+        "Q2",
+        "R2"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "eigenmode_epr",
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "Q5R5": {
+      "select": [
+        "Q5",
+        "R5"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "eigenmode_epr",
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "Q6R6": {
+      "select": [
+        "Q6",
+        "R6"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "eigenmode_epr",
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "Q8R8": {
+      "select": [
+        "Q8",
+        "R8"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "eigenmode_epr",
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "Q9R9": {
+      "select": [
+        "Q9",
+        "R9"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "eigenmode_epr",
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "Q10R10": {
+      "select": [
+        "Q10",
+        "R10"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "eigenmode_epr",
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "Q11R11": {
+      "select": [
+        "Q11",
+        "R11"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "eigenmode_epr",
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "Q12R12": {
+      "select": [
+        "Q12",
+        "R12"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "eigenmode_epr",
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    }
+  },
+  "couplings": {
+    "K_R1": {
+      "between": [
+        "R1",
+        "FL"
+      ],
+      "type": "C",
+      "value": null,
+      "fem": true,
+      "note": "200 \u00b5m coupler parallel to the feedline, 7 \u00b5m ground strip"
+    },
+    "K_R2": {
+      "between": [
+        "R2",
+        "FL"
+      ],
+      "type": "C",
+      "value": null,
+      "fem": true,
+      "note": "200 \u00b5m coupler parallel to the feedline, 7 \u00b5m ground strip"
+    },
+    "K_R5": {
+      "between": [
+        "R5",
+        "FL"
+      ],
+      "type": "C",
+      "value": null,
+      "fem": true,
+      "note": "200 \u00b5m coupler parallel to the feedline, 7 \u00b5m ground strip"
+    },
+    "K_R6": {
+      "between": [
+        "R6",
+        "FL"
+      ],
+      "type": "C",
+      "value": null,
+      "fem": true,
+      "note": "200 \u00b5m coupler parallel to the feedline, 7 \u00b5m ground strip"
+    },
+    "K_R7": {
+      "between": [
+        "R7",
+        "FL"
+      ],
+      "type": "C",
+      "value": null,
+      "fem": true,
+      "note": "200 \u00b5m coupler parallel to the feedline, 7 \u00b5m ground strip"
+    },
+    "K_R8": {
+      "between": [
+        "R8",
+        "FL"
+      ],
+      "type": "C",
+      "value": null,
+      "fem": true,
+      "note": "200 \u00b5m coupler parallel to the feedline, 7 \u00b5m ground strip"
+    },
+    "K_R9": {
+      "between": [
+        "R9",
+        "FL"
+      ],
+      "type": "C",
+      "value": null,
+      "fem": true,
+      "note": "200 \u00b5m coupler parallel to the feedline, 7 \u00b5m ground strip"
+    },
+    "K_R10": {
+      "between": [
+        "R10",
+        "FL"
+      ],
+      "type": "C",
+      "value": null,
+      "fem": true,
+      "note": "200 \u00b5m coupler parallel to the feedline, 7 \u00b5m ground strip"
+    },
+    "K_R11": {
+      "between": [
+        "R11",
+        "FL"
+      ],
+      "type": "C",
+      "value": null,
+      "fem": true,
+      "note": "200 \u00b5m coupler parallel to the feedline, 7 \u00b5m ground strip"
+    },
+    "K_R12": {
+      "between": [
+        "R12",
+        "FL"
+      ],
+      "type": "C",
+      "value": null,
+      "fem": true,
+      "note": "200 \u00b5m coupler parallel to the feedline, 7 \u00b5m ground strip"
+    }
+  }
+}

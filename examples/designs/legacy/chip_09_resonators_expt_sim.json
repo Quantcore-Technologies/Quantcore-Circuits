@@ -1,0 +1,648 @@
+{
+  "schema": "qcc/0.1",
+  "name": "chip_09_resonators_expt_sim",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      0.0,
+      0.0,
+      7500.0,
+      7500.0
+    ],
+    "launchers": null,
+    "params": {
+      "with_grid": false,
+      "name_chip": "CHIP09 SIM",
+      "cheese": "original"
+    }
+  },
+  "instances": {
+    "PL": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 400,
+        "pad_gap": 225,
+        "pad_height": 450,
+        "taper_length": 450,
+        "a": 10,
+        "b": 6,
+        "rounded": false
+      },
+      "place": {
+        "at": [
+          1125.0,
+          3750.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PR": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 400,
+        "pad_gap": 225,
+        "pad_height": 450,
+        "taper_length": 450,
+        "a": 10,
+        "b": 6,
+        "rounded": false
+      },
+      "place": {
+        "at": [
+          6375.0,
+          3750.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "R2": {
+      "cell": "CoupledResonator",
+      "params": {
+        "cpw_len": 4410,
+        "width": 300,
+        "arc_length": 300,
+        "neck_length": 150,
+        "cgap": 4,
+        "clength": 299.5,
+        "ground": true,
+        "flip": false,
+        "tail": true,
+        "tail_len": 0,
+        "tail_end": false,
+        "arc_points": 256,
+        "a": 10,
+        "b": 6
+      },
+      "place": {
+        "at": [
+          2650.0,
+          6424.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "R3": {
+      "cell": "CoupledResonator",
+      "params": {
+        "cpw_len": 5200,
+        "width": 300,
+        "arc_length": 300,
+        "neck_length": 150,
+        "cgap": 4,
+        "clength": 299.5,
+        "ground": true,
+        "flip": true,
+        "tail": true,
+        "tail_len": 0,
+        "tail_end": false,
+        "arc_points": 256,
+        "a": 10,
+        "b": 6
+      },
+      "place": {
+        "at": [
+          3776.0,
+          5600.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "R6": {
+      "cell": "CoupledResonator",
+      "params": {
+        "cpw_len": 6200,
+        "width": 300,
+        "arc_length": 300,
+        "neck_length": 150,
+        "cgap": 4,
+        "clength": 299.5,
+        "ground": true,
+        "flip": true,
+        "tail": true,
+        "tail_len": 0,
+        "tail_end": false,
+        "arc_points": 256,
+        "a": 10,
+        "b": 6
+      },
+      "place": {
+        "at": [
+          3776.0,
+          4250.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "R8": {
+      "cell": "CoupledResonator",
+      "params": {
+        "cpw_len": 5590,
+        "width": 300,
+        "arc_length": 300,
+        "neck_length": 150,
+        "cgap": 4,
+        "clength": 299.5,
+        "ground": true,
+        "flip": false,
+        "tail": true,
+        "tail_len": 0,
+        "tail_end": false,
+        "arc_points": 256,
+        "a": 10,
+        "b": 6
+      },
+      "place": {
+        "at": [
+          3724.0,
+          3250.0
+        ],
+        "rot": 90.0,
+        "mirror": true,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "R9": {
+      "cell": "CoupledResonator",
+      "params": {
+        "cpw_len": 5340,
+        "width": 300,
+        "arc_length": 300,
+        "neck_length": 150,
+        "cgap": 4,
+        "clength": 299.5,
+        "ground": true,
+        "flip": false,
+        "tail": true,
+        "tail_len": 0,
+        "tail_end": false,
+        "arc_points": 256,
+        "a": 10,
+        "b": 6
+      },
+      "place": {
+        "at": [
+          3724.0,
+          1900.0
+        ],
+        "rot": 90.0,
+        "mirror": true,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "R12": {
+      "cell": "CoupledResonator",
+      "params": {
+        "cpw_len": 4250,
+        "width": 300,
+        "arc_length": 300,
+        "neck_length": 150,
+        "cgap": 4,
+        "clength": 299.5,
+        "ground": true,
+        "flip": true,
+        "tail": true,
+        "tail_len": 0,
+        "tail_end": false,
+        "arc_points": 256,
+        "a": 10,
+        "b": 6
+      },
+      "place": {
+        "at": [
+          4850.0,
+          1076.0
+        ],
+        "rot": 180.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "FH0": {
+      "cell": "FluxHoleArray",
+      "params": {
+        "hole_size": 5,
+        "pitch_x": 15,
+        "pitch_y": 20,
+        "nx": 2,
+        "ny": 108
+      },
+      "place": {
+        "at": [
+          1461.5,
+          4050.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "FH1": {
+      "cell": "FluxHoleArray",
+      "params": {
+        "hole_size": 5,
+        "pitch_x": 15,
+        "pitch_y": 20,
+        "nx": 2,
+        "ny": 108
+      },
+      "place": {
+        "at": [
+          1523.5,
+          4050.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "FH2": {
+      "cell": "FluxHoleArray",
+      "params": {
+        "hole_size": 5,
+        "pitch_x": 15,
+        "pitch_y": 20,
+        "nx": 2,
+        "ny": 108
+      },
+      "place": {
+        "at": [
+          3710.0,
+          4050.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "FH3": {
+      "cell": "FluxHoleArray",
+      "params": {
+        "hole_size": 5,
+        "pitch_x": 15,
+        "pitch_y": 20,
+        "nx": 2,
+        "ny": 40
+      },
+      "place": {
+        "at": [
+          3710.0,
+          2150.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "FH4": {
+      "cell": "FluxHoleArray",
+      "params": {
+        "hole_size": 5,
+        "pitch_x": 15,
+        "pitch_y": 20,
+        "nx": 2,
+        "ny": 40
+      },
+      "place": {
+        "at": [
+          3773.5,
+          4550.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "FH5": {
+      "cell": "FluxHoleArray",
+      "params": {
+        "hole_size": 5,
+        "pitch_x": 15,
+        "pitch_y": 20,
+        "nx": 2,
+        "ny": 108
+      },
+      "place": {
+        "at": [
+          3773.5,
+          1550.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "FH6": {
+      "cell": "FluxHoleArray",
+      "params": {
+        "hole_size": 5,
+        "pitch_x": 15,
+        "pitch_y": 20,
+        "nx": 2,
+        "ny": 108
+      },
+      "place": {
+        "at": [
+          5961.5,
+          1350.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "FH7": {
+      "cell": "FluxHoleArray",
+      "params": {
+        "hole_size": 5,
+        "pitch_x": 15,
+        "pitch_y": 20,
+        "nx": 2,
+        "ny": 108
+      },
+      "place": {
+        "at": [
+          6023.5,
+          1350.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    }
+  },
+  "routes": {
+    "FL": {
+      "from": "PL.a",
+      "to": "PR.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          1500.0,
+          3750.0
+        ],
+        [
+          1500.0,
+          6450.0
+        ],
+        [
+          3750.0,
+          6450.0
+        ],
+        [
+          3750.0,
+          1050.0
+        ],
+        [
+          6000.0,
+          1050.0
+        ],
+        [
+          6000.0,
+          3750.0
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 135.0,
+      "airbridges": "none",
+      "params": {}
+    }
+  },
+  "nets": "derived",
+  "targets": {
+    "R2": {
+      "f_GHz": 7.0
+    },
+    "R3": {
+      "f_GHz": 6.0
+    },
+    "R6": {
+      "f_GHz": 5.0
+    },
+    "R8": {
+      "f_GHz": 5.5
+    },
+    "R9": {
+      "f_GHz": 5.75
+    },
+    "R12": {
+      "f_GHz": 7.2
+    }
+  },
+  "sim_groups": {
+    "R2": {
+      "select": [
+        "R2"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "q3d_cmatrix",
+        "eigenmode_epr"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "R3": {
+      "select": [
+        "R3"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "q3d_cmatrix",
+        "eigenmode_epr"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "R6": {
+      "select": [
+        "R6"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "q3d_cmatrix",
+        "eigenmode_epr"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "R8": {
+      "select": [
+        "R8"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "q3d_cmatrix",
+        "eigenmode_epr"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "R9": {
+      "select": [
+        "R9"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "q3d_cmatrix",
+        "eigenmode_epr"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "R12": {
+      "select": [
+        "R12"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "q3d_cmatrix",
+        "eigenmode_epr"
+      ],
+      "ports": {},
+      "settings": {}
+    }
+  },
+  "couplings": {
+    "K_R2": {
+      "between": [
+        "R2",
+        "FL"
+      ],
+      "type": "C",
+      "value": null,
+      "fem": true,
+      "note": "299.5 \u00b5m coupler beside the feedline FL"
+    },
+    "K_R3": {
+      "between": [
+        "R3",
+        "FL"
+      ],
+      "type": "C",
+      "value": null,
+      "fem": true,
+      "note": "299.5 \u00b5m coupler beside the feedline FL"
+    },
+    "K_R6": {
+      "between": [
+        "R6",
+        "FL"
+      ],
+      "type": "C",
+      "value": null,
+      "fem": true,
+      "note": "299.5 \u00b5m coupler beside the feedline FL"
+    },
+    "K_R8": {
+      "between": [
+        "R8",
+        "FL"
+      ],
+      "type": "C",
+      "value": null,
+      "fem": true,
+      "note": "299.5 \u00b5m coupler beside the feedline FL"
+    },
+    "K_R9": {
+      "between": [
+        "R9",
+        "FL"
+      ],
+      "type": "C",
+      "value": null,
+      "fem": true,
+      "note": "299.5 \u00b5m coupler beside the feedline FL"
+    },
+    "K_R12": {
+      "between": [
+        "R12",
+        "FL"
+      ],
+      "type": "C",
+      "value": null,
+      "fem": true,
+      "note": "299.5 \u00b5m coupler beside the feedline FL"
+    }
+  }
+}

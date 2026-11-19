@@ -1,0 +1,537 @@
+{
+  "schema": "qcc/0.1",
+  "name": "chip_11f_jjplacer",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      0.0,
+      0.0,
+      7500.0,
+      7500.0
+    ],
+    "launchers": null,
+    "params": {
+      "with_grid": false,
+      "name_chip": "CHIP11F"
+    }
+  },
+  "instances": {
+    "JX1": {
+      "cell": "ProbePadPair",
+      "params": {
+        "junction_type": "Trilayer Junction Compact",
+        "junction_params": {
+          "finger_width": 0.2,
+          "second_finger_width": 0.6,
+          "clearer": true
+        },
+        "pad_width": 500,
+        "upper_pad_height": 495,
+        "lower_pad_height": 495,
+        "middle_height": 10.0,
+        "cutout": 10.0
+      },
+      "place": {
+        "at": [
+          2250.0,
+          6000.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 16.8361,
+        "Cj_fF": 6.0
+      }
+    },
+    "JX2": {
+      "cell": "ProbePadPair",
+      "params": {
+        "junction_type": "Trilayer Junction Compact",
+        "junction_params": {
+          "finger_width": 0.2,
+          "second_finger_width": 0.6,
+          "clearer": true
+        },
+        "pad_width": 500,
+        "upper_pad_height": 495,
+        "lower_pad_height": 495,
+        "middle_height": 10.0,
+        "cutout": 10.0
+      },
+      "place": {
+        "at": [
+          3250.0,
+          6000.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 16.8361,
+        "Cj_fF": 6.0
+      }
+    },
+    "JX3": {
+      "cell": "ProbePadPair",
+      "params": {
+        "junction_type": "Trilayer Junction Compact",
+        "junction_params": {
+          "finger_width": 0.2,
+          "second_finger_width": 0.6,
+          "clearer": true
+        },
+        "pad_width": 500,
+        "upper_pad_height": 495,
+        "lower_pad_height": 495,
+        "middle_height": 10.0,
+        "cutout": 10.0
+      },
+      "place": {
+        "at": [
+          4250.0,
+          6000.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 16.8361,
+        "Cj_fF": 6.0
+      }
+    },
+    "JX4": {
+      "cell": "ProbePadPair",
+      "params": {
+        "junction_type": "Trilayer Junction Compact",
+        "junction_params": {
+          "finger_width": 0.2,
+          "second_finger_width": 0.6,
+          "clearer": true
+        },
+        "pad_width": 500,
+        "upper_pad_height": 495,
+        "lower_pad_height": 495,
+        "middle_height": 10.0,
+        "cutout": 10.0
+      },
+      "place": {
+        "at": [
+          5250.0,
+          6000.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 16.8361,
+        "Cj_fF": 6.0
+      }
+    },
+    "JX5": {
+      "cell": "ProbePadPair",
+      "params": {
+        "junction_type": "Trilayer Junction Compact",
+        "junction_params": {
+          "finger_width": 0.2,
+          "second_finger_width": 0.6,
+          "clearer": true
+        },
+        "pad_width": 500,
+        "upper_pad_height": 495,
+        "lower_pad_height": 495,
+        "middle_height": 10.0,
+        "cutout": 10.0
+      },
+      "place": {
+        "at": [
+          2250.0,
+          4500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 16.8361,
+        "Cj_fF": 6.0
+      }
+    },
+    "JX6": {
+      "cell": "ProbePadPair",
+      "params": {
+        "junction_type": "Trilayer Junction Compact",
+        "junction_params": {
+          "finger_width": 0.2,
+          "second_finger_width": 0.6,
+          "clearer": true
+        },
+        "pad_width": 500,
+        "upper_pad_height": 495,
+        "lower_pad_height": 495,
+        "middle_height": 10.0,
+        "cutout": 10.0
+      },
+      "place": {
+        "at": [
+          3250.0,
+          4500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 16.8361,
+        "Cj_fF": 6.0
+      }
+    },
+    "JX7": {
+      "cell": "ProbePadPair",
+      "params": {
+        "junction_type": "Trilayer Junction Compact",
+        "junction_params": {
+          "finger_width": 0.2,
+          "second_finger_width": 0.6,
+          "clearer": true
+        },
+        "pad_width": 500,
+        "upper_pad_height": 495,
+        "lower_pad_height": 495,
+        "middle_height": 10.0,
+        "cutout": 10.0
+      },
+      "place": {
+        "at": [
+          4250.0,
+          4500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 16.8361,
+        "Cj_fF": 6.0
+      }
+    },
+    "JX8": {
+      "cell": "ProbePadPair",
+      "params": {
+        "junction_type": "Trilayer Junction Compact",
+        "junction_params": {
+          "finger_width": 0.2,
+          "second_finger_width": 0.6,
+          "clearer": true
+        },
+        "pad_width": 500,
+        "upper_pad_height": 495,
+        "lower_pad_height": 495,
+        "middle_height": 10.0,
+        "cutout": 10.0
+      },
+      "place": {
+        "at": [
+          5250.0,
+          4500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 16.8361,
+        "Cj_fF": 6.0
+      }
+    },
+    "JX9": {
+      "cell": "ProbePadPair",
+      "params": {
+        "junction_type": "Trilayer Junction Compact",
+        "junction_params": {
+          "finger_width": 0.2,
+          "second_finger_width": 0.6,
+          "clearer": true
+        },
+        "pad_width": 500,
+        "upper_pad_height": 495,
+        "lower_pad_height": 495,
+        "middle_height": 10.0,
+        "cutout": 10.0
+      },
+      "place": {
+        "at": [
+          2250.0,
+          3000.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 16.8361,
+        "Cj_fF": 6.0
+      }
+    },
+    "JX10": {
+      "cell": "ProbePadPair",
+      "params": {
+        "junction_type": "Trilayer Junction Compact",
+        "junction_params": {
+          "finger_width": 0.2,
+          "second_finger_width": 0.6,
+          "clearer": true
+        },
+        "pad_width": 500,
+        "upper_pad_height": 495,
+        "lower_pad_height": 495,
+        "middle_height": 10.0,
+        "cutout": 10.0
+      },
+      "place": {
+        "at": [
+          3250.0,
+          3000.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 16.8361,
+        "Cj_fF": 6.0
+      }
+    },
+    "JX11": {
+      "cell": "ProbePadPair",
+      "params": {
+        "junction_type": "Trilayer Junction Compact",
+        "junction_params": {
+          "finger_width": 0.2,
+          "second_finger_width": 0.6,
+          "clearer": true
+        },
+        "pad_width": 500,
+        "upper_pad_height": 495,
+        "lower_pad_height": 495,
+        "middle_height": 10.0,
+        "cutout": 10.0
+      },
+      "place": {
+        "at": [
+          4250.0,
+          3000.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 16.8361,
+        "Cj_fF": 6.0
+      }
+    },
+    "JX12": {
+      "cell": "ProbePadPair",
+      "params": {
+        "junction_type": "Trilayer Junction Compact",
+        "junction_params": {
+          "finger_width": 0.2,
+          "second_finger_width": 0.6,
+          "clearer": true
+        },
+        "pad_width": 500,
+        "upper_pad_height": 495,
+        "lower_pad_height": 495,
+        "middle_height": 10.0,
+        "cutout": 10.0
+      },
+      "place": {
+        "at": [
+          5250.0,
+          3000.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 16.8361,
+        "Cj_fF": 6.0
+      }
+    },
+    "JX13": {
+      "cell": "ProbePadPair",
+      "params": {
+        "junction_type": "Trilayer Junction Compact",
+        "junction_params": {
+          "finger_width": 0.2,
+          "second_finger_width": 0.6,
+          "clearer": true
+        },
+        "pad_width": 500,
+        "upper_pad_height": 495,
+        "lower_pad_height": 495,
+        "middle_height": 10.0,
+        "cutout": 10.0
+      },
+      "place": {
+        "at": [
+          2250.0,
+          1500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 16.8361,
+        "Cj_fF": 6.0
+      }
+    },
+    "JX14": {
+      "cell": "ProbePadPair",
+      "params": {
+        "junction_type": "Trilayer Junction Compact",
+        "junction_params": {
+          "finger_width": 0.2,
+          "second_finger_width": 0.6,
+          "clearer": true
+        },
+        "pad_width": 500,
+        "upper_pad_height": 495,
+        "lower_pad_height": 495,
+        "middle_height": 10.0,
+        "cutout": 10.0
+      },
+      "place": {
+        "at": [
+          3250.0,
+          1500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 16.8361,
+        "Cj_fF": 6.0
+      }
+    },
+    "JX15": {
+      "cell": "ProbePadPair",
+      "params": {
+        "junction_type": "Trilayer Junction Compact",
+        "junction_params": {
+          "finger_width": 0.2,
+          "second_finger_width": 0.6,
+          "clearer": true
+        },
+        "pad_width": 500,
+        "upper_pad_height": 495,
+        "lower_pad_height": 495,
+        "middle_height": 10.0,
+        "cutout": 10.0
+      },
+      "place": {
+        "at": [
+          4250.0,
+          1500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 16.8361,
+        "Cj_fF": 6.0
+      }
+    },
+    "JX16": {
+      "cell": "ProbePadPair",
+      "params": {
+        "junction_type": "Trilayer Junction Compact",
+        "junction_params": {
+          "finger_width": 0.2,
+          "second_finger_width": 0.6,
+          "clearer": true
+        },
+        "pad_width": 500,
+        "upper_pad_height": 495,
+        "lower_pad_height": 495,
+        "middle_height": 10.0,
+        "cutout": 10.0
+      },
+      "place": {
+        "at": [
+          5250.0,
+          1500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 16.8361,
+        "Cj_fF": 6.0
+      }
+    }
+  },
+  "routes": {},
+  "nets": "derived",
+  "targets": {},
+  "sim_groups": {}
+}

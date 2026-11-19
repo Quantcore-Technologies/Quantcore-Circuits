@@ -1,0 +1,650 @@
+{
+  "schema": "qcc/0.1",
+  "name": "a7_ims2022_3q",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      -750.0,
+      -750.0,
+      6750.0,
+      6750.0
+    ],
+    "launchers": null,
+    "params": {
+      "with_grid": false,
+      "name_chip": "MetalA7",
+      "cheese": {
+        "size": 3.0,
+        "gap": 47.0,
+        "rows": 1000,
+        "clearance": 40.0,
+        "edge": 200.0
+      }
+    }
+  },
+  "instances": {
+    "Launch_Readout_Q_0": {
+      "cell": "metal:LaunchpadWirebond",
+      "params": {},
+      "place": {
+        "at": [
+          1000.0,
+          5500.0
+        ],
+        "rot": -90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "n"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "Launch_Readout_Q_1": {
+      "cell": "metal:LaunchpadWirebond",
+      "params": {},
+      "place": {
+        "at": [
+          5000.0,
+          5500.0
+        ],
+        "rot": -90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "n"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "Launch_Readout_Q_2": {
+      "cell": "metal:LaunchpadWirebond",
+      "params": {},
+      "place": {
+        "at": [
+          1000.0,
+          500.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "s"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "Q_0": {
+      "cell": "metal:TransmonPocket6",
+      "params": {
+        "pad_gap": 28,
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 15.591826789042038
+        },
+        "pad_width": 425,
+        "pocket_height": 650,
+        "connection_pads": {
+          "readout": {
+            "loc_W": 0,
+            "loc_H": 1,
+            "pad_width": 100,
+            "pad_gap": 22
+          },
+          "bus_01": {
+            "loc_W": 1,
+            "loc_H": -1,
+            "pad_width": 135,
+            "pad_gap": 10
+          },
+          "bus_02": {
+            "loc_W": -1,
+            "loc_H": -1,
+            "pad_width": 135,
+            "pad_gap": 10
+          }
+        }
+      },
+      "place": {
+        "at": [
+          1750.0,
+          3500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 15.3055,
+        "Cj_fF": 6.6
+      }
+    },
+    "Q_1": {
+      "cell": "metal:TransmonPocket6",
+      "params": {
+        "pad_gap": 28,
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 14.737760321937209
+        },
+        "pad_width": 425,
+        "pocket_height": 650,
+        "connection_pads": {
+          "readout": {
+            "loc_W": 0,
+            "loc_H": 1,
+            "pad_width": 100,
+            "pad_gap": 20
+          },
+          "bus_01": {
+            "loc_W": -1,
+            "loc_H": -1,
+            "pad_width": 60,
+            "pad_gap": 10
+          },
+          "bus_12": {
+            "loc_W": 1,
+            "loc_H": -1,
+            "pad_width": 130,
+            "pad_gap": 10
+          }
+        }
+      },
+      "place": {
+        "at": [
+          4250.0,
+          3500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 14.64,
+        "Cj_fF": 6.9
+      }
+    },
+    "Q_2": {
+      "cell": "metal:TransmonPocket6",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 14.663129382455306
+        },
+        "pad_width": 425,
+        "pocket_height": 650,
+        "connection_pads": {
+          "readout": {
+            "loc_W": 0,
+            "loc_H": -1,
+            "pad_width": 80,
+            "pad_gap": 50
+          },
+          "bus_02": {
+            "loc_W": -1,
+            "loc_H": 1,
+            "pad_width": 60,
+            "pad_gap": 10
+          },
+          "bus_12": {
+            "loc_W": 1,
+            "loc_H": 1,
+            "pad_width": 60,
+            "pad_gap": 10
+          }
+        }
+      },
+      "place": {
+        "at": [
+          3000.0,
+          1650.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 14.64,
+        "Cj_fF": 6.9
+      }
+    },
+    "Cap_Readout_Q_2": {
+      "cell": "metal:CapNInterdigital",
+      "params": {},
+      "place": {
+        "at": [
+          1000.0,
+          750.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "Cap_Readout_Q_0": {
+      "cell": "metal:CapNInterdigitalTee",
+      "params": {},
+      "place": {
+        "at": [
+          1500.0,
+          5250.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "Cap_Readout_Q_1": {
+      "cell": "metal:CapNInterdigitalTee",
+      "params": {},
+      "place": {
+        "at": [
+          4500.0,
+          5250.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    }
+  },
+  "routes": {
+    "TL_Readout_Q_0": {
+      "from": "Cap_Readout_Q_0.prime_start",
+      "to": "Launch_Readout_Q_0.tie",
+      "type": "cpw",
+      "nodes": [
+        [
+          1000.0,
+          5250.0
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 99.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "TL_Readout_Q_01": {
+      "from": "Cap_Readout_Q_0.prime_end",
+      "to": "Cap_Readout_Q_1.prime_start",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "TL_Readout_Q_1": {
+      "from": "Cap_Readout_Q_1.prime_end",
+      "to": "Launch_Readout_Q_1.tie",
+      "type": "cpw",
+      "nodes": [
+        [
+          5000.0,
+          5250.0
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 99.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "TL_Readout_Q_2": {
+      "from": "Cap_Readout_Q_2.south_end",
+      "to": "Launch_Readout_Q_2.tie",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 30.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Bus_01": {
+      "from": "Q_0.bus_01",
+      "to": "Q_1.bus_01",
+      "type": "meander",
+      "nodes": [
+        [
+          2400.0,
+          3381.0
+        ],
+        [
+          2400.0,
+          3050.0
+        ],
+        [
+          3600.0,
+          3050.0
+        ],
+        [
+          3600.0,
+          3381.0
+        ]
+      ],
+      "length": 9550.0,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 99.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Bus_02": {
+      "from": "Q_0.bus_02",
+      "to": "Q_2.bus_02",
+      "type": "meander",
+      "nodes": [
+        [
+          750.0,
+          3381.0
+        ],
+        [
+          750.0,
+          1770.0
+        ]
+      ],
+      "length": 9350.0,
+      "meander_segment": 3,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 99.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Bus_12": {
+      "from": "Q_1.bus_12",
+      "to": "Q_2.bus_12",
+      "type": "meander",
+      "nodes": [
+        [
+          5280.0,
+          3381.0
+        ],
+        [
+          5280.0,
+          1770.0
+        ]
+      ],
+      "length": 9700.0,
+      "meander_segment": 3,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 99.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Readout_0": {
+      "from": "Q_0.readout",
+      "to": "Cap_Readout_Q_0.second_end",
+      "type": "meander",
+      "nodes": [
+        [
+          1750.0,
+          4130.0
+        ],
+        [
+          197.269,
+          4130.0
+        ],
+        [
+          197.269,
+          4330.0
+        ],
+        [
+          2750.0,
+          4330.0
+        ],
+        [
+          2750.0,
+          4530.0
+        ],
+        [
+          197.269,
+          4530.0
+        ],
+        [
+          197.269,
+          4730.0
+        ],
+        [
+          1500.0,
+          4730.0
+        ]
+      ],
+      "length": 8800.0,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 99.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Readout_1": {
+      "from": "Q_1.readout",
+      "to": "Cap_Readout_Q_1.second_end",
+      "type": "meander",
+      "nodes": [
+        [
+          4250.0,
+          4130.0
+        ],
+        [
+          5802.731,
+          4130.0
+        ],
+        [
+          5802.731,
+          4330.0
+        ],
+        [
+          3400.0,
+          4330.0
+        ],
+        [
+          3400.0,
+          4530.0
+        ],
+        [
+          5802.731,
+          4530.0
+        ],
+        [
+          5802.731,
+          4730.0
+        ],
+        [
+          4500.0,
+          4730.0
+        ]
+      ],
+      "length": 8500.0,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 99.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Readout_2": {
+      "from": "Q_2.readout",
+      "to": "Cap_Readout_Q_2.north_end",
+      "type": "meander",
+      "nodes": [
+        [
+          3000.0,
+          1000.0
+        ],
+        [
+          3000.0,
+          149.852
+        ],
+        [
+          2800.0,
+          149.852
+        ],
+        [
+          2800.0,
+          1150.0
+        ],
+        [
+          2600.0,
+          1150.0
+        ],
+        [
+          2600.0,
+          149.852
+        ],
+        [
+          2400.0,
+          149.852
+        ],
+        [
+          2400.0,
+          1150.0
+        ],
+        [
+          2200.0,
+          1150.0
+        ],
+        [
+          2200.0,
+          149.852
+        ],
+        [
+          2000.0,
+          149.852
+        ],
+        [
+          2000.0,
+          1317.0
+        ],
+        [
+          1000.0,
+          1317.0
+        ]
+      ],
+      "length": 8300.0,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 99.0,
+      "airbridges": "none",
+      "params": {}
+    }
+  },
+  "nets": "derived",
+  "targets": {
+    "Q_0": {
+      "f_q_GHz": 4.8,
+      "alpha_MHz": -300.0
+    },
+    "Q_1": {
+      "f_q_GHz": 5.0,
+      "alpha_MHz": -300.0
+    },
+    "Q_2": {
+      "f_q_GHz": 5.2,
+      "alpha_MHz": -300.0
+    },
+    "Readout_0": {
+      "f_GHz": 6.8
+    },
+    "Readout_1": {
+      "f_GHz": 7.0
+    },
+    "Readout_2": {
+      "f_GHz": 7.2
+    },
+    "Bus_01": {
+      "f_GHz": 5.8
+    },
+    "Bus_02": {
+      "f_GHz": 6.0
+    },
+    "Bus_12": {
+      "f_GHz": 6.2
+    }
+  },
+  "sim_groups": {
+    "Q_0": {
+      "select": [
+        "Q_0"
+      ],
+      "margin_um": 50.0,
+      "analyses": [
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "Q_1": {
+      "select": [
+        "Q_1"
+      ],
+      "margin_um": 50.0,
+      "analyses": [
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "Q_2": {
+      "select": [
+        "Q_2"
+      ],
+      "margin_um": 50.0,
+      "analyses": [
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    }
+  }
+}

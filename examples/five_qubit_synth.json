@@ -1,0 +1,681 @@
+{
+  "schema": "qcc/0.1",
+  "name": "five_qubit",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      0.0,
+      0.0,
+      7500.0,
+      7500.0
+    ],
+    "launchers": null,
+    "params": {
+      "with_grid": false,
+      "name_chip": "FIVE_Q"
+    }
+  },
+  "instances": {
+    "PAD_W": {
+      "cell": "BondPad",
+      "params": {},
+      "place": {
+        "at": [
+          1125.0,
+          3750.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PAD_E": {
+      "cell": "BondPad",
+      "params": {},
+      "place": {
+        "at": [
+          6375.0,
+          3750.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "Q1": {
+      "cell": "Xmon",
+      "params": {
+        "cross_length": 429.632,
+        "claw_length": 173.314,
+        "claws": [
+          "n"
+        ],
+        "flux_port": true,
+        "junction_type": "Trilayer Squid"
+      },
+      "place": {
+        "at": [
+          2000.0,
+          2200.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 9.794,
+        "Cj_fF": 2.0
+      }
+    },
+    "PAD_F1": {
+      "cell": "BondPad",
+      "params": {
+        "a": 4,
+        "b": 6,
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 150,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          1989.5,
+          750.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "Q2": {
+      "cell": "Xmon",
+      "params": {
+        "cross_length": 428.854,
+        "claw_length": 165.702,
+        "claws": [
+          "n"
+        ],
+        "flux_port": true,
+        "junction_type": "Trilayer Squid"
+      },
+      "place": {
+        "at": [
+          2875.0,
+          2200.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 9.105,
+        "Cj_fF": 2.0
+      }
+    },
+    "PAD_F2": {
+      "cell": "BondPad",
+      "params": {
+        "a": 4,
+        "b": 6,
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 150,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          2864.5,
+          750.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "Q3": {
+      "cell": "Xmon",
+      "params": {
+        "cross_length": 428.136,
+        "claw_length": 158.654,
+        "claws": [
+          "n"
+        ],
+        "flux_port": true,
+        "junction_type": "Trilayer Squid"
+      },
+      "place": {
+        "at": [
+          3750.0,
+          2200.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 8.486,
+        "Cj_fF": 2.0
+      }
+    },
+    "PAD_F3": {
+      "cell": "BondPad",
+      "params": {
+        "a": 4,
+        "b": 6,
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 150,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          3739.5,
+          750.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "Q4": {
+      "cell": "Xmon",
+      "params": {
+        "cross_length": 427.468,
+        "claw_length": 152.112,
+        "claws": [
+          "n"
+        ],
+        "flux_port": true,
+        "junction_type": "Trilayer Squid"
+      },
+      "place": {
+        "at": [
+          4625.0,
+          2200.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 7.928,
+        "Cj_fF": 2.0
+      }
+    },
+    "PAD_F4": {
+      "cell": "BondPad",
+      "params": {
+        "a": 4,
+        "b": 6,
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 150,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          4614.5,
+          750.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "Q5": {
+      "cell": "Xmon",
+      "params": {
+        "cross_length": 426.844,
+        "claw_length": 146.024,
+        "claws": [
+          "n"
+        ],
+        "flux_port": true,
+        "junction_type": "Trilayer Squid"
+      },
+      "place": {
+        "at": [
+          5500.0,
+          2200.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 7.424,
+        "Cj_fF": 2.0
+      }
+    },
+    "PAD_F5": {
+      "cell": "BondPad",
+      "params": {
+        "a": 4,
+        "b": 6,
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 150,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          5489.5,
+          750.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    }
+  },
+  "routes": {
+    "FL": {
+      "from": "PAD_W.a",
+      "to": "PAD_E.a",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "R1": {
+      "from": "Q1.claw_n",
+      "to": {
+        "hanger": "FL",
+        "s": 1025.0,
+        "length": 300.0,
+        "side": "right",
+        "ground_gap": 6.0,
+        "direction": "forward",
+        "end": "short",
+        "open_gap": 6.0
+      },
+      "type": "meander",
+      "nodes": [],
+      "length": 3859.1,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FLUX1": {
+      "from": "PAD_F1.a",
+      "to": "Q1.flux",
+      "type": "cpw",
+      "nodes": [
+        {
+          "at": [
+            1989.5,
+            1902.184
+          ],
+          "airbridge": false,
+          "a": 1.0,
+          "b": 7.5,
+          "params": {}
+        }
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 4.0,
+      "b": 6.0,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "R2": {
+      "from": "Q2.claw_n",
+      "to": {
+        "hanger": "FL",
+        "s": 1900.0,
+        "length": 300.0,
+        "side": "right",
+        "ground_gap": 6.0,
+        "direction": "forward",
+        "end": "short",
+        "open_gap": 6.0
+      },
+      "type": "meander",
+      "nodes": [],
+      "length": 3787.082,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FLUX2": {
+      "from": "PAD_F2.a",
+      "to": "Q2.flux",
+      "type": "cpw",
+      "nodes": [
+        {
+          "at": [
+            2864.5,
+            1902.573
+          ],
+          "airbridge": false,
+          "a": 1.0,
+          "b": 7.5,
+          "params": {}
+        }
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 4.0,
+      "b": 6.0,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "R3": {
+      "from": "Q3.claw_n",
+      "to": {
+        "hanger": "FL",
+        "s": 2775.0,
+        "length": 300.0,
+        "side": "right",
+        "ground_gap": 6.0,
+        "direction": "forward",
+        "end": "short",
+        "open_gap": 6.0
+      },
+      "type": "meander",
+      "nodes": [],
+      "length": 3717.479,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FLUX3": {
+      "from": "PAD_F3.a",
+      "to": "Q3.flux",
+      "type": "cpw",
+      "nodes": [
+        {
+          "at": [
+            3739.5,
+            1902.932
+          ],
+          "airbridge": false,
+          "a": 1.0,
+          "b": 7.5,
+          "params": {}
+        }
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 4.0,
+      "b": 6.0,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "R4": {
+      "from": "Q4.claw_n",
+      "to": {
+        "hanger": "FL",
+        "s": 3650.0,
+        "length": 300.0,
+        "side": "right",
+        "ground_gap": 6.0,
+        "direction": "forward",
+        "end": "short",
+        "open_gap": 6.0
+      },
+      "type": "meander",
+      "nodes": [],
+      "length": 3650.201,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FLUX4": {
+      "from": "PAD_F4.a",
+      "to": "Q4.flux",
+      "type": "cpw",
+      "nodes": [
+        {
+          "at": [
+            4614.5,
+            1903.266
+          ],
+          "airbridge": false,
+          "a": 1.0,
+          "b": 7.5,
+          "params": {}
+        }
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 4.0,
+      "b": 6.0,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "R5": {
+      "from": "Q5.claw_n",
+      "to": {
+        "hanger": "FL",
+        "s": 4525.0,
+        "length": 300.0,
+        "side": "right",
+        "ground_gap": 6.0,
+        "direction": "forward",
+        "end": "short",
+        "open_gap": 6.0
+      },
+      "type": "meander",
+      "nodes": [],
+      "length": 3585.155,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FLUX5": {
+      "from": "PAD_F5.a",
+      "to": "Q5.flux",
+      "type": "cpw",
+      "nodes": [
+        {
+          "at": [
+            5489.5,
+            1903.578
+          ],
+          "airbridge": false,
+          "a": 1.0,
+          "b": 7.5,
+          "params": {}
+        }
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 4.0,
+      "b": 6.0,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    }
+  },
+  "nets": "derived",
+  "targets": {
+    "Q1": {
+      "f_q_GHz": 4.9,
+      "alpha_MHz": -215.0
+    },
+    "Q2": {
+      "f_q_GHz": 5.1,
+      "alpha_MHz": -215.0
+    },
+    "Q3": {
+      "f_q_GHz": 5.3,
+      "alpha_MHz": -215.0
+    },
+    "Q4": {
+      "f_q_GHz": 5.5,
+      "alpha_MHz": -215.0
+    },
+    "Q5": {
+      "f_q_GHz": 5.7,
+      "alpha_MHz": -215.0
+    },
+    "R1": {
+      "f_GHz": 6.9,
+      "g_MHz": 80.0
+    },
+    "R2": {
+      "f_GHz": 7.05,
+      "g_MHz": 80.0
+    },
+    "R3": {
+      "f_GHz": 7.2,
+      "g_MHz": 80.0
+    },
+    "R4": {
+      "f_GHz": 7.35,
+      "g_MHz": 80.0
+    },
+    "R5": {
+      "f_GHz": 7.5,
+      "g_MHz": 80.0
+    }
+  },
+  "sim_groups": {
+    "Q1R1": {
+      "select": [
+        "Q1",
+        "R1"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "q3d_cmatrix",
+        "eigenmode_epr"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "Q2R2": {
+      "select": [
+        "Q2",
+        "R2"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "q3d_cmatrix",
+        "eigenmode_epr"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "Q3R3": {
+      "select": [
+        "Q3",
+        "R3"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "q3d_cmatrix",
+        "eigenmode_epr"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "Q4R4": {
+      "select": [
+        "Q4",
+        "R4"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "q3d_cmatrix",
+        "eigenmode_epr"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "Q5R5": {
+      "select": [
+        "Q5",
+        "R5"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "q3d_cmatrix",
+        "eigenmode_epr"
+      ],
+      "ports": {},
+      "settings": {}
+    }
+  }
+}

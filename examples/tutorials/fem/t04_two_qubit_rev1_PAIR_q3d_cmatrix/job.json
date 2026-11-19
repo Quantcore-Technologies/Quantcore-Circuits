@@ -1,0 +1,84 @@
+{
+  "schema": "qcc-job/0.1",
+  "created": "2026-11-14T22:03:42+00:00",
+  "design": "t04_two_qubit_rev1",
+  "design_hash": "00877dc54e5e7103",
+  "group": "PAIR",
+  "group_hash": "452fec6b81374bac",
+  "select": [
+    "Q1",
+    "Q2",
+    "R1",
+    "R2"
+  ],
+  "routes_in_sim": [
+    "FL"
+  ],
+  "analysis": "q3d_cmatrix",
+  "solver": "ansys",
+  "simulation_name": "t04_two_qubit_rev1_PAIR_q3d_cmatrix",
+  "settings": {
+    "percent_error": 2.0,
+    "maximum_passes": 8,
+    "minimum_passes": 1,
+    "minimum_converged_passes": 1
+  },
+  "box_um": [
+    2682.0,
+    2420.0,
+    4004.0,
+    3335.0
+  ],
+  "ports": [
+    {
+      "number": 1,
+      "kind": "junction",
+      "name": "Q1.junction",
+      "excitation": "Q1.island"
+    },
+    {
+      "number": 2,
+      "kind": "junction",
+      "name": "Q2.junction",
+      "excitation": "Q2.island"
+    },
+    {
+      "number": 3,
+      "kind": "waveguide",
+      "name": "Q1.claw_n",
+      "excitation": "Q1.claw_n"
+    },
+    {
+      "number": 4,
+      "kind": "waveguide",
+      "name": "Q2.claw_n",
+      "excitation": "Q2.claw_n"
+    }
+  ],
+  "nets": {
+    "1": "Q1.island",
+    "2": "Q2.island",
+    "3": "Q1.claw_n",
+    "4": "Q2.claw_n"
+  },
+  "waveguide_length_um": 100.0,
+  "geometry": {
+    "ground_grid_shapes": 0,
+    "airbridge_shapes": 0,
+    "airbridges": "dropped"
+  },
+  "notes": [],
+  "versions": {
+    "quantcore-circuits": "0.2.0",
+    "kqcircuits": "0.0.1",
+    "klayout": "0.30.5",
+    "pdk": "quantcore_nb_sapphire_v1@3"
+  },
+  "status": "done",
+  "fem_fast": true,
+  "started": 1794693828.4535246,
+  "returncode": 0,
+  "solve_seconds": 40.6,
+  "finished": 1794693869.0724375,
+  "aedt_mode": "batch"
+}

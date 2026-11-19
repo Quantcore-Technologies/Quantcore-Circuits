@@ -1,0 +1,7579 @@
+{
+  "schema": "qcc/0.1",
+  "name": "demoqpu17",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      0.0,
+      0.0,
+      15000.0,
+      15000.0
+    ],
+    "launchers": null,
+    "params": {
+      "with_grid": false,
+      "name_chip": "QPU17",
+      "cheese": {
+        "size": 10.0,
+        "gap": 90.0,
+        "rows": 1000,
+        "clearance": 40.0,
+        "edge": 600.0
+      }
+    }
+  },
+  "instances": {
+    "L1": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          2000.0,
+          14100.0
+        ],
+        "rot": 180.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L2": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          3000.0,
+          14100.0
+        ],
+        "rot": 180.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L3": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          4000.0,
+          14100.0
+        ],
+        "rot": 180.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L4": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          5000.0,
+          14100.0
+        ],
+        "rot": 180.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L5": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          6000.0,
+          14100.0
+        ],
+        "rot": 180.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L7": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          8000.0,
+          14100.0
+        ],
+        "rot": 180.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L8": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          9000.0,
+          14100.0
+        ],
+        "rot": 180.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L9": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          10000.0,
+          14100.0
+        ],
+        "rot": 180.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L10": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          11000.0,
+          14100.0
+        ],
+        "rot": 180.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L11": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          12000.0,
+          14100.0
+        ],
+        "rot": 180.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L12": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          13000.0,
+          14100.0
+        ],
+        "rot": 180.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L13": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          14100.0,
+          13000.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L14": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          14100.0,
+          12000.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L15": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          14100.0,
+          11000.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L16": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          14100.0,
+          10000.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L19": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          14100.0,
+          7000.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L20": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          14100.0,
+          6000.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L21": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          14100.0,
+          5000.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L22": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          14100.0,
+          4000.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L23": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          14100.0,
+          3000.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L24": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          14100.0,
+          2000.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L25": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          13000.0,
+          900.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L26": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          12000.0,
+          900.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L27": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          11000.0,
+          900.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L28": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          10000.0,
+          900.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L31": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          7000.0,
+          900.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L32": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          6000.0,
+          900.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L33": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          5000.0,
+          900.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L34": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          4000.0,
+          900.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L35": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          3000.0,
+          900.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L36": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          2000.0,
+          900.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L37": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          900.0,
+          2000.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L38": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          900.0,
+          3000.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L39": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          900.0,
+          4000.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L40": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          900.0,
+          5000.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L42": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          900.0,
+          7000.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L43": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          900.0,
+          8000.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L44": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          900.0,
+          9000.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L45": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          900.0,
+          10000.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L46": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          900.0,
+          11000.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L47": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          900.0,
+          12000.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "L48": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 300,
+        "pad_height": 300,
+        "pad_gap": 100,
+        "taper_length": 300
+      },
+      "place": {
+        "at": [
+          900.0,
+          13000.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "Q12": {
+      "cell": "metal:StarQubit",
+      "params": {
+        "radius": 150,
+        "center_radius": 70,
+        "gap_couplers": 15,
+        "gap_readout": 15,
+        "connector_length": 40,
+        "trap_offset": 11,
+        "junc_h": 30,
+        "number_of_connectors": 4,
+        "resolution": 16,
+        "rotation_cpl1": 90.0,
+        "rotation_cpl2": 180.0,
+        "rotation_cpl3": 270.0,
+        "rotation_cpl4": 0.0,
+        "rotation_rdout": 225.0,
+        "rotation_jj": 135.0,
+        "junction_type": "Quantcore Squid",
+        "junction_params": {
+          "lj_nH": 7.859545162944973
+        }
+      },
+      "place": {
+        "at": [
+          5850.0,
+          10800.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 8.0172,
+        "Cj_fF": 12.6
+      }
+    },
+    "Q13": {
+      "cell": "metal:StarQubit",
+      "params": {
+        "radius": 150,
+        "center_radius": 70,
+        "gap_couplers": 15,
+        "gap_readout": 8,
+        "connector_length": 40,
+        "trap_offset": 11,
+        "junc_h": 30,
+        "number_of_connectors": 4,
+        "resolution": 16,
+        "rotation_cpl1": 90.0,
+        "rotation_cpl2": 180.0,
+        "rotation_cpl3": 270.0,
+        "rotation_cpl4": 0.0,
+        "rotation_rdout": 135.0,
+        "rotation_jj": 225.0,
+        "junction_type": "Quantcore Squid",
+        "junction_params": {
+          "lj_nH": 11.304483777585501
+        }
+      },
+      "place": {
+        "at": [
+          7500.0,
+          10800.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 11.224,
+        "Cj_fF": 9.0
+      }
+    },
+    "Q22": {
+      "cell": "metal:StarQubit",
+      "params": {
+        "radius": 150,
+        "center_radius": 70,
+        "gap_couplers": 15,
+        "gap_readout": 8,
+        "connector_length": 40,
+        "trap_offset": 11,
+        "junc_h": 30,
+        "number_of_connectors": 4,
+        "resolution": 16,
+        "rotation_cpl1": 90.0,
+        "rotation_cpl2": 180.0,
+        "rotation_cpl3": 270.0,
+        "rotation_cpl4": 0.0,
+        "rotation_rdout": 225.0,
+        "rotation_jj": 135.0,
+        "junction_type": "Quantcore Squid",
+        "junction_params": {
+          "lj_nH": 11.082512423972332
+        }
+      },
+      "place": {
+        "at": [
+          5850.0,
+          9150.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 11.224,
+        "Cj_fF": 9.0
+      }
+    },
+    "Q23": {
+      "cell": "metal:StarQubit",
+      "params": {
+        "radius": 150,
+        "center_radius": 70,
+        "gap_couplers": 15,
+        "gap_readout": 15,
+        "connector_length": 40,
+        "trap_offset": 11,
+        "junc_h": 30,
+        "number_of_connectors": 4,
+        "resolution": 16,
+        "rotation_cpl1": 90.0,
+        "rotation_cpl2": 180.0,
+        "rotation_cpl3": 270.0,
+        "rotation_cpl4": 0.0,
+        "rotation_rdout": 135.0,
+        "rotation_jj": 225.0,
+        "junction_type": "Quantcore Squid",
+        "junction_params": {
+          "lj_nH": 7.73054676759837
+        }
+      },
+      "place": {
+        "at": [
+          7500.0,
+          9150.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 7.6528,
+        "Cj_fF": 13.2
+      }
+    },
+    "Q24": {
+      "cell": "metal:StarQubit",
+      "params": {
+        "radius": 150,
+        "center_radius": 70,
+        "gap_couplers": 15,
+        "gap_readout": 8,
+        "connector_length": 40,
+        "trap_offset": 11,
+        "junc_h": 30,
+        "number_of_connectors": 4,
+        "resolution": 16,
+        "rotation_cpl1": 90.0,
+        "rotation_cpl2": 180.0,
+        "rotation_cpl3": 270.0,
+        "rotation_cpl4": 0.0,
+        "rotation_rdout": 135.0,
+        "rotation_jj": 225.0,
+        "junction_type": "Quantcore Squid",
+        "junction_params": {
+          "lj_nH": 10.867015297367239
+        }
+      },
+      "place": {
+        "at": [
+          9150.0,
+          9150.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 11.224,
+        "Cj_fF": 9.0
+      }
+    },
+    "Q25": {
+      "cell": "metal:StarQubit",
+      "params": {
+        "radius": 150,
+        "center_radius": 70,
+        "gap_couplers": 15,
+        "gap_readout": 15,
+        "connector_length": 40,
+        "trap_offset": 11,
+        "junc_h": 30,
+        "number_of_connectors": 4,
+        "resolution": 16,
+        "rotation_cpl1": 90.0,
+        "rotation_cpl2": 180.0,
+        "rotation_cpl3": 270.0,
+        "rotation_cpl4": 0.0,
+        "rotation_rdout": 135.0,
+        "rotation_jj": 225.0,
+        "junction_type": "Quantcore Squid",
+        "junction_params": {
+          "lj_nH": 7.604698372436898
+        }
+      },
+      "place": {
+        "at": [
+          10800.0,
+          9150.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 7.6528,
+        "Cj_fF": 13.2
+      }
+    },
+    "Q31": {
+      "cell": "metal:StarQubit",
+      "params": {
+        "radius": 150,
+        "center_radius": 70,
+        "gap_couplers": 15,
+        "gap_readout": 8,
+        "connector_length": 40,
+        "trap_offset": 11,
+        "junc_h": 30,
+        "number_of_connectors": 4,
+        "resolution": 16,
+        "rotation_cpl1": 90.0,
+        "rotation_cpl2": 180.0,
+        "rotation_cpl3": 270.0,
+        "rotation_cpl4": 0.0,
+        "rotation_rdout": 225.0,
+        "rotation_jj": 135.0,
+        "junction_type": "Quantcore Squid",
+        "junction_params": {
+          "lj_nH": 10.657743046064763
+        }
+      },
+      "place": {
+        "at": [
+          4200.0,
+          7500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 10.5225,
+        "Cj_fF": 9.6
+      }
+    },
+    "Q32": {
+      "cell": "metal:StarQubit",
+      "params": {
+        "radius": 150,
+        "center_radius": 70,
+        "gap_couplers": 15,
+        "gap_readout": 15,
+        "connector_length": 40,
+        "trap_offset": 11,
+        "junc_h": 30,
+        "number_of_connectors": 4,
+        "resolution": 16,
+        "rotation_cpl1": 90.0,
+        "rotation_cpl2": 180.0,
+        "rotation_cpl3": 270.0,
+        "rotation_cpl4": 0.0,
+        "rotation_rdout": 225.0,
+        "rotation_jj": 135.0,
+        "junction_type": "Quantcore Squid",
+        "junction_params": {
+          "lj_nH": 7.481898246642174
+        }
+      },
+      "place": {
+        "at": [
+          5850.0,
+          7500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 7.32,
+        "Cj_fF": 13.8
+      }
+    },
+    "Q33": {
+      "cell": "metal:StarQubit",
+      "params": {
+        "radius": 150,
+        "center_radius": 70,
+        "gap_couplers": 15,
+        "gap_readout": 8,
+        "connector_length": 40,
+        "trap_offset": 11,
+        "junc_h": 30,
+        "number_of_connectors": 4,
+        "resolution": 16,
+        "rotation_cpl1": 90.0,
+        "rotation_cpl2": 180.0,
+        "rotation_cpl3": 270.0,
+        "rotation_cpl4": 0.0,
+        "rotation_rdout": 225.0,
+        "rotation_jj": 135.0,
+        "junction_type": "Quantcore Squid",
+        "junction_params": {
+          "lj_nH": 10.454458208358721
+        }
+      },
+      "place": {
+        "at": [
+          7500.0,
+          7500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 10.5225,
+        "Cj_fF": 9.6
+      }
+    },
+    "Q34": {
+      "cell": "metal:StarQubit",
+      "params": {
+        "radius": 150,
+        "center_radius": 70,
+        "gap_couplers": 15,
+        "gap_readout": 15,
+        "connector_length": 40,
+        "trap_offset": 11,
+        "junc_h": 30,
+        "number_of_connectors": 4,
+        "resolution": 16,
+        "rotation_cpl1": 90.0,
+        "rotation_cpl2": 180.0,
+        "rotation_cpl3": 270.0,
+        "rotation_cpl4": 0.0,
+        "rotation_rdout": 45.0,
+        "rotation_jj": 315.0,
+        "junction_type": "Quantcore Squid",
+        "junction_params": {
+          "lj_nH": 7.362048733290791
+        }
+      },
+      "place": {
+        "at": [
+          9150.0,
+          7500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 7.32,
+        "Cj_fF": 13.8
+      }
+    },
+    "Q35": {
+      "cell": "metal:StarQubit",
+      "params": {
+        "radius": 150,
+        "center_radius": 70,
+        "gap_couplers": 15,
+        "gap_readout": 8,
+        "connector_length": 40,
+        "trap_offset": 11,
+        "junc_h": 30,
+        "number_of_connectors": 4,
+        "resolution": 16,
+        "rotation_cpl1": 90.0,
+        "rotation_cpl2": 180.0,
+        "rotation_cpl3": 270.0,
+        "rotation_cpl4": 0.0,
+        "rotation_rdout": 45.0,
+        "rotation_jj": 315.0,
+        "junction_type": "Quantcore Squid",
+        "junction_params": {
+          "lj_nH": 10.256934538623975
+        }
+      },
+      "place": {
+        "at": [
+          10800.0,
+          7500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 10.5225,
+        "Cj_fF": 9.6
+      }
+    },
+    "Q41": {
+      "cell": "metal:StarQubit",
+      "params": {
+        "radius": 150,
+        "center_radius": 70,
+        "gap_couplers": 15,
+        "gap_readout": 15,
+        "connector_length": 40,
+        "trap_offset": 11,
+        "junc_h": 30,
+        "number_of_connectors": 4,
+        "resolution": 16,
+        "rotation_cpl1": 90.0,
+        "rotation_cpl2": 180.0,
+        "rotation_cpl3": 270.0,
+        "rotation_cpl4": 0.0,
+        "rotation_rdout": 315.0,
+        "rotation_jj": 45.0,
+        "junction_type": "Quantcore Squid",
+        "junction_params": {
+          "lj_nH": 7.245056055139841
+        }
+      },
+      "place": {
+        "at": [
+          4200.0,
+          5850.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 7.32,
+        "Cj_fF": 13.8
+      }
+    },
+    "Q42": {
+      "cell": "metal:StarQubit",
+      "params": {
+        "radius": 150,
+        "center_radius": 70,
+        "gap_couplers": 15,
+        "gap_readout": 8,
+        "connector_length": 40,
+        "trap_offset": 11,
+        "junc_h": 30,
+        "number_of_connectors": 4,
+        "resolution": 16,
+        "rotation_cpl1": 90.0,
+        "rotation_cpl2": 180.0,
+        "rotation_cpl3": 270.0,
+        "rotation_cpl4": 0.0,
+        "rotation_rdout": 315.0,
+        "rotation_jj": 45.0,
+        "junction_type": "Quantcore Squid",
+        "junction_params": {
+          "lj_nH": 10.064956377544355
+        }
+      },
+      "place": {
+        "at": [
+          5850.0,
+          5850.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 9.9036,
+        "Cj_fF": 10.2
+      }
+    },
+    "Q43": {
+      "cell": "metal:StarQubit",
+      "params": {
+        "radius": 150,
+        "center_radius": 70,
+        "gap_couplers": 15,
+        "gap_readout": 15,
+        "connector_length": 40,
+        "trap_offset": 11,
+        "junc_h": 30,
+        "number_of_connectors": 4,
+        "resolution": 16,
+        "rotation_cpl1": 90.0,
+        "rotation_cpl2": 180.0,
+        "rotation_cpl3": 270.0,
+        "rotation_cpl4": 0.0,
+        "rotation_rdout": 315.0,
+        "rotation_jj": 45.0,
+        "junction_type": "Quantcore Squid",
+        "junction_params": {
+          "lj_nH": 7.130830131129155
+        }
+      },
+      "place": {
+        "at": [
+          7500.0,
+          5850.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 7.015,
+        "Cj_fF": 14.4
+      }
+    },
+    "Q44": {
+      "cell": "metal:StarQubit",
+      "params": {
+        "radius": 150,
+        "center_radius": 70,
+        "gap_couplers": 15,
+        "gap_readout": 8,
+        "connector_length": 40,
+        "trap_offset": 11,
+        "junc_h": 30,
+        "number_of_connectors": 4,
+        "resolution": 16,
+        "rotation_cpl1": 90.0,
+        "rotation_cpl2": 180.0,
+        "rotation_cpl3": 270.0,
+        "rotation_cpl4": 0.0,
+        "rotation_rdout": 45.0,
+        "rotation_jj": 315.0,
+        "junction_type": "Quantcore Squid",
+        "junction_params": {
+          "lj_nH": 9.878318063212404
+        }
+      },
+      "place": {
+        "at": [
+          9150.0,
+          5850.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 9.9036,
+        "Cj_fF": 10.2
+      }
+    },
+    "Q53": {
+      "cell": "metal:StarQubit",
+      "params": {
+        "radius": 150,
+        "center_radius": 70,
+        "gap_couplers": 15,
+        "gap_readout": 8,
+        "connector_length": 40,
+        "trap_offset": 11,
+        "junc_h": 30,
+        "number_of_connectors": 4,
+        "resolution": 16,
+        "rotation_cpl1": 90.0,
+        "rotation_cpl2": 180.0,
+        "rotation_cpl3": 270.0,
+        "rotation_cpl4": 0.0,
+        "rotation_rdout": 315.0,
+        "rotation_jj": 45.0,
+        "junction_type": "Quantcore Squid",
+        "junction_params": {
+          "lj_nH": 9.696823380097333
+        }
+      },
+      "place": {
+        "at": [
+          7500.0,
+          4200.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 9.9036,
+        "Cj_fF": 10.2
+      }
+    },
+    "Q54": {
+      "cell": "metal:StarQubit",
+      "params": {
+        "radius": 150,
+        "center_radius": 70,
+        "gap_couplers": 15,
+        "gap_readout": 15,
+        "connector_length": 40,
+        "trap_offset": 11,
+        "junc_h": 30,
+        "number_of_connectors": 4,
+        "resolution": 16,
+        "rotation_cpl1": 90.0,
+        "rotation_cpl2": 180.0,
+        "rotation_cpl3": 270.0,
+        "rotation_cpl4": 0.0,
+        "rotation_rdout": 45.0,
+        "rotation_jj": 315.0,
+        "junction_type": "Quantcore Squid",
+        "junction_params": {
+          "lj_nH": 7.019284402929655
+        }
+      },
+      "place": {
+        "at": [
+          9150.0,
+          4200.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 7.015,
+        "Cj_fF": 14.4
+      }
+    },
+    "T_Q12": {
+      "cell": "metal:CapNInterdigitalTee",
+      "params": {
+        "prime_width": 10,
+        "prime_gap": 6,
+        "second_width": 10,
+        "second_gap": 10,
+        "finger_count": 8,
+        "finger_length": 60,
+        "cap_width": 8,
+        "cap_gap": 5,
+        "cap_distance": 30
+      },
+      "place": {
+        "at": [
+          4378.9099278346675,
+          12469.079970897566
+        ],
+        "rot": 45.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "T_Q13": {
+      "cell": "metal:CapNInterdigitalTee",
+      "params": {
+        "prime_width": 10,
+        "prime_gap": 6,
+        "second_width": 10,
+        "second_gap": 10,
+        "finger_count": 8,
+        "finger_length": 60,
+        "cap_width": 8,
+        "cap_gap": 5,
+        "cap_distance": 30
+      },
+      "place": {
+        "at": [
+          8929.30569810049,
+          12427.295596832724
+        ],
+        "rot": 315.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "T_Q22": {
+      "cell": "metal:CapNInterdigitalTee",
+      "params": {
+        "prime_width": 10,
+        "prime_gap": 6,
+        "second_width": 10,
+        "second_gap": 10,
+        "finger_count": 8,
+        "finger_length": 60,
+        "cap_width": 8,
+        "cap_gap": 5,
+        "cap_distance": 30
+      },
+      "place": {
+        "at": [
+          4433.869554983017,
+          10764.120343749215
+        ],
+        "rot": 45.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "T_Q23": {
+      "cell": "metal:CapNInterdigitalTee",
+      "params": {
+        "prime_width": 10,
+        "prime_gap": 6,
+        "second_width": 10,
+        "second_gap": 10,
+        "finger_count": 8,
+        "finger_length": 60,
+        "cap_width": 8,
+        "cap_gap": 5,
+        "cap_distance": 30
+      },
+      "place": {
+        "at": [
+          8956.769605936537,
+          10804.759504668771
+        ],
+        "rot": 315.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "T_Q24": {
+      "cell": "metal:CapNInterdigitalTee",
+      "params": {
+        "prime_width": 10,
+        "prime_gap": 6,
+        "second_width": 10,
+        "second_gap": 10,
+        "finger_count": 8,
+        "finger_length": 60,
+        "cap_width": 8,
+        "cap_gap": 5,
+        "cap_distance": 30
+      },
+      "place": {
+        "at": [
+          10553.3065320157,
+          10751.296430747934
+        ],
+        "rot": 315.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "T_Q25": {
+      "cell": "metal:CapNInterdigitalTee",
+      "params": {
+        "prime_width": 10,
+        "prime_gap": 6,
+        "second_width": 10,
+        "second_gap": 10,
+        "finger_count": 8,
+        "finger_length": 60,
+        "cap_width": 8,
+        "cap_gap": 5,
+        "cap_distance": 30
+      },
+      "place": {
+        "at": [
+          12285.825624371775,
+          10833.815523104007
+        ],
+        "rot": 315.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "T_Q31": {
+      "cell": "metal:CapNInterdigitalTee",
+      "params": {
+        "prime_width": 10,
+        "prime_gap": 6,
+        "second_width": 10,
+        "second_gap": 10,
+        "finger_count": 8,
+        "finger_length": 60,
+        "cap_width": 8,
+        "cap_gap": 5,
+        "cap_distance": 30
+      },
+      "place": {
+        "at": [
+          2757.1530695636807,
+          9140.836829168553
+        ],
+        "rot": 45.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "T_Q32": {
+      "cell": "metal:CapNInterdigitalTee",
+      "params": {
+        "prime_width": 10,
+        "prime_gap": 6,
+        "second_width": 10,
+        "second_gap": 10,
+        "finger_count": 8,
+        "finger_length": 60,
+        "cap_width": 8,
+        "cap_gap": 5,
+        "cap_distance": 30
+      },
+      "place": {
+        "at": [
+          4459.17990959081,
+          9088.809989141422
+        ],
+        "rot": 45.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "T_Q33": {
+      "cell": "metal:CapNInterdigitalTee",
+      "params": {
+        "prime_width": 10,
+        "prime_gap": 6,
+        "second_width": 10,
+        "second_gap": 10,
+        "finger_count": 8,
+        "finger_length": 60,
+        "cap_width": 8,
+        "cap_gap": 5,
+        "cap_distance": 30
+      },
+      "place": {
+        "at": [
+          5550.0,
+          8790.0
+        ],
+        "rot": 45.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "T_Q34": {
+      "cell": "metal:CapNInterdigitalTee",
+      "params": {
+        "prime_width": 10,
+        "prime_gap": 6,
+        "second_width": 10,
+        "second_gap": 10,
+        "finger_count": 8,
+        "finger_length": 60,
+        "cap_width": 8,
+        "cap_gap": 5,
+        "cap_distance": 30
+      },
+      "place": {
+        "at": [
+          10540.82009040919,
+          5911.190010858577
+        ],
+        "rot": 225.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "T_Q35": {
+      "cell": "metal:CapNInterdigitalTee",
+      "params": {
+        "prime_width": 10,
+        "prime_gap": 6,
+        "second_width": 10,
+        "second_gap": 10,
+        "finger_count": 8,
+        "finger_length": 60,
+        "cap_width": 8,
+        "cap_gap": 5,
+        "cap_distance": 30
+      },
+      "place": {
+        "at": [
+          12216.130445016983,
+          5885.879656250784
+        ],
+        "rot": 225.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "T_Q41": {
+      "cell": "metal:CapNInterdigitalTee",
+      "params": {
+        "prime_width": 10,
+        "prime_gap": 6,
+        "second_width": 10,
+        "second_gap": 10,
+        "finger_count": 8,
+        "finger_length": 60,
+        "cap_width": 8,
+        "cap_gap": 5,
+        "cap_distance": 30
+      },
+      "place": {
+        "at": [
+          2714.174375628226,
+          4166.184476895993
+        ],
+        "rot": 135.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "T_Q42": {
+      "cell": "metal:CapNInterdigitalTee",
+      "params": {
+        "prime_width": 10,
+        "prime_gap": 6,
+        "second_width": 10,
+        "second_gap": 10,
+        "finger_count": 8,
+        "finger_length": 60,
+        "cap_width": 8,
+        "cap_gap": 5,
+        "cap_distance": 30
+      },
+      "place": {
+        "at": [
+          4420.69430189951,
+          4222.704403167276
+        ],
+        "rot": 135.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "T_Q43": {
+      "cell": "metal:CapNInterdigitalTee",
+      "params": {
+        "prime_width": 10,
+        "prime_gap": 6,
+        "second_width": 10,
+        "second_gap": 10,
+        "finger_count": 8,
+        "finger_length": 60,
+        "cap_width": 8,
+        "cap_gap": 5,
+        "cap_distance": 30
+      },
+      "place": {
+        "at": [
+          6096.693467984299,
+          4248.703569252066
+        ],
+        "rot": 135.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "T_Q44": {
+      "cell": "metal:CapNInterdigitalTee",
+      "params": {
+        "prime_width": 10,
+        "prime_gap": 6,
+        "second_width": 10,
+        "second_gap": 10,
+        "finger_count": 8,
+        "finger_length": 60,
+        "cap_width": 8,
+        "cap_gap": 5,
+        "cap_distance": 30
+      },
+      "place": {
+        "at": [
+          10592.846930436319,
+          4209.163170831447
+        ],
+        "rot": 225.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "T_Q53": {
+      "cell": "metal:CapNInterdigitalTee",
+      "params": {
+        "prime_width": 10,
+        "prime_gap": 6,
+        "second_width": 10,
+        "second_gap": 10,
+        "finger_count": 8,
+        "finger_length": 60,
+        "cap_width": 8,
+        "cap_gap": 5,
+        "cap_distance": 30
+      },
+      "place": {
+        "at": [
+          6043.230394063463,
+          2545.24049533123
+        ],
+        "rot": 135.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "T_Q54": {
+      "cell": "metal:CapNInterdigitalTee",
+      "params": {
+        "prime_width": 10,
+        "prime_gap": 6,
+        "second_width": 10,
+        "second_gap": 10,
+        "finger_count": 8,
+        "finger_length": 60,
+        "cap_width": 8,
+        "cap_gap": 5,
+        "cap_distance": 30
+      },
+      "place": {
+        "at": [
+          10621.090072165332,
+          2530.920029102434
+        ],
+        "rot": 225.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "CIN_1": {
+      "cell": "FingerCapacitorSquare",
+      "params": {
+        "finger_number": 6,
+        "finger_length": 60,
+        "finger_width": 6,
+        "finger_gap": 4,
+        "a": 10,
+        "b": 6
+      },
+      "place": {
+        "at": [
+          1600.0,
+          9000.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "CIN_2": {
+      "cell": "FingerCapacitorSquare",
+      "params": {
+        "finger_number": 6,
+        "finger_length": 60,
+        "finger_width": 6,
+        "finger_gap": 4,
+        "a": 10,
+        "b": 6
+      },
+      "place": {
+        "at": [
+          13400.0,
+          11000.0
+        ],
+        "rot": 180.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "CIN_3": {
+      "cell": "FingerCapacitorSquare",
+      "params": {
+        "finger_number": 6,
+        "finger_length": 60,
+        "finger_width": 6,
+        "finger_gap": 4,
+        "a": 10,
+        "b": 6
+      },
+      "place": {
+        "at": [
+          13400.0,
+          6000.0
+        ],
+        "rot": 180.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "CIN_4": {
+      "cell": "FingerCapacitorSquare",
+      "params": {
+        "finger_number": 6,
+        "finger_length": 60,
+        "finger_width": 6,
+        "finger_gap": 4,
+        "a": 10,
+        "b": 6
+      },
+      "place": {
+        "at": [
+          1600.0,
+          4000.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "AB_PF_Q33_0": {
+      "cell": "AirbridgeConnection",
+      "params": {
+        "a": 10,
+        "b": 6,
+        "a2": 10,
+        "b2": 6
+      },
+      "place": {
+        "at": [
+          5850.0,
+          8645.159432131613
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "AB_XY_Q12_0": {
+      "cell": "AirbridgeConnection",
+      "params": {
+        "a": 10,
+        "b": 6,
+        "a2": 10,
+        "b2": 6
+      },
+      "place": {
+        "at": [
+          4096.067215360048,
+          12186.237258422947
+        ],
+        "rot": -45.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "AB_XY_Q13_0": {
+      "cell": "AirbridgeConnection",
+      "params": {
+        "a": 10,
+        "b": 6,
+        "a2": 10,
+        "b2": 6
+      },
+      "place": {
+        "at": [
+          9212.14841057511,
+          12144.452884358105
+        ],
+        "rot": -135.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "AB_Z_Q22_0": {
+      "cell": "AirbridgeConnection",
+      "params": {
+        "a": 10,
+        "b": 6,
+        "a2": 10,
+        "b2": 6
+      },
+      "place": {
+        "at": [
+          4674.285860586444,
+          11004.536649352642
+        ],
+        "rot": -45.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "AB_Z_Q22_1": {
+      "cell": "AirbridgeConnection",
+      "params": {
+        "a": 10,
+        "b": 6,
+        "a2": 10,
+        "b2": 6
+      },
+      "place": {
+        "at": [
+          5850.0,
+          9512.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "AB_XY_Q22_0": {
+      "cell": "AirbridgeConnection",
+      "params": {
+        "a": 10,
+        "b": 6,
+        "a2": 10,
+        "b2": 6
+      },
+      "place": {
+        "at": [
+          4151.026842508399,
+          10481.277631274597
+        ],
+        "rot": -45.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "AB_Z_Q23_0": {
+      "cell": "AirbridgeConnection",
+      "params": {
+        "a": 10,
+        "b": 6,
+        "a2": 10,
+        "b2": 6
+      },
+      "place": {
+        "at": [
+          8716.35330033311,
+          11045.175810272198
+        ],
+        "rot": -135.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "AB_Z_Q23_1": {
+      "cell": "AirbridgeConnection",
+      "params": {
+        "a": 10,
+        "b": 6,
+        "a2": 10,
+        "b2": 6
+      },
+      "place": {
+        "at": [
+          7500.0,
+          9512.5
+        ],
+        "rot": 180.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "AB_XY_Q23_0": {
+      "cell": "AirbridgeConnection",
+      "params": {
+        "a": 10,
+        "b": 6,
+        "a2": 10,
+        "b2": 6
+      },
+      "place": {
+        "at": [
+          9239.612318411157,
+          10521.916792194152
+        ],
+        "rot": -135.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "AB_Z_Q24_0": {
+      "cell": "AirbridgeConnection",
+      "params": {
+        "a": 10,
+        "b": 6,
+        "a2": 10,
+        "b2": 6
+      },
+      "place": {
+        "at": [
+          10312.890226412273,
+          10991.712736351361
+        ],
+        "rot": -135.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "AB_XY_Q24_0": {
+      "cell": "AirbridgeConnection",
+      "params": {
+        "a": 10,
+        "b": 6,
+        "a2": 10,
+        "b2": 6
+      },
+      "place": {
+        "at": [
+          10836.14924449032,
+          10468.453718273315
+        ],
+        "rot": -135.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "AB_Z_Q25_0": {
+      "cell": "AirbridgeConnection",
+      "params": {
+        "a": 10,
+        "b": 6,
+        "a2": 10,
+        "b2": 6
+      },
+      "place": {
+        "at": [
+          12045.409318768348,
+          11074.231828707434
+        ],
+        "rot": -135.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "AB_Z_Q31_0": {
+      "cell": "AirbridgeConnection",
+      "params": {
+        "a": 10,
+        "b": 6,
+        "a2": 10,
+        "b2": 6
+      },
+      "place": {
+        "at": [
+          2997.569375167106,
+          9381.25313477198
+        ],
+        "rot": -45.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "AB_Z_Q32_0": {
+      "cell": "AirbridgeConnection",
+      "params": {
+        "a": 10,
+        "b": 6,
+        "a2": 10,
+        "b2": 6
+      },
+      "place": {
+        "at": [
+          4699.596215194237,
+          9329.226294744849
+        ],
+        "rot": -45.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "AB_Z_Q32_1": {
+      "cell": "AirbridgeConnection",
+      "params": {
+        "a": 10,
+        "b": 6,
+        "a2": 10,
+        "b2": 6
+      },
+      "place": {
+        "at": [
+          5850.0,
+          7862.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "AB_XY_Q32_0": {
+      "cell": "AirbridgeConnection",
+      "params": {
+        "a": 10,
+        "b": 6,
+        "a2": 10,
+        "b2": 6
+      },
+      "place": {
+        "at": [
+          4176.337197116191,
+          8805.967276666805
+        ],
+        "rot": -45.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "AB_Z_Q33_0": {
+      "cell": "AirbridgeConnection",
+      "params": {
+        "a": 10,
+        "b": 6,
+        "a2": 10,
+        "b2": 6
+      },
+      "place": {
+        "at": [
+          6664.33557817618,
+          10800.0
+        ],
+        "rot": -88.631314,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "AB_Z_Q33_1": {
+      "cell": "AirbridgeConnection",
+      "params": {
+        "a": 10,
+        "b": 6,
+        "a2": 10,
+        "b2": 6
+      },
+      "place": {
+        "at": [
+          6703.758418160675,
+          9150.0
+        ],
+        "rot": -88.631314,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "AB_Z_Q33_2": {
+      "cell": "AirbridgeConnection",
+      "params": {
+        "a": 10,
+        "b": 6,
+        "a2": 10,
+        "b2": 6
+      },
+      "place": {
+        "at": [
+          7500.0,
+          7862.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "AB_XY_Q33_0": {
+      "cell": "AirbridgeConnection",
+      "params": {
+        "a": 10,
+        "b": 6,
+        "a2": 10,
+        "b2": 6
+      },
+      "place": {
+        "at": [
+          4200.0,
+          7000.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "AB_XY_Q33_1": {
+      "cell": "AirbridgeConnection",
+      "params": {
+        "a": 10,
+        "b": 6,
+        "a2": 10,
+        "b2": 6
+      },
+      "place": {
+        "at": [
+          5850.0,
+          7000.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "AB_XY_Q33_2": {
+      "cell": "AirbridgeConnection",
+      "params": {
+        "a": 10,
+        "b": 6,
+        "a2": 10,
+        "b2": 6
+      },
+      "place": {
+        "at": [
+          6475.221000091344,
+          7500.0
+        ],
+        "rot": 87.112334,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "AB_Z_Q34_0": {
+      "cell": "AirbridgeConnection",
+      "params": {
+        "a": 10,
+        "b": 6,
+        "a2": 10,
+        "b2": 6
+      },
+      "place": {
+        "at": [
+          10300.403784805763,
+          5670.773705255151
+        ],
+        "rot": 135.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "AB_Z_Q34_1": {
+      "cell": "AirbridgeConnection",
+      "params": {
+        "a": 10,
+        "b": 6,
+        "a2": 10,
+        "b2": 6
+      },
+      "place": {
+        "at": [
+          9150.0,
+          7137.5
+        ],
+        "rot": 180.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "AB_XY_Q34_0": {
+      "cell": "AirbridgeConnection",
+      "params": {
+        "a": 10,
+        "b": 6,
+        "a2": 10,
+        "b2": 6
+      },
+      "place": {
+        "at": [
+          10823.66280288381,
+          6194.032723333196
+        ],
+        "rot": 135.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "AB_Z_Q35_0": {
+      "cell": "AirbridgeConnection",
+      "params": {
+        "a": 10,
+        "b": 6,
+        "a2": 10,
+        "b2": 6
+      },
+      "place": {
+        "at": [
+          11975.714139413556,
+          5645.463350647358
+        ],
+        "rot": 135.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "AB_Z_Q41_0": {
+      "cell": "AirbridgeConnection",
+      "params": {
+        "a": 10,
+        "b": 6,
+        "a2": 10,
+        "b2": 6
+      },
+      "place": {
+        "at": [
+          2954.5906812316516,
+          3925.7681712925664
+        ],
+        "rot": 45.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "AB_Z_Q42_0": {
+      "cell": "AirbridgeConnection",
+      "params": {
+        "a": 10,
+        "b": 6,
+        "a2": 10,
+        "b2": 6
+      },
+      "place": {
+        "at": [
+          4661.110607502936,
+          3982.28809756385
+        ],
+        "rot": 45.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "AB_XY_Q42_0": {
+      "cell": "AirbridgeConnection",
+      "params": {
+        "a": 10,
+        "b": 6,
+        "a2": 10,
+        "b2": 6
+      },
+      "place": {
+        "at": [
+          4137.85158942489,
+          4505.547115641895
+        ],
+        "rot": 45.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "AB_Z_Q43_0": {
+      "cell": "AirbridgeConnection",
+      "params": {
+        "a": 10,
+        "b": 6,
+        "a2": 10,
+        "b2": 6
+      },
+      "place": {
+        "at": [
+          6337.109773587725,
+          4008.2872636486395
+        ],
+        "rot": 45.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "AB_Z_Q43_1": {
+      "cell": "AirbridgeConnection",
+      "params": {
+        "a": 10,
+        "b": 6,
+        "a2": 10,
+        "b2": 6
+      },
+      "place": {
+        "at": [
+          7500.0,
+          5487.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "AB_XY_Q43_0": {
+      "cell": "AirbridgeConnection",
+      "params": {
+        "a": 10,
+        "b": 6,
+        "a2": 10,
+        "b2": 6
+      },
+      "place": {
+        "at": [
+          5813.85075550968,
+          4531.546281726685
+        ],
+        "rot": 45.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "AB_Z_Q44_0": {
+      "cell": "AirbridgeConnection",
+      "params": {
+        "a": 10,
+        "b": 6,
+        "a2": 10,
+        "b2": 6
+      },
+      "place": {
+        "at": [
+          10352.430624832892,
+          3968.7468652280213
+        ],
+        "rot": 135.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "AB_Z_Q44_1": {
+      "cell": "AirbridgeConnection",
+      "params": {
+        "a": 10,
+        "b": 6,
+        "a2": 10,
+        "b2": 6
+      },
+      "place": {
+        "at": [
+          9150.0,
+          5487.5
+        ],
+        "rot": 180.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "AB_XY_Q44_0": {
+      "cell": "AirbridgeConnection",
+      "params": {
+        "a": 10,
+        "b": 6,
+        "a2": 10,
+        "b2": 6
+      },
+      "place": {
+        "at": [
+          10875.689642910938,
+          4492.005883306067
+        ],
+        "rot": 135.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "AB_XY_Q53_0": {
+      "cell": "AirbridgeConnection",
+      "params": {
+        "a": 10,
+        "b": 6,
+        "a2": 10,
+        "b2": 6
+      },
+      "place": {
+        "at": [
+          5760.387681588843,
+          2828.0832078058484
+        ],
+        "rot": 45.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "AB_XY_Q54_0": {
+      "cell": "AirbridgeConnection",
+      "params": {
+        "a": 10,
+        "b": 6,
+        "a2": 10,
+        "b2": 6
+      },
+      "place": {
+        "at": [
+          10903.932784639952,
+          2813.762741577053
+        ],
+        "rot": 135.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    }
+  },
+  "routes": {
+    "CPL_Q12_Q13": {
+      "from": "Q12.pin_cpl1",
+      "to": "Q13.pin_cpl3",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "CPL_Q12_Q22": {
+      "from": "Q12.pin_cpl4",
+      "to": "Q22.pin_cpl2",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "CPL_Q13_Q23": {
+      "from": "Q13.pin_cpl4",
+      "to": "Q23.pin_cpl2",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "CPL_Q22_Q23": {
+      "from": "Q22.pin_cpl1",
+      "to": "Q23.pin_cpl3",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "CPL_Q22_Q32": {
+      "from": "Q22.pin_cpl4",
+      "to": "Q32.pin_cpl2",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "CPL_Q23_Q24": {
+      "from": "Q23.pin_cpl1",
+      "to": "Q24.pin_cpl3",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "CPL_Q23_Q33": {
+      "from": "Q23.pin_cpl4",
+      "to": "Q33.pin_cpl2",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "CPL_Q24_Q25": {
+      "from": "Q24.pin_cpl1",
+      "to": "Q25.pin_cpl3",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "CPL_Q24_Q34": {
+      "from": "Q24.pin_cpl4",
+      "to": "Q34.pin_cpl2",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "CPL_Q25_Q35": {
+      "from": "Q25.pin_cpl4",
+      "to": "Q35.pin_cpl2",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "CPL_Q31_Q32": {
+      "from": "Q31.pin_cpl1",
+      "to": "Q32.pin_cpl3",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "CPL_Q31_Q41": {
+      "from": "Q31.pin_cpl4",
+      "to": "Q41.pin_cpl2",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "CPL_Q32_Q33": {
+      "from": "Q32.pin_cpl1",
+      "to": "Q33.pin_cpl3",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "CPL_Q32_Q42": {
+      "from": "Q32.pin_cpl4",
+      "to": "Q42.pin_cpl2",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "CPL_Q33_Q34": {
+      "from": "Q33.pin_cpl1",
+      "to": "Q34.pin_cpl3",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "CPL_Q33_Q43": {
+      "from": "Q33.pin_cpl4",
+      "to": "Q43.pin_cpl2",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "CPL_Q34_Q35": {
+      "from": "Q34.pin_cpl1",
+      "to": "Q35.pin_cpl3",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "CPL_Q34_Q44": {
+      "from": "Q34.pin_cpl4",
+      "to": "Q44.pin_cpl2",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "CPL_Q41_Q42": {
+      "from": "Q41.pin_cpl1",
+      "to": "Q42.pin_cpl3",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "CPL_Q42_Q43": {
+      "from": "Q42.pin_cpl1",
+      "to": "Q43.pin_cpl3",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "CPL_Q43_Q44": {
+      "from": "Q43.pin_cpl1",
+      "to": "Q44.pin_cpl3",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "CPL_Q43_Q53": {
+      "from": "Q43.pin_cpl4",
+      "to": "Q53.pin_cpl2",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "CPL_Q44_Q54": {
+      "from": "Q44.pin_cpl4",
+      "to": "Q54.pin_cpl2",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "CPL_Q53_Q54": {
+      "from": "Q53.pin_cpl1",
+      "to": "Q54.pin_cpl3",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RO_Q12": {
+      "from": "Q12.pin_rdout",
+      "to": {
+        "at": [
+          4421.33633470586,
+          12002.389495314445
+        ],
+        "dir": -45.0,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          4492.047012824515,
+          12157.952987175486
+        ],
+        [
+          4435.478470329592,
+          12101.384444680562
+        ],
+        [
+          5333.8120497338205,
+          11203.050865276333
+        ],
+        [
+          5277.243507238896,
+          11146.482322781409
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 35.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PF_Q12": {
+      "from": "T_Q12.second_end",
+      "to": {
+        "at": [
+          5560.352953741453,
+          11627.048199960322
+        ],
+        "dir": -45.0,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          5489.375541594861,
+          11358.614357137372
+        ],
+        [
+          5545.944084089784,
+          11415.182899632297
+        ],
+        [
+          4647.6105046855555,
+          12313.516479036525
+        ],
+        [
+          4704.17904718048,
+          12370.08502153145
+        ],
+        [
+          5602.512626584708,
+          11471.75144212722
+        ],
+        [
+          5659.081169079632,
+          11528.319984622143
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 35.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RO_Q13": {
+      "from": "Q13.pin_rdout",
+      "to": {
+        "at": [
+          8886.8792912293,
+          11960.605121249602
+        ],
+        "dir": -135.00000000000009,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          8816.168613110643,
+          12116.168613110643
+        ],
+        [
+          8872.737155605568,
+          12059.60007061572
+        ],
+        [
+          8016.1879502661795,
+          11203.050865276333
+        ],
+        [
+          8072.756492761104,
+          11146.482322781409
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 35.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PF_Q13": {
+      "from": "T_Q13.second_end",
+      "to": {
+        "at": [
+          7791.213960285978,
+          11628.615113987755
+        ],
+        "dir": -134.9999999999995,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          7860.624458405139,
+          11358.614357137372
+        ],
+        [
+          7804.055915910216,
+          11415.182899632297
+        ],
+        [
+          8660.605121249602,
+          12271.732104971683
+        ],
+        [
+          8604.03657875468,
+          12328.300647466607
+        ],
+        [
+          7747.487373415292,
+          11471.75144212722
+        ],
+        [
+          7690.918830920368,
+          11528.319984622143
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 35.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RO_Q22": {
+      "from": "Q22.pin_rdout",
+      "to": {
+        "at": [
+          4476.29596185421,
+          10297.429868166095
+        ],
+        "dir": -45.0,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          4547.006639972865,
+          10452.993360027134
+        ],
+        [
+          4490.4380974779415,
+          10396.424817532212
+        ],
+        [
+          5333.8120497338205,
+          9553.050865276333
+        ],
+        [
+          5277.243507238896,
+          9496.482322781409
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 35.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PF_Q22": {
+      "from": "T_Q22.second_end",
+      "to": {
+        "at": [
+          5558.291967723391,
+          9979.109185978385
+        ],
+        "dir": -45.00000000000026,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          5489.375541594861,
+          9708.614357137372
+        ],
+        [
+          5545.944084089784,
+          9765.182899632297
+        ],
+        [
+          4702.570131833905,
+          10608.556851888176
+        ],
+        [
+          4759.138674328829,
+          10665.1253943831
+        ],
+        [
+          5602.512626584708,
+          9821.75144212722
+        ],
+        [
+          5659.081169079632,
+          9878.319984622143
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 35.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RO_Q23": {
+      "from": "Q23.pin_rdout",
+      "to": {
+        "at": [
+          8914.343199065344,
+          10338.06902908565
+        ],
+        "dir": -135.0,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          8843.632520946689,
+          10493.632520946689
+        ],
+        [
+          8900.201063441613,
+          10437.063978451766
+        ],
+        [
+          8016.1879502661795,
+          9553.050865276333
+        ],
+        [
+          8072.756492761104,
+          9496.482322781409
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 35.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PF_Q23": {
+      "from": "T_Q23.second_end",
+      "to": {
+        "at": [
+          7790.1840637421255,
+          9977.585217443902
+        ],
+        "dir": -134.9999999999995,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          7860.624458405139,
+          9708.614357137372
+        ],
+        [
+          7804.055915910216,
+          9765.182899632297
+        ],
+        [
+          8688.06902908565,
+          10649.19601280773
+        ],
+        [
+          8631.500486590725,
+          10705.764555302654
+        ],
+        [
+          7747.487373415292,
+          9821.75144212722
+        ],
+        [
+          7690.918830920368,
+          9878.319984622143
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 35.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RO_Q24": {
+      "from": "Q24.pin_rdout",
+      "to": {
+        "at": [
+          10510.880125144507,
+          10284.605955164812
+        ],
+        "dir": -135.0,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          10440.169447025854,
+          10440.169447025854
+        ],
+        [
+          10496.737989520778,
+          10383.60090453093
+        ],
+        [
+          9666.18795026618,
+          9553.050865276333
+        ],
+        [
+          9722.756492761104,
+          9496.482322781409
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 35.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PF_Q24": {
+      "from": "T_Q24.second_end",
+      "to": {
+        "at": [
+          9442.188929014157,
+          9979.590082715933
+        ],
+        "dir": -135.0,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          9510.62445840514,
+          9708.614357137372
+        ],
+        [
+          9454.055915910216,
+          9765.182899632297
+        ],
+        [
+          10284.605955164812,
+          10595.732938886893
+        ],
+        [
+          10228.03741266989,
+          10652.301481381817
+        ],
+        [
+          9397.487373415292,
+          9821.75144212722
+        ],
+        [
+          9340.918830920367,
+          9878.319984622143
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 35.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RO_Q25": {
+      "from": "Q25.pin_rdout",
+      "to": {
+        "at": [
+          12243.39921750058,
+          10367.125047520887
+        ],
+        "dir": -134.99999999999994,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          12172.688539381927,
+          10522.688539381927
+        ],
+        [
+          12229.25708187685,
+          10466.119996887002
+        ],
+        [
+          11316.18795026618,
+          9553.050865276333
+        ],
+        [
+          11372.756492761104,
+          9496.482322781409
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 35.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PF_Q25": {
+      "from": "T_Q25.second_end",
+      "to": {
+        "at": [
+          11089.094463050806,
+          9976.495616752582
+        ],
+        "dir": -135.0,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          11160.62445840514,
+          9708.614357137372
+        ],
+        [
+          11104.055915910216,
+          9765.182899632297
+        ],
+        [
+          12017.125047520885,
+          10678.252031242968
+        ],
+        [
+          11960.556505025963,
+          10734.82057373789
+        ],
+        [
+          11047.487373415292,
+          9821.75144212722
+        ],
+        [
+          10990.918830920367,
+          9878.319984622143
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 35.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RO_Q31": {
+      "from": "Q31.pin_rdout",
+      "to": {
+        "at": [
+          2799.579476434873,
+          8674.146353585431
+        ],
+        "dir": -44.999999999999964,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          2870.2901545535283,
+          8829.709845446472
+        ],
+        [
+          2813.7216120586045,
+          8773.141302951548
+        ],
+        [
+          3683.8120497338205,
+          7903.050865276332
+        ],
+        [
+          3627.243507238896,
+          7846.482322781409
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 35.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PF_Q31": {
+      "from": "T_Q31.second_end",
+      "to": {
+        "at": [
+          3909.2938359266163,
+          8328.10731777516
+        ],
+        "dir": -45.00000000000039,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          3839.375541594861,
+          8058.614357137372
+        ],
+        [
+          3895.9440840897846,
+          8115.1828996322965
+        ],
+        [
+          3025.8536464145686,
+          8985.273337307512
+        ],
+        [
+          3082.4221889094924,
+          9041.841879802436
+        ],
+        [
+          3952.5126265847084,
+          8171.75144212722
+        ],
+        [
+          4009.081169079632,
+          8228.319984622143
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 35.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RO_Q32": {
+      "from": "Q32.pin_rdout",
+      "to": {
+        "at": [
+          4501.606316462003,
+          8622.119513558302
+        ],
+        "dir": -45.0,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          4572.316994580658,
+          8777.683005419341
+        ],
+        [
+          4515.748452085734,
+          8721.114462924419
+        ],
+        [
+          5333.8120497338205,
+          7903.050865276332
+        ],
+        [
+          5277.243507238896,
+          7846.482322781409
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 35.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PF_Q32": {
+      "from": "T_Q32.second_end",
+      "to": {
+        "at": [
+          5557.342829425599,
+          8330.058324276177
+        ],
+        "dir": -45.00000000000026,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          5489.375541594861,
+          8058.614357137372
+        ],
+        [
+          5545.944084089784,
+          8115.1828996322965
+        ],
+        [
+          4727.880486441698,
+          8933.246497280383
+        ],
+        [
+          4784.449028936622,
+          8989.815039775307
+        ],
+        [
+          5602.512626584708,
+          8171.75144212722
+        ],
+        [
+          5659.081169079632,
+          8228.319984622143
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 35.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RO_Q33": {
+      "from": "Q33.pin_rdout",
+      "to": {
+        "at": [
+          6313.719597492021,
+          8233.732062548588
+        ],
+        "dir": -45.0,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          6497.567360600524,
+          8502.432639399476
+        ],
+        [
+          6440.9988181056,
+          8445.864096904552
+        ],
+        [
+          6983.8120497338205,
+          7903.050865276332
+        ],
+        [
+          6927.243507238896,
+          7846.482322781409
+        ],
+        [
+          6384.430275610676,
+          8389.29555440963
+        ],
+        [
+          6327.861733115752,
+          8332.727011914705
+        ],
+        [
+          6870.674964743973,
+          7789.913780286484
+        ],
+        [
+          6814.106422249049,
+          7733.345237791561
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 35.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PF_Q33": {
+      "from": "T_Q33.second_end",
+      "to": "AB_PF_Q33_0.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          5694.840567868387,
+          8645.159432131613
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 35.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PF_Q33_1": {
+      "from": "AB_PF_Q33_0.b",
+      "to": {
+        "at": [
+          6896.20709371419,
+          8641.194059987587
+        ],
+        "dir": -45.00000000000013,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          6552.83046660062,
+          8645.159432131613
+        ],
+        [
+          7139.375541594861,
+          8058.614357137372
+        ],
+        [
+          7195.944084089784,
+          8115.1828996322965
+        ],
+        [
+          6524.192641962564,
+          8786.934341759517
+        ],
+        [
+          6580.7611844574885,
+          8843.50288425444
+        ],
+        [
+          7252.512626584708,
+          8171.75144212722
+        ],
+        [
+          7309.081169079632,
+          8228.319984622143
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 35.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RO_Q34": {
+      "from": "Q34.pin_rdout",
+      "to": {
+        "at": [
+          10498.393683537997,
+          6377.880486441698
+        ],
+        "dir": 135.0,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          10427.683005419341,
+          6222.316994580658
+        ],
+        [
+          10484.251547914266,
+          6278.885537075582
+        ],
+        [
+          9666.18795026618,
+          7096.949134723668
+        ],
+        [
+          9722.756492761104,
+          7153.517677218591
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 35.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PF_Q34": {
+      "from": "T_Q34.second_end",
+      "to": {
+        "at": [
+          9442.6571705744,
+          6669.941675723823
+        ],
+        "dir": 135.00000000000026,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          9510.62445840514,
+          6941.385642862628
+        ],
+        [
+          9454.055915910216,
+          6884.8171003677035
+        ],
+        [
+          10272.119513558302,
+          6066.753502719617
+        ],
+        [
+          10215.550971063378,
+          6010.184960224694
+        ],
+        [
+          9397.487373415292,
+          6828.24855787278
+        ],
+        [
+          9340.918830920367,
+          6771.680015377856
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 35.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RO_Q35": {
+      "from": "Q35.pin_rdout",
+      "to": {
+        "at": [
+          12173.70403814579,
+          6352.570131833905
+        ],
+        "dir": 135.0,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          12102.993360027134,
+          6197.006639972865
+        ],
+        [
+          12159.561902522059,
+          6253.575182467789
+        ],
+        [
+          11316.18795026618,
+          7096.949134723668
+        ],
+        [
+          11372.756492761104,
+          7153.517677218591
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 35.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PF_Q35": {
+      "from": "T_Q35.second_end",
+      "to": {
+        "at": [
+          11091.708032276609,
+          6670.890814021615
+        ],
+        "dir": 135.00000000000026,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          11160.62445840514,
+          6941.385642862628
+        ],
+        [
+          11104.055915910216,
+          6884.8171003677035
+        ],
+        [
+          11947.429868166095,
+          6041.4431481118245
+        ],
+        [
+          11890.86132567117,
+          5984.874605616901
+        ],
+        [
+          11047.487373415292,
+          6828.24855787278
+        ],
+        [
+          10990.918830920367,
+          6771.680015377856
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 35.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RO_Q41": {
+      "from": "Q41.pin_rdout",
+      "to": {
+        "at": [
+          2756.6007824994185,
+          4632.874952479114
+        ],
+        "dir": 45.0,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          2827.3114606180734,
+          4477.311460618073
+        ],
+        [
+          2770.7429181231496,
+          4533.880003112998
+        ],
+        [
+          3683.8120497338205,
+          5446.949134723668
+        ],
+        [
+          3627.243507238896,
+          5503.517677218591
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 35.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PF_Q41": {
+      "from": "T_Q41.second_end",
+      "to": {
+        "at": [
+          3910.9055369491953,
+          5023.504383247419
+        ],
+        "dir": 44.999999999999865,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          3839.375541594861,
+          5291.385642862628
+        ],
+        [
+          3895.9440840897846,
+          5234.8171003677035
+        ],
+        [
+          2982.8749524791137,
+          4321.747968757033
+        ],
+        [
+          3039.443494974038,
+          4265.179426262109
+        ],
+        [
+          3952.5126265847084,
+          5178.24855787278
+        ],
+        [
+          4009.081169079632,
+          5121.680015377856
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 35.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RO_Q42": {
+      "from": "Q42.pin_rdout",
+      "to": {
+        "at": [
+          4463.120708770702,
+          4689.394878750397
+        ],
+        "dir": 45.0,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          4533.8313868893565,
+          4533.8313868893565
+        ],
+        [
+          4477.262844394433,
+          4590.399929384281
+        ],
+        [
+          5333.8120497338205,
+          5446.949134723668
+        ],
+        [
+          5277.243507238896,
+          5503.517677218591
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 35.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PF_Q42": {
+      "from": "T_Q42.second_end",
+      "to": {
+        "at": [
+          5558.786039714022,
+          5021.384886012245
+        ],
+        "dir": 45.00000000000026,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          5489.375541594861,
+          5291.385642862628
+        ],
+        [
+          5545.944084089784,
+          5234.8171003677035
+        ],
+        [
+          4689.394878750398,
+          4378.267895028316
+        ],
+        [
+          4745.963421245321,
+          4321.699352533393
+        ],
+        [
+          5602.512626584708,
+          5178.24855787278
+        ],
+        [
+          5659.081169079632,
+          5121.680015377856
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 35.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RO_Q43": {
+      "from": "Q43.pin_rdout",
+      "to": {
+        "at": [
+          6139.119874855492,
+          4715.394044835187
+        ],
+        "dir": 45.0,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          6209.8305529741465,
+          4559.8305529741465
+        ],
+        [
+          6153.262010479223,
+          4616.399095469071
+        ],
+        [
+          6983.8120497338205,
+          5446.949134723668
+        ],
+        [
+          6927.243507238896,
+          5503.517677218591
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 35.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PF_Q43": {
+      "from": "T_Q43.second_end",
+      "to": {
+        "at": [
+          7207.811070985844,
+          5020.409917284067
+        ],
+        "dir": 45.00000000000026,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          7139.375541594861,
+          5291.385642862628
+        ],
+        [
+          7195.944084089784,
+          5234.8171003677035
+        ],
+        [
+          6365.394044835187,
+          4404.267061113106
+        ],
+        [
+          6421.962587330111,
+          4347.698518618183
+        ],
+        [
+          7252.512626584708,
+          5178.24855787278
+        ],
+        [
+          7309.081169079632,
+          5121.680015377856
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 35.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RO_Q44": {
+      "from": "Q44.pin_rdout",
+      "to": {
+        "at": [
+          10550.420523565128,
+          4675.853646414568
+        ],
+        "dir": 135.00000000000003,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          10479.709845446472,
+          4520.290154553528
+        ],
+        [
+          10536.278387941395,
+          4576.858697048452
+        ],
+        [
+          9666.18795026618,
+          5446.949134723668
+        ],
+        [
+          9722.756492761104,
+          5503.517677218591
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 35.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PF_Q44": {
+      "from": "T_Q44.second_end",
+      "to": {
+        "at": [
+          9440.706164073383,
+          5021.89268222484
+        ],
+        "dir": 135.0,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          9510.62445840514,
+          5291.385642862628
+        ],
+        [
+          9454.055915910216,
+          5234.8171003677035
+        ],
+        [
+          10324.146353585431,
+          4364.726662692488
+        ],
+        [
+          10267.577811090508,
+          4308.158120197564
+        ],
+        [
+          9397.487373415292,
+          5178.24855787278
+        ],
+        [
+          9340.918830920367,
+          5121.680015377856
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 35.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RO_Q53": {
+      "from": "Q53.pin_rdout",
+      "to": {
+        "at": [
+          6085.656800934656,
+          3011.930970914351
+        ],
+        "dir": 45.00000000000002,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          6156.3674790533105,
+          2856.3674790533105
+        ],
+        [
+          6099.798936558387,
+          2912.9360215482343
+        ],
+        [
+          6983.8120497338205,
+          3796.949134723668
+        ],
+        [
+          6927.243507238896,
+          3853.517677218592
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 35.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PF_Q53": {
+      "from": "T_Q53.second_end",
+      "to": {
+        "at": [
+          7209.8159362578745,
+          3372.414782556098
+        ],
+        "dir": 45.000000000000135,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          7139.375541594861,
+          3641.3856428626273
+        ],
+        [
+          7195.944084089784,
+          3584.8171003677035
+        ],
+        [
+          6311.930970914351,
+          2700.80398719227
+        ],
+        [
+          6368.499513409275,
+          2644.2354446973463
+        ],
+        [
+          7252.512626584708,
+          3528.2485578727797
+        ],
+        [
+          7309.081169079632,
+          3471.680015377856
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 35.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RO_Q54": {
+      "from": "Q54.pin_rdout",
+      "to": {
+        "at": [
+          10578.66366529414,
+          2997.6105046855555
+        ],
+        "dir": 135.0,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          10507.952987175486,
+          2842.047012824515
+        ],
+        [
+          10564.521529670408,
+          2898.615555319439
+        ],
+        [
+          9666.18795026618,
+          3796.949134723668
+        ],
+        [
+          9722.756492761104,
+          3853.517677218592
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 35.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PF_Q54": {
+      "from": "T_Q54.second_end",
+      "to": {
+        "at": [
+          9439.647046258546,
+          3372.9518000396774
+        ],
+        "dir": 135.0,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          9510.62445840514,
+          3641.3856428626273
+        ],
+        [
+          9454.055915910216,
+          3584.8171003677035
+        ],
+        [
+          10352.389495314445,
+          2686.483520963475
+        ],
+        [
+          10295.82095281952,
+          2629.9149784685505
+        ],
+        [
+          9397.487373415292,
+          3528.2485578727797
+        ],
+        [
+          9340.918830920367,
+          3471.680015377856
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 10.0,
+      "r": 35.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FL1_in": {
+      "from": "L44.a",
+      "to": "CIN_1.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          1221.25,
+          9000.0
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FL1_0": {
+      "from": "CIN_1.b",
+      "to": "T_Q31.prime_start",
+      "type": "cpw",
+      "nodes": [
+        [
+          1907.5,
+          9000.0
+        ],
+        [
+          2344.2027093507368,
+          8727.886468955609
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 40.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FL1_1": {
+      "from": "T_Q31.prime_end",
+      "to": "T_Q32.prime_start",
+      "type": "cpw",
+      "nodes": [
+        [
+          3170.1034297766246,
+          9553.787189381497
+        ],
+        [
+          4046.2295493778656,
+          8675.859628928478
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 40.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FL1_2": {
+      "from": "T_Q32.prime_end",
+      "to": "T_Q33.prime_start",
+      "type": "cpw",
+      "nodes": [
+        [
+          4794.348523873234,
+          9423.978603423846
+        ],
+        [
+          5441.1055556972715,
+          8681.105555697271
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 40.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FL1_3": {
+      "from": "T_Q33.prime_end",
+      "to": "T_Q22.prime_start",
+      "type": "cpw",
+      "nodes": [
+        [
+          5658.8944443027285,
+          8898.894444302729
+        ],
+        [
+          4054.8603202670274,
+          10385.111109033225
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 40.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FL1_4": {
+      "from": "T_Q22.prime_end",
+      "to": "T_Q12.prime_start",
+      "type": "cpw",
+      "nodes": [
+        [
+          4846.819915195962,
+          11177.07070396216
+        ],
+        [
+          3965.959567621723,
+          12056.129610684622
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 40.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FL1_5": {
+      "from": "T_Q12.prime_end",
+      "to": "L3.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          4791.860288047612,
+          12882.03033111051
+        ],
+        [
+          4000.0,
+          13800.0
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 40.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FL2_in": {
+      "from": "L15.a",
+      "to": "CIN_2.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          13778.75,
+          11000.0
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FL2_0": {
+      "from": "CIN_2.b",
+      "to": "T_Q25.prime_end",
+      "type": "cpw",
+      "nodes": [
+        [
+          13092.5,
+          11000.0
+        ],
+        [
+          12698.77598458472,
+          10420.865162891063
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FL2_1": {
+      "from": "T_Q25.prime_start",
+      "to": "T_Q24.prime_end",
+      "type": "cpw",
+      "nodes": [
+        [
+          11872.87526415883,
+          11246.765883316952
+        ],
+        [
+          10966.256892228645,
+          10338.34607053499
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FL2_2": {
+      "from": "T_Q24.prime_start",
+      "to": "T_Q23.prime_end",
+      "type": "cpw",
+      "nodes": [
+        [
+          10140.356171802756,
+          11164.246790960879
+        ],
+        [
+          9369.719966149481,
+          10391.809144455827
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FL2_3": {
+      "from": "T_Q23.prime_start",
+      "to": "T_Q13.prime_end",
+      "type": "cpw",
+      "nodes": [
+        [
+          8543.819245723593,
+          11217.709864881715
+        ],
+        [
+          9342.256058313435,
+          12014.34523661978
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FL2_4": {
+      "from": "T_Q13.prime_start",
+      "to": "L8.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          8516.355337887546,
+          12840.245957045669
+        ],
+        [
+          9000.0,
+          13800.0
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FL3_in": {
+      "from": "L20.a",
+      "to": "CIN_3.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          13778.75,
+          6000.0
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FL3_0": {
+      "from": "CIN_3.b",
+      "to": "T_Q35.prime_start",
+      "type": "cpw",
+      "nodes": [
+        [
+          13092.5,
+          6000.0
+        ],
+        [
+          12629.080805229927,
+          6298.8300164637285
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FL3_1": {
+      "from": "T_Q35.prime_end",
+      "to": "T_Q34.prime_start",
+      "type": "cpw",
+      "nodes": [
+        [
+          11803.180084804038,
+          5472.92929603784
+        ],
+        [
+          10953.770450622134,
+          6324.140371071521
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FL3_2": {
+      "from": "T_Q34.prime_end",
+      "to": "T_Q44.prime_start",
+      "type": "cpw",
+      "nodes": [
+        [
+          10127.869730196246,
+          5498.2396506456325
+        ],
+        [
+          11005.797290649263,
+          4622.1135310443915
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FL3_3": {
+      "from": "T_Q44.prime_end",
+      "to": "T_Q54.prime_start",
+      "type": "cpw",
+      "nodes": [
+        [
+          10179.896570223375,
+          3796.212810618503
+        ],
+        [
+          11034.040432378277,
+          2943.8703893153775
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FL3_4": {
+      "from": "T_Q54.prime_end",
+      "to": "L27.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          10208.139711952388,
+          2117.9696688894905
+        ],
+        [
+          11000.0,
+          1200.0
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FL4_in": {
+      "from": "L39.a",
+      "to": "CIN_4.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          1221.25,
+          4000.0
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FL4_0": {
+      "from": "CIN_4.b",
+      "to": "T_Q41.prime_end",
+      "type": "cpw",
+      "nodes": [
+        [
+          1907.5,
+          4000.0
+        ],
+        [
+          2301.2240154152823,
+          4579.134837108937
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FL4_1": {
+      "from": "T_Q41.prime_start",
+      "to": "T_Q42.prime_end",
+      "type": "cpw",
+      "nodes": [
+        [
+          3127.1247358411692,
+          3753.2341166830483
+        ],
+        [
+          4007.743941686566,
+          4635.65476338022
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FL4_2": {
+      "from": "T_Q42.prime_start",
+      "to": "T_Q43.prime_end",
+      "type": "cpw",
+      "nodes": [
+        [
+          4833.644662112454,
+          3809.7540429543315
+        ],
+        [
+          5683.7431077713545,
+          4661.65392946501
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FL4_3": {
+      "from": "T_Q43.prime_start",
+      "to": "T_Q53.prime_end",
+      "type": "cpw",
+      "nodes": [
+        [
+          6509.643828197243,
+          3835.7532090391214
+        ],
+        [
+          5630.2800338505185,
+          2958.1908555441732
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FL4_4": {
+      "from": "T_Q53.prime_start",
+      "to": "L32.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          6456.180754276407,
+          2132.290135118286
+        ],
+        [
+          6000.0,
+          1200.0
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q12": {
+      "from": "L4.a",
+      "to": {
+        "at": [
+          6014.402326625872,
+          10964.402326625872
+        ],
+        "dir": 66.63090797371024,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          5000.0,
+          13800.0
+        ],
+        [
+          5128.751083189722,
+          12200.071426749364
+        ],
+        [
+          5765.1471862576145,
+          11563.675323681471
+        ],
+        [
+          5600.0,
+          11162.5
+        ],
+        [
+          6100.0,
+          11162.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "XY_Q12": {
+      "from": "L2.a",
+      "to": "AB_XY_Q12_0.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          3000.0,
+          13800.0
+        ],
+        [
+          3756.9639276878193,
+          12525.340546095176
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "XY_Q12_1": {
+      "from": "AB_XY_Q12_0.b",
+      "to": {
+        "at": [
+          5618.568177105923,
+          10895.862199807456
+        ],
+        "dir": 159.0052768843611,
+        "term": 6.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          5241.888168179569,
+          11040.416305603427
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q13": {
+      "from": "L7.a",
+      "to": {
+        "at": [
+          7335.597673374128,
+          10964.402326625872
+        ],
+        "dir": 113.36909202628978,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          8000.0,
+          13800.0
+        ],
+        [
+          8221.248916810278,
+          12200.071426749364
+        ],
+        [
+          7584.8528137423855,
+          11563.675323681471
+        ],
+        [
+          7750.0,
+          11162.5
+        ],
+        [
+          7250.0,
+          11162.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "XY_Q13": {
+      "from": "L9.a",
+      "to": "AB_XY_Q13_0.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          10000.0,
+          13800.0
+        ],
+        [
+          9593.036072312181,
+          12525.340546095176
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "XY_Q13_1": {
+      "from": "AB_XY_Q13_0.b",
+      "to": {
+        "at": [
+          7731.431822894077,
+          10895.862199807456
+        ],
+        "dir": 20.994723115638923,
+        "term": 6.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          8108.111831820431,
+          11040.416305603427
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q22": {
+      "from": "L1.a",
+      "to": "AB_Z_Q22_0.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          2000.0,
+          13800.0
+        ],
+        [
+          4280.222945765864,
+          11398.59956417322
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q22_1": {
+      "from": "AB_Z_Q22_0.b",
+      "to": "AB_Z_Q22_1.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          5765.1471862576145,
+          9913.675323681471
+        ],
+        [
+          5600.0,
+          9512.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q22_2": {
+      "from": "AB_Z_Q22_1.b",
+      "to": {
+        "at": [
+          6014.402326625872,
+          9314.402326625872
+        ],
+        "dir": 66.63090797371024,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          6100.0,
+          9512.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "XY_Q22": {
+      "from": "L48.a",
+      "to": "AB_XY_Q22_0.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          1200.0,
+          13000.0
+        ],
+        [
+          3756.9639276878193,
+          10875.340546095176
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "XY_Q22_1": {
+      "from": "AB_XY_Q22_0.b",
+      "to": {
+        "at": [
+          5618.568177105923,
+          9245.862199807456
+        ],
+        "dir": 159.0052768843611,
+        "term": 6.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          5241.888168179569,
+          9390.416305603427
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q23": {
+      "from": "L10.a",
+      "to": "AB_Z_Q23_0.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          11000.0,
+          13800.0
+        ],
+        [
+          9069.777054234135,
+          11398.59956417322
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q23_1": {
+      "from": "AB_Z_Q23_0.b",
+      "to": "AB_Z_Q23_1.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          7584.8528137423855,
+          9913.675323681471
+        ],
+        [
+          7750.0,
+          9512.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q23_2": {
+      "from": "AB_Z_Q23_1.b",
+      "to": {
+        "at": [
+          7335.597673374128,
+          9314.402326625872
+        ],
+        "dir": 113.36909202628978,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          7250.0,
+          9512.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "XY_Q23": {
+      "from": "L11.a",
+      "to": "AB_XY_Q23_0.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          12000.0,
+          13800.0
+        ],
+        [
+          9593.036072312181,
+          10875.340546095176
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "XY_Q23_1": {
+      "from": "AB_XY_Q23_0.b",
+      "to": {
+        "at": [
+          7731.431822894077,
+          9245.862199807456
+        ],
+        "dir": 20.994723115638923,
+        "term": 6.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          8108.111831820431,
+          9390.416305603427
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q24": {
+      "from": "L12.a",
+      "to": "AB_Z_Q24_0.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          13000.0,
+          13800.0
+        ],
+        [
+          10719.777054234135,
+          11398.59956417322
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q24_1": {
+      "from": "AB_Z_Q24_0.b",
+      "to": {
+        "at": [
+          8985.597673374128,
+          9314.402326625872
+        ],
+        "dir": 113.36909202628978,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          9234.852813742385,
+          9913.675323681471
+        ],
+        [
+          9400.0,
+          9512.5
+        ],
+        [
+          8900.0,
+          9512.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "XY_Q24": {
+      "from": "L13.a",
+      "to": "AB_XY_Q24_0.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          13800.0,
+          13000.0
+        ],
+        [
+          11243.036072312181,
+          10875.340546095176
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "XY_Q24_1": {
+      "from": "AB_XY_Q24_0.b",
+      "to": {
+        "at": [
+          9381.431822894077,
+          9245.862199807456
+        ],
+        "dir": 20.994723115638873,
+        "term": 6.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          9758.111831820432,
+          9390.416305603427
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q25": {
+      "from": "L14.a",
+      "to": "AB_Z_Q25_0.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          13800.0,
+          12000.0
+        ],
+        [
+          12369.777054234135,
+          11398.59956417322
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q25_1": {
+      "from": "AB_Z_Q25_0.b",
+      "to": {
+        "at": [
+          10635.597673374128,
+          9314.402326625872
+        ],
+        "dir": 113.36909202628978,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          10884.852813742385,
+          9913.675323681471
+        ],
+        [
+          11050.0,
+          9512.5
+        ],
+        [
+          10550.0,
+          9512.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "XY_Q25": {
+      "from": "L16.a",
+      "to": {
+        "at": [
+          11031.431822894077,
+          9245.862199807456
+        ],
+        "dir": 20.994723115638873,
+        "term": 6.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          13800.0,
+          10000.0
+        ],
+        [
+          12044.507934888323,
+          10026.81240867132
+        ],
+        [
+          11408.111831820432,
+          9390.416305603427
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q31": {
+      "from": "L45.a",
+      "to": "AB_Z_Q31_0.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          1200.0,
+          10000.0
+        ],
+        [
+          2630.222945765864,
+          9748.59956417322
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q31_1": {
+      "from": "AB_Z_Q31_0.b",
+      "to": {
+        "at": [
+          4364.402326625872,
+          7664.402326625872
+        ],
+        "dir": 66.63090797371024,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          4115.1471862576145,
+          8263.675323681471
+        ],
+        [
+          3950.0,
+          7862.5
+        ],
+        [
+          4450.0,
+          7862.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "XY_Q31": {
+      "from": "L43.a",
+      "to": {
+        "at": [
+          3968.5681771059226,
+          7595.862199807455
+        ],
+        "dir": 159.0052768843611,
+        "term": 6.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          1200.0,
+          8000.0
+        ],
+        [
+          2955.4920651116763,
+          8376.81240867132
+        ],
+        [
+          3591.888168179569,
+          7740.416305603426
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q32": {
+      "from": "L47.a",
+      "to": "AB_Z_Q32_0.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          1200.0,
+          12000.0
+        ],
+        [
+          4280.222945765864,
+          9748.59956417322
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q32_1": {
+      "from": "AB_Z_Q32_0.b",
+      "to": "AB_Z_Q32_1.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          5765.1471862576145,
+          8263.675323681471
+        ],
+        [
+          5600.0,
+          7862.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q32_2": {
+      "from": "AB_Z_Q32_1.b",
+      "to": {
+        "at": [
+          6014.402326625872,
+          7664.402326625872
+        ],
+        "dir": 66.63090797371024,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          6100.0,
+          7862.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "XY_Q32": {
+      "from": "L46.a",
+      "to": "AB_XY_Q32_0.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          1200.0,
+          11000.0
+        ],
+        [
+          3756.9639276878193,
+          9225.340546095176
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "XY_Q32_1": {
+      "from": "AB_XY_Q32_0.b",
+      "to": {
+        "at": [
+          5618.568177105923,
+          7595.862199807455
+        ],
+        "dir": 159.0052768843611,
+        "term": 6.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          5241.888168179569,
+          7740.416305603426
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q33": {
+      "from": "L5.a",
+      "to": "AB_Z_Q33_0.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          6000.0,
+          13800.0
+        ],
+        [
+          6650.0,
+          11400.0
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q33_1": {
+      "from": "AB_Z_Q33_0.b",
+      "to": "AB_Z_Q33_1.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          6684.046998168427,
+          9975.0
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q33_2": {
+      "from": "AB_Z_Q33_1.b",
+      "to": "AB_Z_Q33_2.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          6708.040405071067,
+          8970.78210486802
+        ],
+        [
+          7415.1471862576145,
+          8263.675323681471
+        ],
+        [
+          7250.0,
+          7862.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q33_3": {
+      "from": "AB_Z_Q33_2.b",
+      "to": {
+        "at": [
+          7664.402326625872,
+          7664.402326625872
+        ],
+        "dir": 66.63090797371024,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          7750.0,
+          7862.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "XY_Q33": {
+      "from": "L42.a",
+      "to": "AB_XY_Q33_0.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          1200.0,
+          7000.0
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "XY_Q33_1": {
+      "from": "AB_XY_Q33_0.b",
+      "to": "AB_XY_Q33_1.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          5025.0,
+          7000.0
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "XY_Q33_2": {
+      "from": "AB_XY_Q33_1.b",
+      "to": "AB_XY_Q33_2.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          6450.0,
+          7000.0
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "XY_Q33_3": {
+      "from": "AB_XY_Q33_2.b",
+      "to": {
+        "at": [
+          7268.568177105923,
+          7595.862199807455
+        ],
+        "dir": 176.33005805430486,
+        "term": 6.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          6495.908370715102,
+          7910.121933088198
+        ],
+        [
+          6778.751083189722,
+          7627.279220613578
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q34": {
+      "from": "L23.a",
+      "to": "AB_Z_Q34_0.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          13800.0,
+          3000.0
+        ],
+        [
+          10719.777054234135,
+          5251.400435826779
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q34_1": {
+      "from": "AB_Z_Q34_0.b",
+      "to": "AB_Z_Q34_1.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          9234.852813742385,
+          6736.324676318529
+        ],
+        [
+          9400.0,
+          7137.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q34_2": {
+      "from": "AB_Z_Q34_1.b",
+      "to": {
+        "at": [
+          8985.597673374128,
+          7335.597673374128
+        ],
+        "dir": -113.36909202628978,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          8900.0,
+          7137.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "XY_Q34": {
+      "from": "L22.a",
+      "to": "AB_XY_Q34_0.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          13800.0,
+          4000.0
+        ],
+        [
+          11243.036072312181,
+          5774.659453904824
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "XY_Q34_1": {
+      "from": "AB_XY_Q34_0.b",
+      "to": {
+        "at": [
+          9381.431822894077,
+          7404.137800192545
+        ],
+        "dir": -20.994723115638873,
+        "term": 6.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          9758.111831820432,
+          7259.583694396574
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q35": {
+      "from": "L21.a",
+      "to": "AB_Z_Q35_0.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          13800.0,
+          5000.0
+        ],
+        [
+          12369.777054234135,
+          5251.400435826779
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q35_1": {
+      "from": "AB_Z_Q35_0.b",
+      "to": {
+        "at": [
+          10635.597673374128,
+          7335.597673374128
+        ],
+        "dir": -113.36909202628978,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          10884.852813742385,
+          6736.324676318529
+        ],
+        [
+          11050.0,
+          7137.5
+        ],
+        [
+          10550.0,
+          7137.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "XY_Q35": {
+      "from": "L19.a",
+      "to": {
+        "at": [
+          11031.431822894077,
+          7404.137800192545
+        ],
+        "dir": -20.994723115638873,
+        "term": 6.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          13800.0,
+          7000.0
+        ],
+        [
+          12044.507934888323,
+          6623.187591328681
+        ],
+        [
+          11408.111831820432,
+          7259.583694396574
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q41": {
+      "from": "L38.a",
+      "to": "AB_Z_Q41_0.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          1200.0,
+          3000.0
+        ],
+        [
+          2630.222945765864,
+          3601.400435826779
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q41_1": {
+      "from": "AB_Z_Q41_0.b",
+      "to": {
+        "at": [
+          4364.402326625872,
+          5685.597673374128
+        ],
+        "dir": -66.63090797371024,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          4115.1471862576145,
+          5086.324676318529
+        ],
+        [
+          3950.0,
+          5487.5
+        ],
+        [
+          4450.0,
+          5487.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "XY_Q41": {
+      "from": "L40.a",
+      "to": {
+        "at": [
+          3968.5681771059226,
+          5754.137800192545
+        ],
+        "dir": -159.0052768843611,
+        "term": 6.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          1200.0,
+          5000.0
+        ],
+        [
+          2955.4920651116763,
+          4973.187591328681
+        ],
+        [
+          3591.888168179569,
+          5609.583694396574
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q42": {
+      "from": "L36.a",
+      "to": "AB_Z_Q42_0.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          2000.0,
+          1200.0
+        ],
+        [
+          4280.222945765864,
+          3601.400435826779
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q42_1": {
+      "from": "AB_Z_Q42_0.b",
+      "to": {
+        "at": [
+          6014.402326625872,
+          5685.597673374128
+        ],
+        "dir": -66.63090797371024,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          5765.1471862576145,
+          5086.324676318529
+        ],
+        [
+          5600.0,
+          5487.5
+        ],
+        [
+          6100.0,
+          5487.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "XY_Q42": {
+      "from": "L37.a",
+      "to": "AB_XY_Q42_0.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          1200.0,
+          2000.0
+        ],
+        [
+          3756.9639276878193,
+          4124.659453904824
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "XY_Q42_1": {
+      "from": "AB_XY_Q42_0.b",
+      "to": {
+        "at": [
+          5618.568177105923,
+          5754.137800192545
+        ],
+        "dir": -159.0052768843611,
+        "term": 6.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          5241.888168179569,
+          5609.583694396574
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q43": {
+      "from": "L34.a",
+      "to": "AB_Z_Q43_0.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          4000.0,
+          1200.0
+        ],
+        [
+          5930.222945765864,
+          3601.400435826779
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q43_1": {
+      "from": "AB_Z_Q43_0.b",
+      "to": "AB_Z_Q43_1.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          7415.1471862576145,
+          5086.324676318529
+        ],
+        [
+          7250.0,
+          5487.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q43_2": {
+      "from": "AB_Z_Q43_1.b",
+      "to": {
+        "at": [
+          7664.402326625872,
+          5685.597673374128
+        ],
+        "dir": -66.63090797371024,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          7750.0,
+          5487.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "XY_Q43": {
+      "from": "L35.a",
+      "to": "AB_XY_Q43_0.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          3000.0,
+          1200.0
+        ],
+        [
+          5406.963927687819,
+          4124.659453904824
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "XY_Q43_1": {
+      "from": "AB_XY_Q43_0.b",
+      "to": {
+        "at": [
+          7268.568177105923,
+          5754.137800192545
+        ],
+        "dir": -159.0052768843611,
+        "term": 6.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          6891.888168179569,
+          5609.583694396574
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q44": {
+      "from": "L25.a",
+      "to": "AB_Z_Q44_0.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          13000.0,
+          1200.0
+        ],
+        [
+          10719.777054234135,
+          3601.400435826779
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q44_1": {
+      "from": "AB_Z_Q44_0.b",
+      "to": "AB_Z_Q44_1.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          9234.852813742385,
+          5086.324676318529
+        ],
+        [
+          9400.0,
+          5487.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q44_2": {
+      "from": "AB_Z_Q44_1.b",
+      "to": {
+        "at": [
+          8985.597673374128,
+          5685.597673374128
+        ],
+        "dir": -113.36909202628978,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          8900.0,
+          5487.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "XY_Q44": {
+      "from": "L24.a",
+      "to": "AB_XY_Q44_0.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          13800.0,
+          2000.0
+        ],
+        [
+          11243.036072312181,
+          4124.659453904824
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "XY_Q44_1": {
+      "from": "AB_XY_Q44_0.b",
+      "to": {
+        "at": [
+          9381.431822894077,
+          5754.137800192545
+        ],
+        "dir": -20.994723115638873,
+        "term": 6.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          9758.111831820432,
+          5609.583694396574
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q53": {
+      "from": "L31.a",
+      "to": {
+        "at": [
+          7664.402326625872,
+          4035.5976733741277
+        ],
+        "dir": -66.6309079737102,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          7000.0,
+          1200.0
+        ],
+        [
+          6778.751083189722,
+          2799.928573250636
+        ],
+        [
+          7415.1471862576145,
+          3436.324676318529
+        ],
+        [
+          7250.0,
+          3837.5
+        ],
+        [
+          7750.0,
+          3837.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "XY_Q53": {
+      "from": "L33.a",
+      "to": "AB_XY_Q53_0.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          5000.0,
+          1200.0
+        ],
+        [
+          5406.963927687819,
+          2474.6594539048237
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "XY_Q53_1": {
+      "from": "AB_XY_Q53_0.b",
+      "to": {
+        "at": [
+          7268.568177105923,
+          4104.137800192545
+        ],
+        "dir": -159.00527688436102,
+        "term": 6.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          6891.888168179569,
+          3959.5836943965737
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "Z_Q54": {
+      "from": "L28.a",
+      "to": {
+        "at": [
+          8985.597673374128,
+          4035.5976733741277
+        ],
+        "dir": -113.36909202628982,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          10000.0,
+          1200.0
+        ],
+        [
+          9871.248916810278,
+          2799.928573250636
+        ],
+        [
+          9234.852813742385,
+          3436.324676318529
+        ],
+        [
+          9400.0,
+          3837.5
+        ],
+        [
+          8900.0,
+          3837.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "XY_Q54": {
+      "from": "L26.a",
+      "to": "AB_XY_Q54_0.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          12000.0,
+          1200.0
+        ],
+        [
+          11243.036072312181,
+          2474.6594539048237
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "XY_Q54_1": {
+      "from": "AB_XY_Q54_0.b",
+      "to": {
+        "at": [
+          9381.431822894077,
+          4104.137800192545
+        ],
+        "dir": -20.994723115638934,
+        "term": 6.0
+      },
+      "type": "cpw",
+      "nodes": [
+        [
+          9758.111831820432,
+          3959.5836943965737
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 10.0,
+      "b": 6.0,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    }
+  },
+  "nets": "derived",
+  "targets": {
+    "Q12": {
+      "f_q_GHz": 5.8
+    },
+    "Q13": {
+      "f_q_GHz": 4.8
+    },
+    "Q22": {
+      "f_q_GHz": 4.85
+    },
+    "Q23": {
+      "f_q_GHz": 5.85
+    },
+    "Q24": {
+      "f_q_GHz": 4.9
+    },
+    "Q25": {
+      "f_q_GHz": 5.9
+    },
+    "Q31": {
+      "f_q_GHz": 4.95
+    },
+    "Q32": {
+      "f_q_GHz": 5.95
+    },
+    "Q33": {
+      "f_q_GHz": 5.0
+    },
+    "Q34": {
+      "f_q_GHz": 6.0
+    },
+    "Q35": {
+      "f_q_GHz": 5.05
+    },
+    "Q41": {
+      "f_q_GHz": 6.05
+    },
+    "Q42": {
+      "f_q_GHz": 5.1
+    },
+    "Q43": {
+      "f_q_GHz": 6.1
+    },
+    "Q44": {
+      "f_q_GHz": 5.15
+    },
+    "Q53": {
+      "f_q_GHz": 5.2
+    },
+    "Q54": {
+      "f_q_GHz": 6.15
+    },
+    "RO_Q12": {
+      "f_GHz": 7.0
+    },
+    "RO_Q13": {
+      "f_GHz": 7.3
+    },
+    "RO_Q22": {
+      "f_GHz": 7.4
+    },
+    "RO_Q23": {
+      "f_GHz": 7.1
+    },
+    "RO_Q24": {
+      "f_GHz": 7.5
+    },
+    "RO_Q25": {
+      "f_GHz": 6.9
+    },
+    "RO_Q31": {
+      "f_GHz": 7.2
+    },
+    "RO_Q32": {
+      "f_GHz": 7.6
+    },
+    "RO_Q33": {
+      "f_GHz": 6.8
+    },
+    "RO_Q34": {
+      "f_GHz": 7.6
+    },
+    "RO_Q35": {
+      "f_GHz": 7.4
+    },
+    "RO_Q41": {
+      "f_GHz": 6.9
+    },
+    "RO_Q42": {
+      "f_GHz": 7.3
+    },
+    "RO_Q43": {
+      "f_GHz": 7.5
+    },
+    "RO_Q44": {
+      "f_GHz": 7.2
+    },
+    "RO_Q53": {
+      "f_GHz": 7.1
+    },
+    "RO_Q54": {
+      "f_GHz": 7.0
+    }
+  },
+  "sim_groups": {
+    "Q23_Q33": {
+      "select": [
+        "Q23",
+        "Q33",
+        "CPL_Q23_Q33"
+      ],
+      "margin_um": 150.0,
+      "analyses": [
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "Q12_readout": {
+      "select": [
+        "Q12",
+        "RO_Q12",
+        "T_Q12",
+        "PF_Q12"
+      ],
+      "margin_um": 150.0,
+      "analyses": [
+        "eigenmode_epr"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "Q33_readout": {
+      "select": [
+        "Q33",
+        "RO_Q33",
+        "PF_Q33",
+        "PF_Q33_1",
+        "AB_PF_Q33_0",
+        "T_Q33"
+      ],
+      "margin_um": 150.0,
+      "analyses": [
+        "eigenmode_epr"
+      ],
+      "ports": {},
+      "settings": {
+        "airbridges": true
+      }
+    }
+  },
+  "couplings": {
+    "K_Q12": {
+      "between": [
+        "RO_Q12",
+        "PF_Q12"
+      ],
+      "type": "C",
+      "value": 1.2,
+      "fem": true,
+      "note": "readout\u2013Purcell tap (declared, not drawn)"
+    },
+    "K_Q13": {
+      "between": [
+        "RO_Q13",
+        "PF_Q13"
+      ],
+      "type": "C",
+      "value": 1.2,
+      "fem": true,
+      "note": "readout\u2013Purcell tap (declared, not drawn)"
+    },
+    "K_Q22": {
+      "between": [
+        "RO_Q22",
+        "PF_Q22"
+      ],
+      "type": "C",
+      "value": 1.2,
+      "fem": true,
+      "note": "readout\u2013Purcell tap (declared, not drawn)"
+    },
+    "K_Q23": {
+      "between": [
+        "RO_Q23",
+        "PF_Q23"
+      ],
+      "type": "C",
+      "value": 1.2,
+      "fem": true,
+      "note": "readout\u2013Purcell tap (declared, not drawn)"
+    },
+    "K_Q24": {
+      "between": [
+        "RO_Q24",
+        "PF_Q24"
+      ],
+      "type": "C",
+      "value": 1.2,
+      "fem": true,
+      "note": "readout\u2013Purcell tap (declared, not drawn)"
+    },
+    "K_Q25": {
+      "between": [
+        "RO_Q25",
+        "PF_Q25"
+      ],
+      "type": "C",
+      "value": 1.2,
+      "fem": true,
+      "note": "readout\u2013Purcell tap (declared, not drawn)"
+    },
+    "K_Q31": {
+      "between": [
+        "RO_Q31",
+        "PF_Q31"
+      ],
+      "type": "C",
+      "value": 1.2,
+      "fem": true,
+      "note": "readout\u2013Purcell tap (declared, not drawn)"
+    },
+    "K_Q32": {
+      "between": [
+        "RO_Q32",
+        "PF_Q32"
+      ],
+      "type": "C",
+      "value": 1.2,
+      "fem": true,
+      "note": "readout\u2013Purcell tap (declared, not drawn)"
+    },
+    "K_Q33": {
+      "between": [
+        "RO_Q33",
+        "PF_Q33"
+      ],
+      "type": "C",
+      "value": 1.2,
+      "fem": true,
+      "note": "readout\u2013Purcell tap (declared, not drawn)"
+    },
+    "K_Q34": {
+      "between": [
+        "RO_Q34",
+        "PF_Q34"
+      ],
+      "type": "C",
+      "value": 1.2,
+      "fem": true,
+      "note": "readout\u2013Purcell tap (declared, not drawn)"
+    },
+    "K_Q35": {
+      "between": [
+        "RO_Q35",
+        "PF_Q35"
+      ],
+      "type": "C",
+      "value": 1.2,
+      "fem": true,
+      "note": "readout\u2013Purcell tap (declared, not drawn)"
+    },
+    "K_Q41": {
+      "between": [
+        "RO_Q41",
+        "PF_Q41"
+      ],
+      "type": "C",
+      "value": 1.2,
+      "fem": true,
+      "note": "readout\u2013Purcell tap (declared, not drawn)"
+    },
+    "K_Q42": {
+      "between": [
+        "RO_Q42",
+        "PF_Q42"
+      ],
+      "type": "C",
+      "value": 1.2,
+      "fem": true,
+      "note": "readout\u2013Purcell tap (declared, not drawn)"
+    },
+    "K_Q43": {
+      "between": [
+        "RO_Q43",
+        "PF_Q43"
+      ],
+      "type": "C",
+      "value": 1.2,
+      "fem": true,
+      "note": "readout\u2013Purcell tap (declared, not drawn)"
+    },
+    "K_Q44": {
+      "between": [
+        "RO_Q44",
+        "PF_Q44"
+      ],
+      "type": "C",
+      "value": 1.2,
+      "fem": true,
+      "note": "readout\u2013Purcell tap (declared, not drawn)"
+    },
+    "K_Q53": {
+      "between": [
+        "RO_Q53",
+        "PF_Q53"
+      ],
+      "type": "C",
+      "value": 1.2,
+      "fem": true,
+      "note": "readout\u2013Purcell tap (declared, not drawn)"
+    },
+    "K_Q54": {
+      "between": [
+        "RO_Q54",
+        "PF_Q54"
+      ],
+      "type": "C",
+      "value": 1.2,
+      "fem": true,
+      "note": "readout\u2013Purcell tap (declared, not drawn)"
+    }
+  }
+}

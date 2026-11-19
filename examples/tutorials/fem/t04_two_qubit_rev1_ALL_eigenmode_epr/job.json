@@ -1,0 +1,115 @@
+{
+  "schema": "qcc-job/0.1",
+  "created": "2026-11-14T22:03:46+00:00",
+  "design": "t04_two_qubit_rev1",
+  "design_hash": "00877dc54e5e7103",
+  "group": "ALL",
+  "group_hash": "230a979bbc03b511",
+  "select": [
+    "Q1",
+    "Q2",
+    "R1",
+    "R2"
+  ],
+  "routes_in_sim": [
+    "FL",
+    "R1",
+    "R2"
+  ],
+  "analysis": "eigenmode_epr",
+  "solver": "ansys",
+  "simulation_name": "t04_two_qubit_rev1_ALL_eigenmode_epr",
+  "settings": {
+    "n_modes": 5,
+    "min_frequency": 4.5,
+    "max_delta_f": 1.0,
+    "maximum_passes": 3,
+    "minimum_passes": 1,
+    "minimum_converged_passes": 1,
+    "percent_refinement": 30,
+    "integrate_energies": false,
+    "mesh_size": {
+      "1t1_gap": 40.0,
+      "*_signal_1": 10.0,
+      "*_signal_2": 10.0
+    },
+    "pyepr": {
+      "substrate_loss_tangent": 1e-06,
+      "dielectric_surfaces": {
+        "layerMA": {
+          "tan_delta_surf": 0.001,
+          "th": 3e-09,
+          "eps_r": 10
+        },
+        "layerMS": {
+          "tan_delta_surf": 0.001,
+          "th": 3e-09,
+          "eps_r": 10
+        },
+        "layerSA": {
+          "tan_delta_surf": 0.001,
+          "th": 3e-09,
+          "eps_r": 10
+        }
+      }
+    }
+  },
+  "box_um": [
+    2657.0,
+    2470.0,
+    3954.0,
+    4621.0
+  ],
+  "ports": [
+    {
+      "number": 1,
+      "kind": "junction",
+      "name": "Q1.junction",
+      "excitation": "Q1.island"
+    },
+    {
+      "number": 2,
+      "kind": "junction",
+      "name": "Q2.junction",
+      "excitation": "Q2.island"
+    },
+    {
+      "number": 3,
+      "kind": "edge_lumped",
+      "name": "FL",
+      "excitation": "FL"
+    },
+    {
+      "number": 4,
+      "kind": "edge_lumped",
+      "name": "FL",
+      "excitation": "FL"
+    }
+  ],
+  "nets": {
+    "1": "Q1.island",
+    "2": "Q2.island",
+    "3": "FL",
+    "4": "FL#2"
+  },
+  "waveguide_length_um": 100.0,
+  "geometry": {
+    "ground_grid_shapes": 0,
+    "airbridge_shapes": 0,
+    "airbridges": "dropped"
+  },
+  "notes": [],
+  "versions": {
+    "quantcore-circuits": "0.2.0",
+    "kqcircuits": "0.0.1",
+    "klayout": "0.30.5",
+    "pdk": "quantcore_nb_sapphire_v1@3"
+  },
+  "status": "done",
+  "fem_fast": true,
+  "started": 1794693869.0997758,
+  "returncode": 0,
+  "solve_seconds": 994.2,
+  "finished": 1794695214.8747382,
+  "aedt_mode": "batch"
+}

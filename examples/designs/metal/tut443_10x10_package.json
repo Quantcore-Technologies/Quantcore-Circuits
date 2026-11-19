@@ -1,0 +1,3172 @@
+{
+  "schema": "qcc/0.1",
+  "name": "tut443_10x10_package",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      0.0,
+      0.0,
+      30000.0,
+      30000.0
+    ],
+    "launchers": null,
+    "params": {
+      "with_grid": false,
+      "name_chip": "MetalTut443"
+    }
+  },
+  "instances": {
+    "no_ground": {
+      "cell": "metal:Rectangle",
+      "params": {
+        "width": 28600,
+        "height": 28600,
+        "subtract": true
+      },
+      "place": {
+        "at": [
+          15000.0,
+          15000.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "Q_0_0": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          1500.0,
+          1500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_0_1": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          1500.0,
+          4500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_0_2": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          1500.0,
+          7500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_0_3": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          1500.0,
+          10500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_0_4": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          1500.0,
+          13500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_0_5": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          1500.0,
+          16500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_0_6": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          1500.0,
+          19500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_0_7": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          1500.0,
+          22500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_0_8": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          1500.0,
+          25500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_0_9": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          1500.0,
+          28500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_1_0": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          4500.0,
+          1500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_1_1": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          4500.0,
+          4500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_1_2": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          4500.0,
+          7500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_1_3": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          4500.0,
+          10500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_1_4": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          4500.0,
+          13500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_1_5": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          4500.0,
+          16500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_1_6": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          4500.0,
+          19500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_1_7": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          4500.0,
+          22500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_1_8": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          4500.0,
+          25500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_1_9": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          4500.0,
+          28500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_2_0": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          7500.0,
+          1500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_2_1": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          7500.0,
+          4500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_2_2": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          7500.0,
+          7500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_2_3": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          7500.0,
+          10500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_2_4": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          7500.0,
+          13500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_2_5": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          7500.0,
+          16500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_2_6": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          7500.0,
+          19500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_2_7": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          7500.0,
+          22500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_2_8": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          7500.0,
+          25500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_2_9": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          7500.0,
+          28500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_3_0": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          10500.0,
+          1500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_3_1": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          10500.0,
+          4500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_3_2": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          10500.0,
+          7500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_3_3": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          10500.0,
+          10500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_3_4": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          10500.0,
+          13500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_3_5": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          10500.0,
+          16500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_3_6": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          10500.0,
+          19500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_3_7": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          10500.0,
+          22500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_3_8": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          10500.0,
+          25500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_3_9": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          10500.0,
+          28500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_4_0": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          13500.0,
+          1500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_4_1": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          13500.0,
+          4500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_4_2": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          13500.0,
+          7500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_4_3": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          13500.0,
+          10500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_4_4": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          13500.0,
+          13500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_4_5": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          13500.0,
+          16500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_4_6": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          13500.0,
+          19500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_4_7": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          13500.0,
+          22500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_4_8": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          13500.0,
+          25500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_4_9": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          13500.0,
+          28500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_5_0": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          16500.0,
+          1500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_5_1": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          16500.0,
+          4500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_5_2": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          16500.0,
+          7500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_5_3": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          16500.0,
+          10500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_5_4": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          16500.0,
+          13500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_5_5": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          16500.0,
+          16500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_5_6": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          16500.0,
+          19500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_5_7": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          16500.0,
+          22500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_5_8": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          16500.0,
+          25500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_5_9": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          16500.0,
+          28500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_6_0": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          19500.0,
+          1500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_6_1": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          19500.0,
+          4500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_6_2": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          19500.0,
+          7500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_6_3": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          19500.0,
+          10500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_6_4": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          19500.0,
+          13500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_6_5": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          19500.0,
+          16500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_6_6": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          19500.0,
+          19500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_6_7": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          19500.0,
+          22500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_6_8": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          19500.0,
+          25500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_6_9": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          19500.0,
+          28500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_7_0": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          22500.0,
+          1500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_7_1": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          22500.0,
+          4500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_7_2": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          22500.0,
+          7500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_7_3": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          22500.0,
+          10500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_7_4": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          22500.0,
+          13500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_7_5": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          22500.0,
+          16500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_7_6": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          22500.0,
+          19500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_7_7": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          22500.0,
+          22500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_7_8": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          22500.0,
+          25500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_7_9": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          22500.0,
+          28500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_8_0": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          25500.0,
+          1500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_8_1": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          25500.0,
+          4500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_8_2": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          25500.0,
+          7500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_8_3": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          25500.0,
+          10500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_8_4": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          25500.0,
+          13500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_8_5": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          25500.0,
+          16500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_8_6": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          25500.0,
+          19500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_8_7": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          25500.0,
+          22500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_8_8": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          25500.0,
+          25500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_8_9": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          25500.0,
+          28500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_9_0": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          28500.0,
+          1500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_9_1": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          28500.0,
+          4500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_9_2": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          28500.0,
+          7500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_9_3": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          28500.0,
+          10500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_9_4": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          28500.0,
+          13500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_9_5": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          28500.0,
+          16500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_9_6": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          28500.0,
+          19500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_9_7": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          28500.0,
+          22500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_9_8": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          28500.0,
+          25500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    },
+    "Q_9_9": {
+      "cell": "TwoPadTransmon",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 5.3448
+        },
+        "pad_thickness": 500,
+        "pad_height": 1000,
+        "gap": 200,
+        "a": 0,
+        "lead_length": 0,
+        "pocket_margin": 0
+      },
+      "place": {
+        "at": [
+          28500.0,
+          28500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 5.3448,
+        "Cj_fF": 18.9
+      }
+    }
+  },
+  "routes": {},
+  "nets": "derived",
+  "targets": {},
+  "sim_groups": {
+    "Q_0_0": {
+      "select": [
+        "Q_0_0"
+      ],
+      "margin_um": 1000.0,
+      "analyses": [
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "corner": {
+      "select": [
+        "Q_0_0",
+        "Q_1_0",
+        "Q_0_1",
+        "Q_1_1"
+      ],
+      "margin_um": 1000.0,
+      "analyses": [
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    }
+  }
+}

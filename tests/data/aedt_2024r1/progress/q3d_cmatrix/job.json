@@ -1,0 +1,52 @@
+{
+  "schema": "qcc-job/0.1",
+  "created": "2026-11-03T12:40:07+00:00",
+  "design": "q1_r1_feedline",
+  "design_hash": "c9e9584c08878fec",
+  "group": "Q1R1",
+  "analysis": "q3d_cmatrix",
+  "solver": "ansys",
+  "simulation_name": "q1_r1_feedline_Q1R1_q3d_cmatrix",
+  "settings": {
+    "percent_error": 0.5,
+    "maximum_passes": 18,
+    "minimum_passes": 2,
+    "minimum_converged_passes": 2
+  },
+  "box_um": [
+    2500.0,
+    1720.0,
+    3450.0,
+    2754.0
+  ],
+  "ports": [
+    {
+      "number": 1,
+      "kind": "junction",
+      "name": "Q1.junction",
+      "excitation": "Q1.island"
+    },
+    {
+      "number": 2,
+      "kind": "waveguide",
+      "name": "Q1.claw_n",
+      "excitation": "Q1.claw_n"
+    }
+  ],
+  "nets": {
+    "1": "Q1.island",
+    "2": "Q1.claw_n"
+  },
+  "waveguide_length_um": 100.0,
+  "versions": {
+    "quantcore-circuits": "0.2.0",
+    "kqcircuits": "0.0.1",
+    "klayout": "0.30.5",
+    "pdk": "quantcore_nb_sapphire_v1@2"
+  },
+  "status": "done",
+  "started": 1793709607.7572212,
+  "returncode": 0,
+  "solve_seconds": 151.3,
+  "finished": 1793709759.1509573
+}
