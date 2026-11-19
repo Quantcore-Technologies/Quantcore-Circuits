@@ -60,7 +60,7 @@ qcc components
 qcc components Xmon
 ```
 
-`qcc --version` prints `quantcore-circuits 0.3.0`. `qcc components` lists the Quantcore, KQC and Metal components by
+`qcc --version` prints `quantcore-circuits 0.0.1`. `qcc components` lists the Quantcore, KQC and Metal components by
 category; `qcc components Xmon` lists the ports of one of them. If `qcc` is not found, the env is not active or the
 install did not finish. `qcc selftest` goes further: it checks the imports of every extra and builds, checks and
 exports a small chip. Read any `[FAIL]` line.
