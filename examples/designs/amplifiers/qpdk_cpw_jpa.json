@@ -1,0 +1,186 @@
+{
+  "schema": "qcc/0.1",
+  "name": "qpdk_cpw_jpa",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      0.0,
+      0.0,
+      7500.0,
+      7500.0
+    ],
+    "launchers": null,
+    "params": {
+      "with_grid": false,
+      "name_chip": "JPA"
+    }
+  },
+  "instances": {
+    "P_SIG": {
+      "cell": "BondPad",
+      "params": {},
+      "place": {
+        "at": [
+          400.0,
+          3750.0
+        ],
+        "rot": -90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "P_PUMP": {
+      "cell": "BondPad",
+      "params": {},
+      "place": {
+        "at": [
+          7100.0,
+          3350.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "CC": {
+      "cell": "FingerCapacitorSquare",
+      "params": {
+        "finger_number": 8,
+        "finger_length": 50,
+        "finger_width": 5,
+        "finger_gap": 2
+      },
+      "place": {
+        "at": [
+          3250.0,
+          3750.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "ST": {
+      "cell": "SquidTermination",
+      "params": {
+        "junction_params": {
+          "finger_width": 2.0,
+          "second_finger_width": 2.0
+        }
+      },
+      "place": {
+        "at": [
+          3900.0,
+          3750.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 0.25254,
+        "Cj_fF": 400.0
+      }
+    }
+  },
+  "routes": {
+    "L_SIG": {
+      "from": "P_SIG.a",
+      "to": "CC.a",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "JPA": {
+      "from": "CC.b",
+      "to": "ST.a",
+      "type": "meander",
+      "nodes": [],
+      "length": 4664.0,
+      "meander_segment": null,
+      "meanders": 6,
+      "a": null,
+      "b": null,
+      "r": 30.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "L_PUMP": {
+      "from": "ST.pump",
+      "to": "P_PUMP.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          3949.0,
+          3350.0
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 80.0,
+      "airbridges": "none",
+      "params": {}
+    }
+  },
+  "nets": "derived",
+  "targets": {
+    "JPA": {
+      "f_GHz": 6.07
+    }
+  },
+  "sim_groups": {
+    "jpa": {
+      "select": [
+        "CC",
+        "JPA",
+        "ST"
+      ],
+      "margin_um": 150.0,
+      "analyses": [
+        "q3d_cmatrix",
+        "eigenmode_epr"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "termination": {
+      "select": [
+        "ST"
+      ],
+      "margin_um": 80.0,
+      "analyses": [
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    }
+  }
+}

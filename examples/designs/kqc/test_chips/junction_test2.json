@@ -1,0 +1,46 @@
+{
+  "schema": "qcc/0.1",
+  "name": "junction_test2",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      0.0,
+      0.0,
+      10000.0,
+      10000.0
+    ],
+    "launchers": null,
+    "params": {
+      "with_grid": true,
+      "name_chip": "CTest"
+    }
+  },
+  "instances": {
+    "CHIP": {
+      "cell": "JunctionTest2",
+      "params": {
+        "frames_enabled": [],
+        "junction_type": "Quantcore Squid",
+        "junction_width_large": 0.1
+      },
+      "place": {
+        "at": [
+          0.0,
+          0.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    }
+  },
+  "routes": {},
+  "nets": "derived",
+  "targets": {},
+  "sim_groups": {}
+}

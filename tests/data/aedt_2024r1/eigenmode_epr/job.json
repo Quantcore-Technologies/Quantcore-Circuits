@@ -1,0 +1,83 @@
+{
+  "schema": "qcc-job/0.1",
+  "created": "2026-11-03T13:39:30+00:00",
+  "design": "q1_r1_feedline",
+  "design_hash": "c9e9584c08878fec",
+  "group": "Q1R1",
+  "analysis": "eigenmode_epr",
+  "solver": "ansys",
+  "simulation_name": "q1_r1_feedline_Q1R1_eigenmode_epr",
+  "settings": {
+    "n_modes": 2,
+    "min_frequency": 3.0,
+    "max_delta_f": 0.1,
+    "maximum_passes": 18,
+    "minimum_passes": 1,
+    "minimum_converged_passes": 2,
+    "percent_refinement": 30,
+    "integrate_energies": false,
+    "pyepr": {
+      "substrate_loss_tangent": 1e-06,
+      "dielectric_surfaces": {
+        "layerMA": {
+          "tan_delta_surf": 0.001,
+          "th": 3e-09,
+          "eps_r": 10
+        },
+        "layerMS": {
+          "tan_delta_surf": 0.001,
+          "th": 3e-09,
+          "eps_r": 10
+        },
+        "layerSA": {
+          "tan_delta_surf": 0.001,
+          "th": 3e-09,
+          "eps_r": 10
+        }
+      }
+    }
+  },
+  "box_um": [
+    2276.0,
+    1720.0,
+    3674.0,
+    4033.0
+  ],
+  "ports": [
+    {
+      "number": 1,
+      "kind": "junction",
+      "name": "Q1.junction",
+      "excitation": "Q1.island"
+    },
+    {
+      "number": 2,
+      "kind": "edge_lumped",
+      "name": "FL",
+      "excitation": "FL"
+    },
+    {
+      "number": 3,
+      "kind": "edge_lumped",
+      "name": "FL",
+      "excitation": "FL"
+    }
+  ],
+  "nets": {
+    "1": "Q1.island",
+    "2": "FL",
+    "3": "FL#2"
+  },
+  "waveguide_length_um": 100.0,
+  "versions": {
+    "quantcore-circuits": "0.2.0",
+    "kqcircuits": "0.0.1",
+    "klayout": "0.30.5",
+    "pdk": "quantcore_nb_sapphire_v1@2"
+  },
+  "status": "done",
+  "started": 1793713170.3596363,
+  "returncode": 0,
+  "solve_seconds": 702.4,
+  "finished": 1793713876.4707735
+}

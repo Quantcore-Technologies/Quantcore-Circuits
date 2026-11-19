@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 600" width="1040" height="600" font-family="Helvetica, Arial, sans-serif" font-size="13">
+  <rect width="1040" height="600" fill="#ffffff"/>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#444444"/>
+    </marker>
+  </defs>
+  <text x="20" y="28" font-size="17" font-weight="bold" fill="#222222">As-built loop (2026-11-18)</text>
+
+  <!-- legend -->
+  <g font-size="12" fill="#222222">
+    <rect x="560" y="14" width="16" height="14" fill="#cfe8df" stroke="#206a5d"/><text x="582" y="26">built and run</text>
+    <rect x="668" y="14" width="16" height="14" fill="#ffe3cc" stroke="#d9690f"/><text x="690" y="26">partial</text>
+    <rect x="744" y="14" width="16" height="14" fill="#fff1c2" stroke="#b58900"/><text x="766" y="26">export only</text>
+    <rect x="850" y="14" width="16" height="14" fill="#eeeeee" stroke="#888888" stroke-dasharray="4 3"/><text x="872" y="26">not built</text>
+  </g>
+
+  <!-- design routes -->
+  <g stroke-width="1.5" fill="#222222">
+    <rect x="20" y="60" width="200" height="56" rx="6" fill="#cfe8df" stroke="#206a5d"/>
+    <text x="32" y="82" font-weight="bold">KLayout plugin</text><text x="32" y="102" font-size="12">draw, connect, edit (kplugin)</text>
+    <rect x="20" y="130" width="200" height="56" rx="6" fill="#cfe8df" stroke="#206a5d"/>
+    <text x="32" y="152" font-weight="bold">Designer + KLive</text><text x="32" y="172" font-size="12">code-first, live redraw</text>
+    <rect x="20" y="200" width="200" height="56" rx="6" fill="#cfe8df" stroke="#206a5d"/>
+    <text x="32" y="222" font-weight="bold">LOM-first synthesis</text><text x="32" y="242" font-size="12">targets to layout (Xmon + lambda/4)</text>
+  </g>
+
+  <!-- design.json -->
+  <rect x="290" y="120" width="150" height="76" rx="6" fill="#cfe8df" stroke="#206a5d" stroke-width="1.5"/>
+  <text x="305" y="148" font-weight="bold" fill="#222222">design.json</text>
+  <text x="305" y="168" font-size="12" fill="#222222">schema qcc/0.1, PDK,</text>
+  <text x="305" y="184" font-size="12" fill="#222222">assembly, routing</text>
+  <g stroke="#444444" stroke-width="1.5" fill="none" marker-end="url(#ar)">
+    <path d="M220,88 L290,140"/><path d="M220,158 L290,158"/><path d="M220,228 L290,176"/>
+  </g>
+
+  <!-- chain -->
+  <g stroke-width="1.5" fill="#222222">
+    <rect x="500" y="60" width="150" height="56" rx="6" fill="#cfe8df" stroke="#206a5d"/>
+    <text x="512" y="82" font-weight="bold">Check</text><text x="512" y="102" font-size="12">DRC + netlist</text>
+    <rect x="500" y="130" width="150" height="56" rx="6" fill="#ffe3cc" stroke="#d9690f"/>
+    <text x="512" y="152" font-weight="bold">LOM</text><text x="512" y="172" font-size="12">built; model gaps</text>
+    <rect x="500" y="200" width="150" height="56" rx="6" fill="#cfe8df" stroke="#206a5d"/>
+    <text x="512" y="222" font-weight="bold">Fab export</text><text x="512" y="242" font-size="12">mask only, no wafer</text>
+    <rect x="720" y="60" width="150" height="56" rx="6" fill="#cfe8df" stroke="#206a5d"/>
+    <text x="732" y="82" font-weight="bold">Sim-group export</text><text x="732" y="102" font-size="12">cut-outs, ports (Ansys)</text>
+    <rect x="720" y="130" width="150" height="56" rx="6" fill="#ffe3cc" stroke="#d9690f"/>
+    <text x="732" y="152" font-weight="bold">HFSS / Q3D</text><text x="732" y="172" font-size="12">fast settings only</text>
+    <rect x="720" y="200" width="150" height="56" rx="6" fill="#fff1c2" stroke="#b58900"/>
+    <text x="732" y="222" font-weight="bold">Elmer, Palace, Sonnet</text><text x="732" y="242" font-size="12">written, never solved</text>
+    <rect x="890" y="130" width="130" height="56" rx="6" fill="#cfe8df" stroke="#206a5d"/>
+    <text x="902" y="152" font-weight="bold">Read-back</text><text x="902" y="172" font-size="12">results.json (AEDT)</text>
+  </g>
+  <g stroke="#444444" stroke-width="1.5" fill="none" marker-end="url(#ar)">
+    <path d="M440,140 L500,92"/><path d="M440,158 L500,158"/><path d="M440,176 L500,228"/>
+    <path d="M650,88 L720,88"/><path d="M795,116 L795,130"/><path d="M795,186 L795,200" stroke-dasharray="4 3"/>
+    <path d="M870,158 L890,158"/>
+  </g>
+
+  <!-- feedback -->
+  <rect x="890" y="260" width="130" height="64" rx="6" fill="#ffe3cc" stroke="#d9690f" stroke-width="1.5"/>
+  <text x="902" y="282" font-weight="bold" fill="#222222">Feedback</text>
+  <text x="902" y="300" font-size="12" fill="#222222">consensus, propose,</text>
+  <text x="902" y="316" font-size="12" fill="#222222">apply (1 real loop)</text>
+  <path d="M955,186 L955,260" stroke="#444444" stroke-width="1.5" fill="none" marker-end="url(#ar)"/>
+  <path d="M890,300 L365,300 L365,196" stroke="#444444" stroke-width="1.5" fill="none" marker-end="url(#ar)" stroke-dasharray="6 3"/>
+  <text x="520" y="292" font-size="12" fill="#444444">new revision of design.json</text>
+
+  <!-- runner -->
+  <rect x="720" y="340" width="150" height="48" rx="6" fill="#ffe3cc" stroke="#d9690f" stroke-width="1.5"/>
+  <text x="732" y="361" font-weight="bold" fill="#222222">Runner / queue</text><text x="732" y="378" font-size="12" fill="#222222">unit tests only</text>
+  <path d="M795,340 L795,196" stroke="#444444" stroke-width="1.5" fill="none" marker-end="url(#ar)" stroke-dasharray="4 3"/>
+
+  <!-- dashboard + CLI -->
+  <rect x="20" y="420" width="1000" height="56" rx="6" fill="#cfe8df" stroke="#206a5d" stroke-width="1.5"/>
+  <text x="34" y="444" font-weight="bold" fill="#222222">Dashboard tracker</text>
+  <text x="34" y="464" font-size="12" fill="#222222">follows every step above (track.start / QCC_TRACK=1): values with goal and source, jobs, plots, history. Fab is not a dashboard step yet.</text>
+  <rect x="20" y="500" width="1000" height="56" rx="6" fill="#eeeeee" stroke="#888888" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="34" y="524" font-weight="bold" fill="#222222">Not built</text>
+  <text x="34" y="544" font-size="12" fill="#222222">wafer / mask assembly, flip-chip FEM export, FEM-sweep surrogates, Palace / HFSS sign-off levels, Palace EPR reader, converged FEM run</text>
+</svg>

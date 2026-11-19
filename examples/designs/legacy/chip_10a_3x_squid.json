@@ -1,0 +1,103 @@
+{
+  "schema": "qcc/0.1",
+  "name": "chip_10a_3x_squid",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      0.0,
+      0.0,
+      7500.0,
+      7500.0
+    ],
+    "launchers": null,
+    "params": {
+      "with_grid": false,
+      "name_chip": "CHIP10A 3X"
+    }
+  },
+  "instances": {
+    "SQ": {
+      "cell": "TrilayerSquidHSQ",
+      "params": {
+        "finger_width": 0.2,
+        "second_finger_width": 0.2,
+        "junction_spacing": 8.0,
+        "window_width": 32.0,
+        "window_height": 20.0
+      },
+      "place": {
+        "at": [
+          3750.0,
+          3697.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 25.2541,
+        "Cj_fF": 4.0
+      }
+    },
+    "FA": {
+      "cell": "JJFingerStraight",
+      "params": {
+        "negative": false,
+        "window_width": 0.5,
+        "window_height": 0.5,
+        "finger_length": 0.8,
+        "x": 8,
+        "y": 0,
+        "finger_width": 0.4,
+        "pad_width": 1.0
+      },
+      "place": {
+        "at": [
+          3735.0,
+          3792.0
+        ],
+        "rot": 0.0,
+        "mirror": true,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "FB": {
+      "cell": "JJFingerStraight",
+      "params": {
+        "negative": false,
+        "window_width": 0.5,
+        "window_height": 0.5,
+        "finger_length": 0.8,
+        "x": 8,
+        "y": 0,
+        "finger_width": 0.4,
+        "pad_width": 1.0
+      },
+      "place": {
+        "at": [
+          3735.0,
+          3802.0
+        ],
+        "rot": 180.0,
+        "mirror": true,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    }
+  },
+  "routes": {},
+  "nets": "derived",
+  "targets": {},
+  "sim_groups": {}
+}

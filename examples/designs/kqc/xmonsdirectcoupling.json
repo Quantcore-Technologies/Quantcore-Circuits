@@ -1,0 +1,1055 @@
+{
+  "schema": "qcc/0.1",
+  "name": "xmonsdirectcoupling",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      0.0,
+      0.0,
+      10000.0,
+      10000.0
+    ],
+    "launchers": "SMA8",
+    "params": {
+      "with_grid": true,
+      "name_chip": "XMDC"
+    }
+  },
+  "instances": {
+    "JT_W": {
+      "cell": "kqcircuits.test_structures.junction_test_pads.junction_test_pads.JunctionTestPads",
+      "params": {
+        "margin": 50,
+        "area_width": 1300,
+        "area_height": 2500,
+        "junctions_horizontal": true,
+        "junction_type": "Quantcore Squid",
+        "junction_width": 0.25
+      },
+      "place": {
+        "at": [
+          350.0,
+          3750.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "JT_S": {
+      "cell": "kqcircuits.test_structures.junction_test_pads.junction_test_pads.JunctionTestPads",
+      "params": {
+        "margin": 50,
+        "area_width": 2500,
+        "area_height": 1300,
+        "junctions_horizontal": true,
+        "junction_type": "Quantcore Squid",
+        "junction_width": 0.25
+      },
+      "place": {
+        "at": [
+          3750.0,
+          350.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "JT_E": {
+      "cell": "kqcircuits.test_structures.junction_test_pads.junction_test_pads.JunctionTestPads",
+      "params": {
+        "margin": 50,
+        "area_width": 1300,
+        "area_height": 2500,
+        "junctions_horizontal": true,
+        "junction_type": "Quantcore Squid",
+        "junction_width": 0.25
+      },
+      "place": {
+        "at": [
+          8350.0,
+          3750.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "JT_N": {
+      "cell": "kqcircuits.test_structures.junction_test_pads.junction_test_pads.JunctionTestPads",
+      "params": {
+        "margin": 50,
+        "area_width": 2500,
+        "area_height": 1300,
+        "junctions_horizontal": true,
+        "junction_type": "Quantcore Squid",
+        "junction_width": 0.25
+      },
+      "place": {
+        "at": [
+          3750.0,
+          8350.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "QB1": {
+      "cell": "Swissmon",
+      "params": {
+        "cpl_width": [
+          60,
+          24,
+          60
+        ],
+        "junction_type": "Quantcore Squid",
+        "junction_width": 0.25,
+        "arm_length": [
+          146,
+          146,
+          146,
+          146
+        ],
+        "island_r": 2,
+        "port_width": [
+          10,
+          5,
+          10
+        ],
+        "arm_width": [
+          24,
+          24,
+          24,
+          24
+        ],
+        "gap_width": [
+          24,
+          24,
+          24,
+          24
+        ],
+        "cpl_gap": [
+          110,
+          90,
+          110
+        ],
+        "cpl_length": [
+          0,
+          158,
+          0
+        ],
+        "cl_offset": [
+          150,
+          -150
+        ]
+      },
+      "place": {
+        "at": [
+          4650.0,
+          5000.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 6.7344,
+        "Cj_fF": 15.0
+      }
+    },
+    "QB2": {
+      "cell": "Swissmon",
+      "params": {
+        "cpl_width": [
+          60,
+          24,
+          60
+        ],
+        "junction_type": "Quantcore Squid",
+        "junction_width": 0.25,
+        "arm_length": [
+          146,
+          146,
+          146,
+          146
+        ],
+        "island_r": 2,
+        "port_width": [
+          10,
+          5,
+          10
+        ],
+        "arm_width": [
+          24,
+          24,
+          24,
+          24
+        ],
+        "gap_width": [
+          24,
+          24,
+          24,
+          24
+        ],
+        "cpl_gap": [
+          110,
+          102,
+          110
+        ],
+        "cpl_length": [
+          0,
+          140,
+          0
+        ],
+        "cl_offset": [
+          150,
+          150
+        ]
+      },
+      "place": {
+        "at": [
+          5000.0,
+          5000.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 6.7344,
+        "Cj_fF": 15.0
+      }
+    },
+    "QB3": {
+      "cell": "Swissmon",
+      "params": {
+        "cpl_width": [
+          60,
+          24,
+          60
+        ],
+        "junction_type": "Quantcore Squid",
+        "junction_width": 0.25,
+        "arm_length": [
+          146,
+          146,
+          146,
+          146
+        ],
+        "island_r": 2,
+        "port_width": [
+          10,
+          5,
+          10
+        ],
+        "arm_width": [
+          24,
+          24,
+          24,
+          24
+        ],
+        "gap_width": [
+          24,
+          24,
+          24,
+          24
+        ],
+        "cpl_gap": [
+          110,
+          90,
+          110
+        ],
+        "cpl_length": [
+          0,
+          158,
+          0
+        ],
+        "cl_offset": [
+          -150,
+          -150
+        ]
+      },
+      "place": {
+        "at": [
+          5350.0,
+          5000.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 6.7344,
+        "Cj_fF": 15.0
+      }
+    },
+    "PL1": {
+      "cell": "WaveguideCoplanarSplitter",
+      "params": {
+        "lengths": [
+          11,
+          11,
+          31
+        ],
+        "port_names": [
+          "right",
+          "left",
+          "bottom"
+        ]
+      },
+      "place": {
+        "at": [
+          4650.0,
+          7900.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "RC1": {
+      "cell": "FingerCapacitorSquare",
+      "params": {
+        "finger_number": 4,
+        "finger_length": 60.8,
+        "finger_gap_end": 5,
+        "finger_gap": 5,
+        "finger_width": 15,
+        "ground_padding": 10
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "RC1.b",
+        "to": "PL1.bottom",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP1": {
+      "cell": "WaveguideCoplanarTaper",
+      "params": {
+        "a": 5,
+        "b": 20,
+        "a2": 10,
+        "b2": 6,
+        "taper_length": 100
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "TP1.b",
+        "to": "RC1.a",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "RX1": {
+      "cell": "WaveguideCoplanarSplitter",
+      "params": {
+        "lengths": [
+          22.5,
+          22.5,
+          62.5
+        ],
+        "a_list": [
+          5,
+          5,
+          5
+        ],
+        "b_list": [
+          20,
+          20,
+          20
+        ],
+        "port_names": [
+          "right",
+          "left",
+          "bottom"
+        ]
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "RX1.right",
+        "to": "TP1.a",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL2": {
+      "cell": "WaveguideCoplanarSplitter",
+      "params": {
+        "lengths": [
+          11,
+          11,
+          31
+        ],
+        "port_names": [
+          "right",
+          "left",
+          "bottom"
+        ]
+      },
+      "place": {
+        "at": [
+          5000.0,
+          7900.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "RC2": {
+      "cell": "FingerCapacitorSquare",
+      "params": {
+        "finger_number": 4,
+        "finger_length": 61.55,
+        "finger_gap_end": 5,
+        "finger_gap": 5,
+        "finger_width": 15,
+        "ground_padding": 10
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "RC2.b",
+        "to": "PL2.bottom",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP2": {
+      "cell": "WaveguideCoplanarTaper",
+      "params": {
+        "a": 5,
+        "b": 20,
+        "a2": 10,
+        "b2": 6,
+        "taper_length": 100
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "TP2.b",
+        "to": "RC2.a",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "RX2": {
+      "cell": "WaveguideCoplanarSplitter",
+      "params": {
+        "lengths": [
+          22.5,
+          22.5,
+          62.5
+        ],
+        "a_list": [
+          5,
+          5,
+          5
+        ],
+        "b_list": [
+          20,
+          20,
+          20
+        ],
+        "port_names": [
+          "right",
+          "left",
+          "bottom"
+        ]
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "RX2.right",
+        "to": "TP2.a",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PL3": {
+      "cell": "WaveguideCoplanarSplitter",
+      "params": {
+        "lengths": [
+          11,
+          11,
+          31
+        ],
+        "port_names": [
+          "right",
+          "left",
+          "bottom"
+        ]
+      },
+      "place": {
+        "at": [
+          5350.0,
+          7900.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "RC3": {
+      "cell": "FingerCapacitorSquare",
+      "params": {
+        "finger_number": 4,
+        "finger_length": 58.1,
+        "finger_gap_end": 5,
+        "finger_gap": 5,
+        "finger_width": 15,
+        "ground_padding": 10
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "RC3.b",
+        "to": "PL3.bottom",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP3": {
+      "cell": "WaveguideCoplanarTaper",
+      "params": {
+        "a": 5,
+        "b": 20,
+        "a2": 10,
+        "b2": 6,
+        "taper_length": 100
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "TP3.b",
+        "to": "RC3.a",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "RX3": {
+      "cell": "WaveguideCoplanarSplitter",
+      "params": {
+        "lengths": [
+          22.5,
+          22.5,
+          62.5
+        ],
+        "a_list": [
+          5,
+          5,
+          5
+        ],
+        "b_list": [
+          20,
+          20,
+          20
+        ],
+        "port_names": [
+          "right",
+          "left",
+          "bottom"
+        ]
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "RX3.right",
+        "to": "TP3.a",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "IN": {
+      "cell": "FingerCapacitorSquare",
+      "params": {
+        "finger_number": 8,
+        "finger_length": 55.4,
+        "finger_gap_end": 5,
+        "finger_gap": 5,
+        "finger_width": 15,
+        "ground_padding": 10
+      },
+      "place": {
+        "at": [
+          4294.8,
+          7900.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    }
+  },
+  "routes": {
+    "RS1": {
+      "from": "RX1.left",
+      "to": "QB1.cplr1",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 5.0,
+      "b": 20.0,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RR1": {
+      "from": "RX1.bottom",
+      "to": {
+        "at": [
+          4812.5,
+          5303.379632679491
+        ],
+        "dir": 90.0,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 5.0,
+      "b": 20.0,
+      "r": 100.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RS2": {
+      "from": "RX2.left",
+      "to": "QB2.cplr1",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 5.0,
+      "b": 20.0,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RR2": {
+      "from": "RX2.bottom",
+      "to": {
+        "at": [
+          5162.5,
+          5482.179632679491
+        ],
+        "dir": 90.0,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 5.0,
+      "b": 20.0,
+      "r": 100.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RS3": {
+      "from": "RX3.left",
+      "to": "QB3.cplr1",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 5.0,
+      "b": 20.0,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RR3": {
+      "from": "RX3.bottom",
+      "to": {
+        "at": [
+          5512.5,
+          5490.679632679489
+        ],
+        "dir": 90.0,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 5.0,
+      "b": 20.0,
+      "r": 100.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "P0": {
+      "from": "chip.NW",
+      "to": "IN.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          2800.0,
+          7900.0
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "P1": {
+      "from": "IN.b",
+      "to": "PL1.left",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "P2": {
+      "from": "PL1.right",
+      "to": "PL2.left",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "P3": {
+      "from": "PL2.right",
+      "to": "PL3.left",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "P4": {
+      "from": "PL3.right",
+      "to": "chip.NE",
+      "type": "cpw",
+      "nodes": [
+        [
+          7200.0,
+          7900.0
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "DL1": {
+      "from": "chip.WN",
+      "to": "QB1.drive",
+      "type": "cpw",
+      "nodes": [
+        [
+          2500.0,
+          7200.0
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {
+        "term2": 6
+      }
+    },
+    "FL1": {
+      "from": "chip.WS",
+      "to": "QB1.flux",
+      "type": "cpw",
+      "nodes": [
+        [
+          980.0,
+          2800.0
+        ],
+        [
+          4650.0,
+          4646.667
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "DL2": {
+      "from": "chip.SW",
+      "to": "QB2.drive",
+      "type": "cpw",
+      "nodes": [
+        [
+          2800.0,
+          2500.0
+        ],
+        [
+          4850.0,
+          4550.0
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {
+        "term2": 6
+      }
+    },
+    "FL2": {
+      "from": "chip.SE",
+      "to": "QB2.flux",
+      "type": "cpw",
+      "nodes": [
+        [
+          7200.0,
+          2500.0
+        ],
+        [
+          5000.0,
+          4646.667
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "DL3": {
+      "from": "chip.EN",
+      "to": "QB3.drive",
+      "type": "cpw",
+      "nodes": [
+        [
+          7500.0,
+          7200.0
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {
+        "term2": 6
+      }
+    },
+    "FL3": {
+      "from": "chip.ES",
+      "to": "QB3.flux",
+      "type": "cpw",
+      "nodes": [
+        [
+          9020.0,
+          2800.0
+        ],
+        [
+          5350.0,
+          4646.667
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    }
+  },
+  "nets": "derived",
+  "targets": {},
+  "sim_groups": {
+    "qubits": {
+      "select": [
+        "QB1",
+        "QB2",
+        "QB3"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "QB1_RR1": {
+      "select": [
+        "QB1",
+        "RS1",
+        "RX1",
+        "RR1"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "QB2_RR2": {
+      "select": [
+        "QB2",
+        "RS2",
+        "RX2",
+        "RR2"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "QB3_RR3": {
+      "select": [
+        "QB3",
+        "RS3",
+        "RX3",
+        "RR3"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    }
+  },
+  "couplings": {
+    "C12": {
+      "between": [
+        "QB1",
+        "QB2"
+      ],
+      "type": "C",
+      "value": 0.3,
+      "fem": true,
+      "note": "arm tips facing across 24 + 10 + 24 \u00b5m (assumed value)"
+    },
+    "C23": {
+      "between": [
+        "QB2",
+        "QB3"
+      ],
+      "type": "C",
+      "value": 0.3,
+      "fem": true,
+      "note": "arm tips facing across 24 + 10 + 24 \u00b5m (assumed value)"
+    }
+  }
+}

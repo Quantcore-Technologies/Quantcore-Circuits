@@ -1,0 +1,869 @@
+{
+  "schema": "qcc/0.1",
+  "name": "shaping",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      0.0,
+      0.0,
+      10000.0,
+      10000.0
+    ],
+    "launchers": "SMA8",
+    "params": {
+      "with_grid": true,
+      "name_chip": "CTest"
+    }
+  },
+  "instances": {
+    "QB": {
+      "cell": "Swissmon",
+      "params": {
+        "arm_width": [
+          30,
+          23,
+          30,
+          23
+        ],
+        "arm_length": [
+          190,
+          96,
+          160,
+          96
+        ],
+        "gap_width": [
+          29.5,
+          33,
+          29.5,
+          33
+        ],
+        "island_r": 2,
+        "cpl_length": [
+          235,
+          0,
+          205
+        ],
+        "cpl_width": [
+          60,
+          42,
+          60
+        ],
+        "cpl_gap": [
+          110,
+          112,
+          110
+        ],
+        "cl_offset": [
+          150,
+          150
+        ],
+        "junction_type": "Quantcore Squid",
+        "junction_width": 0.25
+      },
+      "place": {
+        "at": [
+          4000.0,
+          5000.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 6.7344,
+        "Cj_fF": 15.0
+      }
+    },
+    "TAa": {
+      "cell": "WaveguideCoplanarSplitter",
+      "params": {
+        "lengths": [
+          61.0,
+          61.0,
+          31.0
+        ],
+        "port_names": [
+          "right",
+          "left",
+          "bottom"
+        ]
+      },
+      "place": {
+        "at": [
+          4000.0,
+          5846.586
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TAb": {
+      "cell": "WaveguideCoplanarSplitter",
+      "params": {
+        "lengths": [
+          61.0,
+          61.0,
+          31.0
+        ],
+        "port_names": [
+          "right",
+          "left",
+          "bottom"
+        ]
+      },
+      "place": {
+        "at": [
+          4722.0,
+          5846.586
+        ],
+        "rot": 180.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "CAj": {
+      "cell": "FingerCapacitorSquare",
+      "params": {
+        "finger_number": 4,
+        "finger_length": 0,
+        "finger_gap_end": 37.5,
+        "finger_gap": 0,
+        "finger_width": 10,
+        "ground_padding": 10
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "CAj.a",
+        "to": "TAb.left",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TAc": {
+      "cell": "WaveguideCoplanarSplitter",
+      "params": {
+        "lengths": [
+          61.0,
+          61.0,
+          31.0
+        ],
+        "port_names": [
+          "right",
+          "left",
+          "bottom"
+        ]
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "TAc.right",
+        "to": "CAj.b",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "CAk": {
+      "cell": "FingerCapacitorSquare",
+      "params": {
+        "finger_number": 4,
+        "finger_length": 67.9,
+        "finger_gap_end": 5,
+        "finger_gap": 5,
+        "finger_width": 15,
+        "ground_padding": 10
+      },
+      "place": {
+        "at": [
+          5982.5,
+          6408.036
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "CAd": {
+      "cell": "FingerCapacitorSquare",
+      "params": {
+        "finger_number": 4,
+        "finger_length": 0,
+        "finger_gap_end": 36.2,
+        "finger_gap": 0,
+        "finger_width": 10,
+        "ground_padding": 10
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "CAd.a",
+        "to": "TAa.right",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TBa": {
+      "cell": "WaveguideCoplanarSplitter",
+      "params": {
+        "lengths": [
+          61.0,
+          61.0,
+          31.0
+        ],
+        "port_names": [
+          "right",
+          "left",
+          "bottom"
+        ]
+      },
+      "place": {
+        "at": [
+          4000.0,
+          4160.29
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TBb": {
+      "cell": "WaveguideCoplanarSplitter",
+      "params": {
+        "lengths": [
+          61.0,
+          61.0,
+          31.0
+        ],
+        "port_names": [
+          "right",
+          "left",
+          "bottom"
+        ]
+      },
+      "place": {
+        "at": [
+          4722.0,
+          4160.29
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "CBj": {
+      "cell": "FingerCapacitorSquare",
+      "params": {
+        "finger_number": 4,
+        "finger_length": 0,
+        "finger_gap_end": 36.8,
+        "finger_gap": 0,
+        "finger_width": 10,
+        "ground_padding": 10
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "CBj.a",
+        "to": "TBb.right",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TBc": {
+      "cell": "WaveguideCoplanarSplitter",
+      "params": {
+        "lengths": [
+          61.0,
+          61.0,
+          31.0
+        ],
+        "port_names": [
+          "right",
+          "left",
+          "bottom"
+        ]
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "TBc.left",
+        "to": "CBj.b",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "CBk": {
+      "cell": "FingerCapacitorSquare",
+      "params": {
+        "finger_number": 4,
+        "finger_length": 71.5,
+        "finger_gap_end": 5,
+        "finger_gap": 5,
+        "finger_width": 15,
+        "ground_padding": 10
+      },
+      "place": {
+        "at": [
+          5981.799999999999,
+          3597.04
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "CBd": {
+      "cell": "FingerCapacitorSquare",
+      "params": {
+        "finger_number": 4,
+        "finger_length": 0,
+        "finger_gap_end": 36.2,
+        "finger_gap": 0,
+        "finger_width": 10,
+        "ground_padding": 10
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "CBd.a",
+        "to": "TBa.left",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    }
+  },
+  "routes": {
+    "CL": {
+      "from": "chip.WN",
+      "to": "QB.drive",
+      "type": "cpw",
+      "nodes": [
+        [
+          980.0,
+          5150.0
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {
+        "term2": 6
+      }
+    },
+    "FL": {
+      "from": "chip.WS",
+      "to": "QB.flux",
+      "type": "cpw",
+      "nodes": [
+        [
+          980.0,
+          5000.0
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RA1": {
+      "from": "QB.cplr0",
+      "to": "TAa.left",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RA2": {
+      "from": "TAa.bottom",
+      "to": "TAb.right",
+      "type": "cpw",
+      "nodes": [
+        [
+          4146.0,
+          5846.586
+        ],
+        [
+          4146.0,
+          6173.906550980766
+        ],
+        [
+          4346.0,
+          6173.906550980766
+        ],
+        [
+          4346.0,
+          5519.265449019234
+        ],
+        [
+          4546.0,
+          5519.265449019234
+        ],
+        [
+          4546.0,
+          5846.586
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 10.0,
+      "airbridges": "none",
+      "params": {
+        "r": 100
+      }
+    },
+    "RA3": {
+      "from": "TAb.bottom",
+      "to": {
+        "at": [
+          4722.0,
+          6458.1720000000005
+        ],
+        "dir": null,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PA1": {
+      "from": "TAc.left",
+      "to": "CAk.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          5132.5,
+          5846.586
+        ],
+        [
+          5132.5,
+          6167.019823094014
+        ],
+        [
+          5332.5,
+          6167.019823094014
+        ],
+        [
+          5332.5,
+          5526.152176905986
+        ],
+        [
+          5532.5,
+          5526.152176905986
+        ],
+        [
+          5532.5,
+          6167.019823094014
+        ],
+        [
+          5732.5,
+          6167.019823094014
+        ],
+        [
+          5732.5,
+          5846.586
+        ],
+        [
+          5882.5,
+          5846.586
+        ],
+        [
+          5982.5,
+          5846.586
+        ],
+        [
+          5982.5,
+          6246.586
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 10.0,
+      "airbridges": "none",
+      "params": {
+        "r": 100
+      }
+    },
+    "PA2": {
+      "from": "TAc.bottom",
+      "to": {
+        "at": [
+          4921.5,
+          6636.167
+        ],
+        "dir": null,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "OA": {
+      "from": "CAk.b",
+      "to": "chip.EN",
+      "type": "cpw",
+      "nodes": [
+        [
+          5982.5,
+          7200.0
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "DA": {
+      "from": "CAd.b",
+      "to": "chip.NW",
+      "type": "cpw",
+      "nodes": [
+        [
+          2800.0,
+          6083.786000000001
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RB1": {
+      "from": "QB.cplr2",
+      "to": "TBa.right",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RB2": {
+      "from": "TBa.bottom",
+      "to": "TBb.left",
+      "type": "cpw",
+      "nodes": [
+        [
+          4146.0,
+          4160.29
+        ],
+        [
+          4146.0,
+          4504.9530509807655
+        ],
+        [
+          4346.0,
+          4504.9530509807655
+        ],
+        [
+          4346.0,
+          3815.6269490192344
+        ],
+        [
+          4546.0,
+          3815.6269490192344
+        ],
+        [
+          4546.0,
+          4160.29
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 10.0,
+      "airbridges": "none",
+      "params": {
+        "r": 100
+      }
+    },
+    "RB3": {
+      "from": "TBb.bottom",
+      "to": {
+        "at": [
+          4722.0,
+          3525.58
+        ],
+        "dir": null,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "PB1": {
+      "from": "TBc.right",
+      "to": "CBk.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          5131.8,
+          4160.29
+        ],
+        [
+          5131.8,
+          4496.612156427347
+        ],
+        [
+          5331.8,
+          4496.612156427347
+        ],
+        [
+          5331.8,
+          3823.967843572653
+        ],
+        [
+          5531.8,
+          3823.967843572653
+        ],
+        [
+          5531.8,
+          4496.612156427347
+        ],
+        [
+          5731.8,
+          4496.612156427347
+        ],
+        [
+          5731.8,
+          4160.29
+        ],
+        [
+          5881.8,
+          4160.29
+        ],
+        [
+          5981.799999999999,
+          4160.29
+        ],
+        [
+          5981.799999999999,
+          3760.29
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 10.0,
+      "airbridges": "none",
+      "params": {
+        "r": 100
+      }
+    },
+    "PB2": {
+      "from": "TBc.bottom",
+      "to": {
+        "at": [
+          4920.799999999999,
+          3346.877
+        ],
+        "dir": null,
+        "term": 0.0
+      },
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "OB": {
+      "from": "CBk.b",
+      "to": "chip.ES",
+      "type": "cpw",
+      "nodes": [
+        [
+          5981.799999999999,
+          2800.0
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "DB": {
+      "from": "CBd.b",
+      "to": "chip.SW",
+      "type": "cpw",
+      "nodes": [
+        [
+          2800.0,
+          3923.09
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    }
+  },
+  "nets": "derived",
+  "targets": {},
+  "sim_groups": {
+    "QB": {
+      "select": [
+        "QB"
+      ],
+      "margin_um": 150.0,
+      "analyses": [
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "QB_A": {
+      "select": [
+        "QB",
+        "TAa",
+        "TAb",
+        "TAc",
+        "CAj",
+        "CAk",
+        "CAd",
+        "RA1",
+        "RA2",
+        "RA3",
+        "PA1",
+        "PA2"
+      ],
+      "margin_um": 100.0,
+      "analyses": [
+        "eigenmode_epr"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "QB_B": {
+      "select": [
+        "QB",
+        "TBa",
+        "TBb",
+        "TBc",
+        "CBj",
+        "CBk",
+        "CBd",
+        "RB1",
+        "RB2",
+        "RB3",
+        "PB1",
+        "PB2"
+      ],
+      "margin_um": 100.0,
+      "analyses": [
+        "eigenmode_epr"
+      ],
+      "ports": {},
+      "settings": {}
+    }
+  }
+}

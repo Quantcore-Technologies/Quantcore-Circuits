@@ -1,0 +1,149 @@
+{
+  "render_seconds": 20.5,
+  "summary": {
+    "design_type": "Q3D Extractor",
+    "design": "Q3dDesign",
+    "solution_type": null,
+    "variables": {},
+    "boundaries": [
+      "Ground1",
+      "Ground2",
+      "Ground3",
+      "Ground4",
+      "Ground5",
+      "Net1",
+      "Net2",
+      "Net3",
+      "Net4",
+      "Net5",
+      "ThinCond1"
+    ],
+    "boundary_types": {
+      "ThinConductor": 1,
+      "GroundNet": 5,
+      "SignalNet": 5
+    },
+    "lumped_rlc": 0,
+    "lumped_ports": 0,
+    "wave_ports": 0,
+    "nets": {
+      "Net1": [
+        1
+      ],
+      "Net2": [
+        2
+      ],
+      "Net3": [
+        3
+      ],
+      "Net4": [
+        4
+      ],
+      "Net5": [
+        5
+      ]
+    },
+    "setups": [
+      "Setup1"
+    ],
+    "materials": {
+      "vacuum": {
+        "permittivity": 1.0
+      },
+      "sapphire": {
+        "permittivity": 10.25,
+        "dielectric_loss_tangent": 1e-06
+      },
+      "copper": {
+        "conductivity": 58000000.0
+      },
+      "pec": {
+        "conductivity": 1e+30
+      }
+    },
+    "models": 1
+  },
+  "ok": true,
+  "checks": [
+    {
+      "check": "design type",
+      "ok": true,
+      "detail": "Q3D Extractor / None"
+    },
+    {
+      "check": "substrate_1 stack",
+      "ok": true,
+      "detail": "sapphire \u03b5r 10.25, 650 \u00b5m (PDK 10.25, 650 \u00b5m)"
+    },
+    {
+      "check": "metal sheets ThinConductor",
+      "ok": true,
+      "detail": "10/10 sheets"
+    },
+    {
+      "check": "net Net1 = XY_Q23_1",
+      "ok": true,
+      "detail": "objects ['1t1_signal_1_2']"
+    },
+    {
+      "check": "net Net2 = XY_Q33_3",
+      "ok": true,
+      "detail": "objects ['1t1_signal_2_1']"
+    },
+    {
+      "check": "net Net3 = Z_Q33_2",
+      "ok": true,
+      "detail": "objects ['1t1_signal_3_3']"
+    },
+    {
+      "check": "net Net4 = Q33.island",
+      "ok": true,
+      "detail": "objects ['1t1_signal_4_4']"
+    },
+    {
+      "check": "net Net5 = Q23.island",
+      "ok": true,
+      "detail": "objects ['1t1_signal_5_5']"
+    },
+    {
+      "check": "no unlabelled signal nets",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "check": "settings read back",
+      "ok": true,
+      "detail": "4 keys"
+    }
+  ],
+  "settings": [
+    {
+      "key": "percent_error",
+      "expected": 2.0,
+      "found": 2,
+      "ok": true,
+      "where": "Setup1.Cap.PerError"
+    },
+    {
+      "key": "maximum_passes",
+      "expected": 8,
+      "found": 8,
+      "ok": true,
+      "where": "Setup1.Cap.MaxPass"
+    },
+    {
+      "key": "minimum_passes",
+      "expected": 1,
+      "found": 1,
+      "ok": true,
+      "where": "Setup1.Cap.MinPass"
+    },
+    {
+      "key": "minimum_converged_passes",
+      "expected": 1,
+      "found": 1,
+      "ok": true,
+      "where": "Setup1.Cap.MinConvPass"
+    }
+  ]
+}

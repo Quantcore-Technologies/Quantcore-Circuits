@@ -1,0 +1,169 @@
+{
+  "schema": "qcc/0.1",
+  "name": "2_transmons_wres_comp",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      -1250.0,
+      -2750.0,
+      6250.0,
+      4750.0
+    ],
+    "launchers": null,
+    "params": {
+      "with_grid": false,
+      "name_chip": "SQD-2TR"
+    }
+  },
+  "instances": {
+    "Q1": {
+      "cell": "TransmonTaperedInsets",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 9.958315548282373
+        },
+        "pocket_height": 420,
+        "pocket_lower_tighten": 0,
+        "chrgln_pin_x_offset": 0,
+        "chrgln_pin_y_offset": 10
+      },
+      "place": {
+        "at": [
+          1050.0,
+          1000.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 9.9036,
+        "Cj_fF": 10.2
+      }
+    },
+    "Q2": {
+      "cell": "TransmonTaperedInsets",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 9.975568557498255
+        },
+        "pocket_height": 420,
+        "pocket_lower_tighten": 0,
+        "chrgln_pin_x_offset": 0,
+        "chrgln_pin_y_offset": 10
+      },
+      "place": {
+        "at": [
+          3950.0,
+          1000.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 9.9036,
+        "Cj_fF": 10.2
+      }
+    },
+    "C1": {
+      "cell": "SmoothCapacitorSemicircle",
+      "params": {
+        "orientation": 180,
+        "rect_width": 160,
+        "rect_length": 80,
+        "semi_radius": 60,
+        "fillet_radius": 5,
+        "fillet_resolution": 20,
+        "lead_length": 20
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "C1.target",
+        "to": "Q1.top_right_pin",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "C2": {
+      "cell": "SmoothCapacitorSemicircle",
+      "params": {
+        "orientation": 0,
+        "rect_width": 160,
+        "rect_length": 80,
+        "semi_radius": 60,
+        "fillet_radius": 5,
+        "fillet_resolution": 20,
+        "lead_length": 20
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "C2.target",
+        "to": "Q2.top_left_pin",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    }
+  },
+  "routes": {
+    "BUS": {
+      "from": "C1.a",
+      "to": "C2.a",
+      "type": "meander",
+      "nodes": [],
+      "length": 8870.0,
+      "meander_segment": null,
+      "meanders": 12,
+      "a": null,
+      "b": null,
+      "r": 40.0,
+      "airbridges": "none",
+      "params": {}
+    }
+  },
+  "nets": "derived",
+  "targets": {
+    "Q1": {
+      "f_q_GHz": 4.5
+    },
+    "Q2": {
+      "f_q_GHz": 4.5
+    },
+    "BUS": {
+      "f_GHz": 6.8
+    }
+  },
+  "sim_groups": {
+    "ALL": {
+      "select": [
+        "Q1",
+        "Q2",
+        "C1",
+        "C2",
+        "BUS"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "eigenmode_epr",
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    }
+  }
+}

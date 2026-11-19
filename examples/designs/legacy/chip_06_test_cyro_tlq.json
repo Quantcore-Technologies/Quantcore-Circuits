@@ -1,0 +1,1237 @@
+{
+  "schema": "qcc/0.1",
+  "name": "chip_06_test_cyro_tlq",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      0.0,
+      0.0,
+      7500.0,
+      7500.0
+    ],
+    "launchers": null,
+    "params": {
+      "with_grid": false,
+      "name_chip": "CHIP06"
+    }
+  },
+  "instances": {
+    "TP_0_0": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "finger_width": 0.4,
+        "second_finger_width": 0.6
+      },
+      "place": {
+        "at": [
+          1550.0,
+          1800.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_0_1": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "finger_width": 0.4,
+        "second_finger_width": 0.6
+      },
+      "place": {
+        "at": [
+          1550.0,
+          3100.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_0_2": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "finger_width": 0.4,
+        "second_finger_width": 0.6
+      },
+      "place": {
+        "at": [
+          1550.0,
+          4400.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_0_3": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "finger_width": 0.4,
+        "second_finger_width": 0.6
+      },
+      "place": {
+        "at": [
+          1550.0,
+          5700.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_1_0": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "finger_width": 0.5,
+        "second_finger_width": 0.6
+      },
+      "place": {
+        "at": [
+          2430.0,
+          1800.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_1_1": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "finger_width": 0.5,
+        "second_finger_width": 0.6
+      },
+      "place": {
+        "at": [
+          2430.0,
+          3100.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_1_2": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "finger_width": 0.5,
+        "second_finger_width": 0.6
+      },
+      "place": {
+        "at": [
+          2430.0,
+          4400.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_1_3": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "finger_width": 0.5,
+        "second_finger_width": 0.6
+      },
+      "place": {
+        "at": [
+          2430.0,
+          5700.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_2_0": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "finger_width": 0.6,
+        "second_finger_width": 0.6
+      },
+      "place": {
+        "at": [
+          3310.0,
+          1800.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_2_1": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "finger_width": 0.6,
+        "second_finger_width": 0.6
+      },
+      "place": {
+        "at": [
+          3310.0,
+          3100.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_2_2": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "finger_width": 0.6,
+        "second_finger_width": 0.6
+      },
+      "place": {
+        "at": [
+          3310.0,
+          4400.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_2_3": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "finger_width": 0.6,
+        "second_finger_width": 0.6
+      },
+      "place": {
+        "at": [
+          3310.0,
+          5700.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_3_0": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "finger_width": 0.7,
+        "second_finger_width": 0.6
+      },
+      "place": {
+        "at": [
+          4190.0,
+          1800.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_3_1": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "finger_width": 0.7,
+        "second_finger_width": 0.6
+      },
+      "place": {
+        "at": [
+          4190.0,
+          3100.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_3_2": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "finger_width": 0.7,
+        "second_finger_width": 0.6
+      },
+      "place": {
+        "at": [
+          4190.0,
+          4400.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_3_3": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "finger_width": 0.7,
+        "second_finger_width": 0.6
+      },
+      "place": {
+        "at": [
+          4190.0,
+          5700.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_4_0": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "finger_width": 0.8,
+        "second_finger_width": 0.6
+      },
+      "place": {
+        "at": [
+          5070.0,
+          1800.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_4_1": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "finger_width": 0.8,
+        "second_finger_width": 0.6
+      },
+      "place": {
+        "at": [
+          5070.0,
+          3100.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_4_2": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "finger_width": 0.8,
+        "second_finger_width": 0.6
+      },
+      "place": {
+        "at": [
+          5070.0,
+          4400.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_4_3": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "finger_width": 0.8,
+        "second_finger_width": 0.6
+      },
+      "place": {
+        "at": [
+          5070.0,
+          5700.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_5_0": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "finger_width": 0.9,
+        "second_finger_width": 0.6
+      },
+      "place": {
+        "at": [
+          5950.0,
+          1800.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_5_1": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "finger_width": 0.9,
+        "second_finger_width": 0.6
+      },
+      "place": {
+        "at": [
+          5950.0,
+          3100.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_5_2": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "finger_width": 0.9,
+        "second_finger_width": 0.6
+      },
+      "place": {
+        "at": [
+          5950.0,
+          4400.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP_5_3": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "finger_width": 0.9,
+        "second_finger_width": 0.6
+      },
+      "place": {
+        "at": [
+          5950.0,
+          5700.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "WB0": {
+      "cell": "TaperedPad",
+      "params": {
+        "pad_width": 800,
+        "pad_height": 800,
+        "conn_height": 0.001,
+        "finger_width": 800,
+        "negative": true,
+        "window_width": 1000,
+        "window_height": 1000,
+        "x": 0,
+        "y": 100
+      },
+      "place": {
+        "at": [
+          1500.0,
+          6400.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "WB1": {
+      "cell": "TaperedPad",
+      "params": {
+        "pad_width": 800,
+        "pad_height": 800,
+        "conn_height": 0.001,
+        "finger_width": 800,
+        "negative": true,
+        "window_width": 1000,
+        "window_height": 1000,
+        "x": 0,
+        "y": 100
+      },
+      "place": {
+        "at": [
+          2400.0,
+          6400.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "WB2": {
+      "cell": "TaperedPad",
+      "params": {
+        "pad_width": 800,
+        "pad_height": 800,
+        "conn_height": 0.001,
+        "finger_width": 800,
+        "negative": true,
+        "window_width": 1000,
+        "window_height": 1000,
+        "x": 0,
+        "y": 100
+      },
+      "place": {
+        "at": [
+          3300.0,
+          6400.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "WB3": {
+      "cell": "TaperedPad",
+      "params": {
+        "pad_width": 800,
+        "pad_height": 800,
+        "conn_height": 0.001,
+        "finger_width": 800,
+        "negative": true,
+        "window_width": 1000,
+        "window_height": 1000,
+        "x": 0,
+        "y": 100
+      },
+      "place": {
+        "at": [
+          4200.0,
+          6400.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "WB4": {
+      "cell": "TaperedPad",
+      "params": {
+        "pad_width": 800,
+        "pad_height": 800,
+        "conn_height": 0.001,
+        "finger_width": 800,
+        "negative": true,
+        "window_width": 1000,
+        "window_height": 1000,
+        "x": 0,
+        "y": 100
+      },
+      "place": {
+        "at": [
+          5100.0,
+          6400.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "WB5": {
+      "cell": "TaperedPad",
+      "params": {
+        "pad_width": 800,
+        "pad_height": 800,
+        "conn_height": 0.001,
+        "finger_width": 800,
+        "negative": true,
+        "window_width": 1000,
+        "window_height": 1000,
+        "x": 0,
+        "y": 100
+      },
+      "place": {
+        "at": [
+          6000.0,
+          6400.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "WB6": {
+      "cell": "TaperedPad",
+      "params": {
+        "pad_width": 800,
+        "pad_height": 800,
+        "conn_height": 0.001,
+        "finger_width": 800,
+        "negative": true,
+        "window_width": 1000,
+        "window_height": 1000,
+        "x": 0,
+        "y": 100
+      },
+      "place": {
+        "at": [
+          1500.0,
+          100.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "WB7": {
+      "cell": "TaperedPad",
+      "params": {
+        "pad_width": 800,
+        "pad_height": 800,
+        "conn_height": 0.001,
+        "finger_width": 800,
+        "negative": true,
+        "window_width": 1000,
+        "window_height": 1000,
+        "x": 0,
+        "y": 100
+      },
+      "place": {
+        "at": [
+          2400.0,
+          100.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "WB8": {
+      "cell": "TaperedPad",
+      "params": {
+        "pad_width": 800,
+        "pad_height": 800,
+        "conn_height": 0.001,
+        "finger_width": 800,
+        "negative": true,
+        "window_width": 1000,
+        "window_height": 1000,
+        "x": 0,
+        "y": 100
+      },
+      "place": {
+        "at": [
+          3300.0,
+          100.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "WB9": {
+      "cell": "TaperedPad",
+      "params": {
+        "pad_width": 800,
+        "pad_height": 800,
+        "conn_height": 0.001,
+        "finger_width": 800,
+        "negative": true,
+        "window_width": 1000,
+        "window_height": 1000,
+        "x": 0,
+        "y": 100
+      },
+      "place": {
+        "at": [
+          4200.0,
+          100.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "WB10": {
+      "cell": "TaperedPad",
+      "params": {
+        "pad_width": 800,
+        "pad_height": 800,
+        "conn_height": 0.001,
+        "finger_width": 800,
+        "negative": true,
+        "window_width": 1000,
+        "window_height": 1000,
+        "x": 0,
+        "y": 100
+      },
+      "place": {
+        "at": [
+          5100.0,
+          100.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "WB11": {
+      "cell": "TaperedPad",
+      "params": {
+        "pad_width": 800,
+        "pad_height": 800,
+        "conn_height": 0.001,
+        "finger_width": 800,
+        "negative": true,
+        "window_width": 1000,
+        "window_height": 1000,
+        "x": 0,
+        "y": 100
+      },
+      "place": {
+        "at": [
+          6000.0,
+          100.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "WB12": {
+      "cell": "TaperedPad",
+      "params": {
+        "pad_width": 800,
+        "pad_height": 800,
+        "conn_height": 0.001,
+        "finger_width": 800,
+        "negative": true,
+        "window_width": 1000,
+        "window_height": 1000,
+        "x": 0,
+        "y": 100
+      },
+      "place": {
+        "at": [
+          6900.0,
+          1000.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "WB13": {
+      "cell": "TaperedPad",
+      "params": {
+        "pad_width": 800,
+        "pad_height": 800,
+        "conn_height": 0.001,
+        "finger_width": 800,
+        "negative": true,
+        "window_width": 1000,
+        "window_height": 1000,
+        "x": 0,
+        "y": 100
+      },
+      "place": {
+        "at": [
+          6900.0,
+          1900.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "WB14": {
+      "cell": "TaperedPad",
+      "params": {
+        "pad_width": 800,
+        "pad_height": 800,
+        "conn_height": 0.001,
+        "finger_width": 800,
+        "negative": true,
+        "window_width": 1000,
+        "window_height": 1000,
+        "x": 0,
+        "y": 100
+      },
+      "place": {
+        "at": [
+          6900.0,
+          2800.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "WB15": {
+      "cell": "TaperedPad",
+      "params": {
+        "pad_width": 800,
+        "pad_height": 800,
+        "conn_height": 0.001,
+        "finger_width": 800,
+        "negative": true,
+        "window_width": 1000,
+        "window_height": 1000,
+        "x": 0,
+        "y": 100
+      },
+      "place": {
+        "at": [
+          6900.0,
+          3700.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "WB16": {
+      "cell": "TaperedPad",
+      "params": {
+        "pad_width": 800,
+        "pad_height": 800,
+        "conn_height": 0.001,
+        "finger_width": 800,
+        "negative": true,
+        "window_width": 1000,
+        "window_height": 1000,
+        "x": 0,
+        "y": 100
+      },
+      "place": {
+        "at": [
+          6900.0,
+          4600.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "WB17": {
+      "cell": "TaperedPad",
+      "params": {
+        "pad_width": 800,
+        "pad_height": 800,
+        "conn_height": 0.001,
+        "finger_width": 800,
+        "negative": true,
+        "window_width": 1000,
+        "window_height": 1000,
+        "x": 0,
+        "y": 100
+      },
+      "place": {
+        "at": [
+          6900.0,
+          5500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "WB18": {
+      "cell": "TaperedPad",
+      "params": {
+        "pad_width": 800,
+        "pad_height": 800,
+        "conn_height": 0.001,
+        "finger_width": 800,
+        "negative": true,
+        "window_width": 1000,
+        "window_height": 1000,
+        "x": 0,
+        "y": 100
+      },
+      "place": {
+        "at": [
+          600.0,
+          1000.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "WB19": {
+      "cell": "TaperedPad",
+      "params": {
+        "pad_width": 800,
+        "pad_height": 800,
+        "conn_height": 0.001,
+        "finger_width": 800,
+        "negative": true,
+        "window_width": 1000,
+        "window_height": 1000,
+        "x": 0,
+        "y": 100
+      },
+      "place": {
+        "at": [
+          600.0,
+          1900.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "WB20": {
+      "cell": "TaperedPad",
+      "params": {
+        "pad_width": 800,
+        "pad_height": 800,
+        "conn_height": 0.001,
+        "finger_width": 800,
+        "negative": true,
+        "window_width": 1000,
+        "window_height": 1000,
+        "x": 0,
+        "y": 100
+      },
+      "place": {
+        "at": [
+          600.0,
+          2800.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "WB21": {
+      "cell": "TaperedPad",
+      "params": {
+        "pad_width": 800,
+        "pad_height": 800,
+        "conn_height": 0.001,
+        "finger_width": 800,
+        "negative": true,
+        "window_width": 1000,
+        "window_height": 1000,
+        "x": 0,
+        "y": 100
+      },
+      "place": {
+        "at": [
+          600.0,
+          3700.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "WB22": {
+      "cell": "TaperedPad",
+      "params": {
+        "pad_width": 800,
+        "pad_height": 800,
+        "conn_height": 0.001,
+        "finger_width": 800,
+        "negative": true,
+        "window_width": 1000,
+        "window_height": 1000,
+        "x": 0,
+        "y": 100
+      },
+      "place": {
+        "at": [
+          600.0,
+          4600.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "WB23": {
+      "cell": "TaperedPad",
+      "params": {
+        "pad_width": 800,
+        "pad_height": 800,
+        "conn_height": 0.001,
+        "finger_width": 800,
+        "negative": true,
+        "window_width": 1000,
+        "window_height": 1000,
+        "x": 0,
+        "y": 100
+      },
+      "place": {
+        "at": [
+          600.0,
+          5500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "HSQ0": {
+      "cell": "CornerMarker",
+      "params": {
+        "hsq": true,
+        "thickness": 50,
+        "width": 150
+      },
+      "place": {
+        "at": [
+          0.0,
+          0.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "HSQ1": {
+      "cell": "CornerMarker",
+      "params": {
+        "hsq": true,
+        "thickness": 50,
+        "width": 150
+      },
+      "place": {
+        "at": [
+          7500.0,
+          0.0
+        ],
+        "rot": 180.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "HSQ2": {
+      "cell": "CornerMarker",
+      "params": {
+        "hsq": true,
+        "thickness": 50,
+        "width": 150
+      },
+      "place": {
+        "at": [
+          7500.0,
+          7500.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "HSQ3": {
+      "cell": "CornerMarker",
+      "params": {
+        "hsq": true,
+        "thickness": 50,
+        "width": 150
+      },
+      "place": {
+        "at": [
+          0.0,
+          7500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    }
+  },
+  "routes": {},
+  "nets": "derived",
+  "targets": {},
+  "sim_groups": {}
+}

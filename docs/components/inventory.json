@@ -1,0 +1,2949 @@
+{
+ "quantcore": [
+  {
+   "source": "quantcore",
+   "name": "BondPad",
+   "ref": "BondPad",
+   "module": "quantcore_circuits.layouts.others.bond_pad",
+   "category": "launcher",
+   "description": "Wire-bond pad tapering to a CPW (``a``/``b``); port ``a`` at the taper tip.",
+   "has_lom": true
+  },
+  {
+   "source": "quantcore",
+   "name": "TrilayerJunction",
+   "ref": "TrilayerJunction",
+   "module": "quantcore_circuits.layouts.junctions.trilayer",
+   "category": "junction",
+   "description": "Single Nb trilayer cross junction (legacy ``xjc_junction_TL_mod.create_junction``).",
+   "has_lom": false
+  },
+  {
+   "source": "quantcore",
+   "name": "TrilayerSquid",
+   "ref": "TrilayerSquid",
+   "module": "quantcore_circuits.layouts.junctions.trilayer",
+   "category": "junction",
+   "description": "Two trilayer junctions forming a SQUID (legacy ``xjc_squid_TL_mod.create_squid``).",
+   "has_lom": false
+  },
+  {
+   "source": "quantcore",
+   "name": "Xmon",
+   "ref": "Xmon",
+   "module": "quantcore_circuits.layouts.qubits.xmon",
+   "category": "qubit",
+   "description": "Grounded cross transmon with claw couplers; junction below the south arm.",
+   "has_lom": true
+  },
+  {
+   "source": "quantcore",
+   "name": "DesignChip",
+   "ref": "DesignChip",
+   "module": "quantcore_circuits.layouts.chips.design_chip",
+   "category": "chip",
+   "description": "Chip generated from a ``design.json`` build plan.",
+   "has_lom": false
+  }
+ ],
+ "kqc": [
+  {
+   "source": "kqc",
+   "name": "AirbridgeConnection",
+   "ref": "AirbridgeConnection",
+   "module": "kqcircuits.elements.airbridge_connection",
+   "category": "airbridge",
+   "description": "The PCell declaration of an Airbridge with tapered waveguides in both ends."
+  },
+  {
+   "source": "kqc",
+   "name": "AirbridgeMultiFace",
+   "ref": "AirbridgeMultiFace",
+   "module": "kqcircuits.elements.airbridges.airbridge_multi_face",
+   "category": "airbridge",
+   "description": "PCell declaration for a multi-face equivalent for an airbridge."
+  },
+  {
+   "source": "kqc",
+   "name": "AirbridgeRectangular",
+   "ref": "AirbridgeRectangular",
+   "module": "kqcircuits.elements.airbridges.airbridge_rectangular",
+   "category": "airbridge",
+   "description": "PCell declaration for a rectangular airbridge."
+  },
+  {
+   "source": "kqc",
+   "name": "CapacitiveXCoupler",
+   "ref": "CapacitiveXCoupler",
+   "module": "kqcircuits.elements.capacitive_x_coupler",
+   "category": "capacitor",
+   "description": "Capacitive coupler for testing FEM computations."
+  },
+  {
+   "source": "kqc",
+   "name": "ChipFrame",
+   "ref": "ChipFrame",
+   "module": "kqcircuits.elements.chip_frame",
+   "category": "marker",
+   "description": "The PCell declaration for a chip frame."
+  },
+  {
+   "source": "kqc",
+   "name": "CircularCapacitor",
+   "ref": "CircularCapacitor",
+   "module": "kqcircuits.elements.circular_capacitor",
+   "category": "capacitor",
+   "description": "The PCell declaration for a circular capacitor."
+  },
+  {
+   "source": "kqc",
+   "name": "FingerCapacitorSquare",
+   "ref": "FingerCapacitorSquare",
+   "module": "kqcircuits.elements.finger_capacitor_square",
+   "category": "capacitor",
+   "description": "The PCell declaration for a square finger capacitor."
+  },
+  {
+   "source": "kqc",
+   "name": "FingerCapacitorTaper",
+   "ref": "FingerCapacitorTaper",
+   "module": "kqcircuits.elements.finger_capacitor_taper",
+   "category": "capacitor",
+   "description": "The PCell declaration for a tapered finger capacitor."
+  },
+  {
+   "source": "kqc",
+   "name": "FlipChipConnectorDc",
+   "ref": "FlipChipConnectorDc",
+   "module": "kqcircuits.elements.flip_chip_connectors.flip_chip_connector_dc",
+   "category": "flip_chip",
+   "description": "PCell declaration for an inter-chip dc connector."
+  },
+  {
+   "source": "kqc",
+   "name": "FlipChipConnectorRf",
+   "ref": "FlipChipConnectorRf",
+   "module": "kqcircuits.elements.flip_chip_connectors.flip_chip_connector_rf",
+   "category": "flip_chip",
+   "description": "PCell declaration for an inter-chip rf connector."
+  },
+  {
+   "source": "kqc",
+   "name": "FluxlineStandard",
+   "ref": "FluxlineStandard",
+   "module": "kqcircuits.elements.fluxlines.fluxline_standard",
+   "category": "element",
+   "description": "Fluxline variant \"standard\"."
+  },
+  {
+   "source": "kqc",
+   "name": "FluxlineStraight",
+   "ref": "FluxlineStraight",
+   "module": "kqcircuits.elements.fluxlines.fluxline_straight",
+   "category": "element",
+   "description": "Fluxline variant \"straight vertical\"."
+  },
+  {
+   "source": "kqc",
+   "name": "HangerResonator",
+   "ref": "HangerResonator",
+   "module": "kqcircuits.elements.hanger_resonator",
+   "category": "resonator",
+   "description": "Hanger Resonator"
+  },
+  {
+   "source": "kqc",
+   "name": "Launcher",
+   "ref": "Launcher",
+   "module": "kqcircuits.elements.launcher",
+   "category": "launcher",
+   "description": "The PCell declaration for a launcher for connecting wirebonds."
+  },
+  {
+   "source": "kqc",
+   "name": "LauncherDC",
+   "ref": "LauncherDC",
+   "module": "kqcircuits.elements.launcher_dc",
+   "category": "launcher",
+   "description": "The PCell declaration for a DC launcher for connecting wirebonds."
+  },
+  {
+   "source": "kqc",
+   "name": "MarkerStandard",
+   "ref": "MarkerStandard",
+   "module": "kqcircuits.elements.markers.marker_standard",
+   "category": "marker",
+   "description": "The PCell declaration for the Standard Marker."
+  },
+  {
+   "source": "kqc",
+   "name": "MaskMarkerFc",
+   "ref": "MaskMarkerFc",
+   "module": "kqcircuits.elements.markers.mask_marker_fc",
+   "category": "marker",
+   "description": "The PCell declaration for a MaskMarkerFc."
+  },
+  {
+   "source": "kqc",
+   "name": "Meander",
+   "ref": "Meander",
+   "module": "kqcircuits.elements.meander",
+   "category": "waveguide",
+   "description": "The PCell declaration for a meandering waveguide."
+  },
+  {
+   "source": "kqc",
+   "name": "QuarterWaveCpwResonator",
+   "ref": "QuarterWaveCpwResonator",
+   "module": "kqcircuits.elements.quarter_wave_cpw_resonator",
+   "category": "resonator",
+   "description": "CPW Resonator"
+  },
+  {
+   "source": "kqc",
+   "name": "SmoothCapacitor",
+   "ref": "SmoothCapacitor",
+   "module": "kqcircuits.elements.smooth_capacitor",
+   "category": "capacitor",
+   "description": "The PCell declaration for a smooth finger capacitor."
+  },
+  {
+   "source": "kqc",
+   "name": "SpiralCapacitor",
+   "ref": "SpiralCapacitor",
+   "module": "kqcircuits.elements.spiral_capacitor",
+   "category": "capacitor",
+   "description": "The PCell declaration for a spiral capacitor."
+  },
+  {
+   "source": "kqc",
+   "name": "SpiralResonatorPolygon",
+   "ref": "SpiralResonatorPolygon",
+   "module": "kqcircuits.elements.spiral_resonator_polygon",
+   "category": "resonator",
+   "description": "The PCell declaration for a polygon shaped spiral resonator."
+  },
+  {
+   "source": "kqc",
+   "name": "TsvStandard",
+   "ref": "TsvStandard",
+   "module": "kqcircuits.elements.tsvs.tsv_standard",
+   "category": "flip_chip",
+   "description": "Connector between faces of two sides of a substrate."
+  },
+  {
+   "source": "kqc",
+   "name": "WaveguideComposite",
+   "ref": "WaveguideComposite",
+   "module": "kqcircuits.elements.waveguide_composite",
+   "category": "waveguide",
+   "description": "A composite waveguide made of waveguides and other elements."
+  },
+  {
+   "source": "kqc",
+   "name": "WaveguideCoplanar",
+   "ref": "WaveguideCoplanar",
+   "module": "kqcircuits.elements.waveguide_coplanar",
+   "category": "waveguide",
+   "description": "The PCell declaration for an arbitrary coplanar waveguide."
+  },
+  {
+   "source": "kqc",
+   "name": "WaveguideCoplanarCurved",
+   "ref": "WaveguideCoplanarCurved",
+   "module": "kqcircuits.elements.waveguide_coplanar_curved",
+   "category": "waveguide",
+   "description": "The PCell declaration of a curved segment of a coplanar waveguide."
+  },
+  {
+   "source": "kqc",
+   "name": "WaveguideCoplanarSplitter",
+   "ref": "WaveguideCoplanarSplitter",
+   "module": "kqcircuits.elements.waveguide_coplanar_splitter",
+   "category": "waveguide",
+   "description": "The PCell declaration of a multiway waveguide splitter. The number of ports is defined by the length of the"
+  },
+  {
+   "source": "kqc",
+   "name": "WaveguideCoplanarStraight",
+   "ref": "WaveguideCoplanarStraight",
+   "module": "kqcircuits.elements.waveguide_coplanar_straight",
+   "category": "waveguide",
+   "description": "The PCell declaration of a straight segment of a coplanar waveguide."
+  },
+  {
+   "source": "kqc",
+   "name": "WaveguideCoplanarTaper",
+   "ref": "WaveguideCoplanarTaper",
+   "module": "kqcircuits.elements.waveguide_coplanar_taper",
+   "category": "waveguide",
+   "description": "The PCell declaration of a taper segment of a coplanar waveguide."
+  },
+  {
+   "source": "kqc",
+   "name": "CircularTransmonSingleIsland",
+   "ref": "CircularTransmonSingleIsland",
+   "module": "kqcircuits.qubits.circular_transmon_single_island",
+   "category": "qubit",
+   "description": "The PCell declaration for a single island circular transmon."
+  },
+  {
+   "source": "kqc",
+   "name": "ConcentricTransmon",
+   "ref": "ConcentricTransmon",
+   "module": "kqcircuits.qubits.concentric_transmon",
+   "category": "qubit",
+   "description": "The PCell declaration for a concentric transmon."
+  },
+  {
+   "source": "kqc",
+   "name": "DoublePads",
+   "ref": "DoublePads",
+   "module": "kqcircuits.qubits.double_pads",
+   "category": "qubit",
+   "description": "A two-island qubit, consisting of two rounded rectangles shunted by a junction, with one capacitive coupler."
+  },
+  {
+   "source": "kqc",
+   "name": "DoublePadsSplines",
+   "ref": "DoublePadsSplines",
+   "module": "kqcircuits.qubits.double_pads_splines",
+   "category": "qubit",
+   "description": "A two-island qubit, consisting of two spline-constructed islands shunted by a junction,"
+  },
+  {
+   "source": "kqc",
+   "name": "Swissmon",
+   "ref": "Swissmon",
+   "module": "kqcircuits.qubits.swissmon",
+   "category": "qubit",
+   "description": "The PCell declaration for a Swissmon qubit."
+  },
+  {
+   "source": "kqc",
+   "name": "Manhattan",
+   "ref": "Manhattan",
+   "module": "kqcircuits.junctions.manhattan",
+   "category": "junction",
+   "description": "The PCell declaration for a Manhattan style SQUID."
+  },
+  {
+   "source": "kqc",
+   "name": "ManhattanSingleJunction",
+   "ref": "ManhattanSingleJunction",
+   "module": "kqcircuits.junctions.manhattan_single_junction",
+   "category": "junction",
+   "description": "The PCell declaration for a Manhattan style single junction."
+  },
+  {
+   "source": "kqc",
+   "name": "NoSquid",
+   "ref": "NoSquid",
+   "module": "kqcircuits.junctions.no_squid",
+   "category": "junction",
+   "description": "The PCell declaration for a No SQUID junction."
+  },
+  {
+   "source": "kqc",
+   "name": "Sim",
+   "ref": "Sim",
+   "module": "kqcircuits.junctions.sim",
+   "category": "junction",
+   "description": "The PCell declaration for a simulation type SQUID."
+  },
+  {
+   "source": "kqc",
+   "name": "SuperInductor",
+   "ref": "SuperInductor",
+   "module": "kqcircuits.junctions.super_inductor",
+   "category": "junction",
+   "description": "The PCell declaration for a Manhattan style single junction."
+  },
+  {
+   "source": "kqc",
+   "name": "AirbridgeDC",
+   "ref": "AirbridgeDC",
+   "module": "kqcircuits.test_structures.airbridge_dc",
+   "category": "test_structure",
+   "description": "The PCell declaration for an airbridge test structure for four-point DC measurements."
+  },
+  {
+   "source": "kqc",
+   "name": "CrossTest",
+   "ref": "CrossTest",
+   "module": "kqcircuits.test_structures.cross_test",
+   "category": "test_structure",
+   "description": "PCell declaration for optical lithography test alignment cross markers."
+  },
+  {
+   "source": "kqc",
+   "name": "JunctionTestPadsSimple",
+   "ref": "JunctionTestPadsSimple",
+   "module": "kqcircuits.test_structures.junction_test_pads.junction_test_pads_simple",
+   "category": "test_structure",
+   "description": "Junction test structures."
+  },
+  {
+   "source": "kqc",
+   "name": "StripesTest",
+   "ref": "StripesTest",
+   "module": "kqcircuits.test_structures.stripes_test",
+   "category": "test_structure",
+   "description": "PCell declaration for optical lithography test stripes."
+  },
+  {
+   "source": "kqc",
+   "name": "StripesTestIncreasingWidth",
+   "ref": "StripesTestIncreasingWidth",
+   "module": "kqcircuits.test_structures.stripes_test_increasing_width",
+   "category": "test_structure",
+   "description": "PCell declaration for optical lithography test stripes."
+  },
+  {
+   "source": "kqc",
+   "name": "TsvTestPattern",
+   "ref": "TsvTestPattern",
+   "module": "kqcircuits.test_structures.tsv_test_pattern",
+   "category": "test_structure",
+   "description": "PCell declaration for TSV test structures which resembles a TSV fencing for a CPW transmission line."
+  },
+  {
+   "source": "kqc",
+   "name": "AirbridgeCrossings",
+   "ref": "AirbridgeCrossings",
+   "module": "kqcircuits.chips.airbridge_crossings",
+   "category": "chip",
+   "description": "The PCell declaration for an AirbridgeCrossings chip."
+  },
+  {
+   "source": "kqc",
+   "name": "AirbridgeDcTest",
+   "ref": "AirbridgeDcTest",
+   "module": "kqcircuits.chips.airbridge_dc_test",
+   "category": "chip",
+   "description": "Chip full of airbridge 4-point dc tests."
+  },
+  {
+   "source": "kqc",
+   "name": "Chip",
+   "ref": "Chip",
+   "module": "kqcircuits.chips.chip",
+   "category": "chip",
+   "description": "Base PCell declaration for chips."
+  },
+  {
+   "source": "kqc",
+   "name": "CrossingTwoface",
+   "ref": "CrossingTwoface",
+   "module": "kqcircuits.chips.crossing_twoface",
+   "category": "chip",
+   "description": "The PCell declaration for a CrossingTwoFace chip."
+  },
+  {
+   "source": "kqc",
+   "name": "DaisyWoven",
+   "ref": "DaisyWoven",
+   "module": "kqcircuits.chips.daisy_woven",
+   "category": "chip",
+   "description": "Base PCell declaration for a Daisy Woven chip."
+  },
+  {
+   "source": "kqc",
+   "name": "DcTest",
+   "ref": "DcTest",
+   "module": "kqcircuits.chips.dc_test",
+   "category": "chip",
+   "description": "Chip with launchers for DC sample holder."
+  },
+  {
+   "source": "kqc",
+   "name": "Demo",
+   "ref": "Demo",
+   "module": "kqcircuits.chips.demo",
+   "category": "chip",
+   "description": "Demonstration chip with a four qubits, four readout resonators, two probe lines, charge- and fluxlines."
+  },
+  {
+   "source": "kqc",
+   "name": "DemoTwoface",
+   "ref": "DemoTwoface",
+   "module": "kqcircuits.chips.demo_twoface",
+   "category": "chip",
+   "description": "Demonstration chip for 3D-integration (multi-face) features."
+  },
+  {
+   "source": "kqc",
+   "name": "Empty",
+   "ref": "Empty",
+   "module": "kqcircuits.chips.empty",
+   "category": "chip",
+   "description": "Chip with almost all ground metal removed, used for EBL tests."
+  },
+  {
+   "source": "kqc",
+   "name": "JunctionTest",
+   "ref": "JunctionTest",
+   "module": "kqcircuits.chips.junction_test",
+   "category": "chip",
+   "description": "The PCell declaration for a JunctionTest chip."
+  },
+  {
+   "source": "kqc",
+   "name": "JunctionTest2",
+   "ref": "JunctionTest2",
+   "module": "kqcircuits.chips.junction_test2",
+   "category": "chip",
+   "description": "The PCell declaration for a JunctionTest2 chip."
+  },
+  {
+   "source": "kqc",
+   "name": "Launchers",
+   "ref": "Launchers",
+   "module": "kqcircuits.chips.launchers",
+   "category": "chip",
+   "description": "The PCell declaration for a chip with predefined launchers."
+  },
+  {
+   "source": "kqc",
+   "name": "LithographyTest",
+   "ref": "LithographyTest",
+   "module": "kqcircuits.chips.lithography_test",
+   "category": "chip",
+   "description": "Optical lithography test chip."
+  },
+  {
+   "source": "kqc",
+   "name": "LithographyTestTwoface",
+   "ref": "LithographyTestTwoface",
+   "module": "kqcircuits.chips.lithography_test_twoface",
+   "category": "chip",
+   "description": "Optical lithography test chip in a flip chip architecture."
+  },
+  {
+   "source": "kqc",
+   "name": "MunchQubits",
+   "ref": "MunchQubits",
+   "module": "kqcircuits.chips.munch_qubits",
+   "category": "chip",
+   "description": "Demonstration chip with two circular single island qubits, one floating island qubit, three readout resonators,"
+  },
+  {
+   "source": "kqc",
+   "name": "QualityFactor",
+   "ref": "QualityFactor",
+   "module": "kqcircuits.chips.quality_factor",
+   "category": "chip",
+   "description": "The PCell declaration for a QualityFactor chip."
+  },
+  {
+   "source": "kqc",
+   "name": "QualityFactorTwoface",
+   "ref": "QualityFactorTwoface",
+   "module": "kqcircuits.chips.quality_factor_twoface",
+   "category": "chip",
+   "description": "The PCell declaration for a QualityFactorTwoFace chip."
+  },
+  {
+   "source": "kqc",
+   "name": "SampleHolderTest",
+   "ref": "SampleHolderTest",
+   "module": "kqcircuits.chips.sample_holder_test",
+   "category": "chip",
+   "description": "The PCell declaration for a SampleHolderTest chip."
+  },
+  {
+   "source": "kqc",
+   "name": "Shaping",
+   "ref": "Shaping",
+   "module": "kqcircuits.chips.shaping",
+   "category": "chip",
+   "description": "The PCell declaration for a Shaping chip."
+  },
+  {
+   "source": "kqc",
+   "name": "Simple",
+   "ref": "Simple",
+   "module": "kqcircuits.chips.simple",
+   "category": "chip",
+   "description": "The PCell declaration for a very simple chip."
+  },
+  {
+   "source": "kqc",
+   "name": "SingleXmons",
+   "ref": "SingleXmons",
+   "module": "kqcircuits.chips.single_xmons",
+   "category": "chip",
+   "description": "The PCell declaration for a SingleXmons chip."
+  },
+  {
+   "source": "kqc",
+   "name": "Stripes",
+   "ref": "Stripes",
+   "module": "kqcircuits.chips.stripes",
+   "category": "chip",
+   "description": "The PCell declaration for a Stripes chip."
+  },
+  {
+   "source": "kqc",
+   "name": "TsvTest",
+   "ref": "TsvTest",
+   "module": "kqcircuits.chips.tsv_test",
+   "category": "chip",
+   "description": "Through silicon via test chip."
+  },
+  {
+   "source": "kqc",
+   "name": "XMonsDirectCoupling",
+   "ref": "XMonsDirectCoupling",
+   "module": "kqcircuits.chips.xmons_direct_coupling",
+   "category": "chip",
+   "description": "The PCell declaration for an XMonsDirectCoupling chip."
+  }
+ ],
+ "metal": [
+  {
+   "source": "metal",
+   "name": "CapNInterdigitalTee",
+   "ref": "metal:CapNInterdigitalTee",
+   "module": "qiskit_metal.qlibrary.couplers.cap_n_interdigital_tee",
+   "category": "coupler",
+   "description": "Generates a three pin (+) structure comprised of a primary two pin CPW",
+   "default_options": [
+    "cap_distance",
+    "cap_gap",
+    "cap_width",
+    "finger_count",
+    "finger_length",
+    "prime_gap",
+    "prime_width",
+    "second_gap",
+    "second_width"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "CoupledLineTee",
+   "ref": "metal:CoupledLineTee",
+   "module": "qiskit_metal.qlibrary.couplers.coupled_line_tee",
+   "category": "coupler",
+   "description": "Generates a three pin (+) structure comprised of a primary two pin CPW",
+   "default_options": [
+    "coupling_length",
+    "coupling_space",
+    "down_length",
+    "fillet",
+    "mirror",
+    "open_termination",
+    "prime_gap",
+    "prime_width",
+    "second_gap",
+    "second_width"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "LineTee",
+   "ref": "metal:LineTee",
+   "module": "qiskit_metal.qlibrary.couplers.line_tee",
+   "category": "coupler",
+   "description": "Generates a three pin (+) structure comprised of a primary two pin CPW",
+   "default_options": [
+    "prime_gap",
+    "prime_width",
+    "second_gap",
+    "second_width",
+    "t_length"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "TunableCoupler01",
+   "ref": "metal:TunableCoupler01",
+   "module": "qiskit_metal.qlibrary.couplers.tunable_coupler_01",
+   "category": "coupler",
+   "description": "One of the tunable couplers Based off the implementation in",
+   "default_options": [
+    "a_height",
+    "c_width",
+    "cp_arm_length",
+    "cp_arm_width",
+    "cp_gap",
+    "cp_gspace",
+    "cp_height",
+    "fl_gap",
+    "fl_ground",
+    "fl_length",
+    "fl_width",
+    "l_gap",
+    "l_width"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "TunableCoupler02",
+   "ref": "metal:TunableCoupler02",
+   "module": "qiskit_metal.qlibrary.couplers.tunable_coupler_02",
+   "category": "coupler",
+   "description": ".. image::",
+   "default_options": [
+    "JJ_length",
+    "JJ_width",
+    "bus_JJ_height",
+    "bus_inner_length",
+    "bus_outer_length",
+    "bus_width",
+    "fbl_length",
+    "fbl_offset",
+    "fbl_width",
+    "layer",
+    "orientation",
+    "pad_radius",
+    "pocket_height",
+    "pocket_width",
+    "pos_x",
+    "pos_y"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "Cap3Interdigital",
+   "ref": "metal:Cap3Interdigital",
+   "module": "qiskit_metal.qlibrary.lumped.cap_3_interdigital",
+   "category": "capacitor",
+   "description": "Create a three finger planar capacitor with a ground pocket cuttout.",
+   "default_options": [
+    "finger_length",
+    "pocket_buffer_width_x",
+    "pocket_buffer_width_y",
+    "trace_width"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "CapFingerInFrame",
+   "ref": "metal:CapFingerInFrame",
+   "module": "qiskit_metal.qlibrary.lumped.cap_finger_in_frame",
+   "category": "capacitor",
+   "description": "Two-pin gap capacitor with one electrode framing the other.",
+   "default_options": [
+    "cap_gap",
+    "finger_cpw_width",
+    "frame_cpw_width",
+    "frame_length",
+    "frame_trace",
+    "frame_width",
+    "ground_gap"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "CapNInterdigital",
+   "ref": "metal:CapNInterdigital",
+   "module": "qiskit_metal.qlibrary.lumped.cap_n_interdigital",
+   "category": "capacitor",
+   "description": "Generates a two pin (+) structure comprised of a north CPW transmission",
+   "default_options": [
+    "cap_distance",
+    "cap_gap",
+    "cap_gap_ground",
+    "cap_width",
+    "finger_count",
+    "finger_length",
+    "north_gap",
+    "north_width",
+    "south_gap",
+    "south_width"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "ResonatorCoilRect",
+   "ref": "metal:ResonatorCoilRect",
+   "module": "qiskit_metal.qlibrary.lumped.resonator_coil_rect",
+   "category": "capacitor",
+   "description": "A rectangle spiral resonator based on length input. The X dimension is",
+   "default_options": [
+    "coupler_distance",
+    "gap",
+    "height",
+    "length",
+    "line_width",
+    "n"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "jj_dolan",
+   "ref": "metal:jj_dolan",
+   "module": "qiskit_metal.qlibrary.qubits.JJ_Dolan",
+   "category": "qubit",
+   "description": "Dolan-bridge Josephson junction.",
+   "default_options": [
+    "JJ_pad_lower_height",
+    "JJ_pad_lower_pos_x",
+    "JJ_pad_lower_pos_y",
+    "JJ_pad_lower_width",
+    "extension",
+    "finger_lower_height",
+    "finger_lower_width",
+    "offset",
+    "second_metal_length",
+    "second_metal_width"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "jj_manhattan",
+   "ref": "metal:jj_manhattan",
+   "module": "qiskit_metal.qlibrary.qubits.JJ_Manhattan",
+   "category": "qubit",
+   "description": "Manhattan-style Josephson junction.",
+   "default_options": [
+    "JJ_pad_lower_height",
+    "JJ_pad_lower_pos_x",
+    "JJ_pad_lower_pos_y",
+    "JJ_pad_lower_width",
+    "extension",
+    "finger_lower_height",
+    "finger_lower_width"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "SNAIL",
+   "ref": "metal:SNAIL",
+   "module": "qiskit_metal.qlibrary.qubits.SNAIL",
+   "category": "junction",
+   "description": "A SNAIL (Superconducting Nonlinear Asymmetric Inductive eLement).",
+   "default_options": [
+    "JJ_gap",
+    "JJ_gap_small",
+    "Lj",
+    "Lj_small",
+    "inductor_width",
+    "pin_width",
+    "plate1_height",
+    "plate1_pos_x",
+    "plate1_pos_y",
+    "plate1_width",
+    "plate2_height",
+    "plate2_width",
+    "segment_a_length",
+    "segment_a_width",
+    "segment_ab_length",
+    "segment_b_length",
+    "segment_b_width",
+    "segment_c_width",
+    "segment_d_length",
+    "segment_d_width",
+    "segment_lower_width",
+    "squid_gap"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "SQUID_LOOP",
+   "ref": "metal:SQUID_LOOP",
+   "module": "qiskit_metal.qlibrary.qubits.SQUID_loop",
+   "category": "junction",
+   "description": "The base \"SQUID_LOOP\" inherits the \"QComponent\" class.",
+   "default_options": [
+    "JJ_gap",
+    "plate1_height",
+    "plate1_pos_x",
+    "plate1_pos_y",
+    "plate1_width",
+    "plate2_height",
+    "plate2_width",
+    "segment_a_length",
+    "segment_a_width",
+    "segment_b_length",
+    "segment_b_width",
+    "segment_c_width",
+    "segment_d_length",
+    "segment_d_width",
+    "squid_gap"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "TransmonInterdigitated",
+   "ref": "metal:TransmonInterdigitated",
+   "module": "qiskit_metal.qlibrary.qubits.Transmon_Interdigitated",
+   "category": "qubit",
+   "description": "The base \"TransmonInterdigitated\" inherits the \"QComponent\" class.",
+   "default_options": [
+    "cc_height",
+    "cc_space",
+    "cc_topleft_height",
+    "cc_topleft_space",
+    "cc_topleft_width",
+    "cc_topright_height",
+    "cc_topright_space",
+    "cc_topright_width",
+    "cc_width",
+    "comb_space_hor",
+    "comb_space_vert",
+    "comb_width",
+    "finger_height",
+    "finger_space",
+    "finger_width",
+    "inductor_width",
+    "jj_width",
+    "pad_height",
+    "pad_pos_x",
+    "pad_pos_y",
+    "pad_width",
+    "rotation_top_pad"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "StarQubit",
+   "ref": "metal:StarQubit",
+   "module": "qiskit_metal.qlibrary.qubits.star_qubit",
+   "category": "qubit",
+   "description": "A single configurable circle with multiple pads.",
+   "default_options": [
+    "cap_style",
+    "center_radius",
+    "connector_length",
+    "cpw_width",
+    "gap_couplers",
+    "gap_readout",
+    "helper",
+    "junc_h",
+    "number_of_connectors",
+    "radius",
+    "resolution",
+    "rotation_cpl1",
+    "rotation_cpl2",
+    "rotation_cpl3",
+    "rotation_cpl4",
+    "rotation_jj",
+    "rotation_rdout",
+    "subtract",
+    "trap_offset"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "TransmonConcentric",
+   "ref": "metal:TransmonConcentric",
+   "module": "qiskit_metal.qlibrary.qubits.transmon_concentric",
+   "category": "qubit",
+   "description": "The base `TrasmonConcentric` class .",
+   "default_options": [
+    "cpw_width",
+    "fbl_ext",
+    "fbl_gap",
+    "fbl_rad",
+    "fbl_sp",
+    "gap",
+    "height",
+    "inductor_width",
+    "jj_w",
+    "layer",
+    "pocket_h",
+    "pocket_w",
+    "rad_i",
+    "rad_o",
+    "res_ext",
+    "res_s",
+    "width"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "TransmonConcentricType2",
+   "ref": "metal:TransmonConcentricType2",
+   "module": "qiskit_metal.qlibrary.qubits.transmon_concentric_type_2",
+   "category": "qubit",
+   "description": ".. image::",
+   "default_options": [
+    "box_E_length",
+    "box_E_width",
+    "coupler_NE_gap",
+    "coupler_NE_width",
+    "coupler_NW_gap",
+    "coupler_NW_width",
+    "coupler_SW_gap",
+    "coupler_SW_width",
+    "finger_E_length",
+    "finger_E_width",
+    "finger_NE_length",
+    "finger_NE_width",
+    "finger_NW_length",
+    "finger_NW_width",
+    "finger_N_length",
+    "finger_N_width",
+    "finger_SW_length",
+    "finger_SW_width",
+    "gap",
+    "jj_w",
+    "layer",
+    "orientation",
+    "pocket_h",
+    "pocket_w",
+    "pos_x",
+    "pos_y",
+    "rad_inner",
+    "rad_outer",
+    "triangle_base",
+    "triangle_height"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "TransmonCross",
+   "ref": "metal:TransmonCross",
+   "module": "qiskit_metal.qlibrary.qubits.transmon_cross",
+   "category": "qubit",
+   "description": "The base `TransmonCross` class.",
+   "default_options": [
+    "_default_connection_pads",
+    "chip",
+    "cross_gap",
+    "cross_length",
+    "cross_width"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "TransmonCrossFL",
+   "ref": "metal:TransmonCrossFL",
+   "module": "qiskit_metal.qlibrary.qubits.transmon_cross_fl",
+   "category": "qubit",
+   "description": "The base `TransmonCrossFL` class.",
+   "default_options": [
+    "fl_options",
+    "make_fl"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "TransmonPocket",
+   "ref": "metal:TransmonPocket",
+   "module": "qiskit_metal.qlibrary.qubits.transmon_pocket",
+   "category": "qubit",
+   "description": "The base `TransmonPocket` class.",
+   "default_options": [
+    "_default_connection_pads",
+    "inductor_width",
+    "pad_gap",
+    "pad_height",
+    "pad_width",
+    "pocket_height",
+    "pocket_width"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "TransmonPocket6",
+   "ref": "metal:TransmonPocket6",
+   "module": "qiskit_metal.qlibrary.qubits.transmon_pocket_6",
+   "category": "qubit",
+   "description": "Transmon pocket with 6 connection pads.",
+   "default_options": [
+    "_default_connection_pads",
+    "inductor_width",
+    "pad_gap",
+    "pad_height",
+    "pad_width",
+    "pocket_height",
+    "pocket_width"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "TransmonPocketCL",
+   "ref": "metal:TransmonPocketCL",
+   "module": "qiskit_metal.qlibrary.qubits.transmon_pocket_cl",
+   "category": "qubit",
+   "description": "The base `TransmonPocketCL` class.",
+   "default_options": [
+    "cl_gap",
+    "cl_ground_gap",
+    "cl_length",
+    "cl_off_center",
+    "cl_pocket_edge",
+    "cl_width",
+    "make_CL"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "TransmonPocketTeeth",
+   "ref": "metal:TransmonPocketTeeth",
+   "module": "qiskit_metal.qlibrary.qubits.transmon_pocket_teeth",
+   "category": "qubit",
+   "description": "Transmon pocket with 'Teeth' connection pads.",
+   "default_options": [
+    "_default_connection_pads",
+    "coupled_pad_gap",
+    "coupled_pad_height",
+    "coupled_pad_width",
+    "inductor_width",
+    "pad_gap",
+    "pad_height",
+    "pad_width",
+    "pocket_height",
+    "pocket_width"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "TransmonStar",
+   "ref": "metal:TransmonStar",
+   "module": "qiskit_metal.qlibrary.qubits.transmon_star",
+   "category": "qubit",
+   "description": "The base `TransmonStar` class.",
+   "default_options": [
+    "_default_connection_pads",
+    "arm_gap",
+    "arm_length",
+    "arm_width",
+    "chip",
+    "junction_arm_index",
+    "num_points"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "ReadoutResFC",
+   "ref": "metal:ReadoutResFC",
+   "module": "qiskit_metal.qlibrary.resonators.readoutres_fc",
+   "category": "resonator",
+   "description": ".. image::",
+   "default_options": [
+    "_default_connection_pads",
+    "arc_step",
+    "chip",
+    "layer",
+    "layer_subtract",
+    "orientation",
+    "pos_x",
+    "pos_y",
+    "readout_cpw_gap",
+    "readout_cpw_turnradius",
+    "readout_cpw_width",
+    "readout_l1",
+    "readout_l2",
+    "readout_l3",
+    "readout_l4",
+    "readout_l5",
+    "readout_radius",
+    "subtract"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "ResonatorLumped",
+   "ref": "metal:ResonatorLumped",
+   "module": "qiskit_metal.qlibrary.resonators.resonator_lumped",
+   "category": "resonator",
+   "description": ".. image::",
+   "default_options": [
+    "box_height",
+    "box_width",
+    "break_width",
+    "final",
+    "initial",
+    "inner_space",
+    "layer",
+    "n_turns",
+    "orientation",
+    "outer_space",
+    "perimeter_thickness",
+    "pos_x",
+    "pos_y",
+    "res_width",
+    "turn_radius"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "CircleCaterpillar",
+   "ref": "metal:CircleCaterpillar",
+   "module": "qiskit_metal.qlibrary.sample_shapes.circle_caterpillar",
+   "category": "shape",
+   "description": "A single configurable circle.",
+   "default_options": [
+    "cap_style",
+    "distance",
+    "helper",
+    "radius",
+    "resolution",
+    "segments",
+    "subtract"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "CircleRaster",
+   "ref": "metal:CircleRaster",
+   "module": "qiskit_metal.qlibrary.sample_shapes.circle_raster",
+   "category": "shape",
+   "description": "A single configurable circle.",
+   "default_options": [
+    "cap_style",
+    "helper",
+    "radius",
+    "resolution",
+    "subtract"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "NGon",
+   "ref": "metal:NGon",
+   "module": "qiskit_metal.qlibrary.sample_shapes.n_gon",
+   "category": "shape",
+   "description": "A n-gon polygon. Eg. n = 3 : triangle, n = infinity : circle",
+   "default_options": [
+    "helper",
+    "n",
+    "radius",
+    "subtract"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "NSquareSpiral",
+   "ref": "metal:NSquareSpiral",
+   "module": "qiskit_metal.qlibrary.sample_shapes.n_square_spiral",
+   "category": "shape",
+   "description": "A n count square spiral.",
+   "default_options": [
+    "gap",
+    "helper",
+    "n",
+    "radius",
+    "subtract",
+    "width"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "Rectangle",
+   "ref": "metal:Rectangle",
+   "module": "qiskit_metal.qlibrary.sample_shapes.rectangle",
+   "category": "shape",
+   "description": "A single configurable square.",
+   "default_options": [
+    "height",
+    "helper",
+    "subtract",
+    "width"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "RectangleHollow",
+   "ref": "metal:RectangleHollow",
+   "module": "qiskit_metal.qlibrary.sample_shapes.rectangle_hollow",
+   "category": "shape",
+   "description": "A single configurable square.",
+   "default_options": [
+    "height",
+    "helper",
+    "inner",
+    "subtract",
+    "width"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "SmileyFace",
+   "ref": "metal:SmileyFace",
+   "module": "qiskit_metal.qlibrary.sample_shapes.smiley_face",
+   "category": "shape",
+   "description": "TEST COMPONENT It is for fun only.  Can view a smiley face. Can make it",
+   "default_options": [
+    "happy",
+    "orientation",
+    "wink"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "LaunchpadWirebond",
+   "ref": "metal:LaunchpadWirebond",
+   "module": "qiskit_metal.qlibrary.terminations.launchpad_wb",
+   "category": "launcher",
+   "description": "Launch pad to feed/read signals to/from the chip.",
+   "default_options": [
+    "lead_length",
+    "pad_gap",
+    "pad_height",
+    "pad_width",
+    "taper_height",
+    "trace_gap",
+    "trace_width"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "LaunchpadWirebondCoupled",
+   "ref": "metal:LaunchpadWirebondCoupled",
+   "module": "qiskit_metal.qlibrary.terminations.launchpad_wb_coupled",
+   "category": "launcher",
+   "description": "Launch pad to feed/read signals to/from the chip.",
+   "default_options": [
+    "coupler_length",
+    "lead_length",
+    "trace_gap",
+    "trace_width"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "LaunchpadWirebondDriven",
+   "ref": "metal:LaunchpadWirebondDriven",
+   "module": "qiskit_metal.qlibrary.terminations.launchpad_wb_driven",
+   "category": "launcher",
+   "description": "Launch pad to feed/read signals to/from the chip.",
+   "default_options": [
+    "lead_length",
+    "pad_gap",
+    "pad_height",
+    "pad_width",
+    "taper_height",
+    "trace_gap",
+    "trace_width"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "OpenToGround",
+   "ref": "metal:OpenToGround",
+   "module": "qiskit_metal.qlibrary.terminations.open_to_ground",
+   "category": "launcher",
+   "description": "A sample_shapes open to ground termination. Functions as a pin for auto drawing.",
+   "default_options": [
+    "gap",
+    "termination_gap",
+    "width"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "ShortToGround",
+   "ref": "metal:ShortToGround",
+   "module": "qiskit_metal.qlibrary.terminations.short_to_ground",
+   "category": "launcher",
+   "description": ".. image::",
+   "default_options": [
+    "width"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "Airbridge",
+   "ref": "metal:Airbridge",
+   "module": "qiskit_metal.qlibrary.tlines.airbridge",
+   "category": "route",
+   "description": "A single airbridge: two base-metal landing pads joined by an elevated",
+   "default_options": [
+    "bridge_layer",
+    "bridge_width",
+    "crossover_length",
+    "enable_posts",
+    "pad_layer",
+    "pad_length",
+    "pad_width",
+    "post_layer"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "RouteAnchors",
+   "ref": "metal:RouteAnchors",
+   "module": "qiskit_metal.qlibrary.tlines.anchored_path",
+   "category": "route",
+   "description": ".. image::",
+   "default_options": [
+    "advanced",
+    "anchors"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "RouteFramed",
+   "ref": "metal:RouteFramed",
+   "module": "qiskit_metal.qlibrary.tlines.framed_path",
+   "category": "route",
+   "description": ".. image::",
+   "default_options": [
+    "fillet",
+    "lead",
+    "pin_inputs",
+    "total_length",
+    "trace_width"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "RouteMeander",
+   "ref": "metal:RouteMeander",
+   "module": "qiskit_metal.qlibrary.tlines.meandered",
+   "category": "route",
+   "description": ".. image::",
+   "default_options": [
+    "meander",
+    "prevent_short_edges",
+    "snap"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "RouteMixed",
+   "ref": "metal:RouteMixed",
+   "module": "qiskit_metal.qlibrary.tlines.mixed_path",
+   "category": "route",
+   "description": ".. image::",
+   "default_options": [
+    "between_anchors"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "RoutePathfinder",
+   "ref": "metal:RoutePathfinder",
+   "module": "qiskit_metal.qlibrary.tlines.pathfinder",
+   "category": "route",
+   "description": ".. image::",
+   "default_options": [
+    "advanced",
+    "step_size"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "PolylineCPW",
+   "ref": "metal:PolylineCPW",
+   "module": "qiskit_metal.qlibrary.tlines.polyline_cpw",
+   "category": "route",
+   "description": "A coplanar waveguide drawn along an explicit polyline.",
+   "default_options": [
+    "fillet",
+    "min_segment",
+    "points",
+    "taps",
+    "trace_gap",
+    "trace_width"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "RouteStraight",
+   "ref": "metal:RouteStraight",
+   "module": "qiskit_metal.qlibrary.tlines.straight_path",
+   "category": "route",
+   "description": ".. image::",
+   "default_options": [
+    "fillet",
+    "lead",
+    "pin_inputs",
+    "total_length",
+    "trace_width"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "BridgeFreeJunction",
+   "ref": "metal:BridgeFreeJunction",
+   "module": "qiskit_metal.qlibrary.user_components.BridgeFreeJJ",
+   "category": "other",
+   "description": ".. image::",
+   "default_options": [
+    "JJ_height",
+    "JJ_width",
+    "layer",
+    "layer_2",
+    "layer_3",
+    "layer_4",
+    "orientation",
+    "pos_x",
+    "pos_y",
+    "resist_t1",
+    "resist_t2",
+    "teta_1",
+    "teta_2",
+    "wire_length",
+    "wire_width"
+   ]
+  },
+  {
+   "source": "metal",
+   "name": "MyQComponent",
+   "ref": "metal:MyQComponent",
+   "module": "qiskit_metal.qlibrary.user_components.my_qcomponent",
+   "category": "other",
+   "description": ".. image::",
+   "default_options": [
+    "height",
+    "width"
+   ]
+  }
+ ],
+ "legacy": [
+  {
+   "source": "legacy",
+   "file": "components\\pymacros\\Cong\\75x75_diewafer.lym",
+   "pcells": [],
+   "registered": []
+  },
+  {
+   "source": "legacy",
+   "file": "components\\pymacros\\Cong\\bondpad_cpwe.lym",
+   "pcells": [],
+   "registered": []
+  },
+  {
+   "source": "legacy",
+   "file": "components\\pymacros\\Cong\\bondpad_ustrip.lym",
+   "pcells": [],
+   "registered": []
+  },
+  {
+   "source": "legacy",
+   "file": "components\\pymacros\\Cong\\coupled quarter waves cpwe v1.lym",
+   "pcells": [],
+   "registered": []
+  },
+  {
+   "source": "legacy",
+   "file": "components\\pymacros\\Cong\\Merge_gds.lym",
+   "pcells": [],
+   "registered": []
+  },
+  {
+   "source": "legacy",
+   "file": "components\\pymacros\\Cong\\Template_0.lym",
+   "pcells": [],
+   "registered": []
+  },
+  {
+   "source": "legacy",
+   "file": "components\\pymacros\\Cong\\Template_1.lym",
+   "pcells": [],
+   "registered": []
+  },
+  {
+   "source": "legacy",
+   "file": "components\\pymacros\\Library_QWri.lym",
+   "pcells": [],
+   "registered": [
+    {
+     "display": "Arc",
+     "class": "Arc"
+    },
+    {
+     "display": "CPW Resonator",
+     "class": "CPWResonator"
+    },
+    {
+     "display": "Coupled Resonator",
+     "class": "CoupledResonator"
+    },
+    {
+     "display": "Qubit Resonator",
+     "class": "QubitResonator"
+    },
+    {
+     "display": "Coupled Connector",
+     "class": "CoupledConnector"
+    },
+    {
+     "display": "Xmon Cross",
+     "class": "Xmon_cross"
+    },
+    {
+     "display": "Xmon Handle",
+     "class": "Xmon_handle"
+    },
+    {
+     "display": "Coplanar Waveguide",
+     "class": "CPW"
+    },
+    {
+     "display": "JJ_finger",
+     "class": "JJ_finger"
+    },
+    {
+     "display": "JJ_finger Top",
+     "class": "JJ_finger_top"
+    },
+    {
+     "display": "JJ_finger Bottom",
+     "class": "JJ_finger_bot"
+    },
+    {
+     "display": "Bounding Box",
+     "class": "BoundBox"
+    },
+    {
+     "display": "Pad",
+     "class": "Pad"
+    },
+    {
+     "display": "Marker",
+     "class": "Marker"
+    },
+    {
+     "display": "Connector Pad 2",
+     "class": "ConnectorPad2"
+    },
+    {
+     "display": "Connector Pad",
+     "class": "ConnectorPad"
+    },
+    {
+     "display": "Transmon",
+     "class": "Transmon"
+    }
+   ]
+  },
+  {
+   "source": "legacy",
+   "file": "components\\pymacros\\QuantumPcells\\Arc.lym",
+   "pcells": [
+    "Arc"
+   ],
+   "registered": []
+  },
+  {
+   "source": "legacy",
+   "file": "components\\pymacros\\QuantumPcells\\boundaryBox.lym",
+   "pcells": [
+    "BoundBox"
+   ],
+   "registered": []
+  },
+  {
+   "source": "legacy",
+   "file": "components\\pymacros\\QuantumPcells\\connector_pad.lym",
+   "pcells": [
+    "ConnectorPad"
+   ],
+   "registered": []
+  },
+  {
+   "source": "legacy",
+   "file": "components\\pymacros\\QuantumPcells\\connector_pad_v2.lym",
+   "pcells": [
+    "ConnectorPad2"
+   ],
+   "registered": []
+  },
+  {
+   "source": "legacy",
+   "file": "components\\pymacros\\QuantumPcells\\CoupledConnector.lym",
+   "pcells": [
+    "CoupledConnector"
+   ],
+   "registered": []
+  },
+  {
+   "source": "legacy",
+   "file": "components\\pymacros\\QuantumPcells\\coupler.lym",
+   "pcells": [
+    "Coupler"
+   ],
+   "registered": []
+  },
+  {
+   "source": "legacy",
+   "file": "components\\pymacros\\QuantumPcells\\CPW.lym",
+   "pcells": [
+    "CPW"
+   ],
+   "registered": []
+  },
+  {
+   "source": "legacy",
+   "file": "components\\pymacros\\QuantumPcells\\CPW_Coupled_Resonator.lym",
+   "pcells": [
+    "CoupledResonator"
+   ],
+   "registered": []
+  },
+  {
+   "source": "legacy",
+   "file": "components\\pymacros\\QuantumPcells\\CPWResonator.lym",
+   "pcells": [
+    "CPWResonator"
+   ],
+   "registered": []
+  },
+  {
+   "source": "legacy",
+   "file": "components\\pymacros\\QuantumPcells\\JJ_finger.lym",
+   "pcells": [
+    "JJ_finger"
+   ],
+   "registered": []
+  },
+  {
+   "source": "legacy",
+   "file": "components\\pymacros\\QuantumPcells\\JJ_finger_bottom.lym",
+   "pcells": [
+    "JJ_finger_bot"
+   ],
+   "registered": []
+  },
+  {
+   "source": "legacy",
+   "file": "components\\pymacros\\QuantumPcells\\JJ_finger_bottom_old.lym",
+   "pcells": [
+    "JJ_finger_bottom_old"
+   ],
+   "registered": []
+  },
+  {
+   "source": "legacy",
+   "file": "components\\pymacros\\QuantumPcells\\JJ_finger_negative_old.lym",
+   "pcells": [
+    "JJ_finger_negativeOLD"
+   ],
+   "registered": []
+  },
+  {
+   "source": "legacy",
+   "file": "components\\pymacros\\QuantumPcells\\JJ_finger_top.lym",
+   "pcells": [
+    "JJ_finger_top"
+   ],
+   "registered": []
+  },
+  {
+   "source": "legacy",
+   "file": "components\\pymacros\\QuantumPcells\\Marker.lym",
+   "pcells": [
+    "Marker"
+   ],
+   "registered": []
+  },
+  {
+   "source": "legacy",
+   "file": "components\\pymacros\\QuantumPcells\\pad.lym",
+   "pcells": [
+    "Pad"
+   ],
+   "registered": []
+  },
+  {
+   "source": "legacy",
+   "file": "components\\pymacros\\QuantumPcells\\pcell_sample_python.lym",
+   "pcells": [
+    "Circle"
+   ],
+   "registered": [
+    {
+     "display": "Circle",
+     "class": "Circle"
+    }
+   ]
+  },
+  {
+   "source": "legacy",
+   "file": "components\\pymacros\\QuantumPcells\\Qubit_Resonator.lym",
+   "pcells": [
+    "QubitResonator"
+   ],
+   "registered": []
+  },
+  {
+   "source": "legacy",
+   "file": "components\\pymacros\\QuantumPcells\\Transmon.lym",
+   "pcells": [
+    "Transmon"
+   ],
+   "registered": []
+  },
+  {
+   "source": "legacy",
+   "file": "components\\pymacros\\QuantumPcells\\xmon_cross.lym",
+   "pcells": [
+    "Xmon_cross"
+   ],
+   "registered": []
+  },
+  {
+   "source": "legacy",
+   "file": "components\\pymacros\\QuantumPcells\\xmon_handle.lym",
+   "pcells": [
+    "Xmon_handle"
+   ],
+   "registered": []
+  },
+  {
+   "source": "legacy",
+   "file": "components\\pymacros\\spiral.lym",
+   "pcells": [
+    "Spiral"
+   ],
+   "registered": [
+    {
+     "display": "Spiral",
+     "class": "Spiral"
+    }
+   ]
+  },
+  {
+   "source": "legacy",
+   "file": "components\\pymacros\\QuantumPcells\\__init__.py",
+   "pcells": [],
+   "registered": []
+  },
+  {
+   "source": "legacy",
+   "file": "components\\pymacros\\QuantumPcells\\CoupledConnector.py",
+   "pcells": [
+    "CoupledConnector"
+   ],
+   "registered": []
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\box_outline.py",
+   "functions": [],
+   "header": "Enter your Python code here",
+   "lines": 38
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\chip_01.py",
+   "functions": [
+    "pcell_insert",
+    "pcell_instantiate"
+   ],
+   "header": "Enter your Python code here",
+   "lines": 244
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\chip_01_4x4.py",
+   "functions": [],
+   "header": "Enter your Python code here",
+   "lines": 42
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\chip_01_creator.py",
+   "functions": [
+    "pcell_insert",
+    "pcell_instantiate",
+    "create_chip"
+   ],
+   "header": "TRILAYER CHIP NbN Trilayer qubits designed 12/03/2024 ===================================================",
+   "lines": 300
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\chip_02_creator.py",
+   "functions": [
+    "pcell_insert",
+    "pcell_instantiate",
+    "create_chip"
+   ],
+   "header": "Enter your Python code here Enter your Python code here",
+   "lines": 304
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\chip_03_trilayer.py",
+   "functions": [
+    "flux_holes",
+    "pcell_insert",
+    "pcell_instantiate",
+    "create_chip"
+   ],
+   "header": "Trilyaer new design for more qubits, author ; WRIDHDHI May 2024",
+   "lines": 486
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\chip_04_test_chip_TL.py",
+   "functions": [
+    "pcell_insert",
+    "pcell_instantiate",
+    "create_test_chip"
+   ],
+   "header": "This python script makes test chips of various junction sizes Trilyaer  design for test Pads,",
+   "lines": 252
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\chip_05_flux_TLQubits.py",
+   "functions": [
+    "pcell_insert",
+    "pcell_instantiate",
+    "create_test_chip"
+   ],
+   "header": "Enter your Python code here This python script makes test chips of various junction sizes",
+   "lines": 537
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\chip_06_test_cyro_TLQ.py",
+   "functions": [
+    "pcell_insert",
+    "pcell_instantiate",
+    "create_test_chip"
+   ],
+   "header": "Enter your Python code here This python script makes test chips of various junction sizes",
+   "lines": 311
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\chip_07_resonators.py",
+   "functions": [
+    "pcell_insert",
+    "pcell_instantiate",
+    "create_test_chip"
+   ],
+   "header": "This python script makes : 10 resonators and a couple of test junctions on same chip",
+   "lines": 397
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\chip_08_TL_HSQ_testpads.py",
+   "functions": [
+    "pcell_insert",
+    "pcell_instantiate",
+    "create_test_chip"
+   ],
+   "header": "Enter your Python code here This python script makes test chips of various junction sizes",
+   "lines": 271
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\chip_09_resonatorsExpt.py",
+   "functions": [
+    "pcell_insert",
+    "pcell_instantiate",
+    "create_test_chip"
+   ],
+   "header": "Enter your Python code here",
+   "lines": 467
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\chip_09_resonatorsExpt_sim.py",
+   "functions": [
+    "pcell_insert",
+    "pcell_instantiate",
+    "create_test_chip"
+   ],
+   "header": "Enter your Python code here Enter your Python code here",
+   "lines": 442
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\chip_10a_3X_SQUID.py",
+   "functions": [
+    "pcell_insert",
+    "pcell_instantiate",
+    "create_squid"
+   ],
+   "header": "Enter your Python code here THIS FILE IS USED FOR CHIP_05 SQUIDS",
+   "lines": 222
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\chip_10a_flux_TLQubits.py",
+   "functions": [
+    "pcell_insert",
+    "pcell_instantiate",
+    "create_test_chip"
+   ],
+   "header": "Edited on Feb 2025 to increase g and reduce the resonator lengths by 150um and couplings to 4/6 only resonator gap is 6um from 10 Trilyaer  design for test Pads",
+   "lines": 561
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\chip_11f_JJplacer.py",
+   "functions": [],
+   "header": "",
+   "lines": 58
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\chip_11m_TestJJ16x_pads.py",
+   "functions": [
+    "pcell_insert",
+    "pcell_instantiate",
+    "create_testPad"
+   ],
+   "header": "Enter your Python code here Testpads for Trilayer",
+   "lines": 199
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\chip_maker.py",
+   "functions": [],
+   "header": "Enter your Python code here",
+   "lines": 8
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\chip_xxx_template.py",
+   "functions": [
+    "pcell_insert",
+    "pcell_instantiate",
+    "create_test_chip"
+   ],
+   "header": "Enter your Python code here Enter your Python code here",
+   "lines": 279
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\cpwe.py",
+   "functions": [
+    "line",
+    "finger_cap",
+    "gap_cap",
+    "finger_line",
+    "tapper",
+    "arc",
+    "term_open",
+    "tpiece",
+    "meander_line",
+    "b_pad",
+    "quarter_wave",
+    "tl_L_term",
+    "quarter_cap_coupled"
+   ],
+   "header": "library of cpw infinite ground plane V1 George Long 17/02/2021",
+   "lines": 454
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\die_creator.py",
+   "functions": [
+    "create_die"
+   ],
+   "header": "Enter your Python code here",
+   "lines": 53
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\draw.py",
+   "functions": [
+    "make_cell",
+    "get_current_cell",
+    "chip",
+    "bool_chip",
+    "rect",
+    "insertGDS",
+    "exp_pts",
+    "marker",
+    "global_marker",
+    "marker_align_bl",
+    "marker_align_br",
+    "marker_align_tr",
+    "marker_align_tl",
+    "marker_align",
+    "marker_dicing",
+    "text",
+    "boarder",
+    "spiral",
+    "circle",
+    "triangle",
+    "boolean",
+    "bool_draw",
+    "four_inch_boundary"
+   ],
+   "header": "general drawing library V1 George Long 17/02/2021",
+   "lines": 317
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\flux_holes.py",
+   "functions": [
+    "flux_holes"
+   ],
+   "header": "Enter your Python code here",
+   "lines": 29
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\importing_multiple_cells.py",
+   "functions": [],
+   "header": "MORAL create a layout create a cell copy tree from the layout into the new cell in old layout instantiate the cell",
+   "lines": 54
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\junction_creator_HSQ.py",
+   "functions": [
+    "pcell_insert",
+    "pcell_instantiate",
+    "create_junction"
+   ],
+   "header": "last edit on 28th October 2024 overlap 30nm ,  sidewall assumed 20nm THIS FILE CREATES JUNCTIONS FOR CHIP_05",
+   "lines": 143
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\junction_creator_old.py",
+   "functions": [],
+   "header": "Enter your Python code here Enter your Python code here",
+   "lines": 130
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\junction_creator_sq.py",
+   "functions": [
+    "pcell_insert",
+    "pcell_instantiate",
+    "create_junction_squid"
+   ],
+   "header": "Enter your Python code here Enter your Python code here",
+   "lines": 133
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\junction_pad.py",
+   "functions": [
+    "pcell_insert",
+    "pcell_instantiate"
+   ],
+   "header": "Enter your Python code here",
+   "lines": 118
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\layout_reader.py",
+   "functions": [],
+   "header": "Enter your Python code here",
+   "lines": 27
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\PCell_insert_template.py",
+   "functions": [],
+   "header": "Enter your Python code here",
+   "lines": 55
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\PCell_inserter.py",
+   "functions": [],
+   "header": "Enter your Python code here",
+   "lines": 47
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\play_fluxLine.py",
+   "functions": [],
+   "header": "Enter your Python code here    ",
+   "lines": 63
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\PyMacro_basic_template.py",
+   "functions": [],
+   "header": "Enter your Python code here",
+   "lines": 36
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\resonator_chip_01.py",
+   "functions": [
+    "pcell_insert",
+    "pcell_instantiate",
+    "create_chip"
+   ],
+   "header": "Enter your Python code here",
+   "lines": 211
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\squid_creator_HSQ.py",
+   "functions": [
+    "pcell_insert",
+    "pcell_instantiate",
+    "create_squid"
+   ],
+   "header": "THIS FILE IS USED FOR CHIP_05 SQUIDS",
+   "lines": 177
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\testPad.py",
+   "functions": [
+    "pcell_insert",
+    "pcell_instantiate",
+    "create_testPad"
+   ],
+   "header": "Enter your Python code here",
+   "lines": 94
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\testPad_AVAQUS.py",
+   "functions": [
+    "pcell_insert",
+    "pcell_instantiate",
+    "create_testPad"
+   ],
+   "header": "Enter your Python code here Enter your Python code here",
+   "lines": 126
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\testPad_Nb_TL.py",
+   "functions": [
+    "pcell_insert",
+    "pcell_instantiate",
+    "create_testPad"
+   ],
+   "header": "Testpads for Trilayer This is the unit cell which will be scaled this creates the junction inhouse, without the junction_creator",
+   "lines": 164
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\testPad_Nb_TL_HSQ.py",
+   "functions": [
+    "pcell_insert",
+    "pcell_instantiate",
+    "create_testPad"
+   ],
+   "header": "Enter your Python code here Testpads for Trilayer",
+   "lines": 191
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\ustrip.py",
+   "functions": [
+    "line",
+    "finger_cap",
+    "gap_cap",
+    "tapper",
+    "arc",
+    "term_open",
+    "b_pad",
+    "meander_line"
+   ],
+   "header": "library of mircostrip/wire geometry V1 George Long 17/02/2021",
+   "lines": 289
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\wafer_creator.py",
+   "functions": [],
+   "header": "",
+   "lines": 105
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\xjc_junction_TL_mod.py",
+   "functions": [
+    "pcell_insert",
+    "pcell_instantiate",
+    "create_junction"
+   ],
+   "header": "Enter your Python code here last edit on 20th July 2025 overlap 30nm ,  sidewall assumed 20nm",
+   "lines": 148
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\xjc_junction_TL_mod_v0.1.py",
+   "functions": [
+    "pcell_insert",
+    "pcell_instantiate",
+    "create_junction"
+   ],
+   "header": "last edit on 28th October 2024 overlap 30nm ,  sidewall assumed 20nm THIS FILE CREATES JUNCTIONS FOR CHIP_10 with more overlap HSQ",
+   "lines": 145
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\xjc_squid_TL_mod.py",
+   "functions": [
+    "pcell_insert",
+    "pcell_instantiate",
+    "create_squid"
+   ],
+   "header": "L:ast edited :  20th July for 2025 fab THIS FILE IS USED FOR CHIP_05 SQUIDS",
+   "lines": 181
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\xjc_squid_TL_mod_v0.1.py",
+   "functions": [
+    "pcell_insert",
+    "pcell_instantiate",
+    "create_squid"
+   ],
+   "header": "THIS FILE IS USED FOR CHIP_05 SQUIDS",
+   "lines": 179
+  },
+  {
+   "source": "legacy_script",
+   "file": "components\\python\\xtp_testpads_TL_small.py",
+   "functions": [
+    "pcell_insert",
+    "pcell_instantiate",
+    "create_testPad"
+   ],
+   "header": "Enter your Python code here Enter your Python code here",
+   "lines": 199
+  }
+ ],
+ "designs": [
+  {
+   "id": "chip_01",
+   "group": "legacy",
+   "source": "components\\python\\chip_01.py"
+  },
+  {
+   "id": "chip_01_4x4",
+   "group": "legacy",
+   "source": "components\\python\\chip_01_4x4.py"
+  },
+  {
+   "id": "chip_01_creator",
+   "group": "legacy",
+   "source": "components\\python\\chip_01_creator.py"
+  },
+  {
+   "id": "chip_02_creator",
+   "group": "legacy",
+   "source": "components\\python\\chip_02_creator.py"
+  },
+  {
+   "id": "chip_03_trilayer",
+   "group": "legacy",
+   "source": "components\\python\\chip_03_trilayer.py"
+  },
+  {
+   "id": "chip_04_test_chip_TL",
+   "group": "legacy",
+   "source": "components\\python\\chip_04_test_chip_TL.py"
+  },
+  {
+   "id": "chip_05_flux_TLQubits",
+   "group": "legacy",
+   "source": "components\\python\\chip_05_flux_TLQubits.py"
+  },
+  {
+   "id": "chip_06_test_cyro_TLQ",
+   "group": "legacy",
+   "source": "components\\python\\chip_06_test_cyro_TLQ.py"
+  },
+  {
+   "id": "chip_07_resonators",
+   "group": "legacy",
+   "source": "components\\python\\chip_07_resonators.py"
+  },
+  {
+   "id": "chip_08_TL_HSQ_testpads",
+   "group": "legacy",
+   "source": "components\\python\\chip_08_TL_HSQ_testpads.py"
+  },
+  {
+   "id": "chip_09_resonatorsExpt",
+   "group": "legacy",
+   "source": "components\\python\\chip_09_resonatorsExpt.py"
+  },
+  {
+   "id": "chip_09_resonatorsExpt_sim",
+   "group": "legacy",
+   "source": "components\\python\\chip_09_resonatorsExpt_sim.py"
+  },
+  {
+   "id": "chip_10a_3X_SQUID",
+   "group": "legacy",
+   "source": "components\\python\\chip_10a_3X_SQUID.py"
+  },
+  {
+   "id": "chip_10a_flux_TLQubits",
+   "group": "legacy",
+   "source": "components\\python\\chip_10a_flux_TLQubits.py"
+  },
+  {
+   "id": "chip_11f_JJplacer",
+   "group": "legacy",
+   "source": "components\\python\\chip_11f_JJplacer.py"
+  },
+  {
+   "id": "chip_11m_TestJJ16x_pads",
+   "group": "legacy",
+   "source": "components\\python\\chip_11m_TestJJ16x_pads.py"
+  },
+  {
+   "id": "chip_maker",
+   "group": "legacy",
+   "source": "components\\python\\chip_maker.py"
+  },
+  {
+   "id": "chip_xxx_template",
+   "group": "legacy",
+   "source": "components\\python\\chip_xxx_template.py"
+  },
+  {
+   "id": "12.0 Coupled_chip_layout",
+   "group": "legacy_notebook",
+   "source": "components\\python\\12.0 Coupled_chip_layout.ipynb"
+  },
+  {
+   "id": "14.0 Two_feedline_resonator_chip",
+   "group": "legacy_notebook",
+   "source": "components\\python\\14.0 Two_feedline_resonator_chip.ipynb"
+  },
+  {
+   "id": "demoqpu17",
+   "group": "open",
+   "name": "DemoQPU17",
+   "row": [
+    "ETH Zurich surface code, Krinner et al., Nature 2022; Besedin et al. 2025",
+    "17 star transmons on a 5\u00d75 lattice, fixed couplers, Purcell-filtered readout on 4 feedlines, XY + Z lines, airbridges, ground-hole fill",
+    "DeviceLayout.jl (Julia), MIT"
+   ],
+   "links": [
+    "https://aws-cqc.github.io/DeviceLayout.jl/stable/examples/qpu17/",
+    "https://github.com/aws-cqc/DeviceLayout.jl/tree/main/examples/DemoQPU17"
+   ]
+  },
+  {
+   "id": "53_wallraff_17_qubit_surface_code",
+   "group": "open",
+   "name": "53 Wallraff 17-qubit surface code",
+   "row": [
+    "Krinner et al., Nature 2022",
+    "17 qubits, data/auxiliary, couplers, Purcell filters, multiplexed feedlines",
+    "Quantum Metal (Python), Apache-2.0"
+   ],
+   "links": [
+    "https://github.com/qiskit-community/qiskit-metal/blob/main/docs/circuit-examples/F.Small-quantum-chips/53-Wallraff_17Qubit_SurfaceCode.ipynb"
+   ]
+  },
+  {
+   "id": "54_two_qubit_cell_mesh",
+   "group": "open",
+   "name": "54 Two-qubit cell mesh",
+   "row": [
+    "Unit cell of the 17-qubit chip",
+    "2 qubits + coupler, gmsh mesh, capacitance",
+    "Quantum Metal"
+   ],
+   "links": [
+    "https://github.com/qiskit-community/qiskit-metal/blob/main/docs/circuit-examples/F.Small-quantum-chips/54-Wallraff_TwoQubit_Cell_Mesh.ipynb"
+   ]
+  },
+  {
+   "id": "52_barends_5_qubit_xmon",
+   "group": "open",
+   "name": "52 Barends 5-qubit Xmon",
+   "row": [
+    "Barends et al., Nature 508, 500 (2014)",
+    "5 Xmons in a 1-D chain, multiplexed readout on one feedline, XY/Z lines",
+    "Quantum Metal"
+   ],
+   "links": [
+    "https://github.com/qiskit-community/qiskit-metal/blob/main/docs/circuit-examples/F.Small-quantum-chips/52-Barends_5Qubit_Xmon_Processor.ipynb"
+   ]
+  },
+  {
+   "id": "full_physical_design_of_three_iswap_gates",
+   "group": "open",
+   "name": "Full physical design of three iSWAP gates",
+   "row": [
+    "PR Applied 10, 034050 (2018); PR Research 2, 033447 (2020); PRX 11, 021058 (2021)",
+    "Three 2-qubit chips: direct coupling; tunable coupler; Xmons with interdigitated tunable coupler",
+    "Quantum Metal"
+   ],
+   "links": [
+    "https://github.com/qiskit-community/qiskit-metal/blob/main/docs/circuit-examples/F.Small-quantum-chips/Full-Physical-Design-of-iSWAP-Gates.ipynb"
+   ]
+  },
+  {
+   "id": "a_1_transmon_with_readout_resonator",
+   "group": "open",
+   "name": "A.1 Transmon with readout resonator",
+   "row": [
+    "SQDMetal benchmark devices, Sommers et al., arXiv:2511.01220",
+    "1 transmon, \u03bb/4 resonator, feedline",
+    "Quantum Metal"
+   ],
+   "links": [
+    "https://github.com/qiskit-community/qiskit-metal/blob/main/docs/tut/full-design-examples/A.1-Transmon-with-readout-resonator.ipynb"
+   ]
+  },
+  {
+   "id": "a_2_two_coupled_transmons",
+   "group": "open",
+   "name": "A.2 Two coupled transmons",
+   "row": [
+    "Same",
+    "2 transmons, bus resonator, 2 readouts",
+    "Quantum Metal"
+   ],
+   "links": [
+    "https://github.com/qiskit-community/qiskit-metal/blob/main/docs/tut/full-design-examples/A.2-Two-coupled-transmons.ipynb"
+   ]
+  },
+  {
+   "id": "a_3_four_qubit_multiplexed_readout",
+   "group": "open",
+   "name": "A.3 Four-qubit multiplexed readout",
+   "row": [
+    "Same",
+    "4 transmons, 4 resonators on one feedline",
+    "Quantum Metal"
+   ],
+   "links": [
+    "https://github.com/qiskit-community/qiskit-metal/blob/main/docs/tut/full-design-examples/A.3-Four-qubit-multiplexed-readout.ipynb"
+   ]
+  },
+  {
+   "id": "filled_qubit_test_chip",
+   "group": "open",
+   "name": "Filled qubit test chip",
+   "row": [
+    "Tuokkola et al., Nat. Commun. 2025 (near-ms transmon)",
+    "4 transmons, readout + probeline, flux lines, vortex-trap fill",
+    "QPDK / gdsfactory (Python), MIT"
+   ],
+   "links": [
+    "https://gdsfactory.github.io/quantum-rf-pdk/samples.html",
+    "https://github.com/gdsfactory/quantum-rf-pdk/tree/main/qpdk/samples"
+   ]
+  },
+  {
+   "id": "gatemon_test_chip",
+   "group": "open",
+   "name": "Gatemon test chip",
+   "row": [
+    "Riechert et al. 2025",
+    "2 gatemons, couplers, half-wave readouts",
+    "QPDK, YAML netlist"
+   ],
+   "links": []
+  },
+  {
+   "id": "flipmon_test_chip",
+   "group": "open",
+   "name": "Flipmon test chip",
+   "row": [
+    "Li et al. 2021, vacuum-gap transmons",
+    "4 flip-chip transmons, readouts, probeline, flux lines",
+    "QPDK, YAML netlist"
+   ],
+   "links": []
+  },
+  {
+   "id": "a_4_full_chip_design",
+   "group": "open",
+   "name": "A.4 Full chip design",
+   "row": [
+    "Quantum Metal",
+    "6 qubits (TransmonPocket6 hub, 3 pockets, 2 crossmons with flux lines), tunable coupler, multiplexed readout, launchpads",
+    "[notebook](https://github.com/qiskit-community/qiskit-metal/blob/main/docs/circuit-examples/full-design-flow-examples/A.4-Full-chip-design.ipynb)"
+   ],
+   "links": [
+    "https://github.com/qiskit-community/qiskit-metal/blob/main/docs/circuit-examples/full-design-flow-examples/A.4-Full-chip-design.ipynb"
+   ]
+  },
+  {
+   "id": "2_21_design_a_4_qubit_full_chip",
+   "group": "open",
+   "name": "2.21 Design a 4-qubit full chip",
+   "row": [
+    "Quantum Metal",
+    "4 TransmonPocketCL qubits with charge lines, meander buses, readouts, launchpads (nearest open analogue of the IBM 5Q style)",
+    "[notebook](https://github.com/qiskit-community/qiskit-metal/tree/main/docs/tut/2-From-components-to-chip)"
+   ],
+   "links": [
+    "https://github.com/qiskit-community/qiskit-metal/tree/main/docs/tut/2-From-components-to-chip"
+   ]
+  },
+  {
+   "id": "1_3_build_a_4_qubit_chip",
+   "group": "open",
+   "name": "1.3 Build a 4-qubit chip",
+   "row": [
+    "Quantum Metal",
+    "4 transmons, CPW routing, launchpads",
+    "[notebook](https://github.com/qiskit-community/qiskit-metal/tree/main/docs/tut/1-Overview)"
+   ],
+   "links": [
+    "https://github.com/qiskit-community/qiskit-metal/tree/main/docs/tut/1-Overview"
+   ]
+  },
+  {
+   "id": "51_four_qubit_chip",
+   "group": "open",
+   "name": "51 Four-qubit chip",
+   "row": [
+    "Quantum Metal",
+    "4 TransmonPocketCL qubits, meander buses, launchpads",
+    "[notebook](https://github.com/qiskit-community/qiskit-metal/blob/main/docs/circuit-examples/F.Small-quantum-chips/51-Four_qubit_chip.ipynb)"
+   ],
+   "links": [
+    "https://github.com/qiskit-community/qiskit-metal/blob/main/docs/circuit-examples/F.Small-quantum-chips/51-Four_qubit_chip.ipynb"
+   ]
+  },
+  {
+   "id": "2_22_design_100_qubits_programmatically",
+   "group": "open",
+   "name": "2.22 Design 100 qubits programmatically",
+   "row": [
+    "Quantum Metal",
+    "100-qubit array",
+    "[notebook](https://github.com/qiskit-community/qiskit-metal/tree/main/docs/tut/2-From-components-to-chip)"
+   ],
+   "links": [
+    "https://github.com/qiskit-community/qiskit-metal/tree/main/docs/tut/2-From-components-to-chip"
+   ]
+  },
+  {
+   "id": "4_43_mesh_and_solve_the_10_10_processor",
+   "group": "open",
+   "name": "4.43 Mesh and solve the 10\u00d710 processor",
+   "row": [
+    "Quantum Metal",
+    "100-qubit processor, gmsh + scikit-fem",
+    "[notebook](https://github.com/qiskit-community/qiskit-metal/tree/main/docs/tut/4-Analysis)"
+   ],
+   "links": [
+    "https://github.com/qiskit-community/qiskit-metal/tree/main/docs/tut/4-Analysis"
+   ]
+  },
+  {
+   "id": "a_5_launch_video_example",
+   "group": "open",
+   "name": "A.5 Launch video example",
+   "row": [
+    "Quantum Metal",
+    "2 designs from the 2021 launch video",
+    "[notebook](https://github.com/qiskit-community/qiskit-metal/tree/main/docs/circuit-examples/full-design-flow-examples)"
+   ],
+   "links": [
+    "https://github.com/qiskit-community/qiskit-metal/tree/main/docs/circuit-examples/full-design-flow-examples"
+   ]
+  },
+  {
+   "id": "a_6_hackathon_south_korea_2020_a_7_ims_2022_workshop",
+   "group": "open",
+   "name": "A.6 Hackathon South Korea 2020 / A.7 IMS 2022 workshop",
+   "row": [
+    "Quantum Metal",
+    "Workshop chips",
+    "[notebooks](https://github.com/qiskit-community/qiskit-metal/tree/main/docs/circuit-examples/full-design-flow-examples)"
+   ],
+   "links": [
+    "https://github.com/qiskit-community/qiskit-metal/tree/main/docs/circuit-examples/full-design-flow-examples"
+   ]
+  },
+  {
+   "id": "flipchip_design_tutorial",
+   "group": "open",
+   "name": "FlipChip design tutorial",
+   "row": [
+    "Quantum Metal",
+    "Qubit chip over control chip with readout resonator",
+    "[notebook](https://github.com/qiskit-community/qiskit-metal/tree/main/docs/tut/2-From-components-to-chip)"
+   ],
+   "links": [
+    "https://github.com/qiskit-community/qiskit-metal/tree/main/docs/tut/2-From-components-to-chip"
+   ]
+  },
+  {
+   "id": "demo",
+   "group": "open",
+   "name": "Demo",
+   "row": [
+    "KQCircuits",
+    "4 Swissmon qubits, 4 readouts, 2 probelines, charge + flux lines",
+    "[chips/demo.py](https://github.com/iqm-finland/KQCircuits/tree/main/klayout_package/python/kqcircuits/chips)"
+   ],
+   "links": [
+    "https://github.com/iqm-finland/KQCircuits/tree/main/klayout_package/python/kqcircuits/chips"
+   ]
+  },
+  {
+   "id": "singlexmons",
+   "group": "open",
+   "name": "SingleXmons",
+   "row": [
+    "KQCircuits",
+    "6 Xmons, readouts on one central feedline",
+    "chips/single\\_xmons.py"
+   ],
+   "links": []
+  },
+  {
+   "id": "xmonsdirectcoupling",
+   "group": "open",
+   "name": "XMonsDirectCoupling",
+   "row": [
+    "KQCircuits",
+    "3 Swissmons, direct coupling, 3 readouts",
+    "chips/xmons\\_direct\\_coupling.py"
+   ],
+   "links": []
+  },
+  {
+   "id": "munchqubits",
+   "group": "open",
+   "name": "MunchQubits",
+   "row": [
+    "KQCircuits",
+    "2 circular single-island + 1 floating double-pad qubit, 3 readouts, resonant coupler",
+    "chips/munch\\_qubits.py"
+   ],
+   "links": []
+  },
+  {
+   "id": "demotwoface",
+   "group": "open",
+   "name": "DemoTwoface",
+   "row": [
+    "KQCircuits",
+    "Flip-chip (multi-face) demo with bumps",
+    "chips/demo\\_twoface.py"
+   ],
+   "links": []
+  },
+  {
+   "id": "daisywoven",
+   "group": "open",
+   "name": "DaisyWoven",
+   "row": [
+    "KQCircuits",
+    "Hand-drawn daisy-pattern chip",
+    "chips/daisy\\_woven.py"
+   ],
+   "links": []
+  },
+  {
+   "id": "qualityfactor_qualityfactortwoface",
+   "group": "open",
+   "name": "QualityFactor, QualityFactorTwoface",
+   "row": [
+    "KQCircuits",
+    "Resonator Q test chips (planar, flip-chip)",
+    "chips/quality\\_factor\\*.py"
+   ],
+   "links": []
+  },
+  {
+   "id": "test_chips_junctiontest_2_airbridgecrossings_airbridgedctest",
+   "group": "open",
+   "name": "Test chips: JunctionTest(2), AirbridgeCrossings, AirbridgeDcTest, CrossingTwoface, LithographyTest(Twoface), TsvTest, Stripes, Shaping, DcTest",
+   "row": [
+    "KQCircuits",
+    "Process / test structures",
+    "chips/"
+   ],
+   "links": []
+  },
+  {
+   "id": "quick_demo_mask",
+   "group": "open",
+   "name": "Quick demo mask",
+   "row": [
+    "KQCircuits",
+    "Wafer mask of Demo chips",
+    "[scripts/masks/quick\\_demo.py](https://github.com/iqm-finland/KQCircuits/blob/main/klayout_package/python/scripts/masks/quick_demo.py)"
+   ],
+   "links": [
+    "https://github.com/iqm-finland/KQCircuits/blob/main/klayout_package/python/scripts/masks/quick_demo.py"
+   ]
+  },
+  {
+   "id": "singletransmon",
+   "group": "open",
+   "name": "SingleTransmon",
+   "row": [
+    "DeviceLayout.jl",
+    "1 transmon + readout resonator, 3-D model for Palace ([Palace example](https://awslabs.github.io/palace/stable/examples/transmon/))",
+    "[examples/SingleTransmon](https://github.com/aws-cqc/DeviceLayout.jl/tree/main/examples)"
+   ],
+   "links": [
+    "https://aws-cqc.github.io/DeviceLayout.jl/stable/examples/singletransmon/",
+    "https://awslabs.github.io/palace/stable/examples/transmon/",
+    "https://github.com/aws-cqc/DeviceLayout.jl/tree/main/examples"
+   ]
+  },
+  {
+   "id": "qubit_test_chip",
+   "group": "open",
+   "name": "Qubit test chip",
+   "row": [
+    "QPDK",
+    "4 transmons, readouts, probeline, flux lines, launchers",
+    "[qpdk/samples](https://github.com/gdsfactory/quantum-rf-pdk/tree/main/qpdk/samples)"
+   ],
+   "links": [
+    "https://github.com/gdsfactory/quantum-rf-pdk/tree/main/qpdk/samples"
+   ]
+  },
+  {
+   "id": "resonator_test_chip",
+   "group": "open",
+   "name": "Resonator test chip",
+   "row": [
+    "QPDK",
+    "16 resonators, 2 probelines, varied CPW width/gap",
+    "qpdk/samples"
+   ],
+   "links": []
+  },
+  {
+   "id": "hyperbolic_lattice_chip",
+   "group": "open",
+   "name": "Hyperbolic lattice chip",
+   "row": [
+    "QPDK",
+    "Hyperbolic tiling of edge resonators",
+    "qpdk/samples"
+   ],
+   "links": []
+  },
+  {
+   "id": "tsv_flip_chip_test_chip",
+   "group": "open",
+   "name": "TSV flip-chip test chip",
+   "row": [
+    "QPDK",
+    "TSV and bump transitions, indium bump arrays",
+    "qpdk/samples"
+   ],
+   "links": []
+  },
+  {
+   "id": "vortex_neck_test_chip",
+   "group": "open",
+   "name": "Vortex neck test chip",
+   "row": [
+    "QPDK",
+    "4 coupled resonators with neck terminations",
+    "qpdk/samples"
+   ],
+   "links": []
+  },
+  {
+   "id": "tutorial_5_fab_ready_chip",
+   "group": "open",
+   "name": "Tutorial 5 fab-ready chip",
+   "row": [
+    "SQuADDS",
+    "1 transmon + cavity in transmission, drive line",
+    "[tutorials](https://github.com/LFL-Lab/SQuADDS/tree/main/tutorials)"
+   ],
+   "links": [
+    "https://github.com/LFL-Lab/SQuADDS/tree/main/tutorials"
+   ]
+  },
+  {
+   "id": "example_notebooks_two_transmon_2_transmons_wres_comp_xmon_fl",
+   "group": "open",
+   "name": "Example notebooks (two\\_transmon, 2\\_transmons\\_wRes\\_comp, Xmon, floating transmon)",
+   "row": [
+    "SQDMetal",
+    "1\u20132 qubit devices for Palace / COMSOL",
+    "[examples](https://github.com/sqdlab/SQDMetal/tree/main/SQDMetal/doc-sphinx/source/examples)"
+   ],
+   "links": [
+    "https://github.com/sqdlab/SQDMetal/tree/main/SQDMetal/doc-sphinx/source/examples"
+   ]
+  },
+  {
+   "id": "near_millisecond_transmon_data_gds",
+   "group": "open",
+   "name": "Near-millisecond transmon, data + GDS",
+   "row": [
+    "Tuokkola et al. (Aalto/VTT), Nat. Commun. 2025",
+    "Fabricated single-transmon chip; 8.5 MB zip (contents not itemised on the record)",
+    "No"
+   ],
+   "links": [
+    "https://zenodo.org/records/14651787"
+   ]
+  },
+  {
+   "id": "planar_superconducting_pd",
+   "group": "open",
+   "name": "planar-superconducting-pd",
+   "row": [
+    "MQT SCPD (TU Munich)",
+    "8 chips: 4Q 2\u00d72, 9Q 3\u00d73, 17Q, X-shaped 21/33/45/57/69Q; unrouted + routed",
+    "Configs + mqt-scpd commands"
+   ],
+   "links": [
+    "https://github.com/cda-tum/planar-superconducting-pd"
+   ]
+  },
+  {
+   "id": "sqchip_em",
+   "group": "open",
+   "name": "SQChip-EM",
+   "row": [
+    "Layout-to-EM dataset",
+    "Qiskit Metal generators for 1\u20138 qubit chips; public data for 1\u20132 qubit records",
+    "Yes"
+   ],
+   "links": [
+    "https://github.com/Secbrain/SQChip-EM"
+   ]
+  },
+  {
+   "id": "mqt_dasqa",
+   "group": "open",
+   "name": "mqt-dasqa",
+   "row": [
+    "MQT (TU Munich), arXiv:2305.07052",
+    "Circuit \u2192 square-lattice qubit placement \u2192 Qiskit Metal layout",
+    "Yes"
+   ],
+   "links": [
+    "https://github.com/cda-tum/mqt-dasqa"
+   ]
+  },
+  {
+   "id": "qiskit_metal_to_litho",
+   "group": "open",
+   "name": "Qiskit-Metal-to-Litho",
+   "row": [
+    "O. J. Benally",
+    "400-transmon patterned array (fabricated by EBL) + full quantum chip ready for fab",
+    "Yes"
+   ],
+   "links": [
+    "https://github.com/OJB-Quantum/Qiskit-Metal-to-Litho"
+   ]
+  },
+  {
+   "id": "7_qubit_superconducting_processor",
+   "group": "open",
+   "name": "7-qubit superconducting processor",
+   "row": [
+    "Community project",
+    "7 transmons, central flux-tunable Q4, readouts, nearest-neighbour buses, 9\u00d77 mm",
+    "Qiskit Metal notebooks"
+   ],
+   "links": [
+    "https://github.com/atharveeee-netizen/7-qubit-superconducting-processor"
+   ]
+  },
+  {
+   "id": "qartographer",
+   "group": "open",
+   "name": "Qartographer",
+   "row": [
+    "Community project",
+    "Drive/readout routing for 3\u00d73 (9) and 5\u00d75 (25) qubit arrays, JSON device map",
+    "Yes"
+   ],
+   "links": [
+    "https://github.com/AYDOSUL/Qartographer"
+   ]
+  }
+ ]
+}

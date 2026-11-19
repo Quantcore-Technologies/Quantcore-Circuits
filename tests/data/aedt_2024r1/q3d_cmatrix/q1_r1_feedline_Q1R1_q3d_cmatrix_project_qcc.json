@@ -1,0 +1,21 @@
+{
+ "tool": "q3d", 
+ "solve_seconds": 125.1, 
+ "boundaries": [], 
+ "convergence_file": null, 
+ "variables": [], 
+ "design_type": "Q3D Extractor", 
+ "excitations": [
+  "Ground1", 
+  "GroundNet", 
+  "Ground2", 
+  "GroundNet", 
+  "Net1", 
+  "SignalNet", 
+  "Net2", 
+  "SignalNet"
+ ], 
+ "python": "2.7.4", 
+ "aedt": "2024.1.0", 
+ "mode": "solve"
+}

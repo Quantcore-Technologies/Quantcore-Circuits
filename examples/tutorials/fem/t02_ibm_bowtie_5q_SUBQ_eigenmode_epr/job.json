@@ -1,0 +1,109 @@
+{
+  "schema": "qcc-job/0.1",
+  "created": "2026-11-14T21:15:57+00:00",
+  "design": "t02_ibm_bowtie_5q",
+  "design_hash": "ec1833ebdcdfc0d9",
+  "group": "SUBQ",
+  "group_hash": "04809de35c48b7c3",
+  "select": [
+    "Q2"
+  ],
+  "routes_in_sim": [
+    "BusA_Q0",
+    "BusA_Q1",
+    "BusB_Q3",
+    "BusB_Q4",
+    "L_Q0",
+    "L_Q1",
+    "L_Q2",
+    "L_Q3",
+    "L_Q4",
+    "R_Q0",
+    "R_Q1",
+    "R_Q2",
+    "R_Q3",
+    "R_Q4"
+  ],
+  "analysis": "eigenmode_epr",
+  "solver": "ansys",
+  "simulation_name": "t02_ibm_bowtie_5q_SUBQ_eigenmode_epr",
+  "settings": {
+    "n_modes": 3,
+    "min_frequency": 3.0,
+    "max_delta_f": 1.0,
+    "maximum_passes": 2,
+    "minimum_passes": 1,
+    "minimum_converged_passes": 1,
+    "percent_refinement": 10,
+    "integrate_energies": false,
+    "mesh_size": {
+      "1t1_gap": 40.0,
+      "*_signal_1": 10.0
+    },
+    "pyepr": {
+      "substrate_loss_tangent": 1e-06,
+      "dielectric_surfaces": {
+        "layerMA": {
+          "tan_delta_surf": 0.001,
+          "th": 3e-09,
+          "eps_r": 10
+        },
+        "layerMS": {
+          "tan_delta_surf": 0.001,
+          "th": 3e-09,
+          "eps_r": 10
+        },
+        "layerSA": {
+          "tan_delta_surf": 0.001,
+          "th": 3e-09,
+          "eps_r": 10
+        }
+      }
+    }
+  },
+  "box_um": [
+    3825.0,
+    3325.0,
+    5175.0,
+    4575.0
+  ],
+  "ports": [
+    {
+      "number": 1,
+      "kind": "junction",
+      "name": "Q2.junction",
+      "excitation": "Q2.island2"
+    },
+    {
+      "number": 2,
+      "kind": "edge_lumped",
+      "name": "R_Q2",
+      "excitation": "R_Q2"
+    }
+  ],
+  "nets": {
+    "1": "Q2.island2",
+    "2": "R_Q2",
+    "3": "Q2.island1"
+  },
+  "waveguide_length_um": 100.0,
+  "geometry": {
+    "ground_grid_shapes": 0,
+    "airbridge_shapes": 0,
+    "airbridges": "dropped"
+  },
+  "notes": [],
+  "versions": {
+    "quantcore-circuits": "0.2.0",
+    "kqcircuits": "0.0.1",
+    "klayout": "0.30.5",
+    "pdk": "quantcore_nb_sapphire_v1@3"
+  },
+  "status": "done",
+  "fem_fast": true,
+  "started": 1794690957.1557992,
+  "returncode": 0,
+  "solve_seconds": 218.3,
+  "finished": 1794691175.4371,
+  "aedt_mode": "batch"
+}

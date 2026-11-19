@@ -1,0 +1,652 @@
+{
+  "schema": "qcc/0.1",
+  "name": "chip_01_creator",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      0.0,
+      0.0,
+      7500.0,
+      7500.0
+    ],
+    "launchers": null,
+    "params": {
+      "with_grid": false,
+      "name_chip": "CHIP01 JS1.0"
+    }
+  },
+  "instances": {
+    "PL": {
+      "cell": "ConnectorPad",
+      "params": {
+        "pad_width": 275,
+        "pad_height": 300,
+        "taper_length": 300,
+        "rounded": true,
+        "a": 10,
+        "b": 6
+      },
+      "place": {
+        "at": [
+          1050.0,
+          3595.5
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "FL": {
+      "cell": "CpwSegment",
+      "params": {
+        "length": 5260.0,
+        "a": 10,
+        "b": 6,
+        "lc_thickness": 2,
+        "rc_thickness": 2
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "FL.a",
+        "to": "PL.a",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PR": {
+      "cell": "ConnectorPad",
+      "params": {
+        "pad_width": 275,
+        "pad_height": 300,
+        "taper_length": 300,
+        "rounded": true,
+        "a": 10,
+        "b": 6
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "PR.a",
+        "to": "FL.b",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "R1": {
+      "cell": "CoupledResonator",
+      "params": {
+        "cpw_len": 5000,
+        "width": 300,
+        "arc_length": 300,
+        "neck_length": 600,
+        "cgap": 2,
+        "clength": 300,
+        "ground": false,
+        "flip": false,
+        "tail": true,
+        "tail_len": 0,
+        "tail_end": false,
+        "arc_points": 256,
+        "a": 10,
+        "b": 6
+      },
+      "place": {
+        "at": [
+          1750.0,
+          3621.5
+        ],
+        "rot": 0.0,
+        "mirror": true,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "Q1": {
+      "cell": "Xmon",
+      "params": {
+        "claws": [
+          "n"
+        ],
+        "arm_width": 30,
+        "cross_length": 300,
+        "ground_sliver": 3,
+        "gap": 18,
+        "claw_spacing": 6,
+        "claw_base": 25,
+        "claw_finger_width": 25,
+        "claw_length": 100,
+        "claw_tail": true,
+        "claw_ground": false,
+        "claw_ground_gap": 6,
+        "claw_tail_length": 50,
+        "claw_tail_gap": 6,
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 6.7344
+        }
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "Q1.claw_n",
+        "to": "R1.end",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 6.7344,
+        "Cj_fF": 15.0
+      }
+    },
+    "R2": {
+      "cell": "CoupledResonator",
+      "params": {
+        "cpw_len": 5000,
+        "width": 300,
+        "arc_length": 300,
+        "neck_length": 550,
+        "cgap": 2,
+        "clength": 300,
+        "ground": false,
+        "flip": false,
+        "tail": true,
+        "tail_len": 0,
+        "tail_end": false,
+        "arc_points": 256,
+        "a": 10,
+        "b": 6
+      },
+      "place": {
+        "at": [
+          2750.0,
+          3569.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "Q2": {
+      "cell": "Xmon",
+      "params": {
+        "claws": [
+          "n"
+        ],
+        "arm_width": 30,
+        "cross_length": 300,
+        "ground_sliver": 3,
+        "gap": 18,
+        "claw_spacing": 6,
+        "claw_base": 25,
+        "claw_finger_width": 25,
+        "claw_length": 100,
+        "claw_tail": true,
+        "claw_ground": false,
+        "claw_ground_gap": 6,
+        "claw_tail_length": 50,
+        "claw_tail_gap": 6,
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 6.7344
+        }
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "Q2.claw_n",
+        "to": "R2.end",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 6.7344,
+        "Cj_fF": 15.0
+      }
+    },
+    "R3": {
+      "cell": "CoupledResonator",
+      "params": {
+        "cpw_len": 5000,
+        "width": 300,
+        "arc_length": 300,
+        "neck_length": 500,
+        "cgap": 2,
+        "clength": 300,
+        "ground": false,
+        "flip": false,
+        "tail": true,
+        "tail_len": 0,
+        "tail_end": false,
+        "arc_points": 256,
+        "a": 10,
+        "b": 6
+      },
+      "place": {
+        "at": [
+          3750.0,
+          3621.5
+        ],
+        "rot": 0.0,
+        "mirror": true,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "Q3": {
+      "cell": "Xmon",
+      "params": {
+        "claws": [
+          "n"
+        ],
+        "arm_width": 30,
+        "cross_length": 300,
+        "ground_sliver": 3,
+        "gap": 18,
+        "claw_spacing": 6,
+        "claw_base": 25,
+        "claw_finger_width": 25,
+        "claw_length": 100,
+        "claw_tail": true,
+        "claw_ground": false,
+        "claw_ground_gap": 6,
+        "claw_tail_length": 50,
+        "claw_tail_gap": 6,
+        "junction_type": "No Squid"
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "Q3.claw_n",
+        "to": "R3.end",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "R4": {
+      "cell": "CoupledResonator",
+      "params": {
+        "cpw_len": 5000,
+        "width": 300,
+        "arc_length": 300,
+        "neck_length": 400,
+        "cgap": 2,
+        "clength": 300,
+        "ground": false,
+        "flip": false,
+        "tail": true,
+        "tail_len": 0,
+        "tail_end": false,
+        "arc_points": 256,
+        "a": 10,
+        "b": 6
+      },
+      "place": {
+        "at": [
+          4750.0,
+          3569.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "Q4": {
+      "cell": "Xmon",
+      "params": {
+        "claws": [
+          "n"
+        ],
+        "arm_width": 30,
+        "cross_length": 300,
+        "ground_sliver": 3,
+        "gap": 18,
+        "claw_spacing": 6,
+        "claw_base": 25,
+        "claw_finger_width": 25,
+        "claw_length": 100,
+        "claw_tail": true,
+        "claw_ground": false,
+        "claw_ground_gap": 6,
+        "claw_tail_length": 50,
+        "claw_tail_gap": 6,
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 6.7344
+        }
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "Q4.claw_n",
+        "to": "R4.end",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 6.7344,
+        "Cj_fF": 15.0
+      }
+    },
+    "R5": {
+      "cell": "CoupledResonator",
+      "params": {
+        "cpw_len": 5000,
+        "width": 300,
+        "arc_length": 300,
+        "neck_length": 300,
+        "cgap": 2,
+        "clength": 300,
+        "ground": false,
+        "flip": false,
+        "tail": true,
+        "tail_len": 0,
+        "tail_end": false,
+        "arc_points": 256,
+        "a": 10,
+        "b": 6
+      },
+      "place": {
+        "at": [
+          5750.0,
+          3621.5
+        ],
+        "rot": 0.0,
+        "mirror": true,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "Q5": {
+      "cell": "Xmon",
+      "params": {
+        "claws": [
+          "n"
+        ],
+        "arm_width": 30,
+        "cross_length": 300,
+        "ground_sliver": 3,
+        "gap": 18,
+        "claw_spacing": 6,
+        "claw_base": 25,
+        "claw_finger_width": 25,
+        "claw_length": 100,
+        "claw_tail": true,
+        "claw_ground": false,
+        "claw_ground_gap": 6,
+        "claw_tail_length": 50,
+        "claw_tail_gap": 6,
+        "junction_type": "Quantcore Junction",
+        "junction_params": {
+          "lj_nH": 6.7344
+        }
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "Q5.claw_n",
+        "to": "R5.end",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 6.7344,
+        "Cj_fF": 15.0
+      }
+    },
+    "TP1": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "finger_width": 0.26,
+        "second_finger_width": 0.2,
+        "upper_pad_width": 200,
+        "upper_pad_height": 300,
+        "lower_pad_width": 200,
+        "lower_pad_height": 300,
+        "middle_height": 100,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "label": "200NM"
+      },
+      "place": {
+        "at": [
+          6750.0,
+          2095.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP2": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "finger_width": 0.26,
+        "second_finger_width": 0.2,
+        "upper_pad_width": 200,
+        "upper_pad_height": 300,
+        "lower_pad_width": 200,
+        "lower_pad_height": 300,
+        "middle_height": 100,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "label": "200NM"
+      },
+      "place": {
+        "at": [
+          750.0,
+          2095.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP3": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "finger_width": 0.26,
+        "second_finger_width": 0.2,
+        "upper_pad_width": 200,
+        "upper_pad_height": 300,
+        "lower_pad_width": 200,
+        "lower_pad_height": 300,
+        "middle_height": 100,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "label": "200NM"
+      },
+      "place": {
+        "at": [
+          750.0,
+          5095.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "TP4": {
+      "cell": "JunctionTestPads",
+      "params": {
+        "finger_width": 0.26,
+        "second_finger_width": 0.2,
+        "upper_pad_width": 200,
+        "upper_pad_height": 300,
+        "lower_pad_width": 200,
+        "lower_pad_height": 300,
+        "middle_height": 100,
+        "upper_pad_trim": 0,
+        "with_hsq": false,
+        "label": "200NM"
+      },
+      "place": {
+        "at": [
+          6750.0,
+          5095.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    }
+  },
+  "routes": {},
+  "nets": "derived",
+  "targets": {},
+  "sim_groups": {
+    "Q1R1": {
+      "select": [
+        "Q1",
+        "R1"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "eigenmode_epr",
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "Q2R2": {
+      "select": [
+        "Q2",
+        "R2"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "eigenmode_epr",
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "Q4R4": {
+      "select": [
+        "Q4",
+        "R4"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "eigenmode_epr",
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "Q5R5": {
+      "select": [
+        "Q5",
+        "R5"
+      ],
+      "margin_um": 300.0,
+      "analyses": [
+        "eigenmode_epr",
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    }
+  },
+  "couplings": {
+    "K_R1": {
+      "between": [
+        "R1",
+        "FL"
+      ],
+      "type": "C",
+      "value": null,
+      "fem": true,
+      "note": "300 \u00b5m coupler parallel to the feedline, 2 \u00b5m ground strip"
+    },
+    "K_R2": {
+      "between": [
+        "R2",
+        "FL"
+      ],
+      "type": "C",
+      "value": null,
+      "fem": true,
+      "note": "300 \u00b5m coupler parallel to the feedline, 2 \u00b5m ground strip"
+    },
+    "K_R3": {
+      "between": [
+        "R3",
+        "FL"
+      ],
+      "type": "C",
+      "value": null,
+      "fem": true,
+      "note": "300 \u00b5m coupler parallel to the feedline, 2 \u00b5m ground strip"
+    },
+    "K_R4": {
+      "between": [
+        "R4",
+        "FL"
+      ],
+      "type": "C",
+      "value": null,
+      "fem": true,
+      "note": "300 \u00b5m coupler parallel to the feedline, 2 \u00b5m ground strip"
+    },
+    "K_R5": {
+      "between": [
+        "R5",
+        "FL"
+      ],
+      "type": "C",
+      "value": null,
+      "fem": true,
+      "note": "300 \u00b5m coupler parallel to the feedline, 2 \u00b5m ground strip"
+    }
+  }
+}

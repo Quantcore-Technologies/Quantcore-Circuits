@@ -1,0 +1,74 @@
+{
+  "schema": "qcc-job/0.1",
+  "created": "2026-11-03T13:58:14+00:00",
+  "design": "q1_r1_feedline",
+  "design_hash": "6808caa9f9811bd6",
+  "group": "Q1R1D",
+  "analysis": "hfss_driven",
+  "solver": "ansys",
+  "simulation_name": "q1_r1_feedline_Q1R1D_hfss_driven",
+  "settings": {
+    "frequency": 6.63,
+    "max_delta_s": 0.02,
+    "maximum_passes": 10,
+    "minimum_passes": 3,
+    "minimum_converged_passes": 2,
+    "percent_refinement": 30,
+    "sweep_enabled": true,
+    "sweep_start": 6.0,
+    "sweep_end": 7.2,
+    "sweep_count": 20001,
+    "sweep_type": "fast",
+    "mesh_size": {
+      "1t1_gap": 10
+    }
+  },
+  "box_um": [
+    2276.0,
+    1720.0,
+    3674.0,
+    4033.0
+  ],
+  "ports": [
+    {
+      "number": 1,
+      "kind": "junction",
+      "name": "Q1.junction",
+      "excitation": "Q1.island"
+    },
+    {
+      "number": 2,
+      "kind": "edge",
+      "name": "FL",
+      "excitation": "FL"
+    },
+    {
+      "number": 3,
+      "kind": "edge",
+      "name": "FL",
+      "excitation": "FL"
+    }
+  ],
+  "nets": {
+    "1": "Q1.island",
+    "2": "FL"
+  },
+  "waveguide_length_um": 100.0,
+  "geometry": {
+    "ground_grid_shapes": 0,
+    "airbridge_shapes": 0,
+    "airbridges": "dropped"
+  },
+  "notes": [],
+  "versions": {
+    "quantcore-circuits": "0.2.0",
+    "kqcircuits": "0.0.1",
+    "klayout": "0.30.5",
+    "pdk": "quantcore_nb_sapphire_v1@3"
+  },
+  "status": "done",
+  "started": 1793714294.9243147,
+  "returncode": 0,
+  "solve_seconds": 1207.4,
+  "finished": 1793715502.7686973
+}

@@ -1,0 +1,953 @@
+{
+  "schema": "qcc/0.1",
+  "name": "resonator_test_chip",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      0.0,
+      0.0,
+      9200.0,
+      4300.0
+    ],
+    "launchers": null,
+    "params": {
+      "with_grid": false,
+      "name_chip": "QPDK-RTC"
+    }
+  },
+  "instances": {
+    "PW_B": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 200,
+        "pad_height": 200,
+        "pad_gap": 110,
+        "taper_length": 100
+      },
+      "place": {
+        "at": [
+          304.5,
+          1650.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PE_B": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 200,
+        "pad_height": 200,
+        "pad_gap": 110,
+        "taper_length": 100
+      },
+      "place": {
+        "at": [
+          8684.5,
+          1650.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PW_T": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 200,
+        "pad_height": 200,
+        "pad_gap": 110,
+        "taper_length": 100
+      },
+      "place": {
+        "at": [
+          304.5,
+          2650.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PE_T": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 200,
+        "pad_height": 200,
+        "pad_gap": 110,
+        "taper_length": 100
+      },
+      "place": {
+        "at": [
+          8684.5,
+          2650.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "OE_B1": {
+      "cell": "CpweOpenEnd",
+      "params": {
+        "length": 6
+      },
+      "place": {
+        "at": [
+          1194.5,
+          400.0
+        ],
+        "rot": -90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "OE_B2": {
+      "cell": "CpweOpenEnd",
+      "params": {
+        "length": 6
+      },
+      "place": {
+        "at": [
+          2194.5,
+          400.0
+        ],
+        "rot": -90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "OE_B3": {
+      "cell": "CpweOpenEnd",
+      "params": {
+        "length": 6
+      },
+      "place": {
+        "at": [
+          3194.5,
+          400.0
+        ],
+        "rot": -90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "OE_B4": {
+      "cell": "CpweOpenEnd",
+      "params": {
+        "length": 6
+      },
+      "place": {
+        "at": [
+          4194.5,
+          400.0
+        ],
+        "rot": -90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "OE_B5": {
+      "cell": "CpweOpenEnd",
+      "params": {
+        "length": 6
+      },
+      "place": {
+        "at": [
+          5194.5,
+          400.0
+        ],
+        "rot": -90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "OE_B6": {
+      "cell": "CpweOpenEnd",
+      "params": {
+        "length": 6
+      },
+      "place": {
+        "at": [
+          6194.5,
+          400.0
+        ],
+        "rot": -90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "OE_B7": {
+      "cell": "CpweOpenEnd",
+      "params": {
+        "length": 6
+      },
+      "place": {
+        "at": [
+          7194.5,
+          400.0
+        ],
+        "rot": -90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "OE_B8": {
+      "cell": "CpweOpenEnd",
+      "params": {
+        "length": 6
+      },
+      "place": {
+        "at": [
+          8194.5,
+          400.0
+        ],
+        "rot": -90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "OE_T1": {
+      "cell": "CpweOpenEnd",
+      "params": {
+        "length": 6
+      },
+      "place": {
+        "at": [
+          1194.5,
+          3900.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "OE_T2": {
+      "cell": "CpweOpenEnd",
+      "params": {
+        "length": 6
+      },
+      "place": {
+        "at": [
+          2194.5,
+          3900.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "OE_T3": {
+      "cell": "CpweOpenEnd",
+      "params": {
+        "length": 6
+      },
+      "place": {
+        "at": [
+          3194.5,
+          3900.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "OE_T4": {
+      "cell": "CpweOpenEnd",
+      "params": {
+        "length": 6
+      },
+      "place": {
+        "at": [
+          4194.5,
+          3900.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "OE_T5": {
+      "cell": "CpweOpenEnd",
+      "params": {
+        "length": 6
+      },
+      "place": {
+        "at": [
+          5194.5,
+          3900.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "OE_T6": {
+      "cell": "CpweOpenEnd",
+      "params": {
+        "length": 6
+      },
+      "place": {
+        "at": [
+          6194.5,
+          3900.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "OE_T7": {
+      "cell": "CpweOpenEnd",
+      "params": {
+        "length": 6
+      },
+      "place": {
+        "at": [
+          7194.5,
+          3900.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "OE_T8": {
+      "cell": "CpweOpenEnd",
+      "params": {
+        "length": 6
+      },
+      "place": {
+        "at": [
+          8194.5,
+          3900.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    }
+  },
+  "routes": {
+    "FL_B": {
+      "from": "PW_B.a",
+      "to": "PE_B.a",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 100.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RB1": {
+      "from": "OE_B1.a",
+      "to": {
+        "hanger": "FL_B",
+        "length": 200.0,
+        "near": [
+          1094.5,
+          1650.0
+        ],
+        "side": "right",
+        "ground_gap": 4.0,
+        "direction": "backward",
+        "end": "short",
+        "open_gap": 6.0,
+        "coupler_gap": null,
+        "line_gap": null
+      },
+      "type": "meander",
+      "nodes": [],
+      "length": 3600.0,
+      "meander_segment": null,
+      "meanders": 6,
+      "a": null,
+      "b": null,
+      "r": 75.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RB2": {
+      "from": "OE_B2.a",
+      "to": {
+        "hanger": "FL_B",
+        "length": 200.0,
+        "near": [
+          2094.5,
+          1650.0
+        ],
+        "side": "right",
+        "ground_gap": 4.0,
+        "direction": "backward",
+        "end": "short",
+        "open_gap": 6.0,
+        "coupler_gap": null,
+        "line_gap": null
+      },
+      "type": "meander",
+      "nodes": [],
+      "length": 3800.0,
+      "meander_segment": null,
+      "meanders": 6,
+      "a": null,
+      "b": null,
+      "r": 75.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RB3": {
+      "from": "OE_B3.a",
+      "to": {
+        "hanger": "FL_B",
+        "length": 200.0,
+        "near": [
+          3094.5,
+          1650.0
+        ],
+        "side": "right",
+        "ground_gap": 4.0,
+        "direction": "backward",
+        "end": "short",
+        "open_gap": 6.0,
+        "coupler_gap": null,
+        "line_gap": null
+      },
+      "type": "meander",
+      "nodes": [],
+      "length": 4000.0,
+      "meander_segment": null,
+      "meanders": 6,
+      "a": null,
+      "b": null,
+      "r": 75.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RB4": {
+      "from": "OE_B4.a",
+      "to": {
+        "hanger": "FL_B",
+        "length": 200.0,
+        "near": [
+          4094.5,
+          1650.0
+        ],
+        "side": "right",
+        "ground_gap": 4.0,
+        "direction": "backward",
+        "end": "short",
+        "open_gap": 6.0,
+        "coupler_gap": null,
+        "line_gap": null
+      },
+      "type": "meander",
+      "nodes": [],
+      "length": 4200.0,
+      "meander_segment": null,
+      "meanders": 6,
+      "a": null,
+      "b": null,
+      "r": 75.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RB5": {
+      "from": "OE_B5.a",
+      "to": {
+        "hanger": "FL_B",
+        "length": 200.0,
+        "near": [
+          5094.5,
+          1650.0
+        ],
+        "side": "right",
+        "ground_gap": 4.0,
+        "direction": "backward",
+        "end": "short",
+        "open_gap": 6.0,
+        "coupler_gap": null,
+        "line_gap": null
+      },
+      "type": "meander",
+      "nodes": [],
+      "length": 4400.0,
+      "meander_segment": null,
+      "meanders": 6,
+      "a": null,
+      "b": null,
+      "r": 75.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RB6": {
+      "from": "OE_B6.a",
+      "to": {
+        "hanger": "FL_B",
+        "length": 200.0,
+        "near": [
+          6094.5,
+          1650.0
+        ],
+        "side": "right",
+        "ground_gap": 4.0,
+        "direction": "backward",
+        "end": "short",
+        "open_gap": 6.0,
+        "coupler_gap": null,
+        "line_gap": null
+      },
+      "type": "meander",
+      "nodes": [],
+      "length": 4600.0,
+      "meander_segment": null,
+      "meanders": 6,
+      "a": null,
+      "b": null,
+      "r": 75.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RB7": {
+      "from": "OE_B7.a",
+      "to": {
+        "hanger": "FL_B",
+        "length": 200.0,
+        "near": [
+          7094.5,
+          1650.0
+        ],
+        "side": "right",
+        "ground_gap": 4.0,
+        "direction": "backward",
+        "end": "short",
+        "open_gap": 6.0,
+        "coupler_gap": null,
+        "line_gap": null
+      },
+      "type": "meander",
+      "nodes": [],
+      "length": 4800.0,
+      "meander_segment": null,
+      "meanders": 6,
+      "a": null,
+      "b": null,
+      "r": 75.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RB8": {
+      "from": "OE_B8.a",
+      "to": {
+        "hanger": "FL_B",
+        "length": 200.0,
+        "near": [
+          8094.5,
+          1650.0
+        ],
+        "side": "right",
+        "ground_gap": 4.0,
+        "direction": "backward",
+        "end": "short",
+        "open_gap": 6.0,
+        "coupler_gap": null,
+        "line_gap": null
+      },
+      "type": "meander",
+      "nodes": [],
+      "length": 5000.0,
+      "meander_segment": null,
+      "meanders": 6,
+      "a": null,
+      "b": null,
+      "r": 75.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FL_T": {
+      "from": "PW_T.a",
+      "to": "PE_T.a",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 100.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RT1": {
+      "from": "OE_T1.a",
+      "to": {
+        "hanger": "FL_T",
+        "length": 200.0,
+        "near": [
+          1094.5,
+          2650.0
+        ],
+        "side": "left",
+        "ground_gap": 4.0,
+        "direction": "backward",
+        "end": "short",
+        "open_gap": 6.0,
+        "coupler_gap": null,
+        "line_gap": null
+      },
+      "type": "meander",
+      "nodes": [],
+      "length": 3700.0,
+      "meander_segment": null,
+      "meanders": 6,
+      "a": null,
+      "b": null,
+      "r": 75.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RT2": {
+      "from": "OE_T2.a",
+      "to": {
+        "hanger": "FL_T",
+        "length": 200.0,
+        "near": [
+          2094.5,
+          2650.0
+        ],
+        "side": "left",
+        "ground_gap": 4.0,
+        "direction": "backward",
+        "end": "short",
+        "open_gap": 6.0,
+        "coupler_gap": null,
+        "line_gap": null
+      },
+      "type": "meander",
+      "nodes": [],
+      "length": 3900.0,
+      "meander_segment": null,
+      "meanders": 6,
+      "a": null,
+      "b": null,
+      "r": 75.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RT3": {
+      "from": "OE_T3.a",
+      "to": {
+        "hanger": "FL_T",
+        "length": 200.0,
+        "near": [
+          3094.5,
+          2650.0
+        ],
+        "side": "left",
+        "ground_gap": 4.0,
+        "direction": "backward",
+        "end": "short",
+        "open_gap": 6.0,
+        "coupler_gap": null,
+        "line_gap": null
+      },
+      "type": "meander",
+      "nodes": [],
+      "length": 4100.0,
+      "meander_segment": null,
+      "meanders": 6,
+      "a": null,
+      "b": null,
+      "r": 75.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RT4": {
+      "from": "OE_T4.a",
+      "to": {
+        "hanger": "FL_T",
+        "length": 200.0,
+        "near": [
+          4094.5,
+          2650.0
+        ],
+        "side": "left",
+        "ground_gap": 4.0,
+        "direction": "backward",
+        "end": "short",
+        "open_gap": 6.0,
+        "coupler_gap": null,
+        "line_gap": null
+      },
+      "type": "meander",
+      "nodes": [],
+      "length": 4300.0,
+      "meander_segment": null,
+      "meanders": 6,
+      "a": null,
+      "b": null,
+      "r": 75.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RT5": {
+      "from": "OE_T5.a",
+      "to": {
+        "hanger": "FL_T",
+        "length": 200.0,
+        "near": [
+          5094.5,
+          2650.0
+        ],
+        "side": "left",
+        "ground_gap": 4.0,
+        "direction": "backward",
+        "end": "short",
+        "open_gap": 6.0,
+        "coupler_gap": null,
+        "line_gap": null
+      },
+      "type": "meander",
+      "nodes": [],
+      "length": 4500.0,
+      "meander_segment": null,
+      "meanders": 6,
+      "a": null,
+      "b": null,
+      "r": 75.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RT6": {
+      "from": "OE_T6.a",
+      "to": {
+        "hanger": "FL_T",
+        "length": 200.0,
+        "near": [
+          6094.5,
+          2650.0
+        ],
+        "side": "left",
+        "ground_gap": 4.0,
+        "direction": "backward",
+        "end": "short",
+        "open_gap": 6.0,
+        "coupler_gap": null,
+        "line_gap": null
+      },
+      "type": "meander",
+      "nodes": [],
+      "length": 4700.0,
+      "meander_segment": null,
+      "meanders": 6,
+      "a": null,
+      "b": null,
+      "r": 75.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RT7": {
+      "from": "OE_T7.a",
+      "to": {
+        "hanger": "FL_T",
+        "length": 200.0,
+        "near": [
+          7094.5,
+          2650.0
+        ],
+        "side": "left",
+        "ground_gap": 4.0,
+        "direction": "backward",
+        "end": "short",
+        "open_gap": 6.0,
+        "coupler_gap": null,
+        "line_gap": null
+      },
+      "type": "meander",
+      "nodes": [],
+      "length": 4900.0,
+      "meander_segment": null,
+      "meanders": 6,
+      "a": null,
+      "b": null,
+      "r": 75.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RT8": {
+      "from": "OE_T8.a",
+      "to": {
+        "hanger": "FL_T",
+        "length": 200.0,
+        "near": [
+          8094.5,
+          2650.0
+        ],
+        "side": "left",
+        "ground_gap": 4.0,
+        "direction": "backward",
+        "end": "short",
+        "open_gap": 6.0,
+        "coupler_gap": null,
+        "line_gap": null
+      },
+      "type": "meander",
+      "nodes": [],
+      "length": 5100.0,
+      "meander_segment": null,
+      "meanders": 6,
+      "a": null,
+      "b": null,
+      "r": 75.0,
+      "airbridges": "none",
+      "params": {}
+    }
+  },
+  "nets": "derived",
+  "targets": {},
+  "sim_groups": {
+    "LINE_B": {
+      "select": [
+        "FL_B",
+        "RB1",
+        "OE_B1",
+        "RB2",
+        "OE_B2",
+        "RB3",
+        "OE_B3",
+        "RB4",
+        "OE_B4",
+        "RB5",
+        "OE_B5",
+        "RB6",
+        "OE_B6",
+        "RB7",
+        "OE_B7",
+        "RB8",
+        "OE_B8"
+      ],
+      "margin_um": 200.0,
+      "analyses": [
+        "eigenmode_epr"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "LINE_T": {
+      "select": [
+        "FL_T",
+        "RT1",
+        "OE_T1",
+        "RT2",
+        "OE_T2",
+        "RT3",
+        "OE_T3",
+        "RT4",
+        "OE_T4",
+        "RT5",
+        "OE_T5",
+        "RT6",
+        "OE_T6",
+        "RT7",
+        "OE_T7",
+        "RT8",
+        "OE_T8"
+      ],
+      "margin_um": 200.0,
+      "analyses": [
+        "eigenmode_epr"
+      ],
+      "ports": {},
+      "settings": {}
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "analysis": "hfss_driven",
+  "design_hash": "f4613bbff2f4f04e",
+  "group": "Q1R1",
+  "raw_files": [
+    "t00_quickstart_Q1R1_hfss_driven_project_qcc.json",
+    "t00_quickstart_Q1R1_hfss_driven_project_convergence.txt",
+    "t00_quickstart_Q1R1_hfss_driven_project_SMatrix.s2p"
+  ],
+  "aedt": {
+    "aedt": "2024.1.0",
+    "python": "2.7.4",
+    "tool": "hfss",
+    "solve_seconds": 147.7,
+    "convergence_file": "t00_quickstart_Q1R1_hfss_driven_project_convergence.txt"
+  },
+  "convergence": {
+    "file": "t00_quickstart_Q1R1_hfss_driven_project_convergence.txt",
+    "converged": true,
+    "criterion": "Max Mag. Delta S",
+    "target": 0.05,
+    "passes": [
+      1,
+      2
+    ],
+    "elements": [
+      73951,
+      96137
+    ],
+    "delta": [
+      null,
+      0.047622
+    ]
+  },
+  "sparams": {
+    "file": "t00_quickstart_Q1R1_hfss_driven_project_SMatrix.s2p",
+    "ports": [
+      "FL",
+      "FL"
+    ],
+    "port_numbers": [
+      2,
+      3
+    ],
+    "z0_ohm": 50.0,
+    "f_GHz": [
+      6.6,
+      7.2
+    ],
+    "n_points": 10001,
+    "notch": {
+      "S21": {
+        "f0_GHz": 6.697694240673092,
+        "Q_loaded": 20462.215242184007,
+        "Q_coupling": 20847.510205268267,
+        "Q_internal": 1107167.9672867614,
+        "kappa_MHz": 0.32732009518038,
+        "kappa_ext_MHz": 0.32127070209950315,
+        "phi": 0.021752964770748187,
+        "residual_rms": 0.00024224801123004053,
+        "depth": 0.8905532425549731
+      }
+    }
+  }
+}

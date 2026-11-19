@@ -1,0 +1,45 @@
+{
+  "schema": "qcc/0.1",
+  "name": "lithography_test",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      0.0,
+      0.0,
+      10000.0,
+      10000.0
+    ],
+    "launchers": null,
+    "params": {
+      "with_grid": false,
+      "name_chip": "CTest",
+      "cheese": "original"
+    }
+  },
+  "instances": {
+    "CHIP": {
+      "cell": "LithographyTest",
+      "params": {
+        "frames_enabled": []
+      },
+      "place": {
+        "at": [
+          -142.6,
+          -670.1
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    }
+  },
+  "routes": {},
+  "nets": "derived",
+  "targets": {},
+  "sim_groups": {}
+}

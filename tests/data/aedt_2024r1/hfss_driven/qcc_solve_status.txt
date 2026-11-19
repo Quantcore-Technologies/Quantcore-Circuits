@@ -1,0 +1,13 @@
+python 2.7.4 | aedt 2024.1.0 | mode solve
+step import
+ok import 16.8 s
+fix Port1: junction excitation -> Lumped RLC L=Lj_1 C=Cj_1 (boundaries before: PerfE1,Perfect E)
+step reports
+ok reports 0.6 s
+saved q1_r1_feedline_Q1R1D_hfss_driven_project.aedt
+step solve
+ok solve 1173.0 s
+step export
+ok export 4.3 s
+wrote q1_r1_feedline_Q1R1D_hfss_driven_project_qcc.json
+done

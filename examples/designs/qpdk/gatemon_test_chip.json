@@ -1,0 +1,547 @@
+{
+  "schema": "qcc/0.1",
+  "name": "gatemon_test_chip",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      0.0,
+      0.0,
+      10000.0,
+      10000.0
+    ],
+    "launchers": null,
+    "params": {
+      "with_grid": false,
+      "name_chip": "QPDK-GTC"
+    }
+  },
+  "instances": {
+    "PIN_A": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 200,
+        "pad_height": 200,
+        "pad_gap": 110,
+        "taper_length": 100
+      },
+      "place": {
+        "at": [
+          60.0,
+          3000.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "POUT_A": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 200,
+        "pad_height": 200,
+        "pad_gap": 110,
+        "taper_length": 100
+      },
+      "place": {
+        "at": [
+          8940.0,
+          3000.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PG_A": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 200,
+        "pad_height": 200,
+        "pad_gap": 110,
+        "taper_length": 100
+      },
+      "place": {
+        "at": [
+          2100.0,
+          560.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PIN_B": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 200,
+        "pad_height": 200,
+        "pad_gap": 110,
+        "taper_length": 100
+      },
+      "place": {
+        "at": [
+          60.0,
+          7000.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "POUT_B": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 200,
+        "pad_height": 200,
+        "pad_gap": 110,
+        "taper_length": 100
+      },
+      "place": {
+        "at": [
+          8940.0,
+          7000.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PG_B": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 200,
+        "pad_height": 200,
+        "pad_gap": 110,
+        "taper_length": 100
+      },
+      "place": {
+        "at": [
+          2100.0,
+          9440.0
+        ],
+        "rot": 180.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "CI_A": {
+      "cell": "FingerCapacitorSquare",
+      "params": {
+        "finger_number": 4,
+        "finger_length": 20,
+        "finger_gap": 2,
+        "finger_width": 5
+      },
+      "place": {
+        "at": [
+          2500.0,
+          3000.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "CO_A": {
+      "cell": "FingerCapacitorSquare",
+      "params": {
+        "finger_number": 4,
+        "finger_length": 20,
+        "finger_gap": 2,
+        "finger_width": 5
+      },
+      "place": {
+        "at": [
+          7500.0,
+          2200.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "K_A": {
+      "cell": "GatemonCoupler",
+      "params": {
+        "length": 600.0,
+        "qubit_side": "bottom"
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "K_A.o1",
+        "to": "CI_A.b",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "G_A": {
+      "cell": "Gatemon",
+      "params": {},
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "G_A.readout",
+        "to": "K_A.qubit",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 20.0,
+        "Cj_fF": 2.0
+      }
+    },
+    "CI_B": {
+      "cell": "FingerCapacitorSquare",
+      "params": {
+        "finger_number": 4,
+        "finger_length": 20,
+        "finger_gap": 2,
+        "finger_width": 5
+      },
+      "place": {
+        "at": [
+          2500.0,
+          7000.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "CO_B": {
+      "cell": "FingerCapacitorSquare",
+      "params": {
+        "finger_number": 4,
+        "finger_length": 20,
+        "finger_gap": 2,
+        "finger_width": 5
+      },
+      "place": {
+        "at": [
+          7500.0,
+          7800.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "K_B": {
+      "cell": "GatemonCoupler",
+      "params": {
+        "length": 600.0,
+        "qubit_side": "top"
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "K_B.o1",
+        "to": "CI_B.b",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "G_B": {
+      "cell": "Gatemon",
+      "params": {},
+      "place": {
+        "at": [
+          2736.5,
+          7120.0
+        ],
+        "rot": 0.0,
+        "mirror": true,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 20.0,
+        "Cj_fF": 2.0
+      }
+    }
+  },
+  "routes": {
+    "IN_A": {
+      "from": "PIN_A.a",
+      "to": "CI_A.a",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 100.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RES_A": {
+      "from": "K_A.o2",
+      "to": "CO_A.a",
+      "type": "meander",
+      "nodes": [
+        [
+          3975.0,
+          3000.0
+        ],
+        [
+          3975.0,
+          2200.0
+        ]
+      ],
+      "length": 11346.135,
+      "meander_segment": 3,
+      "meanders": 5,
+      "a": null,
+      "b": null,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "OUT_A": {
+      "from": "CO_A.b",
+      "to": "POUT_A.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          7800.0,
+          2200.0
+        ],
+        [
+          7800.0,
+          3000.0
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 100.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "GATE_A": {
+      "from": "PG_A.a",
+      "to": "G_A.gate",
+      "type": "cpw",
+      "nodes": [
+        [
+          2100.0,
+          1800.0
+        ],
+        [
+          2796.5,
+          1800.0
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 100.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "IN_B": {
+      "from": "PIN_B.a",
+      "to": "CI_B.a",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 100.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "RES_B": {
+      "from": "K_B.o2",
+      "to": "CO_B.a",
+      "type": "meander",
+      "nodes": [
+        [
+          3975.0,
+          7000.0
+        ],
+        [
+          3975.0,
+          7800.0
+        ]
+      ],
+      "length": 11346.135,
+      "meander_segment": 3,
+      "meanders": 5,
+      "a": null,
+      "b": null,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "OUT_B": {
+      "from": "CO_B.b",
+      "to": "POUT_B.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          7800.0,
+          7800.0
+        ],
+        [
+          7800.0,
+          7000.0
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 100.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "GATE_B": {
+      "from": "PG_B.a",
+      "to": "G_B.gate",
+      "type": "cpw",
+      "nodes": [
+        [
+          2100.0,
+          8200.0
+        ],
+        [
+          2796.5,
+          8200.0
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 100.0,
+      "airbridges": "none",
+      "params": {}
+    }
+  },
+  "nets": "derived",
+  "targets": {
+    "RES_A": {
+      "f_GHz": 5.056
+    },
+    "RES_B": {
+      "f_GHz": 5.056
+    },
+    "G_A": {
+      "alpha_MHz": -260.0
+    },
+    "G_B": {
+      "alpha_MHz": -260.0
+    }
+  },
+  "sim_groups": {
+    "CH_A": {
+      "select": [
+        "G_A",
+        "K_A",
+        "RES_A",
+        "CI_A",
+        "CO_A"
+      ],
+      "margin_um": 200.0,
+      "analyses": [
+        "eigenmode_epr",
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "CH_B": {
+      "select": [
+        "G_B",
+        "K_B",
+        "RES_B",
+        "CI_B",
+        "CO_B"
+      ],
+      "margin_um": 200.0,
+      "analyses": [
+        "eigenmode_epr",
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    }
+  },
+  "couplings": {
+    "W_B": {
+      "between": [
+        "G_B.readout",
+        "K_B.qubit"
+      ],
+      "type": "wire",
+      "value": null,
+      "fem": true,
+      "note": "QPDK gatemon_b,readout: coupler_b,qubit"
+    }
+  }
+}

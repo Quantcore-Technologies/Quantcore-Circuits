@@ -1,0 +1,31 @@
+{
+ "tool": "hfss", 
+ "solve_seconds": 1173.1, 
+ "boundaries": [
+  "PerfE1", 
+  "Perfect E", 
+  "LumpRLC_jj_1", 
+  "Lumped RLC"
+ ], 
+ "convergence_file": "q1_r1_feedline_Q1R1D_hfss_driven_project_convergence.txt", 
+ "variables": [
+  "Lj_1:=", 
+  "1.2e-08H", 
+  "Cj_1:=", 
+  "2e-15farad"
+ ], 
+ "messages": [], 
+ "convergence_reports": {
+  "Solution Convergence": "q1_r1_feedline_Q1R1D_hfss_driven_project_Solution_Convergence.csv"
+ }, 
+ "design_type": "HFSS", 
+ "excitations": [
+  "Port2_T1", 
+  "Wave Port", 
+  "Port3_T1", 
+  "Wave Port"
+ ], 
+ "python": "2.7.4", 
+ "aedt": "2024.1.0", 
+ "mode": "solve"
+}

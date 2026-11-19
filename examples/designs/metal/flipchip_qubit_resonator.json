@@ -1,0 +1,119 @@
+{
+  "schema": "qcc/0.1",
+  "name": "flipchip_qubit_resonator",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      750.0,
+      750.0,
+      8250.0,
+      8250.0
+    ],
+    "launchers": null,
+    "params": {
+      "with_grid": false,
+      "name_chip": "MetalFlipChip"
+    }
+  },
+  "instances": {
+    "Q1": {
+      "cell": "metal:TransmonCross",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "face_ids": [
+          "2b1",
+          "1t1",
+          "2t1"
+        ],
+        "cross_width": "20um",
+        "cross_length": "150um",
+        "cross_gap": "20um",
+        "connection_pads": {
+          "claw_west": {
+            "connector_location": "180",
+            "connector_type": "0",
+            "claw_length": "30um",
+            "ground_spacing": "5um",
+            "claw_width": "10um",
+            "claw_gap": "6um"
+          }
+        }
+      },
+      "place": {
+        "at": [
+          3960.6,
+          4774.8
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 6.7344,
+        "Cj_fF": 15.0
+      }
+    },
+    "R1": {
+      "cell": "metal:ReadoutResFC",
+      "params": {
+        "readout_radius": "20 um",
+        "readout_cpw_width": "10 um",
+        "readout_cpw_gap": "10 um",
+        "readout_cpw_turnradius": "50 um",
+        "readout_l1": "600 um",
+        "readout_l2": "200 um",
+        "readout_l3": "300 um",
+        "readout_l4": "150 um",
+        "readout_l5": "550 um",
+        "arc_step": "5 um"
+      },
+      "place": {
+        "at": [
+          3960.6,
+          4774.8
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "R1_end": {
+      "cell": "metal:ShortToGround",
+      "params": {},
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "R1_end.short",
+        "to": "R1.readout",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    }
+  },
+  "routes": {},
+  "nets": "derived",
+  "targets": {},
+  "sim_groups": {},
+  "couplings": {
+    "Cg_Q1_R1": {
+      "between": [
+        "Q1",
+        "R1.res"
+      ],
+      "type": "C",
+      "value": 1.0,
+      "fem": true,
+      "note": "disk under the cross centre, 10 \u00b5m vacuum gap (rough)"
+    }
+  }
+}

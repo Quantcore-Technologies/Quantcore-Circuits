@@ -1,0 +1,402 @@
+{
+  "schema": "qcc/0.1",
+  "name": "qualityfactor",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      0.0,
+      0.0,
+      10000.0,
+      10000.0
+    ],
+    "launchers": {
+      "type": "SMA8",
+      "assign": {
+        "8": "PL-1-IN",
+        "3": "PL-1-OUT"
+      },
+      "enabled": null
+    },
+    "params": {
+      "with_grid": true,
+      "name_chip": "QFACTOR"
+    }
+  },
+  "instances": {
+    "R0": {
+      "cell": "QuarterWaveCpwResonator",
+      "params": {
+        "probeline_length": 120.0,
+        "resonator_length": 5434,
+        "max_res_len": 5589,
+        "res_beg": "galvanic",
+        "res_term": "galvanic",
+        "n_ab": 5,
+        "n_fingers": 4,
+        "l_fingers": 23.1,
+        "type_coupler": "interdigital",
+        "res_a": 5,
+        "res_b": 3,
+        "tl_airbridges": true
+      },
+      "place": {
+        "at": [
+          2566.6666666666665,
+          7794.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "R1": {
+      "cell": "QuarterWaveCpwResonator",
+      "params": {
+        "probeline_length": 120.0,
+        "resonator_length": 5429,
+        "max_res_len": 5589,
+        "res_beg": "galvanic",
+        "res_term": "galvanic",
+        "n_ab": 0,
+        "n_fingers": 4,
+        "l_fingers": 9.9,
+        "type_coupler": "interdigital",
+        "res_a": 10,
+        "res_b": 6,
+        "tl_airbridges": true
+      },
+      "place": {
+        "at": [
+          3540.0,
+          7794.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "R2": {
+      "cell": "QuarterWaveCpwResonator",
+      "params": {
+        "probeline_length": 120.0,
+        "resonator_length": 5374,
+        "max_res_len": 5589,
+        "res_beg": "galvanic",
+        "res_term": "galvanic",
+        "n_ab": 5,
+        "n_fingers": 2,
+        "l_fingers": 14.1,
+        "type_coupler": "interdigital",
+        "res_a": 20,
+        "res_b": 12,
+        "tl_airbridges": true
+      },
+      "place": {
+        "at": [
+          4513.333333333334,
+          7794.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "R3": {
+      "cell": "QuarterWaveCpwResonator",
+      "params": {
+        "probeline_length": 120.0,
+        "resonator_length": 5412,
+        "max_res_len": 5589,
+        "res_beg": "airbridge",
+        "res_term": "airbridge",
+        "n_ab": 5,
+        "n_fingers": 4,
+        "l_fingers": 10,
+        "type_coupler": "gap",
+        "res_a": 5,
+        "res_b": 3,
+        "tl_airbridges": true
+      },
+      "place": {
+        "at": [
+          5486.666666666666,
+          7794.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "R4": {
+      "cell": "QuarterWaveCpwResonator",
+      "params": {
+        "probeline_length": 120.0,
+        "resonator_length": 5493,
+        "max_res_len": 5589,
+        "res_beg": "airbridge",
+        "res_term": "airbridge",
+        "n_ab": 5,
+        "n_fingers": 4,
+        "l_fingers": 21,
+        "type_coupler": "gap",
+        "res_a": 10,
+        "res_b": 6,
+        "tl_airbridges": true
+      },
+      "place": {
+        "at": [
+          6460.0,
+          7794.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "R5": {
+      "cell": "QuarterWaveCpwResonator",
+      "params": {
+        "probeline_length": 120.0,
+        "resonator_length": 5589,
+        "max_res_len": 5589,
+        "res_beg": "airbridge",
+        "res_term": "airbridge",
+        "n_ab": 5,
+        "n_fingers": 4,
+        "l_fingers": 28,
+        "type_coupler": "gap",
+        "res_a": 20,
+        "res_b": 12,
+        "tl_airbridges": true
+      },
+      "place": {
+        "at": [
+          7433.333333333333,
+          7794.5
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    }
+  },
+  "routes": {
+    "FL0": {
+      "from": "chip.PL-1-IN",
+      "to": "R0.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          1980.0,
+          7200.0
+        ],
+        [
+          2080.0,
+          7794.5
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FL1": {
+      "from": "R0.b",
+      "to": "R1.a",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FL2": {
+      "from": "R1.b",
+      "to": "R2.a",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FL3": {
+      "from": "R2.b",
+      "to": "R3.a",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FL4": {
+      "from": "R3.b",
+      "to": "R4.a",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FL5": {
+      "from": "R4.b",
+      "to": "R5.a",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FL6": {
+      "from": "R5.b",
+      "to": "chip.PL-1-OUT",
+      "type": "cpw",
+      "nodes": [
+        [
+          7920.0,
+          7794.5
+        ],
+        [
+          8020.0,
+          7200.0
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    }
+  },
+  "nets": "derived",
+  "targets": {},
+  "sim_groups": {
+    "R0": {
+      "select": [
+        "R0"
+      ],
+      "margin_um": 200.0,
+      "analyses": [
+        "eigenmode_epr",
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "R1": {
+      "select": [
+        "R1"
+      ],
+      "margin_um": 200.0,
+      "analyses": [
+        "eigenmode_epr",
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "R2": {
+      "select": [
+        "R2"
+      ],
+      "margin_um": 200.0,
+      "analyses": [
+        "eigenmode_epr",
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "R3": {
+      "select": [
+        "R3"
+      ],
+      "margin_um": 200.0,
+      "analyses": [
+        "eigenmode_epr",
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "R4": {
+      "select": [
+        "R4"
+      ],
+      "margin_um": 200.0,
+      "analyses": [
+        "eigenmode_epr",
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "R5": {
+      "select": [
+        "R5"
+      ],
+      "margin_um": 200.0,
+      "analyses": [
+        "eigenmode_epr",
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    }
+  }
+}

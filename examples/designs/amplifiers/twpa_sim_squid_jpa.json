@@ -1,0 +1,160 @@
+{
+  "schema": "qcc/0.1",
+  "name": "twpa_sim_squid_jpa",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      0.0,
+      0.0,
+      7500.0,
+      7500.0
+    ],
+    "launchers": null,
+    "params": {
+      "with_grid": false,
+      "name_chip": "SQJPA"
+    }
+  },
+  "instances": {
+    "P_SIG": {
+      "cell": "BondPad",
+      "params": {},
+      "place": {
+        "at": [
+          400.0,
+          3750.0
+        ],
+        "rot": -90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "P_FLUX": {
+      "cell": "BondPad",
+      "params": {},
+      "place": {
+        "at": [
+          7100.0,
+          3250.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "CC": {
+      "cell": "FingerCapacitorSquare",
+      "params": {
+        "finger_number": 14,
+        "finger_length": 90,
+        "finger_width": 5,
+        "finger_gap": 3
+      },
+      "place": {
+        "at": [
+          2700.0,
+          3750.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "JS": {
+      "cell": "LumpedJpa",
+      "params": {
+        "junction_type": "Quantcore Squid",
+        "flux_line": true,
+        "junction_params": {
+          "finger_width": 2.0,
+          "second_finger_width": 2.0
+        },
+        "shunt_fingers": 45,
+        "finger_length": 180,
+        "finger_width": 4,
+        "finger_gap": 4,
+        "flux_phi0": 0.0
+      },
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "JS.signal",
+        "to": "CC.b",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 0.25254,
+        "Cj_fF": 400.0
+      }
+    }
+  },
+  "routes": {
+    "L_SIG": {
+      "from": "P_SIG.a",
+      "to": "CC.a",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "L_FLUX": {
+      "from": "JS.flux",
+      "to": "P_FLUX.a",
+      "type": "cpw",
+      "nodes": [
+        [
+          3590.5,
+          3250.0
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 80.0,
+      "airbridges": "none",
+      "params": {}
+    }
+  },
+  "nets": "derived",
+  "targets": {},
+  "sim_groups": {
+    "jpa": {
+      "select": [
+        "CC",
+        "JS"
+      ],
+      "margin_um": 100.0,
+      "analyses": [
+        "q3d_cmatrix",
+        "eigenmode_epr"
+      ],
+      "ports": {},
+      "settings": {}
+    }
+  }
+}

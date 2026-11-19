@@ -1,0 +1,357 @@
+{
+  "schema": "qcc/0.1",
+  "name": "m54_wallraff_cell",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      -2595.4,
+      -3400.0,
+      4904.6,
+      4100.0
+    ],
+    "launchers": null,
+    "params": {
+      "with_grid": false,
+      "name_chip": "Metal54"
+    }
+  },
+  "instances": {
+    "D5": {
+      "cell": "metal:StarQubit",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "radius": 160,
+        "center_radius": 53,
+        "gap_couplers": 13,
+        "gap_readout": 6,
+        "connector_length": 40,
+        "trap_offset": 11,
+        "junc_h": 53,
+        "number_of_connectors": 4,
+        "resolution": 16,
+        "rotation_cpl1": 54,
+        "rotation_cpl2": 198,
+        "rotation_cpl3": 270,
+        "rotation_cpl4": 342,
+        "rotation_rdout": 126,
+        "rotation_jj": 90
+      },
+      "place": {
+        "at": [
+          350.0,
+          350.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 6.7344,
+        "Cj_fF": 15.0
+      }
+    },
+    "Z3": {
+      "cell": "metal:StarQubit",
+      "params": {
+        "junction_type": "Quantcore Junction",
+        "radius": 160,
+        "center_radius": 53,
+        "gap_couplers": 13,
+        "gap_readout": 6,
+        "connector_length": 40,
+        "trap_offset": 11,
+        "junc_h": 53,
+        "number_of_connectors": 4,
+        "resolution": 16,
+        "rotation_cpl1": 126,
+        "rotation_cpl2": 198,
+        "rotation_cpl3": 270,
+        "rotation_cpl4": 342,
+        "rotation_rdout": 54,
+        "rotation_jj": 90
+      },
+      "place": {
+        "at": [
+          1959.2,
+          350.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 6.7344,
+        "Cj_fF": 15.0
+      }
+    },
+    "D5_pin_cpl2_gnd": {
+      "cell": "metal:ShortToGround",
+      "params": {},
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "D5_pin_cpl2_gnd.short",
+        "to": "D5.pin_cpl2",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "D5_pin_cpl3_gnd": {
+      "cell": "metal:ShortToGround",
+      "params": {},
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "D5_pin_cpl3_gnd.short",
+        "to": "D5.pin_cpl3",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "D5_pin_cpl4_gnd": {
+      "cell": "metal:ShortToGround",
+      "params": {},
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "D5_pin_cpl4_gnd.short",
+        "to": "D5.pin_cpl4",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "D5_pin_rdout_gnd": {
+      "cell": "metal:ShortToGround",
+      "params": {},
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "D5_pin_rdout_gnd.short",
+        "to": "D5.pin_rdout",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "Z3_pin_cpl1_gnd": {
+      "cell": "metal:ShortToGround",
+      "params": {},
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "Z3_pin_cpl1_gnd.short",
+        "to": "Z3.pin_cpl1",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "Z3_pin_cpl2_gnd": {
+      "cell": "metal:ShortToGround",
+      "params": {},
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "Z3_pin_cpl2_gnd.short",
+        "to": "Z3.pin_cpl2",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "Z3_pin_cpl4_gnd": {
+      "cell": "metal:ShortToGround",
+      "params": {},
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "Z3_pin_cpl4_gnd.short",
+        "to": "Z3.pin_cpl4",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "Z3_pin_rdout_gnd": {
+      "cell": "metal:ShortToGround",
+      "params": {},
+      "place": {
+        "at": null,
+        "rot": 0.0,
+        "mirror": false,
+        "snap": "Z3_pin_rdout_gnd.short",
+        "to": "Z3.pin_rdout",
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    }
+  },
+  "routes": {
+    "CPL_D5_Z3": {
+      "from": "D5.pin_cpl1",
+      "to": "Z3.pin_cpl3",
+      "type": "cpw",
+      "nodes": [
+        [
+          544.164,
+          208.932
+        ],
+        [
+          591.931,
+          191.252
+        ],
+        [
+          636.256,
+          195.113
+        ],
+        [
+          675.96,
+          217.357
+        ],
+        [
+          715.663,
+          239.6
+        ],
+        [
+          755.366,
+          261.843
+        ],
+        [
+          795.0699999999999,
+          284.086
+        ],
+        [
+          834.773,
+          306.33
+        ],
+        [
+          874.835,
+          327.869
+        ],
+        [
+          916.965,
+          344.299
+        ],
+        [
+          962.006,
+          349.981
+        ],
+        [
+          1007.515,
+          349.899
+        ],
+        [
+          1053.025,
+          349.817
+        ],
+        [
+          1098.534,
+          349.735
+        ],
+        [
+          1144.0430000000001,
+          349.653
+        ],
+        [
+          1189.5529999999999,
+          349.571
+        ],
+        [
+          1235.062,
+          349.489
+        ],
+        [
+          1280.5720000000001,
+          349.407
+        ],
+        [
+          1326.0810000000001,
+          349.325
+        ],
+        [
+          1371.591,
+          349.243
+        ],
+        [
+          1417.1,
+          349.161
+        ],
+        [
+          1461.078,
+          343.389
+        ],
+        [
+          1496.044,
+          316.115
+        ],
+        [
+          1523.559,
+          281.101
+        ],
+        [
+          1562.674,
+          270.654
+        ],
+        [
+          1598.118,
+          297.009
+        ],
+        [
+          1627.88,
+          330.544
+        ],
+        [
+          1668.218,
+          347.388
+        ],
+        [
+          1719.2,
+          350.0
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": 8.5,
+      "b": 5.5,
+      "r": 15.0,
+      "airbridges": "none",
+      "params": {}
+    }
+  },
+  "nets": "derived",
+  "targets": {},
+  "sim_groups": {
+    "cell": {
+      "select": [
+        "D5",
+        "Z3",
+        "CPL_D5_Z3"
+      ],
+      "margin_um": 0.0,
+      "analyses": [
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    }
+  }
+}

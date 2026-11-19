@@ -1,0 +1,552 @@
+{
+  "schema": "qcc/0.1",
+  "name": "flipmon_test_chip",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      -1625.0,
+      -650.0,
+      5875.0,
+      6850.0
+    ],
+    "launchers": null,
+    "params": {
+      "with_grid": false,
+      "name_chip": "QPDK-FTC"
+    }
+  },
+  "instances": {
+    "PAD_IN": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 200,
+        "pad_height": 200,
+        "pad_gap": 110,
+        "taper_length": 100
+      },
+      "place": {
+        "at": [
+          510.0,
+          3500.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "w"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PAD_OUT": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 200,
+        "pad_height": 200,
+        "pad_gap": 110,
+        "taper_length": 100
+      },
+      "place": {
+        "at": [
+          510.0,
+          2700.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "w"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PAD_FT": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 200,
+        "pad_height": 200,
+        "pad_gap": 110,
+        "taper_length": 100
+      },
+      "place": {
+        "at": [
+          4990.0,
+          5790.0
+        ],
+        "rot": 180.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "n"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "PAD_FB": {
+      "cell": "BondPad",
+      "params": {
+        "pad_width": 200,
+        "pad_height": 200,
+        "pad_gap": 110,
+        "taper_length": 100
+      },
+      "place": {
+        "at": [
+          4990.0,
+          410.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "s"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "C_IN": {
+      "cell": "FingerCapacitorSquare",
+      "params": {
+        "finger_number": 4,
+        "finger_length": 20,
+        "finger_gap": 2,
+        "finger_width": 5
+      },
+      "place": {
+        "at": [
+          2790.0,
+          3500.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "C_OUT": {
+      "cell": "FingerCapacitorSquare",
+      "params": {
+        "finger_number": 4,
+        "finger_length": 20,
+        "finger_gap": 2,
+        "finger_width": 5
+      },
+      "place": {
+        "at": [
+          2790.0,
+          2700.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": null
+    },
+    "Q1": {
+      "cell": "Flipmon",
+      "params": {
+        "junction_type": "Quantcore Squid",
+        "junction_params": {
+          "lj_nH": 6.7344
+        },
+        "junction_position_rotation": 180
+      },
+      "place": {
+        "at": [
+          4375.0,
+          4725.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 6.7344,
+        "Cj_fF": 15.0
+      }
+    },
+    "Q2": {
+      "cell": "Flipmon",
+      "params": {
+        "junction_type": "Quantcore Squid",
+        "junction_params": {
+          "lj_nH": 6.7344
+        },
+        "junction_position_rotation": 180
+      },
+      "place": {
+        "at": [
+          5605.0,
+          4725.0
+        ],
+        "rot": 270.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 6.7344,
+        "Cj_fF": 15.0
+      }
+    },
+    "Q3": {
+      "cell": "Flipmon",
+      "params": {
+        "junction_type": "Quantcore Squid",
+        "junction_params": {
+          "lj_nH": 6.7344
+        },
+        "junction_position_rotation": 180
+      },
+      "place": {
+        "at": [
+          5605.0,
+          1472.579
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 6.7344,
+        "Cj_fF": 15.0
+      }
+    },
+    "Q4": {
+      "cell": "Flipmon",
+      "params": {
+        "junction_type": "Quantcore Squid",
+        "junction_params": {
+          "lj_nH": 6.7344
+        },
+        "junction_position_rotation": 180
+      },
+      "place": {
+        "at": [
+          4375.0,
+          1471.649
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 6.7344,
+        "Cj_fF": 15.0
+      }
+    }
+  },
+  "routes": {
+    "FL_IN": {
+      "from": "PAD_IN.a",
+      "to": "C_IN.a",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 100.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FL": {
+      "from": "C_IN.b",
+      "to": "C_OUT.b",
+      "type": "cpw",
+      "nodes": [
+        [
+          5705.0,
+          3500.0
+        ],
+        [
+          5705.0,
+          2700.0
+        ]
+      ],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 100.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FL_OUT": {
+      "from": "C_OUT.a",
+      "to": "PAD_OUT.a",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 100.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "R1": {
+      "from": "Q1.coupler",
+      "to": {
+        "hanger": "FL",
+        "s": 1048.5,
+        "length": 800.0,
+        "side": "left",
+        "ground_gap": 4.0,
+        "direction": "forward",
+        "end": "open",
+        "open_gap": 6.0,
+        "coupler_gap": null,
+        "line_gap": null
+      },
+      "type": "meander",
+      "nodes": [
+        [
+          4375.0,
+          3950.0
+        ],
+        [
+          3475.0,
+          3950.0
+        ]
+      ],
+      "length": 4987.0,
+      "meander_segment": null,
+      "meanders": 7,
+      "a": null,
+      "b": null,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "R2": {
+      "from": "Q2.coupler",
+      "to": {
+        "hanger": "FL",
+        "s": 2278.5,
+        "length": 800.0,
+        "side": "left",
+        "ground_gap": 4.0,
+        "direction": "forward",
+        "end": "open",
+        "open_gap": 6.0,
+        "coupler_gap": null,
+        "line_gap": null
+      },
+      "type": "meander",
+      "nodes": [
+        [
+          5605.0,
+          3950.0
+        ],
+        [
+          4705.0,
+          3950.0
+        ]
+      ],
+      "length": 4787.0,
+      "meander_segment": null,
+      "meanders": 7,
+      "a": null,
+      "b": null,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "R3": {
+      "from": "Q3.coupler",
+      "to": {
+        "hanger": "FL",
+        "s": 4278.5,
+        "length": 800.0,
+        "side": "left",
+        "ground_gap": 4.0,
+        "direction": "backward",
+        "end": "open",
+        "open_gap": 6.0,
+        "coupler_gap": null,
+        "line_gap": null
+      },
+      "type": "meander",
+      "nodes": [
+        [
+          5605.0,
+          2250.0
+        ],
+        [
+          4705.0,
+          2250.0
+        ]
+      ],
+      "length": 4587.0,
+      "meander_segment": null,
+      "meanders": 7,
+      "a": null,
+      "b": null,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "R4": {
+      "from": "Q4.coupler",
+      "to": {
+        "hanger": "FL",
+        "s": 5508.5,
+        "length": 800.0,
+        "side": "left",
+        "ground_gap": 4.0,
+        "direction": "backward",
+        "end": "open",
+        "open_gap": 6.0,
+        "coupler_gap": null,
+        "line_gap": null
+      },
+      "type": "meander",
+      "nodes": [
+        [
+          4375.0,
+          2250.0
+        ],
+        [
+          3475.0,
+          2250.0
+        ]
+      ],
+      "length": 4387.0,
+      "meander_segment": null,
+      "meanders": 7,
+      "a": null,
+      "b": null,
+      "r": 50.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FLUX_T": {
+      "from": "PAD_FT.a",
+      "to": {
+        "at": [
+          4990.0,
+          4875.0
+        ],
+        "dir": 90.0,
+        "term": 6.0
+      },
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 100.0,
+      "airbridges": "none",
+      "params": {}
+    },
+    "FLUX_B": {
+      "from": "PAD_FB.a",
+      "to": {
+        "at": [
+          4990.0,
+          1325.0
+        ],
+        "dir": 270.0,
+        "term": 6.0
+      },
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": 100.0,
+      "airbridges": "none",
+      "params": {}
+    }
+  },
+  "nets": "derived",
+  "targets": {},
+  "sim_groups": {
+    "Q1R1": {
+      "select": [
+        "Q1",
+        "R1",
+        "FL"
+      ],
+      "margin_um": 150.0,
+      "analyses": [
+        "eigenmode_epr",
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "Q2R2": {
+      "select": [
+        "Q2",
+        "R2",
+        "FL"
+      ],
+      "margin_um": 150.0,
+      "analyses": [
+        "eigenmode_epr",
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "Q3R3": {
+      "select": [
+        "Q3",
+        "R3",
+        "FL"
+      ],
+      "margin_um": 150.0,
+      "analyses": [
+        "eigenmode_epr",
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    },
+    "Q4R4": {
+      "select": [
+        "Q4",
+        "R4",
+        "FL"
+      ],
+      "margin_um": 150.0,
+      "analyses": [
+        "eigenmode_epr",
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    }
+  }
+}

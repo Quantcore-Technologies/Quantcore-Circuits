@@ -1,0 +1,86 @@
+{
+  "schema": "qcc-job/0.1",
+  "created": "2026-11-14T21:05:19+00:00",
+  "design": "t00_quickstart",
+  "design_hash": "f4613bbff2f4f04e",
+  "group": "Q1R1",
+  "group_hash": "f4613bbff2f4f04e",
+  "select": [
+    "Q1",
+    "R1"
+  ],
+  "routes_in_sim": [
+    "FL",
+    "R1"
+  ],
+  "analysis": "hfss_driven",
+  "solver": "ansys",
+  "simulation_name": "t00_quickstart_Q1R1_hfss_driven",
+  "settings": {
+    "frequency": 7.0,
+    "max_delta_s": 0.05,
+    "maximum_passes": 6,
+    "minimum_passes": 1,
+    "minimum_converged_passes": 1,
+    "percent_refinement": 30,
+    "sweep_enabled": true,
+    "sweep_start": 6.6,
+    "sweep_end": 7.2,
+    "sweep_count": 10001,
+    "sweep_type": "fast",
+    "mesh_size": {
+      "1t1_gap": 30.0,
+      "*_signal_1": 10.0
+    }
+  },
+  "box_um": [
+    2425.0,
+    1550.0,
+    3575.0,
+    4033.0
+  ],
+  "ports": [
+    {
+      "number": 1,
+      "kind": "junction",
+      "name": "Q1.junction",
+      "excitation": "Q1.island"
+    },
+    {
+      "number": 2,
+      "kind": "edge",
+      "name": "FL",
+      "excitation": "FL"
+    },
+    {
+      "number": 3,
+      "kind": "edge",
+      "name": "FL",
+      "excitation": "FL"
+    }
+  ],
+  "nets": {
+    "1": "Q1.island",
+    "2": "FL"
+  },
+  "waveguide_length_um": 100.0,
+  "geometry": {
+    "ground_grid_shapes": 0,
+    "airbridge_shapes": 0,
+    "airbridges": "dropped"
+  },
+  "notes": [],
+  "versions": {
+    "quantcore-circuits": "0.2.0",
+    "kqcircuits": "0.0.1",
+    "klayout": "0.30.5",
+    "pdk": "quantcore_nb_sapphire_v1@3"
+  },
+  "status": "done",
+  "fem_fast": true,
+  "started": 1794690712.8247628,
+  "returncode": 0,
+  "solve_seconds": 167.3,
+  "finished": 1794690880.4073915,
+  "aedt_mode": "batch"
+}

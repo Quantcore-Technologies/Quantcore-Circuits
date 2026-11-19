@@ -1,0 +1,132 @@
+{
+  "schema": "qcc/0.1",
+  "name": "jtwpa_4wm",
+  "pdk": "quantcore_nb_sapphire_v1",
+  "chip": {
+    "cell": "quantcore_circuits.assembly.DesignChip",
+    "box": [
+      0.0,
+      0.0,
+      7500.0,
+      7500.0
+    ],
+    "launchers": null,
+    "params": {
+      "with_grid": false,
+      "name_chip": "JTWPA"
+    }
+  },
+  "instances": {
+    "P_IN": {
+      "cell": "BondPad",
+      "params": {},
+      "place": {
+        "at": [
+          400.0,
+          3750.0
+        ],
+        "rot": -90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "P_OUT": {
+      "cell": "BondPad",
+      "params": {},
+      "place": {
+        "at": [
+          7100.0,
+          3750.0
+        ],
+        "rot": 90.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0,
+        "edge": "auto"
+      },
+      "ports": null,
+      "junction": null
+    },
+    "JT": {
+      "cell": "JtwpaChain",
+      "params": {
+        "cells": 64,
+        "cell_pitch": 60,
+        "junction_params": {
+          "finger_width": 2.0,
+          "second_finger_width": 2.0
+        },
+        "resonator_every": 4,
+        "resonator_offset": 2,
+        "inductor_turns": 10
+      },
+      "place": {
+        "at": [
+          1800.0,
+          3750.0
+        ],
+        "rot": 0.0,
+        "mirror": false,
+        "snap": null,
+        "to": null,
+        "gap": 0.0
+      },
+      "ports": null,
+      "junction": {
+        "Lj_nH": 0.50508,
+        "Cj_fF": 200.0
+      }
+    }
+  },
+  "routes": {
+    "L_IN": {
+      "from": "P_IN.a",
+      "to": "JT.a",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    },
+    "L_OUT": {
+      "from": "JT.b",
+      "to": "P_OUT.a",
+      "type": "cpw",
+      "nodes": [],
+      "length": null,
+      "meander_segment": null,
+      "meanders": -1,
+      "a": null,
+      "b": null,
+      "r": null,
+      "airbridges": "none",
+      "params": {}
+    }
+  },
+  "nets": "derived",
+  "targets": {},
+  "sim_groups": {
+    "chain": {
+      "select": [
+        "JT"
+      ],
+      "margin_um": 60.0,
+      "analyses": [
+        "q3d_cmatrix"
+      ],
+      "ports": {},
+      "settings": {}
+    }
+  }
+}

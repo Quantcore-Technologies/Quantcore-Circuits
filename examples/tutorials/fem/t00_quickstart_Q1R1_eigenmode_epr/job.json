@@ -1,0 +1,104 @@
+{
+  "schema": "qcc-job/0.1",
+  "created": "2026-11-14T21:05:18+00:00",
+  "design": "t00_quickstart",
+  "design_hash": "f4613bbff2f4f04e",
+  "group": "Q1R1",
+  "group_hash": "f4613bbff2f4f04e",
+  "select": [
+    "Q1",
+    "R1"
+  ],
+  "routes_in_sim": [
+    "FL",
+    "R1"
+  ],
+  "analysis": "eigenmode_epr",
+  "solver": "ansys",
+  "simulation_name": "t00_quickstart_Q1R1_eigenmode_epr",
+  "settings": {
+    "n_modes": 3,
+    "min_frequency": 4.0,
+    "max_delta_f": 1.0,
+    "maximum_passes": 3,
+    "minimum_passes": 1,
+    "minimum_converged_passes": 1,
+    "percent_refinement": 30,
+    "integrate_energies": false,
+    "mesh_size": {
+      "1t1_gap": 40.0,
+      "*_signal_1": 10.0
+    },
+    "pyepr": {
+      "substrate_loss_tangent": 1e-06,
+      "dielectric_surfaces": {
+        "layerMA": {
+          "tan_delta_surf": 0.001,
+          "th": 3e-09,
+          "eps_r": 10
+        },
+        "layerMS": {
+          "tan_delta_surf": 0.001,
+          "th": 3e-09,
+          "eps_r": 10
+        },
+        "layerSA": {
+          "tan_delta_surf": 0.001,
+          "th": 3e-09,
+          "eps_r": 10
+        }
+      }
+    }
+  },
+  "box_um": [
+    2425.0,
+    1550.0,
+    3575.0,
+    4033.0
+  ],
+  "ports": [
+    {
+      "number": 1,
+      "kind": "junction",
+      "name": "Q1.junction",
+      "excitation": "Q1.island"
+    },
+    {
+      "number": 2,
+      "kind": "edge_lumped",
+      "name": "FL",
+      "excitation": "FL"
+    },
+    {
+      "number": 3,
+      "kind": "edge_lumped",
+      "name": "FL",
+      "excitation": "FL"
+    }
+  ],
+  "nets": {
+    "1": "Q1.island",
+    "2": "FL",
+    "3": "FL#2"
+  },
+  "waveguide_length_um": 100.0,
+  "geometry": {
+    "ground_grid_shapes": 0,
+    "airbridge_shapes": 0,
+    "airbridges": "dropped"
+  },
+  "notes": [],
+  "versions": {
+    "quantcore-circuits": "0.2.0",
+    "kqcircuits": "0.0.1",
+    "klayout": "0.30.5",
+    "pdk": "quantcore_nb_sapphire_v1@3"
+  },
+  "status": "done",
+  "fem_fast": true,
+  "started": 1794690319.2985682,
+  "returncode": 0,
+  "solve_seconds": 392.8,
+  "finished": 1794690712.797087,
+  "aedt_mode": "batch"
+}
