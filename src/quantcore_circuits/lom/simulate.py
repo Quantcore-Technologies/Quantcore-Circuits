@@ -180,6 +180,12 @@ def _elements(filled, notes):
     return comps, netlist, inductive, lj
 
 
+def _qucat_value(c) -> float:
+    """A QuCat component's value: ``values[0]`` on QuCat's main branch, ``value`` in the 1.0.3 release on PyPI."""
+    vals = getattr(c, "values", None)
+    return float(vals[0] if vals is not None else c.value)
+
+
 def _kron_reduce(comps, order, netlist, notes):
     """Eliminate nodes that only capacitors touch (exact: they hold no charge); see the module docstring."""
     from qucat import C  # pylint: disable=import-outside-toplevel
@@ -195,7 +201,7 @@ def _kron_reduce(comps, order, netlist, notes):
     pos = {n: i for i, n in enumerate(nodes)}
     m = np.zeros((len(nodes), len(nodes)))
     for c in caps:
-        i, j, v = pos[c.node_minus], pos[c.node_plus], float(c.values[0])
+        i, j, v = pos[c.node_minus], pos[c.node_plus], _qucat_value(c)
         m[i, i] += v
         m[j, j] += v
         m[i, j] -= v
@@ -332,7 +338,7 @@ def _linear_modes(comps, inductive) -> dict | None:
     held = {
         n
         for c in comps
-        if isinstance(c, R) and 0 in (c.node_minus, c.node_plus) and float(c.values[0]) <= 1e3
+        if isinstance(c, R) and 0 in (c.node_minus, c.node_plus) and _qucat_value(c) <= 1e3
         for n in (c.node_minus, c.node_plus)
     }
     nodes = sorted({n for c in comps for n in (c.node_minus, c.node_plus)} - {0} - held)
@@ -340,7 +346,7 @@ def _linear_modes(comps, inductive) -> dict | None:
     cm, km = np.zeros((len(nodes),) * 2), np.zeros((len(nodes),) * 2)
     for c in comps:
         if isinstance(c, C):
-            _stamp(cm, pos, c.node_minus, c.node_plus, float(c.values[0]))
+            _stamp(cm, pos, c.node_minus, c.node_plus, _qucat_value(c))
     for comp, ind, _ in inductive.values():
         _stamp(km, pos, comp.node_minus, comp.node_plus, 1.0 / ind)
     try:
