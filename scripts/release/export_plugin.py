@@ -7,8 +7,8 @@ even when the URL names a sub-folder. So the plugin is published on its own orph
 (into a worktree of the branch, or a folder for the release zip):
 
     python scripts/release/export_plugin.py --out ../Quantcore-Circuits-plugin --clean
-    python scripts/release/export_plugin.py --out dist/plugin --zip dist/quantcore-circuits-klayout-0.3.0.zip \
-        --check-version 0.3.0
+    python scripts/release/export_plugin.py --out dist/plugin --zip dist/quantcore-circuits-klayout-0.0.1.zip \
+        --check-version 0.0.1
 
 * copies the files KLayout needs (``grain.xml``, ``pymacros/``, ``python/``, the tool icons) plus the README, the
   Q1 + R1 tutorial and the licence; development probes, smoke scripts and the repository loader stay behind;

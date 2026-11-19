@@ -5,7 +5,7 @@ All notable changes to quantcore-circuits are listed here. The format follows
 
 ## [Unreleased]
 
-## [0.3.0] - 2026-11-19
+## [0.0.1] - 2026-11-19
 
 First public release, under GPL-3.0-or-later.
 
@@ -58,5 +58,5 @@ First public release, under GPL-3.0-or-later.
 - The flip-chip two-face FEM export and Q3D nets above 8000 points are not built.
 - The full status, with evidence, is in the documentation (Overview, Status).
 
-[Unreleased]: https://github.com/Quantcore-Technologies/Quantcore-Circuits/compare/v0.3.0...HEAD
-[0.3.0]: https://github.com/Quantcore-Technologies/Quantcore-Circuits/releases/tag/v0.3.0
+[Unreleased]: https://github.com/Quantcore-Technologies/Quantcore-Circuits/compare/v0.0.1...HEAD
+[0.0.1]: https://github.com/Quantcore-Technologies/Quantcore-Circuits/releases/tag/v0.0.1

@@ -15,7 +15,7 @@ Heavy sub-packages (layouts/KQC, analysis stacks) are imported lazily.
 
 from importlib import import_module
 
-__version__ = "0.3.0"
+__version__ = "0.0.1"
 
 _LAZY = {
     "load_design": "quantcore_circuits.design",
