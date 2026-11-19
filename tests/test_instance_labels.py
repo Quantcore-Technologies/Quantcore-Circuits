@@ -2,6 +2,7 @@
 --label-height``, ``DesignChip.instance_label_height``); the default is KQC's own call, so a default build is unchanged.
 The KLayout plugin passes its Settings value (checked in a real KLayout by a GUI probe)."""
 
+import re
 import sys
 from pathlib import Path
 
@@ -56,7 +57,8 @@ def test_cli_label_height(example_path, tmp_path):
     assert res.exit_code == 0, res.output
     assert out.exists()
     bad = runner.invoke(app, ["build", str(example_path), "-o", str(tmp_path / "bad.oas"), "--label-height", "-1"])
-    assert bad.exit_code != 0 and "label-height" in bad.output
+    # on GitHub Actions Typer forces rich colours, and its option highlighter splits "--label-height" with ANSI codes
+    assert bad.exit_code != 0 and "label-height" in re.sub(r"\x1b\[[0-9;]*m", "", bad.output)
 
 
 def test_plugin_passes_the_settings_height(monkeypatch):

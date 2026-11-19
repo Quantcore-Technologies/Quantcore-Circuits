@@ -6,6 +6,7 @@ buttons start are checked with a fake job runner.
 """
 
 import json
+import os
 import re
 import sys
 from pathlib import Path
@@ -190,7 +191,14 @@ def test_export_job_offers_a_short_folder_when_too_deep_for_aedt(fake, monkeypat
     from quantcore_circuits import guiflow
 
     assert flow.AEDT_PATH_LIMIT == guiflow.AEDT_PATH_LIMIT  # the plugin's copy of the rule
-    monkeypatch.setattr(flow.os, "name", "nt")
+
+    class _WindowsOs:  # "nt" for the plugin only: a patched os.name makes pathlib build WindowsPath on Linux
+        name = "nt"
+
+        def __getattr__(self, attr):
+            return getattr(os, attr)
+
+    monkeypatch.setattr(flow, "os", _WindowsOs())
     deep = fake.tmp / ("x" * 150)
     flow.export_job(names=["Q1"], subset="selection", folder=str(deep))
     args = fake.runs[-1]["steps"][0]
