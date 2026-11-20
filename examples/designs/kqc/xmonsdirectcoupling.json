@@ -12,8 +12,9 @@
     ],
     "launchers": "SMA8",
     "params": {
-      "with_grid": true,
-      "name_chip": "XMDC"
+      "with_grid": false,
+      "name_chip": "XMDC",
+      "cheese": "chip"
     }
   },
   "instances": {

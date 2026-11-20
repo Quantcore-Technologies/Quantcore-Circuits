@@ -2,7 +2,7 @@
 
 A resonator test chip like chip_07, but with the feedline folded: a 15.7 mm serpentine 10/6 µm line runs from the left pad up, across the top, down the die centre, across the bottom and up to the right pad. Six λ/4 resonators couple to it (one under the top run, four beside the central run, one above the bottom run), targeting 5.0 to 7.2 GHz (labels 50 to 72). The folded feedline lets resonators of very different lengths fit on a 7.5 mm die. Measuring transmission gives their frequencies and quality factors.
 
-It comes from Quantcore's QWri scripts `chip_09_resonatorsExpt.py` and its simulation variant `chip_09_resonatorsExpt_sim.py` (internal). The page covers both variants, each its own notebook. The PDK rebuild adds the die frame, moves the pads to the 100 µm rule and keeps the legacy flux holes. Build them to learn long routed feedlines and resonators that differ only in length and coupling.
+It comes from Quantcore's QWri scripts `chip_09_resonatorsExpt.py` and its simulation variant `chip_09_resonatorsExpt_sim.py` (internal). The page covers both variants, each its own notebook. The PDK rebuild adds the die frame, moves the pads to the 100 µm rule and keeps the legacy flux holes. The PDK cheese (5 µm squares with 20 µm gaps, at least 4 µm from the 3/0 keep-outs) now covers the whole die as well. Build them to see long routed feedlines and resonators that differ only in length and coupling.
 
 ```{image} ../../images/designs/legacy/chip_09_resonators_expt.png
 :alt: The whole chip_09_resonators_expt chip rebuilt on the Quantcore PDK
@@ -98,29 +98,29 @@ These numbers are the notebook's saved output, not re-run for this page. They ar
 
 The rest of this page is the detailed spec both notebooks were built from: every component, the changes made while rebuilding, and the `_sim` variant section.
 
-**Source:** `components/python/chip_09_resonatorsExpt.py` (`create_test_chip`, output `chip_09_test_res_1.0.oas`)
+Source: `components/python/chip_09_resonatorsExpt.py` (`create_test_chip`, output `chip_09_test_res_1.0.oas`)
 and `components/python/chip_09_resonatorsExpt_sim.py` (its simulation variant), Quantcore internal. Legacy PCells:
-`Connector Pad 2`, `Coupled Resonator`, `Marker`; the feedline is a raw `pya.Path`. **Rebuild:**
+`Connector Pad 2`, `Coupled Resonator`, `Marker`; the feedline is a raw `pya.Path`. Rebuild:
 `examples/designs/legacy/chip_09_resonators_expt.ipynb` (+ `.json`, PNGs); tables and the legacy reference in
 `examples/designs/legacy/_legacy_b.py` (`C09_*`, `chip09_reference`).
 
-### Changes after design decisions (legacy-fix, 2026-11-03)
+### Changes made in the rebuild
 
-- **#14 `_sim` variant — rebuilt as its own notebook** `examples/designs/legacy/chip_09_resonators_expt_sim.ipynb` (design `chip_09_resonators_expt_sim`, ID `CHIP09 SIM`): the earlier plan (R6 6200 / R8 5590 / R9 5340 µm, R2 cgap 4, 2 µm shifts, 2-column holes, no labels, no second metal) as a PDK fab chip; the source's final inversion into a positive 8.5 mm simulation mask is not reproduced (the FEM export does that job). Tables `_legacy_b.C09S_RES` / `C09S_HOLES`, reference `chip09_sim_reference()`. LOM: f_r 5.14–7.49 GHz.
-- **#12:** lengths simulated without claws (bare), as on chip_07.
+- `_sim` variant, rebuilt as its own notebook: `examples/designs/legacy/chip_09_resonators_expt_sim.ipynb` (design `chip_09_resonators_expt_sim`, ID `CHIP09 SIM`): the earlier plan (R6 6200 / R8 5590 / R9 5340 µm, R2 cgap 4, 2 µm shifts, 2-column holes, no labels, no second metal) as a PDK fab chip; the source's final inversion into a positive 8.5 mm simulation mask is not reproduced (the FEM export does that job). Tables `_legacy_b.C09S_RES` / `C09S_HOLES`, reference `chip09_sim_reference()`. LOM: f_r 5.14–7.49 GHz.
+- Lengths: simulated without claws (bare), as on chip_07.
 
-**What it is:** a resonator test chip with a long serpentine 10/6 µm feedline (corners rounded at 150 µm,
+What it is: a resonator test chip with a long serpentine 10/6 µm feedline (corners rounded at 150 µm,
 15663.7 µm) from the left bond pad up, across the top, down the die centre, across the bottom and up to the right
 pad. Six `Coupled Resonator`s (λ/4, coupler 299.5 µm at 4–6 µm): one under the top run (R2), four beside the
 central vertical run (R3, R6 right; R8, R9 left), one above the bottom run (R12). Targets (comments and the etched
 labels "70", "60", "62", "50", "52", "72" = f × 10): 7.0, 6.0, 6.25, 5.0, 5.25, 7.2 GHz. Eight flux-hole columns
 (3 × n holes); text "WSK_TLW09".
 
-**Die:** 7.5 × 7.5 mm, centred on (0, 0) → shifted by (+3750, +3750). The PDK v2 die frame replaces the legacy
+Die: 7.5 × 7.5 mm, centred on (0, 0) → shifted by (+3750, +3750). The PDK v2 die frame replaces the legacy
 `Marker` corners and the 10/0 boundary boxes. Legacy layers 1/0 (etch), 3/0 (second-metal envelope), 10/0
 (boundary and the feedline's centre path).
 
-**Status:** built; XOR with the legacy PCells and path is 0.0 µm² on every pad, resonator, hole array and label,
+Built; XOR with the legacy PCells and path is 0.0 µm² on every pad, resonator, hole array and label,
 360 µm² (0.05 %) on the feedline (arc discretisation).
 
 ### Components
@@ -141,8 +141,8 @@ labels "70", "60", "62", "50", "52", "72" = f × 10): 7.0, 6.0, 6.25, 5.0, 5.25,
 | – | `Marker` ×4, 10/0 boxes | PDK die frame | – | – | – | replaced |
 
 Common resonator parameters: cpw_len 4660 (overridden), gap 6, clength 299.5, cgap 4, width 300, flip False,
-neck_length 150, ground True. **Second metal** (as chip_07): R6, R9, R12 have `l` = 3/0, `fab_l` = 1/0 — drawn on
-1/0 here (design rule).
+neck_length 150, ground True. Second metal (as chip_07): R6, R9, R12 have `l` = 3/0, `fab_l` = 1/0; they are drawn on
+1/0 here.
 
 ### Routes
 
@@ -162,12 +162,11 @@ neck_length 150, ground True. **Second metal** (as chip_07): R6, R9, R12 have `l
 
 R2 7.0, R3 6.0, R6 6.25, R8 5.0, R9 5.25, R12 7.2 GHz.
 
-### The `_sim` variant (`chip_09_resonatorsExpt_sim.py`) — rebuilt as `chip_09_resonators_expt_sim` (#14)
+### The `_sim` variant (`chip_09_resonatorsExpt_sim.py`), rebuilt as `chip_09_resonators_expt_sim`
 
 An earlier frequency plan of the same chip, written as a *simulation* mask: the 10/0 device boundary is 8.5 mm, the
 markers and the text labels are left out, and the output is positive (`device_boundary − etch` on 1/0, layers 3/0
-and 10/0 deleted, `…_sim.oas`). The qcc FEM export (`C.export_sims`) does that job for the rebuilt chip, so no
-second notebook. Differences:
+and 10/0 deleted, `…_sim.oas`). The qcc FEM export (`C.export_sims`) does that job for the rebuilt chip. Differences:
 
 | item | Expt (rebuilt) | _sim |
 |---|---|---|

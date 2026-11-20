@@ -6,7 +6,7 @@ Concentric transmon (KQC geometry) shunted by a Quantcore trilayer junction / SQ
 
 **Source:** Quantcore. **Category:** qubit. **Module:** `quantcore_circuits.layouts.qubits.trilayer_concentric`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

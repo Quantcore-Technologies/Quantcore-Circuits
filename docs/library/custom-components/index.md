@@ -1,13 +1,13 @@
 # Your own components
 
-The Quantcore library has 143 components, but a chip often needs a shape that is not among them. This series shows
-how to add your own: a qubit with a custom island shape, a spiral capacitor, a tunable resonator, and a shape you
+The Quantcore library has 143 components, but a chip often needs a shape that is not among them. This series covers
+adding your own: a qubit with a custom island shape, a spiral capacitor, a tunable resonator, and a shape you
 drew by hand. A new component works like a library cell: you place it with `Designer.add`, route to its pins, run the
-DRC and get it into the LOM. Start here to see what a component is, then pick the example closest to what you need.
+DRC and get it into the LOM. Read the next section for what a component is, then pick the example closest to what you need.
 
 ## What a component is
 
-A component is four things. Everything else (placement, routing, DRC, the dashboard, the fab export) reads these.
+A component has four parts. Placement, routing, DRC, the dashboard and the fab export read them.
 
 | Part | What it is | In the code |
 |---|---|---|
@@ -34,22 +34,22 @@ passive components.
 
 ## Make your own, step by step
 
-1. **Pick the closest example** in the table and copy its file. Name the class after the shape.
-2. **Write the parameters** (`Param(pdt.TypeDouble, "text", default, unit="μm")`) for every number the shape needs. The
+1. Pick the closest example in the table and copy its file. Name the class after the shape.
+2. Write the parameters (`Param(pdt.TypeDouble, "text", default, unit="μm")`) for every number the shape needs. The
    panel, `design.json` and the LOM read them.
-3. **Write `build()`.** Draw the metal as regions, etch a clearance around it, add the protection region, add the pins
+3. Write `build()`. Draw the metal as regions, etch a clearance around it, add the protection region, add the pins
    (position and outward direction). For a qubit, call `place_trilayer` across the junction gap.
-4. **Set `qcc_category`** (`"qubit"`, `"capacitor"`, `"resonator"`, ...). The panel's class filter, the DRC and the
+4. Set `qcc_category` (`"qubit"`, `"capacitor"`, `"resonator"`, ...). The panel's class filter, the DRC and the
    fab export read it.
-5. **Check the picture.** Build the cell alone on a die and look at it (`snapshot`). Check that every pin leaves the
+5. Check the picture. Build the cell alone on a die and look at it (`snapshot`). Check that every pin leaves the
    component along its direction.
-6. **Add the LOM model.** Give each conductor a node, each pin a node (`port_nodes`), and each branch a value from a
+6. Add the LOM model. Give each conductor a node, each pin a node (`port_nodes`), and each branch a value from a
    formula in `quantcore_circuits.lom.estimates`. Mark honest values as `"rough"`. A Q3D C-matrix of the cell replaces
    them later by net name.
-7. **Register the class.** A class inside `src/quantcore_circuits/layouts/` is registered automatically. A class in
+7. Register the class. A class inside `src/quantcore_circuits/layouts/` is registered automatically. A class in
    your own folder registers itself with `quantcore_circuits.layouts.register_pcell_classes([MyClass])` and is
    referred to by its dotted path, `"my_module.MyClass"`.
-8. **Place it on a chip** with a readout, route to the pins, run `d.drc()`, and run the LOM.
+8. Place it on a chip with a readout, route to the pins, run `d.drc()`, and run the LOM.
 
 ```{note}
 A component that lives outside the package is found by its dotted path only while its folder is on `sys.path`. To

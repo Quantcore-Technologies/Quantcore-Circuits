@@ -10,7 +10,7 @@ A sample_shapes open to ground termination. Functions as a pin for auto drawing.
 Alias of [`CpweOpenEnd`](CpweOpenEnd.md): the same circuit, drawn differently. termination_gap → length, width → a, gap → b; port open → a (XOR 0 at 6 and 10 µm)
 :::
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

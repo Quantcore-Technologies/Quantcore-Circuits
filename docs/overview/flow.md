@@ -1,15 +1,15 @@
 # The flow
 
 Quantcore circuits turns a chip idea into a layout, checks it, simulates it and feeds the numbers back into the
-design. One file, `design.json`, goes through the whole flow. This page lists the steps, the three ways to start, the
-files each step writes and the `qcc` command for each step.
+design, with one file, `design.json`, throughout. This page lists the steps, the three ways to start, the files each
+step writes and the `qcc` command for each step.
 
 ## The loop
 
 ```{figure} ../images/system/as_built.svg
 :width: 100%
 
-The loop as built on 2026-11-18. Green: built and run for real. Orange: built, part of it unverified. Yellow: solver
+The loop as built. Green: built and run for real. Orange: built, part of it unverified. Yellow: solver
 input is written but was never solved. Grey: not built.
 ```
 
@@ -25,7 +25,7 @@ input is written but was never solved. Grey: not built.
 | Fab | Mask file with the QCT layer map | [fab export](../library/fab.md) |
 | Watch | The dashboard follows all of the above | [dashboard](dashboard.md) |
 
-The steps are a loop: after Tune you go back to Draw (or straight to Build) with the new revision.
+After Tune you go back to Draw (or straight to Build) with the new revision.
 
 ## Three ways in
 
@@ -77,7 +77,7 @@ All commands and options are in the [`qcc` reference](../reference/cli.md).
 
 ## Original plan
 
-The plan was written when the project was still called `qcd`. It is kept here as written.
+The plan dates from when the project was still called `qcd`. It is kept here as written.
 
 ```{figure} ../images/system/original_plan.png
 :width: 100%

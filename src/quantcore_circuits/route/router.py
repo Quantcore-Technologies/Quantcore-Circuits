@@ -76,7 +76,9 @@ class RoutePlan:
     joins: list = field(default_factory=list)
 
     def node_strings(self) -> list[str]:
-        return [str(n) for n in self.nodes]
+        """The KQC nodes the route cell is built from (:func:`kqc_nodes`: a taper that ends at its waypoint starts
+        ``taper_length`` before it); :meth:`polyline` keeps the waypoints where the design puts them."""
+        return [str(n) for n in kqc_nodes(self.nodes)]
 
     def polyline(self) -> list[pya.DPoint]:
         return [n.position for n in self.nodes]
@@ -451,6 +453,92 @@ def plan_route(
     return plan
 
 
+def _kqc_taper_length() -> float:
+    from kqcircuits.elements.waveguide_composite import WaveguideComposite  # pylint: disable=import-outside-toplevel
+
+    return float(WaveguideComposite.get_schema()["taper_length"].default)
+
+
+def _bend_cut(nodes: list[Node], i: int, r: float) -> float:
+    """Length of the straight used by the bend at node ``i`` (0 at the route's ends and on collinear nodes)."""
+    if i <= 0 or i >= len(nodes) - 1:
+        return 0.0
+    v1, v2 = nodes[i].position - nodes[i - 1].position, nodes[i + 1].position - nodes[i].position
+    if v1.length() < _EPS or v2.length() < _EPS:
+        return 0.0
+    turn = math.atan2(v1.x * v2.y - v1.y * v2.x, v1.x * v2.x + v1.y * v2.y)
+    return float(nodes[i].params.get("corner_r", r)) * math.tan(abs(turn) / 2)
+
+
+TAPER_END = "taper_end"  # node parameter (Quantcore only, never passed to KQC): the taper of this node ends here, µm
+
+
+def kqc_nodes(nodes: list[Node]) -> list[Node]:
+    """The nodes KQC builds the route from: a node marked :data:`TAPER_END` (by :func:`fit_tapers`) is moved back
+    along its incoming straight by its taper's length, so KQC's taper, which starts at the node, ends at the
+    waypoint. Other nodes are returned as they are."""
+    if not any(TAPER_END in (n.params or {}) for n in nodes):
+        return list(nodes)
+    out = []
+    for i, n in enumerate(nodes):
+        shift = (n.params or {}).get(TAPER_END)
+        if shift is None or i == 0:
+            out.append(n)
+            continue
+        v = n.position - nodes[i - 1].position
+        params = {k: x for k, x in n.params.items() if k != TAPER_END}
+        out.append(Node(n.position - v * (float(shift) / v.length()), n.element, n.inst_name, n.align, n.angle,
+                        n.length_before, n.length_increment, n.meander_direction, **params))
+    return out
+
+
+def fit_tapers(plan: RoutePlan, measure) -> RoutePlan:
+    """Tapers that end where the route can take them.
+
+    A waypoint with its own ``a``/``b`` becomes a KQC ``WaveguideCoplanarTaper`` that *starts* at the node and runs
+    ``taper_length`` forward. Where the straight after the node is shorter than that (a widening taper 51 µm before
+    the route's end, say), KQC draws the taper past the next node and then runs the line back to it: the etch reaches
+    beyond the route's end and the built length counts the overshoot twice (forward in the taper, back in the
+    line). Such a node is marked :data:`TAPER_END`: the route cell is built with it ``taper_length`` further back
+    along its incoming straight (:func:`kqc_nodes`), so the taper *ends* at the waypoint and the line after it keeps
+    the new width up to the next node. The plan's nodes, polyline and waypoint indices stay where the design puts
+    them (the plugin's route handles do not move).
+
+    ``measure(plan) -> float`` builds the route and returns its length: a mark is kept only where it removes the
+    whole double count (the length drops by twice the overshoot), i.e. where the straight before the node has room
+    for the taper after whatever element ends there. Other routes, and routes whose tapers fit, are returned as
+    they are."""
+    nodes = list(plan.nodes)
+    if len(nodes) < 3:
+        return plan
+    a, b = plan.params.get("a"), plan.params.get("b")
+    r = float(plan.params.get("r", 100))
+    default = float(plan.params.get("taper_length", _kqc_taper_length()))
+    out, base = plan, None
+    for i, n in enumerate(plan.nodes):
+        p = n.params or {}
+        new_a, new_b = p.get("a", a), p.get("b", b)
+        taper = n.element is None and "face_id" not in p and (new_a != a or new_b != b)
+        if "a" in p or "b" in p:  # KQC carries a node's width on to the rest of the route
+            a, b = new_a, new_b
+        if not taper or not 0 < i < len(nodes) - 1 or n.angle is not None:
+            continue
+        length = float(p.get("taper_length", default))
+        after = (nodes[i + 1].position - n.position).length()
+        v = n.position - nodes[i - 1].position
+        if after + _EPS >= length or v.length() - _bend_cut(nodes, i - 1, r) <= length + _EPS:
+            continue  # the taper fits after its node, or there is no room before it either
+        marked = list(out.nodes)
+        marked[i] = Node(n.position, n.element, n.inst_name, n.align, n.angle, n.length_before, n.length_increment,
+                         n.meander_direction, **{**p, TAPER_END: length})
+        trial = RoutePlan(out.name, marked, dict(out.params), out.target_length, None, set(out.fixed_segments))
+        base = measure(out) if base is None else base
+        got = measure(trial)
+        if abs(base - got - 2 * (length - after)) < 1e-3:
+            out, base = trial, got
+    return out
+
+
 def meander_segment_index(nodes: list[Node], preferred: int | None = None, fixed: set | None = None) -> int:
     """Index of the node *ending* the segment that hosts the meander (KQC puts length_* on that node)."""
     if preferred is not None:
@@ -478,7 +566,8 @@ def meander_span(plan: RoutePlan, segment: int) -> float:
         ri = float(nodes[i].params.get("corner_r", r))
         return ri * math.tan(abs(turn) / 2)
 
-    return (pts[segment] - pts[segment - 1]).length() - cut(segment - 1) - cut(segment)
+    taper = float(nodes[segment].params.get(TAPER_END, 0.0))  # a taper ending at the node takes the straight's end
+    return (pts[segment] - pts[segment - 1]).length() - cut(segment - 1) - cut(segment) - taper
 
 
 def max_meanders(span: float, r: float) -> int:

@@ -1,7 +1,7 @@
 # Other examples
 
 Besides the five [tutorials](index.md), `examples/` holds a few older notebooks, one folder per FEM milestone, a custom
-component and some saved designs. This page lists each one in a row so you can find the one you need. The notebooks
+component and some saved designs. This page lists each one. The notebooks
 here run the same loop as the tutorials but are less guided. Most use the switches `LIVE`, `RUN_FEM` and `AEDT_MODE`
 described on the [tutorials index](index.md): with `RUN_FEM = False` nothing starts AEDT.
 
@@ -21,7 +21,7 @@ KLayout plugin. `lom_from_layout` is the one to open after you have drawn a chip
 
 | Path | What it is |
 |---|---|
-| `examples/fem_loop/fem_loop.ipynb` | One feedline with two hanging resonators, rendered into AEDT 2024 R1, solved (Q3D C-matrix, eigenmode with EPR, driven S21), read back and compared with the LOM; then three knobs change and it is done again. The point is that the solved values move with the geometry, not that they are converged. R1 is a λ/4 hanger (κ large enough for the S21 notch to resolve); R2 is a λ/2 open at both ends, a floating conductor that Q3D measures. The notebook has no saved outputs |
+| `examples/fem_loop/fem_loop.ipynb` | One feedline with two hanging resonators, rendered into AEDT 2024 R1, solved (Q3D C-matrix, eigenmode with EPR, driven S21), read back and compared with the LOM; then three knobs change and it is done again. It shows that the solved values move with the geometry; they are not converged. R1 is a λ/4 hanger (κ large enough for the S21 notch to resolve); R2 is a λ/2 open at both ends, a floating conductor that Q3D measures. The notebook has no saved outputs |
 | `examples/fem_loop/fem_loop.py` | The same as a script: `build` writes the two designs and the LOM (seconds), `solve [rev ...]` adds the AEDT solves (batch, tens of minutes), `report` prints the table from whatever results exist |
 | `fem_loop_rev0.json`, `fem_loop_rev1.json` | The two designs. Rev 1 changes R1's coupler 250 to 400 µm, R2's length (400 µm shorter) and R2's coupler 250 to 400 µm. Each has an `.oas`, a `.qcc.json` sidecar and a `.png` next to it |
 | `results.json`, `results.md` | The comparison table. The kept `results.md` has LOM values only (for example R1 κ_ext 0.1464 to 0.3700 MHz); the FEM columns are empty |

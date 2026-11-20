@@ -6,7 +6,7 @@ Global alignment marker: six squares in two columns (legacy ``draw.global_marker
 
 **Source:** Quantcore. **Category:** marker. **Module:** `quantcore_circuits.layouts.others.markers`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

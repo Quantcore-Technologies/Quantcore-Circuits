@@ -10,7 +10,7 @@ The base `TransmonPocket` class.
 Canonical cell of an alias group. Aliases: [`metal:TransmonPocket6`](metal_TransmonPocket6.md).
 :::
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

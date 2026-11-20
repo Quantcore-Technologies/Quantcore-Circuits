@@ -6,7 +6,7 @@ PCell declaration for a rectangular airbridge.
 
 **Source:** KQC (KQCircuits). **Category:** airbridge. **Module:** `kqcircuits.elements.airbridges.airbridge_rectangular`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

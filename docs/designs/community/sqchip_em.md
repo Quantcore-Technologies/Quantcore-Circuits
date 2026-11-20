@@ -1,8 +1,8 @@
 # One-qubit template (SQChip-EM)
 
-The one-qubit template of the SQChip-EM layout-to-EM dataset: a pocket transmon, an interdigital tee and a λ/2 readout feed to one launchpad. The repository states no licence, so treat the page as a reference; the notebook is a Quantcore-PDK rebuild (GPL-3.0) of the Qiskit Metal generator `metal_KDD_1qubit.py`.
+The one-qubit template of the SQChip-EM layout-to-EM dataset: a pocket transmon, an interdigital tee and a λ/2 readout feed to one launchpad. The repository states no licence, so treat the page as a reference; the notebook is a Quantcore PDK rebuild (GPL-3.0) of the Qiskit Metal generator `metal_KDD_1qubit.py`.
 
-Build this one to learn the smallest readout chain (qubit, tee, feed, pad) and the order PDK placement needs: centre the core first, then the pad.
+This notebook is an example of the smallest readout chain (qubit, tee, feed, pad) and of the order PDK placement needs: centre the core first, then the pad.
 
 ```{image} ../../images/designs/community/sqchip_em.png
 :alt: The whole sqchip_em chip as the v2 notebook builds it
@@ -13,11 +13,11 @@ Build this one to learn the smallest readout chain (qubit, tee, feed, pad) and t
 
 | | |
 |---|---|
-| Notebook | `examples/designs/community/sqchip_em.ipynb` (the one-cell version before the rewrite: `sqchip_em.v1.ipynb`) |
+| Notebook | `examples/designs/community/sqchip_em.ipynb` (an older one-cell version is kept as `sqchip_em.v1.ipynb`) |
 | Source | `Secbrain/SQChip-EM` `chip_code/metal_KDD_1qubit.py` (licence not stated) |
 | Chip | 7.5 × 7.5 mm Quantcore die |
 | On the chip | 1 launchpad · 1 pocket transmon (L_J 12 nH) · 1 interdigital tee · 1 λ/2 readout · 1 feed line |
-| Builds today | yes: layout run 2026-11-19, 7 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 7 s) |
 
 ## How the notebook builds it
 
@@ -53,26 +53,26 @@ Numbers are from a run of this notebook on 2026-11-19 (Setup, Design, Check and 
 :alt: LOM plot of sqchip_em
 ```
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates (component formulas and calibration), not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
-The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
+The rest of this page is the detailed spec the notebook was built from, with every component, port, route and length.
 
-> **Built 2026-11-03 (designs-17q; built regardless of licence, distributed under GPL):**
-> `examples/designs/community/sqchip_em.ipynb` (+ `.json`, PNGs), the 1-qubit template as a Quantcore-PDK rebuild.
+> The notebook `examples/designs/community/sqchip_em.ipynb` (with its `.json` and PNGs) is the 1-qubit template as a
+> Quantcore PDK rebuild, distributed under GPL.
 
-> **Update 2026-11-03:** frame = **source**: build with `chip={"die_frame": False, ...}` so the replica keeps its own size and frame (the Quantcore PDK die frame is for Quantcore chips only). `metal:<Class>` wrappers are READY (ports = Metal pin names, params = Metal options), so the `metal:` refs in this spec build as written; the Quantcore/KQC substitutions stay optional. Buildable now: **yes** for the public 1-qubit template (`metal:TransmonPocket`, `metal:CapNInterdigitalTee`); the 3–8-qubit data are not public.
+The `metal:` references in this spec build as written, through the `metal:` wrapper (ports are the Metal pin names, parameters the Metal options); the Quantcore and KQC substitutions are optional.
 
 Source: [Secbrain/SQChip-EM](https://github.com/Secbrain/SQChip-EM) (dataset DOI 10.5281/zenodo.20489133, per the
 README badge). **Licence: not stated.** There is no LICENSE file and no licence section in the README, so treat it as
-all rights reserved and use for reference only. Read 2026-11-02: README, `chip_code/metal_KDD_1qubit.py`
+all rights reserved and use for reference only. Read on 2026-11-02: README, `chip_code/metal_KDD_1qubit.py`
 (`LayoutParams`, `populate_design`), `data/sqchip_em_{1q,2q}/summary.csv`. The 3342 JSON/GDS records and the 3–8
 qubit generators (1.2k–5.8k lines each) were not read in detail.
 What it is: an ML benchmark linking parameterised Metal layouts to HFSS eigenmode (pyEPR) and Q3D LOM results.
 Public data covers 1-qubit (532 rows) and 2-qubit (35 rows) splits. The 3/4/6/8q folders are empty placeholders.
 README renders exist for 2, 3, 4, 5, 6, 8-qubit chips (`figure/final_*q_ro_res_bus.png`).
-Status: **metal (`metal:TransmonPocket`, `metal:CapNInterdigitalTee`)**. Reference/P3.
+The chip uses `metal:TransmonPocket` and `metal:CapNInterdigitalTee`. The source is a reference only.
 
 ### 1-qubit template (`metal_KDD_1qubit.py`)
 Frame: chip 12 × 12 mm centred. **Designer = source + (6000, 6000)**. CPW 10/6.
@@ -98,10 +98,10 @@ g up to 8.4 GHz), so filter on `status`.
 feedline → one 50 Ω port. N-qubit: same per qubit, plus buses (`ro_res_bus` renders).
 
 ### Simplifications for a first rebuild
-1. Not a rebuild target. Use the 1q record as a LOM cross-check: our `DoublePads` + λ/2 route + finger capacitor
+1. The 1q record serves as a LOM cross-check rather than a rebuild target: our `DoublePads` + λ/2 route + finger capacitor
    should land near f_r ≈ 6 GHz and g ≈ 0.2–0.3 GHz for Lj 12 nH.
 
-### Rebuild (Quantcore PDK), 2026-11-03
+### Rebuild (Quantcore PDK)
 - **Frame and stack:** the PDK 7.5 mm die (device ID `SQCHIP-1Q`; the source's 12 mm canvas is mostly empty) and the
   PDK stack (sapphire).
 - **Cells:** `metal:TransmonPocket` (pads 520 µm, pocket height 780 µm, readout pad 180 × 150 µm, gap 1.4 µm) and
@@ -117,5 +117,5 @@ feedline → one 50 Ω port. N-qubit: same per qubit, plus buses (`ro_res_bus` r
     (sapphire vs Si); χ −7.35 MHz against 4.7–7.8; κ 94.5 MHz against 5.3–6.1.
 
   κ is far too large: the LOM's IDC estimate for 12 × 160 µm fingers at a 1.2 µm gap gives C_in well above the
-  dataset's ≈ 52 fF (lom request).
+  dataset's ≈ 52 fF (a limit of the LOM's IDC model).
 - **FEM:** the q3d and eigenmode jobs `Q1R` have nets `Q1.island1/2`.

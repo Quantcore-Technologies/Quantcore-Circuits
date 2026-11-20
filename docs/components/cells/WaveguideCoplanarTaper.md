@@ -10,7 +10,7 @@ The PCell declaration of a taper segment of a coplanar waveguide.
 Canonical cell of an alias group. Aliases: [`CpweTaper`](CpweTaper.md).
 :::
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

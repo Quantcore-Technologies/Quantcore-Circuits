@@ -10,7 +10,7 @@ The base `TransmonCross` class.
 Canonical cell of an alias group. Aliases: [`metal:TransmonStar`](metal_TransmonStar.md).
 :::
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

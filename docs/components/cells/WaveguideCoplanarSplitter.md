@@ -10,7 +10,7 @@ The PCell declaration of a multiway waveguide splitter. The number of ports is d
 Canonical cell of an alias group. Aliases: [`metal:LineTee`](metal_LineTee.md).
 :::
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

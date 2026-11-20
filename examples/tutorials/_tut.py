@@ -194,7 +194,8 @@ def pdk_md(pdk=None) -> str:
                          f"etch bbox + {k.component_margin:g} µm (or the cell's own `qcc_keepout`), other 1/0 + "
                          f"{k.other_margin:g} µm"),
         ("cheese", f"a band of {c.rows} rows of {c.size:g} µm squares with {c.gap:g} µm gaps around 3/0, drawn in the "
-                   "build (KQC `ground_grid`); **the original design's own cheese wins**; never in FEM exports"),
+                   "build (KQC `ground_grid`); the whole die instead with chip `cheese: \"chip\"`; an original "
+                   "design's own cheese is kept; never in FEM exports"),
         ("corner rounding", f"fab export only: r = min({r.fraction:g} × the polygon's shortest dimension, "
                             f"{r.max_radius:g} µm) on {', '.join(r.layers)}; junction fingers stay sharp"),
     ]

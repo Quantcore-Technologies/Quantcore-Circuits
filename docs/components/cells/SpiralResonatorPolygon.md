@@ -6,7 +6,7 @@ The PCell declaration for a polygon shaped spiral resonator.
 
 **Source:** KQC (KQCircuits). **Category:** resonator. **Module:** `kqcircuits.elements.spiral_resonator_polygon`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 
@@ -66,8 +66,6 @@ Nodes: `res`.
 ## Simulation export notes
 
 - C7: C-matrix nets without a design label (warning) (status: fixed; fix in sim_tools/builder.py (_cell_probes, label_unnamed); layouts/others/amplifiers.py (JtwpaChain.qcc_probes))
-
-Details: [SIM_EXPORT_AUDIT](../SIM_EXPORT_AUDIT.md).
 
 ## How to use
 

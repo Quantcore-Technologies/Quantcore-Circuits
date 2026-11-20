@@ -6,7 +6,7 @@ Circular flip-chip transmon (QPDK ``flipmon_with_bbox``), optionally with its pl
 
 **Source:** Quantcore. **Category:** qubit. **Module:** `quantcore_circuits.layouts.qubits.qpdk_cells`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 
@@ -66,21 +66,18 @@ The cell contributes to the lumped model:
 | `C_X_2` | C | island2 – gnd | estimate=5.1, unit=fF, estimate_source=rough: M1 disc to ground screened by the ring, estimate_kind=rough, uncertainty=±50% |
 | `C_X_12_flip` | C | island1 – island2 | estimate=20, unit=fF, estimate_source=rough: M2 disc r 110 over the M1 ring: parallel plate, 17907 µm² across an assumed 8 µm vacuum gap, estimate_kind=rough, uncertainty=±50% |
 | `C_X_2_top` | C | island2 – gnd | estimate=71, unit=fF, estimate_source=rough: M2 disc r 110 in its 40 µm top-face gap (single-face formula), estimate_kind=rough, uncertainty=±50% |
-| `J_X` | SQUID | island1 – island2 | Lj_nH=–, Cj_fF=0, asym=0, flux_phi0=0 |
+| `J_X` | SQUID | island1 – island2 | Lj_nH=6.734, Cj_fF=15, asym=0, flux_phi0=0 |
 | `Cg_X_cplr` | C | island1 – cplr | estimate=6.43, unit=fF, estimate_source=analytic: plate 58×10 µm facing the ring across 5 µm (CPS), estimate_kind=analytic, uncertainty=±25% |
 | `Cc_X_cplr` | C | cplr – gnd | estimate=7.4, unit=fF, estimate_source=rough: plate in the M1 etch + its lead, estimate_kind=rough, uncertainty=±50% |
 
 Nodes: `island1`, `island2`, `cplr`.
 
-- X: no junction.Lj_nH in the design; the qubit mode needs one to simulate
 - X: M2 top disc (face 2b1) counted in island2 across an assumed 8 µm flip-chip gap (rough; PDK v2 does not fabricate face 2b1); coupler ↔ disc C neglected (screened by the ring)
 
 ## Simulation export notes
 
 - C1: Sim junction pads overlap / end on a curved island in a narrow gap (status: fixed; fix in layouts/junctions/sim_gap.py; layouts/qubits/qpdk_cells.py; layouts/qubits/sqdmetal_cells.py)
 - C2: indium bump in a one-face simulation is a PEC pillar to the top of the box (status: fixed; fix in sim_tools/builder.py)
-
-Details: [SIM_EXPORT_AUDIT](../SIM_EXPORT_AUDIT.md).
 
 ## How to use
 

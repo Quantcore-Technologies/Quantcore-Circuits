@@ -6,7 +6,7 @@ Connector between faces of two sides of a substrate.
 
 **Source:** KQC (KQCircuits). **Category:** flip_chip. **Module:** `kqcircuits.elements.tsvs.tsv_standard`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

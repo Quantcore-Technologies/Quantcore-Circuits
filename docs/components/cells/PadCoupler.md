@@ -6,7 +6,7 @@ Series gap capacitor of two facing pads (legacy ``Coupler``); ports ``left`` / `
 
 **Source:** Quantcore. **Category:** coupler. **Module:** `quantcore_circuits.layouts.others.couplers`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

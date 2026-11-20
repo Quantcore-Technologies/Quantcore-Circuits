@@ -6,7 +6,7 @@ The PCell declaration for a square finger capacitor.
 
 **Source:** KQC (KQCircuits). **Category:** capacitor. **Module:** `kqcircuits.elements.finger_capacitor_square`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

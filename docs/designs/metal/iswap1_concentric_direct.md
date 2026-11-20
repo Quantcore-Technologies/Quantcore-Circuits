@@ -2,8 +2,8 @@
 
 Two mm-scale concentric transmons (a disk inside a SQUID ring) coupled directly by a straight 4.6 mm line, each wired
 to a lumped meander resonator, with a separate drive line. It is example 1 of the Qiskit Metal iSWAP-gate notebook
-(after Phys. Rev. Applied 10, 034050; Apache-2.0, © IBM and contributors). The notebook says the point is the structure
-of each device, not its exact geometry. The Quantcore rebuild is distributed under GPL-3.0.
+(after Phys. Rev. Applied 10, 034050; Apache-2.0, © IBM and contributors). The notebook says the aim is to show the
+structure of each device, and that the exact geometry is secondary. The Quantcore rebuild is distributed under GPL-3.0.
 
 Build this one to learn how large metal-frame components (lumped resonators, concentric qubits) sit in pockets, and how
 lines inside a pocket are drawn as metal strips with a wire.
@@ -17,11 +17,11 @@ lines inside a pocket are drawn as metal strips with a wire.
 
 | | |
 |---|---|
-| Notebook | `examples/designs/metal/iswap1_concentric_direct.ipynb` (the one-cell version before the rewrite: `iswap1_concentric_direct.v1.ipynb`) |
+| Notebook | `examples/designs/metal/iswap1_concentric_direct.ipynb` (an older one-cell version is kept as `iswap1_concentric_direct.v1.ipynb`) |
 | Source | Qiskit Metal `Full-Physical-Design-of-iSWAP-Gates.ipynb`, example 1, © IBM and contributors, Apache-2.0 |
 | Chip | 32 × 25 mm (the pockets overhang the source's 32 × 20 mm chip) |
 | On the chip | 2 concentric transmons with Quantcore SQUIDs · 2 lumped resonators (5 × 5 mm frame) · 1 direct 4.6 mm coupling line · 1 drive line · 3 bond pads |
-| Builds today | yes: layout run 2026-11-19, 12 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 12 s) |
 
 ## How the notebook builds it
 
@@ -52,15 +52,15 @@ Numbers are from a run of this notebook on 2026-11-19 (Setup, Design, Check and 
 :alt: LOM plot of iswap1_concentric_direct
 ```
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates from component formulas and calibration, not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
 The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
 
-> **Update 2026-11-03:** frame = **source**: build with `chip={"die_frame": False, ...}` so the replica keeps its own size and frame (the Quantcore PDK die frame is for Quantcore chips only). `metal:<Class>` wrappers are READY (ports = Metal pin names, params = Metal options), so the `metal:` refs in this spec build as written; the Quantcore/KQC substitutions stay optional.
+> The `metal:` references in this spec build as written, through the `metal:` wrapper (ports are the Metal pin names, parameters the Metal options). The Quantcore and KQC substitutions are optional.
 
-> **Built 2026-11-03 (builder 4):** examples/designs/metal/iswap1_concentric_direct.ipynb, all `metal:` cells at the source's scale; pockets Metal never draws added as `metal:Rectangle subtract` (qubits 10 × 10 mm, resonators inside the frame + slot); in-pocket lines as metal traces + wires; chip 32 × 25 mm.
+> The notebook `examples/designs/metal/iswap1_concentric_direct.ipynb` builds all `metal:` cells at the source's scale. Pockets Metal never draws are added as `metal:Rectangle subtract` (qubits 10 × 10 mm, resonators inside the frame plus a slot), in-pocket lines are metal traces plus wires, and the chip is 32 × 25 mm.
 
 Source: Quantum Metal `docs/circuit-examples/F.Small-quantum-chips/Full-Physical-Design-of-iSWAP-Gates.ipynb`,
 Example 1. Licence Apache-2.0. It follows Phys. Rev. Applied 10, 034050 (2018) "only roughly"; the notebook says "the
@@ -68,10 +68,10 @@ point is the structure of each device, not its exact geometry".
 Two `TransmonConcentricType2` qubits at 45° are joined directly by a straight CPW. Each qubit drives a lumped
 (spiral) readout resonator `ResonatorLumped` that goes to a pad. A third pad carries a drive line that ends open near
 qubit 1.
-**Everything is mm-scale**: qubit rad_outer 2 mm, pocket 10 × 10 mm, resonator box 5 × 5 mm, `cpw_width` set to
+Everything is mm-scale: qubit rad_outer 2 mm, pocket 10 × 10 mm, resonator box 5 × 5 mm, `cpw_width` set to
 0.1 mm (gap 6 µm default), pads 0.5 × 1 mm. The chip is 32 × 20 mm, centred at (1, 3) mm, so
 **Designer = Metal + (15000, 7000)**. Metal layer 1, silicon default.
-**Buildable now: yes**, as a topology-only rebuild. Substitutions: KQC `ConcentricTransmon` for
+A topology-only rebuild uses these substitutions: KQC `ConcentricTransmon` for
 TransmonConcentricType2, KQC `SpiralResonatorPolygon` for ResonatorLumped, `BondPad`.
 
 ### Components
@@ -111,17 +111,17 @@ None (no LOM or simulation for this example).
 
 ### Simplifications for a first rebuild
 1. Rebuild at µm scale (divide all sizes and positions by about 10; chip 3.2 × 2 mm) with the KQC defaults for
-   ConcentricTransmon (coupler_1/2/3, drive ports) and SpiralResonatorPolygon (ports a, b). Use reference only for
-   anything quantitative. Priority P3.
+   ConcentricTransmon (coupler_1/2/3, drive ports) and SpiralResonatorPolygon (ports a, b). Use it only as a
+   reference for anything quantitative.
 2. Map the pins: qubit pin2 → `coupler_2`, pin3 → `coupler_3`, drive → `drive`. Resonator in/out → a/b.
 
-### Quantcore PDK rebuild (2026-11-03)
+### Quantcore PDK rebuild
 
-The notebook is a **Quantcore-PDK rebuild**, not a replica (design rule, 2026-11-03): the netlist, LOM and imported components are kept, the process is Quantcore's.
+The notebook is a Quantcore PDK rebuild of the source, not a replica: the netlist, LOM and imported components are kept, and the process is Quantcore's.
 
 Notebook: [`examples/designs/metal/iswap1_concentric_direct.ipynb`](../../../examples/designs/metal/iswap1_concentric_direct.ipynb).
 
-- **Chip:** the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), drawn on the source's 32 × 25 mm chip (the design does not fit the 7.5 mm die); no KQC chip frame.
-- **Stack:** sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); Metal's `DesignPlanar` default is silicon (εr 11.45, 750 µm), so the LOM capacitances, resonator frequencies and FEM jobs here are for sapphire, not the source's substrate.
-- **Junctions:** Quantcore Nb/AlOx/Nb trilayer junctions (`junction_type` from `layouts.registry.trilayer_junction`): fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient, sized on the PDK junction rule (Nb Δ = 1.4 meV, I_c·R_n = πΔ/2e, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed); both qubits get a Quantcore SQUID (the source's are SQUIDs) **sized for 4.0 GHz**, the bottom of the PDK band: the mm-scale islands (C_Σ ≈ 0.8 pF) would sit at ≈ 2.1 GHz with the nominal SQUID. Straight fingers 0.91 µm × 0.6 µm per junction, L_J 1.85 nH in parallel, C_J 55 fF — **R_n ≈ 12 kΩ, far below the 40–50 kΩ window**: this geometry is incompatible with the PDK window at 4–8 GHz (flagged). The two qubits stay identical.
-- **Kept:** the topology and every Metal component with the source's options (through the `metal:` wrapper), positions and orientations, every route's end pins and total length, the sim groups (the pockets Metal never draws, added as in the replica: option b).
+- Chip: the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), drawn on the source's 32 × 25 mm chip (the design does not fit the 7.5 mm die); no KQC chip frame.
+- Stack: sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); Metal's `DesignPlanar` default is silicon (εr 11.45, 750 µm), so the LOM capacitances, resonator frequencies and FEM jobs here are for sapphire rather than the source's substrate.
+- Junctions: Quantcore Nb/AlOx/Nb trilayer junctions (`junction_type` from `layouts.registry.trilayer_junction`): fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient, sized on the PDK junction rule (Nb Δ = 1.4 meV, I_c·R_n = πΔ/2e, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed); both qubits get a Quantcore SQUID (the source's are SQUIDs) sized for 4.0 GHz, the bottom of the PDK band: the mm-scale islands (C_Σ ≈ 0.8 pF) would sit at ≈ 2.1 GHz with the nominal SQUID. Straight fingers 0.91 µm × 0.6 µm per junction, L_J 1.85 nH in parallel, C_J 55 fF, so R_n ≈ 12 kΩ, far below the 40–50 kΩ window. This geometry is incompatible with the PDK window at 4–8 GHz (flagged). The two qubits stay identical.
+- Kept: the topology and every Metal component with the source's options (through the `metal:` wrapper), positions and orientations, every route's end pins and total length, the sim groups (including the pockets Metal never draws, which the rebuild adds).

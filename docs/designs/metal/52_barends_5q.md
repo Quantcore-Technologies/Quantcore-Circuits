@@ -1,6 +1,6 @@
 # Barends five-qubit (Metal 52)
 
-Five Xmon qubits in a line, close enough that neighbours couple directly through their facing cross arms. Each has its
+Five Xmon qubits sit in a line, close enough that neighbours couple directly through their facing cross arms. Each has its
 own λ/4 readout meander on a shared feedline (whose middle section acts as a Purcell filter), an XY drive line and a
 Z flux line. It is the Qiskit Metal "52" example (Apache-2.0, © IBM and contributors), a layout inspired by Barends
 *et al.* (Nature 508, 500, 2014), not the fabricated mask. The Quantcore rebuild is distributed under GPL-3.0.
@@ -17,11 +17,11 @@ resonator lengths, and a full set of drive and flux lines on a 7.5 mm die.
 
 | | |
 |---|---|
-| Notebook | `examples/designs/metal/m52_barends_5q.ipynb` (the one-cell version before the rewrite: `m52_barends_5q.v1.ipynb`) |
+| Notebook | `examples/designs/metal/m52_barends_5q.ipynb` (an older one-cell version is kept as `m52_barends_5q.v1.ipynb`) |
 | Source | Qiskit Metal `52-Barends_5Qubit_Xmon_Processor.ipynb`, © IBM and contributors, Apache-2.0 |
 | Chip | 7.5 × 7.5 mm Quantcore die (the source's 6 × 6 mm area centred in it), CPW 10 / 6 µm |
 | On the chip | 5 flux-tunable Xmons (450 µm pitch) · 5 λ/4 readouts (4.41 to 4.57 mm) · 5 coupled-line tees · 2 Purcell capacitors · 5 XY and 5 Z lines · 12 bond pads |
-| Builds today | yes: layout run 2026-11-19, 13 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 13 s) |
 
 ## How the notebook builds it
 
@@ -69,13 +69,13 @@ Numbers are from a run of this notebook on 2026-11-19 (Setup, Design, Check and 
 :alt: LOM plot of m52_barends_5q
 ```
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates from component formulas and calibration, not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
 The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
 
-> **Update 2026-11-03:** frame = **source**: build with `chip={"die_frame": False, ...}` so the replica keeps its own size and frame (the Quantcore PDK die frame is for Quantcore chips only). `metal:<Class>` wrappers are READY (ports = Metal pin names, params = Metal options), so the `metal:` refs in this spec build as written; the Quantcore/KQC substitutions stay optional.
+> The `metal:` references in this spec build as written, through the `metal:` wrapper (ports are the Metal pin names, parameters the Metal options). The Quantcore and KQC substitutions are optional.
 
 Source: Quantum Metal `docs/circuit-examples/F.Small-quantum-chips/52-Barends_5Qubit_Xmon_Processor.ipynb`.
 Licence Apache-2.0. The notebook adapts the QDW 2026 capstone solution by M. C. Sarihan, after Barends *et al.*,
@@ -88,7 +88,7 @@ as a common Purcell filter. Each qubit also has an XY drive line (open end) and 
 edge pad.
 Chip 6000 × 6000 µm, centred, so **Designer = Metal + (3000, 3000)**. CPW 10/6 µm except the Z-line pin (5 µm); all
 routes in the source use 10/6. Metal layer 1. The junctions are left out of the GDS (no junction file).
-**Buildable now: yes**. Substitutions: `Xmon` with `flux_port`, hanger for CoupledLineTee, KQC
+A first build uses these substitutions: `Xmon` with `flux_port`, hanger for CoupledLineTee, KQC
 `FingerCapacitorSquare` for CapNInterdigital, `BondPad`, and free ends for the XY lines.
 
 ### Components
@@ -151,13 +151,13 @@ multiplexed tones. No Lj/Cj is set, so take the Metal default Lj 10 nH: `junctio
 4. The ground pockets overlap at 450 µm pitch. If the DRC flags the merged gaps, keep the pitch (it carries the direct
    coupling) and waive the warning, or raise the pitch to 480 µm.
 
-### Quantcore PDK rebuild (2026-11-03)
+### Quantcore PDK rebuild
 
-The notebook is a **Quantcore-PDK rebuild**, not a replica (design rule, 2026-11-03): the netlist, LOM and imported components are kept, the process is Quantcore's.
+The notebook is a Quantcore PDK rebuild of the source, not a replica: the netlist, LOM and imported components are kept, and the process is Quantcore's.
 
 Notebook: [`examples/designs/metal/m52_barends_5q.ipynb`](../../../examples/designs/metal/m52_barends_5q.ipynb).
 
-- **Chip:** the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), on the 7.5 × 7.5 mm Quantcore die; the source's 6 × 6 mm chip area is centred in it (`box=(-750, -750, 6750, 6750)`), so every coordinate stays the source's (the source's 6 × 6 mm, drawn 6.2 × 6.2 mm with the overhanging pads, fits).
-- **Stack:** sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); Metal's `DesignPlanar` default is silicon (εr 11.45, 750 µm), so the LOM capacitances, resonator frequencies and FEM jobs here are for sapphire, not the source's substrate.
-- **Junctions:** Quantcore Nb/AlOx/Nb trilayer junctions (`junction_type` from `layouts.registry.trilayer_junction`): fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient, sized on the PDK junction rule (Nb Δ = 1.4 meV, I_c·R_n = πΔ/2e, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed); the five `TransmonCrossFL` (XY + Z lines) each get a PDK SQUID of two 0.25 × 0.6 µm junctions → R_n = 45 kΩ in parallel, L_J = 6.73 nH at zero flux, C_J = 15 fF (in the 40–50 kΩ window) (the source has no `hfss_inductance` and leaves the junctions out of its GDS; the pre-rebuild build assumed 10 nH + 2 fF). Expected f_q ≈ 6.3 GHz (estimate; were 5.57 GHz), close to the 6.2–6.4 GHz readouts: the rebuild's frequency plan needs the Z lines (or a resized junction) to detune them. The five qubits stay identical.
-- **Kept:** the topology and every Metal component with the source's options (through the `metal:` wrapper), positions and orientations, every route's end pins and total length, the sim groups (the feedline with its Purcell section, the five λ/4 readouts 4410–4570 µm, the ten XY / Z lines, the `d.couple` arm-to-arm estimate).
+- Chip: the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), on the 7.5 × 7.5 mm Quantcore die; the source's 6 × 6 mm chip area is centred in it (`box=(-750, -750, 6750, 6750)`), so every coordinate stays the source's (the source's 6 × 6 mm, drawn 6.2 × 6.2 mm with the overhanging pads, fits).
+- Stack: sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); Metal's `DesignPlanar` default is silicon (εr 11.45, 750 µm), so the LOM capacitances, resonator frequencies and FEM jobs here are for sapphire rather than the source's substrate.
+- Junctions: Quantcore Nb/AlOx/Nb trilayer junctions (`junction_type` from `layouts.registry.trilayer_junction`): fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient, sized on the PDK junction rule (Nb Δ = 1.4 meV, I_c·R_n = πΔ/2e, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed); the five `TransmonCrossFL` (XY + Z lines) each get a PDK SQUID of two 0.25 × 0.6 µm junctions → R_n = 45 kΩ in parallel, L_J = 6.73 nH at zero flux, C_J = 15 fF (in the 40–50 kΩ window) (the source has no `hfss_inductance` and leaves the junctions out of its GDS). Expected f_q ≈ 6.3 GHz (an estimate), close to the 6.2–6.4 GHz readouts, so the rebuild's frequency plan needs the Z lines (or a resized junction) to detune them. The five qubits stay identical.
+- Kept: the topology and every Metal component with the source's options (through the `metal:` wrapper), positions and orientations, every route's end pins and total length, the sim groups (the feedline with its Purcell section, the five λ/4 readouts 4410–4570 µm, the ten XY / Z lines, the `d.couple` arm-to-arm estimate).

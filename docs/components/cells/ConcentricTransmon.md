@@ -6,7 +6,7 @@ The PCell declaration for a concentric transmon.
 
 **Source:** KQC (KQCircuits). **Category:** qubit. **Module:** `kqcircuits.qubits.concentric_transmon`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 
@@ -60,7 +60,7 @@ The cell contributes to the lumped model:
 | `C_X_1` | C | island1 – gnd | estimate=122, unit=fF, estimate_source=analytic: ring outer edge as half CPW, estimate_kind=analytic, uncertainty=±25% |
 | `C_X_12` | C | island1 – island2 | estimate=91, unit=fF, estimate_source=rough: disk–ring facing edges as coplanar strips along the mean circumference, estimate_kind=rough, uncertainty=±50% |
 | `C_X_2` | C | island2 – gnd | estimate=19, unit=fF, estimate_source=rough: disk to ground screened by the ring, estimate_kind=rough, uncertainty=±50% |
-| `J_X` | SQUID | island1 – island2 | Lj_nH=–, Cj_fF=0, asym=0, flux_phi0=0 |
+| `J_X` | SQUID | island1 – island2 | Lj_nH=6.734, Cj_fF=15, asym=0, flux_phi0=0 |
 | `Cg_X_coupler_1` | C | island1 – coupler_1 | estimate=12, unit=fF, estimate_source=rough: arc 177 µm facing the island across 35 µm (CPS), estimate_kind=rough, uncertainty=±50% |
 | `Cc_X_coupler_1` | C | coupler_1 – gnd | estimate=13, unit=fF, estimate_source=rough: arc outer edge (half CPW) + port lead, estimate_kind=rough, uncertainty=±50% |
 | `Cg_X_coupler_2` | C | island1 – coupler_2 | estimate=19, unit=fF, estimate_source=rough: arc 228 µm facing the island across 30 µm (CPS), estimate_kind=rough, uncertainty=±50% |
@@ -70,13 +70,9 @@ The cell contributes to the lumped model:
 
 Nodes: `island1`, `island2`, `coupler_1`, `coupler_2`, `coupler_3`.
 
-- X: no junction.Lj_nH in the design; the qubit mode needs one to simulate
-
 ## Simulation export notes
 
 - C10: route gap strip misses the cell's etch by < 1 nm at an angled / off-grid port (fab build) (status: fixed; fix in route/waveguide.py (joined_nodes, misses_etch); layouts/chips/design_chip.py (DesignChip._join_ends); assembly/plan.py (RoutePlan.joins))
-
-Details: [SIM_EXPORT_AUDIT](../SIM_EXPORT_AUDIT.md).
 
 ## How to use
 

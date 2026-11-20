@@ -6,7 +6,7 @@ Hanger Resonator
 
 **Source:** KQC (KQCircuits). **Category:** resonator. **Module:** `kqcircuits.elements.hanger_resonator`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

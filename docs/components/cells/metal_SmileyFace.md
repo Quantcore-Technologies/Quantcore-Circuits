@@ -6,7 +6,7 @@ TEST COMPONENT It is for fun only. Can view a smiley face. Can make it
 
 **Source:** Metal (Qiskit Metal). **Category:** shape. **Module:** `qiskit_metal.qlibrary.sample_shapes.smiley_face`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

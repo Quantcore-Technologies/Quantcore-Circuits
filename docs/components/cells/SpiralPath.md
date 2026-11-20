@@ -10,7 +10,7 @@ Archimedean spiral path from ``inner_r`` to ``outer_r`` (legacy "Spiral").
 Legacy cell. legacy spiral.lym: the archimedean curve of SpiralLine (XOR 2.4 of 155 µm²) without ports or LOM model; golden test only. New designs: SpiralLine
 :::
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

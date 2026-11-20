@@ -3,7 +3,7 @@
 Sometimes the shape is a drawing, not a formula: an island someone sketched in KLayout, or a curve you generate in
 Python. This page turns such a shape into a component. The example is the spiralmon: a transmon whose island is an
 oblique spiral, with a qubit junction to ground and a curved readout claw. A component needs three things from the
-drawing: **polygons**, **named pins** and a **junction location**. A small helper, `examples/custom_component/freeform.py`,
+drawing: polygons, named pins and a junction location. A small helper, `examples/custom_component/freeform.py`,
 turns them into a cell. The notebook is `examples/custom_component/custom_qubits.ipynb`.
 
 ## What we build
@@ -159,11 +159,11 @@ The model does not include the inductance of the spiral wire itself (about 1 nH 
 The chip is the same as for the fork transmon: two pads, a feedline, the qubit, a hanger resonator. Two details are
 specific to a drawn shape.
 
-**The pin is oblique.** The claw pin points at -57° in the cell's own frame. Routes follow any pin direction, but the
+The pin is oblique. The claw pin points at -57° in the cell's own frame. Routes follow any pin direction, but the
 resonator should leave towards the feedline, so rotate the whole cell: `rot = 35 - pin angle` puts the pin at 35°.
 The pin angle depends on the number of turns (the claw sits opposite the end of the spiral), so read it from the shape.
 
-**The size sets the junction.** The first spiral (2.25 turns) has C_Σ of about 81 fF, which would need R_n = 55.8 kΩ for
+The size sets the junction. The first spiral (2.25 turns) has C_Σ of about 81 fF, which would need R_n = 55.8 kΩ for
 5.5 GHz: outside the PDK window (40-50 kΩ). Three turns with a wider pitch give 115 fF and L_J = 6.03 nH (R_n = 40.3 kΩ).
 
 ```python

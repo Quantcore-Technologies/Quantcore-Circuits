@@ -13,11 +13,11 @@ Build this one to learn an open-ended coupled readout and a second, unused claw 
 
 | | |
 |---|---|
-| Notebook | `examples/designs/sqdmetal/xmon_cap_sim.ipynb` (the one-cell version before the rewrite: `xmon_cap_sim.v1.ipynb`) |
+| Notebook | `examples/designs/sqdmetal/xmon_cap_sim.ipynb` (an older one-cell version is kept as `xmon_cap_sim.v1.ipynb`) |
 | Source | SQDMetal example `Palace_Capacitance_Xmon_Gmsh.ipynb`, Apache-2.0 |
 | Chip | 7.5 × 7.5 mm Quantcore die, the source's 4.6 × 2.4 mm area in its middle, CPW 10 / 6 µm |
 | On the chip | 2 launchpads · 1 transmission line · 1 cross transmon · 1 meander readout with an open end |
-| Builds today | yes: layout run 2026-11-19, 10 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 10 s) |
 
 ## How the notebook builds it
 
@@ -57,24 +57,22 @@ Numbers are from a run of this notebook on 2026-11-19 (Setup, Design, Check and 
 :alt: LOM plot of xmon_cap_sim
 ```
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates from component formulas and calibration, not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
 The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
 
-> **Update 2026-11-03:** frame = **source**: build with `chip={"die_frame": False, ...}` so the replica keeps its own size and frame (the Quantcore PDK die frame is for Quantcore chips only).
-
 Source: [doc-sphinx/source/examples/Palace_Capacitance_Xmon_Gmsh.ipynb](https://github.com/sqdlab/SQDMetal/blob/main/doc-sphinx/source/examples/Palace_Capacitance_Xmon_Gmsh.ipynb)
-· licence **Apache-2.0** (verified) · read 2026-11-02. There are no stored outputs. Pure Quantum Metal parts
+· licence Apache-2.0 (verified) · read on 2026-11-02. There are no stored outputs. Pure Quantum Metal parts
 (`TransmonCross`, `RouteMeander`, `RoutePathfinder`, `LaunchpadWirebond`, `OpenToGround`), meshed with Gmsh for a
 Palace capacitance run on silicon.
 What it is: one grounded cross transmon with two claws (readout east, bus west). The readout claw runs a 3.7 mm meander
-to an **open end placed 40 µm below a through transmission line**. The open-end lead (300 µm `start_straight`) runs
+to an open end placed 40 µm below a through transmission line. The open-end lead (300 µm `start_straight`) runs
 parallel to the line, so the coupling is an open-ended coupled section. Two small launch pads.
 Frame: chip 4.6 × 2.4 mm centred at (0, −1) mm, substrate 280 µm. **Box (0, 0, 4600, 2400)**,
 **Designer = source + (2300, 2200)**. CPW 10/6 µm.
-Status: **yes** (`Xmon`, `BondPad`, hanger with `end="open"`).
+A first build uses `Xmon`, `BondPad` and a hanger with `end="open"`.
 
 ### Components
 | instance | catalog ref | key params (units) | at (x, y) Designer | rot | notes |
@@ -109,16 +107,16 @@ None (capacitance-matrix extraction example).
    (≈ 8 GHz on Si) and say so in the design notes.
 2. Drop the bus claw if `Xmon` claw lists need ports to be used. Otherwise leave `claw_w` free for a later bus.
 
-### Build (2026-11-03)
-Built with `metal:TransmonCross` (Metal: connector_location 0 = west arm, so the readout claw is on the west) and `metal:LaunchpadWirebond`; open hanger 400 µm from its corner (300 µm straight + 99.9 µm fillet), open end at the OpenToGround x.
+### Build
+The notebook uses `metal:TransmonCross` (Metal: connector_location 0 = west arm, so the readout claw is on the west) and `metal:LaunchpadWirebond`; open hanger 400 µm from its corner (300 µm straight + 99.9 µm fillet), open end at the OpenToGround x.
 
-### Quantcore PDK rebuild (2026-11-03)
+### Quantcore PDK rebuild
 
-The notebook is a **Quantcore-PDK rebuild**, not a replica (design rule, 2026-11-03): the netlist, LOM and imported components are kept, the process is Quantcore's.
+The notebook is a Quantcore PDK rebuild of the source, not a replica: the netlist, LOM and imported components are kept, and the process is Quantcore's.
 
 Notebook: [`examples/designs/sqdmetal/xmon_cap_sim.ipynb`](../../../examples/designs/sqdmetal/xmon_cap_sim.ipynb).
 
-- **Chip:** the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), on the 7.5 × 7.5 mm Quantcore die; the source's 4.6 × 2.4 mm chip area is centred in it (`box=(-1450, -2550, 6050, 4950)`), so every coordinate stays the source's.
-- **Stack:** sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); the SQDMetal examples are on silicon (280–500 µm), so frequencies differ from the source's.
-- **Junctions:** Quantcore Nb/AlOx/Nb trilayer junctions (`junction_type` from `layouts.registry.trilayer_junction`): fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient, sized on the PDK junction rule (Nb Δ = 1.4 meV, I_c·R_n = πΔ/2e, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed); the `TransmonCross` gets the PDK nominal junction, 0.5 × 0.6 µm fingers → R_n = 45 kΩ, L_J = 6.73 nH, C_J = 15 fF (in the 40–50 kΩ window) (the source sets no junction: a capacitance-only run; the pre-rebuild build assumed 12 nH + 2 fF). Expected f_q ≈ 5.8 GHz (estimate; was 4.56 GHz).
-- **Kept:** the topology and the Metal components with the source's options and positions, the 3.7 mm readout with its 300 µm coupled section and 40 µm spacing, the sim group.
+- Chip: the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), on the 7.5 × 7.5 mm Quantcore die; the source's 4.6 × 2.4 mm chip area is centred in it (`box=(-1450, -2550, 6050, 4950)`), so every coordinate stays the source's.
+- Stack: sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); the SQDMetal examples are on silicon (280–500 µm), so frequencies differ from the source's.
+- Junctions: Quantcore Nb/AlOx/Nb trilayer junctions (`junction_type` from `layouts.registry.trilayer_junction`): fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient, sized on the PDK junction rule (Nb Δ = 1.4 meV, I_c·R_n = πΔ/2e, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed); the `TransmonCross` gets the PDK nominal junction, 0.5 × 0.6 µm fingers → R_n = 45 kΩ, L_J = 6.73 nH, C_J = 15 fF (in the 40–50 kΩ window) (the source sets no junction, being a capacitance-only run). Expected f_q ≈ 5.8 GHz (an estimate).
+- Kept: the topology and the Metal components with the source's options and positions, the 3.7 mm readout with its 300 µm coupled section and 40 µm spacing, the sim group.

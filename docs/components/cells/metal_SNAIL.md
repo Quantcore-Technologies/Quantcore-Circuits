@@ -6,7 +6,7 @@ A SNAIL (Superconducting Nonlinear Asymmetric Inductive eLement).
 
 **Source:** Metal (Qiskit Metal). **Category:** junction. **Module:** `qiskit_metal.qlibrary.qubits.SNAIL`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 
@@ -55,8 +55,6 @@ Nodes: `a`, `b`.
 ## Simulation export notes
 
 - C5: Metal-wrapped junction pins off the metal edges (stand-in sheet is wrong) (status: fixed; fix in sim_tools/builder.py (FaceMetal, junction_gap, junction_sheet, sheet_junction_port))
-
-Details: [SIM_EXPORT_AUDIT](../SIM_EXPORT_AUDIT.md).
 
 ## How to use
 

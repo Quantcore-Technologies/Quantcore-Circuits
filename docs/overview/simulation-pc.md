@@ -2,8 +2,7 @@
 
 Some work needs a PC with 32 GB of RAM or more and AEDT 2024 R1 (v241) or newer: converged FEM solves, whole-chip
 eigenmodes and the big chips. The notebooks mark every such spot with a note that starts "Simulation PC (32 GB+ RAM)".
-This page is the checklist to follow there, in order. Everything runs through the same notebooks; only the switches
-change.
+This page is the checklist to follow there, in order. The work runs through the same notebooks; only the switches change.
 
 ## Set up the PC
 
@@ -11,7 +10,7 @@ change.
    `pip install torch --index-url https://download.pytorch.org/whl/cpu`, then `pip install "quantcore-circuits[all]"`,
    then `qcc kqc-files` (KQCircuits' simulation scripts and label font, which its PyPI package lacks). Clone the repository too:
    the notebooks and the tests are in it.
-   **No internet on this PC?** Use the offline wheelhouse instead: on a machine with the repository and the upstream
+   Without internet on this PC, use the offline wheelhouse instead: on a machine with the repository and the upstream
    libraries run `python scripts/build_wheelhouse.py`, copy `dist/wheelhouse/` into the clone on the PC, and run
    `scripts/install_sim_pc.ps1` (Windows) or `scripts/install_sim_pc.sh`. The script creates the conda env `qcc`,
    installs torch, the pinned packages of `requirements/sim-pc.txt`, the wheels and `quantcore-circuits[all]`, runs
@@ -73,7 +72,7 @@ eigenmode stopped after at most 3 passes. Check the convergence table (ΔF below
 
 ### 3. The design notebooks
 
-Each of the 68 v2 design notebooks under `examples/designs/` has one marker before its `# Simulate` section. Work
+Each of the 74 v2 design notebooks under `examples/designs/` has one marker before its `# Simulate` section. Work
 through them group by group, one notebook at a time, with `RUN_FEM = True` and `FEM_FAST = False`.
 
 | Group | Notebooks | Big chips (do last, or give a subset) |

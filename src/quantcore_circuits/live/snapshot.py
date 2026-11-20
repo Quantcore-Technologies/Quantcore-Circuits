@@ -13,16 +13,36 @@ import socket
 from pathlib import Path
 
 GUI_PORT = 8083
-HIDE = ("refpoints", "ground grid avoidance", "waveguide length", "annotations", "ports")
+# helper layers of every face (matched in "<name> <source>", "_" read as " "): KQC's centre lines (waveguide_path),
+# avoidance regions, port and refpoint texts. "waveguide length" is kept for layouts written with that older name.
+HIDE = (
+    "refpoints",
+    "ground grid avoidance",
+    "waveguide path",
+    "waveguide length",
+    "annotations",
+    "ports",
+)
 OUTLINE = ("chip boundary",)  # drawn as a frame only (a filled 100/0 box hatched the whole die)
 
 
-def layer_props_path() -> str | None:
-    """Quantcore layer properties: KQC's ``default_layer_props.lyp`` with the **ground grid (cheese) visible**.
+def _face_of(source: str) -> tuple[str, str] | None:
+    """``("2t1", "waveguide path")`` for a KQC face layer source such as ``'2t1 waveguide path' 135/2@1``."""
+    name = source.strip().strip("'").split("'")[0]
+    face, _, layer = name.partition(" ")
+    return (face, layer) if len(face) == 3 and face[0].isdigit() and layer else None
 
-    KQC ships ``'1t1 ground grid' 132/1`` hidden, which hid the PDK cheese band in every snapshot and KLayout view
-    (notebooks-metal, 2026-11-03). The variant is written next to the temp dir and refreshed when KQC's file
-    changes; load it in KLayout (*File → Load Layer Properties*) to see the cheese there too."""
+
+def layer_props_path() -> str | None:
+    """Quantcore layer properties: KQC's ``default_layer_props.lyp`` with the **ground grid (cheese) visible** and
+    every face shown like face ``1t1``.
+
+    KQC ships ``'1t1 ground grid' 132/1`` hidden, which hid the PDK cheese band in every snapshot and KLayout view.
+    KQC's ``2t1`` group also shows its ``waveguide path`` (centre lines) and ``base metal gap for EBL`` and hides its
+    ``base metal gap``, unlike the other faces: here each face layer gets the visibility of the ``1t1`` layer of the
+    same name, so a two-face picture has no centre lines over it. The variant is written next to the temp dir and
+    refreshed when KQC's file or this module changes; load it in KLayout (*File → Load Layer Properties*) to see the
+    cheese there too."""
     import tempfile  # pylint: disable=import-outside-toplevel
     import xml.etree.ElementTree as ET  # pylint: disable=import-outside-toplevel
 
@@ -34,16 +54,26 @@ def layer_props_path() -> str | None:
         return None
     src = Path(default_layer_props)
     out = Path(tempfile.gettempdir()) / "quantcore_circuits" / "quantcore_layer_props.lyp"
-    if out.exists() and out.stat().st_mtime >= src.stat().st_mtime:
+    newest = max(src.stat().st_mtime, Path(__file__).stat().st_mtime)
+    if out.exists() and out.stat().st_mtime >= newest:
         return str(out)
     try:
         tree = ET.parse(src)
-        for elem in tree.getroot().iter():
-            if elem.tag not in ("properties", "group-members"):
-                continue
+        members = [e for e in tree.getroot().iter() if e.tag in ("properties", "group-members")]
+        shown = {}  # 1t1 layer name → visible
+        for elem in members:
+            face = _face_of(elem.findtext("source") or "")
+            if face is not None and face[0] == "1t1" and elem.find("visible") is not None:
+                shown[face[1]] = elem.find("visible").text
+        for elem in members:
             source = elem.findtext("source") or ""
             visible = elem.find("visible")
-            if "ground grid'" in source and visible is not None:  # the grid itself, not "ground grid avoidance"
+            if visible is None:
+                continue
+            face = _face_of(source)
+            if face is not None and face[1] in shown:
+                visible.text = shown[face[1]]
+            if "ground grid'" in source:  # the grid itself, not "ground grid avoidance"
                 visible.text = "true"
         out.parent.mkdir(parents=True, exist_ok=True)
         tree.write(out, encoding="utf-8", xml_declaration=True)

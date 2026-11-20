@@ -6,7 +6,7 @@ CPW with interdigital fingers between centre line and ground on both sides (lega
 
 **Source:** Quantcore. **Category:** capacitor. **Module:** `quantcore_circuits.layouts.others.cpwe`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

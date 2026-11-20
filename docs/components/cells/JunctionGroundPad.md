@@ -6,7 +6,7 @@ Rounded probe pad joined to ground by a bridge carrying a trilayer junction (leg
 
 **Source:** Quantcore. **Category:** test_structure. **Module:** `quantcore_circuits.layouts.others.test_pads`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

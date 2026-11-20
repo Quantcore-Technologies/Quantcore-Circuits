@@ -1,8 +1,8 @@
 # Sixteen junction pads (chip_11f)
 
-A junction test chip: 16 probe-pad pairs in a 4 × 4 array, each with one small trilayer junction (0.2 × 0.6 µm) in the gap between its two pads. Measuring the resistance across each pair tests how uniform the junctions come out. The legacy script only placed junctions at coordinates read from a CSV file that is now lost, and drew no pads. So the pad pairs, their count and pitch are an assumption (design rule #23): each junction lands in the centre of its pair, overlapping each pad by 1 µm.
+A junction test chip: 16 probe-pad pairs in a 4 × 4 array, each with one small trilayer junction (0.2 × 0.6 µm) in the gap between its two pads. Measuring the resistance across each pair tests how uniform the junctions come out. The legacy script only placed junctions at coordinates read from a CSV file that is now lost, and drew no pads. So the pad pairs, their count and pitch are an assumption: each junction lands in the centre of its pair, overlapping each pad by 1 µm.
 
-It comes from Quantcore's QWri script `chip_11f_JJplacer.py` (internal). The rebuild is an honest reconstruction, not a copy of a lost layout: it puts the pairs on the PDK die with the PDK cheese band and flags the junctions as higher-resistance than the PDK nominal (112.5 kΩ). Build it to learn how a script that only places cells at coordinates becomes a design with explicit sites.
+It comes from Quantcore's QWri script `chip_11f_JJplacer.py` (internal). The rebuild reconstructs a lost layout: it puts the pairs on the PDK die with the PDK cheese band and flags the junctions as higher-resistance than the PDK nominal (112.5 kΩ). Build it to see how a script that only places cells at coordinates becomes a design with explicit sites.
 
 ```{image} ../../images/designs/legacy/chip_11f_jjplacer.png
 :alt: The whole chip_11f_jjplacer chip rebuilt on the Quantcore PDK
@@ -48,25 +48,25 @@ The notebook has no saved LOM output. The chip has no qubit or resonator, so its
 
 The rest of this page is the detailed spec the notebook was built from: every component, the changes made while rebuilding, and the notes.
 
-**Source:** `components/python/chip_11f_JJplacer.py` (module-level script, no function; writes
-`chip_11m_placed.gds` with one cell `JJx`). Legacy QWri library, Quantcore internal. No notebook yet.
+Source: `components/python/chip_11f_JJplacer.py` (module-level script, no function; writes
+`chip_11m_placed.gds` with one cell `JJx`). Legacy QWri library, Quantcore internal.
 
-### Changes after design decisions (legacy-fix, 2026-11-03)
+### Changes made in the rebuild
 
-- **#23 built** (coordinates file lost; requirement: "the junctions land in the centre of the top and bottom pads, the part that is deleted, with 1 µm overlap"): notebook `examples/designs/legacy/chip_11f_jjplacer.ipynb`. 16 pad pairs (4 × 4, pitch 1000 × 1500 µm) of two facing `TaperedPad`s (500 × 350 µm pads, 95 µm taper to 5 µm leads, 600 × 500 µm windows meeting at the pair centre: lead tips at ±5 µm) — chip_11m's commented-out probe pads; one JX_500 (`TrilayerJunctionCompact` 0.2 × 0.6 µm, `clearer=True` = the legacy centre cut-out) per pair, its 12 µm window centred on the gap so it overlaps each lead by 1 µm. Assumed (to confirm): site count / pitch, the lead taper, both pads on M1 (the legacy drew the bottom pad on 3/0). PDK junction rule (design rule #1: Nb trilayer, Δ = 1.4 meV, I_c·R_n = πΔ/2e = 2.20 mV, R_n 40–50 kΩ, qubits 4–8 GHz; PDK process `get_pdk().junction`: R_n·A 13.5 kΩ·µm², C_J 50 fF/µm², both assumed by the PDK): 112.5 kΩ each.
-- Notebook edited and its JSON rebuilt from the layout cell; **not executed** (verification policy): outputs cleared, PNGs stale until the notebook is run.
+- Built (the coordinates file is lost; the requirement was "the junctions land in the centre of the top and bottom pads, the part that is deleted, with 1 µm overlap"): notebook `examples/designs/legacy/chip_11f_jjplacer.ipynb`. 16 pad pairs (4 × 4, pitch 1000 × 1500 µm) of two facing `TaperedPad`s (500 × 350 µm pads, 95 µm taper to 5 µm leads, 600 × 500 µm windows meeting at the pair centre: lead tips at ±5 µm), taken from chip_11m's commented-out probe pads; one JX_500 (`TrilayerJunctionCompact` 0.2 × 0.6 µm, `clearer=True` = the legacy centre cut-out) per pair, its 12 µm window centred on the gap so it overlaps each lead by 1 µm. Assumed (to be confirmed): site count / pitch, the lead taper, both pads on M1 (the legacy drew the bottom pad on 3/0). PDK junction rule (Nb trilayer, Δ = 1.4 meV, I_c·R_n = πΔ/2e = 2.20 mV, R_n 40–50 kΩ, qubits 4–8 GHz; PDK process `get_pdk().junction`: R_n·A 13.5 kΩ·µm², C_J 50 fF/µm², both assumed by the PDK): 112.5 kΩ each.
+- The notebook's JSON was rebuilt from its layout cell. The notebook has not been re-run, so its outputs are cleared and its PNGs may be out of date.
 
-**What it is.** A junction-layer placer: it reads `x, y, f` columns from
+What it is: a junction-layer placer: it reads `x, y, f` columns from
 `D:\Designs\ScriptedDesigns\junctions\jj_coordinates.csv` (`np.genfromtxt(..., delimiter=',', unpack=True)`) and,
-for every row, inserts chip_11m's `JX_500` cell — read from `chip_11m_jnc1.0_0.6.gds`, i.e.
-`create_testPad(1.0, 0.6)`: straight finger 0.2 µm, bent finger 0.6 µm — at `Trans(f, False, x, y)` (rotation
+for every row, inserts chip_11m's `JX_500` cell (read from `chip_11m_jnc1.0_0.6.gds`, i.e.
+`create_testPad(1.0, 0.6)`: straight finger 0.2 µm, bent finger 0.6 µm) at `Trans(f, False, x, y)` (rotation
 `f · 90°`, µm). It draws nothing else: no die, no pads, no markers. The output is the junction layers
 (2/0, 4/0, HSQ 500/0) of some pre-patterned chip whose pads are not in the library. It also imports
 `junction_creator_HSQ`, `squid_creator_HSQ` and `chip_11m_TestJJ16x_pads` without calling them; `flip = [1]` is
 unused.
 
-**Buildable now?** No. Every cell resolves (`TrilayerJunctionCompact(finger_width=0.2, second_finger_width=0.6)`),
-but **the placement data is missing**: `jj_coordinates.csv` is neither in `components/` nor anywhere in the
+Reproducing the original: not possible. Every cell resolves (`TrilayerJunctionCompact(finger_width=0.2, second_finger_width=0.6)`),
+but the placement data is missing: `jj_coordinates.csv` is neither in `components/` nor anywhere in the
 repository, so the number, positions and rotations of the junctions are unknown. Input needed: the CSV (and, if
 it exists, the pad chip it belongs to).
 
@@ -86,4 +86,4 @@ junction-layer XOR (`_legacy_b.junction_xor`).
 
 ### LOM
 
-One JJ branch per junction (`J_JX_k`: `JX_k.j` – ground); the `common` ports land on the missing pads. No sim groups.
+One JJ branch per junction (`J_JX_k`: `JX_k.j` to ground); the `common` ports land on the missing pads. No sim groups.

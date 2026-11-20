@@ -1,9 +1,9 @@
 # PDK
 
-The PDK (process design kit, `src/quantcore_circuits/pdk/__init__.py`) holds the Quantcore fabrication process in one
-place: the substrate, the fab layers, the die frame, the keep-outs, the cheese and the junction process. Every build,
-simulation export and fab export reads it, so a rule changed here changes every design on the next build. You need
-this page when a design must match the fab rules, or when you want to know why the layout puts something where it is.
+The PDK (process design kit, `src/quantcore_circuits/pdk/__init__.py`) holds the Quantcore fabrication process: the
+substrate, the fab layers, the die frame, the keep-outs, the cheese and the junction process. Every build, simulation
+export and fab export reads it, so a rule changed here changes every design on the next build. Read this page when a
+design must match the fab rules, or when you want to know why the layout puts something where it is.
 
 ```python
 from quantcore_circuits.pdk import get_pdk
@@ -19,13 +19,13 @@ pdk = get_pdk()          # quantcore_nb_sapphire_v1 (default); quantcore_nb_si_v
 | Die frame | dicing L, alignment grids, optional device ID, brand `QCT` |
 | Pad rule | the outer edge of a pad's etch is 100 µm from the die edge |
 | Keep-outs (3/0) | route + 10 µm, component + 24 µm, other + 9 µm |
-| Cheese | 5 µm squares, 20 µm gaps, 3 rows, 4 µm from the 3/0 keep-out; holes on 1/0 and 3/0 (the design's own cheese wins over the band) |
+| Cheese | 5 µm squares, 20 µm gaps, 4 µm from the 3/0 keep-out, in a band 3 rows wide or (`cheese: "chip"`) over the whole die; holes on 1/0 and 3/0 (a design's own cheese wins over the band) |
 | Corner rounding | on by default in the fab export |
 | Junction process | Nb trilayer, R_n 40-50 kOhm per device; cells Quantcore Junction and Quantcore Squid |
 | Kinetic inductance | 0.116 pH per square; films Nb and NbN (`Pdk.film`) |
 
-A design names its PDK in `design.json` (`pdk`); `Designer(pdk=...)` does the same. It writes nothing itself: the
-rules show up in the layout, in the DRC and in the fab file.
+A design names its PDK in `design.json` (`pdk`); `Designer(pdk=...)` does the same. The PDK writes no file of its
+own; its rules show up in the layout, in the DRC and in the fab file.
 
 Classes: `Pdk`, `Stack`, `DieFrame`, `KeepoutRule`, `CheeseRule`, `CornerRounding`, `JunctionProcess`,
 `KineticInductance`. `register_pdk` adds another PDK.
@@ -79,14 +79,26 @@ Fab view of a bend: rounded corners and the cheese squares (5 µm squares on a 2
 
 ## The rules in practice
 
-- **Pad rule.** Bond pads and launchers sit with the outer edge of their etch 100 µm from the die edge. `edge="auto"`
+- Pad rule: bond pads and launchers sit with the outer edge of their etch 100 µm from the die edge. `edge="auto"`
   on `Designer.add` (or `place.edge` in `design.json`) slides the pad into place. `TaperedPad` rings count as bond pads
   for this rule too; a `TaperedPad` used as a probe pad inside the die gets a `pad_edge` warning, never an error.
-- **Keep-outs (layer 3/0).** The metal etch is grown into a keep-out: 10 µm around a route, 24 µm around a component,
-  9 µm around other shapes. Cells that draw their own keep-out get 4 µm more.
-- **Cheese.** Ground holes (5 µm squares, 20 µm gaps) fill a band three rows wide around the components, kept at least
-  4 µm from 3/0. The holes are on 1/0 and on 3/0. If the design already has its own cheese, its own wins and gets no
-  PDK band. Cheese and corner rounding belong to the fab export only; simulation exports never get them.
+- Keep-outs (layer 3/0): the metal etch is grown into a keep-out: 10 µm around a route, 24 µm around a component,
+  9 µm around other shapes. Cells that draw their own keep-out get 4 µm more. A whole KQC chip placed as one
+  instance (such as KQC's `Stripes`, `JunctionTest` or `Empty` test chips), or any cell over more than half the die,
+  counts as other shapes: its etch is grown by 9 µm, not its bounding box by 24 µm, so the ground between its
+  structures stays free for the cheese.
+- Cheese: ground holes (5 µm squares, 20 µm gaps) kept at least 4 µm from 3/0, on 1/0 and on 3/0. By default they
+  fill a band three rows wide around the components. The chip parameter `cheese` picks something else: `"chip"`
+  spreads the same squares over the whole die (inside the frame, clear of its markers and the device ID; it also
+  switches off a KQC `with_grid`), `"original"` adds nothing, and a dict reproduces an original design's own rule. A
+  design that already has its own cheese keeps it and gets no band. Holes go in the ground plane only, not in
+  floating pads or islands: metal connected to the die edge, or an isolated piece of at least 1.5 mm²
+  (`CheeseRule.ground_island_mm2`), which keeps the ground enclosed by a bus ring or a feedline loop. TSVs, indium
+  bumps, under-bump metal and airbridges (pads and flyovers) on the cheese face are kept clear too: no hole within
+  13 µm of them (the 9 µm margin for other shapes plus the 4 µm clearance), KQC's automatic ground TSVs and bumps
+  (`with_gnd_tsvs`, `with_gnd_bumps`) included. They are not on 3/0, since they sit on the ground metal, and the band
+  is not grown around them. Cheese and corner rounding belong to the fab export only; simulation exports never get
+  them.
 
 ## Design warnings
 
@@ -98,6 +110,7 @@ export: `pad_edge`, `pdk_rn` (junction R_n outside 40-50 kOhm), `pdk_fq` (qubit 
 
 - The amplifier junction process only has a `pdk_rn` warning.
 - NbN is not selectable per element (only through `Pdk.film`).
+- The PDK cheese is drawn on the PDK face (`1t1`) only: the top chip (`2b1`) and the back faces get no holes.
 - Asymmetric SQUID drawn cells and a stored HFSS-versus-Palace bias are not built.
-- The rules last changed on 2026-11-17 (3/0 keep-outs 4 µm wider, cheese 4 µm from 3/0); 105 example fab exports were
-  compared then.
+- The last rule change made the 3/0 keep-outs 4 µm wider and kept the cheese 4 µm from 3/0; 105 example fab exports
+  were compared after it.

@@ -1,11 +1,11 @@
 # Component examples (Metal A–E)
 
-A catalogue board, not a chip. The 19 single-component and sub-circuit notebooks of the Qiskit Metal "circuit
+A catalogue board rather than a chip. The 19 single-component and sub-circuit notebooks of the Qiskit Metal "circuit
 examples" (qubits, resonators, composites, couplers, input-output coupling; Apache-2.0, © IBM and contributors) are
 gathered on one 35 × 28 mm board, one 7 × 7 mm tile each. The Quantcore rebuild is distributed under GPL-3.0.
 
 Build this one to see every `metal:` component drawn through the wrapper in one place, with Quantcore junctions. The
-board is a test bed for the component wrappers and their LOM models, not a design to fabricate.
+board is a test bed for the component wrappers and their LOM models and is not meant for fabrication.
 
 ```{image} ../../images/designs/metal/component_examples.png
 :alt: The whole component-examples board as the v2 notebook builds it
@@ -16,11 +16,11 @@ board is a test bed for the component wrappers and their LOM models, not a desig
 
 | | |
 |---|---|
-| Notebook | `examples/designs/metal/component_examples.ipynb` (the one-cell version before the rewrite: `component_examples.v1.ipynb`) |
+| Notebook | `examples/designs/metal/component_examples.ipynb` (an older one-cell version is kept as `component_examples.v1.ipynb`) |
 | Source | Qiskit Metal circuit examples A.Qubits, B.Resonators, C.Composite-bi-partite, D.Qubit-couplers, E.Input-output-coupling, © IBM and contributors, Apache-2.0 |
 | Chip | 35 × 28 mm board of 7 × 7 mm tiles (larger than the 7.5 mm Quantcore die) |
 | On the chip | 19 example tiles: qubits (A), one resonator (B), one qubit with a resonator (C), three coupler examples (D), launchpad and charge-line examples (E) |
-| Builds today | yes: layout run 2026-11-19, 14 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 14 s) |
 
 ## How the notebook builds it
 
@@ -75,15 +75,15 @@ Numbers are from a run of this notebook on 2026-11-19 (Setup, Design, Check and 
 :alt: LOM plot of component_examples
 ```
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates from component formulas and calibration, not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
 The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
 
-> **Update 2026-11-03:** frame = **source**: build with `chip={"die_frame": False, ...}` so the replica keeps its own size and frame (the Quantcore PDK die frame is for Quantcore chips only). `metal:<Class>` wrappers are READY (ports = Metal pin names, params = Metal options), so the `metal:` refs in this spec build as written; the Quantcore/KQC substitutions stay optional.
+> The `metal:` references in this spec build as written, through the `metal:` wrapper (ports are the Metal pin names, parameters the Metal options). The Quantcore and KQC substitutions are optional.
 
-> **Built 2026-11-03 (builder 4):** examples/designs/metal/component_examples.ipynb: all 19 A–E notebooks, run headless, one 7 × 7 mm tile each.
+> The notebook `examples/designs/metal/component_examples.ipynb` builds all 19 A–E notebooks, run headless, one 7 × 7 mm tile each.
 
 Source: Quantum Metal `docs/circuit-examples/{A.Qubits, B.Resonators, C.Composite-bi-partite, D.Qubit-couplers,
 E.Input-output-coupling}` plus analysis sub-circuits from `docs/tut/**`. Licence Apache-2.0.
@@ -130,16 +130,16 @@ notebook sets it.
 ### Use
 - Use these as unit tests for each `metal:<Class>` wrapper (ports = Metal pin names) and for the per-component LOM
   models before building the chips.
-- The 4.16–4.18 hanger chips are a good κ/Q_ext validation of the Designer hanger. They need
+- The 4.16–4.18 hanger chips validate the Designer hanger's κ and Q_ext. They need
   `metal:LaunchpadWirebondDriven` (or a BondPad port).
 
-### Quantcore PDK rebuild (2026-11-03)
+### Quantcore PDK rebuild
 
-The notebook is a **Quantcore-PDK rebuild**, not a replica (design rule, 2026-11-03): the netlist, LOM and imported components are kept, the process is Quantcore's.
+The notebook is a Quantcore PDK rebuild of the source, not a replica: the netlist, LOM and imported components are kept, and the process is Quantcore's.
 
 Notebook: [`examples/designs/metal/component_examples.ipynb`](../../../examples/designs/metal/component_examples.ipynb).
 
-- **Chip:** the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), drawn on the source's 35 × 28 mm chip (the design does not fit the 7.5 mm die); no KQC chip frame.
-- **Stack:** sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); Metal's `DesignPlanar` default is silicon (εr 11.45, 750 µm), so the LOM capacitances, resonator frequencies and FEM jobs here are for sapphire, not the source's substrate.
-- **Junctions:** Quantcore Nb/AlOx/Nb trilayer junctions (`junction_type` from `layouts.registry.trilayer_junction`): fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient, sized on the PDK junction rule (Nb Δ = 1.4 meV, I_c·R_n = πΔ/2e, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed); every qubit gets the PDK nominal junction, 0.5 × 0.6 µm fingers → R_n = 45 kΩ, L_J = 6.73 nH, C_J = 15 fF (in the 40–50 kΩ window), the flux-tunable cells (`TransmonCrossFL`, `TunableCoupler01`) a PDK SQUID of two 0.25 × 0.6 µm junctions → R_n = 45 kΩ in parallel, L_J = 6.73 nH at zero flux, C_J = 15 fF (in the 40–50 kΩ window), in place of the assumed 10 nH + 2 fF. The interdigitated transmon (C_Σ ≈ 216 fF) is sized for 4.05 GHz (L_J 6.4 nH, R_n ≈ 43 kΩ) to stay in the 4–8 GHz band. Expected (estimates from the pre-rebuild LOM): crosses ≈ 5.8 GHz, pockets ≈ 7.1–7.4 GHz, Teeth ≈ 7.7 GHz, concentric ≈ 5.5 GHz, star ≈ 5.2 GHz, the D.31 coupler ≈ 8.6 GHz at zero flux. The two junction tiles (A.08 `jj_dolan`, A.09 `jj_manhattan`) keep Metal's own junction drawing as a reference (single-layer, 2/0 only: not a Quantcore junction).
-- **Kept:** the topology and every Metal component with the source's options (through the `metal:` wrapper), positions and orientations, every route's end pins and total length, the sim groups (each example on its own 7 × 7 mm tile, Metal's route corner points and lengths).
+- Chip: the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), drawn on the source's 35 × 28 mm chip (the design does not fit the 7.5 mm die); no KQC chip frame.
+- Stack: sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); Metal's `DesignPlanar` default is silicon (εr 11.45, 750 µm), so the LOM capacitances, resonator frequencies and FEM jobs here are for sapphire rather than the source's substrate.
+- Junctions: Quantcore Nb/AlOx/Nb trilayer junctions (`junction_type` from `layouts.registry.trilayer_junction`): fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient, sized on the PDK junction rule (Nb Δ = 1.4 meV, I_c·R_n = πΔ/2e, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed); every qubit gets the PDK nominal junction, 0.5 × 0.6 µm fingers → R_n = 45 kΩ, L_J = 6.73 nH, C_J = 15 fF (in the 40–50 kΩ window), the flux-tunable cells (`TransmonCrossFL`, `TunableCoupler01`) a PDK SQUID of two 0.25 × 0.6 µm junctions → R_n = 45 kΩ in parallel, L_J = 6.73 nH at zero flux, C_J = 15 fF (in the 40–50 kΩ window), in place of the 10 nH + 2 fF assumed for the source. The interdigitated transmon (C_Σ ≈ 216 fF) is sized for 4.05 GHz (L_J 6.4 nH, R_n ≈ 43 kΩ) to stay in the 4–8 GHz band. Expected (estimates from the LOM): crosses ≈ 5.8 GHz, pockets ≈ 7.1–7.4 GHz, Teeth ≈ 7.7 GHz, concentric ≈ 5.5 GHz, star ≈ 5.2 GHz, the D.31 coupler ≈ 8.6 GHz at zero flux. The two junction tiles (A.08 `jj_dolan`, A.09 `jj_manhattan`) keep Metal's own junction drawing as a reference (single-layer, 2/0 only, so not a Quantcore junction).
+- Kept: the topology and every Metal component with the source's options (through the `metal:` wrapper), positions and orientations, every route's end pins and total length, the sim groups (each example on its own 7 × 7 mm tile, Metal's route corner points and lengths).

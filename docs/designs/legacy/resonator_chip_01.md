@@ -7,7 +7,7 @@ quality factor. It is a Quantcore internal chip from the QWri legacy script `res
 
 The rebuild draws it from Quantcore PDK parts. The legacy script cut each resonator short with a small box; the
 rebuild drops those cuts, so all five resonators have the same full length and share one frequency. Build this one to
-learn the feedline plus hanger-resonator pattern on its own.
+see the feedline and hanger-resonator pattern on its own.
 
 ```{figure} ../../images/designs/legacy/resonator_chip_01.png
 :width: 100%
@@ -64,29 +64,29 @@ The notebook's saved outputs hold no LOM run (its LOM cells were not executed), 
 
 The rest of this page is the detailed spec the notebook was built from: components, positions, parameters and what changed from the legacy script.
 
-**Source:** `components/python/resonator_chip_01.py` (`create_chip`, output `res_01.gds`), Quantcore internal.
+Source: `components/python/resonator_chip_01.py` (`create_chip`, output `res_01.gds`), Quantcore internal.
 Legacy PCells: `Coplanar Waveguide`, `Connector Pad` (`connector_pad.lym`), `Coupled Resonator`, `Marker`. (It
-imports `junction_creator`, which is not in the library, but never calls it.) **Rebuild:**
+imports `junction_creator`, which is not in the library, but never calls it.) Rebuild:
 `examples/designs/legacy/resonator_chip_01.ipynb` (+ `.json`, PNGs); tables and the legacy reference in
 `examples/designs/legacy/_legacy_b.py` (`RC1_*`, `resonator_chip01_reference`).
 
-### Changes after design decisions (legacy-fix, 2026-11-03)
+### Changes made in the rebuild
 
-- **#13 grounder boxes — removed** (not intended; the later PCell has dedicated open and short ends): each resonator ends with its own gap cap (`ground=True`), full 5000 µm, no floating stubs. All five now share one frequency (≈ 6.37 GHz loaded): degenerate on one feedline — give lengths if they should be spread.
-- **#9 pads — repositioned:** 345 µm inwards of the legacy tips (∓2975 → ∓2630, feedline 5950 → 5260 µm): the rounded pad end on the design-area edge, 100 µm inside the 7.5 mm die, clear of the dicing lane and corner markers.
-- Notebook edited and its JSON rebuilt from the layout cell; **not executed** (verification policy): outputs cleared, PNGs stale until the notebook is run.
+- Grounder boxes: removed (not intended; the later PCell has dedicated open and short ends). Each resonator ends with its own gap cap (`ground=True`), full 5000 µm, no floating stubs. All five now share one frequency (≈ 6.37 GHz loaded): degenerate on one feedline, so give different lengths if they should be spread.
+- Pads: moved 345 µm inwards of the legacy tips (∓2975 → ∓2630, feedline 5950 → 5260 µm): the rounded pad end on the design-area edge, 100 µm inside the 7.5 mm die, clear of the dicing lane and corner markers.
+- The notebook's JSON was rebuilt from its layout cell. The notebook has not been re-run, so its outputs are cleared and its PNGs may be out of date.
 
-**What it is:** the resonator-only twin of chip_01 (`docs/designs/legacy/chip_01.md`, legacy-a): the same 5950 µm
+What it is: the resonator-only twin of chip_01 (`docs/designs/legacy/chip_01.md`): the same 5950 µm
 feedline with `lc/rc_thickness` 2, the same two rounded `Connector Pad`s and the same five `Coupled Resonator`s
 (cpw_len 5000, clength 300, cgap 2 µm, width 300, necks 600 / 550 / 500 / 400 / 300 µm), alternating above and below
 at x = −2000 … 2000, with no Xmons. Instead, a 22 × 10 µm etched box (the "grounder", the full CPW width) sits on or
 beyond each resonator tail, at about the y where chip_01's claw tails are (1850, 1930, 2000, 1740, 1895 µm vs
 claw tips 1848, 1898, 1998, 1738, 1848). Labels "RES" and "1" … "5". No frequency targets in the source.
 
-**Die:** 7.5 × 7.5 mm, centred on (0, 0) → (+3750, +3750). PDK v2 die frame instead of the legacy `Marker` corners
+Die: 7.5 × 7.5 mm, centred on (0, 0) → (+3750, +3750). PDK v2 die frame instead of the legacy `Marker` corners
 and 10/0 boundary boxes.
 
-**Status:** built; XOR 0.0 µm² against the legacy PCells on every resonator, grounder and label, and on the pads
+Built; XOR 0.0 µm² against the legacy PCells on every resonator, grounder and label, and on the pads
 and feedline at the moved pad position (see below).
 
 ### Components
@@ -109,13 +109,13 @@ and feedline at the moved pad position (see below).
 Resonator common (`resParams_common`): cpw_len 5000, clength 300, cgap 2, width 300, flip False, neck 500
 (overridden), legacy defaults otherwise (gap 6, arc_length 300, ground True → shorted at the coupler, open tail).
 
-**Pads (deviation, forced):** at the legacy tips (∓2975, 0) the rounded pads reach 245 µm past the die edge, which
-the DRC reports as an *error* (`outside_chip`). As legacy-a did for chip_01 (same pads), both pads move 245 µm
+Pads (deviation, forced): at the legacy tips (∓2975, 0) the rounded pads reach 245 µm past the die edge, which
+the DRC reports as an *error* (`outside_chip`). As for chip_01 (same pads), both pads move 245 µm
 inwards and the feedline shrinks to 5460 µm. The legacy script also leaves the pads' `sim` at its default True
 (pad metal + ground ring on 1/0, a simulation drawing); the rebuild uses the fab geometry (legacy bug not
 reproduced).
 
-**Grounders:** an etched box across the full CPW width cuts the trace. On R1, R4 and R5 it lies on the tail, so the
+Grounders: an etched box across the full CPW width cuts the trace. On R1, R4 and R5 it lies on the tail, so the
 resonator's open end moves to the box and the rest of the tail is a floating stub; on R2 and R3 it lies beyond the
 tail end (just a hole in the ground plane):
 

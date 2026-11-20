@@ -6,15 +6,19 @@ rule                      severity  check
 ``dangling_port``         warning   a component port with no route or snap on it (e.g. an unused claw)
 ``no_lom``                warning   a component with ports but no LOM model (its ports stay bare nodes in the circuit)
 ``outside_chip``          error     a component box or route vertex outside the chip box
-``overlap``               warning   two component boxes overlap (snapped pairs excepted)
+``overlap``               warning   two component boxes overlap on a chip face both draw on (snapped pairs excepted; a
+                                    TSV or bump on another component only where its via or bump lands on that
+                                    component's etch)
 ``crossing``              error     two route centre lines cross on the same chip face (a CPW crossing needs an
                                     airbridge)
 ``open``/``short``        error     declared vs extracted connectivity (KQC netlist, see :mod:`.netlist`)
 ``open_conductor``        error     a route and the component port it ends on are not one piece of metal (etch between
-                                    them on the centre line, e.g. a pin whose gap runs past the pin)
+                                    them on the centre line, e.g. a pin whose gap runs past the pin), judged on the
+                                    face that route end is drawn on
 ``route_failed``          error     a route could not be built (keep-going build): it is not in the layout, with the
                                     reason
-``route_overlap``         error     two routes' *built* centre conductors overlap on the same face (meanders included)
+``route_overlap``         error     two routes' *built* centre conductors overlap on the same face (meanders included;
+                                    also two routes on one component, away from it)
 ``route_clearance``       warning   two routes' built gap etch touches (no ground strip between the two CPWs)
 ``route_self_overlap``    error     a route's built centre conductor runs over itself (nodes looping back across an
                                     earlier straight, meander turns landing on another part of the same route)
@@ -183,22 +187,28 @@ def _check(source, netlist: bool = True, keep_going: bool = False) -> DrcReport:
             )
     issues += _frame_issues(design, boxes, side["routes"], device_id_block(result))
     issues += pdk_margin_issues(design, boxes)
-    issues += _conductor_opens(result)
+    on_faces = _InstanceFaces(result)
+    issues += _conductor_opens(result, on_faces=on_faces)
     issues += _route_overlaps(result)
     names = sorted(boxes)
     for i, a in enumerate(names):
         for b in names[i + 1 :]:
             A, B = boxes[a], boxes[b]
             if A[0] < B[2] and B[0] < A[2] and A[1] < B[3] and B[1] < A[3] and frozenset({a, b}) not in snapped:
+                hit, face = on_faces.overlap(a, b)
+                if not hit:
+                    continue  # on different faces, or a TSV / bump on the other's metal
                 c = ((max(A[0], B[0]) + min(A[2], B[2])) / 2, (max(A[1], B[1]) + min(A[3], B[3])) / 2)
-                issues.append(DrcIssue("warning", "overlap", f"{a} and {b} overlap", [c], [a, b]))
+                msg = f"{a} and {b} overlap" if face is None else (
+                    f"{a} and {b} overlap: the via or bump lands on the etch ({face})")
+                issues.append(DrcIssue("warning", "overlap", msg, [c], [a, b]))
     polys = {n: [tuple(p) for p in r["polyline"]] for n, r in side["routes"].items()}
     for name, pts in polys.items():
         out = [p for p in pts if not (x0 <= p[0] <= x1 and y0 <= p[1] <= y1)]
         if out:
             issues.append(DrcIssue("error", "outside_chip", f"route {name} leaves the chip box", out[:1], [name]))
     rnames = sorted(polys)
-    faces = {n: _segment_faces(design, n, side["routes"][n]) for n in rnames}
+    faces = {n: _segment_faces(design, n, side["routes"][n], plan) for n in rnames}
     for i, a in enumerate(rnames):
         for b in rnames[i + 1 :]:
             hit = None
@@ -378,12 +388,47 @@ def pdk_margin_issues(design, boxes: dict) -> list[DrcIssue]:
     return out
 
 
-def _segment_faces(design, name: str, built: dict) -> list[str]:
-    """Chip face of each segment of a route's built polyline: the route's ``face_id`` (default ``1t1``), switched by
-    every waypoint whose ``params.face_id`` names another face, from that waypoint on (KQC ``WaveguideComposite``)."""
+def _first_face(params: dict) -> str | None:
+    """``face_ids[0]`` (a list, as KQC has it, or one face as a string), else ``face_id``, else None."""
+    ids = params.get("face_ids")
+    if isinstance(ids, str) and ids:
+        return ids
+    if isinstance(ids, (list, tuple)) and ids:
+        return str(ids[0])
+    return str(params["face_id"]) if params.get("face_id") else None
+
+
+def _route_face(design, name: str, plan=None) -> str:
+    """The chip face a route starts on: the first entry of its ``face_ids`` (KQC ``WaveguideComposite`` draws on
+    ``face_ids[0]``), else its ``face_id``, else the face it inherits from the chip (the plan's route parameters),
+    else ``1t1``."""
+    route = design.routes.get(name)
+    own = _first_face((route.params or {}) if route is not None else {})
+    if own:
+        return own
+    planned = plan.routes.get(name) if plan is not None else None
+    return _first_face((planned.params or {}) if planned is not None else {}) or "1t1"
+
+
+def _route_end_face(design, name: str, plan=None) -> str:
+    """The chip face a route ends on: its start face (:func:`_route_face`), switched by every waypoint whose
+    ``params.face_id`` names another face (KQC inserts a ``FlipChipConnectorRf`` there)."""
+    face = _route_face(design, name, plan)
+    route = design.routes.get(name)
+    for node in getattr(route, "nodes", None) or []:
+        params = getattr(node, "params", None) or {}
+        if params.get("face_id"):
+            face = str(params["face_id"])
+    return face
+
+
+def _segment_faces(design, name: str, built: dict, plan=None) -> list[str]:
+    """Chip face of each segment of a route's built polyline: the route's start face (:func:`_route_face`: its
+    ``face_ids[0]``, else ``face_id``, else the chip's face), switched by every waypoint whose ``params.face_id`` names
+    another face, from that waypoint on (KQC ``WaveguideComposite``)."""
     route = design.routes.get(name)
     poly = built.get("polyline") or []
-    face = str((route.params or {}).get("face_id", "1t1")) if route is not None else "1t1"
+    face = _route_face(design, name, plan)
     faces = [face] * max(len(poly) - 1, 0)
     if route is None:
         return faces
@@ -395,11 +440,109 @@ def _segment_faces(design, name: str, built: dict) -> list[str]:
     return faces
 
 
+# Layers of a KQC face (``kqcircuits.defaults.default_faces[face]``) that say nothing about where a part has metal or
+# etch: avoidance (KQC's ``protect_opposite_face`` draws it on the opposite face) and port texts.
+_NEUTRAL_LAYERS = frozenset({"ground_grid_avoidance", "ports"})
+# Layers of a part that goes through the substrate (a TSV) or between two chips (an indium bump on its UBM).
+_THROUGH_LAYERS = frozenset({"through_silicon_via", "through_silicon_via_avoidance", "indium_bump",
+                             "underbump_metallization"})
+_FOOTPRINT_LAYERS = ("through_silicon_via", "indium_bump", "underbump_metallization")
+
+
+class _InstanceFaces:
+    """The chip faces each component of a build draws on, read from its built cell: a face counts when the cell has
+    shapes on one of that face's layers in ``default_faces`` (avoidance and port texts left out). Components
+    without such shapes (a static cell on fab layers) have unknown faces (``None``): they meet every face, as before.
+
+    A *through* part draws only TSV, bump and UBM layers: a TSV (both faces of one chip) or a bump (``1t1`` and
+    ``2b1``). It sits under or on another component's metal on purpose; it overlaps that component only where its via
+    or bump lands on the component's etch."""
+
+    def __init__(self, result):
+        from kqcircuits.defaults import default_faces  # pylint: disable=import-outside-toplevel
+
+        self.layout = result.layout
+        self.default_faces = default_faces
+        by_info = {  # (layer, datatype) → (face, layer name); a face dict also holds its own name under "id"
+            (info.layer, info.datatype): (f, key)
+            for f, d in default_faces.items()
+            for key, info in d.items()
+            if hasattr(info, "datatype")
+        }
+        self.layer_faces = {}  # layer index → (face, layer name)
+        for li in self.layout.layer_indexes():
+            info = self.layout.get_info(li)
+            if (info.layer, info.datatype) in by_info:
+                self.layer_faces[li] = by_info[(info.layer, info.datatype)]
+        names = result.design.instances
+        self.insts = {i.property("id"): i for i in result.cell.each_inst() if i.property("id") in names}
+        self._drawn: dict[int, dict[str, set]] = {}
+        self._regions: dict[tuple, object] = {}
+
+    def drawn(self, name: str) -> dict[str, set]:
+        """``{face: names of the layers the component draws on there}`` (neutral layers left out)."""
+        inst = self.insts.get(name)
+        if inst is None:
+            return {}
+        if inst.cell_index not in self._drawn:
+            cell = self.layout.cell(inst.cell_index)
+            out: dict[str, set] = {}
+            for li, (f, key) in self.layer_faces.items():
+                if key not in _NEUTRAL_LAYERS and not cell.bbox_per_layer(li).empty():
+                    out.setdefault(f, set()).add(key)
+            self._drawn[inst.cell_index] = out
+        return self._drawn[inst.cell_index]
+
+    def faces(self, name: str) -> frozenset | None:
+        """The faces the component draws on, or None when it draws on none of KQC's face layers."""
+        return frozenset(self.drawn(name)) or None
+
+    def through(self, name: str) -> bool:
+        drawn = self.drawn(name)
+        return bool(drawn) and all(keys <= _THROUGH_LAYERS for keys in drawn.values())
+
+    def region(self, name: str, face: str, keys) -> object:
+        """The component's shapes on ``face`` on the layers ``keys`` (chip coordinates, merged)."""
+        from kqcircuits.pya_resolver import pya  # pylint: disable=import-outside-toplevel
+
+        cache = (name, face, tuple(keys))
+        if cache not in self._regions:
+            inst, region = self.insts[name], pya.Region()
+            for key in keys:
+                info = self.default_faces.get(face, {}).get(key)
+                li = self.layout.find_layer(info) if info is not None else None
+                if li is not None:
+                    region += pya.Region(self.layout.cell(inst.cell_index).begin_shapes_rec(li))
+            self._regions[cache] = region.transformed(inst.cplx_trans).merged()
+        return self._regions[cache]
+
+    def overlap(self, a: str, b: str) -> tuple[bool, str | None]:
+        """Whether two components whose boxes overlap are on top of each other: ``(flag, face)``. They are when they
+        draw on a common face (or a face is unknown), except a through part on another component: that one only where
+        its via or bump touches the other's etch (``face`` names where)."""
+        fa, fb = self.faces(a), self.faces(b)
+        common = fa & fb if fa is not None and fb is not None else None
+        if common is not None and not common:
+            return False, None  # one draws only on faces the other does not use (e.g. the two pads of a TSV)
+        ta, tb = (self.through(a), self.through(b)) if common is not None else (False, False)
+        if ta == tb:
+            return True, None
+        part, other = (a, b) if ta else (b, a)
+        for f in sorted(common):
+            hit = self.region(part, f, _FOOTPRINT_LAYERS) & self.region(other, f, ("base_metal_gap_wo_grid",))
+            if not hit.is_empty():
+                return True, f
+        return False, None
+
+
 def _route_overlaps(result) -> list[DrcIssue]:
     """Built-geometry check between routes (the ``crossing`` rule sees only sharp node polylines, not meanders).
 
     Per face, each route's centre conductor (``*_waveguide_path``) and gap etch (``*_base_metal_gap_wo_grid``) as
-    built. Pairs that share a port, or where one hangs off the other, legitimately meet and are skipped.
+    built. Pairs that share a port, or where one hangs off the other, legitimately meet and are skipped. Two routes
+    that end on one component at different ports (two resonators on one coupler, a bus and a readout on one qubit)
+    are checked everywhere except around that component (:func:`_shared_keepout`), where their ports put them side
+    by side; two routes from different chip launchers are checked everywhere.
     """
     from kqcircuits.defaults import default_layers  # pylint: disable=import-outside-toplevel
     from kqcircuits.pya_resolver import pya  # pylint: disable=import-outside-toplevel
@@ -437,21 +580,26 @@ def _route_overlaps(result) -> list[DrcIssue]:
                 pad = pya.Region(cell.begin_shapes_rec(pad_layers[f])).transformed(inst.cplx_trans).merged()
                 if not pad.is_empty():
                     pads.setdefault(name, {})[f] = pad
-    ends, hosts = {}, {}
+    ends, hosts, own = {}, {}, {}
     for name, route in design.routes.items():
-        ends[name] = {e.split(".", 1)[0] for e in (route.from_, route.to) if isinstance(e, str)}
+        own[name] = {e for e in (route.from_, route.to) if isinstance(e, str)}  # the ports it ends on
+        ends[name] = {e.split(".", 1)[0] for e in own[name]}
         hosts[name] = {e.hanger for e in (route.from_, route.to) if isinstance(e, HangerEnd)}
+    keepout = _shared_keepout(result, ends)
     out = []
     names = sorted(built)
     for a, by_face in sorted(pads.items()):  # airbridges of route a landing on another route b
         for b in names:
-            if b == a or ends[a] & ends[b]:
+            if b == a or own[a] & own[b]:
                 continue
+            near = keepout(a, b)
             for f, pad in by_face.items():
                 if f not in built[b]:
                     continue
                 path_b, gap_b = built[b][f]
                 hit = pad & (path_b + gap_b)
+                if near is not None:
+                    hit -= near
                 if not hit.is_empty():
                     c = hit.bbox().center().to_dtype(layout.dbu)
                     out.append(
@@ -466,10 +614,13 @@ def _route_overlaps(result) -> list[DrcIssue]:
                     break
     for i, a in enumerate(names):
         for b in names[i + 1 :]:
-            if ends[a] & ends[b] or b in hosts[a] or a in hosts[b]:
+            if own[a] & own[b] or b in hosts[a] or a in hosts[b]:
                 continue
-            for f in set(built[a]) & set(built[b]):
+            near = keepout(a, b)
+            for f in sorted(set(built[a]) & set(built[b])):
                 (pa, ga), (pb, gb) = built[a][f], built[b][f]
+                if near is not None:  # side by side at their common component: only what lies beyond it
+                    pa, ga, pb, gb = pa - near, ga - near, pb - near, gb - near
                 hit = pa & pb
                 if not hit.is_empty():
                     c = hit.bbox().center().to_dtype(layout.dbu)
@@ -497,6 +648,38 @@ def _route_overlaps(result) -> list[DrcIssue]:
     out += _route_self_overlaps(result, layers)
     out += _routes_over_components(result, layers, built, ends)
     return out
+
+
+def _shared_keepout(result, ends: dict):
+    """``keepout(a, b)``: for two routes that end on a common component (at different ports), that component's box
+    grown by the wider route's half width (``a/2 + b``, its nodes' tapers included), where the two leave their ports
+    side by side and may meet; None when they share no component (a chip launcher is no component: two launcher
+    routes are compared everywhere)."""
+    from kqcircuits.pya_resolver import pya  # pylint: disable=import-outside-toplevel
+
+    design, layout = result.design, result.layout
+    boxes = {i.property("id"): i.bbox() for i in result.cell.each_inst() if i.property("id") in design.instances}
+
+    def half(name: str) -> float:
+        planned = result.plan.routes.get(name)
+        params = (planned.params or {}) if planned is not None else {}
+        a, b = [float(params.get("a", 10.0))], [float(params.get("b", 6.0))]
+        for node in getattr(design.routes.get(name), "nodes", None) or []:
+            a += [float(node.a)] if getattr(node, "a", None) else []
+            b += [float(node.b)] if getattr(node, "b", None) else []
+        return max(a) / 2 + max(b)
+
+    def keepout(a: str, b: str):
+        shared = sorted((ends.get(a, set()) & ends.get(b, set())) & set(boxes))
+        if not shared:
+            return None
+        grow = int(round(max(half(a), half(b)) / layout.dbu))
+        region = pya.Region()
+        for n in shared:
+            region.insert(boxes[n].enlarged(grow, grow))
+        return region
+
+    return keepout
 
 
 def _route_width_um(result, name: str) -> float:
@@ -582,30 +765,60 @@ def _routes_over_components(result, layers: dict, built: dict, ends: dict) -> li
     return out
 
 
-def _conductor_opens(result, step: float = 1.0) -> list[DrcIssue]:
+def _conductor_opens(result, step: float = 1.0, on_faces=None) -> list[DrcIssue]:
     """Galvanic continuity where a route meets a component port (negative mask: metal = not etched).
 
     The point ``step`` µm inside the component and the point ``step`` µm along the route, both on the port's centre
     line, must lie in the same metal polygon. KQC's netlist extraction joins port *texts*, so it cannot see etch that
     separates two touching ports. Ports without a direction (junction ends), chip launchers and points that are not
     metal inside the component (nothing to judge) are skipped.
+
+    Each end is judged on the face it is drawn on: the route's start face for ``from``, its face after the last
+    ``face_id`` waypoint for ``to`` (:func:`_route_face`, :func:`_route_end_face`), with that face's
+    ``base_metal_gap_wo_grid`` etch. A route end on a face its component draws nothing on (a backside route ending on
+    a front-face pad) is an open as well.
     """
+    from kqcircuits.defaults import default_faces  # pylint: disable=import-outside-toplevel
     from kqcircuits.pya_resolver import pya  # pylint: disable=import-outside-toplevel
 
     design, layout = result.design, result.layout
     dbu = layout.dbu
-    gap = pya.Region(result.cell.begin_shapes_rec(layout.layer(pya.LayerInfo(130, 1))))  # 1t1_base_metal_gap_wo_grid
+    gaps: dict[str, object] = {}
+
+    def gap_on(face: str):
+        if face not in gaps:  # one face's etch (1t1: 130/1), read only for the faces some route end is on
+            info = default_faces.get(face, {}).get("base_metal_gap_wo_grid")
+            li = layout.find_layer(info) if info is not None else None
+            gaps[face] = pya.Region(result.cell.begin_shapes_rec(li)) if li is not None else pya.Region()
+        return gaps[face]
+
+    on_faces = on_faces or _InstanceFaces(result)
     ports = result.plan.all_ports()
     out = []
     for rname, route in design.routes.items():
         if rname in result.plan.failed:
             continue
-        for end in (route.from_, route.to):
+        for end, face in ((route.from_, _route_face(design, rname, result.plan)),
+                          (route.to, _route_end_face(design, rname, result.plan))):
             if not isinstance(end, str) or end.split(".", 1)[0] == "chip":
                 continue
             p = ports.get(end)
             if p is None or p.dir is None:
                 continue
+            drawn = on_faces.faces(end.split(".", 1)[0])
+            if drawn is not None and face not in drawn:
+                out.append(
+                    DrcIssue(
+                        "error",
+                        "open_conductor",
+                        f"route {rname} is galvanically open at {end} (the route end is on {face}, the component "
+                        f"draws only on {', '.join(sorted(drawn))})",
+                        [(p.pos.x, p.pos.y)],
+                        [end, rname],
+                    )
+                )
+                continue
+            gap = gap_on(face)
             half = (p.a or 10.0) / 2 + (p.b or 6.0) + 5 * step
             window = pya.DBox(p.pos.x - half, p.pos.y - half, p.pos.x + half, p.pos.y + half).to_itype(dbu)
             metal = (pya.Region(window) - (gap & pya.Region(window))).merged()

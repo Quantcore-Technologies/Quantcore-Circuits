@@ -6,7 +6,7 @@ Probe-pad pair of the chip_11m junction test array (legacy ``chip_11m_TestJJ16x_
 
 **Source:** Quantcore. **Category:** test_structure. **Module:** `quantcore_circuits.layouts.others.test_pads`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

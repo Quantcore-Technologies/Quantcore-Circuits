@@ -48,16 +48,16 @@ The notebook has no saved LOM output. The chip has no qubit or resonator, so its
 
 The rest of this page is the detailed spec the notebook was built from: every component, the changes made while rebuilding, and the notes.
 
-**Source:** `components/python/chip_11m_TestJJ16x_pads.py` (`create_testPad(size, secondFinger)`, writes
+Source: `components/python/chip_11m_TestJJ16x_pads.py` (`create_testPad(size, secondFinger)`, writes
 `chip_11m_jnc<size>_<secondFinger>.gds` with one cell `JX_500`; `__main__` calls `create_testPad(2.5, 0.6)`). Legacy
 QWri library, Quantcore internal. Notebook `examples/designs/legacy/chip_11m_testjj16x_pads.ipynb`.
 
-### Changes after design decisions (legacy-fix, 2026-11-03)
+### Changes made in the rebuild
 
-- **#1 junctions:** `JX` (0.5 × 0.6 µm) on the PDK junction rule (design rule #1: Nb trilayer, Δ = 1.4 meV, I_c·R_n = πΔ/2e = 2.20 mV, R_n 40–50 kΩ, qubits 4–8 GHz; PDK process `get_pdk().junction`: R_n·A 13.5 kΩ·µm², C_J 50 fF/µm², both assumed by the PDK): 45 kΩ; chip_11f's JX_500 (0.2 × 0.6 µm) 112.5 kΩ.
-- Notebook edited and its JSON rebuilt from the layout cell; **not executed** (verification policy): outputs cleared, PNGs stale until the notebook is run.
+- Junctions: `JX` (0.5 × 0.6 µm) on the PDK junction rule (Nb trilayer, Δ = 1.4 meV, I_c·R_n = πΔ/2e = 2.20 mV, R_n 40–50 kΩ, qubits 4–8 GHz; PDK process `get_pdk().junction`: R_n·A 13.5 kΩ·µm², C_J 50 fF/µm², both assumed by the PDK): 45 kΩ; chip_11f's JX_500 (0.2 × 0.6 µm) 112.5 kΩ.
+- The notebook's JSON was rebuilt from its layout cell. The notebook has not been re-run, so its outputs are cleared and its PNGs may be out of date.
 
-**What it is.** Not a full chip: the unit cell of a junction test array ("this is the unit cell which will be
+What it is: the unit cell of a junction test array, not a full chip ("this is the unit cell which will be
 scaled"; "creates the junction in-house, without the junction_creator"). One trilayer junction in a 12 × 12 µm
 exposure window: a straight finger (`JJ_finger Top`, mirrored, 1.2 µm lead) on 2/0, a bent finger (`JJ_finger
 Bottom`, 1.6 µm lead) on 4/0, two 0.2 µm HSQ boxes on 500/0, and a triangular notch cut from each finger window
@@ -66,7 +66,7 @@ never inserts them (only the junction is drawn); the pads it is meant for are pa
 library). `chip_11f_JJplacer.py` places this cell, built with `create_testPad(1.0, 0.6)`, at external coordinates
 (see `chip_11f_jjplacer.md`). The script declares the gradient layers 52/53/54 but draws none.
 
-**Buildable now?** Yes: `TrilayerJunctionCompact` (the port of `JX_500`, golden test
+Builds: yes. `TrilayerJunctionCompact` (the port of `JX_500`, golden test
 `test_trilayer_junction_compact[1.0-0.6 / 2.5-0.6]`).
 
 ### Components (legacy frame)
@@ -82,7 +82,7 @@ die centre, with the device ID `CHIP11M`.
 
 No routes, no pads. LOM: `TrilayerJunctionCompact`'s model is one JJ branch `J_JX` from `JX.j` (port `common`, the
 lead that lands on the separately patterned pad) to ground; `common` is listed as unconnected (nothing in this
-source attaches to it). Junction values from the area (0.5 × 0.6 µm², assumed Jc: to confirm). "LOM
+source attaches to it). Junction values from the area (0.5 × 0.6 µm², assumed Jc: to be confirmed). "LOM
 simulation" = the junction table (this cell, and the size-1.0 variant chip_11f places). No sim groups, no FEM jobs.
 
 ### Keep-outs

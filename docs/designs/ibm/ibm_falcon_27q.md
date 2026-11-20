@@ -1,8 +1,8 @@
 # IBM 27-qubit Falcon
 
-IBM's heavy-hex lattice cut as the 27-qubit Falcon (ibmq_montreal): fixed-frequency transmons on the vertices and edges of a hexagonal lattice, each pair coupled by a resonant bus. It is two rows of ten qubits, three bridge qubits and four spur qubits. No layout is public: IBM's device data give the graph and targets, and the layout is ours.
+IBM's heavy-hex lattice cut as the 27-qubit Falcon (ibmq_montreal): fixed-frequency transmons on the vertices and edges of a hexagonal lattice, each pair coupled by a resonant bus. It is two rows of ten qubits, three bridge qubits and four spur qubits. No layout is public; IBM's device data give the graph and targets, and the layout is ours.
 
-Build this one to see a lattice generated from a graph: a `heavy_hex(rows)` helper makes the 27 qubits and 28 edges, then the notebook places pockets, hangers on three feedlines and one λ/2 bus per edge. It is a big build (33 instances, 58 routes).
+This notebook generates a lattice from a graph: a `heavy_hex(rows)` helper makes the 27 qubits and 28 edges, then the notebook places pockets, hangers on three feedlines and one λ/2 bus per edge. It is a large build (33 instances, 58 routes).
 
 ```{image} ../../images/designs/ibm/ibm_falcon_27q.png
 :alt: The whole ibm_falcon_27q chip as the v2 notebook builds it
@@ -13,15 +13,15 @@ Build this one to see a lattice generated from a graph: a `heavy_hex(rows)` help
 
 | | |
 |---|---|
-| Notebook | `examples/designs/ibm/ibm_falcon_27q.ipynb` (the one-cell version before the rewrite: `ibm_falcon_27q.v1.ipynb`) |
+| Notebook | `examples/designs/ibm/ibm_falcon_27q.ipynb` (an older one-cell version is kept as `ibm_falcon_27q.v1.ipynb`) |
 | Source | IBM published device data (ibmq_montreal coupling map); Chamberland et al., PRX 10, 011022 (2020); no public layout |
 | Chip | 27 × 15.2 mm Quantcore die, sapphire 650 µm (εr 10.25) |
 | On the chip | 27 pocket transmons · 27 λ/4 hanger readouts · 28 λ/2 buses · 3 feedlines · 6 bond pads |
-| Builds today | yes: layout run 2026-11-19, 28 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 28 s) |
 
 ## How the notebook builds it
 
-Each Design segment is one cell with one picture of the chip so far (see [the notebook template](../notebook-template.md)).
+Each Design segment is one cell with a picture of the chip so far (see [the notebook template](../notebook-template.md)).
 
 ```{image} ../../images/designs/ibm/ibm_falcon_27q_steps.png
 :alt: The layout segments of ibm_falcon_27q
@@ -39,7 +39,7 @@ Each Design segment is one cell with one picture of the chip so far (see [the no
 
 ## LOM estimates
 
-Numbers are from the `.v1` notebook's saved output (the 27-qubit chip was not re-run for the docs): QuCat normal modes with QuTiP dressed values, each qubit solved with its readout and the feedline. IBM's measured values are left out.
+Numbers are from the saved output of the `.v1` notebook (this chip was not re-run for these docs): QuCat normal modes with QuTiP dressed values, each qubit solved with its readout and the feedline. IBM's measured values are left out.
 
 | group | qubit | f_q (GHz) | α (MHz) | resonator | f_r (GHz) | κ (MHz) | χ (MHz) |
 |---|---|---|---|---|---|---|---|
@@ -104,11 +104,11 @@ Numbers are from the `.v1` notebook's saved output (the 27-qubit chip was not re
 
 The pair table lists the exchange coupling J and the static ZZ for the 29 qubit-bus-qubit edges. The edges Q22-Q25 (476 kHz), Q2-Q3 (1.08 MHz), Q1-Q2 (-1.81 MHz) and Q8-Q9 (2.02 MHz) are frequency collisions: the PDK's α of about -145 MHz puts IBM's neighbour detunings near |α|.
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates (component formulas and calibration), not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
-The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
+The rest of this page is the detailed spec the notebook was built from, with every component, port, route and length.
 
 **Sources.**
 - **Device data (primary):** Qiskit `FakeMontreal` backend files `conf_montreal.json` / `props_montreal.json` from
@@ -138,7 +138,7 @@ Falcon = `heavy_hex([(1, 10), (0, 9)])`; `heavy_hex([(0, 13)] + [(0, 14)] * 5 + 
 **Chip.** 27.0 × 15.2 mm, Quantcore die frame (QCT), device ID `HHX27`; sapphire 650 µm, εr 10.25; 10/6 µm CPW;
 column pitch 2200 µm, level pitch 2400 µm. Junctions: Quantcore trilayer, L_J per qubit 6.49–7.17 nH (R_n 43–48 kΩ).
 
-**Status.** Buildable now. Notebook `examples/designs/ibm/ibm_falcon_27q.ipynb`.
+**Notebook.** `examples/designs/ibm/ibm_falcon_27q.ipynb`.
 
 ### Components and routes
 
@@ -165,7 +165,7 @@ Planar single die (Falcon: qubit die + interposer): readout on three feedlines w
 (drive through the feedlines), no Purcell filters. α about half of IBM's (PDK junction window). Bus frequencies are
 not published: assumed plan.
 
-**Frequency collisions (finding).** IBM's frequency pattern assumes α ≈ −330 MHz. With the PDK's α ≈ −145 MHz,
-neighbour detunings of 0.1–0.2 GHz sit near |Δ| ≈ |α| and the static ZZ explodes on six edges: Q8–Q9 1.83 MHz,
+**Frequency collisions.** IBM's frequency pattern assumes α ≈ −330 MHz. With the PDK's α ≈ −145 MHz,
+neighbour detunings of 0.1–0.2 GHz sit near |Δ| ≈ |α| and the static ZZ becomes large on six edges: Q8–Q9 1.83 MHz,
 Q1–Q2 −1.71 MHz, Q2–Q3 0.93 MHz, Q22–Q25 0.40 MHz, Q24–Q25 0.29 MHz, Q7–Q10 −0.23 MHz. A Quantcore heavy-hex chip
 needs Chamberland §II C's allocation redone for its α, or a junction window that reaches larger α.

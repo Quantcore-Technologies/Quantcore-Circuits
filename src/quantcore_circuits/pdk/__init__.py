@@ -37,9 +37,9 @@ fab layer  source                                            meaning
 * the die frame: L-shaped dicing markers and the 3×3 alignment grids (:class:`DieFrame`); the device ID is optional
   (edge centres → beside the feedline pads, 50 µm gap → slid along the left/right edges; omitted if nowhere free);
 * the brand text is ``"QCT"`` (:attr:`Pdk.brand`) wherever a KQC chip frame draws one;
-* **fab export only** (never in simulation exports): ground **cheese** in a band around the components
-  (:class:`CheeseRule`: 3/0 grown by ``rows`` grid pitches, 5 µm squares, 20 µm gaps, none within 4 µm of the 3/0
-  keep-outs; every hole is written on 1/0 *and* on 3/0, 2026-11-17) and
+* **fab export only** (never in simulation exports): ground **cheese** in a band around the components, or over the
+  whole die for chip parameter ``cheese: "chip"`` (:class:`CheeseRule`: 3/0 grown by ``rows`` grid pitches, 5 µm
+  squares, 20 µm gaps, none within 4 µm of the 3/0 keep-outs; every hole is written on 1/0 *and* on 3/0) and
   **rounded corners** with a radius tied to each polygon's shortest dimension (:class:`CornerRounding`).
 
 The die frame (:class:`DieFrame`, ``components/pdk_geometry_summary.md``) is drawn on every chip by default.
@@ -104,6 +104,9 @@ class Stack:
     upper_box_height: float = 1000.0
     lower_box_height: float = 0.0
     london_penetration_depth_um: float = 0.09  # Nb
+    # flip-chip vacuum gap 1t1 → 2b1 (bump height), used by multi-face simulation exports only: KQC's default
+    # chip_distance, the value the Flipmon LOM assumes too; not a confirmed Quantcore process value
+    chip_distance: float = 8.0
 
 
 @dataclass(frozen=True)
@@ -153,7 +156,9 @@ class KeepoutRule:
     ``other_margin`` 5 → 9, and the keep-outs the cells draw themselves (``qcc_keepout``, legacy PCells) grow by ``own_grow`` = 4 (applied once in
     :func:`~quantcore_circuits.layouts.wafers.fab_export.keepout_region`, not per cell).
 
-    Whole chips placed as one cell (e.g. a KQC chip replica) are opened and their parts treated as above.
+    Whole chips placed as one cell (e.g. a KQC chip replica) are opened and their parts treated as above; a KQC chip
+    cell with no sub-cells (its geometry drawn into the chip cell itself), or any cell over more than half the die,
+    gets its etch grown by ``other_margin``, not its bounding box.
 
     Gaps the union leaves between neighbouring keep-outs are filled when smaller than ``fill_holes_um2``; larger
     enclosed areas — the ground inside a closed bus ring — stay outside 3/0 (they are ground, not a feature), so the
@@ -178,11 +183,20 @@ class CheeseRule:
     cheese is on both fab layers 1/0 and 3/0; the clearance is to the keep-outs alone). Simulation exports never get
     cheese.
 
-    Where it is drawn (2026-11-03): in the chip build itself, into KQC's ``ground_grid`` layer, so layouts and
-    snapshots show it (chip parameter ``cheese``: ``"auto"`` default, ``"pdk"``, ``"original"``). **The original
-    design wins**: a design that carries its own cheese (KQC ``with_grid``, or a static cell with its holes — mark it
-    ``cheese: "original"``) keeps it and gets no PDK band; a design without any gets this band. The fab export adds
-    the band only to a build that has no cheese at all.
+    ``fill="chip"`` puts the same squares over the whole design area instead of a band (still ``clearance`` from 3/0,
+    clear of the frame markers and the device ID).
+
+    Holes go in the ground plane only: metal connected to the die edge, or an isolated metal piece of at least
+    ``ground_island_mm2`` (ground enclosed by a closed bus ring or a feedline loop). Smaller isolated pieces are pads
+    and islands (a transmon's pads, a probe pad) and get none. The largest such pads in the examples are 1.0 mm²
+    (1.2 × 0.84 mm transmon pads), the smallest enclosed ground 1.6 mm² (a four-qubit bus ring).
+
+    Where it is drawn: in the chip build itself, into KQC's ``ground_grid`` layer, so layouts and snapshots show it.
+    Chip parameter ``cheese``: ``"auto"`` (default), ``"pdk"`` (the band), ``"chip"`` (the whole die at this density;
+    a KQC ``with_grid`` is switched off), ``"original"`` (nothing added), or a dict (an original design's own rule).
+    **The original design wins** under ``"auto"``: a design that carries its own cheese (KQC ``with_grid``, or a
+    static cell with its holes, marked ``cheese: "original"``) keeps it and gets no PDK band; a design without any
+    gets this band. The fab export adds the band only to a build that has no cheese at all.
     """
 
     size: float = 5.0
@@ -190,10 +204,19 @@ class CheeseRule:
     rows: int = 3
     clearance: float = 4.0  # no hole closer than this to 3/0 (2026-11-17)
     layer: str = "M1"
+    fill: str = "band"  # "band": ``rows`` pitches around 3/0; "chip": the whole design area (``rows`` unused)
+    ground_island_mm2: float = 1.5  # an isolated metal piece this large is ground (gets cheese), smaller is a pad
+
+    def __post_init__(self):
+        if self.fill not in CHEESE_FILLS:
+            raise ValueError(f"CheeseRule.fill must be one of {CHEESE_FILLS}, not {self.fill!r}")
 
     @property
     def pitch(self) -> float:
         return self.size + self.gap
+
+
+CHEESE_FILLS = ("band", "chip")
 
 
 @dataclass(frozen=True)

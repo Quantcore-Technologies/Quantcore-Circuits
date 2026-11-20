@@ -6,7 +6,7 @@ A single configurable circle.
 
 **Source:** Metal (Qiskit Metal). **Category:** shape. **Module:** `qiskit_metal.qlibrary.sample_shapes.circle_raster`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

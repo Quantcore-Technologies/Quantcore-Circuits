@@ -19,7 +19,15 @@ from kqcircuits.pya_resolver import pya
 from quantcore_circuits.design.schema import CHIP, Design, FreeEnd, HangerEnd, split_port_ref
 from quantcore_circuits.layouts.ports import Port, check_cell, direction_vector
 from quantcore_circuits.layouts.registry import cell_ref, create_cell, default_params, element_cell_ports, resolve_cell
-from quantcore_circuits.route.router import RouteEnd, RoutePlan, RoutingError, fix_length, plan_route
+from quantcore_circuits.route.router import (
+    RouteEnd,
+    RoutePlan,
+    RoutingError,
+    fit_tapers,
+    fix_length,
+    kqc_nodes,
+    plan_route,
+)
 from quantcore_circuits.route.waveguide import waveguide_class
 
 
@@ -131,6 +139,8 @@ def chip_parameters(design: Design) -> dict:
     params.update(design.chip.params)
     if isinstance(params.get("cheese"), dict):  # a design-chosen cheese rule: the plan carries it (cheese_spec)
         params["cheese"] = "pdk"
+    if params.get("with_grid") and cheese_mode(design) == "chip":
+        params["with_grid"] = False  # cheese "chip": the PDK fills the die instead of KQC's own grid
     if die_frame(design) is not None:
         params.setdefault("frames_enabled", [])  # the PDK die frame replaces KQC's chip frame
     return params
@@ -160,36 +170,55 @@ def has_own_cheese(design: Design) -> bool:
     return any(bool((inst.params or {}).get("with_grid")) for inst in design.instances.values())
 
 
-def pdk_cheese(design: Design) -> bool:
-    """Whether the build draws the PDK band cheese (design rule, 2026-11-03: the original design wins).
+def cheese_mode(design: Design) -> str:
+    """The cheese a build draws: ``"band"`` (the PDK band), ``"chip"`` (the PDK squares over the whole die),
+    ``"rule"`` (an original design's own rule, a dict), ``"kqc"`` (KQC's own ``with_grid`` grid, unchanged) or
+    ``"none"``.
 
-    Chip parameter ``cheese``: ``"auto"`` (default) — the band unless the design has its own cheese
-    (:func:`has_own_cheese`); ``"pdk"`` — the band always; ``"original"`` (or ``False``) — never (the design's own
-    cheese, e.g. inside a static cell, or none); a dict — the original design's cheese *rule*, drawn instead of the
-    PDK band (:func:`cheese_spec`)."""
+    Chip parameter ``cheese``:
+
+    * ``"auto"`` (default): the band, unless the design has its own cheese (:func:`has_own_cheese`: KQC's
+      ``with_grid`` on the chip or on a chip-sized cell), which wins;
+    * ``"pdk"`` (or ``True``): the band;
+    * ``"chip"``: the PDK squares over the whole die (a KQC ``with_grid`` is switched off: the PDK fill replaces it);
+    * ``"original"`` (or ``False``): nothing added (KQC's own grid if ``with_grid`` is set, a static cell's own holes,
+      or none);
+    * a dict: an original design's cheese rule (:func:`cheese_spec`).
+    """
     mode = design.chip.params.get("cheese", "auto")
     if isinstance(mode, dict):
-        return True
-    if mode in (False, "original", "none", "off"):
-        return False
+        return "rule"
+    if mode == "chip":
+        return "chip"
     if mode in (True, "pdk", "on"):
-        return True
-    return not has_own_cheese(design)
+        return "band"
+    if mode in (False, "original", "none", "off") or has_own_cheese(design):
+        return "kqc" if has_own_cheese(design) else "none"
+    return "band"
+
+
+def pdk_cheese(design: Design) -> bool:
+    """Whether the build draws PDK cheese (the band, the whole-die fill or a design's own rule; see
+    :func:`cheese_mode`)."""
+    return cheese_mode(design) in ("band", "chip", "rule")
 
 
 def cheese_spec(design: Design) -> dict | None:
     """What the build draws as cheese: ``{"pdk", "rule": asdict(CheeseRule), "edge"}`` or None (:func:`pdk_cheese`).
 
-    ``chip.params.cheese`` as a dict reproduces an original design's own cheese rule (the original wins): any
-    :class:`~quantcore_circuits.pdk.CheeseRule` field (``size``, ``gap``, ``rows``, ``clearance``) over the PDK's,
-    plus ``edge`` (µm): no holes within that distance of the die edge. A whole-area cheese like Quantum Metal's GDS
-    renderer (25 µm squares on a 100 µm pitch, 25 µm from all geometry, 200 µm from the edge) is
+    The whole-die fill (:func:`cheese_mode` ``"chip"``) is the PDK rule with ``fill="chip"``. ``chip.params.cheese``
+    as a dict reproduces an original design's own cheese rule: any :class:`~quantcore_circuits.pdk.CheeseRule` field
+    (``size``, ``gap``, ``rows``, ``clearance``, ``fill``) over the PDK's, plus ``edge`` (µm): no holes within that
+    distance of the die edge. A whole-area cheese like Quantum Metal's GDS renderer (25 µm squares on a 100 µm
+    pitch, 25 µm from all geometry, 200 µm from the edge) is
     ``{"size": 25, "gap": 75, "rows": 1000, "clearance": 25, "edge": 200}``."""
     from quantcore_circuits.pdk import CheeseRule, get_pdk  # pylint: disable=import-outside-toplevel
 
     if not pdk_cheese(design):
         return None
     rule = asdict(get_pdk(design.pdk).cheese)
+    if cheese_mode(design) == "chip":
+        rule["fill"] = "chip"
     mode = design.chip.params.get("cheese")
     edge = None
     if isinstance(mode, dict):
@@ -577,18 +606,41 @@ def _plan_one_route(plan: BuildPlan, scratch, name: str, route, inherited: dict,
     end = _route_end(plan, route.to, a_r, b_r, r_r)
     rplan = plan_route(name, route, start, end, route_defaults)
     rplan.params = {**{k: v for k, v in inherited.items() if k not in rplan.params}, **rplan.params}
+    _route_faces(plan, name, route, rplan.params)
 
     def measure(p):
         cls = waveguide_class(p.nodes)  # per-corner radii → WaveguideCompositeCorners
-        cell = create_cell(scratch, cls, what=f"route {name}", nodes=p.nodes, **p.params)
+        cell = create_cell(scratch, cls, what=f"route {name}", nodes=kqc_nodes(p.nodes), **p.params)
         return cell.length()
 
+    rplan = fit_tapers(rplan, measure)  # a taper too long for the straight after its node ends at the node
     if rplan.target_length is not None:
         rplan = fix_length(rplan, measure, route.meander_segment, route.meanders, direction=route.meander_direction)
     else:
         rplan.length = measure(rplan)
     rplan.joins = _joins(plan, route)
     return rplan
+
+
+def _route_faces(plan: BuildPlan, name: str, route, params: dict) -> None:
+    """Draw a route on the face its end ports record (``Port.face``: TSV / bump transitions; other ports record
+    none and change nothing). Without its own ``face_ids`` the route takes its start port's face, else its end port's
+    when no waypoint changes face (KQC ``face_id``); a route whose first or last face is not the face of the port it
+    starts or ends on raises."""
+    faces = [plan.port(e).face if isinstance(e, str) else None for e in (route.from_, route.to)]
+    if not any(faces):
+        return
+    switches = [str(w.params["face_id"]) for w in route.waypoints() if "face_id" in (w.params or {})]
+    face = faces[0] or (faces[1] if not switches else None)
+    current = list(params.get("face_ids") or [])
+    if face and "face_ids" not in (route.params or {}) and (not current or current[0] != face):
+        params["face_ids"] = [face] + [f for f in current if f != face]
+    first = str((params.get("face_ids") or ["1t1"])[0])
+    for which, port, port_face, at in (("starts", route.from_, faces[0], first),
+                                       ("ends", route.to, faces[1], switches[-1] if switches else first)):
+        if port_face and port_face != at:
+            raise RoutingError(f"route {name} {which} on face {at} but {port} is on face {port_face}: set the "
+                               f"route's face_ids (or a waypoint face_id) to {port_face}")
 
 
 def _joins(plan: BuildPlan, route) -> list:

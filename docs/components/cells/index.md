@@ -2,7 +2,7 @@
 
 # Component reference
 
-143 cells from the Quantcore, KQC and Metal libraries (chips and wafers are not listed). Each page shows the pins first, then the parameters, the LOM model and how to place the cell. See also the [catalog](../CATALOG.md), the [duplicates decisions](../DUPLICATES.md) and the [migration table](../MIGRATION.md).
+145 cells from the Quantcore, KQC and Metal libraries (chips and wafers are not listed). Each page shows the pins first, then the parameters, the LOM model and how to place the cell. See also the [catalog](../CATALOG.md).
 
 ## What a pin is
 
@@ -37,6 +37,7 @@ CpweQuarterWaveResonator
 CpweTaper
 CpwResonator
 CpwSegment
+CpwTsvTransition
 CrossMarker
 DicingMarker
 EbeamMarker
@@ -57,6 +58,7 @@ LumpedJpa
 NeckTermination
 PadCoupler
 ProbePadPair
+QcFlipChipConnectorRf
 QuantcoreJunction
 QuantcoreSquid
 QubitResonator
@@ -347,8 +349,10 @@ metal_TunableCoupler02
 
 | cell | source | pins | image | description |
 |---|---|---|---|---|
+| [`CpwTsvTransition`](CpwTsvTransition.md) | Quantcore | 2 | ![](../../images/components/thumbs/CpwTsvTransition.png) | CPW transition through one chip: a pad on each face, joined by signal TSVs, with ground TSVs around them. |
+| [`QcFlipChipConnectorRf`](QcFlipChipConnectorRf.md) | Quantcore | 2 | ![](../../images/components/thumbs/QcFlipChipConnectorRf.png) | KQC's flip-chip bump transition (FlipChipConnectorRf) with a bump size and named ports a and b. |
 | [`FlipChipConnectorDc`](FlipChipConnectorDc.md) | KQC | 0 | ![](../../images/components/thumbs/FlipChipConnectorDc.png) | PCell declaration for an inter-chip dc connector. |
-| [`FlipChipConnectorRf`](FlipChipConnectorRf.md) | KQC | 0 | ![](../../images/components/thumbs/FlipChipConnectorRf.png) | PCell declaration for an inter-chip rf connector. |
+| [`FlipChipConnectorRf`](FlipChipConnectorRf.md) | KQC | 2 | ![](../../images/components/thumbs/FlipChipConnectorRf.png) | PCell declaration for an inter-chip rf connector. |
 | [`TsvStandard`](TsvStandard.md) | KQC | 0 | ![](../../images/components/thumbs/TsvStandard.png) | Connector between faces of two sides of a substrate. |
 
 ## Shape

@@ -6,7 +6,7 @@ Series chain of ``cells`` trilayer junctions along +x (4WM JTWPA; twpa-sim ``jtw
 
 **Source:** Quantcore. **Category:** waveguide. **Module:** `quantcore_circuits.layouts.others.amplifiers`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 
@@ -111,8 +111,6 @@ Nodes: `n0`, `n1`, `n2`, `n3`, `n4`, `n5`, `n6`, `n7`, `n8`, `n9`, `n10`, `n11`,
 ## Simulation export notes
 
 - C7: C-matrix nets without a design label (warning) (status: fixed; fix in sim_tools/builder.py (_cell_probes, label_unnamed); layouts/others/amplifiers.py (JtwpaChain.qcc_probes))
-
-Details: [SIM_EXPORT_AUDIT](../SIM_EXPORT_AUDIT.md).
 
 ## How to use
 

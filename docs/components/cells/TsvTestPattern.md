@@ -6,7 +6,7 @@ PCell declaration for TSV test structures which resembles a TSV fencing for a CP
 
 **Source:** KQC (KQCircuits). **Category:** test_structure. **Module:** `kqcircuits.test_structures.tsv_test_pattern`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

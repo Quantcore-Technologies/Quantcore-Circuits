@@ -6,7 +6,7 @@ Meandered CPW (legacy ``cpwe.meander_line``; with ``lead`` > 0 it is legacy ``cp
 
 **Source:** Quantcore. **Category:** waveguide. **Module:** `quantcore_circuits.layouts.others.cpwe`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

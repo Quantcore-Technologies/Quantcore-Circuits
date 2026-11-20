@@ -6,7 +6,7 @@
 
 **Source:** Quantcore. **Category:** coupler. **Module:** `quantcore_circuits.layouts.others.qpdk_cells`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 
@@ -56,8 +56,6 @@ Nodes: `o1`, `o2`, `o3`.
 ## Simulation export notes
 
 - ctx: scratch-context routing fallback (not an export issue) (status: context)
-
-Details: [SIM_EXPORT_AUDIT](../SIM_EXPORT_AUDIT.md).
 
 ## How to use
 

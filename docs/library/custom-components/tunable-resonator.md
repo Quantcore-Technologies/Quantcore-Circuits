@@ -1,7 +1,7 @@
 # A tunable resonator
 
 A tunable resonator is a lambda/4 CPW resonator whose shorted end goes to ground through a chain of SQUIDs. A flux
-through the SQUID loops raises the array inductance, which lowers the resonator frequency. You need one when a
+through the SQUID loops raises the array inductance, which lowers the resonator frequency. Use one when a
 resonator has to be moved after fabrication. This page builds the component in steps: the meander, the SQUID array
 from Quantcore trilayer junctions, the pins, the LOM model with its flux dependence, and a chip with the resonator
 hanging on a feedline.
@@ -183,7 +183,7 @@ shorted end`. The resonator is a lambda/4 line of 6496 µm equivalent length wit
 ```
 
 The frequency falls as |Φ| grows, from 4.83 GHz at zero flux to 3.86 GHz at 0.3 Φ0. The 1 nH per SQUID is the smallest
-inductance the PDK junction rule can draw, so this array is a strong tuner. Use a shorter `length` for a higher
+inductance the PDK junction rule can draw, so this array tunes strongly. Use a shorter `length` for a higher
 starting frequency, or more junctions of a smaller L_J0 for a smaller swing. These are lumped-model estimates
 (component formulas and calibration), not FEM results; see [the LOM page](../lom.md) for how far to trust them. The
 mutual inductance of the flux line to the loops is not modelled: the flux is a design value.

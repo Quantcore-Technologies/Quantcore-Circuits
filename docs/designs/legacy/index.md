@@ -1,6 +1,6 @@
 # Legacy designs
 
-These are Quantcore's own earlier chips: test chips, resonator chips and small qubit chips from the in-house QWri library and from Qiskit Metal design notebooks. Each page is a spec rebuilt on the Quantcore PDK (junctions follow the PDK rule). Each page now opens like the other design pages (what the chip is, a whole-chip picture, an at-a-glance table, zooms and the saved LOM estimates) and keeps the full spec below it. The notebooks were not rewritten in the v2 form. "Builds" says whether the saved design JSON rebuilt without error on 2026-11-19 (the notebooks were not re-run). Chip 01 also exists as a 4 × 4 wafer tiling (30 × 30 mm).
+These are Quantcore's own earlier chips: test chips, resonator chips and small qubit chips from the in-house QWri library and from Qiskit Metal design notebooks. Each page is a spec rebuilt on the Quantcore PDK (junctions follow the PDK rule). It opens with what the chip is, a whole-chip picture, an at-a-glance table, zooms and the saved LOM estimates, and keeps the full spec below. "Builds" says whether the saved design JSON rebuilt without error on 2026-11-19 (the notebooks were not re-run). Chip 01 also exists as a 4 × 4 wafer tiling (30 × 30 mm).
 
 | Page | What it is | Qubits | Resonators | Chip size | Builds |
 |---|---|---|---|---|---|

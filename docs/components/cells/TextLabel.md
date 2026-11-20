@@ -6,7 +6,7 @@ Text etched into the ground (legacy chips 01–06: ``TextGenerator.default_gener
 
 **Source:** Quantcore. **Category:** shape. **Module:** `quantcore_circuits.layouts.others.shapes`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

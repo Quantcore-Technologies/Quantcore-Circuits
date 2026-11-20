@@ -6,7 +6,7 @@ The PCell declaration for an airbridge test structure for four-point DC measurem
 
 **Source:** KQC (KQCircuits). **Category:** test_structure. **Module:** `kqcircuits.test_structures.airbridge_dc`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

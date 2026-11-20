@@ -71,24 +71,24 @@ The notebook's saved outputs hold no LOM run (its LOM cells were not executed), 
 
 The rest of this page is the detailed spec the notebook was built from: components, positions, parameters and what changed from the legacy script.
 
-**Source:** `components/python/chip_02_creator.py` (`create_chip(size)`, writes `chip_02_<size>.gds`; no caller in
+Source: `components/python/chip_02_creator.py` (`create_chip(size)`, writes `chip_02_<size>.gds`; no caller in
 the library, script default `SCALE` = 1.0). Legacy QWri library, Quantcore internal. Notebook
 `examples/designs/legacy/chip_02.ipynb` (JS = 1.0).
 
-### Changes after design decisions (legacy-fix, 2026-11-03)
+### Changes made in the rebuild
 
-- **#8 claws — corrected:** every qubit resonator now ends without a gap cap (`ground=False`, the legacy `Coupled Resonator`'s "xmon connector" mode) and its Xmon is snapped with the claw-tail tip onto that end (`snap="claw_n", to="Ri.end"`): galvanic, the claw is the λ/4's open end (as in chips 05/10a). Each Xmon keeps x and rotation and moves along the tail axis (table after the notebook's layout cell). `claw_tail_gap` = legacy `cap_spacing` (6 µm) via `L.xmon`.
-- **#9 pads — repositioned:** 345 µm inwards of the legacy tips (∓2975 → ∓2630, feedline 5950 → 5260 µm): the rounded pad end on the design-area edge, 100 µm inside the 7.5 mm die, clear of the dicing lane and corner markers.
-- **#1 junctions:** `Quantcore Junction` sized by the PDK junction rule (design rule #1: Nb trilayer, Δ = 1.4 meV, I_c·R_n = πΔ/2e = 2.20 mV, R_n 40–50 kΩ, qubits 4–8 GHz; PDK process `get_pdk().junction`: R_n·A 13.5 kΩ·µm², C_J 50 fF/µm², both assumed by the PDK) (JS 1.0 → 45 kΩ); AVA test pads keep legacy fingers (PDK process). LOM: f_q ≈ 6.52 GHz, f_r 5.71–7.05 GHz; **Q4/R4 (6.60 / 6.48 GHz) hybridised** — design rule (R_n per qubit or lengths).
-- Notebook edited and its JSON rebuilt from the layout cell; **not executed** (verification policy): outputs cleared, PNGs stale until the notebook is run.
+- Claws, corrected: every qubit resonator now ends without a gap cap (`ground=False`, the legacy `Coupled Resonator`'s "xmon connector" mode) and its Xmon is snapped with the claw-tail tip onto that end (`snap="claw_n", to="Ri.end"`): galvanic, the claw is the λ/4's open end (as in chips 05/10a). Each Xmon keeps x and rotation and moves along the tail axis (table after the notebook's layout cell). `claw_tail_gap` = legacy `cap_spacing` (6 µm) via `L.xmon`.
+- Pads: moved 345 µm inwards of the legacy tips (∓2975 → ∓2630, feedline 5950 → 5260 µm): the rounded pad end on the design-area edge, 100 µm inside the 7.5 mm die, clear of the dicing lane and corner markers.
+- Junctions: `Quantcore Junction` sized by the PDK junction rule (Nb trilayer, Δ = 1.4 meV, I_c·R_n = πΔ/2e = 2.20 mV, R_n 40–50 kΩ, qubits 4–8 GHz; PDK process `get_pdk().junction`: R_n·A 13.5 kΩ·µm², C_J 50 fF/µm², both assumed by the PDK) (JS 1.0 → 45 kΩ); AVA test pads keep legacy fingers (PDK process). LOM: f_q ≈ 6.52 GHz, f_r 5.71–7.05 GHz; Q4/R4 (6.60 / 6.48 GHz) hybridised (this depends on R_n per qubit and the lengths).
+- The notebook's JSON was rebuilt from its layout cell. The notebook has not been re-run, so its outputs are cleared and its PNGs may be out of date.
 
-**What it is.** chip_01_creator (spec `chip_01.md`: frame, layers, cell mapping, pads, CLEARER, labels, LOM structure
+What it is: chip_01_creator (spec `chip_01.md`: frame, layers, cell mapping, pads, CLEARER, labels, LOM structure
 are the same) with five different resonator lengths at a common 500 µm neck, re-positioned Xmons and nine AVA test
 pads. 7.5 × 7.5 mm die centred on (0, 0) → Designer (x + 3750, y + 3750); PDK v2 die frame. Unlike
 chip_01_creator, the layer-10 outline and the four 500 µm pad boxes at (±3350, ±3350) are drawn (replaced by the
 PDK frame's 100/0 boundary).
 
-**Buildable now?** Yes (all cells ported, LOM models present). Open: the DRC netlist check reports the five `wire`
+Builds: yes (all cells ported, LOM models present). Open: the DRC netlist check reports the five `wire`
 couplings as `open` (request); the junction windows are not cleared (components request); labels MISSING.
 
 ### Components (legacy frame)
@@ -99,7 +99,7 @@ couplings as `open` (request); the junction windows are not cleared (components 
 | PL, PR | Connector Pad → `ConnectorPad` | 275 × 300, taper 300, trace 10/6, round; `sim` default True (legacy bug, fab used) | (∓2975, 0) → (∓2730, 0), snapped to FL | 270° / 90° |
 | R1 … R5 | Coupled Resonator → `CoupledResonator` | cpw_len 5050 / 4850 / 4660 / 4330 / 4000; neck 500; clength 300, cgap 2, width 300, flip False | (−2000, 26), (−1000, −26), (0, 26), (1000, −26), (2000, 26) | mirror True above / False below |
 | Q1 … Q5 | Xmon Cross → `Xmon` | handle 1, thickness 30, width 300, spacing 18, da 3, cap_spacing 6 (see chip_01) | (−2000, 2270), (−1000, −2100), (0, 1910), (1000, −1990), (2000, 1660) | 180° above / 0° below |
-| junctions Q1, Q2, Q4, Q5 | `JUNC` (`junction_creator.create_junction`, **missing**) → `Xmon(junction_type="Trilayer Junction")` | default fingers; LOM: 0.26 × 0.2 (AVA pad, assumed) | (x, y_q ± 159) | mirror below |
+| junctions Q1, Q2, Q4, Q5 | `JUNC` (`junction_creator.create_junction`, missing) → `Xmon(junction_type="Trilayer Junction")` | default fingers; LOM: 0.26 × 0.2 (AVA pad, assumed) | (x, y_q ± 159) | mirror below |
 | Q3 | no junction (`res_fixed`) → `junction_type="No Squid"` | — | (0, 1910) | 180° |
 | CLEARER | 30 × 18 µm cut from 1/0 at (x, y_q ± 159) | MISSING (Xmon keeps the gap etched; requested) | | |
 | TP1 | `testPad_AVAQUS` (`TESTAVA`) → `JunctionTestPads(**legacy_test_pad_params("testPad_AVAQUS", 1.0))` | 200 × 300 pads, label "200NM" | (3000, −1500) | 0 |
@@ -117,7 +117,7 @@ couplings as `open` (request); the junction windows are not cleared (components 
 | R5/Q5 | 1621.9 | 1408 | overlaps 214 µm |
 
 Rebuild: geometry as drawn; LOM joins each tail to its claw (`d.couple("W_Qi", "Qi.claw_n", "Ri.end", wire=True)`),
-the intended circuit. To confirm.
+the intended circuit. To be confirmed.
 
 ### LOM node structure
 
@@ -127,7 +127,7 @@ the coupler) = `Qi.claw_n` ─ C_g ─ `Qi` island (C, JJ to ground; Q3 without 
 
 ### Targets
 
-None stated (the length sweep spans ≈ 6.3–8 GHz bare). Junctions: assumed Jc (to confirm).
+None stated (the length sweep spans ≈ 6.3–8 GHz bare). Junctions: assumed Jc (to be confirmed).
 
 ### Simplifications
 

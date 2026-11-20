@@ -4,7 +4,7 @@ One pocket transmon with a meandered λ/4 readout resonator, hanging off a strai
 through a coupled-line tee. It is the Qiskit Metal "A.1" full-design example (Apache-2.0, © IBM and contributors),
 which itself adapts the SQDMetal benchmark devices. The Quantcore rebuild is distributed under GPL-3.0.
 
-Build this one first to see the smallest complete qubit chip: a qubit, a resonator that couples to a feedline, and the
+Build this one first. It is the smallest complete qubit chip, with a qubit, a resonator coupled to a feedline and the
 bond pads that carry the signal in and out. It shows how a Metal component is placed through the `metal:` wrapper and
 how the PDK moves the bond pads to its 100 µm edge rule.
 
@@ -17,11 +17,11 @@ how the PDK moves the bond pads to its 100 µm edge rule.
 
 | | |
 |---|---|
-| Notebook | `examples/designs/metal/a1_transmon_readout.ipynb` (the one-cell version before the rewrite: `a1_transmon_readout.v1.ipynb`) |
+| Notebook | `examples/designs/metal/a1_transmon_readout.ipynb` (an older one-cell version is kept as `a1_transmon_readout.v1.ipynb`) |
 | Source | Qiskit Metal `A.1-Transmon-with-readout-resonator.ipynb`, © IBM and contributors, Apache-2.0 |
 | Chip | 9 × 6 mm (the source's size, larger than the 7.5 mm Quantcore die), CPW 10 / 6 µm |
 | On the chip | 1 pocket transmon · 1 λ/4 readout (7 mm) · 1 coupled-line tee · 1 feedline · 2 bond pads |
-| Builds today | yes: layout run 2026-11-19, 8 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 8 s) |
 
 ## How the notebook builds it
 
@@ -61,13 +61,13 @@ Numbers are from a run of this notebook on 2026-11-19 (Setup, Design, Check and 
 :alt: LOM plot of a1_transmon_readout
 ```
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates from component formulas and calibration, not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
 The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
 
-> **Update 2026-11-03:** frame = **source**: build with `chip={"die_frame": False, ...}` so the replica keeps its own size and frame (the Quantcore PDK die frame is for Quantcore chips only). `metal:<Class>` wrappers are READY (ports = Metal pin names, params = Metal options), so the `metal:` refs in this spec build as written; the Quantcore/KQC substitutions stay optional.
+> The `metal:` references in this spec build as written, through the `metal:` wrapper (ports are the Metal pin names, parameters the Metal options). The Quantcore and KQC substitutions are optional.
 
 Source: Quantum Metal `docs/tut/full-design-examples/A.1-Transmon-with-readout-resonator.ipynb`. Licence Apache-2.0.
 It is adapted from the SQDMetal benchmark devices (Sommers *et al.*, arXiv:2511.01220, 2025; Apache-2.0).
@@ -75,7 +75,7 @@ This is the canonical unit cell: a `TransmonPocket` with one readout pad, and a 
 straight feedline between two wire-bond pads through a `CoupledLineTee` (shorted at the tee).
 Chip: DesignPlanar default 9000 × 6000 µm, centred, so **Designer = Metal + (4500, 3000)**. CPW 10/6 µm, fillet 90
 µm. Metal layer 1; no junction file.
-**Buildable now: yes**. Substitutions: KQC `DoublePads` (or `Xmon`) for TransmonPocket, a hanger for CoupledLineTee,
+A first build uses these substitutions: KQC `DoublePads` (or `Xmon`) for TransmonPocket, a hanger for CoupledLineTee,
 and `BondPad`. This is the Metal twin of the Quantcore Q1/R1 example in the README.
 
 ### Components
@@ -109,15 +109,15 @@ None in the notebook. `total_length` 7 mm sets the readout frequency: λ/4 ≈ 7
 ### Simplifications for a first rebuild
 1. Use DoublePads with the pocket's pad sizes. The single centred coupler replaces the corner connection pad.
 2. Use one straight FL route through the hanger. The CLT's 90 µm fillet is not reproduced.
-3. This is the simplest end-to-end test of hanger κ and C_g estimates against the Metal reference.
+3. This is the simplest test of hanger κ and C_g estimates against the Metal reference.
 
-### Quantcore PDK rebuild (2026-11-03)
+### Quantcore PDK rebuild
 
-The notebook is a **Quantcore-PDK rebuild**, not a replica (design rule, 2026-11-03): the netlist, LOM and imported components are kept, the process is Quantcore's.
+The notebook is a Quantcore PDK rebuild of the source, not a replica: the netlist, LOM and imported components are kept, and the process is Quantcore's.
 
 Notebook: [`examples/designs/metal/a1_transmon_readout.ipynb`](../../../examples/designs/metal/a1_transmon_readout.ipynb).
 
-- **Chip:** the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), drawn on the source's 9 × 6 mm chip (the design does not fit the 7.5 mm die); no KQC chip frame.
-- **Stack:** sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); Metal's `DesignPlanar` default is silicon (εr 11.45, 750 µm), so the LOM capacitances, resonator frequencies and FEM jobs here are for sapphire, not the source's substrate.
-- **Junctions:** Quantcore Nb/AlOx/Nb trilayer junctions (`junction_type` from `layouts.registry.trilayer_junction`): fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient, sized on the PDK junction rule (Nb Δ = 1.4 meV, I_c·R_n = πΔ/2e, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed); `Q1` gets the PDK nominal junction, 0.5 × 0.6 µm fingers → R_n = 45 kΩ, L_J = 6.73 nH, C_J = 15 fF (in the 40–50 kΩ window), in place of Metal's `hfss_inductance` 10 nH (+ 2 fF assumed). Expected f_q ≈ 7.4 GHz (estimate from the pre-rebuild LOM C_Σ ≈ 61 fF; the source-junction build gave 6.75 GHz), still above the ≈ 4 GHz λ/4 readout as in the tutorial.
-- **Kept:** the topology and every Metal component with the source's options (through the `metal:` wrapper), positions and orientations, every route's end pins and total length, the sim groups (the 7 mm readout meander, the tee's 350 µm coupling length, the feedline halves).
+- Chip: the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), drawn on the source's 9 × 6 mm chip (the design does not fit the 7.5 mm die); no KQC chip frame.
+- Stack: sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); Metal's `DesignPlanar` default is silicon (εr 11.45, 750 µm), so the LOM capacitances, resonator frequencies and FEM jobs here are for sapphire rather than the source's substrate.
+- Junctions: Quantcore Nb/AlOx/Nb trilayer junctions (`junction_type` from `layouts.registry.trilayer_junction`): fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient, sized on the PDK junction rule (Nb Δ = 1.4 meV, I_c·R_n = πΔ/2e, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed); `Q1` gets the PDK nominal junction, 0.5 × 0.6 µm fingers → R_n = 45 kΩ, L_J = 6.73 nH, C_J = 15 fF (in the 40–50 kΩ window), in place of Metal's `hfss_inductance` 10 nH (+ 2 fF assumed). Expected f_q ≈ 7.4 GHz (an estimate from a LOM C_Σ of about 61 fF), still above the ≈ 4 GHz λ/4 readout as in the tutorial.
+- Kept: the topology and every Metal component with the source's options (through the `metal:` wrapper), positions and orientations, every route's end pins and total length, the sim groups (the 7 mm readout meander, the tee's 350 µm coupling length, the feedline halves).

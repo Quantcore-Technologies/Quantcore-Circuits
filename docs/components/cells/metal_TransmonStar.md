@@ -10,7 +10,7 @@ The base `TransmonStar` class.
 Alias of [`metal:TransmonCross`](metal_TransmonCross.md): the same circuit, drawn differently. num_points 4, arm_length / arm_width / arm_gap → cross_length / cross_width / cross_gap, junction_arm_index 3 (XOR 0); claws: arm_index instead of connector_location
 :::
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

@@ -1,6 +1,6 @@
 # IBM designs
 
-Two chips after IBM's transmon processors: the 5-qubit bowtie and the 27-qubit heavy-hex Falcon. No layout of either is public: IBM's published device data give the coupling graph and the targets, and the layouts are ours. Both use pocket transmons with Quantcore trilayer junctions and λ/2 bus resonators.
+Two chips after IBM's transmon processors: the 5-qubit bowtie and the 27-qubit heavy-hex Falcon. Neither layout is public. IBM's published device data give the coupling graph and the targets, and the layouts are ours. Both use pocket transmons with Quantcore trilayer junctions and λ/2 bus resonators.
 
 | Page | What it is | Qubits | Chip size | Builds |
 |---|---|---|---|---|

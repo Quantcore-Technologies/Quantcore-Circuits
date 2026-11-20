@@ -6,7 +6,7 @@ The PCell declaration for a DC launcher for connecting wirebonds.
 
 **Source:** KQC (KQCircuits). **Category:** launcher. **Module:** `kqcircuits.elements.launcher_dc`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

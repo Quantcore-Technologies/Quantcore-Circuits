@@ -6,7 +6,7 @@ ResonatorLumped.png
 
 **Source:** Metal (Qiskit Metal). **Category:** resonator. **Module:** `qiskit_metal.qlibrary.resonators.resonator_lumped`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 
@@ -61,8 +61,6 @@ Nodes: `res`.
 ## Simulation export notes
 
 - ctx: scratch-context routing fallback (not an export issue) (status: context)
-
-Details: [SIM_EXPORT_AUDIT](../SIM_EXPORT_AUDIT.md).
 
 ## How to use
 

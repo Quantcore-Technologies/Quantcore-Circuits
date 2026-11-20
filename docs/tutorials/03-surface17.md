@@ -4,8 +4,8 @@
 generator, `examples/designs/devicelayout/_surface17.py`. Part A is the DeviceLayout.jl DemoQPU17 (© Amazon.com, Inc.,
 MIT licence). Part B is the ETH Zurich 17-qubit device (Krinner et al., Nature 605, 669, 2022; arXiv:2112.03708), with
 the targets from the paper's Table I and the layout mock-up from Quantum Metal notebook 53. This is the biggest chip in
-the tutorials: it shows how a generator replaces hand-placed cells, how crossings become airbridges, and why large
-chips are simulated one qubit group at a time. The specs are [DemoQPU17](../designs/devicelayout/demoqpu17.md) and the
+the tutorials. A generator replaces hand-placed cells, crossings become airbridges, and the chip is simulated one qubit
+group at a time because it is too large to solve whole. The specs are [DemoQPU17](../designs/devicelayout/demoqpu17.md) and the
 [design groups](../designs/overview.md).
 
 ```{figure} ../images/tutorials/t03_demoqpu17.png
@@ -111,8 +111,8 @@ notebook exports both variants.
 The kept `SUB` Q3D (8 passes, last Δ 2.69 / 2.0 %, 54.6 s, not converged) fills 0 branches of the netlist. The
 StarQubit's pin stubs get no excitation, because their waveguide ports have no polygon on this 45 degree lattice, so
 its coupler and readout pads come out as ground in the C-matrix. `fill` notices the pins have no net and keeps the
-estimates (the "StarQubit pin guard"). The result is that the stage-2 LOM values are still the component estimates:
-the table shows 0.0 % change. This is an open issue, not a result.
+estimates (the "StarQubit pin guard"). So the stage-2 LOM values are still the component estimates:
+the table shows 0.0 % change. This is an open issue, and the 0.0 % is not a result.
 
 With `RUN_FEM = True`, the notebook renders the pair `Q23_Q33` (Q3D, no solve) to check that the components reach AEDT
 intact. The kept check says "rendered in 20.5 s; 11 boundaries, 5 nets; OK". `FEM_WHOLE = True` renders the whole chip
@@ -176,4 +176,4 @@ own geometry for comparison.
 - Simulation exports drop airbridges by default. A feedline crossing is then open in the FEM model.
 - A box that cuts a line at 45 degrees gets its 50 Ω port on the line's own axis; the builder lists those ports as notes.
 
-Next: [tutorial 4](04-feedback-loop.md) closes the design loop on two qubits.
+[Tutorial 4](04-feedback-loop.md) closes the design loop on two qubits.

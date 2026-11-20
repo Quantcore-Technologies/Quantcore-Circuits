@@ -10,7 +10,7 @@ Wire-bond pad tapering to a CPW (legacy "Connector Pad", v1); port ``a`` at the 
 Alias of [`BondPad`](BondPad.md): the same circuit, drawn differently. rounded=False = the Launcher polygon with a side gap b·pad_width/a and a back gap pad_height (no BondPad parameter set matches); rounded=True has no Launcher drawing; port a. BondPad / ConnectorPad keep their own 3/0 keep-out and lumped-port refpoints
 :::
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

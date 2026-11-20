@@ -6,7 +6,7 @@ between the resonators trap magnetic flux. It is Quantcore's own Nb trilayer chi
 script `chip_03_trilayer.py`, May 2024): a first multi-qubit chip to read many qubits out through one line.
 
 The rebuild draws it from Quantcore PDK parts: resonator tails run into the Xmon claws, the bond pads sit 100 µm from
-the die edge, and the PDK frame is added. Build this one to learn how many resonators share a feedline and how the
+the die edge, and the PDK frame is added. The PDK cheese (5 µm squares with 20 µm gaps, at least 4 µm from the 3/0 keep-outs) also covers the whole die, and the holes drawn in the original layout stay. Build this one to see how many resonators share a feedline and how the
 flux-trap hole arrays are placed.
 
 ```{figure} ../../images/designs/legacy/chip_03_trilayer.png
@@ -71,19 +71,19 @@ The notebook's saved outputs hold no LOM run (its LOM cells were not executed), 
 
 The rest of this page is the detailed spec the notebook was built from: components, positions, parameters and what changed from the legacy script.
 
-**Source:** `components/python/chip_03_trilayer.py` (`create_chip(size)`, run as `create_chip(5)` from
+Source: `components/python/chip_03_trilayer.py` (`create_chip(size)`, run as `create_chip(5)` from
 `__main__`; May 2024; "Trilayer new design for more qubits, 12 resonators"). Legacy QWri
 library, Quantcore internal. Notebook `examples/designs/legacy/chip_03_trilayer.ipynb` (size = 5).
 
-### Changes after design decisions (legacy-fix, 2026-11-03)
+### Changes made in the rebuild
 
-- **#8 claws — corrected:** every qubit resonator now ends without a gap cap (`ground=False`, the legacy `Coupled Resonator`'s "xmon connector" mode) and its Xmon is snapped with the claw-tail tip onto that end (`snap="claw_n", to="Ri.end"`): galvanic, the claw is the λ/4's open end (as in chips 05/10a). Each Xmon keeps x and rotation and moves along the tail axis (table after the notebook's layout cell). `claw_tail_gap` = legacy `cap_spacing` (10 µm) via `L.xmon`. As drawn seven tails ended 46–56 µm in with the end cap (floating claw) and R6/R8 ran 414 µm in, splitting Q6/Q8.
-- **#26 R7 — no cut:** the full 6790 µm line with the PCell's own open end (`ground=True`); CUT7, the floating stub `R7S`, `CAP7` and `W_R7` removed. LOM R7 4.69 GHz (target 4.5).
-- **#1 junctions:** `Trilayer Junction HSQ` now drawn at the legacy fingers (js·0.1 × 0.5 µm, `junction_params`) and valued on the PDK junction rule (design rule #1: Nb trilayer, Δ = 1.4 meV, I_c·R_n = πΔ/2e = 2.20 mV, R_n 40–50 kΩ, qubits 4–8 GHz; PDK process `get_pdk().junction`: R_n·A 13.5 kΩ·µm², C_J 50 fF/µm², both assumed by the PDK): js 5 → 54 kΩ, js 8 → 33.75 kΩ. LOM: f_q 4.5–6.6 GHz; **Q9/R9 and Q10/R10 hybridised** (design rule).
-- FEM: the C-matrix groups no longer have a separate claw net (claw and resonator are one conductor) — `tests/test_sim_tools.py::test_floating_claw_is_named_by_proximity` needs its expectation updated.
-- Notebook edited and its JSON rebuilt from the layout cell; **not executed** (verification policy): outputs cleared, PNGs stale until the notebook is run.
+- Claws, corrected: every qubit resonator now ends without a gap cap (`ground=False`, the legacy `Coupled Resonator`'s "xmon connector" mode) and its Xmon is snapped with the claw-tail tip onto that end (`snap="claw_n", to="Ri.end"`): galvanic, the claw is the λ/4's open end (as in chips 05/10a). Each Xmon keeps x and rotation and moves along the tail axis (table after the notebook's layout cell). `claw_tail_gap` = legacy `cap_spacing` (10 µm) via `L.xmon`. As drawn seven tails ended 46–56 µm in with the end cap (floating claw) and R6/R8 ran 414 µm in, splitting Q6/Q8.
+- R7, no cut: the full 6790 µm line with the PCell's own open end (`ground=True`); CUT7, the floating stub `R7S`, `CAP7` and `W_R7` removed. LOM R7 4.69 GHz (target 4.5).
+- Junctions: `Trilayer Junction HSQ` now drawn at the legacy fingers (js·0.1 × 0.5 µm, `junction_params`) and valued on the PDK junction rule (Nb trilayer, Δ = 1.4 meV, I_c·R_n = πΔ/2e = 2.20 mV, R_n 40–50 kΩ, qubits 4–8 GHz; PDK process `get_pdk().junction`: R_n·A 13.5 kΩ·µm², C_J 50 fF/µm², both assumed by the PDK): js 5 → 54 kΩ, js 8 → 33.75 kΩ. LOM: f_q 4.5–6.6 GHz; Q9/R9 and Q10/R10 hybridised.
+- FEM: the C-matrix groups no longer have a separate claw net (claw and resonator are one conductor) (`tests/test_sim_tools.py::test_floating_claw_is_named_by_proximity` needs its expectation updated).
+- The notebook's JSON was rebuilt from its layout cell. The notebook has not been re-run, so its outputs are cleared and its PNGs may be out of date.
 
-**What it is.** A 7.5 × 7.5 mm die centred on (0, 0) → Designer (x + 3750, y + 3750), PDK v2 die frame (replaces
+What it is: a 7.5 × 7.5 mm die centred on (0, 0) → Designer (x + 3750, y + 3750), PDK v2 die frame (replaces
 the four corner `Marker`s, rot 1/2/3/0, and the layer-10 outline / 500 µm boxes, which the script clears at the
 end anyway). One horizontal feedline between two rounded connector pads; ten `Coupled Resonator` λ/4 meanders at
 |y| = 33 µm from it (R3/R4 commented out of the source, so numbering skips them), five above and five below at
@@ -91,8 +91,8 @@ x = −2200, −1050, 50, 1150, 2200; nine `Xmon Cross` qubits at the resonator 
 commented out); eight 4 × 15 flux-trap hole arrays between the resonators; one etched box cutting R7's tail. No
 test pads (commented out). Labels "TOP=500nm" and "QCG_Nb03_W".
 
-**Buildable now?** Yes. All cells ported, with LOM models. Not drawn: junction windows (CLEARER; `Xmon.junction_window=[30, 27, -3]`
-exists now, not yet applied here) and text labels; `junction_creator.py` (imported as `jc`) is not in the library — its `create_junction(js,
+Builds: yes. All cells ported, with LOM models. Not drawn: junction windows (CLEARER; `Xmon.junction_window=[30, 27, -3]`
+exists now, not yet applied here) and text labels; `junction_creator.py` (imported as `jc`) is not in the library; its `create_junction(js,
 secondFinger, path)` signature and `JUNC_<js>` cell match `junction_creator_HSQ.py`, so the closest port
 `TrilayerJunctionHSQ` is used.
 
@@ -106,13 +106,13 @@ secondFinger, path)` signature and `JUNC_<js>` cell match `junction_creator_HSQ.
 | Q1, Q11 | Xmon Cross → `Xmon` ("big") | width 600 → cross_length, thickness 50 → arm_width, spacing 20 → gap, da 3, cap_spacing 10, pthickness 30, fwidth 30, ggap 15, handle 1 | (−2175, 2225), (2175, 2254) | 180° |
 | Q2, Q5, Q6, Q8, Q9, Q10, Q12 | Xmon Cross → `Xmon` | as above with width 400 | (−2225, −2157), (−1025, 2507), (−1075, −2508), (75, −2257), (1175, 2375), (1125, −2225), (2225, −1864) | 180° above / 0° below |
 | junctions | `JUNC_<js>` of `junction_creator.create_junction(bot, top·size/5)` (missing) → `Xmon(junction_type="Trilayer Junction HSQ")` | js (bot) = 8, 5, 8, 5, 8, 5, 5, 5, 5 → straight finger 0.8 / 0.5 µm; second finger 0.5·5/5 = 0.5 µm | (x_q, y_q ± (cross/2 + 10)) | mirror below the feedline |
-| CLEARER | 30 × 27 µm cut from 1/0 and 3/0, centred 7 µm beyond the cross tip ("added on to chris demand") | MISSING (Xmon keeps its 30 × 20 gap etched) | | |
+| CLEARER | 30 × 27 µm cut from 1/0 and 3/0, centred 7 µm beyond the cross tip (a source comment says it was added on request) | MISSING (Xmon keeps its 30 × 20 gap etched) | | |
 | H0N … H3S | `flux_holes` (cell `hole`, 20 µm squares on 1/0 and 3/0), CellInstArray 4 × 15 at 100 µm pitch | `FluxHoleArray(hole_size=20, pitch_x=100, pitch_y=100, nx=4, ny=15)` | (x + 450, 300) and (x + 450, −1800) for x = −2200, −1075, −15, 1075 | 0 |
-| CUT7 | `resonatorGnd` box (10, 2467.33) – (40, 2484.5) on 1/0: the full CPW width across R7's straight tail (x = 25) | `CpweOpenEnd(length=17.17, a=10, b=10)` (a 30 µm wide etch box) + `d.couple("W_R7", "R7.end", "CUT7.a", wire=True)` | (25, 2467.33) | 90° |
-| R7 as built | the 6790 µm cell minus CUT7 = R7 open at the cut + a floating stub | R7 drawn to the cut: `cpw_len` = 6790 − (2839.832 − 2467.33) = **6417.498** (same centre line; its 10 µm end cap lies inside CUT7); `R7S` = KQC `WaveguideCoplanarStraight(l=355.332, a=10, b=10)` (the stub's gaps, no ports, no circuit element); `CAP7` = `CpweOpenEnd(length=10, a=10, b=10)` (R7's legacy end cap) | R7S (25, 2484.5), CAP7 (25, 2839.832) | 90° |
+| CUT7 | `resonatorGnd` box (10, 2467.33)–(40, 2484.5) on 1/0: the full CPW width across R7's straight tail (x = 25) | `CpweOpenEnd(length=17.17, a=10, b=10)` (a 30 µm wide etch box) + `d.couple("W_R7", "R7.end", "CUT7.a", wire=True)` | (25, 2467.33) | 90° |
+| R7 as built | the 6790 µm cell minus CUT7 = R7 open at the cut + a floating stub | R7 drawn to the cut: `cpw_len` = 6790 − (2839.832 − 2467.33) = 6417.498 (same centre line; its 10 µm end cap lies inside CUT7); `R7S` = KQC `WaveguideCoplanarStraight(l=355.332, a=10, b=10)` (the stub's gaps, no ports, no circuit element); `CAP7` = `CpweOpenEnd(length=10, a=10, b=10)` (R7's legacy end cap) | R7S (25, 2484.5), CAP7 (25, 2839.832) | 90° |
 | labels | "TOP=500nm" (1500, 3200), "QCG_Nb03_W" (1800, −3200), 200 µm | MISSING (text cell); `name_chip = "QCG_Nb03_W"` in the device ID | | |
 
-**Pads and feedline.** The legacy feedline (±2730) overlaps the pad tips (±2680) by 50 µm of identical 10/6 CPW
+Pads and feedline: the legacy feedline (±2730) overlaps the pad tips (±2680) by 50 µm of identical 10/6 CPW
 (the rounded pad ends in a 200 µm CPW stub). The rebuild snaps the pads to a 5360 µm feedline: the same etch
 (XOR 0), and the rounded pads end exactly at the die edge.
 
@@ -130,10 +130,9 @@ claws are floating metal islands (checked on the rebuilt metal), coupled to the 
 R7 has no qubit; CUT7 cuts its centre conductor at y = 2467.33–2484.5, on the straight tail 372.5 µm before the
 end cap (y = 2839.832). What the mask leaves: a λ/4 of 6417.5 µm from the shorted coupler end, open at the cut, and
 beyond the cut a floating 355.3 µm piece of 10/10 µm line with R7's end cap. The rebuild draws exactly that (R7 to
-the cut, CUT7, `R7S`, `CAP7`): etch XOR 0.0 µm² against the legacy R7 + CUT7 (legacy-c, 2026-11-03). LOM: R7 λ/4
+the cut, CUT7, `R7S`, `CAP7`): etch XOR 0.0 µm² against the legacy R7 + CUT7. LOM: R7 λ/4
 6417 µm, 4.968 GHz bare, 4.959 GHz on the feedline (the uncut 6790 µm gave 4.696 / 4.687 GHz; source comment 4.5
-GHz). The stub couples to R7's open end only across the 17 µm cut (≪ 1 fF): neglected. **To confirm:** confirm that the
-cut is intended (it retunes R7 by ≈ +0.27 GHz and leaves a floating island), or say whether R7 was meant uncut.
+GHz). The stub couples to R7's open end only across the 17 µm cut (≪ 1 fF): neglected. The cut retunes R7 by ≈ +0.27 GHz and leaves a floating island; whether the cut is intended, or R7 was meant uncut, is not confirmed.
 
 ### LOM node structure
 

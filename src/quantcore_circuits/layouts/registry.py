@@ -227,12 +227,31 @@ def _curved_ports(refpoints: dict, p: dict) -> dict[str, Port]:  # noqa: ARG001
     }
 
 
+def flip_chip_rf_ports(refpoints: dict, p: dict) -> dict[str, Port]:
+    """KQC ``FlipChipConnectorRf`` names its CPW ends ``<face>_port`` (+ ``_corner``), not ``port_<name>``: ``a`` is
+    the end on ``face_ids[0]`` (CPW a/b), ``b`` the end on ``face_ids[1]`` (CPW a2/b2, -1 = a/b), each facing out
+    and recording its face."""
+    faces = list(p.get("face_ids") or ["1t1", "2b1"])
+    a2, b2 = float(p.get("a2", -1)), float(p.get("b2", -1))
+    widths = ((p.get("a"), p.get("b")), (p["a"] if a2 < 0 else a2, p["b"] if b2 < 0 else b2))
+    ports = {}
+    for name, face, (a, b) in zip(("a", "b"), faces[:2], widths):
+        pos, corner = refpoints.get(f"{face}_port"), refpoints.get(f"{face}_port_corner")
+        if pos is None:
+            continue
+        d = None if corner is None or (corner - pos).length() == 0 else _unit((corner - pos).x, (corner - pos).y)
+        ports[name] = Port(name, pos, d, a, b, face)
+    return ports
+
+
 # Ports of KQC classes that draw no port refpoints although their CPW ends are well defined, by exact class
 # (``module.qualname``): ``fn(refpoints, full params) -> {name: Port}`` (local frame). A port the cell itself declares
-# (``port_<name>`` refpoint) wins over the override. Metadata only: the drawing is not touched.
+# (``port_<name>`` refpoint) wins over the override. Metadata only: the drawing is not touched. A Quantcore class
+# (e.g. a subclass of one of these) gives the same function as a static method ``qcc_extra_ports``.
 KQC_EXTRA_PORTS = {
     "kqcircuits.elements.capacitive_x_coupler.CapacitiveXCoupler": _x_coupler_ports,
     "kqcircuits.elements.waveguide_coplanar_curved.WaveguideCoplanarCurved": _curved_ports,
+    "kqcircuits.elements.flip_chip_connectors.flip_chip_connector_rf.FlipChipConnectorRf": flip_chip_rf_ports,
 }
 
 
@@ -241,11 +260,13 @@ def element_cell_ports(cls: type[Element], cell: pya.Cell, params: dict) -> dict
 
     ``a``/``b`` come from the element parameters; a class may override them per port with a classmethod
     ``qcc_port_widths(params) -> {port_name: (a, b)}`` (e.g. the Xmon claw tails); KQC classes get theirs from
-    :data:`KQC_PORT_WIDTHS`. KQC classes without port refpoints get theirs from :data:`KQC_EXTRA_PORTS`.
+    :data:`KQC_PORT_WIDTHS`. KQC classes without port refpoints get theirs from :data:`KQC_EXTRA_PORTS` (a Quantcore
+    class: its static method ``qcc_extra_ports``). A multi-face class records each port's chip face with a classmethod
+    ``qcc_port_faces(params) -> {port_name: face_id}``.
     """
     full = {**default_params(cls), **params}
     ports = cell_ports(cell, full.get("a"), full.get("b"))
-    extra = KQC_EXTRA_PORTS.get(f"{cls.__module__}.{cls.__qualname__}")
+    extra = getattr(cls, "qcc_extra_ports", None) or KQC_EXTRA_PORTS.get(f"{cls.__module__}.{cls.__qualname__}")
     if extra is not None:
         from kqcircuits.defaults import default_layers  # pylint: disable=import-outside-toplevel
         from kqcircuits.elements.element import get_refpoints  # pylint: disable=import-outside-toplevel
@@ -258,6 +279,11 @@ def element_cell_ports(cls: type[Element], cell: pya.Cell, params: dict) -> dict
         for name, (a, b) in hook(full).items():
             if name in ports:
                 ports[name].a, ports[name].b = a, b
+    faces = getattr(cls, "qcc_port_faces", None)
+    if faces is not None:
+        for name, face in faces(full).items():
+            if name in ports:
+                ports[name].face = face
     return ports
 
 

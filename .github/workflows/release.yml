@@ -135,6 +135,7 @@ jobs:
         run: python scripts/release/export_plugin.py --out dist/plugin --zip "dist/quantcore-circuits-klayout-${VERSION}.zip" --check-version "${VERSION}"
       - uses: softprops/action-gh-release@v2
         with:
+          prerelease: ${{ contains(needs.build.outputs.version, 'a') || contains(needs.build.outputs.version, 'b') || contains(needs.build.outputs.version, 'rc') || contains(needs.build.outputs.version, 'dev') }}
           files: |
             dist/*.whl
             dist/*.tar.gz

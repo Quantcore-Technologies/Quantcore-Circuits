@@ -2,7 +2,7 @@
 
 A 10 × 10 mm resonator chip with two straight 20/12 µm feedlines, one in the upper half and one in the lower half. Each feedline carries six λ/4 resonators, alternating above and below the line, at 6.5, 6.0, 5.5, 5.0, 5.25 and 7.0 GHz from left to right. On the lower feedline the open end of each resonator is the claw of an Xmon qubit; the upper feedline has the bare resonators. So the chip compares the same resonator with and without a qubit, and measures the shift the qubit causes. Eight launchpads (two per edge) and rows of flux-trap holes beside both feedlines complete it.
 
-It comes from Quantcore's earlier Qiskit Metal design notebook `14.0 Two_feedline_resonator_chip.ipynb` (internal). The rebuild keeps the Metal components through the `metal:` wrapper, the legacy flux holes and the 10 mm die, adds the PDK die frame (device ID `D14`) and gives the qubits PDK junctions (45 kΩ). Build it to learn resonator frequency planning from a length-to-frequency calibration.
+It comes from Quantcore's earlier Qiskit Metal design notebook `14.0 Two_feedline_resonator_chip.ipynb` (internal). The rebuild keeps the Metal components through the `metal:` wrapper, the legacy flux holes and the 10 mm die, adds the PDK die frame (device ID `D14`) and gives the qubits PDK junctions (45 kΩ). The PDK cheese (5 µm squares with 20 µm gaps, at least 4 µm from the 3/0 keep-outs) also covers the whole die, and the holes drawn in the original layout stay. Build it to see resonator frequency planning from a length-to-frequency calibration.
 
 ```{image} ../../images/designs/legacy/d14_two_feedline_resonator.png
 :alt: The whole d14_two_feedline_resonator chip rebuilt on the Quantcore PDK
@@ -73,18 +73,18 @@ These numbers are the notebook's saved output, not re-run for this page. They ar
 
 The rest of this page is the detailed spec the notebook was built from: every component, the changes made while rebuilding, and the notes.
 
-**Source:** the legacy design notebook `components/python/14.0 Two_feedline_resonator_chip.ipynb` (Quantum
-Metal, `DesignPlanar`), Quantcore internal. **Rebuild:** `examples/designs/legacy/d14_two_feedline_resonator.ipynb`
+Source: the legacy design notebook `components/python/14.0 Two_feedline_resonator_chip.ipynb` (Quantum
+Metal, `DesignPlanar`), Quantcore internal. Rebuild: `examples/designs/legacy/d14_two_feedline_resonator.ipynb`
 (+ `.json`, PNGs), helpers in `examples/designs/legacy/_legacy_b.py` (`d14_plan`, `flux_hole_runs`).
 
-### Changes after design decisions (legacy-fix, 2026-11-03)
+### Changes made in the rebuild
 
-- **#10:** 10 × 10 mm die confirmed.
-- **#12 noted:** the lengths come from bare λ/4 simulations; the bottom (claw-loaded) row sits 0.64–1.09 GHz lower at the same lengths (kept).
-- **#1 / #21 junctions:** Metal footprint → `Quantcore Junction` (Metal wrapper `junction_type`), PDK junction rule (design rule #1: Nb trilayer, Δ = 1.4 meV, I_c·R_n = πΔ/2e = 2.20 mV, R_n 40–50 kΩ, qubits 4–8 GHz; PDK process `get_pdk().junction`: R_n·A 13.5 kΩ·µm², C_J 50 fF/µm², both assumed by the PDK) at 45 kΩ (L_J 6.73 nH, C_J 15 fF). LOM: f_q ≈ 5.0–5.2 GHz; **Q_B1/R_B1 hybridised** (design rule).
-- Notebook edited and its JSON rebuilt from the layout cell; **not executed** (verification policy): outputs cleared, PNGs stale until the notebook is run.
+- Die: 10 × 10 mm, confirmed.
+- Frequencies: the lengths come from bare λ/4 simulations; the bottom (claw-loaded) row sits 0.64–1.09 GHz lower at the same lengths (kept).
+- Junctions: Metal footprint → `Quantcore Junction` (Metal wrapper `junction_type`), PDK junction rule (Nb trilayer, Δ = 1.4 meV, I_c·R_n = πΔ/2e = 2.20 mV, R_n 40–50 kΩ, qubits 4–8 GHz; PDK process `get_pdk().junction`: R_n·A 13.5 kΩ·µm², C_J 50 fF/µm², both assumed by the PDK) at 45 kΩ (L_J 6.73 nH, C_J 15 fF). LOM: f_q ≈ 5.0–5.2 GHz; Q_B1/R_B1 hybridised.
+- The notebook's JSON was rebuilt from its layout cell. The notebook has not been re-run, so its outputs are cleared and its PNGs may be out of date.
 
-**What it is:** a resonator characterisation chip. Two straight 20/12 µm feedlines (y = ±1.9 mm) each carry six
+What it is: a resonator characterisation chip. Two straight 20/12 µm feedlines (y = ±1.9 mm) each carry six
 λ/4 CPW resonators (10/6 µm), alternating above and below the line at x = −3.25 … +3.25 mm (1.3 mm pitch). The
 lengths come from the notebook's own 1/f = a·L + b calibration (six simulated resonators; R7 and R8 excluded) for
 6.50, 6.00, 5.50, 5.00, 5.25, 7.00 GHz left to right. The top feedline's resonators end open; on the bottom feedline
@@ -92,13 +92,13 @@ each open end is the claw of a `TransmonCross` (Xmon). Eight launchpads: two per
 only the left ↔ right pairs carry the feedlines, the top and bottom pads stay unconnected. Custom flux holes (5 µm
 squares, 25 µm pitch, ≥ 30 µm from any etch) line the feedlines and the meanders.
 
-**Die:** 10 × 10 mm, 650 µm sapphire (the source's `size_x/size_y`). The rebuild keeps 10 × 10 mm with the PDK v2
-die frame drawn on the 10 mm box (the frame is corner-relative); this differs from the 7.5 × 7.5 mm PDK default
-(design rule). Coordinates below are in the Designer frame (legacy + (5000, 5000)
+Die: 10 × 10 mm, 650 µm sapphire (the source's `size_x/size_y`). The rebuild keeps 10 × 10 mm with the PDK v2
+die frame drawn on the 10 mm box (the frame is corner-relative); this differs from the 7.5 × 7.5 mm PDK default.
+Coordinates below are in the Designer frame (legacy + (5000, 5000)
 µm); the legacy mm value is given where useful. Layers: everything on 1/0 (negative mask); the Metal junction
 footprint on 2/0 (`SIS_junction`).
 
-**Status:** built (`examples/designs/legacy/d14_two_feedline_resonator.ipynb`): all Metal cells resolve, every LOM
+Built (`examples/designs/legacy/d14_two_feedline_resonator.ipynb`): all Metal cells resolve, every LOM
 port maps, all 12 sim groups export.
 
 ### Plan (legacy §2, §5; `_legacy_b.d14_plan()` reproduces the legacy printout exactly)
@@ -176,7 +176,7 @@ coupler → short. Bend radius 70 µm.
 
 - `FL_T`, `FL_B`: one node each (feedline + both launchpad pads), 50 Ω port at each end.
 - Top resonators: λ/4 `TLres` from the open end node (`open_Ti.end`) to ground, HANGER κ to `FL_T`.
-- Bottom: `Q_Bi` island (C to ground, JJ to ground) — C_g — claw node `Q_Bi.a` (C to ground) — λ/4 `TLres` `R_Bi`
+- Bottom: `Q_Bi` island (C to ground, JJ to ground) ─ C_g ─ claw node `Q_Bi.a` (C to ground) ─ λ/4 `TLres` `R_Bi`
   to ground, HANGER κ to `FL_B`.
 - Unconnected launchpads (`LP_TL`, `LP_TR`, `LP_BL`, `LP_BR`): their own pad node with a 50 Ω port.
 - No couplings between resonators (closest pair 201 µm apart in the source).
@@ -188,11 +188,11 @@ resonator. No qubit targets in the source.
 
 ### Simplifications for a first rebuild
 
-- **Meanders:** the qcc router puts a KQC `Meander` on the straight drop at x = xc (arm count chosen by KQC), instead
+- Meanders: the qcc router puts a KQC `Meander` on the straight drop at x = xc (arm count chosen by KQC), instead
   of Metal's `RouteMeander` (N arms of the planned pitch, `asymmetry` = ±lp). Same total length, same 500 µm
   coupler, same short and open-end positions; the meander footprint differs slightly (arm count and width).
-- **Flux holes:** feedline rows only; the 4 rows per meander that follow the trace are left out (`FluxHoleArray` is
+- Flux holes: feedline rows only; the 4 rows per meander that follow the trace are left out (`FluxHoleArray` is
   rectangular; one instance per hole would mean ~4900 instances).
-- **Launchpad lead:** 20 µm on the four connected pads, the rest of the 500 µm lead is the feedline route (identical
+- Launchpad lead: 20 µm on the four connected pads, the rest of the 500 µm lead is the feedline route (identical
   CPW), so the hanger of resonator 0 can sit next to it.
-- **Junction:** the `JJ_grad` cell (external GDS) is replaced by the Metal junction footprint.
+- Junction: the `JJ_grad` cell (external GDS) is replaced by the Metal junction footprint.

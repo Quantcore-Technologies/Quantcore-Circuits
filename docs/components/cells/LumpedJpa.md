@@ -6,7 +6,7 @@ Lumped JPA: a trilayer junction or SQUID to ground, shunted by an interdigital c
 
 **Source:** Quantcore. **Category:** resonator. **Module:** `quantcore_circuits.layouts.others.amplifiers`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 
@@ -67,8 +67,6 @@ Nodes: `island`.
 ## Simulation export notes
 
 - C4: galvanic lead port shorted to ground / leaving the box (status: fixed; fix in sim_tools/builder.py (lead_open_ends, galvanic_routes, build_simulation))
-
-Details: [SIM_EXPORT_AUDIT](../SIM_EXPORT_AUDIT.md).
 
 ## How to use
 

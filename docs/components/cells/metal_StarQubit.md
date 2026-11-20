@@ -6,7 +6,7 @@ A single configurable circle with multiple pads.
 
 **Source:** Metal (Qiskit Metal). **Category:** qubit. **Module:** `qiskit_metal.qlibrary.qubits.star_qubit`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 
@@ -67,8 +67,6 @@ Nodes: `island`, `pin_cpl1`, `pin_cpl2`, `pin_cpl3`, `pin_cpl4`, `pin_rdout`.
 ## Simulation export notes
 
 - C5: Metal-wrapped junction pins off the metal edges (stand-in sheet is wrong) (status: fixed; fix in sim_tools/builder.py (FaceMetal, junction_gap, junction_sheet, sheet_junction_port))
-
-Details: [SIM_EXPORT_AUDIT](../SIM_EXPORT_AUDIT.md).
 
 ## How to use
 

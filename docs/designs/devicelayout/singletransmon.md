@@ -1,8 +1,8 @@
 # DeviceLayout SingleTransmon
 
-A single grounded rectangular transmon island read out through a λ/4 meander that ends in a claw. The meander is coupled to a straight feedline over 400 µm and is shorted at the far end. It is the DeviceLayout.jl `SingleTransmon` example (AWS, MIT), which was built as a Palace eigenmode model, here rebuilt on the Quantcore PDK (the rebuild is distributed under GPL-3.0).
+A single grounded rectangular transmon island read out through a λ/4 meander that ends in a claw. The meander is coupled to a straight feedline over 400 µm and is shorted at the far end. It is the DeviceLayout.jl `SingleTransmon` example (AWS, MIT), built there as a Palace eigenmode model, and is rebuilt here on the Quantcore PDK (the rebuild is distributed under GPL-3.0).
 
-Build this one for the smallest complete readout: a feedline between two pads, one qubit with a claw, and one hanger resonator. The junction is re-sized for 4.05 GHz because the source's 3.37 GHz is below the PDK band.
+This is the smallest complete readout: a feedline between two pads, one qubit with a claw, and one hanger resonator. The junction is re-sized for 4.05 GHz because the source's 3.37 GHz is below the PDK band.
 
 ```{image} ../../images/designs/devicelayout/singletransmon.png
 :alt: The whole singletransmon chip as the v2 notebook builds it
@@ -13,15 +13,15 @@ Build this one for the smallest complete readout: a feedline between two pads, o
 
 | | |
 |---|---|
-| Notebook | `examples/designs/devicelayout/singletransmon.ipynb` (the one-cell version before the rewrite: `singletransmon.v1.ipynb`) |
+| Notebook | `examples/designs/devicelayout/singletransmon.ipynb` (an older one-cell version is kept as `singletransmon.v1.ipynb`) |
 | Source | DeviceLayout.jl `examples/SingleTransmon` (MIT, © Amazon.com, Inc. or its affiliates) |
 | Chip | 7.5 × 7.5 mm Quantcore die (the source's domain is 4 × 3.7 mm), sapphire 650 µm |
 | On the chip | 1 Swissmon qubit · 1 λ/4 readout · 1 feedline · 2 bond pads |
-| Builds today | yes: layout run 2026-11-19, 4 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 4 s) |
 
 ## How the notebook builds it
 
-Each Design segment is one cell with one picture of the chip so far (see [the notebook template](../notebook-template.md)).
+Each Design segment is one cell with a picture of the chip so far (see [the notebook template](../notebook-template.md)).
 
 ```{image} ../../images/designs/devicelayout/singletransmon_steps.png
 :alt: The layout segments of singletransmon
@@ -59,18 +59,16 @@ Numbers are from a run of this notebook on 2026-11-19 (Setup, Design, Check and 
 :alt: LOM plot of singletransmon
 ```
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates (component formulas and calibration), not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
-The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
-
-> **Update 2026-11-03:** frame = **source**: build with `chip={"die_frame": False, ...}` so the replica keeps its own size and frame (the Quantcore PDK die frame is for Quantcore chips only).
+The rest of this page is the detailed spec the notebook was built from, with every component, port, route and length.
 
 Source: [examples/SingleTransmon/SingleTransmon.jl](https://github.com/aws-cqc/DeviceLayout.jl/blob/main/examples/SingleTransmon/SingleTransmon.jl)
 and docs page `docs/src/examples/singletransmon.md` ([rendered](https://aws-cqc.github.io/DeviceLayout.jl/stable/examples/singletransmon/))
 · components from `src/schematics/ExamplePDK` (`ExampleRectangleTransmon`, `ExampleClawedMeanderReadout`) · licence
-MIT ("Copyright Amazon.com, Inc. or its affiliates", `LICENSE.md`, verified) · read 2026-11-02 (Julia, not run).
+MIT ("Copyright Amazon.com, Inc. or its affiliates", `LICENSE.md`, verified) · Read on 2026-11-02 (Julia, not run).
 What it is: a grounded rectangular transmon island read out by a λ/4 meander. The meander is shorted at its coupled
 section, which runs 400 µm alongside a straight 2700 µm feedline, and ends in a claw that wraps the island. Built as a
 Palace eigenmode model: lumped ports at both feedline ends, airbridges every 300 µm.
@@ -79,7 +77,7 @@ runs vertically (α0 = 90°) from (0, 0) to (0, 2700) in the source, with the re
 floorplan centre is (1130, 1350), so **box (0, 0, 4000, 3700)** and **Designer ≈ source + (870, 500)**. The
 feedline is then at x 870, y 500…3200. Substrate: sapphire (Palace config εr 9.3/9.3/11.5, tan δ 3e-5/8.6e-5).
 CPW 10/6 µm, bend radius 50 µm.
-Status: **yes** with a `Swissmon` stand-in for the rectangle island (Swissmon has a LOM model).
+A `Swissmon` stands in for the rectangle island (Swissmon has a LOM model).
 
 ### Components
 | instance | catalog ref | key params (units) | at (x, y) Designer | rot | notes |
@@ -118,16 +116,16 @@ reaches [3.005, 3.982] GHz.
 2. Exact claw shield (2 µm ground shield between claw and island pocket) is optional.
 3. Pads are not in the source. With the 3.7 mm box, use small pads or `launchers=None` and treat the line ends as ports in simulation.
 
-### Build (2026-11-03)
-Built: `examples/designs/devicelayout/singletransmon.ipynb`. Swissmon stand-in (arm_length [12, 298, 12, 298], N-arm claw 121/34/84). Island at (2685, 2050), coupled section y 1650–2050 (s 1350, backward, short at the south end). Airbridges omitted: KQC auto bridges landed on the neighbouring coupled line. LOM 4.51 / 5.78 GHz vs Palace 3.370 / 5.244 GHz.
+### Build
+The notebook is `examples/designs/devicelayout/singletransmon.ipynb`. It uses the Swissmon stand-in (arm_length [12, 298, 12, 298], N-arm claw 121/34/84). Island at (2685, 2050), coupled section y 1650–2050 (s 1350, backward, short at the south end). Airbridges omitted: KQC auto bridges landed on the neighbouring coupled line. LOM 4.51 / 5.78 GHz vs Palace 3.370 / 5.244 GHz.
 
-### Quantcore PDK rebuild (2026-11-03)
+### Quantcore PDK rebuild
 
-The notebook is a **Quantcore-PDK rebuild**, not a replica (design rule, 2026-11-03): the netlist, LOM and imported components are kept, the process is Quantcore's.
+The notebook is a Quantcore PDK rebuild, not a replica: the netlist, LOM and imported components are kept, the process is Quantcore's.
 
 Notebook: [`examples/designs/devicelayout/singletransmon.ipynb`](../../../examples/designs/devicelayout/singletransmon.ipynb).
 
 - **Chip:** the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), on the 7.5 × 7.5 mm Quantcore die; the source's 4 × 3.7 mm Palace domain is centred in it (`box=(-1750, -1900, 5750, 5600)`), so every coordinate stays the source's.
 - **Stack:** sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); the Palace model uses sapphire with εr 9.3 / 9.3 / 11.5.
-- **Junctions:** Quantcore Nb/AlOx/Nb trilayer junctions (`junction_type` from `layouts.registry.trilayer_junction`): fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient, sized on the PDK junction rule (Nb Δ = 1.4 meV, I_c·R_n = πΔ/2e, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed). A single junction, as in the source. Its target f_q 3.37 GHz is below the PDK band (4–8 GHz), so the junction is **sized for 4.05 GHz** with the pre-rebuild LOM C_Σ (≈ 70 fF): straight finger 0.19 µm (KQC's `junction_width`) × 0.6 µm, L_J ≈ 17.7 nH, C_J ≈ 5.7 fF — **R_n ≈ 121 kΩ, above the 40–50 kΩ window** (a 45 kΩ junction would put it at ≈ 6.4 GHz, above the 5.24 GHz readout). The targets stay the source's.
+- **Junctions:** Quantcore Nb/AlOx/Nb trilayer junctions (`junction_type` from `layouts.registry.trilayer_junction`): fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient, sized on the PDK junction rule (Nb Δ = 1.4 meV, I_c·R_n = πΔ/2e, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed). A single junction, as in the source. Its target f_q 3.37 GHz is below the PDK band (4–8 GHz), so the junction is **sized for 4.05 GHz** with the LOM C_Σ of the first build (≈ 70 fF): straight finger 0.19 µm (KQC's `junction_width`) × 0.6 µm, L_J ≈ 17.7 nH, C_J ≈ 5.7 fF, so **R_n ≈ 121 kΩ, above the 40–50 kΩ window** (a 45 kΩ junction would put it at ≈ 6.4 GHz, above the 5.24 GHz readout). The targets stay the source's.
 - **Kept:** the topology (rectangle island, clawed λ/4, straight feedline), the 5000 µm readout with its 400 µm coupled section, the claw and island geometry, the targets, the sim group.

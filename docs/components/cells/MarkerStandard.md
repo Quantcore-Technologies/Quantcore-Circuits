@@ -6,7 +6,7 @@ The PCell declaration for the Standard Marker.
 
 **Source:** KQC (KQCircuits). **Category:** marker. **Module:** `kqcircuits.elements.markers.marker_standard`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

@@ -55,9 +55,10 @@ class DesignChip(Chip):
     die_frame = Param(pdt.TypeBoolean, "Quantcore die frame (PDK dicing/alignment markers, device ID)", True)
     cheese = Param(
         pdt.TypeString,
-        "Ground cheese: auto (PDK band unless the design has its own), pdk (band always), original (none added)",
+        "Ground cheese: auto (PDK band unless the design has its own), pdk (band always), chip (PDK squares over "
+        "the whole die), original (none added)",
         "auto",
-        choices=["auto", "pdk", "original"],
+        choices=["auto", "pdk", "chip", "original"],
     )
     device_id_side = Param(
         pdt.TypeString,
@@ -186,10 +187,19 @@ class DesignChip(Chip):
         self.cell.shapes(self.layout.layer(default_layers[f"{face}_ports"])).insert(path.polygon())
 
     def _produce_pdk_cheese(self, spec: dict) -> None:
-        """PDK band cheese (``pdk.CheeseRule``) around the 3/0 keep-outs, drawn into ``ground_grid`` (KQC's cheese
-        layer, part of the 1/0 etch): inside the design area, clear of the frame markers and the device ID."""
+        """PDK cheese (``pdk.CheeseRule``: a band around the 3/0 keep-outs, or the whole die for ``fill="chip"``),
+        drawn into ``ground_grid`` (KQC's cheese layer, part of the 1/0 etch): inside the design area, clear of the
+        frame markers and the device ID, and clear of TSVs, indium bumps, UBM and airbridges
+        (:func:`~quantcore_circuits.layouts.wafers.fab_export.cheese_avoid_region`; KQC's automatic ground TSVs and
+        bumps come later, in :meth:`post_build`)."""
         from quantcore_circuits.layouts.chips.frame import design_area, keepouts  # pylint: disable=C0415
-        from quantcore_circuits.layouts.wafers.fab_export import cheese_holes, etch_region, keepout_region  # noqa
+        from quantcore_circuits.layouts.wafers.fab_export import (  # pylint: disable=import-outside-toplevel
+            cheese_avoid_region,
+            cheese_holes,
+            etch_region,
+            ground_region,
+            keepout_region,
+        )
         from quantcore_circuits.pdk import CheeseRule, get_pdk  # pylint: disable=import-outside-toplevel
 
         pdk = get_pdk(spec["pdk"])
@@ -203,8 +213,35 @@ class DesignChip(Chip):
         if frame is not None:
             for box in keepouts(self.box, frame, getattr(self, "_qcc_device_id", None)).values():
                 exclude.insert(box.to_itype(dbu))
-        keep = keepout_region(self.cell, pdk, etch_region(self.cell, pdk.face, grid=False))
-        self.cell.shapes(self.get_layer("ground_grid")).insert(cheese_holes(keep, rule, dbu, allowed, exclude))
+        etch = etch_region(self.cell, pdk.face, grid=False)
+        keep = keepout_region(self.cell, pdk, etch)
+        avoid = cheese_avoid_region(self.cell, pdk)  # TSVs, bumps, UBM, airbridges: no hole on or next to them
+        ground = ground_region(self.cell, pdk, self.box, rule, etch)  # the ground plane: no holes in pads, islands
+        holes = cheese_holes(keep, rule, dbu, allowed, exclude, avoid, ground)
+        self.cell.shapes(self.get_layer("ground_grid")).insert(holes)
+        self._qcc_cheese = (pdk, rule)
+
+    def post_build(self):
+        """KQC's ``post_build`` (frames, ground TSVs and bumps, labels); then the PDK cheese drawn in :meth:`build` loses
+        the holes that now lie on or next to KQC's automatic ground TSVs and bumps (``with_gnd_tsvs``,
+        ``with_gnd_bumps``), which KQC places after the build."""
+        super().post_build()
+        cheese = getattr(self, "_qcc_cheese", None)
+        if cheese is None or not (self.with_gnd_tsvs or self.with_gnd_bumps):
+            return
+        from quantcore_circuits.layouts.wafers.fab_export import cheese_avoid_region  # pylint: disable=C0415
+
+        pdk, rule = cheese
+        avoid = cheese_avoid_region(self.cell, pdk)
+        if avoid.is_empty():
+            return
+        shapes = self.cell.shapes(self.get_layer("ground_grid"))
+        holes = pya.Region(shapes)
+        d = round(rule.clearance / self.layout.dbu) + 1
+        near = holes.interacting(avoid.minkowski_sum(pya.Box(-d, -d, d, d)))
+        if not near.is_empty():
+            shapes.clear()
+            shapes.insert(holes - near)
 
     def _produce_launcher_spec(self, spec: dict, edge: float | None = None) -> None:
         """Launchers from a ``design.json`` :class:`~quantcore_circuits.design.schema.Launchers` dict: a KQC preset, a

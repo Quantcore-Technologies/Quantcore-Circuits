@@ -1,6 +1,6 @@
 # Two coupled transmons (SQDMetal)
 
-Two floating pocket transmons 1 mm apart, joined by a straight CPW between their facing connection pads. There is no resonator: the coupling is a direct capacitive link. It is SQDMetal's two-transmon eigenmode example (Apache-2.0), rebuilt on the Quantcore PDK with the `metal:TransmonPocket` wrapper.
+Two floating pocket transmons 1 mm apart, joined by a straight CPW between their facing connection pads. There is no resonator, and the coupling is a direct capacitive link. It is SQDMetal's two-transmon eigenmode example (Apache-2.0), rebuilt on the Quantcore PDK with the `metal:TransmonPocket` wrapper.
 
 Build this one to learn the smallest two-qubit chip and how a Qiskit Metal component is used through the `metal:` wrapper.
 
@@ -13,11 +13,11 @@ Build this one to learn the smallest two-qubit chip and how a Qiskit Metal compo
 
 | | |
 |---|---|
-| Notebook | `examples/designs/sqdmetal/two_transmon.ipynb` (the one-cell version before the rewrite: `two_transmon.v1.ipynb`) |
+| Notebook | `examples/designs/sqdmetal/two_transmon.ipynb` (an older one-cell version is kept as `two_transmon.v1.ipynb`) |
 | Source | SQDMetal example `two_transmon.ipynb`, Apache-2.0 |
 | Chip | 7.5 × 7.5 mm Quantcore die, the source's 2.2 × 1.8 mm area in its middle, CPW 10 / 6 µm |
 | On the chip | 2 Metal pocket transmons · 1 straight CPW coupler |
-| Builds today | yes: layout run 2026-11-19, 7 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 7 s) |
 
 ## How the notebook builds it
 
@@ -55,21 +55,21 @@ Numbers are from a run of this notebook on 2026-11-19 (Setup, Design, Check and 
 :alt: LOM plot of two_transmon
 ```
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates from component formulas and calibration, not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
 The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
 
-> **Update 2026-11-03:** frame = **source**: build with `chip={"die_frame": False, ...}` so the replica keeps its own size and frame (the Quantcore PDK die frame is for Quantcore chips only). `metal:<Class>` wrappers are READY (ports = Metal pin names, params = Metal options), so the `metal:` refs in this spec build as written; the Quantcore/KQC substitutions stay optional. Buildable now: **yes** (`metal:TransmonPocket`).
+> The `metal:` references in this spec build as written, through the `metal:` wrapper (ports are the Metal pin names, parameters the Metal options). `metal:TransmonPocket` builds this chip. The Quantcore and KQC substitutions are optional.
 
-Source: [doc-sphinx/source/examples/two_transmon.ipynb](https://github.com/sqdlab/SQDMetal/blob/main/doc-sphinx/source/examples/two_transmon.ipynb) · licence **Apache-2.0** (`LICENSE`, verified) · read 2026-11-02. The notebook
+Source: [doc-sphinx/source/examples/two_transmon.ipynb](https://github.com/sqdlab/SQDMetal/blob/main/doc-sphinx/source/examples/two_transmon.ipynb) · licence Apache-2.0 (`LICENSE`, verified) · read on 2026-11-02. The notebook
 has no stored outputs. Quantum Metal design, SQDMetal Palace eigenmode (2 modes from 5 GHz), silicon.
 What it is: two floating pocket transmons 1 mm apart. Their facing connection pads are joined by a straight CPW, so
-the coupling is a direct capacitive link with no resonator. This is a minimal 2-qubit EPR / eigenmode test.
+the coupling is a direct capacitive link with no resonator. It is a minimal 2-qubit EPR / eigenmode test.
 Frame: Metal chip 2.2 × 1.8 mm centred at (0.5, 0) mm, substrate 500 µm (size_z −500 µm). **Box (0, 0, 2200, 1800)**,
 **Designer = source + (600, 900)**. CPW: Metal defaults (cpw_width 10, cpw_gap 6).
-Status: **metal (`metal:TransmonPocket`)**. Geometry-only stand-in today: KQC `DoublePads`.
+The chip uses `metal:TransmonPocket`. A geometry-only stand-in is KQC `DoublePads`.
 
 ### Components
 | instance | catalog ref | key params (units) | at (x, y) Designer | rot | notes |
@@ -77,7 +77,7 @@ Status: **metal (`metal:TransmonPocket`)**. Geometry-only stand-in today: KQC `D
 | Q1 | `metal:TransmonPocket` · stand-in `DoublePads` | pad_width 425, pocket_height 650; other Metal defaults: pad_height 90, pad_gap 30, pocket_width 650. Connection pad `readout`: loc_W +1, loc_H +1 (top-right, facing Q2), pad_width 200 | (600, 900) | 0 | source (0, 0) |
 | Q2 | same | same, `readout` loc_W −1, loc_H +1 (top-left, facing Q1) | (1600, 900) | 0 | source (1000, 0) |
 
-Junctions (Palace lumped ports): Q1 **L_J 13 nH**, Q2 **L_J 9 nH**, C_J 0, so `junction={"Lj_nH": 13, "Cj_fF": 0}` and
+Junctions (Palace lumped ports): Q1 L_J 13 nH, Q2 L_J 9 nH, C_J 0, so `junction={"Lj_nH": 13, "Cj_fF": 0}` and
 `{"Lj_nH": 9, "Cj_fF": 0}`.
 
 ### Routes
@@ -103,16 +103,16 @@ None stated. The detuning comes from Lj 13 vs 9 nH (eigenmodes searched from 5 G
 1. `DoublePads` (island extents [425, 90], island_island_gap 30, ground_gap [650, 650]) with rot 90/270 so `cplr`
    faces the other qubit. The LOM for DoublePads is not implemented yet.
 
-### Build (2026-11-03)
-Built with `metal:TransmonPocket` (the Metal cell itself, not the DoublePads stand-in); coupler route r = 20 µm (the two pins are 150 µm apart).
+### Build
+The notebook uses `metal:TransmonPocket` (the Metal cell itself, not the DoublePads stand-in); coupler route r = 20 µm (the two pins are 150 µm apart).
 
-### Quantcore PDK rebuild (2026-11-03)
+### Quantcore PDK rebuild
 
-The notebook is a **Quantcore-PDK rebuild**, not a replica (design rule, 2026-11-03): the netlist, LOM and imported components are kept, the process is Quantcore's.
+The notebook is a Quantcore PDK rebuild of the source, not a replica: the netlist, LOM and imported components are kept, and the process is Quantcore's.
 
 Notebook: [`examples/designs/sqdmetal/two_transmon.ipynb`](../../../examples/designs/sqdmetal/two_transmon.ipynb).
 
-- **Chip:** the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), on the 7.5 × 7.5 mm Quantcore die; the source's 2.2 × 1.8 mm chip area is centred in it (`box=(-2650, -2850, 4850, 4650)`), so every coordinate stays the source's.
-- **Stack:** sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); the SQDMetal examples are on silicon (280–500 µm), so frequencies differ from the source's.
-- **Junctions:** Quantcore Nb/AlOx/Nb trilayer junctions (`junction_type` from `layouts.registry.trilayer_junction`): fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient, sized on the PDK junction rule (Nb Δ = 1.4 meV, I_c·R_n = πΔ/2e, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed). The source detunes the pair with its Palace junctions (13 / 9 nH); the rebuild keeps that order at the two ends of the 40–50 kΩ window: Q1 R_n 50 kΩ (L_J ≈ 7.5 nH, C_J ≈ 13.5 fF), Q2 40 kΩ (≈ 6.0 nH, ≈ 16.8 fF). Expected f_q ≈ 7.0 / 7.8 GHz (estimates; were 5.92 / 7.21 GHz).
-- **Kept:** the topology (two floating pockets, a straight coupler), the Metal components with the source's options and positions, the sim group.
+- Chip: the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), on the 7.5 × 7.5 mm Quantcore die; the source's 2.2 × 1.8 mm chip area is centred in it (`box=(-2650, -2850, 4850, 4650)`), so every coordinate stays the source's.
+- Stack: sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); the SQDMetal examples are on silicon (280–500 µm), so frequencies differ from the source's.
+- Junctions: Quantcore Nb/AlOx/Nb trilayer junctions (`junction_type` from `layouts.registry.trilayer_junction`): fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient, sized on the PDK junction rule (Nb Δ = 1.4 meV, I_c·R_n = πΔ/2e, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed). The source detunes the pair with its Palace junctions (13 / 9 nH); the rebuild keeps that order at the two ends of the 40–50 kΩ window: Q1 R_n 50 kΩ (L_J ≈ 7.5 nH, C_J ≈ 13.5 fF), Q2 40 kΩ (≈ 6.0 nH, ≈ 16.8 fF). Expected f_q ≈ 7.0 / 7.8 GHz (estimates).
+- Kept: the topology (two floating pockets, a straight coupler), the Metal components with the source's options and positions, the sim group.

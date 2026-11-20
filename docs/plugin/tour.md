@@ -3,8 +3,7 @@
 This page shows what each part of the plugin looks like, with a screenshot of every window and dialog. Read it to
 know what to expect before you draw, or to find the name of a dialog. The plugin is the GUI front end of
 `design.json`: every action edits `design.json`, calls `qcc`, and draws the result. How to install it is on the
-[plugin page](index.md); the [Q1 + R1 tutorial](TUTORIAL_q1_r1.md) walks through a first chip. Development of the
-plugin is paused.
+[plugin page](index.md); the [Q1 + R1 tutorial](TUTORIAL_q1_r1.md) walks through a first chip.
 
 ## The window
 
@@ -155,10 +154,10 @@ After Fab > Export for fab: the panel at the end of the flow. The bundle holds `
 
 ## Known gaps
 
-What was never run, and what is not built:
+What has not been tested, and what is not built:
 
-- Eigenmode from the Simulate dialog, `--aedt gui` from the plugin and a whole-chip simulation from the GUI were never
-  run for real. The end-to-end smoke ran Q3D of one qubit in a new non-graphical AEDT.
+- Eigenmode from the Simulate dialog, `--aedt gui` from the plugin and a whole-chip simulation from the GUI have not
+  been tested. The smoke test ran Q3D of one qubit in a new non-graphical AEDT.
 - Whole-chip Run LOM of the 12-qubit and 5-qubit tutorial chips takes more than 600 s; the 21-qubit chip needs a bigger
   machine.
 - Freeform shape to component capture, per-instance values on hover, and snapping a component to a line are not built.

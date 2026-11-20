@@ -10,7 +10,7 @@ PCell declaration for optical lithography test stripes.
 Canonical cell of an alias group. Aliases: [`StripesTest`](StripesTest.md).
 :::
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

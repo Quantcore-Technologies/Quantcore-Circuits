@@ -270,7 +270,7 @@ def page(c, data: dict, sim: dict, gui: dict) -> str:
     elif c.aliases:
         names = ", ".join(f"[`{a}`]({page_name(a)}.md)" for a in c.aliases if a != c.ref)
         out += [f":::{{note}}\nCanonical cell of an alias group. Aliases: {names}.\n:::", ""]
-    out += ["See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).", ""]
+    out += ["See also the [catalog](../CATALOG.md).", ""]
 
     out += ["## Pins", ""]
     img = image_rel(ref)
@@ -366,7 +366,7 @@ def page(c, data: dict, sim: dict, gui: dict) -> str:
     if ref in sim:
         out += ["## Simulation export notes", ""]
         out += [f"- {esc(t)}" for t in sim[ref]]
-        out += ["", "Details: [SIM_EXPORT_AUDIT](../SIM_EXPORT_AUDIT.md).", ""]
+        out += [""]
 
     out += ["## How to use", "", "In Python:", "", "```python", example_code(c, ports, data["schema"]), "```", ""]
     out += [
@@ -402,8 +402,7 @@ def index_page(cells: list, data: dict) -> str:
         "",
         f"{len(cells)} cells from the Quantcore, KQC and Metal libraries (chips and wafers are not listed). Each page "
         "shows the pins first, then the parameters, the LOM model and how to place the cell. See also the "
-        "[catalog](../CATALOG.md), the [duplicates decisions](../DUPLICATES.md) and the "
-        "[migration table](../MIGRATION.md).",
+        "[catalog](../CATALOG.md).",
         "",
         "## What a pin is",
         "",

@@ -1,9 +1,9 @@
 # A custom qubit with its junction
 
-This page builds a qubit that is not in the library: a floating transmon whose two islands are forks. You write one
+This page builds a qubit that is not in the library: a floating transmon whose two islands are forks. It takes one
 Python class (`examples/custom_component/custom_qubit.py`) with the shape, two pins, a Quantcore trilayer junction
-across the gap and a LOM model. Afterwards `Designer.add`, `d.route`, `d.drc()` and `d.lom()` work with it like with
-any library qubit. The notebook that runs every step is `examples/custom_component/custom_qubits.ipynb`.
+across the gap and a LOM model. Afterwards `Designer.add`, `d.route`, `d.drc()` and `d.lom()` work with it as with any
+library qubit. The notebook that runs every step is `examples/custom_component/custom_qubits.ipynb`.
 
 ## What we build
 
@@ -62,7 +62,7 @@ def _island(self, sign):                       # +1 top island, -1 bottom island
     return pya.DPolygon([pya.DPoint(x, sign * y) for x, y in pts])
 ```
 
-The cell draws a **negative mask**: it draws what is removed. So the etched pocket is the clearance around the
+The cell draws a negative mask, so it draws what is removed. The etched pocket is the clearance around the
 islands and the claw, plus a CPW gap `b` along each tail, minus all the metal:
 
 ```python
@@ -162,7 +162,7 @@ def qcc_lom(cls, name, inst, pdk):
     return frag
 ```
 
-Three things to know:
+Notes on the model:
 
 - `"island"` names the FEM net of each node (`Q1.island1`, ...). A Q3D C-matrix of the cell fills the capacitances by
   these names.

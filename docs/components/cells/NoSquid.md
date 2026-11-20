@@ -6,7 +6,7 @@ The PCell declaration for a No SQUID junction.
 
 **Source:** KQC (KQCircuits). **Category:** junction. **Module:** `kqcircuits.junctions.no_squid`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 
@@ -47,8 +47,6 @@ Nodes: `j`.
 ## Simulation export notes
 
 - C3: junction sub-cell simulated on its own (status: fixed; fix in sim_tools/builder.py (is_junction_cell, _is_qubit, build_simulation); sim_tools/subset.py (has_junction))
-
-Details: [SIM_EXPORT_AUDIT](../SIM_EXPORT_AUDIT.md).
 
 ## How to use
 

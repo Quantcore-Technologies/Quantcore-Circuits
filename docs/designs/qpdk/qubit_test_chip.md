@@ -2,7 +2,7 @@
 
 Four floating double-pad transmons, each with a meandered λ/2 readout coupled to one U-shaped probeline, two series IDCs at the probeline ends and two flux lines. The layout comes from QPDK's `qubit_test_chip.pic.yml` (MIT, © 2024 gdsfactory) and is rebuilt on the Quantcore PDK: sapphire, trilayer SQUIDs, the QCT die frame. The rebuild is GPL-3.0.
 
-Build this one to learn a probeline with hanger readouts, the PDK pad rule (launchers 100 µm from the die edge) and the centring of the whole layout in the die.
+This notebook is an example of a probeline with hanger readouts, the PDK pad rule (launchers 100 µm from the die edge) and the centring of the whole layout in the die.
 
 ```{image} ../../images/designs/qpdk/qubit_test_chip.png
 :alt: The whole qubit_test_chip chip as the v2 notebook builds it
@@ -13,11 +13,11 @@ Build this one to learn a probeline with hanger readouts, the PDK pad rule (laun
 
 | | |
 |---|---|
-| Notebook | `examples/designs/qpdk/qubit_test_chip.ipynb` (the one-cell version before the rewrite: `qubit_test_chip.v1.ipynb`) |
+| Notebook | `examples/designs/qpdk/qubit_test_chip.ipynb` (an older one-cell version is kept as `qubit_test_chip.v1.ipynb`) |
 | Source | gdsfactory `quantum-rf-pdk` `qpdk/samples/qubit_test_chip.pic.yml`, MIT (© 2024 gdsfactory) |
 | Chip | 7.5 × 7.5 mm Quantcore die, the source's 4250 × 6200 µm circuit centred in it, CPW 10 / 6 µm |
 | On the chip | 4 launchers · 4 double-pad transmons · 4 λ/2 readouts · 1 probeline with 2 series IDCs · 2 flux lines |
-| Builds today | yes: layout run 2026-11-19, 7 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 7 s) |
 
 ## How the notebook builds it
 
@@ -51,17 +51,15 @@ Numbers are from a run of this notebook on 2026-11-19 (Setup, Design, Check and 
 :alt: LOM plot of qubit_test_chip
 ```
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates (component formulas and calibration), not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
-The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
-
-> **Update 2026-11-03:** frame = **source**: build with `chip={"die_frame": False, ...}` so the replica keeps its own size and frame (the Quantcore PDK die frame is for Quantcore chips only). The KQC `DoublePads` LOM model is done (`lom/kqc_models.py`), so the LOM is complete.
+The rest of this page is the detailed spec the notebook was built from, with every component, port, route and length.
 
 Source: [qpdk/samples/qubit_test_chip.pic.yml](https://github.com/gdsfactory/quantum-rf-pdk/blob/main/qpdk/samples/qubit_test_chip.pic.yml)
 (gdsfactory YAML netlist; `qubit_test_chip.py` only loads it) · licence MIT ("Copyright (c) 2024 gdsfactory", checked
-in `LICENSE`) · read 2026-11-02 from a depth-1 clone.
+in `LICENSE`) · Read on 2026-11-02 from a depth-1 clone.
 What it is: 4 floating double-pad transmons, each with its own meandered readout line coupled to one probeline that
 runs east along y = +400, turns, and runs back west along y = −400 (source frame). Two series interdigital capacitors
 at the probeline input and output, two T-shaped flux lines, four launchers. Image: `docs/_static/images/qubit_test_chip.png`.
@@ -69,8 +67,7 @@ Frame: the source has no chip edge. Its extent is x 0…4015, y −3000…+3000 
 of the filled variant (see [filled_qubit_test_chip](filled_qubit_test_chip.md)): **box (0, 0, 4250, 6200)**, so
 **Designer = source + (100, 3100)**. Layers: QPDK M1_DRAW / M1_ETCH (negative etch), Si εr 11.45.
 CPW everywhere: centre 10 µm, gap 6 µm, bend radius 100 µm (`cpw`). Launcher CPW 200/110 µm.
-Status: **yes**. Every ref resolves (`DoublePads`, `FingerCapacitorSquare`, `BondPad`). The LOM still needs a
-DoublePads lumped model; today only Xmon and Swissmon have one.
+Every ref resolves (`DoublePads`, `FingerCapacitorSquare`, `BondPad`), and `DoublePads` has a lumped LOM model.
 
 ### Components
 | instance | catalog ref | key params (units) | at (x, y) Designer | rot | notes |
@@ -110,8 +107,8 @@ gap 16 µm edge-to-edge, so centre spacing 26 µm and **ground_gap = 26 − 5 �
 `side="left"` is correct on both legs. Going east the resonators lie at +y; going west they lie at −y, which is also
 left. In QPDK the resonator line drops from the qubit to the coupler end nearest the qubit, runs along the probeline,
 then meanders away from it to an etched **open** end. The QPDK cell is a `resonator_quarter_wave` stitched to a coupler
-that is open at the qubit plate, so both ends are electrically open. Our rebuild uses the standard λ/4 hanger (short at
-the coupler end) with the same total lengths.
+that is open at the qubit plate, so both ends are electrically open. The first spec used the standard λ/4 hanger (short at
+the coupler end) with the same total lengths; the notebook uses open λ/2 hangers (see Build below).
 
 ### Launchers, pads, test structures, markers, labels
 4 launchers only. No markers or labels. The filled variant adds the chip edge and vortex fill.
@@ -129,18 +126,18 @@ None stated in the YAML. As λ/4 on Si (ε_eff ≈ 6.2) the lengths give about 6
 ### Simplifications for a first rebuild
 1. Drop C_IN/C_OUT and route FL straight from PAD_IN.a to PAD_OUT.a through the same nodes. Subtract ~30 µm from every `s`.
 2. Flux lines: plain CPW free ends (no tee). KQC `WaveguideCoplanarSplitter` can add the tee later.
-3. Stand-in qubit: if DoublePads LOM is needed now, use `Xmon` (claw_n toward FL) at the same positions.
+3. Stand-in qubit: use `Xmon` (claw_n toward FL) at the same positions.
 
-### Build (2026-11-03)
-Built: `examples/designs/qpdk/qubit_test_chip.ipynb`. The readouts are **open hangers (λ/2)**, not shorted λ/4: QPDK's line runs from the coupler plate to an etched open end, so both ends are open. Meanders sit between the qubit and the coupled section (r = 50 µm). Launcher ports 110 µm further in (BondPad's gap runs behind the pad). Lj 11 nH assumed. Flux lines end open (no tee).
+### Build
+The notebook is `examples/designs/qpdk/qubit_test_chip.ipynb`. The readouts are **open hangers (λ/2)**, not shorted λ/4: QPDK's line runs from the coupler plate to an etched open end, so both ends are open. Meanders sit between the qubit and the coupled section (r = 50 µm). Launcher ports 110 µm further in (BondPad's gap runs behind the pad). Lj 11 nH assumed. Flux lines end open (no tee).
 
-### Quantcore PDK rebuild (2026-11-03)
+### Quantcore PDK rebuild
 
-The notebook is a **Quantcore-PDK rebuild**, not a replica (design rule, 2026-11-03): the netlist, LOM and imported components are kept, the process is Quantcore's.
+The notebook is a Quantcore PDK rebuild, not a replica: the netlist, LOM and imported components are kept, the process is Quantcore's.
 
 Notebook: [`examples/designs/qpdk/qubit_test_chip.ipynb`](../../../examples/designs/qpdk/qubit_test_chip.ipynb).
 
 - **Chip:** the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), on the 7.5 × 7.5 mm Quantcore die; the source's 4.25 × 6.2 mm chip area is centred in it (`box=QP.die_box(4250, 6200)`), so every coordinate stays the source's.
 - **Stack:** sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); QPDK's process is Al on Si (εr 11.45), so frequencies are not the QPDK ones.
-- **Junctions:** Quantcore trilayer SQUIDs on the PDK rule (`_qpdk.JJ_PARAMS`): two 0.25 × 0.6 µm junctions (KQC's `junction_width` = the straight finger) → R_n 45 kΩ in parallel, L_J 6.73 nH at zero flux, C_J 15 fF; fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient (Nb Δ = 1.4 meV, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed), in place of the assumed 11 nH + 2 fF (QPDK states none; its evaporated Al junctions are another process). Expected f_q ≈ 5.8 GHz (estimate from the pre-rebuild LOM C_Σ; was 4.75 GHz).
+- **Junctions:** Quantcore trilayer SQUIDs on the PDK rule (`_qpdk.JJ_PARAMS`): two 0.25 × 0.6 µm junctions (KQC's `junction_width` = the straight finger) → R_n 45 kΩ in parallel, L_J 6.73 nH at zero flux, C_J 15 fF; fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient (Nb Δ = 1.4 meV, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed), in place of the assumed 11 nH + 2 fF (QPDK states none; its evaporated Al junctions are another process). Expected f_q ≈ 5.8 GHz (an estimate from the earlier LOM C_Σ; the 11 nH junction gave 4.75 GHz).
 - **Kept:** the topology and every component with the source's parameters and positions, the readout / resonator lengths and coupled sections, the sim groups (readouts 5000 / 4600 / 3600 / 4800 µm as open-hanger λ/2, coupled 800 / 400 / 400 / 800 µm).

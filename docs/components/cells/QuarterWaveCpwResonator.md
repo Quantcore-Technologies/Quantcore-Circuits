@@ -6,7 +6,7 @@ CPW Resonator
 
 **Source:** KQC (KQCircuits). **Category:** resonator. **Module:** `kqcircuits.elements.quarter_wave_cpw_resonator`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

@@ -6,7 +6,7 @@ The PCell declaration for a Swissmon qubit.
 
 **Source:** KQC (KQCircuits). **Category:** qubit. **Module:** `kqcircuits.qubits.swissmon`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 
@@ -60,7 +60,7 @@ The cell contributes to the lumped model:
 | branch | type | nodes | value (estimate at defaults) |
 |---|---|---|---|
 | `C_X` | C | island – gnd | estimate=78.4, unit=fF, estimate_source=analytic: CPW-arm cross (24/12 µm) × 0.874 Xmon Q3D anchor, estimate_kind=analytic, uncertainty=±25% |
-| `J_X` | SQUID | island – gnd | Lj_nH=–, Cj_fF=0, asym=0, flux_phi0=0 |
+| `J_X` | SQUID | island – gnd | Lj_nH=6.734, Cj_fF=15, asym=0, flux_phi0=0 |
 | `Cg_X_cplr0` | C | island – cplr0 | estimate=3.8, unit=fF, estimate_source=rough: Xmon claw calibration at the coupler length (screened coupler), estimate_kind=rough, uncertainty=±50% |
 | `Cc_X_cplr0` | C | cplr0 – gnd | estimate=69.3, unit=fF, estimate_source=analytic: horseshoe as CPW 24/6 µm × 366 µm, estimate_kind=analytic, uncertainty=±25% |
 | `Cg_X_cplr1` | C | island – cplr1 | estimate=3.8, unit=fF, estimate_source=rough: Xmon claw calibration at the coupler length (screened coupler), estimate_kind=rough, uncertainty=±50% |
@@ -69,8 +69,6 @@ The cell contributes to the lumped model:
 | `Cc_X_cplr2` | C | cplr2 – gnd | estimate=69.3, unit=fF, estimate_source=analytic: horseshoe as CPW 24/6 µm × 366 µm, estimate_kind=analytic, uncertainty=±25% |
 
 Nodes: `island`, `cplr0`, `cplr1`, `cplr2`.
-
-- X: no junction.Lj_nH in the design; the qubit mode needs one to simulate
 
 ## How to use
 

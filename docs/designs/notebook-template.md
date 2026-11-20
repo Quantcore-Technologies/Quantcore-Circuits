@@ -2,18 +2,18 @@
 
 Every notebook under `examples/designs/` (except `legacy/`) follows one template, the "v2" form: it builds the chip one
 segment at a time with a picture after each, then walks the same steps as the plugin's Flow strip (Check, LOM,
-Simulate, Results, Fab). This page explains the template, the switch cell at the top, the variants, and what to check
+Simulate, Results, Fab). This page describes the template, the switch cell at the top, the variants, and what to check
 on a first run.
 
-On 2026-11-19 every v2 notebook was run **up to the whole-chip render** (Setup and Design cells), so each one is saved
-with its layout pictures and its "Same design as before" check. The LOM, Simulate, Results and Fab cells were not run:
-run them yourself (the design pages show LOM estimates computed separately). The [tutorials](../tutorials/index.md) are
-different notebooks, saved with all their outputs.
+On 2026-11-19 every v2 notebook was run up to the whole-chip render (Setup and Design cells), so each one is saved
+with its layout pictures and its "Same design as before" check. The LOM, Simulate, Results and Fab cells were not run,
+so run them yourself; the design pages show LOM estimates computed separately. The
+[tutorials](../tutorials/index.md) are different notebooks, saved with all their outputs.
 
 ## What a v2 notebook is
 
-The aim: build the chip the way the chip-12 notebook does, one segment at a time, so a new user feels each step (die,
-bond pads, readout, qubit placement, coupling, routing, whole chip). After the layout the notebook follows the plugin's
+The notebook builds the chip the way the chip-12 notebook does, one segment at a time (die, bond pads, readout, qubit
+placement, coupling, routing, whole chip), so you can see what each step adds. After the layout it follows the plugin's
 Flow strip with the same names.
 
 ```{figure} ../images/design-notebooks/section_order.svg
@@ -34,11 +34,11 @@ Section order of a v2 design notebook. The headings after Design use the plugin'
 
 Each Design segment ends with a picture and a line "on the chip so far: n pads, n qubits, ..., this step added ...".
 Design 8 calls `save_design(d, path)`, which prints "Same design as before" when the saved `<id>.json` is byte-identical
-to the file it replaces. The segmentation is a reorganisation: the same calls with the same arguments, so the JSON does
-not change. If it says "differs", compare with the `.v1` and fix the v2, not the JSON.
+to the file it replaces. The segmentation only reorganises the same calls with the same arguments, so the JSON does
+not change. If it says "differs", compare with the `.v1` notebook and fix the v2.
 
 The same step pictures the v1 notebooks wrote (`<id>_step_die.png`, `_pads.png`, `_parts.png`, `_routes.png`) show the
-progression. Here are those of `metal/a2_two_coupled_transmons` (v1 outputs; the v2 adds a picture per segment):
+progression. These are the ones from `metal/a2_two_coupled_transmons` (v1 outputs; the v2 adds a picture per segment):
 
 ```{figure} ../images/design-notebooks/a2_die.png
 :width: 60%
@@ -70,7 +70,7 @@ The whole chip with its routes (v1 `_step_routes.png`).
 |---|---|
 | `RUN_FEM = False` | No AEDT is started. Simulate cells export the jobs and print "no solved results yet" unless kept results exist; Results cells load kept results from `<group>/fem/<job>/` or print one line |
 | `RESOLVE = False` | Do not solve again when kept results of the same revision exist |
-| `FEM_FAST = True` | Fast solver settings: minutes, not converged |
+| `FEM_FAST = True` | Fast solver settings: minutes per solve, not converged |
 | `AEDT_MODE = "batch"` | `batch`, `gui` or `attach` (as in the tutorials) |
 | `MAX_ITER = 3` | Revisions tried by the iterate cell |
 
@@ -112,11 +112,11 @@ The `legacy/` group was not rewritten.
 
 ## The `.v1` notebooks
 
-Beside every rewritten notebook sits `<id>.v1.ipynb`: a byte copy of the old notebook with its saved outputs, never
-edited. Use it to see what the old run printed (the v2 marks run values "(from the v1 run)"), or when you want the old
+Beside every rewritten notebook sits `<id>.v1.ipynb`: a byte copy of the old notebook with its saved outputs, left
+unedited. Use it to see what the old run printed (the v2 marks such run values "(from the v1 run)") or to get the old
 one-step layout. A `.v1` writes the same `<id>.json`, `build/<id>.oas` and step pictures as the v2, so run one or the
-other, not both in a row expecting different files. The test suite and `scripts/design_status.py` know about the pairing
-(a v2 without outputs reports the v1's state).
+other, not both in a row, if you want to compare files. The test suite and `scripts/design_status.py` know about the
+pairing (a v2 without outputs reports the v1's state).
 
 ## Checklist for the first run
 
@@ -137,9 +137,7 @@ Run top to bottom, live or with `QCC_LIVE=0` and `OPENBLAS_NUM_THREADS=2`, switc
   point; Results 5 with `RUN_FEM = True` solves each revision's component jobs (`fem/rev<k>/`).
 
 A static checker, `python scripts/check_notebook_api.py NB.ipynb [--clean]`, reads a notebook without running it: schema,
-syntax, names, imports and the signatures of every resolvable call. On 2026-11-18 the pilot and its v1 passed; the six
-amplifier v1 notebooks fail on a latent bug (`from quantcore_circuits.sim_tools import solve_job`, which lives in
-`sim_tools.hfss`) that the v2 replaces with `fem_stage`.
+syntax, names, imports and the signatures of every resolvable call.
 
 ## Known gaps
 

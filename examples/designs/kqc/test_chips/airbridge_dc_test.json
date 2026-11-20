@@ -12,8 +12,9 @@
     ],
     "launchers": null,
     "params": {
-      "with_grid": true,
-      "name_chip": "CTest"
+      "with_grid": false,
+      "name_chip": "CTest",
+      "cheese": "chip"
     }
   },
   "instances": {

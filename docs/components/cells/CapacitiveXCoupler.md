@@ -10,7 +10,7 @@ Capacitive coupler for testing FEM computations.
 Legacy cell. KQC test element 'for testing FEM computations'; unused. Ports p11..p41 and a LOM model since 2026-11-15
 :::
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 
@@ -68,8 +68,6 @@ Nodes: `c`, `p11`, `p21`, `p31`, `p41`.
 ## Simulation export notes
 
 - C7: C-matrix nets without a design label (warning) (status: fixed; fix in sim_tools/builder.py (_cell_probes, label_unnamed); layouts/others/amplifiers.py (JtwpaChain.qcc_probes))
-
-Details: [SIM_EXPORT_AUDIT](../SIM_EXPORT_AUDIT.md).
 
 ## How to use
 

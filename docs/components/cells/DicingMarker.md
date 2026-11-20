@@ -6,7 +6,7 @@ Dicing cross (legacy ``draw.marker_dicing``).
 
 **Source:** Quantcore. **Category:** marker. **Module:** `quantcore_circuits.layouts.others.markers`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

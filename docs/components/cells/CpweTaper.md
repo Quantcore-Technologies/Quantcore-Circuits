@@ -10,7 +10,7 @@ Taper from ``a``/``b`` to ``a_end``/``b_end`` (legacy ``cpwe.tapper``: linear or
 Alias of [`WaveguideCoplanarTaper`](WaveguideCoplanarTaper.md): the same circuit, drawn differently. linear profile (taper_type 0): length → taper_length, a_end → a2, b_end → b2; ports a, b (XOR 0.03 of 565 µm², dbu rounding). The exponential profiles 1–3 have no KQC drawing (same LOM: mean a/b)
 :::
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

@@ -6,7 +6,7 @@ Bent junction finger with its holder (legacy "JJ_finger Bottom"), on ``SIS_junct
 
 **Source:** Quantcore. **Category:** shape. **Module:** `quantcore_circuits.layouts.junctions.jj_fingers`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

@@ -167,6 +167,22 @@ NOTES = {
         "origin at the arc centre: port 'a' at (r, 0), 'b' at angle alpha, both facing out along the tangent "
         "(registry.KQC_EXTRA_PORTS; KQC draws no ports). LOM: a CPW line of r·|alpha|."
     ),
+    "FlipChipConnectorRf": (
+        "KQC names its CPW ends '<face>_port': qcc gives them as port 'a' (face_ids[0], CPW a/b) and 'b' "
+        "(face_ids[1], a2/b2), each recording its face, so a route ends on them on that face "
+        "(registry.KQC_EXTRA_PORTS). KQC always draws a 25 µm bump on a 40 µm UBM and 4 ground bumps; "
+        "QcFlipChipConnectorRf sizes them. LOM: one conductor through the bump."
+    ),
+    "CpwTsvTransition": (
+        "port 'a' is on face_ids[0] (the front pad), 'b' on the other side of the same chip (1t1 → 1b1, 2b1 → 2t1); "
+        "a route to either is drawn on that port's face. Set face_ids=['2b1'] for a TSV through the top chip. "
+        "LOM: one conductor (tapers + pad length; the via height is not modelled)."
+    ),
+    "QcFlipChipConnectorRf": (
+        "port 'a' is on face_ids[0], 'b' on face_ids[1] (default 1t1 → 2b1); a route to either is drawn on that "
+        "port's face. bump_diameter / ubm_diameter size the signal bump, n_ground_bumps is 4 (KQC's) or 0. "
+        "LOM: one conductor through the bump."
+    ),
 }
 
 # refs not offered by the catalog (design decisions); they may still resolve by ref (``registry.resolve_cell``)

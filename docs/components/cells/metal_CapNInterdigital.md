@@ -6,7 +6,7 @@ Generates a two pin (+) structure comprised of a north CPW transmission
 
 **Source:** Metal (Qiskit Metal). **Category:** capacitor. **Module:** `qiskit_metal.qlibrary.lumped.cap_n_interdigital`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

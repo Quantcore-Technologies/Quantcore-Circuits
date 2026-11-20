@@ -167,7 +167,7 @@ Section 4: the two qubits with their facing arms and the two meandered λ/4 read
 `F_Q1_WANTED = 5.45` is the input. The notebook takes the targets with your f_q1, applies the last FEM correction (from
 the newest revision that has FEM results), runs the LOM loop to new knobs, rebuilds, checks the DRC and solves the new
 revision with `RUN_FEM`. Q1's cross moves first; outside 300 to 600 µm the junction moves instead, inside the PDK R_n
-window. A frequency the window cannot reach shows up as a residual, not as a silent change. With the kept results:
+window. A frequency the window cannot reach shows up as a residual; nothing changes silently. With the kept results:
 
 | Quantity | Target | LOM | Predicted | FEM |
 |---|---|---|---|---|
@@ -222,4 +222,4 @@ build/jobs/<job>` and `qcc mask ...`. See [Simulation](../library/simulation.md)
   and the loop corrected most of it in one pass.
 - One FEM iteration (Q3D plus eigenmode) is about 25 minutes of solve time on the workstation.
 
-Back to the [tutorials index](index.md).
+The other pages are listed on the [tutorials index](index.md).

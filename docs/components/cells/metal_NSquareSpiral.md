@@ -10,7 +10,7 @@ A n count square spiral.
 Legacy cell. Metal sample shape (metal only, no pocket); unused; the same job as metal:ResonatorCoilRect
 :::
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

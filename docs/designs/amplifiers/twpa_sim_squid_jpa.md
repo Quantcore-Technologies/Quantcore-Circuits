@@ -2,7 +2,7 @@
 
 A lumped JPA whose inductor is a DC SQUID. A static flux tunes the mode, and a pump on the flux line at twice the signal frequency modulates the SQUID (three-wave mixing). The layout follows twpa-sim's `squid_jpa` family (MIT), which leaves the coupling and flux line external; the rebuild draws both.
 
-Build this one to see a flux-pumped amplifier as a small chip: a coupling capacitor on the signal side, the SQUID with its shunt capacitor, and a flux line that arrives from a second pad.
+This chip is a small flux-pumped amplifier: a coupling capacitor on the signal side, the SQUID with its shunt capacitor, and a flux line that arrives from a second pad.
 
 ```{image} ../../images/designs/amplifiers/twpa_sim_squid_jpa.png
 :alt: The whole twpa_sim_squid_jpa chip as the v2 notebook builds it
@@ -13,11 +13,11 @@ Build this one to see a flux-pumped amplifier as a small chip: a coupling capaci
 
 | | |
 |---|---|
-| Notebook | `examples/designs/amplifiers/twpa_sim_squid_jpa.ipynb` (the one-cell version before the rewrite: `twpa_sim_squid_jpa.v1.ipynb`) |
+| Notebook | `examples/designs/amplifiers/twpa_sim_squid_jpa.ipynb` (an older one-cell version is kept as `twpa_sim_squid_jpa.v1.ipynb`) |
 | Source | twpa-sim `squid_jpa` (MIT) |
 | Chip | 7.5 × 7.5 mm Quantcore die, sapphire 650 µm |
 | On the chip | 1 `LumpedJpa` with SQUID and flux line · 1 finger capacitor · signal and flux pads |
-| Builds today | yes: layout run 2026-11-19, 5 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 5 s) |
 
 ## How the notebook builds it
 
@@ -61,13 +61,13 @@ At 0.3 Φ0 the tuning slope is df0/dΦ = -11.54 GHz/Φ0 with κ/2π = 25.0 MHz. 
 :alt: Flux-pumped gain of the SQUID JPA
 ```
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates (component formulas and calibration), not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
-The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
+The rest of this page is the detailed spec the notebook was built from, with every component, port, route and length.
 
-Source · licence: mandalsoumyajit/twpa-sim (MIT): `src/twpa/layout/generate.py` (family `squid_jpa`), `examples/layout/squid_jpa.json`. Group `amplifiers` (design decision #45). Die: 7.5 × 7.5 mm PDK die, PDK frame, sapphire 650 µm, Nb trilayer junctions. Status: built — `examples/designs/amplifiers/twpa_sim_squid_jpa.ipynb` / `.json`.
+Source · licence: mandalsoumyajit/twpa-sim (MIT): `src/twpa/layout/generate.py` (family `squid_jpa`), `examples/layout/squid_jpa.json`. Die: 7.5 × 7.5 mm PDK die, PDK frame, sapphire 650 µm, Nb trilayer junctions. Notebook and design: `examples/designs/amplifiers/twpa_sim_squid_jpa.ipynb` / `.json`.
 
 ### Components
 
@@ -86,7 +86,7 @@ Source · licence: mandalsoumyajit/twpa-sim (MIT): `src/twpa/layout/generate.py`
 
 ### LOM node structure
 
-island (C_shunt, SQUID to ground at the static bias `flux_phi0`) — C_c π — pad; flux = control
+island (C_shunt, SQUID to ground at the static bias `flux_phi0`), then C_c π, then pad; flux is a control
 
 ### Targets (from the source)
 
@@ -94,5 +94,4 @@ none stated (illustrative: f0 ≈ 70 GHz)
 
 ### Simplifications / PDK differences
 
-PDK SQUID; planar IDC; coupling and flux line drawn (external in the source)
-; junctions are flagged `pdk_rn` where present (amplifier junctions are far below the qubit R_n window).
+PDK SQUID; planar IDC; coupling and flux line drawn (external in the source); junctions are flagged `pdk_rn` where present (amplifier junctions are far below the qubit R_n window).

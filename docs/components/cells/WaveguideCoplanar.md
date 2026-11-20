@@ -10,7 +10,7 @@ The PCell declaration for an arbitrary coplanar waveguide.
 Canonical cell of an alias group. Aliases: [`CpwSegment`](CpwSegment.md).
 :::
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

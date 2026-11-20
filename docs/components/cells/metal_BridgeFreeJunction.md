@@ -10,7 +10,7 @@ user_bridgefreejj.png
 Legacy cell. Metal 2/0 junction footprint without pins, not the trilayer process; unused. Use QuantcoreJunction
 :::
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

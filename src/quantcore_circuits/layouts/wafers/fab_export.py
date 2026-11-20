@@ -5,7 +5,8 @@ M1 (1/0) is the KQC etch region ``base_metal_gap_wo_grid + ground_grid − base_
 metal (chip box minus etch). With a ``box`` every layer is clipped to it. M3 (3/0) is the second-metal etch:
 filled keep-outs per route and component (:func:`keepout_region`, :class:`~quantcore_circuits.pdk.KeepoutRule`) that
 cover each 1/0 feature *and* what lies between its gaps, plus ground margin (route 10, component 24, other 9 µm; a
-cell's own ``qcc_keepout`` shapes grow by ``own_grow`` = 4 µm).
+cell's own ``qcc_keepout`` shapes grow by ``own_grow`` = 4 µm). A KQC chip placed as one cell, or a cell over most of
+the die, gets its etch grown by the "other" margin, not its bounding box.
 JJ, spacer, frame, airbridge (300/301), TSV (700) and flip-chip face ``2b1`` (800–804) layers are
 copied from their KQC / qcc source layers (a fab layer's ``faces`` say which KQC faces it reads).
 
@@ -16,7 +17,9 @@ simulation exports:
   rounded layers gets r = fraction × its shortest dimension (capped);
 * **cheese** (:class:`~quantcore_circuits.pdk.CheeseRule`, :func:`cheese_holes`): a band of grid-aligned square
   holes around the components (3/0 grown by ``rows`` pitches, none within ``clearance`` = 4 µm of 3/0), inside the
-  design area and clear of the frame's markers and device ID — not over the whole chip.
+  design area and clear of the frame's markers and device ID — not over the whole chip. TSVs, indium bumps, UBM and
+  airbridges are not on 3/0 (they sit on the ground metal), but the cheese keeps the same distance from them grown by
+  the "other" margin (:func:`cheese_avoid_region`).
 
 The PDK band cheese is drawn by the chip build itself (into ``ground_grid``, see
 :class:`~quantcore_circuits.pdk.CheeseRule`); a design with its own cheese (KQC's whole-area ``with_grid``, a static
@@ -140,6 +143,55 @@ def _is_route(child: pya.Cell, cls) -> bool:
     return (cls is not None and cls.__name__ == "WaveguideComposite") or child.name.startswith("Waveguide")
 
 
+def _is_chip(cls) -> bool:
+    """A KQC chip PCell (``kqcircuits.chips.chip.Chip`` or a subclass): a whole chip placed as one cell."""
+    from kqcircuits.chips.chip import Chip  # pylint: disable=import-outside-toplevel
+
+    return isinstance(cls, type) and issubclass(cls, Chip)
+
+
+# KQC face layers the cheese keeps clear of besides 3/0: vias, bump stacks and airbridges sit on the ground metal, so
+# they are not 1/0 features and not on 3/0, but no hole may lie under or next to them
+CHEESE_CLEAR_LAYERS = (
+    "through_silicon_via",
+    "indium_bump",
+    "underbump_metallization",
+    "airbridge_pads",
+    "airbridge_flyover",
+)
+
+
+def cheese_avoid_region(cell: pya.Cell, pdk) -> pya.Region:
+    """What the cheese of the PDK face stays clear of besides 3/0 (dbu): that face's TSVs, indium bumps, under-bump
+    metal, airbridge pads and flyovers (:data:`CHEESE_CLEAR_LAYERS`), filled and grown by ``keepout.other_margin``.
+    :func:`cheese_holes` keeps its ``clearance`` from this region as from 3/0, but grows no band around it."""
+    face = default_faces[pdk.face]
+    out = pya.Region()
+    for name in CHEESE_CLEAR_LAYERS:
+        if name in face:
+            out += _region(cell, face[name])
+    if out.is_empty():
+        return out
+    return out.merged().hulls().sized(round(pdk.keepout.other_margin / cell.layout().dbu))
+
+
+def ground_region(cell: pya.Cell, pdk, box, rule, etch: pya.Region | None = None) -> pya.Region:
+    """The ground plane of the PDK face inside ``box`` (a ``DBox`` in µm; dbu region): the metal (``box`` minus the
+    1/0 etch without the cheese, ``base_metal_addition`` counted as metal) split into connected pieces, keeping a
+    piece that touches the edge of ``box`` (the die-edge ground) or is at least ``rule.ground_island_mm2`` large
+    (ground enclosed by a bus ring or a feedline loop). Smaller isolated pieces (pads, qubit islands, the probe pads
+    of a test chip without a ground plane) are left out, so :func:`cheese_holes` puts no hole in them."""
+    dbu = cell.layout().dbu
+    ibox = box.to_itype(dbu)
+    etch = etch if etch is not None else etch_region(cell, pdk.face, grid=False)
+    metal = (pya.Region(ibox) - etch).merged()
+    edge = pya.Region(ibox) - pya.Region(ibox.enlarged(-1, -1))
+    ground = metal.interacting(edge)
+    island = float(getattr(rule, "ground_island_mm2", 0.0)) * 1e6 / dbu**2
+    ground += metal.not_interacting(edge).with_area(round(island), None, False)
+    return ground
+
+
 def keepout_region(cell: pya.Cell, pdk, etch: pya.Region | None = None) -> pya.Region:
     """3/0 keep-outs of a built chip (dbu, filled; see :class:`~quantcore_circuits.pdk.KeepoutRule`)."""
     rule = pdk.keepout
@@ -172,8 +224,12 @@ def keepout_region(cell: pya.Cell, pdk, etch: pya.Region | None = None) -> pya.R
                     # grown by ``own_grow`` like every other keep-out
                     own_ko = pya.Region(poly.to_itype(dbu).transformed(t)).hulls()
                     out.insert(own_ko.sized(grow) if grow else own_ko)
-            elif depth < 2 and own.bbox().area() > 0.25 * die.area() and child.child_cells():  # a whole chip as a cell
-                visit(child, t, depth + 1)
+            elif depth < 2 and (_is_chip(cls) or own.bbox().area() > 0.25 * die.area()) and child.child_cells():
+                visit(child, t, depth + 1)  # a whole chip as a cell: its parts are treated like the design's own
+            elif _is_chip(cls) or own.bbox().area() > 0.5 * die.area():
+                # a whole chip drawn into one cell (a KQC test chip's stripes or squares) or a cell over most of the
+                # die: its etch is covered by the etch rule below (other_margin), not by its bounding box
+                pass
             else:
                 m = round(rule.component_margin / dbu)
                 out.insert(own.bbox().enlarged(m, m))
@@ -240,28 +296,53 @@ def _round_squares(region: pya.Region, rule, dbu: float) -> pya.Region:
     return (out + round_corners(left, rule, dbu)).merged() if not left.is_empty() else out.merged()
 
 
-def cheese_holes(keepout: pya.Region, rule, dbu: float, allowed: pya.Region | None = None, exclude=None) -> pya.Region:
+def cheese_holes(
+    keepout: pya.Region,
+    rule,
+    dbu: float,
+    allowed: pya.Region | None = None,
+    exclude=None,
+    avoid=None,
+    ground: pya.Region | None = None,
+) -> pya.Region:
     """Grid-aligned square holes in a band around ``keepout`` (3/0): squares of ``rule.size`` on a ``rule.pitch``
     grid lying entirely inside ``keepout`` grown by ``rule.rows`` pitches, ≥ ``rule.clearance`` from it (not even
     touching it), inside ``allowed`` (the design area) and clear of ``exclude`` (frame markers, device ID). dbu region.
 
+    ``avoid`` (:func:`cheese_avoid_region`: TSVs, bumps, UBM and airbridges grown by the keep-out margin) is kept
+    ``rule.clearance`` clear like ``keepout``, but the band is not grown around it. With ``ground``
+    (:func:`ground_region`) the holes lie in the ground plane only, not in floating pads or islands.
+
     The band is measured like the grid, along x and y (a square Minkowski sum of 3/0). A square of half-width h
     fits where its centre lies in the band eroded by h, so the centres are found by region operations, then read off
-    row by row on the grid (fast: no per-square region test)."""
-    if keepout.is_empty():
+    row by row on the grid (fast: no per-square region test).
+
+    ``rule.fill == "chip"``: no band; the squares fill all of ``allowed`` (or the keep-outs' bounding box when
+    ``allowed`` is None) at the same clearance from 3/0."""
+    whole = getattr(rule, "fill", "band") == "chip"
+    if keepout.is_empty() and not (whole and allowed is not None):
         return pya.Region()
     pitch, size = rule.pitch / dbu, rule.size / dbu
     h = size / 2
 
     def grown(d: float) -> pya.Region:  # 3/0 grown by d along x and y (exact for curved meanders too)
         d = round(d)
-        return keepout.minkowski_sum(pya.Box(-d, -d, d, d))
+        return keepout.minkowski_sum(pya.Box(-d, -d, d, d)) if not keepout.is_empty() else pya.Region()
 
-    centres = grown(rule.rows * pitch - h) - grown(rule.clearance / dbu + h + 1)
-    if allowed is not None:
+    if whole:
+        area = allowed if allowed is not None else pya.Region(keepout.bbox())
+        centres = area.sized(-round(h)) - grown(rule.clearance / dbu + h + 1)
+    else:
+        centres = grown(rule.rows * pitch - h) - grown(rule.clearance / dbu + h + 1)
+    if allowed is not None and not whole:
         centres &= allowed.sized(-round(h))
     if exclude is not None and not exclude.is_empty():
         centres -= exclude.sized(round(h))
+    if avoid is not None and not avoid.is_empty():
+        d = round(rule.clearance / dbu + h + 1)
+        centres -= avoid.minkowski_sum(pya.Box(-d, -d, d, d))
+    if ground is not None:
+        centres &= ground.sized(-round(h))  # the whole hole in ground metal
     if centres.is_empty():
         return pya.Region()
     bb = centres.bbox()
@@ -331,7 +412,9 @@ def fab_regions(
         raw[name] = reg
     holes = pya.Region()
     if cheese is not None and "M3" in raw and cheese.layer in raw:
-        holes = cheese_holes(raw["M3"], cheese, dbu, cheese_allowed, cheese_exclude)  # from the keep-outs alone
+        avoid = cheese_avoid_region(cell, pdk)  # vias, bumps, airbridges: clear of holes, not on 3/0
+        ground = ground_region(cell, pdk, box or cell.dbbox(), cheese)  # no holes in floating pads or islands
+        holes = cheese_holes(raw["M3"], cheese, dbu, cheese_allowed, cheese_exclude, avoid, ground)  # keep-outs alone
         raw[cheese.layer] = (raw[cheese.layer] + holes).merged()
     if grid and "M3" in raw:
         # the cheese is on 3/0 too, as the same squares as on 1/0 (not grown by the keep-out margin): the build's
@@ -441,6 +524,8 @@ def export_fab(
                 result.layout.dbu,
                 allowed,
                 exclude,
+                cheese_avoid_region(result.cell, pdk),
+                ground_region(result.cell, pdk, pya.DBox(x0, y0, x1, y1), rule),
             ).count()
             if rule is not None
             else 0

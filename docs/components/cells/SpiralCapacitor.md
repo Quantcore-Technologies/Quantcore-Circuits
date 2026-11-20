@@ -6,7 +6,7 @@ The PCell declaration for a spiral capacitor.
 
 **Source:** KQC (KQCircuits). **Category:** capacitor. **Module:** `kqcircuits.elements.spiral_capacitor`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

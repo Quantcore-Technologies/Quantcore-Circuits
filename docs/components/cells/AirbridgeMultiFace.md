@@ -6,7 +6,7 @@ PCell declaration for a multi-face equivalent for an airbridge.
 
 **Source:** KQC (KQCircuits). **Category:** airbridge. **Module:** `kqcircuits.elements.airbridges.airbridge_multi_face`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 
@@ -50,8 +50,6 @@ Nodes: `w`.
 ## Simulation export notes
 
 - C2: indium bump in a one-face simulation is a PEC pillar to the top of the box (status: fixed; fix in sim_tools/builder.py)
-
-Details: [SIM_EXPORT_AUDIT](../SIM_EXPORT_AUDIT.md).
 
 ## How to use
 

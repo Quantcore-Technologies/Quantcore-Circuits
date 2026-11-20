@@ -14,7 +14,7 @@
     "params": {
       "with_grid": false,
       "name_chip": "D14",
-      "cheese": "original"
+      "cheese": "chip"
     }
   },
   "instances": {

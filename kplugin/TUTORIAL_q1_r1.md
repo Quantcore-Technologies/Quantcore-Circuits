@@ -56,7 +56,7 @@ The finished design:
 double-click in the panel or **Duplicate**) snaps by its ports. When one of its ports comes within the capture radius
 of a compatible port (same CPW a / b) the component **turns to face it** and sits on it: the green square marks the
 target and the label says which ports and how far it turned. Without a snap the rotation stays on the 90° steps of
-**[** / **]**. The turn is any angle, not only 90°, so the angled ports work: a Quantum Metal `StarQubit` has pins 72° apart,
+**[** / **]**. The turn can be any angle, so the angled ports work: a Quantum Metal `StarQubit` has pins 72° apart,
 a `ConcentricTransmon` couplers 60° apart.
 
 ![Dragging SQ2 (a StarQubit) onto the pin of SQ1: the preview turns by -36° so its pin faces SQ1's, and the label says so](../docs/images/plugin/rotation_snap_preview.png)
@@ -109,7 +109,7 @@ the rotation stays what you set with **[** / **]**.
 There is no coupler component: the hanger is the coupler. Any qubit port works the same way (Xmon claw,
 TwoPadTransmon `left`/`right`, Flipmon `coupler`, a Metal qubit's pin). A port that faces the line gives the cleanest
 route. A port that faces sideways also works: the router goes around with extra corners. A Gatemon's `readout` is
-the island edge, not a CPW end. Route from it and the dialog presets the PDK line width (10 / 6 µm), or snap a
+the island edge and no CPW end. Route from it and the dialog presets the PDK line width (10 / 6 µm), or snap a
 `GatemonCoupler` to it and route from the coupler.
 
 1. Still in **Connect**, click Q1's claw port `Q1.claw_n` (at the top of the qubit).
@@ -123,8 +123,8 @@ the island edge, not a CPW end. Route from it and the dialog presets the PDK lin
    - **Coupler length** 300, **Side** right, **Coupler end** short (λ/4), **Ground strip** 6;
    - **Line width a** and **Line gap b**: leave them empty. They are R1's own CPW (centre line and the gap on both
      sides), over its whole length; empty takes the claw port's;
-   - the two **Coupler: … facing …** rows: leave them empty for this design (both 6 µm). They are not another b:
-     each narrows one gap along the coupler only, R1's gap on the feedline's side and FL's gap on R1's side. See
+   - the two **Coupler: … facing …** rows: leave them empty for this design (both 6 µm). Each
+     narrows one gap along the coupler only, R1's gap on the feedline's side and FL's gap on R1's side. See
      step 7;
    - **Direction:** leave the preset.
 4. Press OK. The meander fills the longest free straight between the claw and the coupler.
@@ -195,8 +195,8 @@ In **Route handles**:
   goes away. The LOM keeps using its last good route (with a warning) meanwhile, and the fab export refuses until it is
   fixed.
 
-KLayout's **Select** tool now draws a route's selection box around the route itself (a meander's box includes its
-meander). It used to stretch from the die's corner, because KQC route cells were drawn in chip coordinates.
+KLayout's **Select** tool draws a route's selection box around the route itself (a meander's box includes its
+meander).
 
 ## 8. Check
 
@@ -315,10 +315,12 @@ facing across a gap in a CPW line.
    - `elements`: C / L / JJ between conductors or to `"gnd"`, with values from `quantcore_circuits.lom.estimates`.
    The example keeps its model in the same file. Without a model, Run LOM notes that the component has none.
 
-The example was checked through the whole chain: listed with class `capacitor`, built in a design (pad → capacitor →
-λ/4 meander), DRC clean, and LOM 7.37 GHz with κ 6.6 MHz from its own model.
+The example lists with class `capacitor`, builds in a design (pad → capacitor → λ/4 meander), passes DRC, and gives
+an LOM of 7.37 GHz with κ 6.6 MHz from its own model.
 
-## What to look for (please report)
+## What to look for
+
+Report any of these:
 
 - anything that needs a second try: a click that took the wrong port, a preview that differs from what is placed, a
   dialog that loses a value;

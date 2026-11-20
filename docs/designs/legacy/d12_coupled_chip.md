@@ -1,8 +1,8 @@
 # Nine coupled Xmons (design 12)
 
-A coupled-qubit test chip. A 20/12 µm feedline crosses the die and nine λ/4 readout resonators hang off it, each ending at one of nine Xmon qubits (four above the feedline, five below). Two things are being tested: a direct coupling between two neighbouring qubits (Q1 and Q2, arm tips facing each other) and a tunable coupler, where a flux-tunable qubit (Q8) sits between two others (Q5 and Q6). Each qubit has its own 50 Ω launchpad for a flux line or a drive line.
+A coupled-qubit test chip. A 20/12 µm feedline crosses the die and nine λ/4 readout resonators hang off it, each ending at one of nine Xmon qubits (four above the feedline, five below). The chip tests two things: a direct coupling between two neighbouring qubits (Q1 and Q2, arm tips facing each other) and a tunable coupler, where a flux-tunable qubit (Q8) sits between two others (Q5 and Q6). Each qubit has its own 50 Ω launchpad for a flux line or a drive line.
 
-It comes from Quantcore's earlier Qiskit Metal design notebook `12.0 Coupled_chip_layout.ipynb` (internal). The rebuild keeps every Metal component through the `metal:` wrapper and moves all launchpads to the 100 µm pad rule, adds the PDK die frame (device ID `D12`) and cheese band, and swaps the junction footprints for PDK junctions and SQUIDs (45 kΩ). Build it to learn a large Metal-style layout with routed flux and drive lines.
+It comes from Quantcore's earlier Qiskit Metal design notebook `12.0 Coupled_chip_layout.ipynb` (internal). The rebuild keeps every Metal component through the `metal:` wrapper and moves all launchpads to the 100 µm pad rule, adds the PDK die frame (device ID `D12`) and cheese band, and swaps the junction footprints for PDK junctions and SQUIDs (45 kΩ). Build it to see a large Metal-style layout with routed flux and drive lines.
 
 ```{image} ../../images/designs/legacy/d12_coupled_chip.png
 :alt: The whole d12_coupled_chip chip rebuilt on the Quantcore PDK
@@ -76,22 +76,22 @@ These numbers are the notebook's saved output, not re-run for this page. They ar
 
 The rest of this page is the detailed spec the notebook was built from: every component, the changes made while rebuilding, and the notes.
 
-**Source:** the legacy design notebook `components/python/12.0 Coupled_chip_layout.ipynb` (Quantum Metal,
-`DesignPlanar`), Quantcore internal. **Rebuild:** `examples/designs/legacy/d12_coupled_chip.ipynb` (+ `.json`,
+Source: the legacy design notebook `components/python/12.0 Coupled_chip_layout.ipynb` (Quantum Metal,
+`DesignPlanar`), Quantcore internal. Rebuild: `examples/designs/legacy/d12_coupled_chip.ipynb` (+ `.json`,
 PNGs); tables and the Metal reference in `examples/designs/legacy/_legacy_b.py` (`D12_*`, `d12_meander_x`,
 `d12_metal_reference`).
 
-### Changes after design decisions (legacy-fix, 2026-11-03)
+### Changes made in the rebuild
 
-- **#1 / #21 junctions:** Metal footprints → PDK cells via the Metal wrapper (`junction_type`: `Quantcore Junction` on the six fixed Xmons, `Quantcore Squid` on the three flux-line Xmons), sized by the PDK junction rule (design rule #1: Nb trilayer, Δ = 1.4 meV, I_c·R_n = πΔ/2e = 2.20 mV, R_n 40–50 kΩ, qubits 4–8 GHz; PDK process `get_pdk().junction`: R_n·A 13.5 kΩ·µm², C_J 50 fF/µm², both assumed by the PDK) at R_n = 45 kΩ per qubit (L_J 6.73 nH, C_J 15 fF; was assumed 10 nH / 2 fF). LOM: f_q ≈ 5.03–5.08 GHz; **Q0/R0 hybridised**, Q7/R7 close (design rule).
-- **#12:** readout lengths simulated without claws.
-- Notebook edited and its JSON rebuilt from the layout cell; **not executed** (verification policy): outputs cleared, PNGs stale until the notebook is run.
+- Junctions: Metal footprints → PDK cells via the Metal wrapper (`junction_type`: `Quantcore Junction` on the six fixed Xmons, `Quantcore Squid` on the three flux-line Xmons), sized by the PDK junction rule (Nb trilayer, Δ = 1.4 meV, I_c·R_n = πΔ/2e = 2.20 mV, R_n 40–50 kΩ, qubits 4–8 GHz; PDK process `get_pdk().junction`: R_n·A 13.5 kΩ·µm², C_J 50 fF/µm², both assumed by the PDK) at R_n = 45 kΩ per qubit (L_J 6.73 nH, C_J 15 fF; was assumed 10 nH / 2 fF). LOM: f_q ≈ 5.03–5.08 GHz; Q0/R0 hybridised, Q7/R7 close.
+- Readout lengths: simulated without claws.
+- The notebook's JSON was rebuilt from its layout cell. The notebook has not been re-run, so its outputs are cleared and its PNGs may be out of date.
 
-**What it is:** a coupled-qubit test chip. One 20/12 µm feedline across the die centre (y = 0) between two
+What it is: a coupled-qubit test chip. One 20/12 µm feedline across the die centre (y = 0) between two
 launchpads, nine Xmons (`TransmonCrossFL`) with λ/4 readout resonators (10/6 µm) shorted 36 µm from the feedline
 centre-line (3 µm ground strip). Four qubits above the line (y = +2 mm), five below (y = −2 mm):
-- Q1–Q2 (x = ∓250 µm): the **direct coupler** pair, cross-arm tips facing across a 20 µm ground strip;
-- Q5–Q8–Q6 (x = −500, 0, +500 µm): the **tunable coupler**: Q8 is a flux-tunable Xmon between Q5 and Q6 (20 µm
+- Q1–Q2 (x = ∓250 µm): the direct coupler pair, cross-arm tips facing across a 20 µm ground strip;
+- Q5–Q8–Q6 (x = −500, 0, +500 µm): the tunable coupler: Q8 is a flux-tunable Xmon between Q5 and Q6 (20 µm
   ground strips), with its own readout R8;
 - Q0, Q3, Q4, Q7 (x = ±1700 µm): single qubits (single junction `JJ_grad`, no flux line) with a drive line.
 
@@ -99,10 +99,10 @@ Q1, Q2, Q5, Q6, Q8 have a flux line (`make_fl=True`, SQUID `SQUID_grad`); Q0, Q2
 drive pad (`bus_drive`, gap connector 30 µm from the arm). Ten 50 Ω flux/drive launchpads (400 × 300 µm, 10/5.75 µm
 trace): three on the top and bottom edges, two on each side. Lines are `RoutePathfinder`s.
 
-**Die:** 7.5 × 7.5 mm, 650 µm sapphire: the PDK v2 die frame. Coordinates are in the Designer frame (legacy +
+Die: 7.5 × 7.5 mm, 650 µm sapphire: the PDK v2 die frame. Coordinates are in the Designer frame (legacy +
 (3750, 3750) µm). Layers: 1/0 (negative mask), the Metal junction footprints on 2/0.
 
-**Status:** built; every Metal cell resolves, every port maps (24 LOM nodes, 5 flux controls).
+Built; every Metal cell resolves, every port maps (24 LOM nodes, 5 flux controls).
 
 ### Components
 
@@ -176,9 +176,9 @@ Resonator bends r = 60 µm (legacy fillet); the flux / drive lines keep the lega
 ### LOM node structure
 
 - `cpw_main`: one node with both feedline pads, 50 Ω at each end; nine HANGER κ elements to it.
-- Each qubit: island (C to ground, JJ or SQUID to ground) — C_g — claw node `Qi.a` (C to ground) — λ/4 `Ri` to
+- Each qubit: island (C to ground, JJ or SQUID to ground) ─ C_g ─ claw node `Qi.a` (C to ground) ─ λ/4 `Ri` to
   ground (+ HANGER).
-- Drive: `Qi` — C_g (0.09 fF, gap connector) — `Qi.bus_drive` node = the drive pad's node with its 50 Ω port.
+- Drive: `Qi` ─ C_g (0.09 fF, gap connector) ─ `Qi.bus_drive` node = the drive pad's node with its 50 Ω port.
 - Flux: `Qi.flux_line` → `control:flux` (5 controls: Q1, Q2, Q5, Q6, Q8).
 - Couplings (declared, `d.couple`): Q1–Q2, Q5–Q8, Q8–Q6, 1.67 fF each (arm tips 60 µm apart across a 20 µm ground
   strip, CPS × 0.3 screening, rough); the `Q1_Q2` and `Q5_Q8_Q6` sim groups give the C-matrix.
@@ -189,10 +189,10 @@ None in the source (lengths only).
 
 ### Simplifications for a first rebuild
 
-- **Meanders:** a KQC `Meander` on one vertical segment (KQC picks the arm count) instead of Metal's
+- Meanders: a KQC `Meander` on one vertical segment (KQC picks the arm count) instead of Metal's
   `RouteMeander` (`segment_length` 0.6 mm, `spacing` 0.15 mm, `asymmetry`). Same lengths, couplers, shorts and claw
   positions; extents compared in the notebook.
-- **Feedline pads:** lead 20 µm; the rest of the legacy 500 µm lead is the feedline (same 20/12 CPW), so R0 and R7
+- Feedline pads: lead 20 µm; the rest of the legacy 500 µm lead is the feedline (same 20/12 CPW), so R0 and R7
   can couple beside it as in the source.
-- **Flux / drive line bends:** r = 50 µm instead of 60 µm (same corner points).
-- **Junctions:** Metal junction footprints instead of the external `JJ_grad` / `SQUID_grad` cells.
+- Flux / drive line bends: r = 50 µm instead of 60 µm (same corner points).
+- Junctions: Metal junction footprints instead of the external `JJ_grad` / `SQUID_grad` cells.

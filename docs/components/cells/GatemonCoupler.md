@@ -6,7 +6,7 @@ Straight CPW ``o1`` → ``o2`` with a capacitive island reference port ``qubit``
 
 **Source:** Quantcore. **Category:** coupler. **Module:** `quantcore_circuits.layouts.others.qpdk_cells`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

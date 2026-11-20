@@ -2,7 +2,7 @@
 
 A 10 × 10 grid of pocket transmons on a brick lattice (3 mm pitch, odd columns shifted up by 1.5 mm), joined by 176
 meandered buses of four slightly different lengths so no qubit sees two equal buses. There are no launchpads,
-readouts or control lines: the tutorial calls it "just an example for how to make a design algorithmically". It is the
+readouts or control lines, and the tutorial calls it "just an example for how to make a design algorithmically". It is the
 Qiskit Metal tutorial 2.22 (Apache-2.0, © Qiskit Metal contributors). The Quantcore rebuild is distributed under
 GPL-3.0.
 
@@ -18,11 +18,11 @@ own corner points. It is the biggest chip in this group (33 mm square) and takes
 
 | | |
 |---|---|
-| Notebook | `examples/designs/metal/tut222_100q_grid.ipynb` (the one-cell version before the rewrite: `tut222_100q_grid.v1.ipynb`) |
+| Notebook | `examples/designs/metal/tut222_100q_grid.ipynb` (an older one-cell version is kept as `tut222_100q_grid.v1.ipynb`) |
 | Source | Qiskit Metal `2.22-Design-100-qubits-programmatically.ipynb`, © Qiskit Metal contributors, Apache-2.0 |
 | Chip | 33 × 33 mm (the source's size, far larger than the 7.5 mm Quantcore die) |
 | On the chip | 100 pocket transmons · 90 upward buses (7.0 / 7.5 mm) · 86 sideways buses (6.0 / 6.5 mm) |
-| Builds today | yes: layout run 2026-11-19, 136 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 136 s) |
 
 ## How the notebook builds it
 
@@ -42,7 +42,7 @@ own corner points. It is the biggest chip in this group (33 mm square) and takes
 
 ## LOM estimates
 
-Numbers are from the `.v1` notebook's saved output (the 100-qubit grid was not re-run for the docs). The LOM cannot solve 100 qubits and 176 buses at once, so the notebook solves the corner qubit Q_0_0 alone, then Q_0_0 with each of two neighbours and the bus between them (a ZZ of 130 kHz for the Q_0_0-Q_0_1 pair; the Q_0_0-Q_1_0 pair hybridises, so no ZZ is given).
+Numbers are from the `.v1` notebook's saved output (the 100-qubit grid was not re-run for these docs). The LOM cannot solve 100 qubits and 176 buses at once, so the notebook solves the corner qubit Q_0_0 alone, then Q_0_0 with each of two neighbours and the bus between them (a ZZ of 130 kHz for the Q_0_0-Q_0_1 pair; the Q_0_0-Q_1_0 pair hybridises, so no ZZ is given).
 
 | group | qubit | f_q (GHz) | α (MHz) | resonator | f_r (GHz) | κ (MHz) | χ (MHz) |
 |---|---|---|---|---|---|---|---|
@@ -60,15 +60,15 @@ Numbers are from the `.v1` notebook's saved output (the 100-qubit grid was not r
 | Q_0_0+CU_0_0+Q_0_1 | Q_0_0-Q_0_1 | 130 | yes | no |
 | Q_0_0+CS_0_0+Q_1_0 | Q_0_0-Q_1_0 | – | yes | yes |
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates from component formulas and calibration, not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
 The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
 
-> **Update 2026-11-03:** frame = **source**: build with `chip={"die_frame": False, ...}` so the replica keeps its own size and frame (the Quantcore PDK die frame is for Quantcore chips only). `metal:<Class>` wrappers are READY (ports = Metal pin names, params = Metal options), so the `metal:` refs in this spec build as written; the Quantcore/KQC substitutions stay optional. Buildable now: **yes** with `metal:TransmonPocket` (give 4 `connection_pads`; ports appear only for the pads you define); the Xmon variant remains a fallback.
+> The `metal:` references in this spec build as written, through the `metal:` wrapper (ports are the Metal pin names, parameters the Metal options). The Quantcore and KQC substitutions are optional. `metal:TransmonPocket` builds the full topology (give it 4 `connection_pads`; ports appear only for the pads you define), and the Xmon variant is a fallback.
 
-> **Built 2026-11-03 (builder 4):** examples/designs/metal/tut222_100q_grid.ipynb, full 4-link topology with `metal:TransmonPocket` and Metal's own RouteMeander corner points.
+> The notebook `examples/designs/metal/tut222_100q_grid.ipynb` builds the full 4-link topology with `metal:TransmonPocket` and Metal's own RouteMeander corner points.
 
 Source: Quantum Metal `docs/tut/2-From-components-to-chip/2.22-Design-100-qubits-programmatically.ipynb`. Licence
 Apache-2.0.
@@ -78,8 +78,8 @@ lack of readouts or control lines"; it is an example of algorithmic layout.
 Chip size_x = (N_x + 1)·3 mm = 33 mm and size_y = (N_y + 1)·3 = 33 mm, centred at ((N_x − 1)·1.5, (N_y − 0.5)·1.5) =
 (13.5, 14.25) mm. The chip spans x −3…30 mm and y −2.25…30.75 mm, so **Designer = Metal + (3000, 2250)**.
 CPW 10/6 µm, fillet 99 µm.
-**Buildable now: metal**. An interior qubit has 4 links (2 north, 2 south), but Xmon and KQC Swissmon have only 3
-couplers, so this needs `metal:TransmonPocket`. A reduced variant is buildable now (see Simplifications).
+An interior qubit has 4 links (2 north, 2 south), but Xmon and KQC Swissmon have only 3 couplers, so the full
+topology needs `metal:TransmonPocket`. A reduced Xmon variant is described under Simplifications.
 
 ### Components (generator)
 ```python
@@ -115,20 +115,20 @@ LOM run on Q_0_0 only, with all four pads open: Lj 12.31 nH, Cj 2 fF, freq_reado
 6.4] GHz.
 
 ### Simplifications for a first rebuild
-1. Buildable-now variant (Xmon, CS links only): `Xmon(claws=["w","e"])` at rot 0 on the same staggered grid, with
+1. Reduced variant (Xmon, CS links only): `Xmon(claws=["w","e"])` at rot 0 on the same staggered grid, with
    CS_x_y = Q_x_y.claw_e → Q_(x+1)_(y+x%2).claw_w (86 buses). Each column-to-column staircase becomes a chain.
    This keeps the generator, stagger and frequency alternation but drops the vertical CU links.
 2. Build N = 3 × 3 first with the same loops, then N = 10. Wrap the loops in `with d.batch():` (276 changes, one
    rebuild).
-3. Full topology: wait for `metal:TransmonPocket`, whose ports are B0–B3.
+3. Full topology: use `metal:TransmonPocket`, whose ports are B0–B3.
 
-### Quantcore PDK rebuild (2026-11-03)
+### Quantcore PDK rebuild
 
-The notebook is a **Quantcore-PDK rebuild**, not a replica (design rule, 2026-11-03): the netlist, LOM and imported components are kept, the process is Quantcore's.
+The notebook is a Quantcore PDK rebuild of the source, not a replica: the netlist, LOM and imported components are kept, and the process is Quantcore's.
 
 Notebook: [`examples/designs/metal/tut222_100q_grid.ipynb`](../../../examples/designs/metal/tut222_100q_grid.ipynb).
 
-- **Chip:** the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), drawn on the source's 33 × 33 mm chip (the design does not fit the 7.5 mm die); no KQC chip frame.
-- **Stack:** sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); Metal's `DesignPlanar` default is silicon (εr 11.45, 750 µm), so the LOM capacitances, resonator frequencies and FEM jobs here are for sapphire, not the source's substrate.
-- **Junctions:** Quantcore Nb/AlOx/Nb trilayer junctions (`junction_type` from `layouts.registry.trilayer_junction`): fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient, sized on the PDK junction rule (Nb Δ = 1.4 meV, I_c·R_n = πΔ/2e, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed); all 100 qubits get the PDK nominal junction, 0.5 × 0.6 µm fingers → R_n = 45 kΩ, L_J = 6.73 nH, C_J = 15 fF (in the 40–50 kΩ window), in place of the tutorial's LOM value 12.31 nH + 2 fF (a value, not a frequency target). Expected f_q ≈ 6.9 GHz (estimate; Q_0_0 was 5.54 GHz), below the 8.5–9.7 GHz λ/2 buses. All qubits stay identical.
-- **Kept:** the topology and every Metal component with the source's options (through the `metal:` wrapper), positions and orientations, every route's end pins and total length, the sim groups (the tutorial's two generator loops, Metal's own meander corner points).
+- Chip: the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), drawn on the source's 33 × 33 mm chip (the design does not fit the 7.5 mm die); no KQC chip frame.
+- Stack: sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); Metal's `DesignPlanar` default is silicon (εr 11.45, 750 µm), so the LOM capacitances, resonator frequencies and FEM jobs here are for sapphire rather than the source's substrate.
+- Junctions: Quantcore Nb/AlOx/Nb trilayer junctions (`junction_type` from `layouts.registry.trilayer_junction`): fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient, sized on the PDK junction rule (Nb Δ = 1.4 meV, I_c·R_n = πΔ/2e, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed); all 100 qubits get the PDK nominal junction, 0.5 × 0.6 µm fingers → R_n = 45 kΩ, L_J = 6.73 nH, C_J = 15 fF (in the 40–50 kΩ window), in place of the tutorial's LOM value 12.31 nH + 2 fF (a value, not a frequency target). Expected f_q ≈ 6.9 GHz (an estimate), below the 8.5–9.7 GHz λ/2 buses. All qubits stay identical.
+- Kept: the topology and every Metal component with the source's options (through the `metal:` wrapper), positions and orientations, every route's end pins and total length, the sim groups (the tutorial's two generator loops, Metal's own meander corner points).

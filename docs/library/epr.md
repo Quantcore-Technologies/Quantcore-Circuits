@@ -62,8 +62,7 @@ from quantcore_circuits.analysis import epr_lumped as L
 res = L.epr_from_lom(lom)   # lom: the LOM result (lom.simulate.simulate, Designer.simulate)
 ```
 
-The LOM's QuCat network already stores each mode's inductive energy per element, so the participations come for
-free. The result is only as accurate as the LOM's component estimates (see [the LOM page](lom.md)).
+The LOM's QuCat network already stores each mode's inductive energy per element, so the participations come directly from it. The result is only as accurate as the LOM's component estimates (see [the LOM page](lom.md)).
 
 ### From the field energy
 

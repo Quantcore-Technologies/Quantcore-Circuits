@@ -6,7 +6,7 @@ The PCell declaration of an Airbridge with tapered waveguides in both ends.
 
 **Source:** KQC (KQCircuits). **Category:** airbridge. **Module:** `kqcircuits.elements.airbridge_connection`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

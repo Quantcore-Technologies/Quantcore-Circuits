@@ -13,11 +13,11 @@ Build this one to learn four hanger readouts on one feedline, charge lines that 
 
 | | |
 |---|---|
-| Notebook | `examples/designs/squadds/tutorial_5_fab_ready_chip.ipynb` (the one-cell version before the rewrite: `tutorial_5_fab_ready_chip.v1.ipynb`) |
+| Notebook | `examples/designs/squadds/tutorial_5_fab_ready_chip.ipynb` (an older one-cell version is kept as `tutorial_5_fab_ready_chip.v1.ipynb`) |
 | Source | SQuADDS tutorial 5 and its exported `USC4Q_qff2024.gds`, MIT |
 | Chip | 7.5 × 7.5 mm Quantcore die, the source's 5 × 5 mm chip centred in it, feedline 11.7 / 5.1 µm |
 | On the chip | 6 Metal launchpads · 1 feedline · 4 cross transmons · 4 λ/4 hanger readouts · 4 charge lines |
-| Builds today | yes: layout run 2026-11-19, 8 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 8 s) |
 
 ## How the notebook builds it
 
@@ -51,18 +51,16 @@ Numbers are from a run of this notebook on 2026-11-19 (Setup, Design, Check and 
 :alt: LOM plot of tutorial_5_fab_ready_chip
 ```
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates from component formulas and calibration, not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
 The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
 
-> **Update 2026-11-03:** frame = **source**: build with `chip={"die_frame": False, ...}` so the replica keeps its own size and frame (the Quantcore PDK die frame is for Quantcore chips only).
-
 Source: [tutorials/Tutorial-5_Designing_a_fab_ready_chip_with_SQuADDS.ipynb](https://github.com/LFL-Lab/SQuADDS/blob/master/tutorials/Tutorial-5_Designing_a_fab_ready_chip_with_SQuADDS.ipynb)
 and its exported GDS `tutorials/gds_files/USC4Q_qff2024.gds` (173 kB). The GDS was read with a KLayout script to recover
 the numbers the notebook does not print. Licence MIT ("Copyright (c) 2023 Sadman Ahmed Shanto", verified; the notebook
-footer says © Shanto & Levenson-Falk 2024, MIT) · read 2026-11-02. Built with Quantum Metal plus SQuADDS `TransmonCross`.
+footer says © Shanto & Levenson-Falk 2024, MIT) · read on 2026-11-02. Built with Quantum Metal plus SQuADDS `TransmonCross`.
 What it is: 4 identical grounded cross transmons (one SQuADDS DB design) on a 5 × 5 mm chip. Each has a λ/4 meander
 coupled to a straight vertical feedline through a `CoupledLineTee`, and a charge line ending in an open 50 µm past the
 cross pocket. The resonators are "sprayed" over 5.48–8.48 GHz so that one lands on ω₀₂ despite ±0.75 GHz junction spread.
@@ -70,7 +68,7 @@ Measured in transmission (2 feedline pads + 4 charge pads = 6 ports, for a 5.4 m
 Frame: source centred, chip 5 × 5 mm. **Box (0, 0, 5000, 5000)**, **Designer = source + (2500, 2500)**. Feedline CPW
 11.7/5.1 µm, resonators 11.7/(5.1 assumed) µm, charge lines 10/6 µm. GDS layers: 3 = metal, 6 = charge lines and
 their pads (a fab request in the tutorial), 20/60 = Dolan junction, 3/2 = cheese holes.
-Status: **yes** (`Xmon`, `BondPad`, hanger routes).
+A first build uses `Xmon`, `BondPad` and hanger routes.
 
 ### Components
 | instance | catalog ref | key params (units) | at (x, y) Designer | rot | notes |
@@ -129,16 +127,16 @@ E_J 10.278 GHz. Cavity f_r = 2(f_q + α) = 6.98 GHz, sprayed to [5.48, 6.48, 7.4
 2. Charge lines as straight-plus-one-corner CPWs ending in a free open. Cheese later.
 3. LOM-first variant: `quantcore_circuits.lom.synthesize` with these targets and N = 4 on a vertical feedline.
 
-### Build (2026-11-03)
-Built with `metal:TransmonCross` and `metal:LaunchpadWirebond`; pad geometry read from the GDS (feed pads 160 × 80 µm, 122 µm taper; charge pads 150 × 200 µm). claw_gap 5.1 / ground_spacing 9 assumed. Charge-line corners r 40 µm (80 does not fit Q2's 116 µm leg).
+### Build
+The notebook uses `metal:TransmonCross` and `metal:LaunchpadWirebond`; pad geometry read from the GDS (feed pads 160 × 80 µm, 122 µm taper; charge pads 150 × 200 µm). claw_gap 5.1 / ground_spacing 9 assumed. Charge-line corners r 40 µm (80 does not fit Q2's 116 µm leg).
 
-### Quantcore PDK rebuild (2026-11-03)
+### Quantcore PDK rebuild
 
-The notebook is a **Quantcore-PDK rebuild**, not a replica (design rule, 2026-11-03): the netlist, LOM and imported components are kept, the process is Quantcore's.
+The notebook is a Quantcore PDK rebuild of the source, not a replica: the netlist, LOM and imported components are kept, and the process is Quantcore's.
 
 Notebook: [`examples/designs/squadds/tutorial_5_fab_ready_chip.ipynb`](../../../examples/designs/squadds/tutorial_5_fab_ready_chip.ipynb).
 
-- **Chip:** the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), on the 7.5 × 7.5 mm Quantcore die; the source's 5 × 5 mm chip area is centred in it (`box=(-1250, -1250, 6250, 6250)`), so every coordinate stays the source's.
-- **Stack:** sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); the SQuADDS database is for silicon, so frequencies differ from the source's.
-- **Junctions:** Quantcore Nb/AlOx/Nb trilayer junctions (`junction_type` from `layouts.registry.trilayer_junction`): fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient, sized on the PDK junction rule (Nb Δ = 1.4 meV, I_c·R_n = πΔ/2e, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed). The source's target f_q 3.7 GHz is below the PDK band (4–8 GHz), so each junction is **sized for 4.05 GHz** with the pre-rebuild LOM C_Σ (≈ 95 fF): straight finger 0.25 µm × 0.6 µm, L_J ≈ 13.5 nH, C_J ≈ 7.5 fF — **R_n ≈ 92 kΩ, above the 40–50 kΩ window** (a 45 kΩ junction would put the qubits at ≈ 5.7 GHz, inside the 5.5–8.5 GHz readout spray). The targets stay the source's (3.7 GHz).
-- **Kept:** the topology and the Metal components with the source's options and positions, the four sprayed λ/4 readouts (4570 / 3930 / 3460 / 3100 µm), the charge lines, the targets, the sim groups.
+- Chip: the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), on the 7.5 × 7.5 mm Quantcore die; the source's 5 × 5 mm chip area is centred in it (`box=(-1250, -1250, 6250, 6250)`), so every coordinate stays the source's.
+- Stack: sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); the SQuADDS database is for silicon, so frequencies differ from the source's.
+- Junctions: Quantcore Nb/AlOx/Nb trilayer junctions (`junction_type` from `layouts.registry.trilayer_junction`): fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient, sized on the PDK junction rule (Nb Δ = 1.4 meV, I_c·R_n = πΔ/2e, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed). The source's target f_q 3.7 GHz is below the PDK band (4–8 GHz), so each junction is sized for 4.05 GHz with the LOM C_Σ (≈ 95 fF): straight finger 0.25 µm × 0.6 µm, L_J ≈ 13.5 nH, C_J ≈ 7.5 fF, so R_n ≈ 92 kΩ, above the 40–50 kΩ window (a 45 kΩ junction would put the qubits at ≈ 5.7 GHz, inside the 5.5–8.5 GHz readout spray). The targets stay the source's (3.7 GHz).
+- Kept: the topology and the Metal components with the source's options and positions, the four sprayed λ/4 readouts (4570 / 3930 / 3460 / 3100 µm), the charge lines, the targets, the sim groups.

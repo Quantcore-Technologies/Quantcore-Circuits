@@ -6,7 +6,7 @@ The base `TransmonCrossFL` class.
 
 **Source:** Metal (Qiskit Metal). **Category:** qubit. **Module:** `qiskit_metal.qlibrary.qubits.transmon_cross_fl`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

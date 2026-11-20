@@ -10,7 +10,7 @@ The PCell declaration of a curved segment of a coplanar waveguide.
 Legacy cell. the bare arc piece routes are drawn with; unused as a cell. Use a route (its bends). Ports a/b and a line LOM since 2026-11-15
 :::
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

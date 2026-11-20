@@ -6,7 +6,7 @@ Launch pad to feed/read signals to/from the chip.
 
 **Source:** Metal (Qiskit Metal). **Category:** launcher. **Module:** `qiskit_metal.qlibrary.terminations.launchpad_wb_coupled`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

@@ -6,7 +6,7 @@ Carbon-nanotube gatemon island in an etched pocket with a gate feed (QPDK ``gate
 
 **Source:** Quantcore. **Category:** qubit. **Module:** `quantcore_circuits.layouts.qubits.qpdk_cells`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

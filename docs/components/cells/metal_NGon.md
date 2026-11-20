@@ -6,7 +6,7 @@ A n-gon polygon. Eg. n = 3 : triangle, n = infinity : circle
 
 **Source:** Metal (Qiskit Metal). **Category:** shape. **Module:** `qiskit_metal.qlibrary.sample_shapes.n_gon`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

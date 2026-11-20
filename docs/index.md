@@ -9,18 +9,18 @@ chip through every step:
 
 ## Design philosophy
 
-Start cheap, spend solver time only where it pays, and let every result feed the next geometry:
+Start with cheap estimates, spend solver time only where it pays, and feed every result back into the next geometry:
 
 **LAYOUT → LOM → EIGENMODE (per component) → FEM on the eigenmode's mesh → extract and analyse → feedback**
 
 1. **Layout.** Draw the chip from real components with pins (KLayout plugin or Python). The layout is the source of
-   truth; everything below is computed from it.
+   truth, and every later step is computed from it.
 2. **LOM.** The layout becomes a lumped circuit in seconds: f_q, α, f_r, g, χ, κ from component formulas. Fix the
    gross errors here, before any solver runs.
 3. **Eigenmode, component by component.** Cut each qubit–readout group out of the chip and solve its eigenmodes in
    HFSS with the junctions as lumped inductors. Small boxes converge fast and show where the LOM is off.
 4. **FEM on the same mesh.** Reuse the converged eigenmode set-up (box, mesh seeds, the mode frequency) for the driven
-   and capacitance runs, instead of meshing again from scratch.
+   and capacitance runs, so nothing is meshed again from scratch.
 5. **Extract and analyse.** Read the results back, fill the LOM with the FEM values, and compute the Hamiltonian
    parameters (energy participations of the lumped junctions, χ, α, κ) next to the LOM's estimates.
 6. **Feedback.** Compare with the targets, propose the next geometry (lengths, claw sizes, L_J), rebuild, and go round

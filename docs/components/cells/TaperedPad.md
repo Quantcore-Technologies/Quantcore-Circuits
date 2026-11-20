@@ -6,7 +6,7 @@ Probe pad tapering to a junction finger (legacy "Pad"); port ``finger`` at the t
 
 **Source:** Quantcore. **Category:** test_structure. **Module:** `quantcore_circuits.layouts.others.connector_pads`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

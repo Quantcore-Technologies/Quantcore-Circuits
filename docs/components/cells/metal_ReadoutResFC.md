@@ -6,7 +6,7 @@ ReadoutResFC.png
 
 **Source:** Metal (Qiskit Metal). **Category:** resonator. **Module:** `qiskit_metal.qlibrary.resonators.readoutres_fc`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 
@@ -50,8 +50,6 @@ Nodes: `res`.
 ## Simulation export notes
 
 - C6: eigenmode 50 Ω edge port without a polygon (box edge on a bend / taper / narrow line) (status: fixed; fix in sim_tools/builder.py (straighten_box, edge_port_ok, crossing_square))
-
-Details: [SIM_EXPORT_AUDIT](../SIM_EXPORT_AUDIT.md).
 
 ## How to use
 

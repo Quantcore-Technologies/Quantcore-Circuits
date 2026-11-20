@@ -1,7 +1,7 @@
 # Wafer assembly
 
-Wafer assembly packs square dies on a round wafer, names every die, and puts a real chip layout on each one. The result
-is one wafer OAS file with the wafer outline, the die labels and alignment marks, and your chips. Use it when a set of
+Wafer assembly packs square dies on a round wafer, names every die and puts a chip layout on each one. The result is
+one wafer OAS file with the wafer outline, the die labels, the alignment marks and your chips. Use it when a set of
 chips goes to the fab on one wafer, or when you want to know how many dies of a given size fit.
 
 The code is `quantcore_circuits.layouts.wafers.wafer` (class `Wafer`). The demo notebook is
@@ -42,15 +42,15 @@ origin, x points right, y points up.
 
 ## The two packings
 
-**Dense** fills the whole wafer. A die is placed where it lies completely inside the usable disc: the wafer radius
+Dense fills the whole wafer. A die is placed where it lies completely inside the usable disc: the wafer radius
 minus `edge_mm`, and clear of the notch (the notch is cut out of the outline before the edge exclusion is applied).
 
-**Centred** fills only a circle of `radius_mm` around the packing centre (the wafer centre plus `offset_mm`). A die
+Centred fills only a circle of `radius_mm` around the packing centre (the wafer centre plus `offset_mm`). A die
 counts when all four corners are inside that circle and it is also inside the usable disc. The die grid is laid out
 around the packing centre, so the pattern follows the offset. Use it for a small run in the middle of the wafer, or
 a run away from a bad wafer region.
 
-**Mixed sizes** (`bands`): rows of one die size are stacked from top to bottom, the stack is centred on the packing
+Mixed sizes (`bands`): rows of one die size are stacked from top to bottom, the stack is centred on the packing
 centre, and each row takes as many dies as fit. The demo uses `[(5, 2), (7.5, 2), (10, 3), (7.5, 2), (5, 2)]`.
 
 ## Naming

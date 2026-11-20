@@ -2,7 +2,7 @@
 
 Twelve flux-tunable Xmons in two columns of six, one each side of a vertical feedline. Each has a λ/4 readout (6.05 to 6.82 GHz in 70 MHz steps) and a flux line that runs out to a side pad. The layout is from Qiskit-Metal-to-Litho (CC BY 4.0), rebuilt on the Quantcore PDK with a trilayer SQUID per qubit.
 
-Build this one to learn a larger chip: twelve readouts and twelve flux lines, and how the LOM reads the flux lines as bias lines.
+This notebook is an example of a larger chip: twelve readouts and twelve flux lines, with the LOM reading the flux lines as bias lines.
 
 ```{image} ../../images/designs/community/qm2litho_12q_flux_processor.png
 :alt: The whole qm2litho_12q_flux_processor chip as the v2 notebook builds it
@@ -13,11 +13,11 @@ Build this one to learn a larger chip: twelve readouts and twelve flux lines, an
 
 | | |
 |---|---|
-| Notebook | `examples/designs/community/qm2litho_12q_flux_processor.ipynb` (the one-cell version before the rewrite: `qm2litho_12q_flux_processor.v1.ipynb`) |
+| Notebook | `examples/designs/community/qm2litho_12q_flux_processor.ipynb` (an older one-cell version is kept as `qm2litho_12q_flux_processor.v1.ipynb`) |
 | Source | Qiskit-Metal-to-Litho `12_Qubit_Flux_Tunable_Processor_in_Colab.ipynb`, CC BY 4.0 |
 | Chip | 11 × 11 mm Quantcore die (the source's chip size), feedline 11.7 / 5.1 µm |
 | On the chip | 14 pads · 1 feedline · 12 flux-tunable Xmons · 12 λ/4 hanger readouts · 12 flux lines |
-| Builds today | yes: layout run 2026-11-19, 10 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 10 s) |
 
 ## How the notebook builds it
 
@@ -54,24 +54,22 @@ Numbers are from the `.v1` notebook's saved output (the 12-qubit chip was not re
 | Q06_L | 3.258 | -150 | R_Q06_L | 6.34 | 0.0874 | -0.103 |
 | Q06_R | 3.258 | -150 | R_Q06_R | 6.399 | 0.0898 | -0.101 |
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates (component formulas and calibration), not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
-The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
-
-> **Update 2026-11-03:** frame = **source**: build with `chip={"die_frame": False, ...}` so the replica keeps its own size and frame (the Quantcore PDK die frame is for Quantcore chips only).
+The rest of this page is the detailed spec the notebook was built from, with every component, port, route and length.
 
 Source: [OJB-Quantum/Qiskit-Metal-to-Litho](https://github.com/OJB-Quantum/Qiskit-Metal-to-Litho),
 `12_Qubit_Flux_Tunable_Processor_in_Colab.ipynb` (O. J. Benally, 2026). Output GDS `GDS Files/twelve_qubit_flux_processor.gds`
 (not downloaded). Licence **CC BY 4.0** (`LICENSE` = Attribution 4.0 International; the notebook says "Open Access
-(CC-BY-4.0)"), verified. Read 2026-11-02: notebook constants only, not run.
+(CC-BY-4.0)"), verified. Read on 2026-11-02: notebook constants only, not run.
 What it is: 12 flux-tunable Xmons (`TransmonCrossFL`) in two columns of 6, one each side of a straight vertical
 feedline. Each has a λ/4 meander readout, frequency-multiplexed 6.05–6.82 GHz in 70 MHz steps, and a flux line fanned
 out to side pads. Quantum Metal draws the qubits and pads; PHIDL smooths the feedline and readout centrelines.
 Frame: chip 11 × 11 mm centred. **Box (0, 0, 11000, 11000)**, **Designer = source + (5500, 5500)**. Feedline CPW
 11.7/5.1 µm; readout 10/6 µm (fillet 85); flux 6/8 µm tapering to 5/3 µm. Layers: 3 = metal, 5 = flux trace, 9 = junction.
-Status: **yes** (`Xmon` with `flux_port`, `BondPad`, hangers). Repo also holds other designs (see bottom).
+The chip needs `Xmon` with `flux_port`, `BondPad` and hangers. The repository also holds other designs (see bottom).
 
 ### Components
 | instance | catalog ref | key params (units) | at (x, y) Designer | rot | notes |
@@ -111,5 +109,5 @@ Readout f_k 6.05–6.82 GHz (70 MHz spacing). The first-pass λ/4 model uses v_p
    omitted), `Full Chip Ex-001.GDS`, `4 Qubit Demo.gds`, `Single Meander CPW Resonator Chip.gds`, `KI-TWPA_Example.gds`.
    These are GDS/DXF only and were not downloaded.
 
-### Build (2026-11-03)
-Built with `metal:TransmonCrossFL` (flux T-line options from the source), BondPad launch/flux pads with the source sizes, hangers 260 µm with 7 µm ground strip, flux lines straight at 6/8 µm.
+### Build
+The notebook uses `metal:TransmonCrossFL` (flux T-line options from the source), BondPad launch/flux pads with the source sizes, hangers 260 µm with 7 µm ground strip, flux lines straight at 6/8 µm.

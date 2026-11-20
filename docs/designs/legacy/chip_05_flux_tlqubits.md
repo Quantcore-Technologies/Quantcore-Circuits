@@ -7,7 +7,7 @@ corner markers. It is Quantcore's own chip from the QWri legacy script `chip_05_
 that tests flux tuning.
 
 The rebuild draws it from Quantcore PDK parts: the flux lines are routed with the PDK router and the resonator tails
-run into the claws. Build this one to learn flux lines and SQUID qubits next to a readout feedline.
+run into the claws. The PDK cheese (5 µm squares with 20 µm gaps, at least 4 µm from the 3/0 keep-outs) also covers the whole die, and the holes drawn in the original layout stay. Build this one to see flux lines and SQUID qubits next to a readout feedline.
 
 ```{figure} ../../images/designs/legacy/chip_05_flux_tlqubits.png
 :width: 100%
@@ -71,29 +71,29 @@ The notebook's saved outputs hold no LOM run (its LOM cells were not executed), 
 
 The rest of this page is the detailed spec the notebook was built from: components, positions, parameters and what changed from the legacy script.
 
-**Source:** `components/python/chip_05_flux_TLQubits.py` (`create_test_chip()`, May 2024; writes
+Source: `components/python/chip_05_flux_TLQubits.py` (`create_test_chip()`, May 2024; writes
 `chip_05_flux_TLQubits_1.0.gds`). Legacy QWri library, Quantcore internal. Notebook
 `examples/designs/legacy/chip_05_flux_tlqubits.ipynb`.
 
-### Changes after design decisions (legacy-fix, 2026-11-03)
+### Changes made in the rebuild
 
-- **#11 junction indexing fixed:** `bot[i]` (Q1–Q5 js 5, Q6 js 8); the junction-layer reference uses the same sizes.
-- **#11 flux-line corners:** the largest radius that fits each line — FLUX4 r = 75 µm (its 155 µm pad lead cannot hold 100), FLUX5 the legacy 100 µm; no break or overlap (checked in a render).
-- **R8:** the PCell's own open end (`ground=True`, as chip_10a does) instead of the `resonatorGnd` box: CUT8 and `W_R8` removed (the rule for #13/#26).
-- **#16 device ID:** `CHIP05` kept, placed by the frame rule. `claw_tail_gap` = 10 µm (legacy `cap_spacing`).
-- **#1 junctions:** legacy HSQ cells at the legacy fingers on the PDK junction rule (design rule #1: Nb trilayer, Δ = 1.4 meV, I_c·R_n = πΔ/2e = 2.20 mV, R_n 40–50 kΩ, qubits 4–8 GHz; PDK process `get_pdk().junction`: R_n·A 13.5 kΩ·µm², C_J 50 fF/µm², both assumed by the PDK): Q1–Q3 45 kΩ, Q6 28 kΩ, SQUIDs 22.5 kΩ parallel. LOM: f_q 5.8–6.1 GHz (SQUIDs 7.8 at zero flux); **Q1/R1 and Q2/R2 hybridised** (design rule).
-- Notebook edited and its JSON rebuilt from the layout cell; **not executed** (verification policy): outputs cleared, PNGs stale until the notebook is run.
+- Junction indexing fixed: `bot[i]` (Q1–Q5 js 5, Q6 js 8); the junction-layer reference uses the same sizes.
+- Flux-line corners: the largest radius that fits each line. FLUX4 r = 75 µm (its 155 µm pad lead cannot hold 100), FLUX5 the legacy 100 µm; no break or overlap (checked in a render).
+- R8: the PCell's own open end (`ground=True`, as chip_10a does) instead of the `resonatorGnd` box: CUT8 and `W_R8` removed.
+- Device ID: `CHIP05` kept, placed by the frame rule. `claw_tail_gap` = 10 µm (legacy `cap_spacing`).
+- Junctions: legacy HSQ cells at the legacy fingers on the PDK junction rule (Nb trilayer, Δ = 1.4 meV, I_c·R_n = πΔ/2e = 2.20 mV, R_n 40–50 kΩ, qubits 4–8 GHz; PDK process `get_pdk().junction`: R_n·A 13.5 kΩ·µm², C_J 50 fF/µm², both assumed by the PDK): Q1–Q3 45 kΩ, Q6 28 kΩ, SQUIDs 22.5 kΩ parallel. LOM: f_q 5.8–6.1 GHz (SQUIDs 7.8 at zero flux); Q1/R1 and Q2/R2 hybridised.
+- The notebook's JSON was rebuilt from its layout cell. The notebook has not been re-run, so its outputs are cleared and its PNGs may be out of date.
 
-**What it is.** A 7.5 × 7.5 mm die centred on (0, 0) → Designer (x + 3750, y + 3750); PDK v2 die frame replaces the
+What it is: a 7.5 × 7.5 mm die centred on (0, 0) → Designer (x + 3750, y + 3750); PDK v2 die frame replaces the
 base-metal corner `Marker`s and the layer-10 outline; the HSQ corner markers are kept. Feedline + two rounded pads
 (as chip_03), eight `Coupled Resonator`s (`ground=False`: tails without an end cap, joining the claws), seven Xmons
 (Q4, Q5 SQUIDs with flux lines from two small pads at the top/bottom edge centres), flux-trap holes, two HSQ test
 pads, labels "500nm", "800nm", "QCG_Nb05_W".
 
-**Buildable now?** Yes. Not reproduced: labels, the legacy flux-line end geometry (thin 1 µm section + ground
+Builds: yes. Not reproduced: labels, the legacy flux-line end geometry (thin 1 µm section + ground
 boxes). Junction windows (CLEARER) as `Xmon.junction_window`; junctions from `junction_creator_HSQ` /
 `squid_creator_HSQ` (the scripts the source imports) as `TrilayerJunctionHSQ` / `TrilayerSquidHSQ`, XOR 0 on the
-junction layers (legacy-c, 2026-11-03).
+junction layers.
 
 ### Components (legacy frame, µm)
 

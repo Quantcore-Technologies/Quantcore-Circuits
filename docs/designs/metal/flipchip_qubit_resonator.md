@@ -2,10 +2,10 @@
 
 A crossmon qubit on the top chip of a flip-chip stack, coupled across a 10 µm gap to the open end of a λ/4 resonator on
 the bottom chip. It is the Qiskit Metal flip-chip tutorial (Apache-2.0, © IBM and contributors). There are no routes,
-launchpads or bumps: the two parts talk vertically. The Quantcore rebuild is distributed under GPL-3.0.
+launchpads or bumps, and the two parts couple vertically. The Quantcore rebuild is distributed under GPL-3.0.
 
 Build this one to learn how a design uses two chip faces at once, how a qubit couples to a resonator through the gap
-instead of a route, and how the coupling is declared in the netlist.
+without a route, and how the coupling is declared in the netlist.
 
 ```{image} ../../images/designs/metal/flipchip_qubit_resonator.png
 :alt: The whole flipchip chip as the v2 notebook builds it
@@ -16,11 +16,11 @@ instead of a route, and how the coupling is declared in the netlist.
 
 | | |
 |---|---|
-| Notebook | `examples/designs/metal/flipchip_qubit_resonator.ipynb` (the one-cell version before the rewrite: `flipchip_qubit_resonator.v1.ipynb`) |
+| Notebook | `examples/designs/metal/flipchip_qubit_resonator.ipynb` (an older one-cell version is kept as `flipchip_qubit_resonator.v1.ipynb`) |
 | Source | Qiskit Metal `FlipChip-design-tutorial.ipynb`, © IBM and contributors, Apache-2.0 |
 | Chip | two faces on the 7.5 mm Quantcore die: control chip (face 1t1) and qubit chip (face 2b1) |
 | On the chip | 1 crossmon · 1 resonator with a 20 µm disk end under the cross centre · 1 declared vertical coupling |
-| Builds today | yes: layout run 2026-11-19, 7 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 7 s) |
 
 ## How the notebook builds it
 
@@ -56,15 +56,15 @@ Numbers are from a run of this notebook on 2026-11-19 (Setup, Design, Check and 
 :alt: LOM plot of flipchip_qubit_resonator
 ```
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates from component formulas and calibration, not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
 The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
 
-> **Update 2026-11-03:** frame = **source**: build with `chip={"die_frame": False, ...}` so the replica keeps its own size and frame (the Quantcore PDK die frame is for Quantcore chips only). `metal:<Class>` wrappers are READY (ports = Metal pin names, params = Metal options), so the `metal:` refs in this spec build as written; the Quantcore/KQC substitutions stay optional. Buildable now: **yes (not yet built end-to-end)**: two faces work through KQC `face_ids` (`chip={"die_frame": False, "frames_enabled": [0, 1]}`, top-chip cells `face_ids=["2b1", "1t1", "2t1"]`, routes `d.waypoint(at, face_id="2b1")`; see `kqc/demo_twoface.md`). `metal:ReadoutResFC` builds on face 2b1 (checked 2026-11-03).
+> The `metal:` references in this spec build as written, through the `metal:` wrapper (ports are the Metal pin names, parameters the Metal options). The Quantcore and KQC substitutions are optional. Two faces work through KQC `face_ids` (top-chip cells `face_ids=["2b1", "1t1", "2t1"]`, routes `d.waypoint(at, face_id="2b1")`; see `kqc/demo_twoface.md`), and `metal:ReadoutResFC` builds on face 2b1.
 
-> **Built 2026-11-03 (builder 4):** examples/designs/metal/flipchip_qubit_resonator.ipynb: Q1 on face 2b1 (`face_ids`), R1 on 1t1, vertical coupling declared; no FEM job yet (exporter builds face 1t1 only).
+> The notebook `examples/designs/metal/flipchip_qubit_resonator.ipynb` puts Q1 on face 2b1 (`face_ids`) and R1 on 1t1 and declares the vertical coupling. It has no FEM job yet, because the exporter builds face 1t1 only.
 
 Source: Quantum Metal `docs/tut/2-From-components-to-chip/FlipChip-design-tutorial.ipynb`. Licence Apache-2.0.
 The design uses `DesignFlipChip` with two facing chips. `C_chip` (control, bottom, z = 0, extends −280 µm) carries a
@@ -74,8 +74,7 @@ the notebook changes the default 20 µm, and Q_chip extends +280 µm. The design
 (2 modes, Lj 10 nH).
 Both chips are 9000 × 9000 µm, centred at (0, 0), so **Designer = Metal + (4500, 4500)** on each face. Silicon (an
 optional custom `Si_11.45`, εr 11.45, tan δ 1e-7).
-**Buildable now: no** (missing: two-face / flip-chip placement in the Designer; components need a face/chip
-selector). The single-face parts map to `Xmon` and `metal:ReadoutResFC`.
+The Designer has no face or chip selector for components. The single-face parts map to `Xmon` and `metal:ReadoutResFC`.
 
 ### Components
 | instance | face | catalog ref | key params (µm) | at (x, y) | rot | notes |
@@ -99,19 +98,19 @@ modes (qubit plus resonator). Dielectric loss enters through both chip bulks.
 HFSS setup: Lj 10 nH, n_modes 2, min_freq 1.5 GHz, max_delta_f 1 %, max_passes 20. No result values.
 
 ### Simplifications for a first rebuild
-1. Reference only (P3). Two single-face sims, e.g. a planar Xmon plus a λ/4 with an open end under the claw, lose the
-   vertical coupling, which is the point of the tutorial.
-2. Needed capability: a face parameter on `Designer.add`/`route` (KQC supports faces natively: `face_ids`, used by
+1. Two single-face sims, e.g. a planar Xmon plus a λ/4 with an open end under the claw, lose the vertical coupling,
+   which is what the tutorial is about.
+2. Wanted: a face parameter on `Designer.add`/`route` (KQC supports faces natively: `face_ids`, used by
    `DemoTwoface` and the `FlipChipConnector*` cells). R1 could then be a meander on the bottom face ending in an
    open pad.
 
-### Quantcore PDK rebuild (2026-11-03)
+### Quantcore PDK rebuild
 
-The notebook is a **Quantcore-PDK rebuild**, not a replica (design rule, 2026-11-03): the netlist, LOM and imported components are kept, the process is Quantcore's.
+The notebook is a Quantcore PDK rebuild of the source, not a replica: the netlist, LOM and imported components are kept, and the process is Quantcore's.
 
 Notebook: [`examples/designs/metal/flipchip_qubit_resonator.ipynb`](../../../examples/designs/metal/flipchip_qubit_resonator.ipynb).
 
-- **Chip:** the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT) on the control chip (face 1t1), on the 7.5 × 7.5 mm Quantcore die: the source's 9 × 9 mm chips hold only the ≈ 1 mm qubit / resonator pair, so the die is centred on them (`box=(750, 750, 8250, 8250)`, same coordinates). The top (qubit) chip, face 2b1, has no PDK frame (PDK v3 defines none for the flip-chip top chip; its fab layers are 800–804/0).
-- **Stack:** sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); the source's custom silicon (εr 11.45) and 10 µm vacuum chip gap are FEM settings; the LOM uses the PDK substrate.
-- **Junctions:** Quantcore Nb/AlOx/Nb trilayer junctions (`junction_type` from `layouts.registry.trilayer_junction`): fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient, sized on the PDK junction rule (Nb Δ = 1.4 meV, I_c·R_n = πΔ/2e, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed); `Q1` gets the PDK nominal junction, 0.5 × 0.6 µm fingers → R_n = 45 kΩ, L_J = 6.73 nH, C_J = 15 fF (in the 40–50 kΩ window), in place of the tutorial's 10 nH (+ 2 fF assumed); on the top chip its fingers export to the face-2b1 junction layers 803/0 + 804/0 (spacer 50/0). Expected f_q ≈ 6.5 GHz (estimate; was 5.78 GHz), near the 6.49 GHz λ/4.
-- **Kept:** the topology and every Metal component with the source's options (through the `metal:` wrapper), positions and orientations, every route's end pins and total length, the sim groups (the two faces, the vertical coupling estimate, the drawn shorted end).
+- Chip: the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT) on the control chip (face 1t1), on the 7.5 × 7.5 mm Quantcore die: the source's 9 × 9 mm chips hold only the ≈ 1 mm qubit / resonator pair, so the die is centred on them (`box=(750, 750, 8250, 8250)`, same coordinates). The top (qubit) chip, face 2b1, has no PDK frame (PDK v3 defines none for the flip-chip top chip; its fab layers are 800–804/0).
+- Stack: sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); the source's custom silicon (εr 11.45) and 10 µm vacuum chip gap are FEM settings; the LOM uses the PDK substrate.
+- Junctions: Quantcore Nb/AlOx/Nb trilayer junctions (`junction_type` from `layouts.registry.trilayer_junction`): fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient, sized on the PDK junction rule (Nb Δ = 1.4 meV, I_c·R_n = πΔ/2e, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed); `Q1` gets the PDK nominal junction, 0.5 × 0.6 µm fingers → R_n = 45 kΩ, L_J = 6.73 nH, C_J = 15 fF (in the 40–50 kΩ window), in place of the tutorial's 10 nH (+ 2 fF assumed); on the top chip its fingers export to the face-2b1 junction layers 803/0 + 804/0 (spacer 50/0). Expected f_q ≈ 6.5 GHz (an estimate), near the 6.49 GHz λ/4.
+- Kept: the topology and every Metal component with the source's options (through the `metal:` wrapper), positions and orientations, every route's end pins and total length, the sim groups (the two faces, the vertical coupling estimate, the drawn shorted end).

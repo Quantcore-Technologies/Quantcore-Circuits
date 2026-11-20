@@ -7,14 +7,16 @@ even when the URL names a sub-folder. So the plugin is published on its own orph
 (into a worktree of the branch, or a folder for the release zip):
 
     python scripts/release/export_plugin.py --out ../Quantcore-Circuits-plugin --clean
-    python scripts/release/export_plugin.py --out dist/plugin --zip dist/quantcore-circuits-klayout-0.0.1.zip \
-        --check-version 0.0.1
+    python scripts/release/export_plugin.py --out dist/plugin --zip dist/quantcore-circuits-klayout-0.0.2.zip \
+        --check-version 0.0.2
 
 * copies the files KLayout needs (``grain.xml``, ``pymacros/``, ``python/``, the tool icons) plus the README, the
   Q1 + R1 tutorial and the licence; development probes, smoke scripts and the repository loader stay behind;
 * embeds ``kplugin/icons/salt_icon.png`` (64 x 64) and ``salt_screenshot.png`` in the exported ``grain.xml``
   (``scripts/release/make_salt_images.py`` makes them);
-* checks the grain: name, version (``--check-version`` and ``pyproject.toml``), licence, URL, images;
+* checks the grain: name, version, licence, URL, images. Salt versions are dotted numbers only, so the grain carries
+  at most the release part of the Python version (``0.0.1`` for ``0.0.1b0``, :func:`salt_version`; it may lag), checked against
+  ``pyproject.toml`` and ``--check-version``;
 * ``--clean`` empties ``--out`` first but keeps its ``.git`` (so it can be a worktree of the ``klayout-plugin`` branch);
 * ``--zip`` also writes a zip with the package under a ``quantcore-circuits/`` folder (unzip into
   ``<KLayout home>/salt/`` to install by hand).
@@ -61,6 +63,19 @@ def _png_size(data: bytes) -> tuple[int, int]:
     return int.from_bytes(data[16:20], "big"), int.from_bytes(data[20:24], "big")
 
 
+def salt_version(version: str) -> str:
+    """The KLayout Salt version for a Python package version: its release part (``0.0.1b0`` -> ``0.0.1``). Salt
+    compares dotted integers and rejects anything else, so pre-release suffixes stay out of the grain."""
+    m = re.match(r"v?(\d+(?:\.\d+)*)", version.strip())
+    if not m:
+        raise ValueError(f"not a version: {version!r}")
+    return m.group(1)
+
+
+def _ints(version: str) -> tuple[int, ...]:
+    return tuple(int(p) for p in version.split(".")) if re.fullmatch(r"\d+(\.\d+)*", version) else ()
+
+
 def _grain_xml(version_check: str | None) -> tuple[str, dict]:
     text = (SRC / "grain.xml").read_text(encoding="utf-8")
     root = ET.fromstring(text)
@@ -69,10 +84,13 @@ def _grain_xml(version_check: str | None) -> tuple[str, dict]:
     if info["name"] != PACKAGE_DIR:
         problems.append(f"grain name is {info['name']!r}, expected {PACKAGE_DIR!r}")
     py_version = tomllib.loads((ROOT / "pyproject.toml").read_text(encoding="utf-8"))["project"]["version"]
-    if info["version"] != py_version:
-        problems.append(f"grain version {info['version']} != pyproject version {py_version}")
-    if version_check and info["version"] != version_check.lstrip("v"):
-        problems.append(f"grain version {info['version']} != --check-version {version_check}")
+    if not re.fullmatch(r"\d+(\.\d+)*", info["version"]):
+        problems.append(f"grain version {info['version']!r} is not dotted numbers (KLayout Salt rejects it)")
+    # the plugin keeps its version until the plugin itself changes, so it may lag the Python package, never lead it
+    if _ints(info["version"]) > _ints(salt_version(py_version)):
+        problems.append(f"grain version {info['version']} > {salt_version(py_version)} (pyproject {py_version})")
+    if version_check and _ints(info["version"]) > _ints(salt_version(version_check)):
+        problems.append(f"grain version {info['version']} > --check-version {version_check}")
     if not info["license"].startswith("GPL"):
         problems.append(f"licence is {info['license']!r}")
     if not info["url"].startswith("git+https://"):

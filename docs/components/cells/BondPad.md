@@ -10,7 +10,7 @@ Wire-bond pad tapering to a CPW (``a``/``b``); port ``a`` at the taper tip.
 Canonical cell of an alias group. Aliases: [`metal:LaunchpadWirebond`](metal_LaunchpadWirebond.md), [`metal:LaunchpadWirebondDriven`](metal_LaunchpadWirebondDriven.md), [`Launcher`](Launcher.md), [`ConnectorPad`](ConnectorPad.md), [`CpweBondPad`](CpweBondPad.md).
 :::
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

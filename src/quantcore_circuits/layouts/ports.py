@@ -1,7 +1,8 @@
 """Ports as seen by quantcore_circuits: KQC refpoints ``port_<name>`` + optional ``port_<name>_corner``.
 
 A port has a position, an *outward* unit direction (``corner - port``; the direction a connecting waveguide comes
-from) and the CPW centre width ``a`` / gap ``b`` at that point.
+from) and the CPW centre width ``a`` / gap ``b`` at that point. A port of a multi-face cell (a TSV or bump
+transition) also names its KQC chip face (``face``, e.g. ``"2b1"``); ``None`` is the cell's own face.
 """
 
 from __future__ import annotations
@@ -21,6 +22,7 @@ class Port:
     dir: pya.DVector | None  # outward unit vector, None if the port has no corner refpoint
     a: float | None = None
     b: float | None = None
+    face: str | None = None  # KQC face id of a multi-face cell's port ("1t1", "1b1", "2b1", "2t1"); None: not recorded
 
     @property
     def angle(self) -> float | None:
@@ -35,16 +37,19 @@ class Port:
         if self.dir is not None:
             d = trans * self.dir
             d = d / d.length()
-        return Port(self.name, trans * self.pos, d, self.a, self.b)
+        return Port(self.name, trans * self.pos, d, self.a, self.b, self.face)
 
     def as_dict(self) -> dict:
-        return {
+        out = {
             "name": self.name,
             "at": [round(self.pos.x, 6), round(self.pos.y, 6)],
             "dir": None if self.angle is None else round(self.angle, 6),
             "a": self.a,
             "b": self.b,
         }
+        if self.face is not None:
+            out["face"] = self.face
+        return out
 
 
 def direction_vector(angle_deg: float) -> pya.DVector:

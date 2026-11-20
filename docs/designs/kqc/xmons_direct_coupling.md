@@ -2,10 +2,10 @@
 
 A KQCircuits chip with three Swissmon qubits in a row. Neighbouring qubits are coupled directly: their arm tips face each other across a small gap. Each qubit has a T-tapped quarter-wave readout into one probe line. It is rebuilt on the Quantcore PDK.
 
-Build it to learn direct qubit-to-qubit coupling (declared in the netlist with `d.couple`) and T-tapped readouts.
+Build it to see direct qubit-to-qubit coupling (declared in the netlist with `d.couple`) and T-tapped readouts.
 
 ```{image} ../../images/designs/kqc/xmonsdirectcoupling.png
-:alt: The whole xmonsdirectcoupling chip as the v2 notebook builds it
+:alt: The whole xmonsdirectcoupling chip as the notebook builds it
 :width: 100%
 ```
 
@@ -13,11 +13,11 @@ Build it to learn direct qubit-to-qubit coupling (declared in the netlist with `
 
 | | |
 |---|---|
-| Notebook | `examples/designs/kqc/xmonsdirectcoupling.ipynb` (the one-cell version before the rewrite: `xmonsdirectcoupling.v1.ipynb`) |
+| Notebook | `examples/designs/kqc/xmonsdirectcoupling.ipynb` (an older one-cell version is kept as `xmonsdirectcoupling.v1.ipynb`) |
 | Source | KQCircuits `chips/xmons_direct_coupling.py` (`XMonsDirectCoupling`), © IQM Finland Oy, GPL-3.0 |
 | Chip | 10 × 10 mm, SMA8 launchers, chip name "XMDC" |
 | On the chip | 3 Swissmons 350 µm apart · 3 T-tapped λ/4 readouts · 1 probe line · 3 charge and 3 flux lines · 4 junction-test arrays |
-| Builds today | yes: layout run 2026-11-19, 8 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 8 s) |
 
 ## How the notebook builds it
 
@@ -62,15 +62,13 @@ These are lumped-model estimates (component formulas and calibration), not FEM r
 
 The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
 
-> **Update 2026-11-03:** frame = **source**: build with `chip={"die_frame": False, ...}` so the replica keeps its own size and frame (the Quantcore PDK die frame is for Quantcore chips only).
-
 Source `other-libs/KQCircuits-main/KQCircuits-main/klayout_package/python/kqcircuits/chips/xmons_direct_coupling.py`
-(`XMonsDirectCoupling`) · GPL-3.0 (IQM Finland). Rebuilt from extracted parameters. · What it is: 3 flux-tunable
+(`XMonsDirectCoupling`), GPL-3.0 (IQM Finland). Rebuilt from extracted parameters. What it is: 3 flux-tunable
 Swissmons ("Finnmons") in a row, 350 µm apart, so neighbouring arm tips face each other across 10 µm and couple
 directly. Each qubit has a T-tapped λ/4 readout resonator (86 Ω, a=5 b=20) coupled through a finger capacitor to one
 probeline, which has a series input capacitor. There is a drive line and a flux line per qubit, plus the standard
-junction-test arrays. · 10 × 10 mm, KQC frame = Designer frame · face 1t1 · **Buildable now: yes.** Checked
-2026-11-02: every length matches KQC, and the LOM has no unconnected ports.
+junction-test arrays. 10 × 10 mm, KQC frame = Designer frame, face 1t1. Checked
+on 2026-11-02: every length matches KQC, and the LOM has no unconnected ports.
 
 ### Components
 | instance | catalog ref | key params (units) | at (x, y) | rot | notes |
@@ -128,7 +126,7 @@ QB1/QB2/QB3. There are 4 junction-test arrays.
 - Readout k: QBk.cplr1 ≡ RTk node (the RR route is a wire). RSk becomes a λ/4 TLres there. CKk is the series C
   (estimate ≈ 20 fF) to the probeline node (PL1–PL3 merged). IN is the series C (estimate 39.8 fF) from chip.NW to
   the probeline, and chip.NE is a 50 Ω port.
-- **LOM gap:** the real resonator is a tapped λ/4, RR (2.4 mm) + T + RS (2.2–2.4 mm) ≈ 4.7–4.9 mm. The builder only
+- LOM gap: the real resonator is a tapped λ/4, RR (2.4 mm) + T + RS (2.2–2.4 mm) ≈ 4.7–4.9 mm. The builder only
   counts RS as the TLres (lumped f ≈ 13–14 GHz) and treats RR as a wire. For a correct LOM, override the length
   (KQC `length` = 4868.6 / 4682.3 / 4686.7) or add a "resonator through splitter" rule.
 - DLk becomes a `drive` control and FLk a `flux_bias` control on J_QBk.
@@ -143,13 +141,13 @@ Skip the junction tests and airbridges. KQC puts n_bridges of 25/30 on the contr
 1–4 on the probeline. If a single conductor per resonator is wanted in the LOM, keep the RT/TP chain in the layout
 but set the TLres length by hand until the builder supports tapped resonators.
 
-### Quantcore PDK rebuild (2026-11-03)
+### Quantcore PDK rebuild
 
-The notebook is a **Quantcore-PDK rebuild**, not a replica (design rule, 2026-11-03): the netlist, LOM and imported components are kept, the process is Quantcore's.
+The notebook is a Quantcore-PDK rebuild of the source chip. The netlist, LOM and imported components are kept, and the process is Quantcore's.
 
 Notebook: [`examples/designs/kqc/xmonsdirectcoupling.ipynb`](../../../examples/designs/kqc/xmonsdirectcoupling.ipynb).
 
-- **Chip:** the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), drawn on the source's 10 × 10 mm chip (its launchers sit on the chip edges, so the design does not fit the 7.5 mm die); KQC's ChipFrame (dicing edge, corner markers, labels) is not drawn.
-- **Stack:** sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); KQC's own simulation default is silicon (εr 11.45), so LOM capacitances and resonator frequencies here are for sapphire.
-- **Junctions:** Quantcore Nb/AlOx/Nb trilayer junctions (`junction_type` from `layouts.registry.trilayer_junction`): fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient, sized on the PDK junction rule (Nb Δ = 1.4 meV, I_c·R_n = πΔ/2e, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed); every Swissmon's SQUID becomes a PDK SQUID of two 0.25 × 0.6 µm junctions → R_n = 45 kΩ in parallel, L_J = 6.73 nH at zero flux, C_J = 15 fF (in the 40–50 kΩ window) — KQC's `junction_width` sets the straight finger — in place of the assumed Lj 16 nH + 2 fF. Expected f_q ≈ 6.5 GHz (was 4.47–4.49 GHz), above the ≈ 5.3–5.5 GHz readouts; the three qubits stay identical (hybridised) (estimate from the pre-rebuild LOM C_Σ). The four `JunctionTestPads` arrays get the same Quantcore SQUID.
-- **Kept:** the topology and every KQC element with the source's parameters, positions and orientations, the launcher assignment, every route's path and length, the sim groups (the T-tapped readouts with KQC's tail lengths, the assumed 0.3 fF direct coupling).
+- Chip: the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), drawn on the source's 10 × 10 mm chip (its launchers sit on the chip edges, so the design does not fit the 7.5 mm die). KQC's ChipFrame (dicing edge, corner markers, labels) is not drawn. KQC's original grids its whole ground plane (`with_grid`, 5 µm squares on a 10 µm step). The rebuild keeps that coverage at the PDK density instead (chip parameter `cheese: "chip"`, `with_grid: false`): 5 µm squares with 20 µm gaps over the whole die, at least 4 µm from the 3/0 keep-outs, inside the design area and clear of the frame markers and the device ID.
+- Stack: sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); KQC's own simulation default is silicon (εr 11.45), so LOM capacitances and resonator frequencies here are for sapphire.
+- Junctions: Quantcore Nb/AlOx/Nb trilayer junctions (`junction_type` from `layouts.registry.trilayer_junction`): fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient, sized on the PDK junction rule (Nb Δ = 1.4 meV, I_c·R_n = πΔ/2e, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed); every Swissmon's SQUID becomes a PDK SQUID of two 0.25 × 0.6 µm junctions → R_n = 45 kΩ in parallel, L_J = 6.73 nH at zero flux, C_J = 15 fF (in the 40–50 kΩ window). KQC's `junction_width` sets the straight finger. This replaces the assumed Lj 16 nH + 2 fF. Expected f_q ≈ 6.5 GHz (was 4.47–4.49 GHz), above the ≈ 5.3–5.5 GHz readouts; the three qubits stay identical and hybridised (estimate from the pre-rebuild LOM C_Σ). The four `JunctionTestPads` arrays get the same Quantcore SQUID.
+- Kept: the topology and every KQC element with the source's parameters, positions and orientations, the launcher assignment, every route's path and length, the sim groups (the T-tapped readouts with KQC's tail lengths, the assumed 0.3 fF direct coupling).

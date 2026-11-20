@@ -1,9 +1,8 @@
 # Getting started
 
-This page takes you from an empty machine to a first chip. You install the library and its upstream libraries, check
-that the `qcc` command works, build a one-qubit chip in a few lines of Python, and find where the files go. KLayout and
-AEDT are only needed for the steps that say so. If you want to know what the repository is first, read
-[the repository](overview/index.md).
+This page goes from an empty machine to a first chip: install the library and its upstream libraries, check that the
+`qcc` command works, build a one-qubit chip in a few lines of Python, and find where the files go. KLayout and AEDT are
+only needed for the steps that say so. To see what the repository contains first, read [the repository](overview/index.md).
 
 ## What you need
 
@@ -16,18 +15,21 @@ AEDT are only needed for the steps that say so. If you want to know what the rep
 
 ## Install
 
-Install from PyPI. SQcircuit (in the `analysis` extra) needs PyTorch, so install its CPU build first:
+Install from PyPI (current release 0.0.2). SQcircuit (in the `analysis` extra)
+needs PyTorch, so install its CPU build first:
 
 ```bat
 conda create -n qcd python=3.11
 conda activate qcd
 pip install torch --index-url https://download.pytorch.org/whl/cpu
-pip install "quantcore-circuits[all]"
+pip install --pre "quantcore-circuits[all]"
 qcc kqc-files
 ```
 
-`qcc kqc-files` fetches KQCircuits' simulation scripts and label font once (a few seconds, from the KQCircuits release on GitHub): the `kqcircuits` package on PyPI does not include them, and the HFSS / Q3D / Elmer export and KQC's chip-frame labels need them. Set `QCC_KQC_SCRIPTS` to the `klayout_package/python/scripts` folder of a KQCircuits checkout instead,
-if you have one; a KQCircuits checkout installed in editable mode needs neither.
+`qcc kqc-files` fetches KQCircuits' simulation scripts and label font once (a few seconds, from the KQCircuits release
+on GitHub). The `kqcircuits` package on PyPI does not include them, and the HFSS / Q3D / Elmer export and KQC's
+chip-frame labels need them. If you have a KQCircuits checkout, you can set `QCC_KQC_SCRIPTS` to its
+`klayout_package/python/scripts` folder instead; a checkout installed in editable mode needs neither.
 
 The extras are `analysis` (Quantum Metal, pyEPR, scqubits, QuTiP, SQcircuit, QuCat), `sim` (gmsh, PyAEDT, scikit-rf),
 `notebook` (Jupyter kernel, matplotlib), `all` (the three together) and `dev` (pytest, ruff, pre-commit). Without an
@@ -60,7 +62,7 @@ qcc components
 qcc components Xmon
 ```
 
-`qcc --version` prints `quantcore-circuits 0.0.1`. `qcc components` lists the Quantcore, KQC and Metal components by
+`qcc --version` prints `quantcore-circuits 0.0.2`. `qcc components` lists the Quantcore, KQC and Metal components by
 category; `qcc components Xmon` lists the ports of one of them. If `qcc` is not found, the env is not active or the
 install did not finish. `qcc selftest` goes further: it checks the imports of every extra and builds, checks and
 exports a small chip. Read any `[FAIL]` line.
@@ -85,7 +87,7 @@ print(d.drc())                 # connectivity checks
 print(d.lom().model)           # the lumped circuit
 ```
 
-What happens:
+What the code does:
 
 - `edge="auto"` puts each pad where the PDK wants it, 100 µm from the die edge.
 - `route` joins two pins with a Manhattan line; `fl.hanger(...)` makes a lambda/4 coupler beside the feedline, and
@@ -100,8 +102,8 @@ With `live=True` the same code opens KLayout (if it is installed) and redraws it
 
 ## Your first chip in KLayout
 
-Follow the [Q1 + R1 tutorial](plugin/TUTORIAL_q1_r1.md). It draws one Xmon, its readout resonator and a feedline, then
-runs check, LOM, simulation and the fab export from the panel's Flow strip. If you have never used KLayout, read
+The [Q1 + R1 tutorial](plugin/TUTORIAL_q1_r1.md) draws one Xmon, its readout resonator and a feedline, then runs
+check, LOM, simulation and the fab export from the panel's Flow strip. If you have never used KLayout, read
 [KLayout basics](plugin/klayout-basics.md) first.
 
 ## The same chip on the command line

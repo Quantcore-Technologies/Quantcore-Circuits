@@ -2,8 +2,7 @@
 
     python scripts/release/make_salt_images.py
 
-writes ``kplugin/icons/salt_icon.png`` (64 x 64: the Quantcore "Q" crossed by the logo's gradient line ending in its
-diamond, CIRCUITS in letter-spaced caps under it, on a white rounded square so it reads on light and dark package
+writes ``kplugin/icons/salt_icon.png`` (64 x 64: the Quantcore mark ``assets/logo.png``, CIRCUITS in letter-spaced caps under it, on a white rounded square so it reads on light and dark package
 lists) and ``kplugin/icons/salt_screenshot.png`` (640 px wide: the logo over
 ``docs/images/plugin/window_overview.png``).
 ``scripts/release/export_plugin.py`` embeds both in the exported ``grain.xml``.
@@ -14,11 +13,11 @@ from __future__ import annotations
 import os
 from pathlib import Path
 
-import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[2]
 LOGO = ROOT / "assets" / "logo-circuits-black.png"
+MARK = ROOT / "assets" / "logo.png"  # the small company mark of the Salt icon
 SHOT = ROOT / "docs" / "images" / "plugin" / "window_overview.png"
 ICONS = ROOT / "kplugin" / "icons"
 INK = (17, 17, 17, 255)
@@ -40,33 +39,16 @@ def _font(size: int) -> ImageFont.FreeTypeFont:
 
 
 def icon(out: Path, k: int = 8) -> None:
-    logo = Image.open(LOGO).convert("RGBA")
-    a = np.array(logo)
-    row = a[97, :, :3].astype(int)  # the gradient line's row in the 1139 x 284 logo
-    sat = row.max(-1) - row.min(-1)
-    xs = np.where((sat > 40) & (a[97, :, 3] > 40))[0]
     n = 64 * k
     img = Image.new("RGBA", (n, n), (0, 0, 0, 0))
     d = ImageDraw.Draw(img)
     d.rounded_rectangle((2 * k, 2 * k, n - 2 * k - 1, n - 2 * k - 1), radius=12 * k, fill=(255, 255, 255, 255),
                         outline=(205, 208, 214, 255), width=k)
-    q = logo.crop((0, 0, 153, 170))  # the "Q"
-    qh = 33 * k
-    q = q.resize((round(q.width * qh / q.height), qh), Image.LANCZOS)
-    qx, qy = (n - q.width) // 2, 7 * k
-    img.alpha_composite(q, (qx, qy))
-    ly = qy + round(97 / 170 * qh)
-    th = max(2 * k, round(11 / 170 * qh))
-    x0, x1 = 8 * k, 50 * k
-    for x in range(x0, x1):
-        t = (x - x0) / (x1 - x0)
-        sx = int(xs[0] + 3 + t * (xs[-1] - xs[0] - 6))
-        while sx < xs[-1] and sat[sx] <= 40:  # skip the letter strokes the line crosses
-            sx += 1
-        d.line((x, ly - th // 2, x, ly + th // 2), fill=tuple(int(v) for v in row[sx]) + (255,))
-    r = round(th * 1.25)
-    cx = x1 + r
-    d.polygon([(cx, ly - r), (cx + r, ly), (cx, ly + r), (cx - r, ly)], fill=INK)
+    mark = Image.open(MARK).convert("RGBA")
+    mark = mark.crop(mark.getbbox())  # its visible content
+    mh = 36 * k  # rows 6-42: the mark above the CIRCUITS line
+    mark = mark.resize((round(mark.width * mh / mark.height), mh), Image.LANCZOS)
+    img.alpha_composite(mark, ((n - mark.width) // 2, 6 * k))
     f = _font(10 * k)
     letters = "CIRCUITS"
     boxes = [f.getbbox(c) for c in letters]

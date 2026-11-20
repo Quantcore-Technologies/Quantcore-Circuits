@@ -10,7 +10,7 @@ Transmon pocket with 6 connection pads.
 Alias of [`metal:TransmonPocket`](metal_TransmonPocket.md): the same circuit, drawn differently. same options; for the same connection pad set Pocket6's pad_cpw_shift 5 µm and pocket_rise 65 µm (TransmonPocket's pad defaults; Pocket6's own are 0) (XOR 0); loc_W 0 adds Pocket6's middle positions
 :::
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

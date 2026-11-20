@@ -1,11 +1,9 @@
 # Feedback
 
-Feedback closes the loop: from solver and LOM values it proposes new geometry (a junction inductance, a resonator
-length) and writes the next revision of the design. Use it when a result misses its target and you want the library to
-suggest the change instead of tuning by hand. It writes a proposal and a new `design.json` revision; nothing is
-changed until you apply it. The loop is real for one tutorial only; see the end of the page.
-
-Feedback turns simulated values into the next revision of the design:
+Feedback turns solver and LOM values into new geometry (a junction inductance, a resonator length) and writes the
+next revision of the design. Use it when a result misses its target and you want the library to suggest the change
+instead of tuning by hand. It writes a proposal and a new `design.json` revision; nothing changes until you apply it.
+Only one tutorial runs the loop with real FEM results; see the end of the page. The steps are:
 
 1. FEM and LOM values go into one consensus against the targets (`loop.analyse(design, jobs)` returns an `Analysis`
    with rows, estimates, plots and cards).
@@ -99,7 +97,7 @@ Tutorial 4 closes the loop with real FEM runs (2026-11-13, fast settings). Rev 0
 | `g12_MHz` | 10 | 9.1923 | 10.5785 | 10.6894 |
 
 The notebook ends with "rev 1 on target (FEM): False": frequencies moved to within about 0.2 % of target but the
-tolerances (0.02 GHz for qubits, 0.01 GHz for readouts) are tighter. Do not read this as a converged loop.
+tolerances (0.02 GHz for qubits, 0.01 GHz for readouts) are tighter. This is not a converged loop.
 
 ## What is missing
 
