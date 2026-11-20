@@ -1,7 +1,6 @@
 # Contributing
 
-Thank you for helping with quantcore-circuits. This guide covers the dev setup, the tests, the docs build and how to
-send a change. Paths are from the repository root.
+This guide covers the dev setup, the tests, the docs build and how to send a change. Paths are from the repository root.
 
 ## Set up a checkout
 

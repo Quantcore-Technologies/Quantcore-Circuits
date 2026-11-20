@@ -1,14 +1,14 @@
 # A spiral capacitor
 
 A spiral capacitor is a two-pin capacitor whose electrodes are two interleaved spirals. Every turn of one arm has the
-other arm on both sides, so a small cut-out in the ground plane holds a long, thin gap and a lot of capacitance. You
-need a component like this when you want a series capacitor between a feedline and a resonator that is larger than an
-interdigital capacitor of the same footprint. This page builds it step by step: the geometry, the two pins, a LOM
+other arm on both sides, so a small cut-out in the ground plane holds a long, thin gap and a lot of capacitance. Use
+one when you want a series capacitor between a feedline and a resonator that is larger than an interdigital capacitor
+of the same footprint. This page builds it step by step: the geometry, the two pins, a LOM
 model, and a chip that uses it.
 
 The finished files are `examples/custom_component/spiral_capacitor.py` and the notebook
-`examples/custom_component/custom_passives.ipynb`. The page assumes you have read
-[Components](../components.md) once.
+`examples/custom_component/custom_passives.ipynb`. It assumes you have read
+[Components](../components.md).
 
 ## What you build
 
@@ -40,7 +40,7 @@ def arm_points(r_in, pitch, turns, phase_deg=0.0):
 
 `turns` is rounded to steps of 0.5, so both arms end on the x axis, on opposite sides. The class method
 `TwistedSpiralCapacitor.geometry(params)` returns the two arms, their length and the outer radius. The build and the LOM both
-call it, so the drawing and the number cannot drift apart.
+call it, so the drawing and the number agree.
 
 ## Step 2: the class and its parameters
 
@@ -179,4 +179,4 @@ for how far to trust them.
 ## Next
 
 The [tunable resonator](tunable-resonator.md) adds junctions to a custom component. The notebook
-`examples/custom_component/custom_passives.ipynb` runs both pages end to end.
+`examples/custom_component/custom_passives.ipynb` runs both pages.

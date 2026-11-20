@@ -12,8 +12,9 @@
     ],
     "launchers": "SMA8",
     "params": {
-      "with_grid": true,
-      "name_chip": "SXMONS"
+      "with_grid": false,
+      "name_chip": "SXMONS",
+      "cheese": "chip"
     }
   },
   "instances": {

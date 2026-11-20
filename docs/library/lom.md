@@ -1,13 +1,13 @@
 # LOM
 
-The LOM (lumped-element model) gives a first estimate of a chip's frequencies without a field solver: it turns the
-layout into a circuit and solves that. Use it to check a design in seconds, to size a qubit and readout before drawing
-them (LOM first), and as the frame into which solver results are later filled. The estimates come from component
-formulas and calibration, not from FEM; see the limits at the end.
+The LOM (lumped-element model) gives a first estimate of a chip's frequencies without a field solver. Use it to check
+a design in seconds, to size a qubit and readout before drawing them (LOM first), and as the frame into which solver
+results are later filled. The estimates come from component formulas and calibration, not from FEM; see the limits at
+the end.
 
-The LOM turns the layout into a circuit. Each component has a model that maps its ports to
-nodes and branches (capacitances, junctions, lines); routes become conductors or resonators; the pieces are merged into
-one whole-chip netlist.
+The layout becomes a circuit as follows. Each component has a model that maps its ports to nodes and branches
+(capacitances, junctions, lines); routes become conductors or resonators; the pieces are merged into one whole-chip
+netlist, which is then solved.
 
 ```python
 lb = d.lom()                                   # layout -> LOM netlist (values = component estimates)
@@ -54,7 +54,7 @@ against the qubit-resonator coupling capacitance.
 ```{figure} ../images/plots/hamiltonian.png
 
 The four panels the dashboard also shows (dressed levels, simulated readout, flux curve, estimator spread), here for the
-Q1 / R1 feedline example (an older render from 2026-11-03).
+Q1 / R1 feedline example (an older render).
 ```
 
 Estimators: `metal_lom`, `qucat`, `sqcircuit`, `scqubits`, `qutip` and `pyepr` (when an eigenmode result exists);
@@ -70,14 +70,14 @@ Estimators: `metal_lom`, `qucat`, `sqcircuit`, `scqubits`, `qutip` and `pyepr` (
 :width: 55%
 
 Two qubits laid out from targets (`examples/lom_from_layout.ipynb`): two Xmons, two lambda/4 readouts on one feedline,
-DRC clean. This works for the Xmon with a lambda/4 readout on one feedline; other topologies are not built.
+DRC clean. Only the Xmon with a lambda/4 readout on one feedline is supported; other topologies are not built.
 ```
 
 ## Limits and known gaps
 
 - A pin that is not connected is not kept floating: tutorial 3's Run LOM fails with "open or shorted".
 - QuCat hits its recursion limit at 8 junctions; whole-chip LOM of a 21-qubit chip does not finish on this PC (9 min,
-  4.7 GB). The decision is to keep the LOM whole-chip and run it on a bigger machine.
+  4.7 GB). The LOM stays whole-chip; run it on a bigger machine.
 - TransmonCross claw capacitances are off (claw-to-ground C about 2x low), `HANGER_K` uses one coupling constant for all
   hangers (lambda/4 kappa about 35 % low, open lambda/2 about 5x low), and the Purcell filter between series capacitors
   is not loaded.

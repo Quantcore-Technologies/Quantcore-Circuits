@@ -1,8 +1,8 @@
 # Seven-qubit processor
 
-A community seven-qubit planar processor: a chain of pocket transmons joined by λ/2 buses, six λ/4 readouts hanging on a ∩-shaped feedline and one charge line. The source is a Qiskit Metal repository by A. Dahima (the README says MIT, but the repository has no LICENSE file); the notebook is a Quantcore-PDK rebuild, distributed under GPL-3.0.
+A community seven-qubit planar processor: a chain of pocket transmons joined by λ/2 buses, six λ/4 readouts hanging on a ∩-shaped feedline and one charge line. The source is a Qiskit Metal repository by A. Dahima (the README says MIT, but the repository has no LICENSE file); the notebook is a Quantcore PDK rebuild, distributed under GPL-3.0.
 
-Build this one to learn a coupled qubit chain with buses, a feedline that wraps around the qubits, and junctions sized per qubit from a frequency target.
+This notebook is an example of a coupled qubit chain with buses, a feedline that wraps around the qubits, and junctions sized per qubit from a frequency target.
 
 ```{image} ../../images/designs/community/seven_qubit_processor.png
 :alt: The whole seven_qubit_processor chip as the v2 notebook builds it
@@ -13,11 +13,11 @@ Build this one to learn a coupled qubit chain with buses, a feedline that wraps 
 
 | | |
 |---|---|
-| Notebook | `examples/designs/community/seven_qubit_processor.ipynb` (the one-cell version before the rewrite: `seven_qubit_processor.v1.ipynb`) |
+| Notebook | `examples/designs/community/seven_qubit_processor.ipynb` (an older one-cell version is kept as `seven_qubit_processor.v1.ipynb`) |
 | Source | `atharveeee-netizen/7-qubit-superconducting-processor` (README badge MIT, no LICENSE file) |
 | Chip | 10 × 10 mm Quantcore die (the source's chip size) |
 | On the chip | 3 launchpads · 1 ∩ feedline · 7 pocket transmons · 6 λ/4 readouts · 6 λ/2 buses · 1 charge line |
-| Builds today | yes: layout run 2026-11-19, 16 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 16 s) |
 
 ## How the notebook builds it
 
@@ -60,20 +60,19 @@ Numbers are from a run of this notebook on 2026-11-19 (Setup, Design, Check and 
 :alt: LOM plot of seven_qubit_processor
 ```
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates (component formulas and calibration), not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
-The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
+The rest of this page is the detailed spec the notebook was built from, with every component, port, route and length.
 
-> **Built 2026-11-03 (designs-17q fork; built regardless of licence, distributed under GPL):**
-> `examples/designs/community/seven_qubit_processor.ipynb` (+ `.json`, PNGs), a Quantcore-PDK rebuild; see
-> "Rebuild (Quantcore PDK)" at the end.
+> The notebook `examples/designs/community/seven_qubit_processor.ipynb` (with its `.json` and PNGs) is a Quantcore PDK
+> rebuild, distributed under GPL; see "Rebuild (Quantcore PDK)" at the end.
 
-> **Update 2026-11-03:** frame = **source**: build with `chip={"die_frame": False, ...}` so the replica keeps its own size and frame (the Quantcore PDK die frame is for Quantcore chips only). `metal:<Class>` wrappers are READY (ports = Metal pin names, params = Metal options), so the `metal:` refs in this spec build as written; the Quantcore/KQC substitutions stay optional. Buildable now: **yes** (`metal:TransmonPocket6`, `metal:TransmonPocketCL`; pins `Charge_Line` + the `connection_pads` names).
+The `metal:` references in this spec build as written, through the `metal:` wrapper (ports are the Metal pin names, parameters the Metal options); the Quantcore and KQC substitutions are optional.
 
 Source: [atharveeee-netizen/7-qubit-superconducting-processor](https://github.com/atharveeee-netizen/7-qubit-superconducting-processor)
-(A. Dahima). Licence: the README badge says **MIT**, but the repo has no LICENSE file. Read 2026-11-02: README,
+(A. Dahima). Licence: the README badge says **MIT**, but the repo has no LICENSE file. Read on 2026-11-02: README,
 `simon_7qubit_complete_chip.py`, `01_Seven_Qubit_Chip_Layout.ipynb` and one GUI screenshot. `seven_qubit_chip_mask.gds`
 (1.68 MB) was not downloaded.
 What it is: three related Metal scripts, all following a lecture-series exercise. The **complete routed variant**
@@ -83,7 +82,7 @@ central Q4 has a charge line. The notebook variant (9 × 7 mm, LineTees, one Rou
 incomplete. A third, star variant (`circular_star_topology.py`) has 7 TransmonPocket6 on a ring.
 Frame (complete variant): chip 10 × 10 mm centred. **Box (0, 0, 10000, 10000)**, **Designer = source + (5000, 5000)**.
 CPW Metal defaults (10/6). Silicon (README).
-Status: **metal (`metal:TransmonPocket6`, `metal:TransmonPocketCL`)**. Stand-in `Xmon` (grounded) for LOM.
+The chip uses `metal:TransmonPocket6` and `metal:TransmonPocketCL`; a grounded `Xmon` stands in for the LOM.
 
 ### Components
 Pocket parameters for all qubits: pad_width 455, pad_height 90, pad_gap 30, pocket 650 × 650. Q4 is
@@ -120,11 +119,11 @@ Six qubits are capacitively coupled straight to 50 Ω lines (very low Q_ext). Q4
 Q4 extraction: f_Q 4.974 GHz, E_C 259.3 MHz, E_J 13.27 GHz, α −297.2 MHz, T1 Purcell limit 36 µs.
 
 ### Simplifications for a first rebuild
-1. Reference/P3: the source has no feedline and no readout resonators. A sensible rebuild replaces each Readout_Qx
+1. The source has no feedline and no readout resonators. A rebuild can replace each Readout_Qx
    with a λ/4 hanger (6.8–7.4 GHz, 100 MHz steps) on a feedline between two of the pads. Buses become fixed-length
    meanders (e.g. 7000) between `Xmon` claws.
 
-### Rebuild (Quantcore PDK), 2026-11-03
+### Rebuild (Quantcore PDK)
 - **Frame and stack:** the PDK die frame (10 × 10 mm box, device ID `SQP-7Q`) and the PDK stack (sapphire).
 - **Qubits:** the source's cells and options through `metal:` wrappers, at the source's positions (Designer = source
   + (5000, 5000)). Six are `TransmonPocket6` and Q4 is `TransmonPocketCL`: pads 455 × 90 µm, gap 30 µm, pocket
@@ -140,6 +139,6 @@ Q4 extraction: f_Q 4.974 GHz, E_C 259.3 MHz, E_J 13.27 GHz, α −297.2 MHz, T1 
   the four inner ones are qcc meanders on waypoints.
 - **Q4's charge line** is routed to a launchpad at the bottom centre (the source leaves it unrouted).
 - **Pads:** three `metal:LaunchpadWirebond`s.
-- **Fast `test_examples -k seven_qubit`:** 6 passed (2026-11-03).
-- **Snapshots:** `seven_qubit_processor{,_chain,_q0q1,_jj}.png`, looked at: the U chain, the ∩ feedline, the hangers
+- **Test:** the fast `test_examples -k seven_qubit` run passes (6 tests).
+- **Snapshots:** `seven_qubit_processor{,_chain,_q0q1,_jj}.png` show the U chain, the ∩ feedline, the hangers
   and the PDK frame.

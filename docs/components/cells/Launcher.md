@@ -10,7 +10,7 @@ The PCell declaration for a launcher for connecting wirebonds.
 Alias of [`BondPad`](BondPad.md): the same circuit, drawn differently. s → pad_height, l → taper_length, a_launcher → pad_width, b_launcher = launcher_frame_gap → pad_gap; BondPad = the Launcher rotated 270° (XOR 0); port port → a
 :::
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

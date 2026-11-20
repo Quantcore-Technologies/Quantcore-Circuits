@@ -1,7 +1,6 @@
 # Place and route
 
-This page shows how to put components on the chip, snap them together, and draw the lines between their ports. You need
-it for every design you draw in the plugin. A **component** is a library cell (a qubit, a pad, a launcher). A **port**
+This page shows how to put components on the chip, snap them together, and draw the lines between their ports. A **component** is a library cell (a qubit, a pad, a launcher). A **port**
 is a connection point of a component, such as `Q1.claw_n`. A **route** is a coplanar waveguide (CPW) between two
 ports, a port and a line, or a port and a free end.
 
@@ -123,7 +122,7 @@ the **hanger** is that coupler, so there is no coupler component to place.
 The hanger dialog.
 ```
 
-**Merge instead of hang.** Press **Ctrl+Shift+J** (Edit > Connect on a line) and a click on a line merges the route into
+To merge instead of hang, press **Ctrl+Shift+J** (Edit > Connect on a line) and a click on a line merges the route into
 it with a T-junction, instead of hanging beside it. The route dialog's *Merge into ... (T-junction)* checkbox decides
 per route and can convert it later.
 

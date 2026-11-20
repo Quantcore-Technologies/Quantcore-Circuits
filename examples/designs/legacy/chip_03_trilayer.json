@@ -14,7 +14,7 @@
     "params": {
       "with_grid": false,
       "name_chip": "QCG_Nb03_W",
-      "cheese": "original"
+      "cheese": "chip"
     }
   },
   "instances": {

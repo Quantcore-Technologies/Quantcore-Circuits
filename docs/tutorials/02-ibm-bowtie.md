@@ -86,7 +86,7 @@ Each qubit with its readout chain (λ/2, finger capacitor, pad line, 50 Ω port)
 
 f_q and f_r land on the targets. α does not: it comes out near -145 MHz, not IBM's -330 MHz. The PDK junction window
 (R_n 40 to 50 kΩ) caps L_J at about 7.5 nH; at the same f_q that means a larger C_Σ, hence a smaller |α| (about E_C).
-This is a limit of the PDK, not of the layout.
+The limit comes from the PDK; the layout is not the cause.
 
 Each triangle as one circuit gives the bus mode (BusA 6.9110 GHz, BusB 6.5112 GHz, targets 7.0 and 6.6) and the three
 qubits. J of a pair is half the minimum splitting at the avoided crossing, found by sweeping the second qubit's L_J
@@ -119,10 +119,10 @@ the netlist; 51 keep their estimates. The LOM on the filled netlist moves Q2's f
 readout χ from -0.7369 to -1.172 MHz; the pyEPR value is 5.096 GHz (-2.6 % against the filled LOM). Both buses move up
 by about 1.6 %: BusA 6.91 to 7.029 GHz (target 7.0), BusB 6.51 to 6.617 GHz (target 6.6).
 
-The notebook then **renders** the `Q2_read` group into AEDT without solving it (`hfss.render(..., solve=False)`, about
+The notebook then renders the `Q2_read` group into AEDT without solving it (`hfss.render(..., solve=False)`, about
 30 s) and reads the project back with `hfss.check_project`. The kept check reports "rendered in 16.0 s; 10 boundaries,
-7 nets; OK": design type, the sapphire stack, 9 of 9 metal sheets, every net named after its LOM node. This is a cheap
-way to confirm the geometry reaches AEDT before spending hours on a solve.
+7 nets; OK": design type, the sapphire stack, 9 of 9 metal sheets, every net named after its LOM node. It checks cheaply
+that the geometry reaches AEDT before a solve that takes hours.
 
 Feedback moves each component's own knob, because `loop.feedback`'s surrogate knows the Xmon knobs but not the pocket
 transmon's. L_J scales as (f_q / target)² and each λ/2 length as f / target:
@@ -161,7 +161,7 @@ rounded corners. This chip has no airbridges. CLI: `qcc build`, `qcc design drc`
 
 ## Pitfalls
 
-- α is -145 MHz, not -330 MHz: that is the PDK junction window, not a bug.
+- α is -145 MHz rather than -330 MHz because of the PDK junction window. It is not a bug.
 - `squid_a` and `squid_b` warnings are junction attachment points (the junction is drawn by the cell).
 - Where a box edge cuts a bend, the 50 Ω port gets no polygon and the builder prints `Unable to create polygon for
   port ...` warnings. The notebook output shows four of them while it exports the groups. Check that the cut sits on a
@@ -170,4 +170,4 @@ rounded corners. This chip has no airbridges. CLI: `qcc build`, `qcc design drc`
 - A stage-2 LOM on a subset leaves most branches on estimates (the table says "estimate (not simulated)"). Do not read
   a 0.0 % change on those rows as agreement.
 
-Next: [tutorial 3](03-surface17.md) scales this up to 17 qubits.
+[Tutorial 3](03-surface17.md) scales this up to 17 qubits.

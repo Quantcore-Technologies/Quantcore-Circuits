@@ -6,7 +6,7 @@ Junction test structures.
 
 **Source:** KQC (KQCircuits). **Category:** test_structure. **Module:** `kqcircuits.test_structures.junction_test_pads.junction_test_pads_simple`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

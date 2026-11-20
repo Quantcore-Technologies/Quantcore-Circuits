@@ -1,7 +1,7 @@
 # KLayout basics
 
-KLayout is a free viewer and editor for chip layouts. The Quantcore plugin lives inside it, so you need a few KLayout
-habits to use the plugin well. This page covers only those. For everything else, use KLayout's own manual (Help menu).
+KLayout is a free viewer and editor for chip layouts. The Quantcore plugin runs inside it, so a few KLayout habits
+matter. This page covers those; for everything else see KLayout's own manual (Help menu).
 
 ## What you see
 
@@ -30,7 +30,7 @@ habits to use the plugin well. This page covers only those. For everything else,
   top-level instance you can select with KLayout's own tools.
 - A **layer** is a mask layer. On a Quantcore chip the metal and etch layers follow the
   [fab layer map](../library/fab.md). KLayout draws them with colours, so a layer panel with many rows is normal.
-  Layer `instance_names` carries the component names. It is an annotation layer, not part of the fab mask.
+  Layer `instance_names` carries the component names. It is an annotation layer and is not part of the fab mask.
 
 ## Editing mode
 
@@ -56,18 +56,18 @@ These work on components and routes, and the plugin writes each change to `desig
 | KLayout's properties dialog on the selection | Changes the position |
 | File > Screenshot | Saves the view as a picture |
 
-Quantcore **Undo** (Ctrl+Shift+Z) takes these back. Use it for design edits. The plugin keeps 50 undo levels.
+Quantcore **Undo** (Ctrl+Shift+Z) takes these back, and the plugin keeps 50 undo levels.
 
 ```{warning}
-Components and routes are cells that the plugin **rebuilds** from `design.json`. A shape you draw with KLayout's own
-shape tools is not a component. It has no ports, no LOM nodes and no DRC, and the next rebuild removes it. Draw
-components and routes with the Quantcore tools.
+Components and routes are cells that the plugin **rebuilds** from `design.json`. A shape drawn with KLayout's own
+shape tools is not a component: it has no ports, LOM nodes or DRC, and the next rebuild removes it. Draw components
+and routes with the Quantcore tools.
 ```
 
 ## Closing KLayout
 
 The plugin reloads the layout after each build, so KLayout may ask whether to save a modified layout when you close
-it. Answer **No**. The OAS file is a build output and `design.json` is the file that holds your design.
+it. Answer **No**: the OAS file is a build output, and `design.json` holds your design.
 
 ## Next
 

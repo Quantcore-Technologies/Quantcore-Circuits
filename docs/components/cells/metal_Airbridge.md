@@ -10,7 +10,7 @@ A single airbridge: two base-metal landing pads joined by an elevated
 Legacy cell. unused; routes and KQC elements draw AirbridgeRectangular (use it, or a route airbridge)
 :::
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

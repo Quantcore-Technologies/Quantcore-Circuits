@@ -6,7 +6,7 @@ Qiskit Metal iSWAP-gate notebook (after Phys. Rev. Research 2, 033447, Fig. 1, s
 contributors). The Quantcore rebuild is distributed under GPL-3.0.
 
 Build this one to learn how a tunable coupler sits between two qubits with a pocket of its own, and how long port
-lines run to the pads. There is no readout resonator on this chip.
+lines run to the pads. The chip has no readout resonator.
 
 ```{image} ../../images/designs/metal/iswap2_pocket_tc.png
 :alt: The whole iswap2 chip as the v2 notebook builds it
@@ -17,11 +17,11 @@ lines run to the pads. There is no readout resonator on this chip.
 
 | | |
 |---|---|
-| Notebook | `examples/designs/metal/iswap2_pocket_tc.ipynb` (the one-cell version before the rewrite: `iswap2_pocket_tc.v1.ipynb`) |
+| Notebook | `examples/designs/metal/iswap2_pocket_tc.ipynb` (an older one-cell version is kept as `iswap2_pocket_tc.v1.ipynb`) |
 | Source | Qiskit Metal `Full-Physical-Design-of-iSWAP-Gates.ipynb`, example 2, © IBM and contributors, Apache-2.0 |
 | Chip | 16 × 6 mm (the source's size, larger than the 7.5 mm Quantcore die) |
 | On the chip | 2 pocket transmons (1 × 0.4 mm pads) · 1 tunable coupler with a Quantcore SQUID · 2 lines of 10 mm · 1 flux line · 3 bond pads |
-| Builds today | yes: layout run 2026-11-19, 9 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 9 s) |
 
 ## How the notebook builds it
 
@@ -54,15 +54,15 @@ Numbers are from a run of this notebook on 2026-11-19 (Setup, Design, Check and 
 :alt: LOM plot of iswap2_pocket_tc
 ```
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates from component formulas and calibration, not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
 The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
 
-> **Update 2026-11-03:** frame = **source**: build with `chip={"die_frame": False, ...}` so the replica keeps its own size and frame (the Quantcore PDK die frame is for Quantcore chips only). `metal:<Class>` wrappers are READY (ports = Metal pin names, params = Metal options), so the `metal:` refs in this spec build as written; the Quantcore/KQC substitutions stay optional.
+> The `metal:` references in this spec build as written, through the `metal:` wrapper (ports are the Metal pin names, parameters the Metal options). The Quantcore and KQC substitutions are optional.
 
-> **Built 2026-11-03 (builder 4):** examples/designs/metal/iswap2_pocket_tc.ipynb, all `metal:` cells (TransmonPocket6, TunableCoupler02) at the source's scale; TC02 pocket 3.8 × 2 mm added; coupled LOM blocked on the TC02 model (series SQUID).
+> The notebook `examples/designs/metal/iswap2_pocket_tc.ipynb` builds all `metal:` cells (TransmonPocket6, TunableCoupler02) at the source's scale and adds a TC02 pocket of 3.8 × 2 mm. A coupled LOM of the TC02 model (a series SQUID) is not available.
 
 Source: Quantum Metal `docs/circuit-examples/F.Small-quantum-chips/Full-Physical-Design-of-iSWAP-Gates.ipynb`,
 Example 2, after Phys. Rev. Research 2, 033447 (2020), Fig. 1 (structure only). Licence Apache-2.0.
@@ -71,7 +71,7 @@ coupler with a flux-bias line) sits between them. Each qubit has a 10 mm meander
 the coupler's flux line goes to a third pad.
 mm-scale: pads 1 × 0.4 mm, pocket 1.5 × 1.2 mm, pad_gap 50 µm; coupler pocket 3 × 2 mm, pad radius 0.3 mm. The chip
 is 16 × 6 mm centred at (0, 1) mm, so **Designer = Metal + (8000, 2000)**. `cpw_width` 10 µm, gap 6 µm.
-**Buildable now: yes**. Substitutions: `Xmon` for TransmonPocket6, and an `Xmon` with `flux_port` as the
+A first build uses these substitutions: `Xmon` for TransmonPocket6, and an `Xmon` with `flux_port` as the
 tunable-coupler transmon in place of TunableCoupler02.
 
 ### Components
@@ -99,7 +99,7 @@ tunable-coupler transmon in place of TunableCoupler02.
 ### LOM node structure
 - Q1 and Q2 are fixed transmons, each a two-pad island pair with a JJ (Xmon: island + JJ to ground).
 - TC is a flux-tunable coupler: an island with a SQUID (`TrilayerSquid` / junction list) and the flux bias from P3.
-- The coupling chain is Q1 —C_g— TC —C_g— Q2.
+- The coupling chain is Q1, C_g, TC, C_g, Q2.
 - Each qubit has a 10 mm line to a 50 Ω port. It is a direct port line, not a resonator: the pads end galvanically
   on wire-bond pads.
 
@@ -113,13 +113,13 @@ None.
    a feedline (as in `A2_two_coupled`).
 3. Put a SQUID on TC: `junction={"Lj_nH": [Lj1, Lj2]}` or `junction_type` for the SQUID.
 
-### Quantcore PDK rebuild (2026-11-03)
+### Quantcore PDK rebuild
 
-The notebook is a **Quantcore-PDK rebuild**, not a replica (design rule, 2026-11-03): the netlist, LOM and imported components are kept, the process is Quantcore's.
+The notebook is a Quantcore PDK rebuild of the source, not a replica: the netlist, LOM and imported components are kept, and the process is Quantcore's.
 
 Notebook: [`examples/designs/metal/iswap2_pocket_tc.ipynb`](../../../examples/designs/metal/iswap2_pocket_tc.ipynb).
 
-- **Chip:** the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), drawn on the source's 16 × 6 mm chip (the design does not fit the 7.5 mm die); no KQC chip frame.
-- **Stack:** sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); Metal's `DesignPlanar` default is silicon (εr 11.45, 750 µm), so the LOM capacitances, resonator frequencies and FEM jobs here are for sapphire, not the source's substrate.
-- **Junctions:** Quantcore Nb/AlOx/Nb trilayer junctions (`junction_type` from `layouts.registry.trilayer_junction`): fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient, sized on the PDK junction rule (Nb Δ = 1.4 meV, I_c·R_n = πΔ/2e, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed); both qubits get the PDK nominal junction, 0.5 × 0.6 µm fingers → R_n = 45 kΩ, L_J = 6.73 nH, C_J = 15 fF (in the 40–50 kΩ window), the coupler (`TunableCoupler02`, a series SQUID) a PDK SQUID of two 0.25 × 0.6 µm junctions → R_n = 45 kΩ in parallel, L_J = 6.73 nH at zero flux, C_J = 15 fF (in the 40–50 kΩ window), in place of the assumed 10 nH + 2 fF. Expected f_q ≈ 4.3 GHz (estimate; mm-scale pads; were 3.67 GHz, below the PDK band), the coupler ≈ 5.3 GHz at zero flux. The two qubits stay identical.
-- **Kept:** the topology and every Metal component with the source's options (through the `metal:` wrapper), positions and orientations, every route's end pins and total length, the sim groups (the coupler pocket added as in the replica: option b).
+- Chip: the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), drawn on the source's 16 × 6 mm chip (the design does not fit the 7.5 mm die); no KQC chip frame.
+- Stack: sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); Metal's `DesignPlanar` default is silicon (εr 11.45, 750 µm), so the LOM capacitances, resonator frequencies and FEM jobs here are for sapphire rather than the source's substrate.
+- Junctions: Quantcore Nb/AlOx/Nb trilayer junctions (`junction_type` from `layouts.registry.trilayer_junction`): fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient, sized on the PDK junction rule (Nb Δ = 1.4 meV, I_c·R_n = πΔ/2e, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed); both qubits get the PDK nominal junction, 0.5 × 0.6 µm fingers → R_n = 45 kΩ, L_J = 6.73 nH, C_J = 15 fF (in the 40–50 kΩ window), the coupler (`TunableCoupler02`, a series SQUID) a PDK SQUID of two 0.25 × 0.6 µm junctions → R_n = 45 kΩ in parallel, L_J = 6.73 nH at zero flux, C_J = 15 fF (in the 40–50 kΩ window), in place of the assumed 10 nH + 2 fF. Expected f_q ≈ 4.3 GHz (an estimate for the mm-scale pads), the coupler ≈ 5.3 GHz at zero flux. The two qubits stay identical.
+- Kept: the topology and every Metal component with the source's options (through the `metal:` wrapper), positions and orientations, every route's end pins and total length, the sim groups (including the coupler pocket, which the rebuild adds).

@@ -9,9 +9,9 @@ scripts), Qiskit Metal (lumped models), and QuCat, SQcircuit, scqubits and QuTiP
 It has four front ends over one design file (`design.json`): a KLayout plugin, a Python library with the `qcc` command, a
 set of notebooks (five tutorials and over a hundred design notebooks) and a web dashboard. The process is niobium on
 sapphire, 650 µm thick, εr 10.25 (`quantcore_nb_sapphire_v1`, the default). The package imports KQCircuits, which is
-GPL-3.0. Internal use is fine; distributing the package outside Quantcore would make it GPL as well.
+GPL-3.0, and is itself public under GPL-3.0-or-later.
 
-New here? Read [getting started](../getting-started.md), then [the flow](flow.md) and [use cases](use-cases.md).
+To start, read [getting started](../getting-started.md), then [the flow](flow.md) and [use cases](use-cases.md).
 
 ## Top-level folders
 
@@ -28,7 +28,7 @@ New here? Read [getting started](../getting-started.md), then [the flow](flow.md
 | `scripts/` | Helper scripts: `build_wheel.py`, `dashboard.cmd`, `cdp-shot.mjs` (dashboard screenshots), notebook and export checks, generators for the docs, `fetch_other_libs.sh` |
 | `assets/` | Logos (the Quantcore and Circuits wordmarks, light and dark) and the plugin tool icons |
 | `requirements/` | `tested.txt`: the exact dependency versions the tests run with |
-| `build/` | Outputs, git-ignored: layouts (`.oas` with a `.qcc.json` sidecar), `jobs/` (FEM job folders, some with kept results), run state, fab files. Do not wipe it casually |
+| `build/` | Outputs, git-ignored: layouts (`.oas` with a `.qcc.json` sidecar), `jobs/` (FEM job folders, some with kept results), run state, fab files. Keep it unless you mean to rebuild everything |
 | `dist/` | The wheel built by `scripts/build_wheel.py`, git-ignored |
 
 ### Top-level files
@@ -39,16 +39,16 @@ New here? Read [getting started](../getting-started.md), then [the flow](flow.md
 | `CONTRIBUTING.md` | The developer route: checkout, editable installs, tests, conventions |
 | `CHANGELOG.md` | What changed in each release |
 | `LICENSE` | GPL-3.0-or-later |
-| `pyproject.toml` | Package metadata (version 0.2.0, Python 3.11 or later) and the `qcc` entry point |
+| `pyproject.toml` | Package metadata (version 0.0.2, Python 3.11 or later) and the `qcc` entry point |
 
 ## Modules and how far they are built
 
-Status: done = built and run for real; partial = built, part unverified or missing; export only = solver input is
+done = built and run for real; partial = built, part unverified or missing; export only = solver input is
 written but never solved. The date and the evidence for each row are on [the status page](status.md).
 
 | Module | What it does | Where it lives | Docs | Status |
 |---|---|---|---|---|
-| KLayout plugin | Place, connect and route components in KLayout; the panel runs the whole flow | `kplugin/` | [plugin](../plugin/index.md) | done; development paused 2026-11-17 |
+| KLayout plugin | Place, connect and route components in KLayout; the panel runs the whole flow | `kplugin/` | [plugin](../plugin/index.md) | done |
 | KLive scripting | `Designer` calls rebuild and redraw the chip in KLayout live | `designer.py`, `live/` | [KLive](../plugin/klive.md), [Designer](../library/designer.md) | done |
 | PDK | Stack, die frame, 100 µm pad rule, keep-outs, cheese, junction process | `pdk/` | [PDK](../library/pdk.md) | done |
 | Components | Quantcore, KQC and Metal cells with ports and LOM models | `layouts/` | [components](../library/components.md), [reference](../components/cells/index.md) | done |

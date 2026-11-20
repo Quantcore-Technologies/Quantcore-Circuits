@@ -6,7 +6,7 @@ PCell declaration for an inter-chip rf connector.
 
 **Source:** KQC (KQCircuits). **Category:** flip_chip. **Module:** `kqcircuits.elements.flip_chip_connectors.flip_chip_connector_rf`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 
@@ -14,7 +14,14 @@ See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICAT
 
 Pin image (default parameters). Light = metal, dark = etched gap, colours = junction layers. A red dot and arrow is a pin and its direction (out of the cell); the red bar is the CPW width a + 2 b. Blue dot = a pin without direction. Units: µm.
 
-No pins: this cell has no ports. Place it with `at=` / `rot=`.
+| pin | x (µm) | y (µm) | direction (°) | a (µm) | b (µm) | purpose |
+|---|---|---|---|---|---|---|
+| `a` | -60 | 0 | 180 | 10 | 6 | CPW end; LOM node `line` |
+| `b` | 60 | 0 | 0 | 10 | 6 | CPW end; LOM node `line` |
+
+a, b: CPW centre width and gap where the pin declares them (`–` = not declared). Position and direction are in the cell's own frame (`at=(0, 0)`, `rot=0`).
+
+**Notes from the catalog:** KQC names its CPW ends '<face>_port': qcc gives them as port 'a' (face_ids[0], CPW a/b) and 'b' (face_ids[1], a2/b2), each recording its face, so a route ends on them on that face (registry.KQC_EXTRA_PORTS). KQC always draws a 25 µm bump on a 40 µm UBM and 4 ground bumps; QcFlipChipConnectorRf sizes them. LOM: one conductor through the bump.
 
 ## Parameters
 
@@ -37,7 +44,15 @@ Electrically relevant parameters (sizes, gaps, junction, ports) come first, the 
 
 ## LOM model
 
-none (a LOM build gives each pin its own bare node, without elements).
+The cell contributes to the lumped model:
+
+- no lumped branches
+
+| line | node | length (µm) | a (µm) | b (µm) | ends |
+|---|---|---|---|---|---|
+| `X` | `line` | 120 | 10 | 6 | short / short |
+
+Nodes: `line`.
 
 ## How to use
 
@@ -48,7 +63,8 @@ from quantcore_circuits.designer import Designer
 
 d = Designer("demo", box=(0, 0, 7500, 7500))
 d.add("U1", "FlipChipConnectorRf", at=(3750, 3750), a=10)   # parameters: see the table above
-# no directed pin: place it with at= / rot=, or snap it with snap= / to=
+d.add("PAD", "BondPad", at=(1125, 3750), rot=270)   # a launcher to connect to
+d.route("L1", "PAD.a", "U1.a")                # a CPW from the pad to the pin
 ```
 
 Pin names go into `d.route(...)` as `INSTANCE.pin`, and into `snap=` / `to=` when placing. From the shell: `qcc components FlipChipConnectorRf` lists the pins; add `--schema` for the parameters.

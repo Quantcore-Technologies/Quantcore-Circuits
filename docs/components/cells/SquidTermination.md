@@ -6,7 +6,7 @@ CPW lead shorted to ground through a trilayer SQUID, with a shorted pump / flux 
 
 **Source:** Quantcore. **Category:** termination. **Module:** `quantcore_circuits.layouts.others.amplifiers`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 
@@ -63,8 +63,6 @@ Nodes: `lead`.
 ## Simulation export notes
 
 - C9: SquidTermination lead shorted to ground in the drawn cell (fab build too) (status: fixed; fix in layouts/others/amplifiers.py (SquidTermination.build))
-
-Details: [SIM_EXPORT_AUDIT](../SIM_EXPORT_AUDIT.md).
 
 ## How to use
 

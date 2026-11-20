@@ -10,7 +10,7 @@ Bond pad: open end ``tl``, wide line ``bl`` (``pad_width``/``pad_gap``), taper `
 Alias of [`BondPad`](BondPad.md): the same circuit, drawn differently. taper_type 0 = the Launcher polygon rotated 180° and shifted (XOR 0); taper_type 1–3 differ; port a
 :::
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

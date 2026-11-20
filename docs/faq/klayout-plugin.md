@@ -82,8 +82,8 @@ dialog (Ctrl+Shift+N) sets its radius and airbridge. See [place and route](../pl
 
 ### The preview of a route was square but the placed route came out slanted.
 
-That was a bug, fixed in the plugin: the click now keeps the corner the preview showed. Without Shift each segment turns
-once with a square corner; with Shift it goes at the nearest 45 degrees. If you still see it, restart KLayout.
+The click keeps the corner the preview showed. Without Shift each segment turns once with a square corner; with Shift
+it goes at the nearest 45 degrees. If the placed route still differs from the preview, restart KLayout.
 
 ### How do I edit a meander or hanger after drawing it?
 

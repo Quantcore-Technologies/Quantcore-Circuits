@@ -29,8 +29,9 @@
       "enabled": null
     },
     "params": {
-      "with_grid": true,
-      "name_chip": "DT"
+      "with_grid": false,
+      "name_chip": "DT",
+      "cheese": "chip"
     }
   },
   "instances": {

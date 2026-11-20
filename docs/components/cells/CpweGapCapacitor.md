@@ -6,7 +6,7 @@ Gap in the centre line (legacy ``cpwe.gap_cap``); ports ``a`` (−x), ``b`` (+x)
 
 **Source:** Quantcore. **Category:** capacitor. **Module:** `quantcore_circuits.layouts.others.cpwe`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

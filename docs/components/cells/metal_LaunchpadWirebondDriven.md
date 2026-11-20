@@ -10,7 +10,7 @@ Launch pad to feed/read signals to/from the chip.
 Alias of [`BondPad`](BondPad.md): the same circuit, drawn differently. = metal:LaunchpadWirebond (same options, XOR 0) + pin 'in' on the pad (the same conductor); port tie → a
 :::
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 
@@ -53,8 +53,6 @@ Nodes: `pad`.
 ## Simulation export notes
 
 - C6: eigenmode 50 Ω edge port without a polygon (box edge on a bend / taper / narrow line) (status: fixed; fix in sim_tools/builder.py (straighten_box, edge_port_ok, crossing_square))
-
-Details: [SIM_EXPORT_AUDIT](../SIM_EXPORT_AUDIT.md).
 
 ## How to use
 

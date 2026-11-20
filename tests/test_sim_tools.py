@@ -148,9 +148,12 @@ def test_queue_roundtrip(example_path, tmp_path, monkeypatch):
 
 
 def test_cmatrix_nets_follow_kqc_conductors(example_path):
-    """Both feedline pads share one conductor: KQC gives it one excitation, so net 3 is the flux pad, not PAD_E."""
+    """Both feedline pads share one conductor: KQC gives it one excitation, so there is no PAD_E net. The flux line
+    ends in its short to ground at the Xmon's ``flux`` port (``qcc_shorted_ports``), so PAD_F is ground, not a net.
+    (Before the taper fit, the FLUX route's narrowing taper ran 42.5 µm past the port and its etch cut that short,
+    which made PAD_F a floating net.)"""
     s = build_simulation(example_path, "chip", "q3d_cmatrix")
-    assert s.nets == {1: "Q1.island", 2: "PAD_W.pad", 3: "PAD_F.pad"}
+    assert s.nets == {1: "Q1.island", 2: "PAD_W.pad"}
 
 
 def test_floating_transmon_gets_two_island_nets(tmp_path):

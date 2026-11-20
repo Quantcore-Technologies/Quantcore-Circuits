@@ -130,6 +130,12 @@ snapshot(d.result, "chip.png", size=(1200, 1200), box=(2425, 1550, 3525, 2650)) 
 In a live session, `gui_snapshot(png, size, layout=d.out)` screenshots the KLayout window instead, and falls back to
 the headless render when the plugin cannot be reached.
 
+Both hide the helper layers of every face (`HIDE` in `quantcore_circuits.live.snapshot`: the KQC centre lines
+`waveguide path`, `ground grid avoidance`, port texts, refpoints and annotations), so a flip-chip or TSV picture has no
+centre lines drawn over the `2b1`, `1b1` or `2t1` routes. The Quantcore layer properties (`layer_props_path()` in the
+same module, also loadable in KLayout with File > Load Layer Properties) show every face the way they show `1t1`, with
+the cheese visible. To leave out a whole face as well, pass `hide=HIDE + ("1b1",)` to `snapshot`.
+
 ## Check, LOM, simulations
 
 | Call | What it gives |

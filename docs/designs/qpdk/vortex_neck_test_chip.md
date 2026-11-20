@@ -2,7 +2,7 @@
 
 One feedline with four λ/4 hanger resonators. Each resonator is shorted to ground through a narrow neck, a 2 µm × 325 µm constriction inside a window of vortex-trap holes. The layout comes from QPDK's `vortex_neck_test_chip.pic.yml` (MIT) and is rebuilt on the Quantcore PDK; the rebuild is GPL-3.0.
 
-Build this one to learn a device under test that is not a qubit (the neck termination) and hangers placed on alternate sides of a line.
+This notebook is an example of a device under test that is not a qubit (the neck termination) and of hangers placed on alternate sides of a line.
 
 ```{image} ../../images/designs/qpdk/vortex_neck_test_chip.png
 :alt: The whole vortex_neck_test_chip chip as the v2 notebook builds it
@@ -13,11 +13,11 @@ Build this one to learn a device under test that is not a qubit (the neck termin
 
 | | |
 |---|---|
-| Notebook | `examples/designs/qpdk/vortex_neck_test_chip.ipynb` (the one-cell version before the rewrite: `vortex_neck_test_chip.v1.ipynb`) |
+| Notebook | `examples/designs/qpdk/vortex_neck_test_chip.ipynb` (an older one-cell version is kept as `vortex_neck_test_chip.v1.ipynb`) |
 | Source | gdsfactory `quantum-rf-pdk` `qpdk/samples/vortex_neck_test_chip.pic.yml`, MIT (© 2024 gdsfactory) |
 | Chip | 7.5 × 7.5 mm Quantcore die, the source's 4.8 × 5.6 mm circuit centred in it, CPW 10 / 6 µm |
 | On the chip | 2 launchers · 1 feedline · 4 neck terminations · 4 λ/4 resonators |
-| Builds today | yes: layout run 2026-11-19, 5 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 5 s) |
 
 ## How the notebook builds it
 
@@ -51,24 +51,22 @@ Numbers are from a run of this notebook on 2026-11-19 (Setup, Design, Check and 
 :alt: LOM plot of vortex_neck_test_chip
 ```
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates (component formulas and calibration), not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
-The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
-
-> **Update 2026-11-03:** frame = **source**: build with `chip={"die_frame": False, ...}` so the replica keeps its own size and frame (the Quantcore PDK die frame is for Quantcore chips only).
+The rest of this page is the detailed spec the notebook was built from, with every component, port, route and length.
 
 Source: [qpdk/samples/vortex_neck_test_chip.pic.yml](https://github.com/gdsfactory/quantum-rf-pdk/blob/main/qpdk/samples/vortex_neck_test_chip.pic.yml)
 · cells `qpdk/cells/vortex.py` (`neck_termination`) and `qpdk/cells/resonator.py` (`resonator_coupled`) · licence MIT
-(verified) · read 2026-11-02. No image in the repo.
+(verified) · Read on 2026-11-02. No image in the repo.
 What it is: one straight feedline with 4 hanger resonators alternating below and above it. Each resonator is **open at
 the coupled end**. Its far end runs through a CPW lead into a `neck_termination`: a 100 µm linear taper into a 2 µm-wide,
 325 µm-long neck that shorts to ground inside a 380 µm window lined with vortex-trap holes. Names give the length
 offset from 4000 µm: p600 = 4600, m300 = 3700, p300 = 4300, 0 = 4000.
 Frame: no chip edge in the YAML. Extent is x 0…4600, y about ±2650 (necks at ±2200 plus ≈450 µm of taper and neck).
 Use **box (0, 0, 4800, 5600)**, **Designer = source + (100, 2800)**. Si, M1 negative.
-Status: **built with `NeckTermination`** (2026-11-03).
+The chip is built with `NeckTermination`.
 
 ### Components
 | instance | catalog ref | key params (units) | at (x, y) Designer | rot | notes |
@@ -109,28 +107,28 @@ inductance, with a linear taper. No qubits.
 
 ### Targets
 None stated. λ/4 on Si: 4000 µm ≈ 7.5 GHz. The neck inductance pulls each mode down; the ±300/600 µm length steps
-keep the four modes apart.
+separate the four modes.
 
 ### Simplifications for a first rebuild
 1. Replace each neck with a shorted `Designer.free_end(at, dir, term=0)` at the neck position. The geometry is then
    plain λ/4 hangers.
-2. Requested component **neck_termination**: a CPW taper (10/6 µm → 2 µm centre over 100 µm), then a 2 × 325 µm neck
+2. The component **neck_termination**: a CPW taper (10/6 µm → 2 µm centre over 100 µm), then a 2 × 325 µm neck
    shorted to ground, inside a 380 µm-wide etched window with 4 rows of 4 µm trap holes (pitch 5.5 µm). Ports: `o1`
    (CPW). LOM: series L_neck to ground.
 
-### Build (2026-11-03)
-Built: `examples/designs/qpdk/vortex_neck_test_chip.ipynb` with **`NeckTermination`** (QPDK defaults; `o1` at the
-source neck placement, rot ∓90). Lead computed from the QPDK cells instead of the +600 µm estimate: `resonator(L, 6
+### Build
+The notebook `examples/designs/qpdk/vortex_neck_test_chip.ipynb` uses **`NeckTermination`** (QPDK defaults; `o1` at the
+source neck placement, rot ∓90). The lead is computed from the QPDK cells instead of the +600 µm estimate: `resonator(L, 6
 meanders)` with R 100 µm puts `resonator_o2` 1200 µm out and (L − 600π)/7 east; each neck is 150.06 µm further east
 and 970 µm further out, so the lead is one 90° bend, 150.06 + 970 − 200 + 50π = **1077.1 µm**; route = L + 1077.1 µm
 (N.o1 → open end), the neck adds 425 µm. LOM (lom `NeckTermination` model: neck at its inductive-equivalent length,
 425 µm → ≈ 1279 µm of 10/6 CPW, rough, geometric L only): λ/4 4.59 / 4.80 / 5.03 / 5.28 GHz (p600 / p300 / 0 / m300),
-κ 0.014–0.022 MHz on sapphire. Was 5.68–6.76 GHz with plain CPW ends and the 600 µm lead estimate. The meander shape
+κ 0.014–0.022 MHz on sapphire. With plain CPW ends and the 600 µm lead estimate the modes were at 5.68–6.76 GHz. The meander shape
 is the router's (between neck and coupler), not QPDK's.
 
-### Quantcore PDK rebuild (2026-11-03)
+### Quantcore PDK rebuild
 
-The notebook is a **Quantcore-PDK rebuild**, not a replica (design rule, 2026-11-03): the netlist, LOM and imported components are kept, the process is Quantcore's.
+The notebook is a Quantcore PDK rebuild, not a replica: the netlist, LOM and imported components are kept, the process is Quantcore's.
 
 Notebook: [`examples/designs/qpdk/vortex_neck_test_chip.ipynb`](../../../examples/designs/qpdk/vortex_neck_test_chip.ipynb).
 

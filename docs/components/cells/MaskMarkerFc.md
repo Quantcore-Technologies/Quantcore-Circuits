@@ -6,7 +6,7 @@ The PCell declaration for a MaskMarkerFc.
 
 **Source:** KQC (KQCircuits). **Category:** marker. **Module:** `kqcircuits.elements.markers.mask_marker_fc`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

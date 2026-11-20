@@ -599,14 +599,22 @@ def grounded_routes(design: Design) -> set[str]:
     return out
 
 
-def _selection_box(result, names: list[str], margin: float) -> pya.DBox:
+def _selection_box(result, names: list[str], margin: float, faces: list[str] | None = None) -> pya.DBox:
+    """Bounding box of the selected cells' etch plus ``margin``: the ``1t1`` etch, or with ``faces`` (a multi-face
+    group) the etch, metal additions, TSVs and bumps on each of those faces; a cell with none of it: its whole box."""
     box = pya.DBox()
     layout = result.layout
-    gap_layer = layout.layer(pya.LayerInfo(130, 1))  # 1t1_base_metal_gap_wo_grid
+    if faces:
+        layers = [li for f in faces for n in _METAL_LAYERS + _JOIN_LAYERS
+                  if (li := _face_layer(layout, f, n)) is not None]
+    else:
+        layers = [layout.layer(pya.LayerInfo(130, 1))]  # 1t1_base_metal_gap_wo_grid
     for inst in result.cell.each_inst():
         if inst.property("id") in names:
             cell = layout.cell(inst.cell_index)
-            b = cell.dbbox_per_layer(gap_layer)
+            b = pya.DBox()
+            for li in layers:
+                b += cell.dbbox_per_layer(li)
             if b.empty():
                 b = cell.dbbox()
             box += b.transformed(inst.dcplx_trans)
@@ -616,11 +624,20 @@ def _selection_box(result, names: list[str], margin: float) -> pya.DBox:
     return pya.DBox(round(box.left), round(box.bottom), round(box.right), round(box.top))
 
 
-def _route_paths(result) -> dict[str, pya.Region]:
-    """Route name → its centre conductor (``1t1_waveguide_path``) in chip coordinates."""
+def _path_layer(layout, face: str = "1t1"):
+    """Layer index of ``<face>_waveguide_path`` (None if ``layout`` has no such layer; ``1t1`` is always made)."""
+    if face == "1t1":
+        return layout.layer(pya.LayerInfo(135, 1))  # 1t1_waveguide_path (centre conductor)
+    return _face_layer(layout, face, "waveguide_path")
+
+
+def _route_paths(result, face: str = "1t1") -> dict[str, pya.Region]:
+    """Route name → its centre conductor (``<face>_waveguide_path``, default ``1t1``) in chip coordinates."""
     layout = result.layout
-    path_layer = layout.layer(pya.LayerInfo(135, 1))  # 1t1_waveguide_path (centre conductor)
+    path_layer = _path_layer(layout, face)
     out: dict[str, pya.Region] = {}
+    if path_layer is None:
+        return out
     for inst in result.cell.each_inst():
         name = inst.property("id")
         cell = layout.cell(inst.cell_index)
@@ -727,12 +744,14 @@ class LinePort:
     angle: float  # deg between the line and the box edge's normal
 
 
-def _route_spines(result) -> dict[str, list[list[pya.DPoint]]]:
-    """Route name → its centre lines in chip coordinates (µm): KQC's zero-width ``waveguide_path`` paths, one point
-    list per straight / curved element (the conductor polygons on the same layer are :func:`_route_paths`)."""
+def _route_spines(result, face: str = "1t1") -> dict[str, list[list[pya.DPoint]]]:
+    """Route name → its centre lines in chip coordinates (µm): KQC's zero-width ``waveguide_path`` paths on ``face``,
+    one point list per straight / curved element (the conductor polygons on the same layer are :func:`_route_paths`)."""
     layout = result.layout
-    path_layer = layout.layer(pya.LayerInfo(135, 1))  # 1t1_waveguide_path
+    path_layer = _path_layer(layout, face)
     out: dict[str, list[list[pya.DPoint]]] = {}
+    if path_layer is None:
+        return out
     for inst in result.cell.each_inst():
         name = inst.property("id")
         cell = layout.cell(inst.cell_index)
@@ -1045,6 +1064,204 @@ def _outward(box: pya.DBox, p: pya.DPoint) -> pya.DVector:
     return pya.DVector(*min(d, key=d.get))
 
 
+# ---- multi-face sim groups: flip-chip bumps (1t1 ↔ 2b1) and TSVs (1t1 ↔ 1b1, 2b1 ↔ 2t1) ----------------------------
+FACE_ORDER = ("1b1", "1t1", "2b1", "2t1")  # KQC faces from the bottom of chip 1 up to the top of chip 2
+TSV_JOIN_OVERLAP_UM = 0.5  # a TSV pillar overlaps the face sheets around its hole by this much (multi-face exports)
+_METAL_LAYERS = ("base_metal_gap_wo_grid", "base_metal_addition")
+_JOIN_LAYERS = ("through_silicon_via", "indium_bump")
+
+
+def _face_layer(layout, face: str, name: str):
+    """Layer index of KQC layer ``name`` on ``face`` in ``layout``, or None (never creates a layer)."""
+    info = (default_faces.get(face) or {}).get(name)
+    return layout.find_layer(info) if info is not None else None
+
+
+def drawn_faces(layout, cell, names) -> set[str]:
+    """KQC faces on which ``cell`` (with its sub-cells) has shapes on one of the KQC layers ``names``."""
+    out = set()
+    for face in default_faces:
+        for name in names:
+            li = _face_layer(layout, face, name)
+            if li is not None and not cell.dbbox_per_layer(li).empty():
+                out.add(face)
+                break
+    return out
+
+
+def is_face_connector(cell_ref: str) -> bool:
+    """A KQC element that joins two faces: a TSV (``Tsv`` subclasses) or a flip-chip bump connector
+    (``FlipChipConnector`` subclasses, ``FlipChipConnectorRf``)."""
+    if cell_ref.startswith("static:"):
+        return False
+    try:
+        cls = resolve_cell(cell_ref)
+    except Exception:  # noqa: BLE001  (an unknown cell is reported by the build, not here)
+        return False
+    from kqcircuits.elements.flip_chip_connectors import flip_chip_connector as fcc  # pylint: disable=C0415
+    from kqcircuits.elements.flip_chip_connectors import flip_chip_connector_rf as fcc_rf  # pylint: disable=C0415
+    from kqcircuits.elements.tsvs import tsv  # pylint: disable=import-outside-toplevel
+
+    return isinstance(cls, type) and issubclass(cls, (tsv.Tsv, fcc.FlipChipConnector, fcc_rf.FlipChipConnectorRf))
+
+
+def _draws_joins(cell_ref: str, layout, cell) -> bool:
+    """A cell that is not a qubit, a junction or a static (GDS) cell and draws TSVs or bumps: a face connector of its
+    own (a TSV transition built from KQC parts)."""
+    if cell_ref.startswith("static:") or not drawn_faces(layout, cell, _JOIN_LAYERS):
+        return False
+    try:
+        return not (_is_qubit(cell_ref) or is_junction_cell(cell_ref))
+    except Exception:  # noqa: BLE001  (an unknown cell is reported by the build, not here)
+        return False
+
+
+def own_face(inst, default: str) -> str:
+    """The face an instance is placed on: the first of its ``face_ids`` (``default`` if it sets none)."""
+    faces = (inst.params or {}).get("face_ids")
+    return str(faces[0]) if faces else default
+
+
+def selection_faces(design: Design, result, names, pdk) -> set[str]:
+    """The KQC faces a sim group's lines run on (always with the PDK face): each selected route's centre line (a
+    route's ``face_ids``, or a ``face_id`` waypoint, where KQC puts a bump connector and continues on that face), the
+    faces each selected TSV or bump connector draws on (:func:`is_face_connector`, or any other cell that draws TSVs
+    or bumps and is not a qubit: :func:`_draws_joins`), and the face of each selected instance placed on another face
+    (``face_ids[0]``). A qubit on the PDK face that also draws a little on another face (a Flipmon's top-chip disc and
+    bump) does not add that face: set ``face_stack`` in the group's settings for it."""
+    layout = result.layout
+    names = set(names)
+    out = {pdk.face}
+    for inst in result.cell.each_inst():
+        name = inst.property("id")
+        if name not in names:
+            continue
+        cell = layout.cell(inst.cell_index)
+        if name in design.routes:
+            out |= drawn_faces(layout, cell, ("waveguide_path",))
+        elif name in design.instances:
+            di = design.instances[name]
+            if is_face_connector(di.cell) or _draws_joins(di.cell, layout, cell):
+                out |= drawn_faces(layout, cell, _METAL_LAYERS + _JOIN_LAYERS)
+            else:
+                f = own_face(di, pdk.face)
+                if f != pdk.face and f in drawn_faces(layout, cell, _METAL_LAYERS + ("waveguide_path",)):
+                    out.add(f)
+    return out
+
+
+def face_stack_of(faces) -> list[str]:
+    """KQC ``face_stack`` for ``faces``: the run of :data:`FACE_ORDER` from the lowest to the highest of them. A face in
+    between is simulated too, as KQC models every face in the stack: metal wherever the design does not etch it."""
+    unknown = sorted(set(faces) - set(FACE_ORDER))
+    if unknown:
+        raise ValueError(f"faces {unknown} are not simulated: a sim group can use the faces {', '.join(FACE_ORDER)} "
+                         "(two chips, KQC's flip-chip stack)")
+    idx = sorted(FACE_ORDER.index(f) for f in faces)
+    return list(FACE_ORDER[idx[0]: idx[-1] + 1])
+
+
+def _first_face(face_stack) -> str | None:
+    for f in face_stack:
+        if isinstance(f, (list, tuple)):
+            if f:
+                return str(f[0])
+        else:
+            return str(f)
+    return None
+
+
+def multiface_params(pdk, face_stack, chip_distance: float | None = None) -> dict:
+    """KQC ``Simulation`` stack parameters for a multi-face ``face_stack`` on the PDK stack: both substrates are the
+    PDK substrate (thickness, material), the vacuum gap between 1t1 and 2b1 is ``chip_distance`` (default the PDK's
+    :attr:`~quantcore_circuits.pdk.Stack.chip_distance`), and a stack that starts on a bottom face (``1b1``) gets a
+    vacuum box below it (``lower_box_height``: the PDK's, or ``upper_box_height`` where the PDK has none)."""
+    s = pdk.stack
+    flat = _faces(face_stack)
+    chips = 2 if any(f.startswith("2") for f in flat) else 1
+    first = _first_face(face_stack) or ""
+    bottom = len(first) > 1 and first[1] == "b"
+    out = {
+        "face_stack": [list(f) if isinstance(f, (list, tuple)) else f for f in face_stack],
+        "substrate_height": [s.substrate_height] * chips,
+        "substrate_material": [s.substrate_material] * chips,
+        "lower_box_height": (s.lower_box_height or s.upper_box_height) if bottom else 0.0,
+    }
+    if chips > 1:
+        gap = chip_distance if chip_distance is not None else getattr(s, "chip_distance", 8.0)
+        out["chip_distance"] = [float(gap)]
+    return out
+
+
+def strip_unpaired_joins(result, face_stack, lower_box_height: float) -> dict[str, int]:
+    """Remove the TSVs and bumps that have no face to land on in ``face_stack`` (KQC's rule: a face's TSVs go to the
+    other side of its substrate, its bumps across the vacuum gap): KQC would run them as PEC to the top or bottom of
+    the simulation box, a short to the outer boundary. Returns ``{"<face>_<layer>": shapes removed}``."""
+    stack = [list(f) if isinstance(f, (list, tuple)) else [f] for f in face_stack]
+    layout = result.layout
+    out: dict[str, int] = {}
+    for i, faces in enumerate(stack):
+        sign = (-1) ** (i + int(lower_box_height > 0))
+        for name, opp in (("through_silicon_via", i - sign), ("indium_bump", i + sign)):
+            if 0 <= opp < len(stack) and stack[opp]:
+                continue
+            for face in faces:
+                li = _face_layer(layout, face, name)
+                if li is None:
+                    continue
+                n = sum(cell.shapes(li).size() for cell in layout.each_cell())
+                if n:
+                    layout.clear_layer(li)
+                    out[f"{face}_{name}"] = n
+    return out
+
+
+def port_face(result, p, faces: list[str], main: str, default_ab: tuple) -> str:
+    """The face the CPW at plan port ``p`` is drawn on: the first of ``faces`` (``main`` first) with etch on both sides
+    of the centre conductor just behind the port; ``main`` if none has."""
+    if p.dir is None or p.dir.length() == 0:
+        return main
+    layout = result.layout
+    d = p.dir * (1.0 / p.dir.length())
+    n = pya.DVector(-d.y, d.x) * ((p.a or default_ab[0]) / 2 + (p.b or default_ab[1]) / 2)
+    probes = [p.pos - d * 0.5 + n, p.pos - d * 0.5 - n]
+    for f in [main] + [f for f in faces if f != main]:
+        li = _face_layer(layout, f, "base_metal_gap_wo_grid")
+        if li is None:
+            continue
+        hits = 0
+        for q in probes:
+            box = pya.DBox(q.x - 0.05, q.y - 0.05, q.x + 0.05, q.y + 0.05).to_itype(layout.dbu)
+            if not pya.Region(result.top.begin_shapes_rec_overlapping(li, box)).is_empty():
+                hits += 1
+        if hits == 2:
+            return f
+    return main
+
+
+def sim_face_stack(design: Design, g: SimGroup, result, pdk, sim_params: dict) -> tuple[list, dict, str]:
+    """``(face_stack, stack parameters, how)`` of a sim group: ``face_stack`` from the call (``sim_params``), else the
+    group's ``settings["face_stack"]`` (a list; ``"auto"`` = not set), else the faces its lines run on
+    (:func:`selection_faces`, :func:`face_stack_of`). One face: the PDK's ``simulation_params()`` face stack with no
+    stack parameters (the export as before); several: :func:`multiface_params` (``chip_distance`` from the call, the
+    group's settings or the PDK). ``how``: ``"set"`` or ``"auto"``."""
+    explicit = sim_params.get("face_stack") or g.settings.get("face_stack")
+    if explicit and explicit != "auto":
+        faces = [explicit] if isinstance(explicit, str) else list(explicit)
+        how = "set"
+    else:
+        faces = face_stack_of(selection_faces(design, result, g.select, pdk))
+        how = "auto"
+    if len(_faces(faces)) <= 1:
+        if how == "auto":
+            faces = list(pdk.simulation_params().get("face_stack") or [])
+        return faces, {}, how
+    gap = sim_params.get("chip_distance", g.settings.get("chip_distance"))
+    if isinstance(gap, (list, tuple)):
+        gap = gap[0] if gap else None
+    return faces, multiface_params(pdk, faces, None if gap is None else float(gap)), how
+
+
 def build_simulation(
     source,
     group: str,
@@ -1057,7 +1274,12 @@ def build_simulation(
 
     The simulated geometry never has the ground grid (cheese). Airbridges are dropped for speed unless
     ``airbridges=True`` (or the group's ``settings["airbridges"]``); a note flags crossing bridges whose line is then
-    open at the crossing."""
+    open at the crossing.
+
+    Faces: a group whose lines run on more than the PDK face (a route through a bump connector onto ``2b1``, a TSV to
+    ``1b1``, an instance placed on another face) is simulated with all the faces it needs (:func:`sim_face_stack`):
+    bumps and TSVs stay as KQC's PEC pillars joining the faces, lines leaving the box on another face get their port
+    on that face. ``settings["face_stack"]`` (a KQC face stack) and ``settings["chip_distance"]`` (µm) override it."""
     design = load_design(source)
     g = group_spec(design, group)
     keep_ab = bool(g.settings.get("airbridges", False)) if airbridges is None else bool(airbridges)
@@ -1065,9 +1287,30 @@ def build_simulation(
     pdk = get_pdk(design.pdk)
     sim_design, cuts = simulation_design(design, group, analysis)
     result = build(sim_design)
-    faces = list(sim_params.get("face_stack") or pdk.simulation_params().get("face_stack") or [])
+    faces, stack_params, faces_how = sim_face_stack(design, g, result, pdk, sim_params)
+    multi = len(_faces(faces)) > 1
+    face = pdk.face if pdk.face in _faces(faces) else (_faces(faces) or [pdk.face])[0]
+    other_faces = [f for f in _faces(faces) if f != face] if multi else []
     geometry = strip_layers(result, airbridges=keep_ab, bumps=len(faces) > 1)
     notes = []
+    if multi:
+        lower = float(sim_params.get("lower_box_height", stack_params.get("lower_box_height", 0.0)))
+        dropped = strip_unpaired_joins(result, faces, lower)
+        geometry["face_stack"] = stack_params["face_stack"]
+        gap = sim_params.get("chip_distance", stack_params.get("chip_distance"))
+        if gap is not None:
+            geometry["chip_distance_um"] = float(gap[0] if isinstance(gap, (list, tuple)) else gap)
+        why = ("from the group settings" if faces_how == "set" else
+               "the group's lines run on these faces (routes, bump connectors, TSVs)")
+        stack_txt = f"chip gap {geometry['chip_distance_um']:g} µm, " if "chip_distance_um" in geometry else ""
+        notes.append(f"{len(_faces(faces))} faces simulated ({', '.join(_faces(faces))}; {why}): {stack_txt}"
+                     f"{pdk.stack.substrate_height:g} µm {pdk.stack.substrate_material} per chip"
+                     + (f", {lower:g} µm vacuum below 1b1" if lower > 0 else "")
+                     + "; bumps and TSVs are PEC pillars joining the faces")
+        if dropped:
+            geometry["joins_dropped"] = dropped
+            notes.append(f"TSVs / bumps with no simulated face to land on dropped ({', '.join(sorted(dropped))}): "
+                         "KQC would run them as metal to the outer boundary of the box")
     if geometry["ground_grid_shapes"]:
         notes.append(f"ground grid removed from the simulation ({geometry['ground_grid_shapes']} shapes)")
     if geometry.get("indium_bump_shapes"):
@@ -1088,9 +1331,9 @@ def build_simulation(
         )
     refp = result.refpoints
     select = list(g.select) + ([] if whole_chip else _terminating_pads(design, set(g.select), refp))
-    box = pya.DBox(*design.chip.box) if whole_chip else _selection_box(result, select, g.margin_um)
+    box = (pya.DBox(*design.chip.box) if whole_chip else
+           _selection_box(result, select, g.margin_um, _faces(faces) if multi else None))
     ports_ports = result.plan.all_ports()
-    face = (_faces(faces) or [pdk.face])[0]
     default_ab = (pdk.cpw_a, pdk.cpw_b)
     route_ab = {
         name: (rp.params.get("a", pdk.cpw_a), rp.params.get("b", pdk.cpw_b)) for name, rp in result.plan.routes.items()
@@ -1105,12 +1348,18 @@ def build_simulation(
 
     # the analysis metal (FaceMetal) stands in an open end for each cut route's waveguide stub, which KQC adds later and
     # which keeps the coupler pad / lead off the ground plane
-    stub_ends = [_open_end(ports_ports[f"{i}.{p}"], default_ab) for i, p in cuts if f"{i}.{p}" in ports_ports]
+    # multi-face: the face each cut stub is drawn on (the CPW at the cut port; a 2b1 capacitor's port is on 2b1)
+    stub_faces = ({f"{i}.{p}": port_face(result, ports_ports[f"{i}.{p}"], _faces(faces), face, default_ab)
+                   for i, p in cuts if f"{i}.{p}" in ports_ports} if multi else {})
+    stub_ends = [_open_end(ports_ports[f"{i}.{p}"], default_ab) for i, p in cuts
+                 if f"{i}.{p}" in ports_ports and stub_faces.get(f"{i}.{p}", face) == face]
     stub_ends = [e for e in stub_ends if e is not None]
     # C8: a metal / gap polygon of more than GDS_MAX_POINTS points (long meanders and spirals keyholed into one ground
     # polygon) gets its bends simplified by at most SIM_SMOOTH_UM, in the simulation only (DesignSimulation below)
     fm = FaceMetal(result, box, face, etch=stub_ends)
     smooth = SIM_SMOOTH_UM if fm.max_points() > GDS_MAX_POINTS else 0.0
+    if not smooth and any(FaceMetal(result, box, f).max_points() > GDS_MAX_POINTS for f in other_faces):
+        smooth = SIM_SMOOTH_UM
     if smooth:
         fm = FaceMetal(result, box, face, etch=stub_ends, smooth=smooth)
 
@@ -1130,6 +1379,12 @@ def build_simulation(
         b = refp.get(f"{name}_port_squid_b") or refp.get(f"{name}_squid_port_squid_b")
         if a is None or b is None:
             continue
+        if multi and own_face(inst, pdk.face) != face:
+            raise ValueError(
+                f"{design.name} {group}: {name} has its junction on face {own_face(inst, pdk.face)}; junction ports "
+                f"are built on {face} only, so a qubit on another face cannot be simulated yet: leave {name} out of the "
+                "group"
+            )
         sheet = None
         if a.distance(b) < 2 * fm.dbu:
             notes.append(f"{name}: zero-length junction (squid_a = squid_b at ({a.x:.2f}, {a.y:.2f})): no junction "
@@ -1254,11 +1509,32 @@ def build_simulation(
             + ("" if eigen else "; driven: a lumped 50 Ω port instead of a wave port (a wave port needs the line "
                "normal to the box face)")
         )
+    # multi-face: lines leaving the box on another face get their port on that face, built as on the PDK face (a
+    # square crossing: at-edge 50 Ω port / wave port / edge port; a straight line at an angle: on its own axis)
+    face_crossings: list[tuple[str, pya.DPoint, str, object]] = []  # (route, crossing, face, crossing_port(...))
+    for f in [] if whole_chip else other_faces:
+        paths_f = _route_paths(result, f)
+        spines_f = _route_spines(result, f) if every else {}
+        lith_f = FaceMetal(result, box, f, smooth=smooth).lith if every else None
+        for route, pos in _edge_crossings(result, box, grounded, every=every, paths=paths_f):
+            how = None
+            if every:
+                a, b = route_ab.get(route, default_ab)
+                how = crossing_port(paths_f.get(route, pya.Region()), spines_f.get(route, []), lith_f, box, pos, a, b,
+                                    fm.dbu, over_etching)
+            face_crossings.append((route, pos, f, how))
+    if face_crossings:
+        notes.append(f"{len(face_crossings)} line(s) leave the box on another face, with their port on that face: "
+                     + ", ".join(f"{r} ({f})" for r, _, f, _ in face_crossings)
+                     + ("; on a bend or a taper there is no port polygon (the box is straightened for "
+                        f"{face} lines only)" if every and any(h is None for *_, h in face_crossings) else ""))
     lumped = []  # pads (cells with lumped_signal/lumped_ground refpoints): the whole chip's, or the selected ones
     for name in design.instances if whole_chip else [n for n in select if n in design.instances]:
         sig, gnd = refp.get(f"{name}_lumped_signal"), refp.get(f"{name}_lumped_ground")
         if sig is not None and gnd is not None and box.contains(sig) and box.contains(gnd):
             lumped.append((name, sig, gnd))
+    pad_faces = {n: own_face(design.instances[n], pdk.face) for n, _, _ in lumped} if multi else {}
+    port_faces: dict[int, str] = {}  # multi-face: port number → its face, where that is not the PDK face
 
     chip_index = result.cell.cell_index()
     far_sides: dict[int, str] = {}
@@ -1291,6 +1567,7 @@ def build_simulation(
                     far_sides[n] = net_b
             for label, p in stubs:
                 n += 1
+                sf = stub_faces.get(label, face)
                 self.produce_waveguide_to_port(
                     p.pos,
                     p.pos + p.dir * 10,
@@ -1299,7 +1576,10 @@ def build_simulation(
                     waveguide_length=waveguide_length,
                     a=p.a,
                     b=p.b,
+                    **({"face": self.face_ids.index(sf)} if sf != face else {}),
                 )
+                if sf != face:
+                    port_faces[n] = sf
                 infos.append(SimPortInfo(n, "waveguide", label, label))
             for i, (route, pos) in enumerate(crossings):
                 n += 1
@@ -1326,14 +1606,50 @@ def build_simulation(
                 else:
                     self.ports.append(EdgePort(n, pos))
                     infos.append(SimPortInfo(n, "edge", route, route))
+            for route, pos, f, how in face_crossings:  # multi-face: the same ports on the line's own face
+                n += 1
+                fi = self.face_ids.index(f)
+                port_faces[n] = f
+                a, b = route_ab.get(route, (pdk.cpw_a, pdk.cpw_b))
+                if isinstance(how, LinePort):
+                    outer, inner_ = how.signal, how.signal + how.direction * (a - 2 * self.over_etching)
+                    sig, gnd = (outer, inner_) if eigen else (inner_, outer)
+                    self.ports.append(InternalPort(n, sig, gnd, etch_width=a + b, resistance=50.0, face=fi))
+                    infos.append(SimPortInfo(n, "edge_lumped", route, route))
+                    line_port_numbers.add(n)
+                elif eigen:
+                    out = _outward(self.box, pos)
+                    signal = pos - 1.0 * out
+                    ground = signal - (a - 2 * self.over_etching) * out
+                    self.ports.append(InternalPort(n, signal, ground, etch_width=a + b, resistance=50.0, face=fi))
+                    infos.append(SimPortInfo(n, "edge_lumped", route, route))
+                else:
+                    self.ports.append(EdgePort(n, pos, face=fi))
+                    infos.append(SimPortInfo(n, "edge", route, route))
             for name, sig, gnd in lumped:
                 n += 1
-                self.ports.append(InternalPort(n, *self.etched_line(sig, gnd), resistance=50.0))
+                pf = pad_faces.get(name, face)
+                self.ports.append(InternalPort(n, *self.etched_line(sig, gnd), resistance=50.0,
+                                               **({"face": self.face_ids.index(pf)} if pf != face else {})))
+                if pf != face:
+                    port_faces[n] = pf
                 infos.append(SimPortInfo(n, "lumped", f"{name}.pad", f"{name}.pad"))
 
         def simplified_region(self, region, expansion=0.0):
             out = super().simplified_region(region, expansion)
             return out.smoothed(max(1, round(smooth / self.layout.dbu)), True) if smooth else out  # C8, sim only
+
+        def insert_layers_between_faces(self, i, opp_i, layer_name, **params):
+            # multi-face: KQC cuts each TSV's footprint out of its face sheets, so pillar and sheet meet only along the
+            # hole edge (a line contact, which AEDT may not count as connected); the pillar is made TSV_JOIN_OVERLAP_UM
+            # wider than the hole, so it overlaps the sheet around it as a bump does. The hole stays as drawn.
+            before = set(self.layers)
+            out = super().insert_layers_between_faces(i, opp_i, layer_name, **params)
+            if multi and layer_name == "through_silicon_via":
+                grow = max(1, round(TSV_JOIN_OVERLAP_UM / self.layout.dbu))
+                for name in set(self.layers) - before:
+                    self.layers[name]["region"] = self.layers[name]["region"].sized(grow)
+            return out
 
         def get_port_data(self):
             out = []
@@ -1350,6 +1666,7 @@ def build_simulation(
     DesignSimulation.__name__ = f"DesignSimulation_{group}"
     params = {
         **pdk.simulation_params(),
+        **stack_params,  # multi-face: face_stack, both substrates, chip_distance, lower_box_height ({} for one face)
         "name": f"{design.name}_{group}_{analysis}",
         "box": box,
         "use_internal_ports": True,
@@ -1357,6 +1674,8 @@ def build_simulation(
         **sim_params,
     }
     sim = DesignSimulation(result.layout, **params)
+    if port_faces:
+        geometry["port_faces"] = {str(k): v for k, v in sorted(port_faces.items())}
     if smooth:
         geometry["bends_simplified_um"] = smooth
         notes.append(f"bends simplified by at most {smooth:g} µm in the simulation (a polygon had more than "
@@ -1373,7 +1692,7 @@ def build_simulation(
     probes = islands + _port_probes(sim, labels, far_sides) + junction_probes + _cell_probes(design, select, result)
     probes += lom_probes + _route_probes(result, select, sim_design)
     nets = net_names(sim, probes, near=lom_probes)
-    named = label_unnamed(sim, nets, result, select, design)
+    named = label_unnamed(sim, nets, result, select, design, _faces(faces) if multi else None)
     if named:
         nets.update(named)
         notes.append(f"{len(named)} conductor(s) no port or LOM node touches, named after their component: "
@@ -1563,11 +1882,13 @@ def _excitation_regions(sim) -> dict[int, pya.Region]:
     return regions
 
 
-def label_unnamed(sim, nets: dict[int, str], result, select: list[str], design: Design) -> dict[int, str]:
+def label_unnamed(sim, nets: dict[int, str], result, select: list[str], design: Design,
+                  faces: list[str] | None = None) -> dict[int, str]:
     """Labels for signal conductors no probe named (C7): a piece of a selected cell's own line (its waveguide path;
     a spiral cut where a dropped airbridge crossed) → the cell's LOM island when it has exactly one (``X.res#2``), a
     piece of a route's line → the route; any other conductor inside a selected cell → ``<cell>.floating[k]``
-    (floating parts such as a coupler's cross, ground enclosed by the cell); else ``floating<k>``."""
+    (floating parts such as a coupler's cross, ground enclosed by the cell); else ``floating<k>``. ``faces``: route
+    lines on each of these faces (a multi-face group); default ``1t1``."""
     from quantcore_circuits.lom.fragment import lom_model  # pylint: disable=import-outside-toplevel
 
     regions = _excitation_regions(sim)
@@ -1595,6 +1916,10 @@ def label_unnamed(sim, nets: dict[int, str], result, select: list[str], design: 
         # a piece of the cell's own line is that line's island only if the cell has one (a resonator: X.res)
         cells[name] = (inst.dbbox(), path if len(isl) == 1 else pya.Region(), isl[0] if len(isl) == 1 else "")
     routes = _route_paths(result)
+    for f in faces or []:
+        if f != "1t1":
+            for rn, path in _route_paths(result, f).items():
+                routes.setdefault(rn, pya.Region()).insert(path)
     raw: dict[int, str] = {}
     for e in todo:
         r = regions[e]

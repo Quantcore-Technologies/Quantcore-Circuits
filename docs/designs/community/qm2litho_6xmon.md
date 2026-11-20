@@ -2,7 +2,7 @@
 
 Six Xmons in two columns of three, one each side of a vertical feedline, each with a λ/4 meander readout coupled to the feedline. The layout is the six-Xmon notebook of Qiskit-Metal-to-Litho (CC BY 4.0), rebuilt on the Quantcore PDK with a trilayer junction per qubit (L_J 15.904 nH).
 
-Build this one to learn a frequency-multiplexed readout on one feedline (six readouts, 6.116 to 6.704 GHz) and how a foreign design is moved onto the PDK pad rule.
+This notebook is an example of a frequency-multiplexed readout on one feedline (six readouts, 6.116 to 6.704 GHz) and of moving a foreign design onto the PDK pad rule.
 
 ```{image} ../../images/designs/community/qm2litho_6xmon.png
 :alt: The whole qm2litho_6xmon chip as the v2 notebook builds it
@@ -13,11 +13,11 @@ Build this one to learn a frequency-multiplexed readout on one feedline (six rea
 
 | | |
 |---|---|
-| Notebook | `examples/designs/community/qm2litho_6xmon.ipynb` (the one-cell version before the rewrite: `qm2litho_6xmon.v1.ipynb`) |
+| Notebook | `examples/designs/community/qm2litho_6xmon.ipynb` (an older one-cell version is kept as `qm2litho_6xmon.v1.ipynb`) |
 | Source | Qiskit-Metal-to-Litho `6_Xmon_Layout_with_Quantum_Metal_PHIDL_GDSTK_in_Colab.ipynb`, CC BY 4.0 |
 | Chip | 5 × 5 mm Quantcore die (the source's chip size), feedline 11.7 / 5.1 µm |
 | On the chip | 2 launchpads · 1 feedline · 6 Xmons · 6 λ/4 hanger readouts |
-| Builds today | yes: layout run 2026-11-19, 23 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 23 s) |
 
 ## How the notebook builds it
 
@@ -53,24 +53,22 @@ Numbers are from a run of this notebook on 2026-11-19 (Setup, Design, Check and 
 :alt: LOM plot of qm2litho_6xmon
 ```
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates (component formulas and calibration), not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
-The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
-
-> **Update 2026-11-03:** frame = **source**: build with `chip={"die_frame": False, ...}` so the replica keeps its own size and frame (the Quantcore PDK die frame is for Quantcore chips only).
+The rest of this page is the detailed spec the notebook was built from, with every component, port, route and length.
 
 Source: [OJB-Quantum/Qiskit-Metal-to-Litho](https://github.com/OJB-Quantum/Qiskit-Metal-to-Litho),
 `6_Xmon_Layout_with_Quantum_Metal_PHIDL_GDSTK_in_Colab.ipynb`. Outputs `GDS Files/six_xmon_quantum_metal.gds`, the
 `_cheesing` variant and `six_xmon_quantum_metal_gaps.oas` (not downloaded). Licence **CC BY 4.0** (verified).
-Read 2026-11-02: notebook constants only.
+Read on 2026-11-02: notebook constants only.
 What it is: 6 Xmons (`TransmonCross`) in two columns of 3, one each side of a straight vertical feedline. Each has a
 λ/4 meander readout coupled through a `CoupledLineTee` (6.116–6.704 GHz). It is the same family and parameters as the
 SQuADDS tutorial-5 qubit (Lj 15.904 nH). A second notebook section adds an antidot (vortex-hole) field.
 Frame: chip 5 × 5 mm centred. **Box (0, 0, 5000, 5000)**, **Designer = source + (2500, 2500)**. Feedline 11.7/5.1 µm;
 readout 10/6 µm. Layers 3/0 metal, 3/1 etch, 9 junction.
-Status: **yes** (`Xmon`, `BondPad`, hangers).
+The chip needs `Xmon`, `BondPad` and hangers.
 
 ### Components
 | instance | catalog ref | key params (units) | at (x, y) Designer | rot | notes |
@@ -95,7 +93,7 @@ Junction: `junction={"Lj_nH": 15.9, "Cj_fF": 2}` (Lj 15.903982 nH stated; Cj ass
 L = v/(4f) with v = 1.20e8 m/s. Frequencies are taken in site order (index-matched in the code). CLT:
 coupling_length 200, coupling_space 4 (ground strip, used as ground_gap), down_length 110. Meander spacing 240,
 fillet 70, leads 180/140; meander asymmetry ±90 alternates per row. Two hangers share each s (left and right of the
-line); that is fine, because they sit on opposite sides.
+line); that works because they sit on opposite sides.
 
 ### Launchers, pads, test structures, markers, labels
 2 pads. Cheesing variant: antidots 2 µm squares at 10 µm pitch, 15 µm keep-out, 45 µm around pads. Maps to
@@ -109,7 +107,7 @@ Readout 6.116 / 6.353 / 6.472 / 6.568 / 6.655 / 6.704 GHz. Qubit about 3.66 GHz 
 (same cross and Lj; inferred, not stated).
 
 ### Simplifications for a first rebuild
-Build as is (P1). If two couplers at the same s clash with the Xmon claw approach, offset the right column's s by ±50 µm.
+Build it as is. If two couplers at the same s clash with the Xmon claw approach, offset the right column's s by ±50 µm.
 
-### Build (2026-11-03)
-Built with the Metal cells themselves (`metal:TransmonCross`, `metal:LaunchpadWirebond`) instead of `Xmon`/`BondPad`; CLT + meander → one qcc hanger (coupler upper end at the qubit height). Route length = source meander + 310 µm (the tee's coupled + down leg). Box 5.0 × 5.2 mm: the source pads overhang Metal's 5 mm chip by 83 µm.
+### Build
+The notebook uses the Metal cells themselves (`metal:TransmonCross`, `metal:LaunchpadWirebond`) instead of `Xmon`/`BondPad`; CLT + meander → one qcc hanger (coupler upper end at the qubit height). Route length = source meander + 310 µm (the tee's coupled and down legs). Box 5.0 × 5.2 mm: the source pads overhang Metal's 5 mm chip by 83 µm.

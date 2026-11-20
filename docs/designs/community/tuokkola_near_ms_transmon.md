@@ -1,8 +1,8 @@
 # Near-ms transmon sample (Tuokkola)
 
-The sample of Tuokkola et al. (Aalto University and VTT), whose transmons reach near-millisecond coherence times: four transmons, each read out by a λ/4 hanger on a shared Purcell filter between two capacitors, with two drive lines. The data and fab GDS are on Zenodo (CC BY 4.0); the notebook is a Quantcore-PDK rebuild (GPL-3.0) from the local Zenodo files, and keeps the original chip as a reference file.
+The sample of Tuokkola et al. (Aalto University and VTT), whose transmons reach near-millisecond coherence times: four transmons, each read out by a λ/4 hanger on a shared Purcell filter between two capacitors, with two drive lines. The data and fab GDS are on Zenodo (CC BY 4.0); the notebook is a Quantcore PDK rebuild (GPL-3.0) from the local Zenodo files and keeps the original chip as a reference file.
 
-Build this one to learn junctions sized from measured qubit frequencies, a Purcell filter in front of the readouts, and how a rebuild is checked against a reference layout.
+This notebook is an example of junctions sized from measured qubit frequencies, a Purcell filter in front of the readouts, and a rebuild checked against a reference layout.
 
 ```{image} ../../images/designs/community/tuokkola_near_ms_transmon.png
 :alt: The whole tuokkola_near_ms_transmon chip as the v2 notebook builds it
@@ -13,11 +13,11 @@ Build this one to learn junctions sized from measured qubit frequencies, a Purce
 
 | | |
 |---|---|
-| Notebook | `examples/designs/community/tuokkola_near_ms_transmon.ipynb` (the one-cell version before the rewrite: `tuokkola_near_ms_transmon.v1.ipynb`) |
+| Notebook | `examples/designs/community/tuokkola_near_ms_transmon.ipynb` (an older one-cell version is kept as `tuokkola_near_ms_transmon.v1.ipynb`) |
 | Source | Zenodo record 14651787 (`sample.gds`, chip EITR2), CC BY 4.0 |
 | Chip | 10 × 10 mm Quantcore die (the sample's size) |
 | On the chip | 4 launchpads · 4 pocket transmons · 2 filter capacitors and the Purcell filter · 4 λ/4 hanger readouts · 2 feed lines · 2 drive lines |
-| Builds today | yes: layout run 2026-11-19, 15 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 15 s) |
 
 ## How the notebook builds it
 
@@ -51,15 +51,15 @@ Numbers are from a run of this notebook on 2026-11-19 (Setup, Design, Check and 
 :alt: LOM plot of tuokkola_near_ms_transmon
 ```
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates (component formulas and calibration), not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
-The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
+The rest of this page is the detailed spec the notebook was built from, with every component, port, route and length.
 
-> **Built 2026-11-03 (designs-17q; fork + lead):** `examples/designs/community/tuokkola_near_ms_transmon.ipynb`
-> (+ `.json`, PNGs), a Quantcore-PDK rebuild from the **local** Zenodo files in `components/Zenodo_files/`. The
-> reference chip is `examples/designs/community/tuokkola_near_ms_transmon_sample.oas`.
+> The notebook `examples/designs/community/tuokkola_near_ms_transmon.ipynb` (with its `.json` and PNGs) is a Quantcore PDK
+> rebuild from the local Zenodo files in `components/Zenodo_files/`. The reference chip is
+> `examples/designs/community/tuokkola_near_ms_transmon_sample.oas`.
 
 Source: [zenodo.org/records/14651787](https://zenodo.org/records/14651787), Data and GDS file for *"Methods to achieve
 near-millisecond energy relaxation and dephasing times for a superconducting transmon qubit"*. The authors are
@@ -87,11 +87,11 @@ copied into `tuokkola_near_ms_transmon_sample.oas`.
 | launchers | 2 filter ports on the left edge (y = ±650), 2 drive ports at the top and bottom |
 | other | chip labels `EITR2` and `1-0`, corner marks, a ground-plane hole grid, a junction test column on the right edge, and one unconnected meander at the top left |
 
-**Targets:** qubit frequencies 4.047 / 2.890 / 4.593 / 3.295 GHz (Q1–Q4) and readouts 5.85–6.23 GHz. The fork took
-these from the paper (first cooldown). **To verify against the paper** (arXiv 2407.18778); the Zenodo README gives no
+**Targets:** qubit frequencies 4.047 / 2.890 / 4.593 / 3.295 GHz (Q1–Q4) and readouts 5.85–6.23 GHz. They were
+taken from the paper (first cooldown) and still need checking against it (arXiv 2407.18778); the Zenodo README gives no
 frequencies.
 
-### Rebuild (Quantcore PDK), 2026-11-03
+### Rebuild (Quantcore PDK)
 - **Frame and stack:** the PDK die frame (10 × 10 mm box, device ID `EITR2-QCT`) and the PDK stack (sapphire).
 - **Qubits:** `metal:TransmonPocket6` with the GDS pad and pocket sizes; the coupler bar is a centred 400 × 20 µm
   connection pad.
@@ -108,6 +108,6 @@ frequencies.
   - LOM: 17 nodes;
   - LOM sim: f_q 4.023 / 2.830 / 4.483 / 3.284 GHz (0.3–2.4 % below the targets), f_r 5.851 / 5.964 / 6.088 /
     6.199 GHz (within 0.5 %), χ −1.3…−4.1 MHz;
-  - κ_r ≈ 10 kHz, too small: the LOM lumps the filter between its two series capacitors (lom request, as metal/m52);
+  - κ_r ≈ 10 kHz, too small: the LOM lumps the filter between its two series capacitors (as in metal/m52);
   - FEM: 4 q3d + 4 eigenmode jobs, each with `Q<n>.island1/2` nets.
-- **Snapshots:** `tuokkola_near_ms_transmon{,_q2,_cout,_reference}.png` (rebuild and sample side by side), looked at.
+- **Snapshots:** `tuokkola_near_ms_transmon{,_q2,_cout,_reference}.png` (rebuild and sample side by side).

@@ -6,7 +6,7 @@ PCell declaration for optical lithography test alignment cross markers.
 
 **Source:** KQC (KQCircuits). **Category:** test_structure. **Module:** `kqcircuits.test_structures.cross_test`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

@@ -6,7 +6,7 @@ A composite waveguide made of waveguides and other elements.
 
 **Source:** KQC (KQCircuits). **Category:** waveguide. **Module:** `kqcircuits.elements.waveguide_composite`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

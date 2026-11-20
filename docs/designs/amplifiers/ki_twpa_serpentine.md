@@ -2,7 +2,7 @@
 
 A kinetic-inductance travelling-wave parametric amplifier: a very long thin-film line whose inductance depends on the current. A DC bias and a pump give three-wave mixing along the line, and periodic loaded cells open a stop band that blocks the pump's third harmonic. The geometry is the NY CREATES layout as ported in twpa-sim (MIT), redrawn as a negative mask on the Quantcore PDK.
 
-Build this one to see a chip dominated by one huge component: a 16-row serpentine of about 50 000 cells with two launches, two pads and two short feeds. It also shows the film difference: the PDK Nb film is far less nonlinear than the source's NbN.
+This chip is dominated by one huge component: a 16-row serpentine of about 50 000 cells with two launches, two pads and two short feeds. The PDK Nb film is far less nonlinear than the source's NbN.
 
 ```{image} ../../images/designs/amplifiers/ki_twpa_serpentine.png
 :alt: The whole ki_twpa_serpentine chip as the v2 notebook builds it
@@ -13,11 +13,11 @@ Build this one to see a chip dominated by one huge component: a 16-row serpentin
 
 | | |
 |---|---|
-| Notebook | `examples/designs/amplifiers/ki_twpa_serpentine.ipynb` (the one-cell version before the rewrite: `ki_twpa_serpentine.v1.ipynb`) |
+| Notebook | `examples/designs/amplifiers/ki_twpa_serpentine.ipynb` (an older one-cell version is kept as `ki_twpa_serpentine.v1.ipynb`) |
 | Source | twpa-sim `kit.py` / `KITLayout` (MIT), NY CREATES research layout |
 | Chip | 7.5 × 7.5 mm Quantcore die (the source's is 5 × 5 mm), sapphire 650 µm |
 | On the chip | 1 `KiTwpaSerpentine` (16 rows × 55 supercells, 49 950 cells) · 2 bond pads · 2 feeds |
-| Builds today | yes: layout run 2026-11-19, 15 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 15 s) |
 
 ## How the notebook builds it
 
@@ -50,13 +50,13 @@ Numbers are from a run of this notebook on 2026-11-19 (Setup, Design, Check and 
 :alt: Stop band of the serpentine line
 ```
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates (component formulas and calibration), not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
-The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
+The rest of this page is the detailed spec the notebook was built from, with every component, port, route and length.
 
-Source · licence: mandalsoumyajit/twpa-sim (MIT): `src/twpa/layout/kit.py`, `KITLayout`, process `kit_nycreates_research.json` (NbN 20 pH/□). Group `amplifiers` (design decision #45). Die: 7.5 × 7.5 mm PDK die, PDK frame, sapphire 650 µm, Nb trilayer junctions. Status: built — `examples/designs/amplifiers/ki_twpa_serpentine.ipynb` / `.json`.
+Source · licence: mandalsoumyajit/twpa-sim (MIT): `src/twpa/layout/kit.py`, `KITLayout`, process `kit_nycreates_research.json` (NbN 20 pH/□). Die: 7.5 × 7.5 mm PDK die, PDK frame, sapphire 650 µm, Nb trilayer junctions. Notebook and design: `examples/designs/amplifiers/ki_twpa_serpentine.ipynb` / `.json`.
 
 ### Components
 

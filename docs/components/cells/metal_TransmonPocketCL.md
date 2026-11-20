@@ -6,7 +6,7 @@ The base `TransmonPocketCL` class.
 
 **Source:** Metal (Qiskit Metal). **Category:** qubit. **Module:** `qiskit_metal.qlibrary.qubits.transmon_pocket_cl`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

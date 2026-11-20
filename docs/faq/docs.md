@@ -37,7 +37,7 @@ sphinx-togglebutton are not installed.
 The docs are published on GitHub Pages at <https://quantcore-technologies.github.io/Quantcore-Circuits/>. You can also
 build them locally and copy `docs/_build/html` to any web server. See [Building and hosting](../hosting.md).
 
-### Why is Read the Docs not enough on its own for a private repository?
+### Can I host the docs on Read the Docs?
 
-The free readthedocs.org serves public sites only. Publishing the code outside the organisation would also make it GPL,
-because it builds on KQCircuits. Decide that before choosing a host.
+The free readthedocs.org serves public sites only. The repository is public and licensed GPL-3.0-or-later (the code
+builds on KQCircuits), so a public host works.

@@ -1,6 +1,6 @@
 # Google designs
 
-Two rebuilds of Google's tunable-coupler scheme (Sycamore): one qubit-coupler-qubit cell, and a 2 × 2 plaquette that tiles it. No Sycamore layout is public: the papers give the architecture and the targets, and the layouts are ours (GPL). Both use crossed Xmon-type qubits with Quantcore trilayer SQUIDs.
+Two rebuilds of Google's tunable-coupler scheme (Sycamore): one qubit-coupler-qubit cell, and a 2 × 2 plaquette that tiles it. No Sycamore layout is public. The papers give the architecture and the targets, and the layouts are ours (GPL). Both use crossed Xmon-type qubits with Quantcore trilayer SQUIDs.
 
 | Page | What it is | Qubits | Chip size | Builds |
 |---|---|---|---|---|

@@ -2,7 +2,7 @@
 
 A 17-qubit surface-code demo: 17 star transmons on a 5 × 5 grid (9 data, 8 auxiliary), 24 fixed couplers, a hairpin readout with its own Purcell filter per qubit on four feedlines, and an XY and a Z line per qubit. It is DeviceLayout.jl's `DemoQPU17` example (AWS, MIT), shaped after the ETH Zurich surface-17 device, rebuilt on the Quantcore PDK (GPL-3.0).
 
-Build this one to see a plan-driven chip: the shared surface-17 generator first plans every instance and line on paper, then the notebook places them kind by kind. It is a big build (117 instances, 154 routes).
+This is a plan-driven chip: the shared surface-17 generator first plans every instance and line, then the notebook places them kind by kind. It is a large build (117 instances, 154 routes).
 
 ```{image} ../../images/designs/devicelayout/demoqpu17.png
 :alt: The whole demoqpu17 chip as the v2 notebook builds it
@@ -13,11 +13,11 @@ Build this one to see a plan-driven chip: the shared surface-17 generator first 
 
 | | |
 |---|---|
-| Notebook | `examples/designs/devicelayout/demoqpu17.ipynb` (the one-cell version before the rewrite: `demoqpu17.v1.ipynb`) |
+| Notebook | `examples/designs/devicelayout/demoqpu17.ipynb` (an older one-cell version is kept as `demoqpu17.v1.ipynb`) |
 | Source | DeviceLayout.jl `examples/DemoQPU17` (MIT, © Amazon.com, Inc. or its affiliates) |
 | Chip | 15 × 15 mm Quantcore die, sapphire 650 µm |
 | On the chip | 17 `StarQubit`s · 24 couplers · 17 readouts with 17 Purcell filters · 4 feedlines · 34 control lines |
-| Builds today | yes: layout run 2026-11-19, 31 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 31 s) |
 
 ## How the notebook builds it
 
@@ -39,7 +39,7 @@ Each Design segment is one cell with one picture of the chip so far (see [the no
 
 ## LOM estimates
 
-Numbers are from the `.v1` notebook's saved output (the 17-qubit chip was not re-run for the docs): each qubit is solved with its readout chain, Purcell filter and the whole feedline. The readout columns are the readout resonator; the Purcell filter sits about 40 MHz above it with κ of 25 to 38 MHz.
+Numbers are from the saved output of the `.v1` notebook (this chip was not re-run for these docs): each qubit is solved with its readout chain, Purcell filter and the whole feedline. The readout columns are the readout resonator; the Purcell filter sits about 40 MHz above it with κ of 25 to 38 MHz.
 
 | qubit | f_q (GHz) | α (MHz) | resonator | f_r (GHz) | κ (MHz) | χ (MHz) |
 |---|---|---|---|---|---|---|
@@ -65,20 +65,20 @@ Numbers are from the `.v1` notebook's saved output (the 17-qubit chip was not re
 |---|---|---|---|---|
 | Q23+Q33 | Q23-Q33 | -2.06e+04 | yes | no |
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates (component formulas and calibration), not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
-The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
+The rest of this page is the detailed spec the notebook was built from, with every component, port, route and length.
 
-> **Built 2026-11-03 (designs-17q), Quantcore-PDK rebuild:** `examples/designs/devicelayout/demoqpu17.ipynb` (+ `.json`,
-> PNGs), geometry from the shared generator `examples/designs/devicelayout/_surface17.py`. See "Rebuild (Quantcore
+> The notebook `examples/designs/devicelayout/demoqpu17.ipynb` (with its `.json` and PNGs) is a Quantcore PDK rebuild whose
+> geometry comes from the shared generator `examples/designs/devicelayout/_surface17.py`. See "Rebuild (Quantcore
 > PDK)" at the end. The source description below is unchanged.
 
 Source: [examples/DemoQPU17](https://github.com/aws-cqc/DeviceLayout.jl/tree/main/examples/DemoQPU17) (`DemoQPU17.jl`,
 `params.jl`, `routing.jl`) and docs `docs/src/examples/qpu17.md` ([rendered](https://aws-cqc.github.io/DeviceLayout.jl/stable/examples/qpu17/))
 · components in `src/schematics/ExamplePDK` (`ExampleStarTransmon`, `ExampleFilteredHairpinReadout`,
-`ExampleSeriesClawCapacitor`, `ExampleChip`) · licence MIT (Amazon, verified) · read 2026-11-03 from a depth-1 clone in
+`ExampleSeriesClawCapacitor`, `ExampleChip`) · licence MIT (Amazon, verified) · Read on 2026-11-03 from a depth-1 clone in
 `build/external/DeviceLayout.jl` (Julia, not run).
 What it is: a demo after ETH Zurich (Krinner et al., Nature 2022). 17 star transmons sit on a 5 × 5 grid with
 1.65 mm pitch, 9 data + 8 ancilla in a checkerboard. Neighbours share 24 fixed CPW couplers. Each qubit has a λ/4
@@ -127,7 +127,7 @@ Each feedline is one conductor with a series input capacitor and two 50 Ω ports
 ### Targets
 Readout frequencies in the table (6.8–7.6 GHz, effective index 2.5). Qubit frequencies are not stated.
 
-### Rebuild (Quantcore PDK), 2026-11-03
+### Rebuild (Quantcore PDK)
 
 **Deliverable:** `examples/designs/devicelayout/demoqpu17.ipynb` / `.json` / `demoqpu17{,_centre,_jj,_bridge}.png`.
 It is built on the PDK die frame (15 × 15 mm box, device ID `QPU17`) and the PDK stack (sapphire). The shared
@@ -147,14 +147,14 @@ generator `examples/designs/devicelayout/_surface17.py` (`Config` → `plan_chip
 | crossings | 30 `AirbridgeConnection`s on the upper line (couplers < resonators < feedlines < Z < XY), found on the drawn polylines; plan problems 0 |
 | pads | 42 `BondPad`s (300 × 300 µm, taper 300) at the DeviceLayout port positions, ports 900 µm from the edge |
 
-**Quick check (2026-11-03, script run of the notebook's cells, not nbclient):**
+**Quick check** (a script run of the notebook's cells, not nbclient):
 - fast DRC 0 errors, 54 `dangling_port` warnings (34 `squid_a/b`, 20 free edge coupler pads);
 - LOM 138 nodes / 351 branches (C 250, R 42, TLres 42, SQUID 17);
 - per-qubit groups: readouts within 1 % of `params.jl` (6.77–7.59 GHz), filters resonant 40–50 MHz above,
   κ_filter 27–38 MHz, κ_readout 1.4–5.8 MHz, χ −8…−22 MHz, dressed f_q 2–5 % below the plan;
 - Q23–Q33 ZZ −20.6 MHz: too large, because the LOM treats the coupler route between two pads as a wire without its
-  own line C (lom request);
-- fast `test_examples -k demoqpu17` passes.
+  own line C;
+- the fast `test_examples -k demoqpu17` test passes.
 
 **Simplifications:**
 - no ground-plane holes and no line bridges;

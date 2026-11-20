@@ -6,7 +6,7 @@ Shorted CPW end through a taper and a narrow neck in an etched window (QPDK ``ne
 
 **Source:** Quantcore. **Category:** termination. **Module:** `quantcore_circuits.layouts.others.qpdk_cells`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 
@@ -57,8 +57,6 @@ Nodes: `line`.
 ## Simulation export notes
 
 - C8: GDS polygon with > 4095 points (XY record > 0x8000 bytes) (status: partly fixed; fix in sim_tools/builder.py (FaceMetal.max_points, DesignSimulation.simplified_region, split_large_polygons); sim_tools/geometry_check.py)
-
-Details: [SIM_EXPORT_AUDIT](../SIM_EXPORT_AUDIT.md).
 
 ## How to use
 

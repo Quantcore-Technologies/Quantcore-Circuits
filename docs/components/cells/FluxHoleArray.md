@@ -10,7 +10,7 @@ Array of square flux-trapping holes in the ground plane (legacy chips' ``flux_ho
 Alias of [`FluxHoles`](FluxHoles.md): the same circuit, drawn differently. the array's hole centres as FluxHoles' list (XOR 0); no circuit elements
 :::
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

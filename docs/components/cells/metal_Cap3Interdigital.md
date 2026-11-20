@@ -6,7 +6,7 @@ Create a three finger planar capacitor with a ground pocket cuttout.
 
 **Source:** Metal (Qiskit Metal). **Category:** capacitor. **Module:** `qiskit_metal.qlibrary.lumped.cap_3_interdigital`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

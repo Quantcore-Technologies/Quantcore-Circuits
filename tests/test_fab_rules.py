@@ -159,6 +159,43 @@ def test_cheese_is_drawn_in_the_build_unless_the_original_has_its_own(example_pa
     assert not pdk_cheese(sim) and grid(qcc.build(sim)).is_empty()
 
 
+def test_whole_die_cheese_for_chip_mode(example_path):
+    """Chip cheese "chip" fills the whole design area with the PDK squares (5 µm, 20 µm gaps, 4 µm from 3/0) instead
+    of a band; with ``with_grid`` also set, KQC's own 10 µm-step grid is not drawn."""
+    from dataclasses import replace
+
+    from kqcircuits.defaults import default_layers
+
+    import quantcore_circuits as qcc
+    from quantcore_circuits.assembly.plan import cheese_mode, cheese_spec
+    from quantcore_circuits.design import load_design
+    from quantcore_circuits.layouts.wafers.fab_export import cheese_holes, fab_regions, frame_cheese_limits
+    from quantcore_circuits.pdk import CheeseRule, get_pdk
+
+    def grid(result):
+        return pya.Region(result.cell.begin_shapes_rec(result.layout.layer(default_layers["1t1_ground_grid"])))
+
+    band = qcc.build(load_design(example_path))
+    for params in ({"cheese": "chip"}, {"cheese": "chip", "with_grid": True}):
+        design = load_design(example_path)
+        design.chip.params.update(params)
+        assert cheese_mode(design) == "chip" and cheese_spec(design)["rule"]["fill"] == "chip"
+        built = qcc.build(design)
+        dbu = built.layout.dbu
+        assert not built.cell.pcell_parameters_by_name()["with_grid"]  # KQC draws no grid of its own
+        drawn = grid(built)
+        raw = fab_regions(built.cell, box=pya.DBox(*design.chip.box), grid=False)
+        allowed, exclude = frame_cheese_limits(built)
+        expected = cheese_holes(raw["M3"], replace(get_pdk().cheese, fill="chip"), dbu, allowed, exclude)
+        assert (drawn ^ expected).is_empty() and drawn.count() > 5 * grid(band).count()
+        assert {round(p.bbox().width() * dbu, 6) for p in drawn.each()} == {5.0}
+        assert drawn.interacting(raw["M3"].sized(round(3.9 / dbu))).is_empty()  # ≥ 4 µm from every keep-out
+        corner = pya.Region(pya.DBox(4500, 100, 7400, 1000).to_itype(dbu))
+        assert not (drawn & corner).is_empty()  # far from any component: whole die, not a band
+    with pytest.raises(ValueError, match="fill"):
+        CheeseRule(fill="everywhere")
+
+
 def test_pads_sit_the_pdk_pad_distance_from_the_die_edge(example_path):
     """PDK pad rule (2026-11-03; 100 µm since 2026-11-10): place.edge puts a pad's outer etch ``pad_edge`` from
     the die edge; the DRC flags pads elsewhere."""

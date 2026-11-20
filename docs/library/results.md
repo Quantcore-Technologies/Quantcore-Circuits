@@ -114,7 +114,7 @@ their table. The helpers `plot_convergence`, `plot_s21_fit`, `plot_epr` and `epr
 For the dashboard, `plots.fem_specs(jobs)` turns the solved jobs into PlotSpecs: convergence per pass and against the
 mesh, the mode frequencies per pass, the S21 notches (with the data when the trace is available) and the EPR
 participations and χ matrix. `loop.analyse` adds them to the run, so they appear in the Plots tab when a run has
-eigenmode, driven or Q3D results. The React app draws any PlotSpec, so it needed no change.
+eigenmode, driven or Q3D results. The React app draws any PlotSpec.
 
 ## Gaps
 

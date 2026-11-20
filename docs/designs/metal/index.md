@@ -2,11 +2,11 @@
 
 These designs are Qiskit Metal examples and tutorials (Apache-2.0, © IBM and the Qiskit Metal contributors), rebuilt
 with the Quantcore library and PDK and distributed under GPL-3.0. Each notebook keeps the source's components and
-routes, but puts them on the Quantcore stack (sapphire), junctions and die frame, and moves bond pads to the PDK's
+routes and puts them on the Quantcore stack (sapphire), junctions and die frame, with bond pads moved to the PDK's
 100 µm edge rule. Metal components are drawn through the `metal:<Class>` wrapper.
 
 Every notebook builds the layout in segments (die, pads, readout, qubits, coupling, control lines, whole chip). All 19
-build today (layout run 2026-11-19, design byte-identical to the one before the notebook rewrite). Start with
+build (layouts built on 2026-11-19). Start with
 [Transmon with readout](A1_transmon_readout.md) for the smallest complete chip.
 
 | Design | What it is | Qubits | Chip size | Builds |

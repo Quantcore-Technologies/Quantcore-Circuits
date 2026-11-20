@@ -10,7 +10,7 @@ Straight CPW segment centred at the origin (legacy "Coplanar Waveguide"); ports 
 Alias of [`WaveguideCoplanar`](WaveguideCoplanar.md): the same circuit, drawn differently. length L → path [(-L/2, 0), (L/2, 0)] (CpwSegment is centred on the origin; XOR 0); ports a, b. CpwSegment adds the legacy 3/0 keep-out
 :::
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

@@ -2,7 +2,7 @@
 
 A QPDK test chip with four flipmons: circular flip-chip transmons whose inner disc and outer ring are on the bottom chip, with a disc on the top chip joined by an indium bump. Each flipmon has its own λ/2 readout on a U-shaped probeline. The layout comes from QPDK's `flipmon_test_chip.pic.yml` (MIT, after Li et al. 2021) and is rebuilt on the Quantcore PDK; the rebuild is GPL-3.0.
 
-Build this one to learn how a two-chip (flip-chip) cell sits in a design: the bottom chip gets the Quantcore frame, the top chip none.
+This notebook shows how a two-chip (flip-chip) cell sits in a design: the bottom chip gets the Quantcore frame, the top chip none.
 
 ```{image} ../../images/designs/qpdk/flipmon_test_chip.png
 :alt: The whole flipmon_test_chip chip as the v2 notebook builds it
@@ -13,11 +13,11 @@ Build this one to learn how a two-chip (flip-chip) cell sits in a design: the bo
 
 | | |
 |---|---|
-| Notebook | `examples/designs/qpdk/flipmon_test_chip.ipynb` (the one-cell version before the rewrite: `flipmon_test_chip.v1.ipynb`) |
+| Notebook | `examples/designs/qpdk/flipmon_test_chip.ipynb` (an older one-cell version is kept as `flipmon_test_chip.v1.ipynb`) |
 | Source | gdsfactory `quantum-rf-pdk` `qpdk/samples/flipmon_test_chip.pic.yml`, MIT (© 2024 gdsfactory) |
 | Chip | 7.5 × 7.5 mm Quantcore die, the source's 4250 × 6200 µm circuit centred in it, CPW 10 / 6 µm |
 | On the chip | 4 launchers · 4 flipmons · 4 λ/2 readouts · 1 probeline with 2 series IDCs · 2 flux lines |
-| Builds today | yes: layout run 2026-11-19, 7 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 7 s) |
 
 ## How the notebook builds it
 
@@ -51,24 +51,22 @@ Numbers are from a run of this notebook on 2026-11-19 (Setup, Design, Check and 
 :alt: LOM plot of flipmon_test_chip
 ```
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates (component formulas and calibration), not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
-The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
-
-> **Update 2026-11-03:** frame = **source**: build with `chip={"die_frame": False, ...}` so the replica keeps its own size and frame (the Quantcore PDK die frame is for Quantcore chips only).
+The rest of this page is the detailed spec the notebook was built from, with every component, port, route and length.
 
 Source: [qpdk/samples/flipmon_test_chip.pic.yml](https://github.com/gdsfactory/quantum-rf-pdk/blob/main/qpdk/samples/flipmon_test_chip.pic.yml)
 (+ `flipmon_test_chip.py` loader; `filled_flipmon_test_chip` in `filled_test_chip.py`) · licence MIT (verified) ·
-read 2026-11-02. Reference: Li et al. 2021, vacuum-gap transmon qubits (cited as `liVacuumgapTransmonQubits2021`).
+Read on 2026-11-02. Reference: Li et al. 2021, vacuum-gap transmon qubits (cited as `liVacuumgapTransmonQubits2021`).
 What it is: the qubit test chip netlist line for line. The only changes are the qubit cell
 (`flipmon_with_resonator_and_probeline`) and the resonator lengths; all coupling lengths are the auto default.
 The flipmon is a circular transmon. Its inner disc and outer ring are on the bottom chip (M1), with a 110 µm-radius
 disc on the top chip (M2) joined through a 15 µm indium bump. Image: `docs/_static/images/flipmon_test_chip.png` (filled version).
 Frame: same as [qubit_test_chip](qubit_test_chip.md): **box (0, 0, 4250, 6200)**, **Designer = source + (100, 3100)**.
 The filled version adds an M2 chip edge and fill on the top chip as well.
-Status: **no (missing: flipmon)**. Planar stand-in: KQC `ConcentricTransmon` (geometry yes, no LOM model).
+The first version used the planar KQC `ConcentricTransmon` as a stand-in (geometry only, no LOM model); the rebuild below uses `Flipmon`.
 
 ### Components
 Pads, capacitors and flux lines are identical to [qubit_test_chip](qubit_test_chip.md#components) (PAD_IN, PAD_OUT,
@@ -109,29 +107,29 @@ moves east. **FL: C_IN.b (≈930, 3500) → nodes (3815, 3500), (3815, 2700) →
 None stated. As λ/4 on Si, 5000 / 4800 / 4600 / 4400 µm give about 6.0 / 6.2 / 6.5 / 6.8 GHz.
 
 ### Simplifications for a first rebuild
-1. Planar only: `ConcentricTransmon` without the top-chip disc and bump. This is a geometry stand-in only.
-2. Requested component **flipmon**: the circular two-face transmon above (M1 disc + ring, M2 disc, bump), ports
+1. Planar only: `ConcentricTransmon` without the top-chip disc and bump. This is a geometry stand-in.
+2. The **flipmon** component: the circular two-face transmon above (M1 disc + ring, M2 disc, bump), with ports
    `coupler` (outer ring) and `junction`. It needs multi-face support (KQC faces `1t1`/`2b1`).
 
-### Build (2026-11-03)
-Built: `examples/designs/qpdk/flipmon_test_chip.ipynb` with KQC `ConcentricTransmon` (r_inner 60, ring 110–170, gap 30, one 18° arc coupler at r 185) as a planar stand-in; top-chip disc and bump not drawn. Readouts λ/2 (open hangers), as in qubit_test_chip. Lj 12 nH assumed.
+### First build
+The first version of `examples/designs/qpdk/flipmon_test_chip.ipynb` used KQC `ConcentricTransmon` (r_inner 60, ring 110–170, gap 30, one 18° arc coupler at r 185) as a planar stand-in; top-chip disc and bump not drawn. Readouts λ/2 (open hangers), as in qubit_test_chip. Lj 12 nH assumed.
 
-### Rebuild with `Flipmon` (2026-11-03, second instance)
+### Rebuild with `Flipmon`
 The ConcentricTransmon stand-in is replaced by **`Flipmon`** (QPDK defaults, `junction_position_rotation=180`; rot 270
 for Q1/Q2 = QPDK `qubit_rotation=-90`, rot 90 for the mirrored Q3/Q4). The QPDK ring is 80–140 µm (ring radius 110 =
 centre), not 110–170 µm as listed above. Readouts start at the `coupler` port, 13 µm beyond QPDK's plate `o1`, so
 route = `resonator_length` − 13 µm (4987 / 4787 / 4587 / 4387 µm). LOM (lom `Flipmon` model, top disc across an assumed
 8 µm flip-chip gap, rough; Lj 12 nH assumed): f_q 4.21 GHz, α −197 MHz (was 5.92 GHz / −431 MHz with the planar
-stand-in), λ/2 12.55–14.22 GHz, χ −0.03 MHz. Open: the Q3D export merges disc and ring into one net (junction port
+stand-in), λ/2 12.55–14.22 GHz, χ −0.03 MHz. Open issue: the Q3D export merges disc and ring into one net (the junction port
 finds no edge) and has no 2b1 face.
 
-### Quantcore PDK rebuild (2026-11-03)
+### Quantcore PDK rebuild
 
-The notebook is a **Quantcore-PDK rebuild**, not a replica (design rule, 2026-11-03): the netlist, LOM and imported components are kept, the process is Quantcore's.
+The notebook is a Quantcore PDK rebuild, not a replica: the netlist, LOM and imported components are kept, the process is Quantcore's.
 
 Notebook: [`examples/designs/qpdk/flipmon_test_chip.ipynb`](../../../examples/designs/qpdk/flipmon_test_chip.ipynb).
 
 - **Chip:** the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), on the 7.5 × 7.5 mm Quantcore die; the source's 4.25 × 6.2 mm chip area is centred in it (`box=QP.die_box(4250, 6200)`), so every coordinate stays the source's; the top chip (face 2b1) gets no frame (PDK v3 defines none for the flip-chip top chip).
 - **Stack:** sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); QPDK's process is Al on Si (εr 11.45), so frequencies are not the QPDK ones.
-- **Junctions:** Quantcore trilayer SQUIDs on the PDK rule : two 0.25 × 0.6 µm junctions → R_n 45 kΩ in parallel, L_J 6.73 nH at zero flux, C_J 15 fF; fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient (Nb Δ = 1.4 meV, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed), radially across the disc–ring gap (`Flipmon` `junction_params`), in place of the assumed 12 nH + 2 fF. Expected f_q ≈ 5.4 GHz (estimate; was 4.21 GHz).
+- **Junctions:** Quantcore trilayer SQUIDs on the PDK rule: two 0.25 × 0.6 µm junctions → R_n 45 kΩ in parallel, L_J 6.73 nH at zero flux, C_J 15 fF; fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient (Nb Δ = 1.4 meV, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed), radially across the disc–ring gap (`Flipmon` `junction_params`), in place of the assumed 12 nH + 2 fF. Expected f_q ≈ 5.4 GHz (an estimate; the 12 nH stand-in gave 4.21 GHz).
 - **Kept:** the topology and every component with the source's parameters and positions, the readout / resonator lengths and coupled sections, the sim groups (readouts 5000 / 4800 / 4600 / 4400 µm, the 800 µm coupled sections, the assumed 8 µm flip-chip gap).

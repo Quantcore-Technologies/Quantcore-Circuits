@@ -6,7 +6,7 @@ Grounded cross transmon with claw couplers; junction below the south arm.
 
 **Source:** Quantcore. **Category:** qubit. **Module:** `quantcore_circuits.layouts.qubits.xmon`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

@@ -6,7 +6,7 @@ ShortToGround.png
 
 **Source:** Metal (Qiskit Metal). **Category:** termination. **Module:** `qiskit_metal.qlibrary.terminations.short_to_ground`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

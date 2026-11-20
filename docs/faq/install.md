@@ -8,7 +8,7 @@ on [Getting started](../getting-started.md).
 ### How do I install it?
 
 From PyPI, in a Python 3.11 or newer environment. Install the CPU build of PyTorch first (SQcircuit needs it), then the
-package:
+package. The current release is 0.0.2:
 
 ```bash
 pip install torch --index-url https://download.pytorch.org/whl/cpu
@@ -16,6 +16,8 @@ pip install "quantcore-circuits[all]"
 qcc kqc-files
 qcc selftest
 ```
+
+To pin it, use `pip install "quantcore-circuits[all]==0.0.2"`.
 
 `qcc kqc-files` fetches KQCircuits' simulation scripts and label font once (a few seconds, from the KQCircuits release on GitHub): the `kqcircuits` package on PyPI does not include them, and the HFSS / Q3D / Elmer export and KQC's chip-frame labels need them.
 

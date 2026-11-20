@@ -607,9 +607,10 @@ def pdk_facts_md(cheese: str = "") -> str:
                           "(DRC design warnings `pdk_rn`, `pdk_fq`: flagged, never retuned)"),
         ("3/0 keep-out", f"second-metal etch: routes + {ko.route_margin:g} µm, components' etch bbox + "
                          f"{ko.component_margin:g} µm, other 1/0 shapes + {ko.other_margin:g} µm (filled)"),
-        ("cheese rule", f"{ch.rows} rows of {ch.size:g} µm squares, {ch.gap:g} µm gaps, in a band around the 3/0 "
-                        "keep-outs; **the original design's own cheese wins** (chip `cheese`: `\"auto\"` / "
-                        "`\"pdk\"` / `\"original\"`)" + (f". This chip: {cheese}" if cheese else "")),
+        ("cheese rule", f"{ch.size:g} µm squares, {ch.gap:g} µm gaps, at least {ch.clearance:g} µm from the 3/0 "
+                        f"keep-outs: a band of {ch.rows} rows around them, or the whole die (chip `cheese`: "
+                        "`\"auto\"` / `\"pdk\"` / `\"chip\"` / `\"original\"`); holes drawn in the original "
+                        "layout stay" + (f". This chip: {cheese}" if cheese else "")),
     ]
     return "\n".join(["| PDK item | value |", "|---|---|"] + [f"| {k} | {v} |" for k, v in rows])
 

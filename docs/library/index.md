@@ -15,6 +15,7 @@ part of `src/quantcore_circuits/` is for.
 | `designer.py` | Build a chip in Python, live in KLayout | `Designer`, `Designer.add`, `.route`, `.sim_subset`, `.drc`, `.lom` | [Designer](designer.md) |
 | `design/` | The `design.json` model: schema `qcc/0.1`, loading, hashing, `design.py` round trip | `load_design`, `Design` | [Routing and DRC](routing-drc.md) |
 | `layouts/` | The component library: Quantcore cells, the KQC and Quantum Metal registry, wafers and fab export | `resolve_cell`, `catalog`, `export_fab` | [Components](components.md), [Fab export](fab.md) |
+| `layouts/others/flip_chip.py`, `sim_tools/` | Flip-chip and TSV designs: cells, faces, per-face DRC, multi-face sim export | `CpwTsvTransition`, `QcFlipChipConnectorRf` | [Flip-chip and TSV](flip-chip.md) |
 | `pdk/` | The Quantcore process: stack, layers, die frame, keep-outs, cheese, junction process | `get_pdk`, `Pdk` | [PDK](pdk.md) |
 | `assembly/` | `design.json` into a KQC chip: snaps, routing, pad rule, DRC, netlist, sidecar | `build`, `write_layout`, `drc.check` | [Routing and DRC](routing-drc.md) |
 | `route/` | Route plans into waveguides and meanders, with length fixing | `router.fix_length` | [Routing and DRC](routing-drc.md) |
@@ -39,6 +40,7 @@ The full list of functions and classes is in the [Python API reference](../refer
 designer
 components
 custom-components/index
+flip-chip
 pdk
 routing-drc
 lom

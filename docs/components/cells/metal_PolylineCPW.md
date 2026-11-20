@@ -6,7 +6,7 @@ A coplanar waveguide drawn along an explicit polyline.
 
 **Source:** Metal (Qiskit Metal). **Category:** waveguide. **Module:** `qiskit_metal.qlibrary.tlines.polyline_cpw`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

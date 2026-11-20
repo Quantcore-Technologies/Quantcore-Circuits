@@ -777,7 +777,7 @@ def pdk_report(d) -> str:
 
     from quantcore_circuits.assembly import build  # pylint: disable=import-outside-toplevel
     from quantcore_circuits.assembly.drc import check  # pylint: disable=import-outside-toplevel
-    from quantcore_circuits.assembly.plan import default_junction_type, pdk_cheese  # pylint: disable=C0415
+    from quantcore_circuits.assembly.plan import cheese_mode, default_junction_type  # pylint: disable=C0415
 
     design = d.design
     result = build(design)
@@ -800,10 +800,17 @@ def pdk_report(d) -> str:
     )
     box = content_box(d)
     x0, y0, x1, y1 = design.chip.box
-    cheese = "PDK band (drawn in the build)" if pdk_cheese(design) else "the original design's own (or none)"
+    mode = cheese_mode(design)
+    cheese = {
+        "band": "PDK band (drawn in the build)",
+        "chip": "PDK cheese over the whole die (drawn in the build)",
+        "kqc": "KQC's own whole-area grid (`with_grid`, kept with `cheese: \"original\"`)",
+        "none": "the original design's own (or none)",
+    }.get(mode, "")
     rule = design.chip.params.get("cheese")
-    if isinstance(rule, dict):  # a design-chosen (original) cheese rule, drawn by the build (notebooks-metal)
-        cheese = "the original design's rule (drawn in the build): " + ", ".join(f"{k} {v:g}" for k, v in rule.items())
+    if isinstance(rule, dict):  # a design-chosen (original) cheese rule, drawn by the build
+        cheese = "the original design's rule (drawn in the build): " + ", ".join(
+            f"{k} {v:g}" if isinstance(v, (int, float)) else f"{k} {v}" for k, v in rule.items())
     dx, dy = box.center().x - (x0 + x1) / 2, box.center().y - (y0 + y1) / 2
     junctions = ", ".join(f"{k} × {v}" for k, v in jt.items()) or "—"
     kinds = ", ".join(f"{k} × {v}" for k, v in Counter(i.rule for i in margin).items()) or "none"
@@ -855,8 +862,9 @@ def pdk_facts_md(d=None) -> str:
     ]
     if c is not None:
         rows.append(
-            f"| cheese | the original design's own if it has one, else the PDK band: {c.size:g} µm squares, {c.gap:g} µm "
-            f"gaps, {c.rows} rows around the 3/0 keep-outs (chip param `cheese`: auto / pdk / original) |"
+            f"| cheese | {c.size:g} µm squares, {c.gap:g} µm gaps, ≥ {c.clearance:g} µm from the 3/0 keep-outs: a band of "
+            f"{c.rows} rows around them, or the whole die (`cheese: \"chip\"`); an "
+            "original design's own rule or holes where it has them (chip param `cheese`: auto / pdk / chip / original) |"
         )
     rows.append(
         f"| 3/0 keep-out | filled second-metal etch: routes CPW footprint + {k.route_margin:g} µm, components etch bbox "

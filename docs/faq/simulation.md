@@ -68,8 +68,8 @@ port polygons. `qcc sim preview DESIGN` prints the box, components and ports as 
 ### What happens to the junction in a simulation?
 
 Q3D leaves the gap open (C_J is added in the LOM). Eigenmode and driven runs replace it with a lumped L in parallel with C
-across the gap, with L from your `Lj_nH` (or the PDK value of a drawn Quantcore junction). Where the metal edges at the gap are long (over 20 µm) the sheet is a 10 µm-wide strip on the junction line; spanning
-the whole edges had made it a long lopsided trapezoid and the qubit mode did not show up.
+across the gap, with L from your `Lj_nH` (or the PDK value of a drawn Quantcore junction). Where the metal edges at the gap are long (over 20 µm) the sheet is a 10 µm-wide strip on the junction line, because a sheet
+spanning the whole edges becomes a long lopsided trapezoid and the qubit mode does not show up.
 A qubit with no L_J blocks an eigenmode run and the Open simulation layout menu, naming the qubit. See
 [components](components.md).
 
@@ -85,7 +85,7 @@ the convergence and proposes the next settings. See [simulation](../library/simu
 
 ### How much memory does it need?
 
-A converged eigenmode run needs 32 GB or more; fast settings do not converge but run on a smaller PC. Low memory no longer stops a solve: it prints a note and keeps going. Close heavy programs first and set
+A converged eigenmode run needs 32 GB or more; fast settings do not converge but run on a smaller PC. Low memory does not stop a solve: it prints a note and keeps going. Close heavy programs first and set
 `OPENBLAS_NUM_THREADS=2`. Do not try whole-chip FEM on a laptop: simulate a subset (the feedline is always included, plus
 the pairs you pick).
 

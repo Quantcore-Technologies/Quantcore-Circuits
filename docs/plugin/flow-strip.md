@@ -1,8 +1,8 @@
 # The Flow strip
 
 The Flow strip is the row of six buttons at the top of the Quantcore panel. It walks a design through the flow:
-Design, Check, LOM, Simulate, Results, Fab. Use it when the chip is drawn and you want to know if it works and to send
-it to the fab. Each button runs the matching menu action, and a mark on it tells you where you are.
+Design, Check, LOM, Simulate, Results, Fab. Use it once the chip is drawn, to check it and send it to the fab.
+Each button runs the matching menu action, and a mark on it shows the state of that step.
 
 ```{figure} ../images/plugin/flow_1_open.png
 :width: 60%
@@ -131,8 +131,8 @@ On Windows keep the AEDT job folder path under about 140 characters. A deeper de
 `%TEMP%\qcc_jobs`.
 
 ```{warning}
-Eigenmode from the Simulate dialog, `--aedt gui` from the plugin and a whole-chip simulation from the GUI were never run
-for real. The end-to-end test ran Q3D of one qubit in a new non-graphical AEDT. See [status](../overview/status.md).
+Eigenmode from the Simulate dialog, `--aedt gui` from the plugin and a whole-chip simulation from the GUI have not been tested.
+The test ran Q3D of one qubit in a new non-graphical AEDT. See [status](../overview/status.md).
 ```
 
 ## Results and tune

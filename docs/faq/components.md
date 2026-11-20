@@ -26,13 +26,13 @@ table.
 ### Why does the same cell appear in more than one library?
 
 Some cells exist in more than one library. A cell that existing designs use keeps an alias, so old designs still
-rebuild. The groups and their recommendations are in [DUPLICATES](../components/DUPLICATES.md).
+rebuild. For example `metal:TransmonPocket6` is an alias of `metal:TransmonPocket`. The [catalogue](../components/CATALOG.md) lists every cell.
 
 ### Why does a cell place nothing, or fail?
 
 Not every cell can stand alone on a chip (wafer maps, markers), and some wrapped `metal:` cells need parameters. The
 plugin reports a clear message instead of a script error. The state of each cell is in
-[component status](../plugin/COMPONENTS_STATUS.md) and [SIM_EXPORT_AUDIT](../components/SIM_EXPORT_AUDIT.md).
+[component status](../plugin/COMPONENTS_STATUS.md).
 
 ## Qubits and junctions
 

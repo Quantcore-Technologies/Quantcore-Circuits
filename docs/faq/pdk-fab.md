@@ -43,14 +43,17 @@ stays in the middle when the mask is exported: think of it as etching the featur
 
 ### What is the cheese?
 
-Small squares that thin out the metal (flux-trapping holes): 5 µm squares, 20 µm gaps, three rows, in a band 4 µm outside
-the 3/0 keep-out. The holes are put on both 1/0 and 3/0. If a design carries its own cheese, the original cheese wins
-over the PDK band. See [PDK](../library/pdk.md).
+Small square holes in the ground metal that pin magnetic flux vortices: 5 µm squares with 20 µm gaps, at least 4 µm
+from the 3/0 keep-out, on both 1/0 and 3/0. By default they form a band three rows wide around the components. Set the
+chip parameter `cheese: "chip"` to spread them over the whole die instead. If a design carries its own cheese, the
+original cheese wins over the PDK band. See [PDK](../library/pdk.md).
 
-### Why do the KQC example chips have no cheese?
+### Why does the whole-chip picture of a KQC example look like a solid sheet?
 
-Cheese belongs to the fab export, not to the layout or to simulation: simulation exports never get cheese or rounding.
-The PDK band is added when you export for fab (unless the design has its own cheese), so a chip does not need it in its layout.
+It shouldn't any more. KQC grids its whole ground plane (`with_grid`: 5 µm holes on a 10 µm step), and at whole-chip
+zoom that grid renders as solid colour. The KQC example chips now use `cheese: "chip"` instead: the PDK squares over
+the whole die, which keeps KQC's coverage at the PDK density. The layout shows the cheese the fab mask will get;
+simulation exports never get cheese or rounding.
 
 ### Are corners rounded?
 

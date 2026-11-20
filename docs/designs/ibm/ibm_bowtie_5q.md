@@ -1,8 +1,8 @@
 # IBM 5-qubit bowtie
 
-IBM's first cloud processor (ibmqx2 Yorktown, ibmqx4 Tenerife): five fixed-frequency transmons and two bus resonators, each bus coupling three qubits, so the coupling graph is two triangles sharing Q2. Each qubit has its own readout resonator and line. No layout is public: IBM's device data give the topology and targets, and the layout is ours.
+IBM's first cloud processor (ibmqx2 Yorktown, ibmqx4 Tenerife): five fixed-frequency transmons and two bus resonators, each bus coupling three qubits, so the coupling graph is two triangles sharing Q2. Each qubit has its own readout resonator and line. No layout is public; IBM's device data give the topology and targets, and the layout is ours.
 
-Build this one to learn the multi-qubit bus: a λ/2 line from Q2 to a tee whose two short stubs reach the other two qubits. It also shows junctions sized qubit by qubit with the LOM.
+This notebook shows the multi-qubit bus (a λ/2 line from Q2 to a tee whose two short stubs reach the other two qubits) and junctions sized qubit by qubit with the LOM.
 
 ```{image} ../../images/designs/ibm/ibm_bowtie_5q.png
 :alt: The whole ibm_bowtie_5q chip as the v2 notebook builds it
@@ -13,15 +13,15 @@ Build this one to learn the multi-qubit bus: a λ/2 line from Q2 to a tee whose 
 
 | | |
 |---|---|
-| Notebook | `examples/designs/ibm/ibm_bowtie_5q.ipynb` (the one-cell version before the rewrite: `ibm_bowtie_5q.v1.ipynb`) |
+| Notebook | `examples/designs/ibm/ibm_bowtie_5q.ipynb` (an older one-cell version is kept as `ibm_bowtie_5q.v1.ipynb`) |
 | Source | IBM published device data (coupling map, frequencies); no public layout |
 | Chip | 9 × 8 mm Quantcore die, sapphire 650 µm (εr 10.25) |
 | On the chip | 5 pocket transmons · 5 λ/2 readouts · 2 tees and 2 three-qubit buses · 5 finger capacitors · 5 bond pads |
-| Builds today | yes: layout run 2026-11-19, 10 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 10 s) |
 
 ## How the notebook builds it
 
-Each Design segment is one cell with one picture of the chip so far (see [the notebook template](../notebook-template.md)).
+Each Design segment is one cell with a picture of the chip so far (see [the notebook template](../notebook-template.md)).
 
 ```{image} ../../images/designs/ibm/ibm_bowtie_5q_steps.png
 :alt: The layout segments of ibm_bowtie_5q
@@ -63,11 +63,11 @@ Numbers are from a run of this notebook on 2026-11-19 (Setup, Design, Check and 
 :alt: LOM plot of ibm_bowtie_5q
 ```
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates (component formulas and calibration), not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
-The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
+The rest of this page is the detailed spec the notebook was built from, with every component, port, route and length.
 
 **Sources.**
 - **Device data (primary):** Qiskit `FakeYorktown` backend files `conf_yorktown.json` / `props_yorktown.json` from
@@ -92,7 +92,7 @@ and Q1, bus B from Q2 to a tee reaching Q3 and Q4; a λ/2 readout per qubit to a
 **Chip.** 9 × 8 mm, Quantcore die frame (QCT), device ID `IBM5Q`; sapphire 650 µm, εr 10.25; 10/6 µm CPW.
 Junctions: Quantcore trilayer (`junction_type="Quantcore Junction"`), L_J 6.07–6.63 nH (R_n 40.6–44.3 kΩ).
 
-**Status.** Buildable now. Notebook `examples/designs/ibm/ibm_bowtie_5q.ipynb`.
+**Notebook.** `examples/designs/ibm/ibm_bowtie_5q.ipynb`.
 
 ### Components
 

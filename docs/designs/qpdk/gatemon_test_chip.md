@@ -2,7 +2,7 @@
 
 Two carbon-nanotube gatemons, each coupled to its own λ/2 resonator that is measured in transmission, plus a gate line per gatemon. The layout comes from QPDK's `gatemon_test_chip.pic.yml` (MIT; after Riechert et al., Nat. Commun. 2025) and is rebuilt on the Quantcore PDK; the rebuild is GPL-3.0.
 
-Build this one to learn a resonator measured in transmission (IDC, coupler, meander, IDC), the Quantcore `Gatemon` cell, and a chip that is bigger than the standard die.
+This notebook is an example of a resonator measured in transmission (IDC, coupler, meander, IDC), of the Quantcore `Gatemon` cell, and of a chip bigger than the standard die.
 
 ```{image} ../../images/designs/qpdk/gatemon_test_chip.png
 :alt: The whole gatemon_test_chip chip as the v2 notebook builds it
@@ -13,11 +13,11 @@ Build this one to learn a resonator measured in transmission (IDC, coupler, mean
 
 | | |
 |---|---|
-| Notebook | `examples/designs/qpdk/gatemon_test_chip.ipynb` (the one-cell version before the rewrite: `gatemon_test_chip.v1.ipynb`) |
+| Notebook | `examples/designs/qpdk/gatemon_test_chip.ipynb` (an older one-cell version is kept as `gatemon_test_chip.v1.ipynb`) |
 | Source | gdsfactory `quantum-rf-pdk` `qpdk/samples/gatemon_test_chip.pic.yml`, MIT (© 2024 gdsfactory) |
 | Chip | 10 × 10 mm (the source's size, larger than the 7.5 mm die), CPW 10 / 6 µm |
 | On the chip | 6 launchers · 2 gatemons · 2 gatemon couplers · 2 λ/2 resonators (11946 µm) · 4 series IDCs · 2 gate lines |
-| Builds today | yes: layout run 2026-11-19, 5 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 5 s) |
 
 ## How the notebook builds it
 
@@ -49,16 +49,14 @@ Numbers are from a run of this notebook on 2026-11-19 (Setup, Design, Check and 
 :alt: LOM plot of gatemon_test_chip
 ```
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates (component formulas and calibration), not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
-The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
-
-> **Update 2026-11-03:** frame = **source**: build with `chip={"die_frame": False, ...}` so the replica keeps its own size and frame (the Quantcore PDK die frame is for Quantcore chips only).
+The rest of this page is the detailed spec the notebook was built from, with every component, port, route and length.
 
 Source: [qpdk/samples/gatemon_test_chip.pic.yml](https://github.com/gdsfactory/quantum-rf-pdk/blob/main/qpdk/samples/gatemon_test_chip.pic.yml)
-· cells `qpdk/cells/gatemon.py` (`gatemon`, `gatemon_coupler`) · licence MIT (verified) · read 2026-11-02.
+· cells `qpdk/cells/gatemon.py` (`gatemon`, `gatemon_coupler`) · licence MIT (verified) · Read on 2026-11-02.
 Reference (in the YAML `info`): Riechert et al., carbon-nanotube gatemon, Nat. Commun. 2025,
 https://doi.org/10.1038/s41467-025-62283-y. Image: `docs/_static/images/gatemon_test_chip.png` (filled).
 What it is: two independent channels (a = south, b = north, mirror images). Each channel runs launcher → series IDC →
@@ -68,7 +66,7 @@ electrode routed to its own launcher.
 Frame: source centred on (0, 0); launchers at ±4850. The filled version's chip edge is about 9930 × 9900 µm.
 Use **box (0, 0, 10000, 10000)**, **Designer = source + (5000, 5000)**. Si, M1 negative. The YAML `info` gives the
 gatemon layer stack (hBN εr 3.4, CNT, Nb/Au contacts).
-Status: **no (missing: gatemon, gatemon_coupler)**. A plain `Swissmon` or `DoublePads` stand-in is possible (below).
+The first version used a plain `Swissmon` stand-in for the gatemon (below); the rebuild uses the `Gatemon` and `GatemonCoupler` cells.
 
 ### Components
 | instance | catalog ref | key params (units) | at (x, y) Designer | rot | notes |
@@ -116,28 +114,28 @@ Si (ε_eff 6.2) is 11.9 mm, matching 11946 µm.
    Place it at G_x and model the gate line as a drive line ending near the island (`free_end`).
 2. Treat RES_x as a fixed-length cpw route from CI_x.b to CO_x.a (`meander=11946`). The capacitive qubit tap then needs
    either `gatemon_coupler` or a short stub, a hanger with `end="open"`, from the qubit coupler to RES_x near s ≈ 200.
-3. Requested components: **gatemon** (pocketed 150 µm island with CNT weak link, hBN, top gate; ports `readout`, `gate`)
-   and **gatemon_coupler** (600 µm through-CPW with an island-coupling port at 200 µm, C ≈ 5.4 fF).
+3. The components **gatemon** (pocketed 150 µm island with CNT weak link, hBN, top gate; ports `readout`, `gate`)
+   and **gatemon_coupler** (600 µm through-CPW with an island-coupling port at 200 µm, C ≈ 5.4 fF) are needed for the real thing.
 
-### Build (2026-11-03)
-Built: `examples/designs/qpdk/gatemon_test_chip.ipynb` with a KQC `Swissmon` 150 µm square island stand-in (Lj 20 nH assumed) beside the plain resonator straight, coupling declared as `couple(C_fF=5.4)` to `CI_x.b` (a coupling that names a route breaks the C-matrix export: request for lead). CO_x moved to source x 3000 so the output route can turn at x 3300.
+### First build
+The first version of `examples/designs/qpdk/gatemon_test_chip.ipynb` used a KQC `Swissmon` 150 µm square island stand-in (Lj 20 nH assumed) beside the plain resonator straight, coupling declared as `couple(C_fF=5.4)` to `CI_x.b` (a coupling that names a route breaks the C-matrix export). CO_x moved to source x 3000 so the output route can turn at x 3300.
 
-### Rebuild with `Gatemon` + `GatemonCoupler` (2026-11-03, second instance)
-Swissmon stand-in replaced: `K_x = GatemonCoupler(length 600, qubit_side bottom|top)` snapped `o1` → `CI_x.b` (QPDK
+### Rebuild with `Gatemon` + `GatemonCoupler`
+The `Swissmon` stand-in is replaced: `K_x = GatemonCoupler(length 600, qubit_side bottom|top)` snapped `o1` → `CI_x.b` (QPDK
 connection), `G_A = Gatemon` snapped `readout` → `K_A.qubit`; `G_B` is mirrored in QPDK, and `Designer.add` drops
 `mirror` with a snap, so it is placed explicitly (mirror, on `K_B.qubit`) with a wire coupling. Gate routes go to
 `G_x.gate` via the QPDK waypoints. The KQC IDC is 37 µm longer than QPDK's, so coupler, gatemon and the last gate
 waypoint sit 18.5 µm east of the source. λ/2 = 600 + 11346.1 µm route. LOM: f_q 4.33 GHz, α −421 MHz (target −260;
-lom's analytic island C 51 fF vs QPDK's 75 fF; was −1014 with the stand-in), Lj 20 nH assumed. **Open:** the λ/2 is
-missing from the LOM (coupler line + meander route between the IDCs resolve to a wire), requested from lom.
+lom's analytic island C 51 fF vs QPDK's 75 fF; was −1014 with the stand-in), Lj 20 nH assumed. **Open issue:** the λ/2 is
+missing from the LOM (the coupler line and the meander route between the IDCs resolve to a wire).
 
-### Quantcore PDK rebuild (2026-11-03)
+### Quantcore PDK rebuild
 
-The notebook is a **Quantcore-PDK rebuild**, not a replica (design rule, 2026-11-03): the netlist, LOM and imported components are kept, the process is Quantcore's.
+The notebook is a Quantcore PDK rebuild, not a replica: the netlist, LOM and imported components are kept, the process is Quantcore's.
 
 Notebook: [`examples/designs/qpdk/gatemon_test_chip.ipynb`](../../../examples/designs/qpdk/gatemon_test_chip.ipynb).
 
 - **Chip:** the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), drawn on the source's 10 × 10 mm chip (the design does not fit the 7.5 mm die); no KQC chip frame.
 - **Stack:** sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); QPDK's process is Al on Si (εr 11.45), so frequencies are not the QPDK ones.
-- **Junctions:** **no Josephson tunnel junction to replace**: the gatemon's weak link is a gate-tunable carbon nanotube, another device. No Quantcore trilayer junction applies, and its contacts / CNT / hBN / Al patch / top gate have no PDK v3 fab layer (not drawn, as before). The LOM keeps the assumed fixed Lj = 20 nH, Cj = 2 fF.
+- **Junctions:** there is no Josephson tunnel junction to replace. The gatemon's weak link is a gate-tunable carbon nanotube, so no Quantcore trilayer junction applies, and its contacts / CNT / hBN / Al patch / top gate have no PDK v3 fab layer (not drawn, as before). The LOM keeps the assumed fixed Lj = 20 nH, Cj = 2 fF.
 - **Kept:** the topology and every component with the source's parameters and positions, the readout / resonator lengths and coupled sections, the sim groups (the 11946 µm λ/2 between the IDCs, the 5.4 fF coupling, the YAML targets).

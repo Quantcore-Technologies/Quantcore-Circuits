@@ -6,7 +6,7 @@ Interdigital capacitor interrupting the centre line (legacy ``cpwe.finger_cap``)
 
 **Source:** Quantcore. **Category:** capacitor. **Module:** `quantcore_circuits.layouts.others.cpwe`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

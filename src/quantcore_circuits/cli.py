@@ -214,7 +214,8 @@ def components(
             return
         for name, p in ports.items():
             d = p.as_dict()
-            typer.echo(f"  {name:12s} at {d['at']}  dir {d['dir']}  a={d['a']} b={d['b']}")
+            face = f"  face {d['face']}" if "face" in d else ""
+            typer.echo(f"  {name:12s} at {d['at']}  dir {d['dir']}  a={d['a']} b={d['b']}{face}")
         return
     try:
         entries = catalog(category=category, source=source, chips=show_all or category == "chip", routes=show_all)

@@ -13,11 +13,11 @@ Build this one to learn a λ/2 readout on a through line and the Quantcore `Tran
 
 | | |
 |---|---|
-| Notebook | `examples/designs/sqdmetal/floating_transmon.ipynb` (the one-cell version before the rewrite: `floating_transmon.v1.ipynb`) |
+| Notebook | `examples/designs/sqdmetal/floating_transmon.ipynb` (an older one-cell version is kept as `floating_transmon.v1.ipynb`) |
 | Source | SQDMetal example `Palace_Eigenmode_FloatingTransmon.ipynb`, Apache-2.0 |
 | Chip | 7.5 × 7.5 mm Quantcore die, the source's 4 × 4 mm area in its middle, CPW 10 / 6 µm |
 | On the chip | 2 bond pads · 1 line · 1 tapered-inset transmon · 1 λ/2 readout (8960 µm) |
-| Builds today | yes: layout run 2026-11-19, 8 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 8 s) |
 
 ## How the notebook builds it
 
@@ -57,25 +57,25 @@ Numbers are from a run of this notebook on 2026-11-19 (Setup, Design, Check and 
 :alt: LOM plot of floating_transmon
 ```
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates from component formulas and calibration, not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
 The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
 
-> **Update 2026-11-03:** frame = **source**: build with `chip={"die_frame": False, ...}` so the replica keeps its own size and frame (the Quantcore PDK die frame is for Quantcore chips only). The KQC `DoublePads` stand-in has a LOM model now; TransmonTaperedInsets is still MISSING.
+> The KQC `DoublePads` stand-in has a LOM model. The Quantcore rebuild uses `TransmonTaperedInsets`.
 
 Source: [doc-sphinx/source/examples/Palace_Eigenmode_FloatingTransmon.ipynb](https://github.com/sqdlab/SQDMetal/blob/main/doc-sphinx/source/examples/Palace_Eigenmode_FloatingTransmon.ipynb)
 · SQDMetal `TransmonTaperedInsets` + Quantum Metal `CoupledLineTee`, `RouteMeander`, `RouteStraight`, `OpenToGround` ·
-licence **Apache-2.0** (verified) · read 2026-11-02. No stored outputs. Exports GDS via `MakeGDS(...).export(positive)`,
+licence Apache-2.0 (verified) · read on 2026-11-02. No stored outputs. Exports GDS via `MakeGDS(...).export(positive)`,
 then runs a Palace capacitance / eigenmode setup (3 modes from 3 GHz).
-What it is: one floating tapered-pad transmon. Its readout connector pad runs a **λ/2 meander** to a `CoupledLineTee`
-with an **open** termination, hung on a short straight transmission-line segment (both ends `OpenToGround`; the
+What it is: one floating tapered-pad transmon. Its readout connector pad runs a λ/2 meander to a `CoupledLineTee`
+with an open termination, hung on a short straight transmission-line segment (both ends `OpenToGround`; the
 simulation adds 50 Ω ports).
 Frame: chip 4 × 4 mm centred at (0, 0), substrate 500 µm, silicon (`siliconcryo`). **Box (0, 0, 4000, 4000)**,
 **Designer = source + (2000, 2000)**. CPW width 10 µm, gap from `CpwParams.get_gap_from_width` for 50 Ω on Si
 (≈ 6 µm, not printed).
-Status: **no (missing: TransmonTaperedInsets)**. A `DoublePads` stand-in makes the rest buildable.
+`TransmonTaperedInsets` has no KQC equivalent. A `DoublePads` stand-in covers it for a first build.
 
 ### Components
 | instance | catalog ref | key params (units) | at (x, y) Designer | rot | notes |
@@ -110,24 +110,24 @@ f_q 4.5 GHz, f_res 6.8 GHz (λ/2).
 2. Our hanger ends `open`, so R1 is a native route. Check that the λ/2 length (not λ/4) is what the LOM bridge assumes
    for an open-open route.
 
-### Build (2026-11-03)
-Built with the DoublePads stand-in (pads 800 × 110, gap 100, pocket 1000 × 800, rot 90, 200 × 30 coupler); line between two 100 µm BondPads at the source open ends; open hanger 220 µm / 5 µm, backward (open at the west end); Lj 14 nH assumed.
+### Build with the stand-in
+The stand-in build uses the DoublePads stand-in (pads 800 × 110, gap 100, pocket 1000 × 800, rot 90, 200 × 30 coupler); line between two 100 µm BondPads at the source open ends; open hanger 220 µm / 5 µm, backward (open at the west end); Lj 14 nH assumed.
 
-### Rebuild with `TransmonTaperedInsets` (2026-11-03, second instance)
-DoublePads stand-in replaced by `TransmonTaperedInsets` with the source options (`connection_pads` readout pad_gap
+### Rebuild with `TransmonTaperedInsets`
+The DoublePads stand-in is replaced by `TransmonTaperedInsets` with the source options (`connection_pads` readout pad_gap
 100, inductor_height 100, pad_gap 100, taper_height 0, rot 90). R1 starts at the cell's `readout` pin (700 µm from the
 centre, as SQDMetal); the 410 µm connector wire is inside the cell, so the route is 8960 − 410 = 8550 µm. LOM (Lj 14 nH
 assumed; pads analytic 93 / 106 / 44 fF; connection pad + wire 73 fF to gnd): f_q 4.10 GHz (target 4.5), α −225 MHz,
-λ/2 7.02 GHz (target 6.8 on Si), χ −0.36 MHz, κ 0.0066 MHz (was 4.46 GHz / 7.01 GHz / χ −0.59 with the stand-in).
-Open: the drawn Manhattan junction does not bridge the 100 µm gap (components).
+λ/2 7.02 GHz (target 6.8 on Si), χ −0.36 MHz, κ 0.0066 MHz (with the stand-in: 4.46 GHz / 7.01 GHz / χ −0.59).
+Open issue: the drawn Manhattan junction does not bridge the 100 µm gap (components).
 
-### Quantcore PDK rebuild (2026-11-03)
+### Quantcore PDK rebuild
 
-The notebook is a **Quantcore-PDK rebuild**, not a replica (design rule, 2026-11-03): the netlist, LOM and imported components are kept, the process is Quantcore's.
+The notebook is a Quantcore PDK rebuild of the source, not a replica: the netlist, LOM and imported components are kept, and the process is Quantcore's.
 
 Notebook: [`examples/designs/sqdmetal/floating_transmon.ipynb`](../../../examples/designs/sqdmetal/floating_transmon.ipynb).
 
-- **Chip:** the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), on the 7.5 × 7.5 mm Quantcore die; the source's 4 × 4 mm chip area is centred in it (`box=(-1750, -1750, 5750, 5750)`), so every coordinate stays the source's.
-- **Stack:** sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); the SQDMetal examples are on silicon (280–500 µm), so frequencies differ from the source's.
-- **Junctions:** Quantcore Nb/AlOx/Nb trilayer junctions (`junction_type` from `layouts.registry.trilayer_junction`): fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient, sized on the PDK junction rule (Nb Δ = 1.4 meV, I_c·R_n = πΔ/2e, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed). The junction is **sized for the source's target f_q 4.5 GHz** with the pre-rebuild LOM C_Σ ≈ 98 fF: straight finger 0.31 µm × 0.6 µm, L_J ≈ 10.9 nH, C_J ≈ 9.3 fF — **R_n ≈ 72 kΩ, above the 40–50 kΩ window** (a 45 kΩ junction would put it at ≈ 5.6 GHz). It is drawn across the 100 µm pad gap by `TransmonTaperedInsets` (`junction_params`); cell 1 prints the sizing.
-- **Kept:** the topology and the components with the source's options and positions, the 8960 µm λ/2 readout, the 220 µm / 5 µm coupled section, the targets, the sim group.
+- Chip: the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), on the 7.5 × 7.5 mm Quantcore die; the source's 4 × 4 mm chip area is centred in it (`box=(-1750, -1750, 5750, 5750)`), so every coordinate stays the source's.
+- Stack: sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); the SQDMetal examples are on silicon (280–500 µm), so frequencies differ from the source's.
+- Junctions: Quantcore Nb/AlOx/Nb trilayer junctions (`junction_type` from `layouts.registry.trilayer_junction`): fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient, sized on the PDK junction rule (Nb Δ = 1.4 meV, I_c·R_n = πΔ/2e, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed). The junction is sized for the source's target f_q 4.5 GHz with the LOM C_Σ ≈ 98 fF: straight finger 0.31 µm × 0.6 µm, L_J ≈ 10.9 nH, C_J ≈ 9.3 fF, so R_n ≈ 72 kΩ, above the 40–50 kΩ window (a 45 kΩ junction would put it at ≈ 5.6 GHz). It is drawn across the 100 µm pad gap by `TransmonTaperedInsets` (`junction_params`); cell 1 prints the sizing.
+- Kept: the topology and the components with the source's options and positions, the 8960 µm λ/2 readout, the 220 µm / 5 µm coupled section, the targets, the sim group.

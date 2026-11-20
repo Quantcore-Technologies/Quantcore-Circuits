@@ -5,9 +5,18 @@ All notable changes to quantcore-circuits are listed here. The format follows
 
 ## [Unreleased]
 
-## [0.0.1] - 2026-11-19
+## [0.0.2] - 2026-11-20
 
-First public release, under GPL-3.0-or-later.
+First non-beta release (`pip install quantcore-circuits`, no `--pre`). The KLayout plugin stays at 0.0.1.
+
+### Fixed
+
+- Flip-chip designs and the extra ground holes; the docs rewritten to match (these missed the 0.0.1b0 export).
+- The KLayout Salt icon uses the new Quantcore mark.
+
+## [0.0.1b0] - 2026-11-19
+
+First public release, a beta, under GPL-3.0-or-later. Install it with `pip install --pre quantcore-circuits`.
 
 ### Added
 
@@ -20,7 +29,13 @@ First public release, under GPL-3.0-or-later.
   as examples.
 - **PDK and fab export.** The `quantcore_nb_sapphire_v1` process (Nb on sapphire, 650 µm, εr 10.25; a silicon variant
   is kept as `quantcore_nb_si_v1`) with its negative-mask fab layer map, die frame, 100 µm pad-edge rule, keep-outs,
-  cheese and corner rounding. `qcc mask` writes the fab layers; wafer assembly of dies is documented.
+  cheese (a band around the components, or the whole die with chip parameter `cheese: "chip"`) and corner rounding.
+  `qcc mask` writes the fab layers; wafer assembly of dies is documented.
+- **Flip-chip and TSV designs.** A `CpwTsvTransition` cell (a CPW line through one chip, a port on each face),
+  Designer ports on KQC's `FlipChipConnectorRf` and a `QcFlipChipConnectorRf` with a settable bump size; routes take
+  their face from the port they start on. The DRC checks overlaps and open conductors per face, and sim groups that
+  cross a bump or a TSV export with every face they use (KQC face stack, chip gap 8 µm). The PDK cheese stays clear of
+  TSVs, bumps, under-bump metal and airbridges.
 - **Routing and checks.** A router with Manhattan auto-routing, fixed-length meanders and hanger couplers, a
   connectivity DRC (dangling ports, overlaps, crossings, opens at ports, die-frame keep-outs) and a netlist check of
   declared against extracted connectivity.
@@ -45,7 +60,7 @@ First public release, under GPL-3.0-or-later.
 - **`qcc` command line.** `selftest`, `build`, `watch`, `components`, `synth`, `mask`, `review`, `dashboard`,
   `analyse`, and the groups `sim`, `results`, `runner`, `design`, `hfss` and `circuit`.
 - **Examples and docs.** Five tutorial notebooks (quickstart, a 12-qubit chip, an IBM bowtie, the surface-17 chip and a
-  two-qubit feedback loop), 68 design notebooks that rebuild published chips (Qiskit Metal, KQCircuits, qpdk,
+  two-qubit feedback loop), 74 design notebooks that rebuild published chips (Qiskit Metal, KQCircuits, qpdk,
   SQDMetal, SQuADDS, IBM, Google, amplifiers and community designs), and a documentation site (Sphinx + MyST).
 - **Packaging and install.** A PyPI package with the extras `analysis`, `sim`, `notebook`, `all` and `dev`; an
   offline wheelhouse builder (`scripts/build_wheelhouse.py`) with install scripts for a PC without internet
@@ -55,8 +70,9 @@ First public release, under GPL-3.0-or-later.
 
 - No converged AEDT run has been done yet; the FEM runs so far used fast settings.
 - Palace, Elmer and Sonnet were never solved; only their input files are written.
-- The flip-chip two-face FEM export and Q3D nets above 8000 points are not built.
+- Two-face FEM jobs are exported but none has been solved yet; junction ports exist on face 1t1 only. Q3D nets above 8000 points are not built.
 - The full status, with evidence, is in the documentation (Overview, Status).
 
-[Unreleased]: https://github.com/Quantcore-Technologies/Quantcore-Circuits/compare/v0.0.1...HEAD
-[0.0.1]: https://github.com/Quantcore-Technologies/Quantcore-Circuits/releases/tag/v0.0.1
+[Unreleased]: https://github.com/Quantcore-Technologies/Quantcore-Circuits/compare/v0.0.2...HEAD
+[0.0.2]: https://github.com/Quantcore-Technologies/Quantcore-Circuits/compare/v0.0.1b0...v0.0.2
+[0.0.1b0]: https://github.com/Quantcore-Technologies/Quantcore-Circuits/releases/tag/v0.0.1b0

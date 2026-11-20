@@ -6,7 +6,7 @@ Generates a three pin (+) structure comprised of a primary two pin CPW
 
 **Source:** Metal (Qiskit Metal). **Category:** coupler. **Module:** `qiskit_metal.qlibrary.couplers.coupled_line_tee`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

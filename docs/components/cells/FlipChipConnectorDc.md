@@ -6,7 +6,7 @@ PCell declaration for an inter-chip dc connector.
 
 **Source:** KQC (KQCircuits). **Category:** flip_chip. **Module:** `kqcircuits.elements.flip_chip_connectors.flip_chip_connector_dc`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

@@ -85,8 +85,14 @@ def extract_netlist(cell) -> dict:
         return json.loads(path.read_text(encoding="utf-8"))
 
 
-def extracted_connections(netlist: dict, instance_names: set[str]) -> set[frozenset[str]]:
-    """Connected groups of named-instance ports in a KQC netlist (unnamed sub-circuits are wire)."""
+def extracted_connections(
+    netlist: dict, instance_names: set[str], face_ports: dict[str, dict[str, str]] | None = None
+) -> set[frozenset[str]]:
+    """Connected groups of named-instance ports in a KQC netlist (unnamed sub-circuits are wire).
+
+    ``face_ports`` (``{instance: {face: port}}``) names the unnamed pins of cells whose ports record their chip face
+    (KQC ``FlipChipConnectorRf`` labels both CPW ends ``""``): such a pin is the port on the face of the route piece
+    it meets (that piece's ``face_ids[0]``). Other unnamed pins are ``port``."""
     parent: dict = {}
 
     def find(x):
@@ -105,9 +111,25 @@ def extracted_connections(netlist: dict, instance_names: set[str]) -> set[frozen
         name = subs.get(str(sid), {}).get("instance_name")
         return name if name in instance_names else None
 
+    circuits = netlist.get("circuits", {})
+
+    def net_face(pins) -> str | None:
+        for p in pins:  # a route piece (not a design instance) is drawn on its first face
+            sub = subs.get(str(p["subcircuit_id"]), {})
+            faces = (circuits.get(sub.get("cell_name")) or {}).get("face_ids")
+            if named(p["subcircuit_id"]) is None and faces:
+                return str(faces[0])
+        return None
+
+    def pin_name(p, pins) -> str:
+        if not p["pin"].startswith("$"):
+            return p["pin"]
+        by_face = (face_ports or {}).get(named(p["subcircuit_id"]))
+        return (by_face or {}).get(net_face(pins), "port") if by_face else "port"
+
     for pins in netlist.get("nets", {}).values():
         # An unnamed KQC port (``add_port("")``, refpoint ``port``, e.g. Launcher) has no pin name: KLayout calls it $N
-        keys = [(p["subcircuit_id"], "port" if p["pin"].startswith("$") else p["pin"]) for p in pins]
+        keys = [(p["subcircuit_id"], pin_name(p, pins)) for p in pins]
         for k in keys:
             find(k)
             if named(k[0]) is None:  # wire: all pins of an unnamed sub-circuit are one conductor
@@ -157,7 +179,15 @@ def check_netlist(result) -> NetlistReport:
     # an overlapping cell) makes one group, as the extraction does
     declared = _merge_groups(declared_connections(design, skip=set(result.plan.failed)), [])
     netlist = extract_netlist(result.cell)
-    extracted = extracted_connections(netlist, set(design.instances))
+    face_ports: dict[str, dict[str, str]] = {}  # instances whose ports record their face (TSV / bump transitions)
+    for name, inst in result.plan.instances.items():
+        faces = [p.face for p in inst.local_ports.values() if p.face]
+        for port in inst.local_ports.values():
+            if port.face and faces.count(port.face) == 1:
+                face_ports.setdefault(name, {})[port.face] = port.name
+    # two arguments when no port records a face, so callers that replace extracted_connections keep working
+    args = (netlist, set(design.instances)) + ((face_ports,) if face_ports else ())
+    extracted = extracted_connections(*args)
     ports = result.plan.all_ports()
 
     def where(names) -> list[tuple[float, float]]:

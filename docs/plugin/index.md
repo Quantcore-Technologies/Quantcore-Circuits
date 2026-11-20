@@ -2,7 +2,7 @@
 
 The Quantcore plugin turns KLayout into a drawing board for `design.json`. You place components, connect their ports,
 check the design, run the LOM and the simulations, and export the mask, all from KLayout's menu and a side panel.
-Use it when you want to build a chip by clicking. If you prefer code, see [scripted design with KLive](klive.md).
+Use it to build a chip by clicking. To work in code instead, see [scripted design with KLive](klive.md).
 
 ```{figure} ../images/plugin/window_overview.png
 :width: 100%
@@ -16,17 +16,17 @@ Flow strip on the right.
 - A KLayout **Salt package** (the folder `kplugin/` of the repository, published on the repository's
   [`klayout-plugin` branch](https://github.com/Quantcore-Technologies/Quantcore-Circuits/tree/klayout-plugin), which holds the package alone). It uses only
   KLayout's own Python (`pya`) and the standard library.
-- It is a front end, not a second engine. Every action edits `design.json`, calls `qcc` (the command line of this
+- It is a front end for the library. Every action edits `design.json`, calls `qcc` (the command line of this
   library) to rebuild the layout, and reloads the result in place. The overlays (ports, handles, previews) come from
   the `build/<name>.qcc.json` file that every `qcc build` writes next to the OAS.
 - It does not import `quantcore_circuits` or KQCircuits inside KLayout. Slow work (build, LOM, simulation) runs as
   `qcc` background jobs, so KLayout stays usable.
-- This section describes what exists today. Items the code marks as "coming soon" are said so.
+- Items the code marks as "coming soon" are named as such in these pages.
 
 ## Before you start
 
 You need KLayout 0.30 or newer (the plugin was tested with 0.30.3) and the library installed in a Python environment
-that has `qcc` (`pip install "quantcore-circuits[all]"`, see [getting started](../getting-started.md)).
+that has `qcc` (`pip install --pre "quantcore-circuits[all]"`, see [getting started](../getting-started.md)).
 
 ## Install into KLayout
 
@@ -80,9 +80,9 @@ The menu follows the flow: six submenus, then the panel and Settings. Shortcuts 
 | (top level) | Quantcore panel (Ctrl+Shift+P) · Settings... |
 
 If a submenu could not be filled (for example when `flow.py` fails to import), it shows a disabled "(coming soon)"
-item. In a normal install you will not see it.
+item. A normal install does not show it.
 
-Some things are deliberately **not** in the menu. Use these instead:
+These are not in the menu. Use the following instead:
 
 | You want to | Do this |
 |---|---|
@@ -105,7 +105,7 @@ Some things are deliberately **not** in the menu. Use these instead:
 | [Tutorial: Q1 + R1](TUTORIAL_q1_r1.md) | Draw a qubit with a readout resonator, step by step |
 | [Component status](COMPONENTS_STATUS.md) | Which library components were placed through the plugin |
 
-The long reference is the plugin's own README, `kplugin/README.md`, next to the code.
+The long reference is the plugin's README, `kplugin/README.md`, next to the code.
 
 ```{toctree}
 :maxdepth: 1

@@ -1,8 +1,8 @@
 # Six-resonator chip (chip_07)
 
-A resonator test chip. One 10/6 µm feedline runs between two bond pads, and six λ/4 hanger resonators hang off it, three above and three below, each coupled along a short straight section. Every resonator has its own length, so it rings at its own frequency (targets 5.0 to 6.5 GHz, written on the chip as 50 to 65). Measure the transmission through the feedline and you see six dips: this gives the resonator frequencies, coupling and quality factors before any qubit is added.
+A resonator test chip. One 10/6 µm feedline runs between two bond pads, and six λ/4 hanger resonators hang off it, three above and three below, each coupled along a short straight section. Every resonator has its own length, so it rings at its own frequency (targets 5.0 to 6.5 GHz, written on the chip as 50 to 65). Measuring the transmission through the feedline shows six dips, which give the resonator frequencies, coupling and quality factors before any qubit is added.
 
-It comes from Quantcore's own QWri script `chip_07_resonators.py` (May 2024, internal). The Quantcore-PDK rebuild puts the saved design in the PDK die frame and moves the bond pads to the 100 µm pad-edge rule, so the feedline is 5050 µm instead of 5250 µm. Build it to learn the simplest chip of all: a feedline, resonators coupled by proximity, and nothing else.
+It comes from Quantcore's own QWri script `chip_07_resonators.py` (May 2024, internal). The Quantcore-PDK rebuild puts the saved design in the PDK die frame and moves the bond pads to the 100 µm pad-edge rule, so the feedline is 5050 µm instead of 5250 µm. The PDK cheese (5 µm squares with 20 µm gaps, at least 4 µm from the 3/0 keep-outs) now covers the whole die, and the holes drawn in the original layout stay. Build it to see the simplest chip in this set: a feedline with resonators coupled by proximity.
 
 ```{image} ../../images/designs/legacy/chip_07_resonators.png
 :alt: The whole chip_07 chip rebuilt on the Quantcore PDK
@@ -71,28 +71,28 @@ These numbers are the notebook's saved output, not re-run for this page. They ar
 
 The rest of this page is the detailed spec the notebook was built from: every component, the changes made while rebuilding, and the notes.
 
-**Source:** `components/python/chip_07_resonators.py` (`create_test_chip`, May 2024; output
+Source: `components/python/chip_07_resonators.py` (`create_test_chip`, May 2024; output
 `chip_07_TLW4.0_6x_dec24`), Quantcore internal. Legacy PCells: `Coplanar Waveguide` (`CPW.lym`), `Connector Pad 2`
 (`connector_pad_v2.lym`), `Coupled Resonator` (`CPW_Coupled_Resonator.lym`), `Marker` (`Marker.lym`).
-**Rebuild:** `examples/designs/legacy/chip_07_resonators.ipynb` (+ `.json`, PNGs); tables and the legacy reference
+Rebuild: `examples/designs/legacy/chip_07_resonators.ipynb` (+ `.json`, PNGs); tables and the legacy reference
 in `examples/designs/legacy/_legacy_b.py` (`C07_*`, `chip07_reference`).
 
-### Changes after design decisions (legacy-fix, 2026-11-03)
+### Changes made in the rebuild
 
-- **#12 noted:** the legacy lengths/targets come from bare-resonator simulations without claws (per the design notes); this chip's resonators are bare, so they are that case; the 0.15–0.26 GHz offset of the written targets remains (lengths kept). No geometry change.
+- Targets: the legacy lengths and targets come from bare-resonator simulations without claws, and this chip's resonators are bare; the 0.15–0.26 GHz offset of the written targets remains (lengths kept). No geometry change.
 
-**What it is:** a resonator-only test chip (the header's "10 resonators … and a couple of test junctions" is stale:
+What it is: a resonator-only test chip (the header's "10 resonators … and a couple of test junctions" is stale:
 the code places six resonators; the test-pad block is commented out). A 5250 µm 10/6 µm feedline between two bond
 pads carries six `Coupled Resonator`s, three above and three below, each with a straight coupling section beside the
 feedline (clength 200–600 µm, cgap 4–6 µm). Targets (code comments and the etched labels "50" … "65" = f × 10):
 5.0, 5.25, 5.5, 6.0, 6.25, 6.5 GHz. Six flux-hole arrays line the feedline; text "WSK_TLW07" and six labels.
 
-**Die:** 7.5 × 7.5 mm (hard-coded `box_size`), centred on (0, 0) → shifted by (+3750, +3750). The PDK v2 die frame
+Die: 7.5 × 7.5 mm (hard-coded `box_size`), centred on (0, 0) → shifted by (+3750, +3750). The PDK v2 die frame
 replaces the legacy `Marker` corners (thickness 50, width 500, rot 1/2/3/0 at the corners) and the 10/0 boundary
 boxes (die outline and four 500 µm corner squares at (±3350, ±3350)). Legacy layers: 1/0 (etch), 3/0 (second-metal
 envelope, `fab_l`), 10/0 (boundary).
 
-**Status:** built; XOR with the legacy PCells is 0.0 µm² on every instance (see the second-metal note below).
+Built; XOR with the legacy PCells is 0.0 µm² on every instance (see the second-metal note below).
 
 ### Components
 
@@ -116,7 +116,7 @@ Common resonator parameters (`resParams_common`): cpw_len 4660 (overridden), gap
 300, flip False, neck_length 400, ground True (shorted at the coupler end in fab mode). The second, vertical
 flux-hole table (`rx/ry/ly` lists after the first loop) is never inserted in the source: not drawn.
 
-**Second metal (design rule):** R8, R9 and R12 are drawn with `l` = 3/0 and `fab_l` = 1/0, swapped from the
+Second metal: R8, R9 and R12 are drawn with `l` = 3/0 and `fab_l` = 1/0, swapped from the
 default, so in the legacy mask their CPW etch is on 3/0 and their 1/0 holds only the trace footprint grown by gap +
 cgap (the base metal cleared under them: these three are patterned in the second metal; the header's "4 on L3; 6
 on L1"). PDK v2 derives 3/0 from 1/0 at export and has no per-element layer choice, so the rebuild draws all six

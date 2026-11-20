@@ -14,7 +14,13 @@ polarity, the cheese, the 3/0 keep-outs and rounded corners. Use it when a desig
 | Plugin | Quantcore > Fab > Export for fab: a bundle with `<name>_fab.oas`, `circuit.json`, `design.py` and a PNG. It refuses while a route has failed |
 
 The cheese is the build's own; if the design has none, the PDK band is used (also on 3/0). Simulation exports never get
-cheese or rounding.
+cheese or rounding. Either way the holes stay in the ground plane (not in floating pads or islands), and no hole lands
+on or next to a TSV, an indium bump, under-bump metal or an airbridge; these are not written on 3/0.
+
+On 3/0, a whole KQC chip placed as one instance (for example `Stripes`, `JunctionTest` or `Empty` in
+`examples/designs/kqc/test_chips`) gets its etch grown by the 9 µm margin. A keep-out of its bounding box would cover
+nearly the whole die and leave the cheese only a thin band at the die edge. The same holds for any cell over more than
+half the die.
 
 ```python
 report = {}
@@ -44,7 +50,7 @@ The facing arm tips of the two Xmons (tutorial 4): rounded corners and the chees
 
 ## Limits
 
-- 105 example exports were compared on 2026-11-17 after the 3/0 and cheese changes.
+- 105 example exports were compared after the latest 3/0 and cheese changes.
 - Wafer assembly (dies on a wafer) is in [Wafer assembly](wafer.md); a mask set (several chips with test structures and
   per-layer reticles) is not built.
 - The dashboard has no Fab step.

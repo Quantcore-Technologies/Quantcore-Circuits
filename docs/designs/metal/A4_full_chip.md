@@ -18,11 +18,11 @@ readout and multiplexed readout in one layout.
 
 | | |
 |---|---|
-| Notebook | `examples/designs/metal/a4_full_chip.ipynb` (the one-cell version before the rewrite: `a4_full_chip.v1.ipynb`) |
+| Notebook | `examples/designs/metal/a4_full_chip.ipynb` (an older one-cell version is kept as `a4_full_chip.v1.ipynb`) |
 | Source | Qiskit Metal `A.4-Full-chip-design.ipynb`, © IBM and contributors, Apache-2.0 |
 | Chip | 12.2 × 9.2 mm (the source's 11 × 8 mm grown by 0.6 mm per side), CPW 10 / 6 µm, flux lines 5 / 3 µm |
 | On the chip | 6 qubits (hub `Q_Main`, 2 crossmons with flux lines, 3 pocket transmons) · 1 tunable coupler · 6 readouts · 7 buses · 3 flux lines · 9 launchpads |
-| Builds today | yes: layout run 2026-11-19, 14 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 14 s) |
 
 ## How the notebook builds it
 
@@ -72,13 +72,13 @@ Numbers are from a run of this notebook on 2026-11-19 (Setup, Design, Check and 
 :alt: LOM plot of a4_full_chip
 ```
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates from component formulas and calibration, not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
 The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
 
-> **Update 2026-11-03:** frame = **source**: build with `chip={"die_frame": False, ...}` so the replica keeps its own size and frame (the Quantcore PDK die frame is for Quantcore chips only). `metal:<Class>` wrappers are READY (ports = Metal pin names, params = Metal options), so the `metal:` refs in this spec build as written; the Quantcore/KQC substitutions stay optional. Buildable now: **yes** for the full chip (`metal:TransmonPocket6`, `metal:TunableCoupler01` with pins `Control`/`Flux`, `metal:CapNInterdigitalTee`); subset A is still the quickest first build.
+> The `metal:` references in this spec build as written, through the `metal:` wrapper (ports are the Metal pin names, parameters the Metal options). The Quantcore and KQC substitutions are optional. The full chip builds with `metal:TransmonPocket6`, `metal:TunableCoupler01` (pins `Control` / `Flux`) and `metal:CapNInterdigitalTee`; subset A below is the quickest first build.
 
 Source: Quantum Metal `docs/circuit-examples/full-design-flow-examples/A.4-Full-chip-design.ipynb`. Licence
 Apache-2.0. It is a teaching layout ("resonator lengths only roughly chosen") that is taken through Q3D/Elmer LOM,
@@ -89,8 +89,8 @@ north feedline through a CoupledLineTee (λ/4) and two CapNInterdigitalTee (λ/2
 out separately.
 Chip 11 000 × 8000 µm, centred at (0, −0.5) mm, so **Designer = Metal + (5500, 4500)**. CPW 10/6 µm; flux lines 5/3 µm.
 Fillet 99 µm. The junctions are FakeJunction_01 cells.
-**Buildable now: metal**. Q_Main needs 6 couplers and Q4 needs 4; no Quantcore/KQC qubit has more than 3, so this
-needs `metal:TransmonPocket6` and `metal:TunableCoupler01`. The north block (subset A below) is buildable now.
+Q_Main needs 6 couplers and Q4 needs 4, and no Quantcore/KQC qubit has more than 3, so the full chip needs
+`metal:TransmonPocket6` and `metal:TunableCoupler01`. The north block (subset A below) builds from Quantcore and KQC parts.
 
 ### Components
 TransmonPocket6 base: pads 455 × 90, pad_gap 30, pocket 650 × 650. Connection pads at loc_W 0 have vertical pins at
@@ -135,7 +135,7 @@ and NW/NE on the north feedline. There are no markers.
 ### LOM node structure
 - Q_Main is the hub. It has a C_g to each of the 5 λ/2 buses: Q1 (5.6 GHz), Q2 (5.7), Q3 (5.8), Q4 (5.9), Q5 (6.0
   per the LOM setup).
-- Q3–Q4–Q5 form a bus chain. Q1 —TC (SQUID island)— Q2.
+- Q3–Q4–Q5 form a bus chain. Q1 and Q2 are coupled through TC (a SQUID island).
 - Readouts: R_QMain is λ/2 with a series C to its port. R_Q1, R_Q2 and R_TC are λ/2 with coupled-pad C to their
   ports. R_Q3 is λ/4 (hanger short) on FL_N. R_Q4 and R_Q5 are λ/2 with tee C on FL_N.
 - Flux bias on Q1, Q2 and TC.
@@ -147,19 +147,19 @@ and NW/NE on the north feedline. There are no markers.
 - EPR run: Lj(Q_Main) 13 nH, Lj(Q5) 15 nH, Bus_05 7.5 mm. Q3–Q5 Lj 14 nH; Q1/Q2 Metal default 10 nH.
 
 ### Simplifications for a first rebuild
-1. Subset A (buildable now): FL_N with Q3/Q4/Q5 as Xmon (claw_n = readout; e/w = chain buses), Bus_Q3_Q4,
+1. Subset A: FL_N with Q3/Q4/Q5 as Xmon (claw_n = readout; e/w = chain buses), Bus_Q3_Q4,
    Bus_Q4_Q5, and Read_Q3–Q5. This is a 3-qubit mux test of hanger readout with both short and open ends.
-2. Full chip: wait for `metal:TransmonPocket6` and `metal:TunableCoupler01`. For the open tees, use a hanger
+2. Full chip: use `metal:TransmonPocket6` and `metal:TunableCoupler01`. For the open tees, use a hanger
    `end="open"` or, more faithfully, a KQC `WaveguideCoplanarSplitter` plus `FingerCapacitorSquare`.
 3. Every coupled launchpad becomes a BondPad plus a FingerCapacitorSquare at the Metal tie pin.
 
-### Quantcore PDK rebuild (2026-11-03)
+### Quantcore PDK rebuild
 
-The notebook is a **Quantcore-PDK rebuild**, not a replica (design rule, 2026-11-03): the netlist, LOM and imported components are kept, the process is Quantcore's.
+The notebook is a Quantcore PDK rebuild of the source, not a replica: the netlist, LOM and imported components are kept, and the process is Quantcore's.
 
 Notebook: [`examples/designs/metal/a4_full_chip.ipynb`](../../../examples/designs/metal/a4_full_chip.ipynb).
 
-- **Chip:** the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), on the source's 11 × 8 mm chip grown by 0.6 mm on every side (box `(-600, -600, 11600, 8600)`) so that the corner launchpads `Launch_NW` / `Launch_NE` and the feedline clear the PDK marker areas; every coordinate stays the source's.
-- **Stack:** sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); Metal's `DesignPlanar` default is silicon (εr 11.45, 750 µm), so the LOM capacitances, resonator frequencies and FEM jobs here are for sapphire, not the source's substrate.
-- **Junctions:** Quantcore Nb/AlOx/Nb trilayer junctions (`junction_type` from `layouts.registry.trilayer_junction`): fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient, sized on the PDK junction rule (Nb Δ = 1.4 meV, I_c·R_n = πΔ/2e, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed). `Q_Main` is **sized for the tutorial's f_q 4.96 GHz** (its C_Σ ≈ 55 fF from the pre-rebuild LOM): straight finger 0.23 µm × 0.6 µm, L_J 14.6 nH, C_J 6.9 fF — **R_n ≈ 98 kΩ, above the 40–50 kΩ window** (a 45 kΩ junction would put this small pocket at ≈ 7.1 GHz). `Q3`–`Q5` get the PDK nominal junction, 0.5 × 0.6 µm fingers → R_n = 45 kΩ, L_J = 6.73 nH, C_J = 15 fF (in the 40–50 kΩ window) (expected ≈ 7.1–7.6 GHz; were 5.3–5.8 GHz with 14 nH). `Q1`, `Q2` and the coupler (flux lines) get a PDK SQUID of two 0.25 × 0.6 µm junctions → R_n = 45 kΩ in parallel, L_J = 6.73 nH at zero flux, C_J = 15 fF (in the 40–50 kΩ window); expected `Q1`/`Q2` ≈ 5.8 GHz (were 5.0), the coupler ≈ 8.3 GHz at zero flux (above the 4–8 GHz band; it is flux-tuned down).
-- **Kept:** the topology and every Metal component with the source's options (through the `metal:` wrapper), positions and orientations, every route's end pins and total length, the sim groups (buses 6.0–7.6 mm, readouts 5.0–6.8 mm, the three flux-line paths, the `d.couple` coupler estimates).
+- Chip: the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), on the source's 11 × 8 mm chip grown by 0.6 mm on every side (box `(-600, -600, 11600, 8600)`) so that the corner launchpads `Launch_NW` / `Launch_NE` and the feedline clear the PDK marker areas; every coordinate stays the source's.
+- Stack: sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); Metal's `DesignPlanar` default is silicon (εr 11.45, 750 µm), so the LOM capacitances, resonator frequencies and FEM jobs here are for sapphire rather than the source's substrate.
+- Junctions: Quantcore Nb/AlOx/Nb trilayer junctions (`junction_type` from `layouts.registry.trilayer_junction`): fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient, sized on the PDK junction rule (Nb Δ = 1.4 meV, I_c·R_n = πΔ/2e, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed). `Q_Main` is sized for the tutorial's f_q 4.96 GHz (its C_Σ ≈ 55 fF from the LOM): straight finger 0.23 µm × 0.6 µm, L_J 14.6 nH, C_J 6.9 fF, so R_n ≈ 98 kΩ, above the 40–50 kΩ window (a 45 kΩ junction would put this small pocket at ≈ 7.1 GHz). `Q3`–`Q5` get the PDK nominal junction, 0.5 × 0.6 µm fingers → R_n = 45 kΩ, L_J = 6.73 nH, C_J = 15 fF (in the 40–50 kΩ window) (expected ≈ 7.1–7.6 GHz). `Q1`, `Q2` and the coupler (flux lines) get a PDK SQUID of two 0.25 × 0.6 µm junctions → R_n = 45 kΩ in parallel, L_J = 6.73 nH at zero flux, C_J = 15 fF (in the 40–50 kΩ window); expected `Q1` / `Q2` ≈ 5.8 GHz, the coupler ≈ 8.3 GHz at zero flux (above the 4–8 GHz band; it is flux-tuned down).
+- Kept: the topology and every Metal component with the source's options (through the `metal:` wrapper), positions and orientations, every route's end pins and total length, the sim groups (buses 6.0–7.6 mm, readouts 5.0–6.8 mm, the three flux-line paths, the `d.couple` coupler estimates).

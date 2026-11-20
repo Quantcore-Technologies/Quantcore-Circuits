@@ -6,7 +6,7 @@ Two-pin gap capacitor with one electrode framing the other.
 
 **Source:** Metal (Qiskit Metal). **Category:** capacitor. **Module:** `qiskit_metal.qlibrary.lumped.cap_finger_in_frame`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

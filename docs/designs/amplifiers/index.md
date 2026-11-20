@@ -1,6 +1,6 @@
 # Amplifier designs
 
-Six parametric amplifier chips: two travelling-wave amplifiers (Josephson and kinetic-inductance), three JPAs and a kinetic-inductance amplifier from UNSW. They come from the QPDK and twpa-sim projects (MIT) and from a UNSW dataset (CC BY 4.0), rebuilt on the Quantcore PDK. They share the same six-step build: die, pads, feed, nonlinear element, routing, whole chip. They hold no qubits, so their LOM section reports amplifier figures where the notebook's model gives them.
+Six parametric amplifier chips: two travelling-wave amplifiers (Josephson and kinetic-inductance), three JPAs and a kinetic-inductance amplifier from UNSW. They come from the QPDK and twpa-sim projects (MIT) and from a UNSW dataset (CC BY 4.0), rebuilt on the Quantcore PDK. All six are built in the same six steps (die, pads, feed, nonlinear element, routing, whole chip). They hold no qubits, so their LOM section reports amplifier figures where the notebook's model gives them.
 
 | Page | What it is | Qubits | Chip size | Builds |
 |---|---|---|---|---|

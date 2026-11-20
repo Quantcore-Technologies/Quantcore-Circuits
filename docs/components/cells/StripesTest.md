@@ -14,7 +14,7 @@ Legacy cell. = StripesTestIncreasingWidth with stripe_step 0 (XOR 0); unused. Us
 Alias of [`StripesTestIncreasingWidth`](StripesTestIncreasingWidth.md): the same circuit, drawn differently. stripe_step 0 (XOR 0); lithography test, no circuit
 :::
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

@@ -13,7 +13,7 @@ The finished chip (section 6): two pads, the feedline, the Xmon and its meandere
 
 ## The sections
 
-| Section | What it does | Key call | What comes out |
+| Section | What it does | Call | What comes out |
 |---|---|---|---|
 | 1 PDK | Reads the process design kit every build uses | `get_pdk()`, `T.pdk_md(pdk)` | A table of the stack, the CPW, the die frame and the pad, junction and keep-out rules, then the fab layer map |
 | 2 Die and live view | Starts an empty 7.5 × 7.5 mm die | `Designer(name, box=..., live=LIVE)` | An empty die with the QCT frame |
@@ -151,4 +151,4 @@ Section 13: the trilayer junction (finger overlap and spacer layers).
 - Every kept result prints the "solved for another revision" note. That is expected (see [the index](index.md)).
 - A DRC warning about a dangling port right after placing a component is normal: nothing is connected yet.
 
-Next: [tutorial 1](01-chip12.md) applies the same steps to a nine-qubit chip.
+[Tutorial 1](01-chip12.md) applies the same steps to a nine-qubit chip.

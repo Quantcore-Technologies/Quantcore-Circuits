@@ -192,7 +192,9 @@ def check_project(job_dir: str | Path) -> dict:
                 f"{stack.substrate_height:g} µm)",
             )
     bounds = d["boundaries"]
-    metal = {p["name"] for p in d["parts"] if str(p["name"]).startswith(("1t1_signal", "1t1_ground", "2b1_"))}
+    metal = {p["name"] for p in d["parts"]  # the metal sheets of every face (multi-face jobs: 1b1, 2t1 too)
+             if str(p["name"]).startswith(("1t1_signal", "1t1_ground", "2b1_", "1b1_signal", "1b1_ground",
+                                           "2t1_signal", "2t1_ground"))}
     sheet_type = "ThinConductor" if want_type == "Q3D Extractor" else "Perfect E"
     covered = {o for b in bounds.values() if b.get("BoundType") == sheet_type for o in b["objects"]}
     add(f"metal sheets {sheet_type}", metal and metal <= covered, f"{len(metal & covered)}/{len(metal)} sheets")

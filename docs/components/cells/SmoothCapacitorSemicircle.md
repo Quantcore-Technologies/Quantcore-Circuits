@@ -6,7 +6,7 @@ Coupling pad with a semicircular bite, placed on a qubit pin (SQDMetal ``Smooth_
 
 **Source:** Quantcore. **Category:** capacitor. **Module:** `quantcore_circuits.layouts.others.sqdmetal_cells`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

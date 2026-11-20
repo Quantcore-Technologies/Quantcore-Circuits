@@ -1,8 +1,8 @@
 # Google coupler plaquette
 
-The smallest closed plaquette of Sycamore's coupler lattice: four flux-tunable Xmon-type qubits on the corners of a square and a flux-tunable transmon coupler on each of the four bonds. Every qubit has a λ/4 readout, an XY line and a Z line; every coupler has a Z line. No Sycamore layout is public, so the papers (Arute et al. 2019; Yan et al. 2018) give the targets and the layout is ours (GPL).
+The smallest closed plaquette of Sycamore's coupler lattice: four flux-tunable Xmon-type qubits on the corners of a square and a flux-tunable transmon coupler on each of the four bonds. Every qubit has a λ/4 readout, an XY line and a Z line; every coupler has a Z line. No Sycamore layout is public; the papers (Arute et al. 2019; Yan et al. 2018) give the targets, and the layout is ours (GPL).
 
-Build this one to see a lattice cell tiled into a plaquette: the same qubit and coupler as `google_tc_cell`, mirrored round the die centre, with two feedlines and sixteen pads.
+This notebook tiles the lattice cell into a plaquette: the same qubit and coupler as `google_tc_cell`, mirrored round the die centre, with two feedlines and sixteen pads.
 
 ```{image} ../../images/designs/google/google_tc_2x2.png
 :alt: The whole google_tc_2x2 chip as the v2 notebook builds it
@@ -13,15 +13,15 @@ Build this one to see a lattice cell tiled into a plaquette: the same qubit and 
 
 | | |
 |---|---|
-| Notebook | `examples/designs/google/google_tc_2x2.ipynb` (the one-cell version before the rewrite: `google_tc_2x2.v1.ipynb`) |
+| Notebook | `examples/designs/google/google_tc_2x2.ipynb` (an older one-cell version is kept as `google_tc_2x2.v1.ipynb`) |
 | Source | Arute et al., Nature 574, 505 (2019); Yan et al., PR Applied 10, 054062 (2018); no public layout |
 | Chip | 10 × 10 mm Quantcore die, sapphire 650 µm (εr 10.25), CPW 10 / 6 µm |
 | On the chip | 4 qubits · 4 couplers · 4 λ/4 hangers · 2 feedlines · 16 bond pads |
-| Builds today | yes: layout run 2026-11-19, 12 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 12 s) |
 
 ## How the notebook builds it
 
-Each Design segment is one cell with one picture of the chip so far (see [the notebook template](../notebook-template.md)).
+Each Design segment is one cell with a picture of the chip so far (see [the notebook template](../notebook-template.md)).
 
 ```{image} ../../images/designs/google/google_tc_2x2_steps.png
 :alt: The layout segments of google_tc_2x2
@@ -89,16 +89,16 @@ Numbers are from a run of this notebook on 2026-11-19 (Setup, Design, Check and 
 :alt: LOM plot of google_tc_2x2
 ```
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates (component formulas and calibration), not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
-The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
+The rest of this page is the detailed spec the notebook was built from, with every component, port, route and length.
 
-**Sources.** As `google_tc_cell.md`: Arute et al., Nature 574, 505 (2019) and SI (arXiv:1910.11333) — square
+**Sources.** As `google_tc_cell.md`: Arute et al., Nature 574, 505 (2019) and SI (arXiv:1910.11333): square
 lattice of transmons with a tunable coupler on every nearest-neighbour bond (54 qubits, 88 couplers), per-qubit XY
 and Z lines, a Z line per coupler, Table 2 parameters, g̃ from +5 to −40 MHz; Yan et al., PR Applied 10, 054062
-(2018) — scheme, Eq. (5).
+(2018): scheme, Eq. (5).
 
 **Licence.** Papers cited for parameters only (no public layout); layout and code ours, GPL.
 
@@ -110,7 +110,7 @@ coupling gaps as `google_tc_cell`.
 Quantcore trilayer SQUIDs (L_J 6.01 nH, R_n ≈ 40 kΩ, C_J 16.8 fF) on all eight crosses. 16 BondPads (5 bottom,
 5 top, 3 per side).
 
-**Status.** Buildable now. Notebook `examples/designs/google/google_tc_2x2.ipynb`.
+**Notebook.** `examples/designs/google/google_tc_2x2.ipynb`.
 
 ### Components
 

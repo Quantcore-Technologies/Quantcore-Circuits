@@ -6,7 +6,7 @@ Generates a three pin (+) structure comprised of a primary two pin CPW
 
 **Source:** Metal (Qiskit Metal). **Category:** coupler. **Module:** `qiskit_metal.qlibrary.couplers.cap_n_interdigital_tee`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 
@@ -51,8 +51,6 @@ Nodes: `prime`, `second`.
 ## Simulation export notes
 
 - C10: route gap strip misses the cell's etch by < 1 nm at an angled / off-grid port (fab build) (status: fixed; fix in route/waveguide.py (joined_nodes, misses_etch); layouts/chips/design_chip.py (DesignChip._join_ends); assembly/plan.py (RoutePlan.joins))
-
-Details: [SIM_EXPORT_AUDIT](../SIM_EXPORT_AUDIT.md).
 
 ## How to use
 

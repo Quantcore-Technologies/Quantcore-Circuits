@@ -6,7 +6,7 @@ The PCell declaration for a single island circular transmon.
 
 **Source:** KQC (KQCircuits). **Category:** qubit. **Module:** `kqcircuits.qubits.circular_transmon_single_island`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 
@@ -56,7 +56,7 @@ The cell contributes to the lumped model:
 | branch | type | nodes | value (estimate at defaults) |
 |---|---|---|---|
 | `C_X` | C | island – gnd | estimate=65.9, unit=fF, estimate_source=analytic: disk r=120 µm in a 80 µm ground gap (bent CPW), estimate_kind=analytic, uncertainty=±25% |
-| `J_X` | SQUID | island – gnd | Lj_nH=–, Cj_fF=0, asym=0, flux_phi0=0 |
+| `J_X` | SQUID | island – gnd | Lj_nH=6.734, Cj_fF=15, asym=0, flux_phi0=0 |
 | `Cg_X_coupler_1` | C | island – coupler_1 | estimate=7, unit=fF, estimate_source=rough: arc 92 µm facing the island across 25 µm (CPS), estimate_kind=rough, uncertainty=±50% |
 | `Cc_X_coupler_1` | C | coupler_1 – gnd | estimate=11, unit=fF, estimate_source=rough: arc outer edge (half CPW) + port lead, estimate_kind=rough, uncertainty=±50% |
 | `Cg_X_coupler_2` | C | island – coupler_2 | estimate=11, unit=fF, estimate_source=rough: arc 118 µm facing the island across 20 µm (CPS), estimate_kind=rough, uncertainty=±50% |
@@ -66,13 +66,9 @@ The cell contributes to the lumped model:
 
 Nodes: `island`, `coupler_1`, `coupler_2`, `coupler_3`.
 
-- X: no junction.Lj_nH in the design; the qubit mode needs one to simulate
-
 ## Simulation export notes
 
 - C10: route gap strip misses the cell's etch by < 1 nm at an angled / off-grid port (fab build) (status: fixed; fix in route/waveguide.py (joined_nodes, misses_etch); layouts/chips/design_chip.py (DesignChip._join_ends); assembly/plan.py (RoutePlan.joins))
-
-Details: [SIM_EXPORT_AUDIT](../SIM_EXPORT_AUDIT.md).
 
 ## How to use
 

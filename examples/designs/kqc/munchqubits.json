@@ -22,8 +22,9 @@
       "enabled": null
     },
     "params": {
-      "with_grid": true,
-      "name_chip": "EM1"
+      "with_grid": false,
+      "name_chip": "EM1",
+      "cheese": "chip"
     }
   },
   "instances": {

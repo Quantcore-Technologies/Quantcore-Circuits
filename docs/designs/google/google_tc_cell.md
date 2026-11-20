@@ -1,8 +1,8 @@
 # Google coupler cell
 
-The two-qubit unit of Google's Sycamore processor: two frequency-tunable Xmon-type transmons joined by a third, flux-tunable transmon (the coupler). Tuning the coupler moves the qubit-qubit coupling from tens of MHz (gates) through zero (idle). Each qubit has a λ/4 readout on a shared feedline, an XY line and a Z line. No Sycamore layout is public; the papers give the targets and the layout is ours (GPL).
+The two-qubit unit of Google's Sycamore processor: two frequency-tunable Xmon-type transmons joined by a third, flux-tunable transmon (the coupler). Tuning the coupler moves the qubit-qubit coupling from tens of MHz (for gates) through zero (idle). Each qubit has a λ/4 readout on a shared feedline, an XY line and a Z line. No Sycamore layout is public; the papers give the targets, and the layout is ours (GPL).
 
-Build this one to learn the tunable-coupler scheme on a chip: three crosses in a row with trilayer SQUIDs, hanger readouts on one feedline, and flux lines.
+This notebook lays out the tunable-coupler scheme on a chip: three crosses in a row with trilayer SQUIDs, hanger readouts on one feedline, and flux lines.
 
 ```{image} ../../images/designs/google/google_tc_cell.png
 :alt: The whole google_tc_cell chip as the v2 notebook builds it
@@ -13,15 +13,15 @@ Build this one to learn the tunable-coupler scheme on a chip: three crosses in a
 
 | | |
 |---|---|
-| Notebook | `examples/designs/google/google_tc_cell.ipynb` (the one-cell version before the rewrite: `google_tc_cell.v1.ipynb`) |
+| Notebook | `examples/designs/google/google_tc_cell.ipynb` (an older one-cell version is kept as `google_tc_cell.v1.ipynb`) |
 | Source | Arute et al., Nature 574, 505 (2019); Yan et al., PR Applied 10, 054062 (2018); no public layout |
 | Chip | 7.5 × 7.5 mm Quantcore die, sapphire 650 µm (εr 10.25), CPW 10 / 6 µm |
 | On the chip | 2 qubits · 1 coupler · 2 λ/4 hangers · 1 feedline · 7 bond pads |
-| Builds today | yes: layout run 2026-11-19, 9 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 9 s) |
 
 ## How the notebook builds it
 
-Each Design segment is one cell with one picture of the chip so far (see [the notebook template](../notebook-template.md)).
+Each Design segment is one cell with a picture of the chip so far (see [the notebook template](../notebook-template.md)).
 
 ```{image} ../../images/designs/google/google_tc_cell_steps.png
 :alt: The layout segments of google_tc_cell
@@ -82,11 +82,11 @@ Numbers are from a run of this notebook on 2026-11-19 (Setup, Design, Check and 
 :alt: LOM plot of google_tc_cell
 ```
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates (component formulas and calibration), not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
-The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
+The rest of this page is the detailed spec the notebook was built from, with every component, port, route and length.
 
 **Sources.** Arute et al., "Quantum supremacy using a programmable superconducting processor", Nature 574, 505
 (2019), supplementary information (arXiv:1910.11333): §I "a capacitor-coupled design", g tunable from +5 MHz to
@@ -98,7 +98,7 @@ local copy `build/external/yan2018/`): the Q–C–Q circuit of Fig. 2a (C1 70, 
 qubits 4 GHz), the off point of Fig. 2b, Eq. (5) for g̃.
 
 **Licence.** Papers cited for parameters only; no layout of Sycamore is published (searched GitHub, Qiskit Metal,
-SQuADDS, KQC, Google Quantum AI repositories — Cirq publishes the device graph only). Layout and code: ours, GPL.
+SQuADDS, KQC and Google Quantum AI repositories; Cirq publishes the device graph only). Layout and code: ours, GPL.
 
 **What it is.** Two flux-tunable grounded transmons (Xmon-type crosses) and a flux-tunable grounded transmon coupler
 between them, end-on capacitive coupling of the arm tips; per qubit a λ/4 readout on one feedline, an XY drive line
@@ -108,8 +108,7 @@ ending open at the outer arm tip and a Z line; a Z line on the coupler.
 10/6 µm CPW. Junctions: Quantcore trilayer SQUIDs (`junction_type="Quantcore Squid"`), drawn L_J 6.01 nH at zero
 flux (R_n ≈ 40.2 kΩ, C_J 16.8 fF).
 
-**Status.** Buildable now (metal:TransmonCrossFL + Quantcore trilayer substitution, BondPad, OpenToGround). Notebook
-`examples/designs/google/google_tc_cell.ipynb`.
+**Notebook.** `examples/designs/google/google_tc_cell.ipynb`, built from metal:TransmonCrossFL with a Quantcore trilayer substitution, BondPad and OpenToGround.
 
 ### Components
 

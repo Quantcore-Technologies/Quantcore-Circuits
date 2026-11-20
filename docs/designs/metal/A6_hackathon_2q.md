@@ -5,8 +5,8 @@ out by a λ/2 resonator through a three-finger series capacitor to an edge bond 
 Qiskit Metal hackathon (South Korea, 2020; Apache-2.0, © IBM and contributors). The Quantcore rebuild is distributed
 under GPL-3.0.
 
-Build this one to learn readout through a series capacitor, a non-resonant coupling line between two qubits, and
-charge lines that enter a pocket from a pad on the die edge.
+Build this one to learn readout through a series capacitor, a non-resonant coupling line between two qubits, and how
+charge lines enter a pocket from a pad on the die edge.
 
 ```{image} ../../images/designs/metal/a6_hackathon_2q.png
 :alt: The whole a6 chip as the v2 notebook builds it
@@ -17,11 +17,11 @@ charge lines that enter a pocket from a pad on the die edge.
 
 | | |
 |---|---|
-| Notebook | `examples/designs/metal/a6_hackathon_2q.ipynb` (the one-cell version before the rewrite: `a6_hackathon_2q.v1.ipynb`) |
+| Notebook | `examples/designs/metal/a6_hackathon_2q.ipynb` (an older one-cell version is kept as `a6_hackathon_2q.v1.ipynb`) |
 | Source | Qiskit Metal `A.6-Hackathon-exercise-South-Korea-2020.ipynb`, © IBM and contributors, Apache-2.0 |
 | Chip | 9 × 6 mm (the source's size, larger than the 7.5 mm Quantcore die) |
 | On the chip | 2 pocket transmons with charge lines · 2 series capacitors · 2 λ/2 readouts (5 and 6 mm) · 1 direct coupling line · 2 charge lines · 4 bond pads |
-| Builds today | yes: layout run 2026-11-19, 8 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 8 s) |
 
 ## How the notebook builds it
 
@@ -57,13 +57,13 @@ Numbers are from a run of this notebook on 2026-11-19 (Setup, Design, Check and 
 :alt: LOM plot of a6_hackathon_2q
 ```
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates from component formulas and calibration, not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
 The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
 
-> **Update 2026-11-03:** frame = **source**: build with `chip={"die_frame": False, ...}` so the replica keeps its own size and frame (the Quantcore PDK die frame is for Quantcore chips only). `metal:<Class>` wrappers are READY (ports = Metal pin names, params = Metal options), so the `metal:` refs in this spec build as written; the Quantcore/KQC substitutions stay optional.
+> The `metal:` references in this spec build as written, through the `metal:` wrapper (ports are the Metal pin names, parameters the Metal options). The Quantcore and KQC substitutions are optional.
 
 Source: Quantum Metal `docs/circuit-examples/full-design-flow-examples/A.6-Hackathon-exercise-South-Korea-2020.ipynb`.
 Licence Apache-2.0.
@@ -72,7 +72,7 @@ LOM uses bus f = 0.1 GHz). Each qubit has a meander readout through a 3-finger `
 own edge pad, and a charge line from a top or bottom pad.
 Chip: DesignPlanar default 9000 × 6000 µm, centred, so **Designer = Metal + (4500, 3000)**. CPW 10/6 µm, fillet 99 µm.
 The junctions are FakeJunction_01 (Q1) and FakeJunction_02 (Q2).
-**Buildable now: yes**. Substitutions: `Xmon` for TransmonPocketCL, KQC `FingerCapacitorSquare` for
+A first build uses these substitutions: `Xmon` for TransmonPocketCL, KQC `FingerCapacitorSquare` for
 Cap3Interdigital, `BondPad`, free-end charge lines.
 
 ### Components
@@ -123,13 +123,13 @@ LOM setup (Q1): Lj 14 nH, Cj 2 fF, freq_readout 7.0 GHz, freq_bus [0.1, 0.1] (no
    sides at the Metal CL pin positions.
 2. Make the direct bus a straight cpw between facing claws.
 
-### Quantcore PDK rebuild (2026-11-03)
+### Quantcore PDK rebuild
 
-The notebook is a **Quantcore-PDK rebuild**, not a replica (design rule, 2026-11-03): the netlist, LOM and imported components are kept, the process is Quantcore's.
+The notebook is a Quantcore PDK rebuild of the source, not a replica: the netlist, LOM and imported components are kept, and the process is Quantcore's.
 
 Notebook: [`examples/designs/metal/a6_hackathon_2q.ipynb`](../../../examples/designs/metal/a6_hackathon_2q.ipynb).
 
-- **Chip:** the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), drawn on the source's 9 × 6 mm chip (the design does not fit the 7.5 mm die); no KQC chip frame.
-- **Stack:** sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); Metal's `DesignPlanar` default is silicon (εr 11.45, 750 µm), so the LOM capacitances, resonator frequencies and FEM jobs here are for sapphire, not the source's substrate.
-- **Junctions:** Quantcore Nb/AlOx/Nb trilayer junctions (`junction_type` from `layouts.registry.trilayer_junction`): fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient, sized on the PDK junction rule (Nb Δ = 1.4 meV, I_c·R_n = πΔ/2e, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed). The source detunes the qubits (`hfss_inductance` 14 / 12 nH); the rebuild keeps that 14 : 12 ratio around the PDK nominal: Q1 L_J 7.32 nH (R_n 48.9 kΩ, C_J 13.8 fF), Q2 6.24 nH (41.7 kΩ, 16.2 fF), both in the 40–50 kΩ window. Expected f_q ≈ 6.9 / 7.4 GHz (estimates; were 5.42 / 5.89 GHz).
-- **Kept:** the topology and every Metal component with the source's options (through the `metal:` wrapper), positions and orientations, every route's end pins and total length, the sim groups (readouts 5.0 / 6.0 mm, the direct coupling line, the two charge lines).
+- Chip: the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), drawn on the source's 9 × 6 mm chip (the design does not fit the 7.5 mm die); no KQC chip frame.
+- Stack: sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); Metal's `DesignPlanar` default is silicon (εr 11.45, 750 µm), so the LOM capacitances, resonator frequencies and FEM jobs here are for sapphire rather than the source's substrate.
+- Junctions: Quantcore Nb/AlOx/Nb trilayer junctions (`junction_type` from `layouts.registry.trilayer_junction`): fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient, sized on the PDK junction rule (Nb Δ = 1.4 meV, I_c·R_n = πΔ/2e, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed). The source detunes the qubits (`hfss_inductance` 14 / 12 nH); the rebuild keeps that 14 : 12 ratio around the PDK nominal: Q1 L_J 7.32 nH (R_n 48.9 kΩ, C_J 13.8 fF), Q2 6.24 nH (41.7 kΩ, 16.2 fF), both in the 40–50 kΩ window. Expected f_q ≈ 6.9 / 7.4 GHz (estimates).
+- Kept: the topology and every Metal component with the source's options (through the `metal:` wrapper), positions and orientations, every route's end pins and total length, the sim groups (readouts 5.0 / 6.0 mm, the direct coupling line, the two charge lines).

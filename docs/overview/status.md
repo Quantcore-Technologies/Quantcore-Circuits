@@ -1,6 +1,6 @@
 # Status: what is built and what is left
 
-State on 2026-11-18, from an audit of the code, the logs and the saved notebook outputs. Dates are the last real run.
+State on 2026-11-18, taken from the code, the logs and the saved notebook outputs. Dates are the last real run.
 
 - **done**: built and run for real.
 - **partial**: built, part of it unverified or missing.
@@ -9,28 +9,30 @@ State on 2026-11-18, from an audit of the code, the logs and the saved notebook 
 
 ## What has never been verified
 
-Read this first.
+These gaps matter most.
 
 - **No converged AEDT run.** Every eigenmode used fast settings (at most 3 passes, delta f 2.8-3.2 % against a 1 % target).
   A converged eigenmode needs a machine with 32 GB or more. In tutorial 4 the LOM and the FEM chi differ by about 54 %.
 - **The kept FEM results are stale.** Every kept tutorial result was solved for an earlier revision of its job. 57 of 153
   sampled sim groups export differently since the November export changes, so they must be solved again.
-- **Palace, Elmer and Sonnet were never solved.** Only the input files are written; solving with them is a future development goal. The Linux runner and queue were never
-  used on a server.
+- **Palace, Elmer and Sonnet were never solved.** Only the input files are written; solving with them is a future
+  development goal. The Linux runner and queue were never used on a server.
 - **The FEM loop never closed on target.** Tutorial 4 got to about 0.2 % of the targets but reports "on target (FEM):
   False".
 - **The plugin's eigenmode run, `--aedt gui`, and a whole-chip simulation from the GUI** were never run. Whole-chip Run
   LOM of the 12- and 5-qubit tutorial chips takes more than 10 minutes.
-- **The wheel** was built on 2026-11-17 and installed from the wheelhouse in a scratch environment (`qcc selftest`: 29 of 29 checks).
-- **The full fast test suite** was last green on 2026-11-04 (2871 passed). Since then only focused runs. 4994 tests are
-  collected today. The tutorial "saved clean" test was dropped on 2026-11-18: tutorials are saved with their outputs.
+- **The wheel** was built on 2026-11-17 and installed from the wheelhouse in a scratch environment (`qcc selftest`:
+  29 of 29 checks).
+- **The fast test suite** passed on 2026-11-19 on the release tree, with the PyPI releases of KQCircuits, Quantum
+  Metal, SQcircuit, QuCat and PyAEDT installed: 3132 passed, 270 skipped (the AEDT read-back tests need local AEDT
+  result files and skip without them). The tutorial "saved clean" test was dropped on 2026-11-18: tutorials are saved with their outputs.
 - There is **no AEDT screenshot** in these docs: capturing one needs AEDT running.
 
 ## Modules
 
 | Module | Page | Status | Last real run / evidence |
 |---|---|---|---|
-| KLayout plugin (menu, tools, panel, Flow strip) | [plugin tour](../plugin/tour.md) | done; development paused 2026-11-17 | GUI smokes all pass 2026-11-17 (83, 49, 39, 37 checks; 62 cells; 95 tutorial checks); end-to-end with a real non-graphical AEDT Q3D |
+| KLayout plugin (menu, tools, panel, Flow strip) | [plugin tour](../plugin/tour.md) | done | GUI smokes all pass 2026-11-17 (83, 49, 39, 37 checks; 62 cells; 95 tutorial checks); end-to-end with a real non-graphical AEDT Q3D |
 | KLive scripted design (`Designer`) | [scripted design](../plugin/klive.md) | done | live loop 0.1 s per change 2026-11-02; window handling 2026-11-13 |
 | PDK | [PDK](../library/pdk.md) | done | rules changed 2026-11-17, 105 fab exports compared |
 | Component library and catalog | [components](../components/cells/index.md) | done | 62-cell GUI sweep 2026-11-17; 142 cell pages |
@@ -50,7 +52,7 @@ Read this first.
 | LOM-first synthesis | [LOM](../library/lom.md) | done for Xmon + lambda/4 on one feedline | `examples/lom_from_layout.ipynb` |
 | Fab export | [fab](../library/fab.md) | done; wafer assembly being built, mask assembly missing | 105 exports 2026-11-17 |
 | `qcc` CLI | [CLI reference](../reference/cli.md) | done | the reference page lacks `design junctions` and `design placement-junction` |
-| Wheel and packaging | [getting started](../getting-started.md) | partial | built 2026-11-17, installed in a scratch env |
+| Wheel and packaging | [getting started](../getting-started.md) | partial | wheel built and installed in a scratch env; 0.0.1b0 was the first PyPI release, 0.0.2 the current one |
 | Docs site | [the docs](../index.md) | partial | rewritten as a section guide 2026-11-19; the `design.json` field reference is still missing |
 
 ### The three design routes
@@ -66,7 +68,7 @@ Read this first.
 
 | M | Milestone | State |
 |---|---|---|
-| M0 | environment and skeleton | done; CI only proposed |
+| M0 | environment and skeleton | done; CI on GitHub Actions (lint, tests on Ubuntu and Windows, docs, release) |
 | M1 | PDK and mask export | done |
 | M2 | components with ports | done |
 | M3 | design model and builder | done |
@@ -94,11 +96,11 @@ Read this first.
 | 7 | Moved to Future development goals below | | |
 | 8 | **Simulation PC** (FEM sweeps). Co-design levels M11 and M12: FEM-sweep surrogates, HFSS sign-off with a bias record (Palace verify is a future goal) | not built | L |
 | 9 | **Simulation PC.** Flip-chip two-face FEM export | not built | M |
-| 10 | Docs: field reference for `design.json` and the other file formats, regenerate the CLI page, README says AEDT 2024 R2 where 2024 R1 runs, refresh design images and spec numbers, choose hosting | partial | M |
+| 10 | Docs: field reference for `design.json` and the other file formats, regenerate the CLI page, refresh design images and spec numbers | partial | M |
 | 11 | Plots for convergence, S21 with fit, EPR participations, mesh extrapolation | being built | S |
 | 12 | Moved to Future development goals below | | |
-| 13 | Fresh-environment install of the wheel, plugin packaging, CI | never verified | S-M |
-| 14 | One green full fast test suite. "Tutorials saved clean" is settled: the tutorials keep their outputs | never verified | S |
+| 13 | Install from PyPI on a fresh PC and the plugin from Salt | wheel installs in a scratch env; PyPI and Salt not yet checked | S-M |
+| 14 | One green fast test suite. "Tutorials saved clean" is settled: the tutorials keep their outputs | done on the release tree (2026-11-19, 3132 passed) | S |
 | 15 | Mask and wafer assembly | being built (wafer assembly) | M |
 | 16 | Router edge cases: node near a corner, waypoint between r and 2r (the tiny-leftover zigzag is done, fixed 2026-11-18) | built, partial | S |
 | 17 | LOM model requests: pad-to-pad coupler line C, StarQubit pad arcs, IDC kappa at 1.2 µm gaps, Purcell filter between series caps, SQUID static flux bias | not built | M |
@@ -112,7 +114,7 @@ Read this first.
 
 ### In progress
 
-Being built on 2026-11-19, not yet verified:
+Being built and not yet verified:
 
 - Lumped-junction EPR from the LOM and from the eigenmode runs, and the convergence, S21 fit and EPR plots.
 - Wafer assembly of dies on 4 and 6 inch wafers.
@@ -122,7 +124,7 @@ Being built on 2026-11-19, not yet verified:
 
 ### Future development goals
 
-Not planned for the simulation PC; only the input files are written today.
+Not part of the simulation PC work; only the input files are written today.
 
 | Item | State | Size |
 |---|---|---|
@@ -132,7 +134,7 @@ Not planned for the simulation PC; only the input files are written today.
 
 ### Plugin
 
-Paused on 2026-11-17. Open items, listed and not proposed:
+Open items:
 
 - Never solved from the GUI: an eigenmode run from the Simulate dialog, `--aedt gui`, a whole-chip simulation.
 - Live PCells: KLayout asks to save on close after the swap; shape-parameter instances stay static; importing the library
@@ -148,9 +150,9 @@ Paused on 2026-11-17. Open items, listed and not proposed:
 
 ## Library requests from the notebook rewrite
 
-From the v2 design notebooks ([design notebooks](../designs/notebook-template.md)); none is built. Names are the logs' numbering:
-R1-R5 from the plan, R6-R11 from batch A, B-R1 to B-R11 from batch B (B-R1 to B-R5 and B-R6 to B-R11 are listed under
-their own batches; the plan's R1-R4 apply to batch B too), B4-R1 to B4-R5 from the amplifier batch. The notebook lists are taken from the logs and are not exhaustive.
+Collected while rewriting the v2 design notebooks ([design notebooks](../designs/notebook-template.md)); none is built.
+The numbering follows the order the requests came up: R1 to R11 and B-R1 to B-R11 from the first and second groups of
+notebooks (R1 to R4 apply to both), B4-R1 to B4-R5 from the amplifier notebooks. The notebook lists are not exhaustive.
 
 | Request | One line | Notebooks that need it |
 |---|---|---|

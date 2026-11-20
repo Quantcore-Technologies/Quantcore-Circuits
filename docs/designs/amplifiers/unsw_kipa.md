@@ -2,7 +2,7 @@
 
 A kinetic-inductance parametric amplifier: a λ/4 resonator on a high-kinetic-inductance film, closed at one end by a stepped-impedance filter (a Bragg mirror that still passes DC). In the source device the shorted end is a 1 µm wire that sits over bismuth donor spins. The source is the UNSW device BA13 GDS (Zenodo 7600250, CC BY 4.0); the rebuild draws the same section sequence with Quantcore routes.
 
-Build this one to learn how a chip made of many line sections of different widths is assembled: tapers at every section boundary, one route per section, and positions solved so each section keeps its source length.
+This notebook shows how a chip made of many line sections of different widths is assembled: tapers at every section boundary, one route per section, and positions solved so each section keeps its source length.
 
 ```{image} ../../images/designs/amplifiers/unsw_kipa.png
 :alt: The whole unsw_kipa chip as the v2 notebook builds it
@@ -13,11 +13,11 @@ Build this one to learn how a chip made of many line sections of different width
 
 | | |
 |---|---|
-| Notebook | `examples/designs/amplifiers/unsw_kipa.ipynb` (the one-cell version before the rewrite: `unsw_kipa.v1.ipynb`) |
+| Notebook | `examples/designs/amplifiers/unsw_kipa.ipynb` (an older one-cell version is kept as `unsw_kipa.v1.ipynb`) |
 | Source | Zenodo 7600250, `BA13_device_gds.GDS` (CC BY 4.0; Vine et al., arXiv:2211.11333) |
 | Chip | 4 × 11 mm (the source die), Quantcore frame, sapphire |
 | On the chip | 9 `CpweTaper`s · 1 bond pad · 9 routes (feed, 7 filter sections, resonator) and the 1 µm wire |
-| Builds today | yes: layout run 2026-11-19, 5 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 5 s) |
 
 ## How the notebook builds it
 
@@ -52,13 +52,13 @@ Numbers are from a run of this notebook on 2026-11-19 (Setup, Design, Check and 
 :alt: Reflection phase and stop band of the KIPA
 ```
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates (component formulas and calibration), not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
-The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
+The rest of this page is the detailed spec the notebook was built from, with every component, port, route and length.
 
-Source · licence: Zenodo 7600250 (Vine et al., arXiv:2211.11333), CC BY 4.0, `BA13_device_gds.GDS` (read only from `build/external/kipa_zenodo_7600250/`). Die 4 × 11 mm (source die), PDK frame, sapphire, Nb. Status: built — `examples/designs/amplifiers/unsw_kipa.ipynb` / `.json`.
+Source · licence: Zenodo 7600250 (Vine et al., arXiv:2211.11333), CC BY 4.0, `BA13_device_gds.GDS` (read only from `build/external/kipa_zenodo_7600250/`). Die 4 × 11 mm (source die), PDK frame, sapphire, Nb. Notebook and design: `examples/designs/amplifiers/unsw_kipa.ipynb` / `.json`.
 
 ### Components
 

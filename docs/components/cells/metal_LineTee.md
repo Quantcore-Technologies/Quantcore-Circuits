@@ -10,7 +10,7 @@ Generates a three pin (+) structure comprised of a primary two pin CPW
 Alias of [`WaveguideCoplanarSplitter`](WaveguideCoplanarSplitter.md): the same circuit, drawn differently. t_length → lengths [t, t, t] with angles [0, 180, 270]; prime_end → a, prime_start → b, second_end → c (XOR 0 at defaults)
 :::
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

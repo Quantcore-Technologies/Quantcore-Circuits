@@ -10,7 +10,7 @@ The base "SQUID_LOOP" inherits the "QComponent" class.
 Legacy cell. Metal 2/0 SQUID footprint without pins, not the trilayer process; unused. Use QuantcoreSquid
 :::
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

@@ -10,7 +10,7 @@ Launch pad to feed/read signals to/from the chip.
 Alias of [`BondPad`](BondPad.md): the same circuit, drawn differently. the Launcher polygon (pad_height, pad_width, taper_height → taper_length, pad_gap) + a lead_length CPW lead (XOR 300 µm² = the lead); port tie → a
 :::
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

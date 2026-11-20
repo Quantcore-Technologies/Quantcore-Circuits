@@ -6,7 +6,7 @@ TransmonConcentricType2.png
 
 **Source:** Metal (Qiskit Metal). **Category:** qubit. **Module:** `qiskit_metal.qlibrary.qubits.transmon_concentric_type_2`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 
@@ -65,8 +65,6 @@ Nodes: `island1`, `island2`, `pin1`, `pin2`, `pin3`.
 ## Simulation export notes
 
 - C5b: metal-only Metal cell placed without its pocket (status: context; fix in — (design side))
-
-Details: [SIM_EXPORT_AUDIT](../SIM_EXPORT_AUDIT.md).
 
 ## How to use
 

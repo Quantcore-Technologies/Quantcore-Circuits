@@ -6,7 +6,7 @@ Meandered CPW resonator grounded at both ends (legacy ``CPW Resonator``); ports 
 
 **Source:** Quantcore. **Category:** resonator. **Module:** `quantcore_circuits.layouts.others.legacy_resonators`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

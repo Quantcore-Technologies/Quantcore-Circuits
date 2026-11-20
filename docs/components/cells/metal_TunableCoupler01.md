@@ -6,7 +6,7 @@ One of the tunable couplers Based off the implementation in
 
 **Source:** Metal (Qiskit Metal). **Category:** coupler. **Module:** `qiskit_metal.qlibrary.couplers.tunable_coupler_01`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

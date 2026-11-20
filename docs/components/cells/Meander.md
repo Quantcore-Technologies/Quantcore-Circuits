@@ -6,7 +6,7 @@ The PCell declaration for a meandering waveguide.
 
 **Source:** KQC (KQCircuits). **Category:** waveguide. **Module:** `kqcircuits.elements.meander`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

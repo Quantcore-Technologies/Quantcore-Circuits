@@ -6,7 +6,7 @@ A two-island qubit, consisting of two rounded rectangles shunted by a junction, 
 
 **Source:** KQC (KQCircuits). **Category:** qubit. **Module:** `kqcircuits.qubits.double_pads`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 
@@ -80,13 +80,12 @@ The cell contributes to the lumped model:
 | `C_X_1` | C | island1 – gnd | estimate=53.7, unit=fF, estimate_source=analytic: coupled strips in a ground slot (Simons ch. 7) + short-edge CPW, estimate_kind=analytic, uncertainty=±25% |
 | `C_X_2` | C | island2 – gnd | estimate=53.7, unit=fF, estimate_source=analytic: coupled strips in a ground slot (Simons ch. 7) + short-edge CPW, estimate_kind=analytic, uncertainty=±25% |
 | `C_X_12` | C | island1 – island2 | estimate=27.6, unit=fF, estimate_source=analytic: coupled strips in a ground slot (Simons ch. 7) + short-edge CPW, estimate_kind=analytic, uncertainty=±25% |
-| `J_X` | SQUID | island1 – island2 | Lj_nH=–, Cj_fF=0, asym=0, flux_phi0=0 |
+| `J_X` | SQUID | island1 – island2 | Lj_nH=6.734, Cj_fF=15, asym=0, flux_phi0=0 |
 | `Cg_X_cplr` | C | island1 – cplr | estimate=13.8, unit=fF, estimate_source=analytic: coupler 150×20 µm facing island1 across 20 µm (CPS), estimate_kind=analytic, uncertainty=±25% |
 | `Cc_X_cplr` | C | cplr – gnd | estimate=7.6, unit=fF, estimate_source=rough: coupler pad in the qubit ground gap, estimate_kind=rough, uncertainty=±50% |
 
 Nodes: `island1`, `island2`, `cplr`.
 
-- X: no junction.Lj_nH in the design; the qubit mode needs one to simulate
 - X: floating transmon; island2 ↔ coupler capacitance neglected (screened by island1)
 
 ## How to use

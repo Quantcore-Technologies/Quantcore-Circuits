@@ -74,8 +74,7 @@ The LOM of the first build: the qubit is close to 5.5 GHz, the readout (squares)
 
 The table puts each value next to its target. On the shipped chip the qubit is at 5.51 GHz (target 5.5) and the readout
 at 6.25 GHz (target 7.0): the claw loads the quarter-wave line. The next cell scales the readout length (λ/4 ∝ 1/f) until
-the LOM reads 6.99 GHz, then saves the design again. The save reports "The design differs": that is the tuned length,
-as it should be. These numbers are lumped-model estimates; [the LOM page](../library/lom.md) says how far to trust them.
+the LOM reads 6.99 GHz, then saves the design again. The save reports "The design differs": that is the tuned length. These numbers are lumped-model estimates; [the LOM page](../library/lom.md) says how far to trust them.
 
 ## Decide what to simulate
 
@@ -126,12 +125,12 @@ carry the new numbers into your cells. Section 7 exports the mask.
 
 ## Habits that keep it working
 
-- **`save_design` at the end of the layout.** It tells you whether the file changed. Do not hand-edit the JSON.
-- **One change at a time.** Change one segment, run from there down, read the picture and the DRC, then go on.
-- **Keep FEM results in `fem/`.** `build/` can be wiped; `<OUT>/fem/` is where kept results live and where the cells look.
-- **Targets in a copy.** `target_copy` keeps the deliverable clean.
-- **Do not solve twice.** `RESOLVE = False` loads kept results when they match the design.
-- **Margins are warnings.** Errors must be zero; pad edge, keep-outs and centring are reported, not blocking.
+- `save_design` at the end of the layout. It tells you whether the file changed. Do not hand-edit the JSON.
+- One change at a time. Change one segment, run from there down, read the picture and the DRC, then go on.
+- Keep FEM results in `fem/`. `build/` can be wiped; `<OUT>/fem/` is where kept results live and where the cells look.
+- Targets in a copy. `target_copy` keeps the deliverable clean.
+- Do not solve twice. `RESOLVE = False` loads kept results when they match the design.
+- Margins are warnings. Errors must be zero; pad edge, keep-outs and centring are reported, not blocking.
 
 ## Where to look next
 

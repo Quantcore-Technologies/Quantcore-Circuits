@@ -6,7 +6,7 @@ The PCell declaration of a straight segment of a coplanar waveguide.
 
 **Source:** KQC (KQCircuits). **Category:** waveguide. **Module:** `kqcircuits.elements.waveguide_coplanar_straight`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

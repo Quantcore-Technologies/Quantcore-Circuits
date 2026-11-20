@@ -27,6 +27,9 @@ Meander, WaveguideCoplanarCurved               free (Meander: always a resonator
                                                Curved: r·|alpha|, ports from registry.KQC_EXTRA_PORTS)
 WaveguideCoplanarTaper, AirbridgeConnection    a pass-through section (``Line.through``) of the line it joins
 WaveguideCoplanarSplitter                      one conductor (T-junction)
+FlipChipConnectorRf                            a pass-through section between ``a`` (face_ids[0]) and ``b``
+                                               (face_ids[1]; ports from registry.KQC_EXTRA_PORTS): one conductor
+                                               through the bump
 AirbridgeRectangular, AirbridgeMultiFace       wire; nothing joined: a ground strap (ports → gnd)
 junctions (Squid subclasses)                   JJ / SQUID from ``common`` to ground (``No Squid``: none)
 Fluxline*                                      flux control port
@@ -676,6 +679,17 @@ def splitter_lom(name: str, inst, pdk) -> Fragment:  # noqa: ARG001
     n = len(p.get("lengths") or [11, 11, 11])
     ports = list(p.get("port_names") or "abcdefghij")[:n]
     return Fragment(nodes={"t": {"island": f"{name}.t"}}, port_nodes={str(q): "t" for q in ports})
+
+
+@register_lom("FlipChipConnectorRf")
+def flip_chip_rf_lom(name: str, inst, pdk) -> Fragment:  # noqa: ARG001
+    """KQC flip-chip RF connector (and Quantcore ``QcFlipChipConnectorRf``): one conductor from port ``a`` (on
+    ``face_ids[0]``) through the bump to port ``b`` (on ``face_ids[1]``), a pass-through section of the pad-to-pad
+    length (each port is connector_a + s/2 from the centre; the bump itself is not modelled)."""
+    p = cell_params(inst)
+    ca = _f(p.get("connector_a"), 40)
+    span = ca + (max(int(_f(p.get("n_center_bumps"), 1)), 1) - 1) * _f(p.get("inter_bump_distance"), 100)
+    return _through_line(name, 2 * ca + span, _f(p.get("a"), 10), _f(p.get("b"), 6))
 
 
 def _wire(name: str, ports=("a", "b")) -> Fragment:

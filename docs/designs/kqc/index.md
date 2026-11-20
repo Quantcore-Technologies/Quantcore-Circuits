@@ -12,7 +12,7 @@ These designs come from KQCircuits (KQC), IQM Finland's open-source chip library
 | [XMonsDirectCoupling](xmons_direct_coupling.md) | three directly coupled Swissmons | 3 | 10 × 10 mm | yes |
 | [DaisyWoven bump test](daisy_woven.md) | flip-chip indium-bump daisy chains | 0 | 10 × 10 mm | yes |
 | [KQC test chips](test_chips.md) | 14 process and part tests (airbridges, lithography, TSVs, `simple`, `shaping` ...) | 0 to 1 | 10 × 10 mm | yes (all 14) |
-| [Quick demo mask](quick_demo_mask.md) | wafer of Demo chips (spec only, no notebook) | n/a | 6-inch wafer | no notebook |
+| [Quick demo mask](quick_demo_mask.md) | a 6-inch wafer of 36 Demo chips and 17 empty chips in a smiley | 4 per Demo chip | 6-inch wafer | yes |
 
 ```{toctree}
 :maxdepth: 1

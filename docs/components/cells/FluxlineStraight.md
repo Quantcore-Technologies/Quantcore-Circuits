@@ -6,7 +6,7 @@ Fluxline variant "straight vertical".
 
 **Source:** KQC (KQCircuits). **Category:** other. **Module:** `kqcircuits.elements.fluxlines.fluxline_straight`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

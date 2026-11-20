@@ -2,7 +2,7 @@
 
 Sixteen shorted λ/4 resonators on two straight probelines, eight per line, for measuring losses. The layout comes from QPDK's `resonator_test_chip.py` (MIT) and is rebuilt on the Quantcore PDK; the rebuild is GPL-3.0. The chip has no qubits.
 
-Build this one to learn many hanger resonators on a line, resonators without a qubit (open ends instead), and a chip that is wider than the standard die.
+This notebook is an example of many hanger resonators on a line, resonators without a qubit (open ends instead), and a chip wider than the standard die.
 
 ```{image} ../../images/designs/qpdk/resonator_test_chip.png
 :alt: The whole resonator_test_chip chip as the v2 notebook builds it
@@ -13,11 +13,11 @@ Build this one to learn many hanger resonators on a line, resonators without a q
 
 | | |
 |---|---|
-| Notebook | `examples/designs/qpdk/resonator_test_chip.ipynb` (the one-cell version before the rewrite: `resonator_test_chip.v1.ipynb`) |
+| Notebook | `examples/designs/qpdk/resonator_test_chip.ipynb` (an older one-cell version is kept as `resonator_test_chip.v1.ipynb`) |
 | Source | gdsfactory `quantum-rf-pdk` `qpdk/samples/resonator_test_chip.py`, MIT (© 2024 gdsfactory) |
 | Chip | 9.2 × 4.3 mm (the source's size, not the 7.5 mm die), CPW 10 / 6 µm |
 | On the chip | 4 launchers · 2 probelines · 16 open ends · 16 λ/4 resonators (200 µm coupled section each) |
-| Builds today | yes: layout run 2026-11-19, 6 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 6 s) |
 
 ## How the notebook builds it
 
@@ -66,25 +66,23 @@ Numbers are from a run of this notebook on 2026-11-19 (Setup, Design, Check and 
 :alt: LOM plot of resonator_test_chip
 ```
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates (component formulas and calibration), not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
-The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
-
-> **Update 2026-11-03:** frame = **source**: build with `chip={"die_frame": False, ...}` so the replica keeps its own size and frame (the Quantcore PDK die frame is for Quantcore chips only).
+The rest of this page is the detailed spec the notebook was built from, with every component, port, route and length.
 
 Source: [qpdk/samples/resonator_test_chip.py](https://github.com/gdsfactory/quantum-rf-pdk/blob/main/qpdk/samples/resonator_test_chip.py)
 (`resonator_test_chip_python`, `filled_resonator_test_chip`) and its frozen netlist
-`resonator_test_chip_yaml.pic.yml` · licence MIT (verified) · read 2026-11-02. Image `docs/_static/images/resonator_test_chip.png`.
+`resonator_test_chip_yaml.pic.yml` · licence MIT (verified) · Read on 2026-11-02. Image `docs/_static/images/resonator_test_chip.png`.
 What it is: two straight west→east probelines, 1000 µm apart, each with two launchers. Each carries 8 shorted λ/4
 CPW resonators (`quarter_wave_resonator_coupled`, 6 meanders, 200 µm coupled section). The bottom-line resonators hang
 below the line and the top-line ones (mirrored) sit above it. The README says "systematically varied CPW widths and gaps",
-but both the code and the YAML use one cross-section (10/6 µm) and vary only length. Use this as a loss / kinetic-inductance chip.
+but both the code and the YAML use one cross-section (10/6 µm) and vary only length. It serves as a loss and kinetic-inductance chip.
 Frame: source x 0…9000, y about −1250…+2250 (meander height ≈ 1250 µm, read from the image). The filled version's
 chip edge is (xsize + 200, ysize + 800) at (xmin − 100, ymin − 400), so **box (0, 0, 9200, 4300)** and
 **Designer = source + (100, 1650)**. Si, M1 negative.
-Status: **yes** (`BondPad` + routes only). Resonators are plain λ/4 hangers, which our route model covers directly.
+The chip needs only `BondPad` and routes: the resonators are plain λ/4 hangers, which the route model covers directly.
 
 ### Components
 | instance | catalog ref | key params | at (x, y) Designer | rot | notes |
@@ -132,12 +130,12 @@ about 0.1–0.2 GHz apart. The README shows a SAX sweep from 4 to 10 GHz resolvi
    meander=L)`. The schema allows a free end as `from` and a hanger only as `to`.
 2. A CPW width/gap sweep (as the README describes) can be added later by giving each resonator route its own `a`/`b`.
 
-### Build (2026-11-03)
-Built: `examples/designs/qpdk/resonator_test_chip.ipynb`. Each resonator starts at a 6 µm `CpweOpenEnd` (a route from a free end to a hanger has no LOM start node: request for lom). Resonator routes use r = 75 µm so 6 meanders fit in 1250 µm.
+### Build
+The notebook is `examples/designs/qpdk/resonator_test_chip.ipynb`. Each resonator starts at a 6 µm `CpweOpenEnd` (a route from a free end to a hanger has no LOM start node). Resonator routes use r = 75 µm so 6 meanders fit in 1250 µm.
 
-### Quantcore PDK rebuild (2026-11-03)
+### Quantcore PDK rebuild
 
-The notebook is a **Quantcore-PDK rebuild**, not a replica (design rule, 2026-11-03): the netlist, LOM and imported components are kept, the process is Quantcore's.
+The notebook is a Quantcore PDK rebuild, not a replica: the netlist, LOM and imported components are kept, the process is Quantcore's.
 
 Notebook: [`examples/designs/qpdk/resonator_test_chip.ipynb`](../../../examples/designs/qpdk/resonator_test_chip.ipynb).
 

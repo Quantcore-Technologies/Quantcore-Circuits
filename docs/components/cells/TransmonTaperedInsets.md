@@ -6,7 +6,7 @@ Floating tapered-pad transmon in a filleted pocket (SQDMetal ``TransmonTaperedIn
 
 **Source:** Quantcore. **Category:** qubit. **Module:** `quantcore_circuits.layouts.qubits.sqdmetal_cells`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 
@@ -83,17 +83,13 @@ The cell contributes to the lumped model:
 | `C_X_1` | C | island1 – gnd | estimate=92.7, unit=fF, estimate_source=analytic: 910×110 µm pads across 100 µm in a 1000×800 µm pocket (coupled strips + CPW), estimate_kind=analytic, uncertainty=±25% |
 | `C_X_2` | C | island2 – gnd | estimate=106, unit=fF, estimate_source=analytic: 910×110 µm pads across 100 µm in a 1000×800 µm pocket (coupled strips + CPW), estimate_kind=analytic, uncertainty=±25% |
 | `C_X_12` | C | island1 – island2 | estimate=44.4, unit=fF, estimate_source=analytic: 910×110 µm pads across 100 µm in a 1000×800 µm pocket (coupled strips + CPW), estimate_kind=analytic, uncertainty=±25% |
-| `J_X` | SQUID | island1 – island2 | Lj_nH=–, Cj_fF=0, asym=0, flux_phi0=0 |
+| `J_X` | SQUID | island1 – island2 | Lj_nH=6.734, Cj_fF=15, asym=0, flux_phi0=0 |
 
 Nodes: `island1`, `island2`.
-
-- X: no junction.Lj_nH in the design; the qubit mode needs one to simulate
 
 ## Simulation export notes
 
 - C1: Sim junction pads overlap / end on a curved island in a narrow gap (status: fixed; fix in layouts/junctions/sim_gap.py; layouts/qubits/qpdk_cells.py; layouts/qubits/sqdmetal_cells.py)
-
-Details: [SIM_EXPORT_AUDIT](../SIM_EXPORT_AUDIT.md).
 
 ## How to use
 

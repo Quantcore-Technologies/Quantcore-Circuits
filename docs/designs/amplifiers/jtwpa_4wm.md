@@ -2,7 +2,7 @@
 
 A Josephson travelling-wave parametric amplifier: a transmission line made of a long chain of junctions with a capacitor to ground at every cell. A strong pump and the signal mix into an idler (four-wave mixing) and the signal grows along the line. Small resonators on every few cells keep the three waves in phase. The circuit comes from the QPDK `josephsoncircuits_twpa` notebook and the layout family from twpa-sim `jtwpa4wm` (both MIT), rebuilt on the Quantcore PDK.
 
-Build this one to see how a chain amplifier is laid out: two pads, two plain feeds and one chain component between them. The drawn chain is shortened to 64 cells (the source circuit has 2047), and the junction is the largest the PDK allows.
+This notebook shows how a chain amplifier is laid out: two pads, two plain feeds and one chain component between them. The drawn chain is shortened to 64 cells (the source circuit has 2047), and the junction is the largest the PDK allows.
 
 ```{image} ../../images/designs/amplifiers/jtwpa_4wm.png
 :alt: The whole jtwpa_4wm chip as the v2 notebook builds it
@@ -13,11 +13,11 @@ Build this one to see how a chain amplifier is laid out: two pads, two plain fee
 
 | | |
 |---|---|
-| Notebook | `examples/designs/amplifiers/jtwpa_4wm.ipynb` (the one-cell version before the rewrite: `jtwpa_4wm.v1.ipynb`) |
+| Notebook | `examples/designs/amplifiers/jtwpa_4wm.ipynb` (an older one-cell version is kept as `jtwpa_4wm.v1.ipynb`) |
 | Source | QPDK notebook `josephsoncircuits_twpa` (MIT) and twpa-sim `jtwpa4wm` (MIT) |
 | Chip | 7.5 × 7.5 mm Quantcore die, sapphire 650 µm, CPW 10 / 6 µm |
 | On the chip | 1 `JtwpaChain` (64 junctions, 60 µm pitch, a resonator every 4th node) · 2 bond pads · 2 feeds |
-| Builds today | yes: layout run 2026-11-19, 5 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 5 s) |
 
 ## How the notebook builds it
 
@@ -44,20 +44,20 @@ Numbers are from a run of this notebook on 2026-11-19 (Setup, Design, Check and 
 | uniform | 6.174 | -0.003777 | about 5 |
 | loaded | 21.32 | 0.001488 | about 25 |
 
-The drawn 4-cell unit, extended to 2047 cells at the same (I_p/I_c)², is not phase matched: q_p = 0.206 rad/junction at 7.12 GHz (the source has 0.096) and G at 5 GHz is about 0.1 dB (Δβ = -0.0428 rad/junction). The numbers say what the PDK cell would need (larger C_g and resonator C) rather than predict a device.
+The drawn 4-cell unit, extended to 2047 cells at the same (I_p/I_c)², is not phase matched: q_p = 0.206 rad/junction at 7.12 GHz (the source has 0.096) and G at 5 GHz is about 0.1 dB (Δβ = -0.0428 rad/junction). The numbers show what the PDK cell would need (larger C_g and resonator C); they do not predict a device.
 
 ```{image} ../../images/designs/amplifiers/jtwpa_4wm_lom.png
 :width: 80%
 :alt: 4WM gain of the uniform and the loaded chain
 ```
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates (component formulas and calibration), not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
-The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
+The rest of this page is the detailed spec the notebook was built from, with every component, port, route and length.
 
-Source · licence: gdsfactory/quantum-rf-pdk (MIT) notebook `josephsoncircuits_twpa` (O'Brien 2014; Peng 2022); twpa-sim (MIT) `jtwpa4wm`. Group `amplifiers` (design decision #45). Die: 7.5 × 7.5 mm PDK die, PDK frame, sapphire 650 µm, Nb trilayer junctions. Status: built — `examples/designs/amplifiers/jtwpa_4wm.ipynb` / `.json`.
+Source · licence: gdsfactory/quantum-rf-pdk (MIT) notebook `josephsoncircuits_twpa` (O'Brien 2014; Peng 2022); twpa-sim (MIT) `jtwpa4wm`. Die: 7.5 × 7.5 mm PDK die, PDK frame, sapphire 650 µm, Nb trilayer junctions. Notebook and design: `examples/designs/amplifiers/jtwpa_4wm.ipynb` / `.json`.
 
 ### Components
 
@@ -83,5 +83,4 @@ QPDK: ≈ 25 dB (loaded) / ≈ 5 dB (uniform) at 5 GHz, 2047 cells, I_c 3.4 µA,
 
 ### Simplifications / PDK differences
 
-64-cell chain on the die (the 2047-cell circuit in the analysis); PDK junction; drawn C_g / C_r far below the source's
-; junctions are flagged `pdk_rn` where present (amplifier junctions are far below the qubit R_n window).
+64-cell chain on the die (the 2047-cell circuit in the analysis); PDK junction; drawn C_g / C_r far below the source's; junctions are flagged `pdk_rn` where present (amplifier junctions are far below the qubit R_n window).

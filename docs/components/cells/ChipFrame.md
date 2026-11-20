@@ -6,7 +6,7 @@ The PCell declaration for a chip frame.
 
 **Source:** KQC (KQCircuits). **Category:** marker. **Module:** `kqcircuits.elements.chip_frame`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

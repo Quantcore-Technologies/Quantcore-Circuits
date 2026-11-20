@@ -19,8 +19,9 @@
       "enabled": null
     },
     "params": {
-      "with_grid": true,
-      "name_chip": "QFACTOR"
+      "with_grid": false,
+      "name_chip": "QFACTOR",
+      "cheese": "chip"
     }
   },
   "instances": {

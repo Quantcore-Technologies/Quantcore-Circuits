@@ -2,7 +2,7 @@
 
 The simplest Josephson parametric amplifier: one junction shunted by a capacitor, a lumped LC mode pumped near resonance. The chip has two of them, one coupled to its line through a series capacitor and one through a shared (tapped) inductance. The layout follows twpa-sim's `jpa` families (MIT) on the Quantcore PDK.
 
-Build this one to compare the two ways of coupling a lumped mode to a 50 Ω line, side by side on one die, each with its own pad.
+This notebook compares two ways of coupling a lumped mode to a 50 Ω line, side by side on one die, each with its own pad.
 
 ```{image} ../../images/designs/amplifiers/twpa_sim_jpa.png
 :alt: The whole twpa_sim_jpa chip as the v2 notebook builds it
@@ -13,11 +13,11 @@ Build this one to compare the two ways of coupling a lumped mode to a 50 Ω line
 
 | | |
 |---|---|
-| Notebook | `examples/designs/amplifiers/twpa_sim_jpa.ipynb` (the one-cell version before the rewrite: `twpa_sim_jpa.v1.ipynb`) |
+| Notebook | `examples/designs/amplifiers/twpa_sim_jpa.ipynb` (an older one-cell version is kept as `twpa_sim_jpa.v1.ipynb`) |
 | Source | twpa-sim `jpa` and `jpa_inductive` (MIT) |
 | Chip | 7.5 × 7.5 mm Quantcore die, sapphire 650 µm |
 | On the chip | 2 `LumpedJpa` (capacitive, inductive) · 1 finger capacitor · 2 bond pads · 2 feeds |
-| Builds today | yes: layout run 2026-11-19, 5 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 5 s) |
 
 ## How the notebook builds it
 
@@ -51,13 +51,13 @@ The single-mode Kerr model (undepleted pump) gives a peak gain of 20.4 dB at -12
 :alt: Gain of the two JPAs
 ```
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates (component formulas and calibration), not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
-The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
+The rest of this page is the detailed spec the notebook was built from, with every component, port, route and length.
 
-Source · licence: mandalsoumyajit/twpa-sim (MIT): `src/twpa/layout/generate.py` (families `jpa`, `inductive_coupler`), `examples/layout/jpa*.json`. Group `amplifiers` (design decision #45). Die: 7.5 × 7.5 mm PDK die, PDK frame, sapphire 650 µm, Nb trilayer junctions. Status: built — `examples/designs/amplifiers/twpa_sim_jpa.ipynb` / `.json`.
+Source · licence: mandalsoumyajit/twpa-sim (MIT): `src/twpa/layout/generate.py` (families `jpa`, `inductive_coupler`), `examples/layout/jpa*.json`. Die: 7.5 × 7.5 mm PDK die, PDK frame, sapphire 650 µm, Nb trilayer junctions. Notebook and design: `examples/designs/amplifiers/twpa_sim_jpa.ipynb` / `.json`.
 
 ### Components
 
@@ -77,7 +77,7 @@ Source · licence: mandalsoumyajit/twpa-sim (MIT): `src/twpa/layout/generate.py`
 
 ### LOM node structure
 
-JC: island (C_shunt, JJ to ground) — C_c π — pad; JL: island (C_shunt) — JJ — tap (L_tap + C_tap to ground, pad)
+JC: island (C_shunt, JJ to ground), then C_c π, then pad; JL: island (C_shunt), then JJ, then tap (L_tap + C_tap to ground, pad)
 
 ### Targets (from the source)
 
@@ -85,5 +85,4 @@ none stated (illustrative process: f0 ≈ 63 GHz)
 
 ### Simplifications / PDK differences
 
-planar IDC instead of MIM; PDK junction (0.65 µA) instead of 20 µA; galvanic tapped inductance instead of a pickup loop
-; junctions are flagged `pdk_rn` where present (amplifier junctions are far below the qubit R_n window).
+planar IDC instead of MIM; PDK junction (0.65 µA) instead of 20 µA; galvanic tapped inductance instead of a pickup loop; junctions are flagged `pdk_rn` where present (amplifier junctions are far below the qubit R_n window).

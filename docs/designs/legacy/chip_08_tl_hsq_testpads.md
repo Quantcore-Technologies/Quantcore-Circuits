@@ -54,16 +54,16 @@ The notebook has no saved LOM output. The chip has no qubit or resonator, so its
 
 The rest of this page is the detailed spec the notebook was built from: every component, the changes made while rebuilding, and the notes.
 
-**Source:** `components/python/chip_08_TL_HSQ_testpads.py` (`create_test_chip()`, writes
+Source: `components/python/chip_08_TL_HSQ_testpads.py` (`create_test_chip()`, writes
 `chip_08_TL_HSQ_testJJ_1.0.gds`). Legacy QWri library (May 2024), Quantcore internal. Notebook
 `examples/designs/legacy/chip_08_tl_hsq_testpads.ipynb`.
 
-### Changes after design decisions (legacy-fix, 2026-11-03)
+### Changes made in the rebuild
 
-- **#1 junctions:** the drawn test-pad sweep valued on the PDK junction rule (design rule #1: Nb trilayer, Δ = 1.4 meV, I_c·R_n = πΔ/2e = 2.20 mV, R_n 40–50 kΩ, qubits 4–8 GHz; PDK process `get_pdk().junction`: R_n·A 13.5 kΩ·µm², C_J 50 fF/µm², both assumed by the PDK).
-- Notebook edited and its JSON rebuilt from the layout cell; **not executed** (verification policy): outputs cleared, PNGs stale until the notebook is run.
+- Junctions: the drawn test-pad sweep valued on the PDK junction rule (Nb trilayer, Δ = 1.4 meV, I_c·R_n = πΔ/2e = 2.20 mV, R_n 40–50 kΩ, qubits 4–8 GHz; PDK process `get_pdk().junction`: R_n·A 13.5 kΩ·µm², C_J 50 fF/µm², both assumed by the PDK).
+- The notebook's JSON was rebuilt from its layout cell. The notebook has not been re-run, so its outputs are cleared and its PNGs may be out of date.
 
-**What it is.** A junction-size calibration chip for the HSQ-spacer trilayer process: a 9 × 5 array of
+What it is: a junction-size calibration chip for the HSQ-spacer trilayer process: a 9 × 5 array of
 `testPad_Nb_TL_HSQ` probe structures (chip_04's grid with chip_06's HSQ pad) on a 7.5 × 7.5 mm die centred on (0, 0)
 → Designer (x + 3750, y + 3750). The straight (bottom) finger is swept 0.3 … 1.0 µm along the columns; the bent (top)
 finger is 0.6 µm in every row. PDK v2 die frame: it replaces the base-metal corner `Marker`s (rot 1/2/3/0; the first
@@ -71,7 +71,7 @@ with thickness 50, width 500) and the layer-10 outline with its four 500 µm box
 markers are kept. No qubits, resonators or feedline. The script also imports `junction_creator_HSQ` and `testPad`
 but never calls them; its header comment ("50 junctions", 11 × 5 fingers) is stale: the code draws 9 × 5 = 45.
 
-**Buildable now?** Yes: every cell has a catalog ref.
+Builds: yes. Every cell has a catalog ref.
 
 ### Components (legacy frame)
 
@@ -88,7 +88,7 @@ corners.
 
 No routes, no launchers. The test pads and markers have no ports, the labels are port-less shapes: the LOM netlist
 is empty. "LOM simulation" = the junction table: area = bf × 0.6 µm², L_J and R_n from
-`circuit.bridges.lj_from_area` / `rn_from_area` with an assumed Jc (not in the source or the PDK: to confirm).
+`circuit.bridges.lj_from_area` / `rn_from_area` with an assumed Jc (not in the source or the PDK: to be confirmed).
 No sim groups, no FEM jobs.
 
 ### Keep-outs

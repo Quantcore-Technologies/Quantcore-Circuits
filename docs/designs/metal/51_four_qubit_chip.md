@@ -1,12 +1,12 @@
 # Four-qubit ring (Metal 51)
 
-Four transmon qubits sit in a diamond and talk to each other through a ring of four bus resonators. Each qubit has
-its own readout resonator, which ends on its own coupled bond pad (there is no shared feedline), and its own charge
+Four transmon qubits sit in a diamond and are coupled to each other through a ring of four bus resonators. Each qubit
+has its own readout resonator, which ends on its own coupled bond pad (there is no shared feedline), and its own charge
 line for driving it. The layout comes from Qiskit Metal's four-qubit example (tutorial 51 / 2.21, Apache-2.0), rebuilt
 on the Quantcore PDK: sapphire, Quantcore trilayer junctions, the QCT die frame and bond pads 100 µm from the edge.
 
 Build this one to learn λ/2 readouts that end on a coupled pad, qubit–qubit coupling through λ/2 buses, and charge
-lines wired through corner points.
+lines routed through corner points.
 
 ```{image} ../../images/designs/metal/m51_four_qubit_chip.png
 :alt: The whole m51 chip as the v2 notebook builds it
@@ -17,11 +17,11 @@ lines wired through corner points.
 
 | | |
 |---|---|
-| Notebook | `examples/designs/metal/m51_four_qubit_chip.ipynb` (the one-cell version before the rewrite: `m51_four_qubit_chip.v1.ipynb`) |
+| Notebook | `examples/designs/metal/m51_four_qubit_chip.ipynb` (an older one-cell version is kept as `m51_four_qubit_chip.v1.ipynb`) |
 | Source | Qiskit Metal `51-Four_qubit_chip.ipynb` (same layout as tutorial 2.21), © IBM and contributors, Apache-2.0 |
 | Chip | 9 × 6.5 mm (the source's size, larger than the 7.5 mm Quantcore die), CPW 10 / 6 µm |
 | On the chip | 4 pocket transmons · 4 λ/2 readouts (8.6 mm) · 4 λ/2 buses (9 mm) · 4 charge lines · 8 bond pads |
-| Builds today | yes: layout run 2026-11-19, 12 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 12 s) |
 
 ## How the notebook builds it
 
@@ -62,16 +62,16 @@ Numbers are from a run of this notebook on 2026-11-19 (Setup, Design, Check and 
 :alt: LOM plot of m51_four_qubit_chip
 ```
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates from component formulas and calibration, not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
 The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
 
-> **Update 2026-11-03:** frame = **source**: build with `chip={"die_frame": False, ...}` so the replica keeps its own size and frame (the Quantcore PDK die frame is for Quantcore chips only). `metal:<Class>` wrappers are READY (ports = Metal pin names, params = Metal options), so the `metal:` refs in this spec build as written; the Quantcore/KQC substitutions stay optional.
+> The `metal:` references in this spec build as written, through the `metal:` wrapper (ports are the Metal pin names, parameters the Metal options). The Quantcore and KQC substitutions are optional.
 
 Source: Quantum Metal `docs/circuit-examples/F.Small-quantum-chips/51-Four_qubit_chip.ipynb`. The same layout, cell for
-cell, is in `docs/tut/2-From-components-to-chip/2.21-Design-a-4-qubit-full-chip.ipynb`, so build it once.
+cell, is in `docs/tut/2-From-components-to-chip/2.21-Design-a-4-qubit-full-chip.ipynb`, so it only needs building once.
 Licence Apache-2.0 (© 2017 IBM and contributors). The chip has four `TransmonPocketCL` qubits in a diamond, joined by a
 ring of four 9 mm λ/2 bus meanders. Each qubit is read out through an 8.6 mm λ/2 meander that ends on a capacitively
 coupled launchpad, and has a charge line to a corner pad.
@@ -79,7 +79,7 @@ Chip 9000 × 6500 µm. Notebook 51 sets `size_y` twice, so `size_x` keeps the 9 
 explicitly. The Metal origin is the chip centre, so **Designer = Metal + (4500, 3250)**.
 CPW 10/6 µm everywhere, route fillet 99.99 µm. Metal layer 1 only. The junctions are `FakeJunction_01` placeholders.
 The Metal substrate is the default silicon, 750 µm thick.
-**Buildable now: yes**, with these substitutions: `Xmon` for TransmonPocketCL, `BondPad` + KQC `FingerCapacitorSquare`
+The first build uses these substitutions: `Xmon` for TransmonPocketCL, `BondPad` + KQC `FingerCapacitorSquare`
 for LaunchpadWirebondCoupled, and free-end charge lines.
 
 ### Components
@@ -150,13 +150,13 @@ sapphire (6.6 on Si), 8.6 mm readout ≈ 7.3 GHz (6.9 on Si).
    the DRC flags CL1–CL4 against the readout meander, shift those free ends 150 µm away from the readout axis.
 4. Drop the meander asymmetries; set only lengths. Add `nodes` only if a meander collides.
 
-### Quantcore PDK rebuild (2026-11-03)
+### Quantcore PDK rebuild
 
-The notebook is a **Quantcore-PDK rebuild**, not a replica (design rule, 2026-11-03): the netlist, LOM and imported components are kept, the process is Quantcore's.
+The notebook is a Quantcore PDK rebuild of the source, not a replica: the netlist, LOM and imported components are kept, and the process is Quantcore's.
 
 Notebook: [`examples/designs/metal/m51_four_qubit_chip.ipynb`](../../../examples/designs/metal/m51_four_qubit_chip.ipynb).
 
-- **Chip:** the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), drawn on the source's 9 × 6.5 mm chip (the design does not fit the 7.5 mm die); no KQC chip frame.
-- **Stack:** sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); Metal's `DesignPlanar` default is silicon (εr 11.45, 750 µm), so the LOM capacitances, resonator frequencies and FEM jobs here are for sapphire, not the source's substrate.
-- **Junctions:** Quantcore Nb/AlOx/Nb trilayer junctions (`junction_type` from `layouts.registry.trilayer_junction`): fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient, sized on the PDK junction rule (Nb Δ = 1.4 meV, I_c·R_n = πΔ/2e, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed); all four qubits get the PDK nominal junction, 0.5 × 0.6 µm fingers → R_n = 45 kΩ, L_J = 6.73 nH, C_J = 15 fF (in the 40–50 kΩ window) (the source's `FakeJunction_01` has no value; the pre-rebuild build assumed 10 nH + 2 fF). Expected f_q ≈ 7.1 GHz (estimate; were 6.33 GHz): now above the ≈ 6.85 GHz λ/2 buses instead of 0.5 GHz below them.
-- **Kept:** the topology and every Metal component with the source's options (through the `metal:` wrapper), positions and orientations, every route's end pins and total length, the sim groups (buses 9000 µm, readouts 8600 µm, the four charge lines).
+- Chip: the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), drawn on the source's 9 × 6.5 mm chip (the design does not fit the 7.5 mm die); no KQC chip frame.
+- Stack: sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); Metal's `DesignPlanar` default is silicon (εr 11.45, 750 µm), so the LOM capacitances, resonator frequencies and FEM jobs here are for sapphire rather than the source's substrate.
+- Junctions: Quantcore Nb/AlOx/Nb trilayer junctions (`junction_type` from `layouts.registry.trilayer_junction`): fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient, sized on the PDK junction rule (Nb Δ = 1.4 meV, I_c·R_n = πΔ/2e, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed); all four qubits get the PDK nominal junction, 0.5 × 0.6 µm fingers → R_n = 45 kΩ, L_J = 6.73 nH, C_J = 15 fF (in the 40–50 kΩ window) (the source's `FakeJunction_01` has no value). Expected f_q ≈ 7.1 GHz (an estimate), above the ≈ 6.85 GHz λ/2 buses.
+- Kept: the topology and every Metal component with the source's options (through the `metal:` wrapper), positions and orientations, every route's end pins and total length, the sim groups (buses 9000 µm, readouts 8600 µm, the four charge lines).

@@ -227,15 +227,22 @@ def _export_job(setup: SimSetup, job_dir: str | Path, overwrite: bool = False, f
     defaults = plugin.defaults if plugin else DEFAULT_SETTINGS[analysis]
     cfg = {**defaults, **group_settings(setup, defaults), **settings}
     is_fast = fem_fast(fast) and analysis in FAST_SETTINGS
+    main_face = get_pdk(setup.design.pdk).face
+    other_faces = [f for f in sim_faces(setup) if f != main_face]  # a multi-face group (flip-chip, TSV)
     if is_fast:
         cfg = fast_settings(analysis, cfg, _junction_islands(setup))
+        seeds = cfg.get("mesh_size")
+        if other_faces and isinstance(seeds, dict) and f"{main_face}_gap" in seeds:
+            for f in other_faces:  # the fast gap seed on every simulated face's gaps
+                seeds.setdefault(f"{f}_gap", seeds[f"{main_face}_gap"])
     # mesh seeds by name (the KLayout Simulate dialog): "gap_seed" µm on the CPW gaps, "island_seed" µm on the
     # junction islands (what a fast run seeds by itself); None / 0 = no seed
     gap_seed, island_seed = cfg.pop("gap_seed", None), cfg.pop("island_seed", None)
     if gap_seed or island_seed:
         seeds = dict(cfg.get("mesh_size") or {})
         if gap_seed:
-            seeds[f"{get_pdk(setup.design.pdk).face}_gap"] = float(gap_seed)
+            for f in [main_face, *other_faces]:
+                seeds[f"{f}_gap"] = float(gap_seed)
         if island_seed:
             for n in _junction_islands(setup):
                 seeds[f"*_signal_{int(n)}"] = float(island_seed)
@@ -333,6 +340,14 @@ def _split_gds_records(setup: SimSetup, gds: Path) -> None:
                 "to the GDS as overlapping pieces of the same conductor (outline unchanged)")
         if note not in setup.notes:
             setup.notes.append(note)
+
+
+def sim_faces(setup: SimSetup) -> list[str]:
+    """The KQC faces the job simulates (its ``face_stack``, flattened; empty entries left out)."""
+    out = []
+    for f in getattr(setup.simulation, "face_stack", None) or []:
+        out += [str(x) for x in f] if isinstance(f, (list, tuple)) else [str(f)]
+    return out
 
 
 def _junction_islands(setup: SimSetup) -> list[int]:

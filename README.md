@@ -23,7 +23,7 @@ step. The command line is `qcc`.
 
 ## Design philosophy
 
-Start cheap, spend solver time only where it pays, and let every result feed the next geometry:
+Start with cheap estimates, spend solver time only where it pays, and feed every result back into the next geometry:
 
 **LAYOUT → LOM → EIGENMODE (per component) → FEM on the eigenmode's mesh → extract and analyse → feedback**
 
@@ -40,6 +40,8 @@ Start cheap, spend solver time only where it pays, and let every result feed the
 
 You need Python 3.11 or newer. SQcircuit (in the `analysis` extra) needs PyTorch, so install the CPU build first:
 
+The current release is 0.0.2:
+
 ```bash
 pip install torch --index-url https://download.pytorch.org/whl/cpu
 pip install "quantcore-circuits[all]"
@@ -48,8 +50,8 @@ qcc selftest
 ```
 
 `qcc kqc-files` downloads KQCircuits' own simulation scripts and label font for the installed `kqcircuits` version
-from its GitHub release (the PyPI package does not include them; the HFSS / Q3D / Elmer export copies the scripts
-into every job, and KQC's chip-frame labels use the font).
+from its GitHub release. The PyPI package does not include them; the HFSS / Q3D / Elmer export copies the scripts
+into every job, and KQC's chip-frame labels use the font.
 `qcc selftest` takes about half a minute. It checks the imports of every extra and builds, checks and exports a small
 chip. Read any `[FAIL]` line it prints.
 
@@ -99,7 +101,7 @@ print(list(d.lom().model.branches))   # the lumped circuit's elements
 Next steps: the five tutorial notebooks in
 [`examples/tutorials`](https://github.com/Quantcore-Technologies/Quantcore-Circuits/tree/main/examples/tutorials)
 (start with tutorial 0), and the
-[68 design notebooks](https://github.com/Quantcore-Technologies/Quantcore-Circuits/tree/main/examples/designs) that
+[74 design notebooks](https://github.com/Quantcore-Technologies/Quantcore-Circuits/tree/main/examples/designs) that
 rebuild published chips (IBM, Google, Qiskit Metal, KQC and more).
 
 ## Documentation
@@ -120,7 +122,7 @@ The docs are at <https://quantcore-technologies.github.io/Quantcore-Circuits/>.
 |---|---|
 | `src/` | The `quantcore_circuits` package: components, PDK, routing, LOM, simulation export, analysis, the `qcc` CLI |
 | `kplugin/` | The KLayout plugin (also published as a Salt package) |
-| `examples/` | Tutorials, 68 design notebooks, templates and example `design.json` files |
+| `examples/` | Tutorials, 74 design notebooks, templates and example `design.json` files |
 | `docs/` | The documentation (Sphinx + MyST) |
 | `tests/` | The pytest suite (no GUI or solver needed for the fast tier) |
 | `reviewer/` | Source of the live dashboard (Vite + React); the built app ships inside the package |
@@ -136,11 +138,11 @@ Issues and pull requests are welcome. See
 ## License
 
 GPL-3.0-or-later, see [LICENSE](https://github.com/Quantcore-Technologies/Quantcore-Circuits/blob/main/LICENSE). The
-package builds on KQCircuits, which is GPL-3.0, so everything that links to it is distributed under the GPL.
+package builds on KQCircuits, which is GPL-3.0, so the package is distributed under the GPL as well.
 
 ## Acknowledgements
 
-quantcore-circuits is a thin layer over excellent open-source work:
+quantcore-circuits is a thin layer over these open-source projects:
 [KQCircuits](https://github.com/iqm-finland/KQCircuits) (geometry, routing, simulation export),
 [Qiskit Metal / Quantum Metal](https://github.com/qiskit-community/qiskit-metal) (LOM),
 [scqubits](https://github.com/scqubits/scqubits), [QuTiP](https://qutip.org),

@@ -6,7 +6,7 @@ The base "TransmonInterdigitated" inherits the "QComponent" class.
 
 **Source:** Metal (Qiskit Metal). **Category:** qubit. **Module:** `qiskit_metal.qlibrary.qubits.Transmon_Interdigitated`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

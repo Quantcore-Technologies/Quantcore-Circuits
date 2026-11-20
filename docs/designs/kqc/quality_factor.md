@@ -1,11 +1,11 @@
 # QualityFactor (KQC)
 
-A resonator-Q test chip from KQCircuits: six quarter-wave resonators of different widths and coupler types hang on one feedline. There are no qubits; you measure each resonator's frequency and quality factor. A flip-chip version is in [the test chips](test_chips.md) (`quality_factor_twoface`).
+A resonator-Q test chip from KQCircuits: six quarter-wave resonators of different widths and coupler types hang on one feedline. There are no qubits. You measure each resonator's frequency and quality factor. A flip-chip version is in [the test chips](test_chips.md) (`quality_factor_twoface`).
 
-Build it to learn how resonator elements that carry their own probe-line stub are chained into a feedline.
+Build it to see how resonator elements that carry their own probe-line stub are chained into a feedline.
 
 ```{image} ../../images/designs/kqc/qualityfactor.png
-:alt: The whole qualityfactor chip as the v2 notebook builds it
+:alt: The whole qualityfactor chip as the notebook builds it
 :width: 100%
 ```
 
@@ -13,11 +13,11 @@ Build it to learn how resonator elements that carry their own probe-line stub ar
 
 | | |
 |---|---|
-| Notebook | `examples/designs/kqc/qualityfactor.ipynb` (the one-cell version before the rewrite: `qualityfactor.v1.ipynb`) |
+| Notebook | `examples/designs/kqc/qualityfactor.ipynb` (an older one-cell version is kept as `qualityfactor.v1.ipynb`) |
 | Source | KQCircuits `chips/quality_factor.py` (`QualityFactor`), © IQM Finland Oy, GPL-3.0 |
 | Chip | 10 × 10 mm, SMA8 launchers (west in, east out), chip name "QFACTOR" |
 | On the chip | 6 λ/4 resonators (5374 to 5589 µm) · 1 feedline · no qubits |
-| Builds today | yes: layout run 2026-11-19, 6 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 6 s) |
 
 ## How the notebook builds it
 
@@ -65,14 +65,12 @@ These are lumped-model estimates (component formulas and calibration), not FEM r
 
 The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
 
-> **Update 2026-11-03:** frame = **source**: build with `chip={"die_frame": False, ...}` so the replica keeps its own size and frame (the Quantcore PDK die frame is for Quantcore chips only).
-
 Sources `other-libs/KQCircuits-main/KQCircuits-main/klayout_package/python/kqcircuits/chips/quality_factor.py`
-(`QualityFactor`) and `.../chips/quality_factor_twoface.py` (`QualityFactorTwoface`) · GPL-3.0 (IQM Finland).
-Rebuilt from extracted parameters. · What it is: resonator-Q test chips. One feedline carries 6 capacitively coupled
-λ/4 CPW resonators of different widths and coupler types. There are no qubits. · 10 × 10 mm (box is a parameter),
-KQC frame = Designer frame. · **QualityFactor: buildable now, yes** (2026-11-02: lengths match KQC; LOM gives 6 λ/4).
-**QualityFactorTwoface: no** (missing: DPath `poly_path`/`input_path` parameters for `SpiralResonatorPolygon`; see
+(`QualityFactor`) and `.../chips/quality_factor_twoface.py` (`QualityFactorTwoface`), GPL-3.0 (IQM Finland).
+Rebuilt from extracted parameters. What it is: resonator-Q test chips. One feedline carries 6 capacitively coupled
+λ/4 CPW resonators of different widths and coupler types. There are no qubits. 10 × 10 mm (box is a parameter),
+KQC frame = Designer frame. QualityFactor: lengths match KQC and the LOM gives 6 λ/4 (checked on 2026-11-02).
+QualityFactorTwoface needs DPath `poly_path`/`input_path` parameters for `SpiralResonatorPolygon` (see
 below).
 
 ### Components
@@ -112,7 +110,7 @@ for i in range(5):
 d.route("PL6", "R5.b", "chip.PL-1-OUT", nodes=[(8000, 7794.5), (8100, 7200)])
 ```
 
-#### QualityFactorTwoface (same file, P3)
+#### QualityFactorTwoface (same file)
 `frames_enabled=[0,1]`, SMA8 with the same names. Everything sits on face `1t1` with defaults
 (`resonator_faces=[0,1]`, all "capped"). The probeline uses the capped CPW `a_capped=10, b_capped=10`.
 - Probeline: chip.PL-1-IN (800,7200) → taper at (1500,7200) to a=10 b=10 (`waypoint(a=10, b=10,
@@ -125,8 +123,8 @@ d.route("PL6", "R5.b", "chip.PL-1-OUT", nodes=[(8000, 7794.5), (8100, 7200)])
   snap `a` → T_k.c. Its port b is at (x, 4856.9 / 5129.9 / 4865.9 / 5115 / 4874 / 5133).
 - Resonator k: `SpiralResonatorPolygon(length=res_lengths[k], a=res_a, b=res_b, bridge_spacing=0,
   input_path=DPath[(0,0)] w10, poly_path=DPath[(200,0),(2000,0),(2000,-500),(200,-500)] w10)` at Ck.b, rot 270 (even
-  k) or 90 with mirror (odd k). Here res_a = [10,10,10,20,10,5] and res_b = [6,6,6,12,6,3]. **Blocked:**
-  Designer/`design.json` cannot carry DPath params; tested, the PCell gets a str. Workarounds: use the spiral defaults
+  k) or 90 with mirror (odd k). Here res_a = [10,10,10,20,10,5] and res_b = [6,6,6,12,6,3]. Blocked:
+  Designer/`design.json` cannot carry DPath params (tested: the PCell gets a str). Workarounds: use the spiral defaults
   (triangle path), or replace each spiral with `d.route(f"RS{k}", Ck.b, Designer.free_end(..., term=0),
   meander=L_k)`.
 
@@ -144,16 +142,16 @@ None beyond the parameters. The QualityFactor docstrings call `res_lengths` "phy
 "planar capacitors".
 
 ### Simplifications for a first rebuild
-QualityFactor is a quick win for λ/4 + κ calibration (resonator-only, no qubits), so build it as is. For
+QualityFactor suits λ/4 + κ calibration (resonators only, no qubits), so build it as is. For
 QualityFactorTwoface, wait for TypeShape param support or use the meander-route replacement above.
 
-### Quantcore PDK rebuild (2026-11-03)
+### Quantcore PDK rebuild
 
-The notebook is a **Quantcore-PDK rebuild**, not a replica (design rule, 2026-11-03): the netlist, LOM and imported components are kept, the process is Quantcore's.
+The notebook is a Quantcore-PDK rebuild of the source chip. The netlist, LOM and imported components are kept, and the process is Quantcore's.
 
 Notebook: [`examples/designs/kqc/qualityfactor.ipynb`](../../../examples/designs/kqc/qualityfactor.ipynb).
 
-- **Chip:** the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), drawn on the source's 10 × 10 mm chip (its launchers sit on the chip edges, so the design does not fit the 7.5 mm die); KQC's ChipFrame (dicing edge, corner markers, labels) is not drawn.
-- **Stack:** sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); KQC's own simulation default is silicon (εr 11.45), so LOM capacitances and resonator frequencies here are for sapphire.
-- **Junctions:** none on this chip (no qubits or junctions).
-- **Kept:** the topology and every KQC element with the source's parameters, positions and orientations, the launcher assignment, every route's path and length, the sim groups (resonator lengths 5374–5589 µm, coupler types, airbridges).
+- Chip: the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), drawn on the source's 10 × 10 mm chip (its launchers sit on the chip edges, so the design does not fit the 7.5 mm die). KQC's ChipFrame (dicing edge, corner markers, labels) is not drawn. KQC's original grids its whole ground plane (`with_grid`, 5 µm squares on a 10 µm step). The rebuild keeps that coverage at the PDK density instead (chip parameter `cheese: "chip"`, `with_grid: false`): 5 µm squares with 20 µm gaps over the whole die, at least 4 µm from the 3/0 keep-outs, inside the design area and clear of the frame markers and the device ID.
+- Stack: sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); KQC's own simulation default is silicon (εr 11.45), so LOM capacitances and resonator frequencies here are for sapphire.
+- Junctions: none on this chip (no qubits or junctions).
+- Kept: the topology and every KQC element with the source's parameters, positions and orientations, the launcher assignment, every route's path and length, the sim groups (resonator lengths 5374–5589 µm, coupler types, airbridges).

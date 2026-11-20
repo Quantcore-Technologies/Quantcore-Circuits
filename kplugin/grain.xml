@@ -10,7 +10,7 @@
  <doc-url>https://quantcore-technologies.github.io/Quantcore-Circuits/plugin/index.html</doc-url>
  <url>git+https://github.com/Quantcore-Technologies/Quantcore-Circuits.git[klayout-plugin]</url>
  <license>GPL-3.0-or-later</license>
- <author>Quantcore</author>
+ <author>Wridhdhisom Karar</author>
  <author-contact>https://github.com/Quantcore-Technologies/Quantcore-Circuits/issues</author-contact>
  <authored-time/>
  <installed-time/>

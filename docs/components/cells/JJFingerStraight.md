@@ -6,7 +6,7 @@ Straight junction finger (legacy "JJ_finger Top"), on ``SIS_junction`` (2/0).
 
 **Source:** Quantcore. **Category:** shape. **Module:** `quantcore_circuits.layouts.junctions.jj_fingers`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

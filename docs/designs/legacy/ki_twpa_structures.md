@@ -2,7 +2,7 @@
 
 A structure sheet for kinetic-inductance (KI) devices, not a measured chip. A travelling-wave parametric amplifier (TWPA) style line runs from one bond pad to the other: a finger-loaded section, a meandered section and a second finger-loaded section, all 10/6 µm CPW. The fingers (2 µm wide, reaching into both grounds) add shunt capacitance per unit length, as a KI TWPA's artificial line does. Above it sit six spiral inductors (double-Fermat and Fermat spirals), the compact high-inductance elements KI circuits use.
 
-No KI or TWPA chip script exists in Quantcore's library. The cells here are ported building blocks from the legacy files `spiral.lym`, `draw.py` and `cpwe.py` (internal; the finger line is from G. Long, Glasgow 2021), laid out as a sheet on the PDK die with the device ID `KI TWPA`. Build it to see the spiral and finger-line components side by side and learn how a snapped chain of CPW cells forms one continuous line.
+No KI or TWPA chip script exists in Quantcore's library. The cells here are ported building blocks from the legacy files `spiral.lym`, `draw.py` and `cpwe.py` (internal; the finger line is from G. Long, Glasgow 2021), laid out as a sheet on the PDK die with the device ID `KI TWPA`. Build it to see the spiral and finger-line components side by side and how a snapped chain of CPW cells forms one continuous line.
 
 ```{image} ../../images/designs/legacy/ki_twpa_structures.png
 :alt: The whole ki_twpa_structures sheet rebuilt on the Quantcore PDK
@@ -54,13 +54,13 @@ The notebook has no saved LOM output. The chip has no qubit and no resonator who
 
 The rest of this page is the detailed spec the notebook was built from: every component, the changes made while rebuilding, and the notes.
 
-**Request:** design rule #7 ("import the kinetic-inductance and TWPA design chips to render, especially the
-spirals"). **Notebook:** `examples/designs/legacy/ki_twpa_structures.ipynb` (+ `.json`), legacy-fix, 2026-11-03.
+Request: "import the kinetic-inductance and TWPA design chips to render, especially the
+spirals". Notebook: `examples/designs/legacy/ki_twpa_structures.ipynb` (+ `.json`).
 Quantcore internal.
 
 ### What the library holds
 
-No KI or TWPA **chip** script exists in `components/` (or the sibling project folders): no `chip_*` script, notebook
+No KI or TWPA chip script exists in `components/` (or the sibling project folders): no `chip_*` script, notebook
 or GDS uses spirals, KI lines or a TWPA. The building blocks:
 
 | legacy source | draws | Quantcore cell |
@@ -69,7 +69,7 @@ or GDS uses spirals, KI lines or a TWPA. The building blocks:
 | `components/python/draw.py::spiral(x, y, w, start_ang, end_ang, spiral_r, spiral_type, npoints, layer)` | spiral by angle: 0 Archimedean, 1 Fermat, 2 double Fermat in/out (the double-Fermat branch has a typo, `y_bls` / `y1s`) | `SpiralLine` (archimedean / fermat / double_fermat; golden XOR in `tests/test_spirals.py`) |
 | `components/python/cpwe.py::finger_line` (G. Long, Glasgow 2021) | CPW with interdigital fingers into both grounds: the shunt-C-loaded artificial line of a KI TWPA | `CpweFingerLine` |
 | `cpwe.py::meander_line`, `b_pad`, `tapper`, `term_open` | meandered CPW, bond pad, taper, open end | `CpweMeanderLine`, `CpweBondPad`, `CpweTaper`, `CpweOpenEnd` |
-| `ustrip.py`, `pymacros/Cong/bondpad_ustrip.lym` | microstrip versions | not ported (decision: ignore microstrip) |
+| `ustrip.py`, `pymacros/Cong/bondpad_ustrip.lym` | microstrip versions | not ported (microstrip is ignored) |
 
 ### The chip (Designer frame, 7.5 × 7.5 mm PDK die, ID `KI TWPA`)
 
@@ -86,11 +86,11 @@ or GDS uses spirals, KI lines or a TWPA. The building blocks:
 
 The line: one conductor PL → PR (50 Ω ports), finger sections with their shunt C (`CpweFingerLine` model). Spirals:
 shapes without ports; the notebook tabulates N turns, wire length, geometric L (modified Wheeler, circular) and
-kinetic L_k = L_□ ℓ / w for example sheet inductances (0.1 / 10 / 50 pH/□ — the KI film is not in the PDK: assumed
+kinetic L_k = L_□ ℓ / w for example sheet inductances (0.1 / 10 / 50 pH/□; the KI film is not in the PDK, so these are assumed
 values). No sim groups.
 
 ### Open
 
 - The actual KI / TWPA chip sources (if they exist elsewhere): add them to `components/` to rebuild them as chips.
-- ~~`draw.spiral` Fermat / double-Fermat spirals~~: done, `SpiralLine` (the notebook uses it since the cell switch).
+- Done: the `draw.spiral` Fermat / double-Fermat spirals are ported as `SpiralLine`, which the notebook uses.
 - The KI film (material, thickness, sheet kinetic inductance) for the PDK.

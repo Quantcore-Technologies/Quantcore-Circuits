@@ -10,7 +10,7 @@ Square flux-trapping holes at explicit centres (legacy notebook 14 ``FluxHoles``
 Canonical cell of an alias group. Aliases: [`FluxHoleArray`](FluxHoleArray.md).
 :::
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

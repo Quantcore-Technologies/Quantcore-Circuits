@@ -5,8 +5,8 @@ the two qubits' 2 mm meanders and the coupler's 1.5 mm meander end open next to 
 Metal iSWAP-gate notebook (after Phys. Rev. X 11, 021058, Fig. 1; Apache-2.0, © IBM and contributors). The Quantcore
 rebuild is distributed under GPL-3.0.
 
-Build this one to learn how a flux-tunable pair with a tunable coupler is wired: open readout meanders beside a
-through line, four control lines, and declared couplings. It fits inside the standard 7.5 mm Quantcore die.
+Build this one to learn how a flux-tunable pair with a tunable coupler is wired, with open readout meanders beside a
+through line, four control lines and declared couplings. It fits inside the standard 7.5 mm Quantcore die.
 
 ```{image} ../../images/designs/metal/iswap3_xmon_tc.png
 :alt: The whole iswap3 chip as the v2 notebook builds it
@@ -17,11 +17,11 @@ through line, four control lines, and declared couplings. It fits inside the sta
 
 | | |
 |---|---|
-| Notebook | `examples/designs/metal/iswap3_xmon_tc.ipynb` (the one-cell version before the rewrite: `iswap3_xmon_tc.v1.ipynb`) |
+| Notebook | `examples/designs/metal/iswap3_xmon_tc.ipynb` (an older one-cell version is kept as `iswap3_xmon_tc.v1.ipynb`) |
 | Source | Qiskit Metal `Full-Physical-Design-of-iSWAP-Gates.ipynb`, example 3, © IBM and contributors, Apache-2.0 |
 | Chip | 7.5 × 7.5 mm Quantcore die (the source's 4 × 3 mm area centred in it), CPW 10 / 6 µm |
 | On the chip | 2 crossmons with Quantcore SQUIDs · 1 tunable coupler · 3 open meanders (2 mm, 2 mm, 1.5 mm) · 1 through line · 4 control lines · 6 bond pads |
-| Builds today | yes: layout run 2026-11-19, 9 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 9 s) |
 
 ## How the notebook builds it
 
@@ -60,13 +60,13 @@ Numbers are from a run of this notebook on 2026-11-19 (Setup, Design, Check and 
 :alt: LOM plot of iswap3_xmon_tc
 ```
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates from component formulas and calibration, not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
 The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
 
-> **Update 2026-11-03:** frame = **source**: build with `chip={"die_frame": False, ...}` so the replica keeps its own size and frame (the Quantcore PDK die frame is for Quantcore chips only). `metal:<Class>` wrappers are READY (ports = Metal pin names, params = Metal options), so the `metal:` refs in this spec build as written; the Quantcore/KQC substitutions stay optional.
+> The `metal:` references in this spec build as written, through the `metal:` wrapper (ports are the Metal pin names, parameters the Metal options). The Quantcore and KQC substitutions are optional.
 
 Source: Quantum Metal `docs/circuit-examples/F.Small-quantum-chips/Full-Physical-Design-of-iSWAP-Gates.ipynb`,
 Example 3, after Phys. Rev. X 11, 021058 (2021), Fig. 1. The same qubit and coupler pair is in
@@ -76,7 +76,7 @@ island with a SQUID and a flux line) above their inner arms. An east–west thro
 chip. Two 2 mm qubit readout meanders and a 1.5 mm coupler meander end open next to that line. There are 6 pads.
 The chip is 4000 × 3000 µm, centred, so **Designer = Metal + (2000, 1500)**. CPW 10/6 µm and Metal defaults
 (cross_width 20, cross_length 200 per arm, cross_gap 20; claw 30/10/6, ground_spacing 5).
-**Buildable now: yes**. Substitutions: `Xmon` for TransmonCrossFL, `Xmon(flux_port)` for TunableCoupler01, hanger
+A first build uses these substitutions: `Xmon` for TransmonCrossFL, `Xmon(flux_port)` for TunableCoupler01, hanger
 `end="open"` for the OpenToGround ends.
 
 ### Components
@@ -109,7 +109,7 @@ There are no markers.
 ### LOM node structure
 - Q1 and Q2 are fixed transmons; Q1 has a flux line in the layout. TC is a tunable coupler island with a SQUID biased
   from T_NW.
-- The coupling chain is Q1 —C— TC —C— Q2, plus the direct Q1–Q2 arm capacitance.
+- The coupling chain is Q1, C, TC, C, Q2, plus the direct Q1–Q2 arm capacitance.
 - The readout resonators (coupler_right/left, and the coupler's coupler_mid) have C_g at the claw and open ends
   capacitively coupled to the through line, which runs between the 50 Ω ports T_east and T_west.
 
@@ -120,16 +120,16 @@ None. The 2 mm open-open lines would resonate near 30 GHz, so the lengths are il
 1. Use realistic readout lengths: make each a λ/4 hanger with `end="short"`, meander about 4500 µm.
 2. Drop coupler_mid until the coupler cell has a readout claw (or use KQC `Swissmon` for TC: cplr0/cplr2 to the
    qubits, cplr1 to the readout, flux port).
-3. The qubit spacing is widened from 600 to 1400 µm so a coupler cell and the k1/k2 links fit. Keep this if `metal:TunableCoupler01` is
-   not used.
+3. The qubit spacing is widened from 600 to 1400 µm so a coupler cell and the k1/k2 links fit. Keep this if
+   `metal:TunableCoupler01` is not used.
 
-### Quantcore PDK rebuild (2026-11-03)
+### Quantcore PDK rebuild
 
-The notebook is a **Quantcore-PDK rebuild**, not a replica (design rule, 2026-11-03): the netlist, LOM and imported components are kept, the process is Quantcore's.
+The notebook is a Quantcore PDK rebuild of the source, not a replica: the netlist, LOM and imported components are kept, and the process is Quantcore's.
 
 Notebook: [`examples/designs/metal/iswap3_xmon_tc.ipynb`](../../../examples/designs/metal/iswap3_xmon_tc.ipynb).
 
-- **Chip:** the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), on the 7.5 × 7.5 mm Quantcore die; the source's 4 × 3 mm chip area is centred in it (`box=(-1750, -2250, 5750, 5250)`), so every coordinate stays the source's.
-- **Stack:** sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); Metal's `DesignPlanar` default is silicon (εr 11.45, 750 µm), so the LOM capacitances, resonator frequencies and FEM jobs here are for sapphire, not the source's substrate.
-- **Junctions:** Quantcore Nb/AlOx/Nb trilayer junctions (`junction_type` from `layouts.registry.trilayer_junction`): fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient, sized on the PDK junction rule (Nb Δ = 1.4 meV, I_c·R_n = πΔ/2e, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed); the two `TransmonCrossFL` (flux lines) and the `TunableCoupler01` each get a PDK SQUID of two 0.25 × 0.6 µm junctions → R_n = 45 kΩ in parallel, L_J = 6.73 nH at zero flux, C_J = 15 fF (in the 40–50 kΩ window), in place of the assumed 10 nH + 2 fF. Expected f_q ≈ 5.8 GHz (estimate; were 5.08 GHz), the coupler ≈ 7.9 GHz at zero flux. The two qubits stay identical.
-- **Kept:** the topology and every Metal component with the source's options (through the `metal:` wrapper), positions and orientations, every route's end pins and total length, the sim groups (the three open meanders 1.5 / 2.0 / 2.0 mm, the arched through line, the two airbridges, the `d.couple` estimates).
+- Chip: the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), on the 7.5 × 7.5 mm Quantcore die; the source's 4 × 3 mm chip area is centred in it (`box=(-1750, -2250, 5750, 5250)`), so every coordinate stays the source's.
+- Stack: sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); Metal's `DesignPlanar` default is silicon (εr 11.45, 750 µm), so the LOM capacitances, resonator frequencies and FEM jobs here are for sapphire rather than the source's substrate.
+- Junctions: Quantcore Nb/AlOx/Nb trilayer junctions (`junction_type` from `layouts.registry.trilayer_junction`): fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient, sized on the PDK junction rule (Nb Δ = 1.4 meV, I_c·R_n = πΔ/2e, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed); the two `TransmonCrossFL` (flux lines) and the `TunableCoupler01` each get a PDK SQUID of two 0.25 × 0.6 µm junctions → R_n = 45 kΩ in parallel, L_J = 6.73 nH at zero flux, C_J = 15 fF (in the 40–50 kΩ window), in place of the assumed 10 nH + 2 fF. Expected f_q ≈ 5.8 GHz (an estimate), the coupler ≈ 7.9 GHz at zero flux. The two qubits stay identical.
+- Kept: the topology and every Metal component with the source's options (through the `metal:` wrapper), positions and orientations, every route's end pins and total length, the sim groups (the three open meanders 1.5 / 2.0 / 2.0 mm, the arched through line, the two airbridges, the `d.couple` estimates).

@@ -6,7 +6,7 @@ and fab export. Take them in order the first time. Tutorial 0 builds a one-qubit
 rebuild existing chips with the library and the Quantcore PDK. Tutorial 4 runs the loop as a loop on two coupled qubits.
 
 The notebooks are saved with their outputs, so you can read them (and these pages) without running anything. The
-pages here only describe them; nothing was run to write them.
+pages here describe those saved outputs and do not rerun anything.
 
 ## What each one teaches
 

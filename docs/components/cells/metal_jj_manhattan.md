@@ -6,7 +6,7 @@ Manhattan-style Josephson junction.
 
 **Source:** Metal (Qiskit Metal). **Category:** junction. **Module:** `qiskit_metal.qlibrary.qubits.JJ_Manhattan`.
 
-See also the [catalog](../CATALOG.md) and the [duplicates decisions](../DUPLICATES.md).
+See also the [catalog](../CATALOG.md).
 
 ## Pins
 

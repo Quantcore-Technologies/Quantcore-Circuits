@@ -4,14 +4,14 @@ This is the GUI front end for `design.json` designs. It's a Salt package that ne
 and the standard library. It does **not** import KQCircuits or quantcore_circuits inside KLayout, so it doesn't depend
 on the KQC Salt package or its version.
 
-The GUI is never the source of truth. Every tool edits `design.json`, and `qcc` (in the conda env) rebuilds the
+`design.json` holds the design. Every tool edits it, and `qcc` (in the conda env) rebuilds the
 layout, which the plugin then reloads in place. The overlays (ports, handles, previews) come from the
 `build/<name>.qcc.json` sidecar that every `qcc build` writes next to the OAS.
 
 ## Install
 
 You need KLayout 0.30 or newer and the `quantcore-circuits` Python package in an environment that has the `qcc`
-command (`pip install "quantcore-circuits[all]"`).
+command (`pip install --pre "quantcore-circuits[all]"`).
 
 1. In KLayout open **Tools ▸ Manage Packages**, then **Install New Packages**, search for `quantcore-circuits` and
    install it. The package is read from the repository's `klayout-plugin` branch,
@@ -69,7 +69,7 @@ Any qubit's port works, not only the Xmon claw (TwoPadTransmon `left`/`right`, F
 around a port that faces sideways with extra corners when a direct path has no room for its bends. When the start
 port is no CPW end (a Gatemon `readout` is the 150 µm island edge), the dialog presets the PDK line width and gap.
 
-**Merge instead of hang.** Press **Ctrl+Shift+J** (Quantcore ▸ Edit ▸ *Connect on a line: hang / merge*; plain T is
+To merge instead of hang, press **Ctrl+Shift+J** (Quantcore ▸ Edit ▸ *Connect on a line: hang / merge*; plain T is
 KLayout's *Tap*) and a
 click on a line merges the route into it: the line is split into two routes joined by a T (KQC
 `WaveguideCoplanarSplitter`, one conductor in the LOM), and the route ends on the T's stem. This is for a capacitor or
@@ -77,7 +77,7 @@ a stub galvanically on the feedline. The dialog's *Merge into … (T-junction)* 
 the same checkbox in the route's dialog (double-click it in Route handles) converts hang ↔ merge, removing or adding
 the T. The functions are in `python/qcc_kplugin/joins.py`; tests are in `tests/test_kplugin_joins.py`.
 
-The library cells for the same job are **not** a substitute in the GUI:
+The library cells for the same job do not work as a substitute in the GUI:
 - `CoupledResonator` / `QubitResonator` (meander with a built-in coupler arm) and `CpwResonator` /
   `CpweQuarterWaveResonator` are placed by hand and their `end` port is the tail towards the qubit. A *Connect*
   route from that port builds, but `qcc design drc` reports it as galvanically open (the tail ends in an etched
@@ -140,14 +140,14 @@ them: `qcc components --source quantcore`). Then:
 - Moves, rotations and deletes with KLayout's tools, the palette, the Quantcore tools, the overlays and the DRC markers
   work as before. Routes stay plain cells (KQC's node editor does not apply to them; use *Route handles*).
 
-How it works, and why this way. The plugin still does **not** import quantcore_circuits or KQCircuits inside
-KLayout. Measured on this machine (G7, 2026-11-15): KLayout 0.30.3's Python is 3.11.6 built with MinGW (GCC 13.2, its
-extensions are `cp311-mingw_x86_64`); the `qcd` env is 3.11.18 built with MSVC (`cp311-win_amd64`), so no compiled
+The plugin does not import quantcore_circuits or KQCircuits inside KLayout, for these reasons. Tested with KLayout
+0.30.3 on Windows: its Python is 3.11.6 built with MinGW (GCC 13.2, its extensions are `cp311-mingw_x86_64`); the
+`qcd` env is 3.11.18 built with MSVC (`cp311-win_amd64`), so no compiled
 package of the env (numpy 2.4, scipy 1.17, pydantic-core) loads in KLayout. KLayout ships numpy 1.26.1, scipy 1.11.3,
 networkx 3.3 and tqdm 4.66.4 but no pydantic, and `quantcore_circuits.layouts` imports pydantic (through
 `DesignChip` → `route` → `design.schema`). The development KQC (the one `qcc` builds with) imports in KLayout, but its
 import opens a modal "Dependencies out of date" dialog that offers to pip-install networkx 3.6.1 / tqdm 4.67.1 into
-KLayout. The KQC Salt package installed in KLayout (4.8.2) is another version (119 files differ) and too old for
+KLayout. The KQC Salt package tested (4.8.2) is another version (119 files differ) and too old for
 quantcore_circuits (no `kqcircuits.elements.quarter_wave_cpw_resonator`), and only one `kqcircuits` can be loaded per
 process.
 
@@ -168,9 +168,9 @@ The panel's Components tab uses the same idea (`qcache.py`): the list, a compone
 from one cache that survives restarts (a library change refreshes it; *Refresh list* forgets it). On a miss `qcc` runs
 in the background and the panel shows "loading…" (list), an empty table (parameters) or the status bar (outline), then
 the result arrives; after the list loads, every Quantcore component's parameters are prefetched in one call, and the
-outline of a selected component is prefetched, so a double-click usually arms the placement at once. Measured on this
-machine: each call about 1.35 s blocking before, a few milliseconds blocking after (1.4 s until the result arrives on a
-miss, 1 to 8 ms on a hit).
+outline of a selected component is prefetched, so a double-click usually arms the placement at once. Timings: a call
+blocked for about 1.35 s without the cache and a few milliseconds with it (1.4 s until the result arrives on a miss,
+1 to 8 ms on a hit).
 
 A PCell calling `qcc` from `produce_impl` would stall KLayout about 1.2 s per parameter change (Python + KQC start-up
 of each `qcc` call), so the fetch runs in the background and never blocks.
@@ -182,14 +182,14 @@ instance whose `params` hold values outside the editable schema (shapes, layers)
 with the Instance tool are not design instances (the status bar says so). Turning the box off takes effect at the
 next build; the library stays registered until KLayout restarts.
 
-To import the library inside KLayout instead (route (a), not done) would need: pydantic made optional in the
+Importing the library inside KLayout instead would need: pydantic made optional in the
 `layouts` import chain (a library change), a MinGW build of any compiled dependency, the development KQC loaded before
-(or instead of) the KQC Salt package, and its dependency check answered. That is an environment change that has not been made; the plugin's copies of library facts (`design_io.TARGET_TOL`, `flow`'s AEDT path limit, qubit detection by cell
-name in `design_io.target_keys`) therefore stay copies.
+(or instead of) the KQC Salt package, and its dependency check answered. That is an environment change the plugin does not make, so the plugin's copies of library facts (`design_io.TARGET_TOL`, `flow`'s AEDT path limit, qubit detection by cell
+name in `design_io.target_keys`) stay copies.
 
 **Live PCells or the Quantcore panel: your choice.** Both write to the same design.json, so use whichever you like
 (or switch between them): the Quantcore panel (double-click a component, Move/Snap, its edit dialog) or KLayout's own
-Instance tool and PCell dialog on the library. The bridge is a convenience, not a requirement. What the bridge keeps:
+Instance tool and PCell dialog on the library. The bridge is optional. What the bridge keeps:
 a component placed or edited as a library PCell is a design instance (it has its `id`), so Rebuild, Check and Run LOM
 work on it as on any other (checked: a `cross_length` changed in the PCell dialog reaches design.json, the rebuild
 draws it and the LOM circuit export runs from it; converting the instance to a static cell with KLayout's own command
@@ -265,7 +265,7 @@ Quantcore
   Settings…
 ```
 
-**Not in the menu on purpose** (menu audit 2026-11-16: each is done by the panel, a dialog or KLayout itself, and
+**Not in the menu on purpose** (each is done by the panel, a dialog or KLayout itself, and
 none is the only way to reach a shortcut):
 
 | Removed item | Use instead |
@@ -290,7 +290,7 @@ when a target fails (Propose is the next step) and Fab when the mask is older th
 target does not make a step out of date (the marks compare a fingerprint of the design without `sim_groups` and
 `targets`, kept in `build/<name>.flow/marks.json`).
 
-The strip through one design (the `q1_r1_feedline` example, screenshots from the end-to-end GUI test): after Open,
+The strip through one design (the `q1_r1_feedline` example, screenshots from the GUI test): after Open,
 after Run LOM, after Simulate (a target fails: Results ⚠, Propose is next), after applying the proposal (LOM, Simulate
 and Results out of date, the old results marked stale) and after Fab.
 
@@ -343,8 +343,8 @@ and Results out of date, the old results marked stale) and after Fab.
   using its last good route`: the tab shows that line under its status (and the status bar names the first), besides
   the log.
 
-Changed in the regrouping (2026-11-15): the old flat menu is gone. *Run DRC* (a message box) became **Check design**,
-the Check button of the panel (background process, shown in the DRC tab); the panel's Netlist tab moved into the LOM
+The menu is grouped by flow step. *Run DRC* (a message box) is now **Check design**,
+the Check button of the panel (background process, shown in the DRC tab); the panel's Netlist tab is part of the LOM
 tab. *Export LOM circuit* (Ctrl+Shift+E) is gone: Run LOM writes the same `circuit.json`, and the fab export bundles it.
 
 

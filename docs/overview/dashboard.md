@@ -2,11 +2,11 @@
 
 The dashboard is a web page that follows a design run while it happens. It shows each number of the chip (qubit
 frequency, anharmonicity, resonator frequency, coupling), where the number comes from (the design, the lumped model or a
-solver) and whether it meets its goal. You do not need it to design a chip, but it is the quickest way to see what a
-run did and what is still off target.
+solver) and whether it meets its goal. You do not need it to design a chip, but it is the quickest way to see what a run
+did and what is still off target.
 
 It is a React app (sources in `reviewer/`) built into `src/quantcore_circuits/review/static/` and served by a small
-Python backend (`src/quantcore_circuits/review/server.py`). You only need to run it, not build it.
+Python backend (`src/quantcore_circuits/review/server.py`). You run it; you do not need to build it.
 
 ## Start it
 
@@ -41,7 +41,7 @@ live) and `GET /files/<rel>` (images and job files).
 
 Choose a tab in the top bar, or add `?tab=` to the address: `parameters` (the default), `layout`, `circuit`,
 `hamiltonian`, `plots`, `simulation`, `history`, `log`. `?el=Q1` selects an element and `?sample` shows a fixture with no
-backend. The screenshots are of kept runs on 2026-11-18.
+backend. The screenshots are of kept runs.
 
 ### Parameters
 
@@ -50,7 +50,7 @@ source tag (`design.json`, `lom`, FEM) and the goal with its tolerance. A value 
 
 ```{figure} ../images/dashboard/t04_parameters.png
 
-Run `t04` (two Xmons). This is the last revision the tutorial tracked, which misses its targets (0 of 4 met).
+Run `t04` (two Xmons). This is the last revision the tutorial tracked; it misses its targets (0 of 4 met).
 ```
 
 ```{figure} ../images/dashboard/t01_parameters.png
@@ -137,7 +137,7 @@ The steps of the run in order, with their time and any error.
 - The render and optimiser marks with a real AEDT run were unit-tested, and the chain check used them live once
   (2026-11-13).
 - `q1_r1_first_run` and `q1_r1_loop` start AEDT whenever it is installed, whatever `RUN_FEM` says.
-- Verified: every tutorial and the `q1_r1` notebook on 2026-11-13; `t04` served again on 2026-11-18. Tests:
+- Verified on every tutorial and the `q1_r1` notebook (2026-11-13); `t04` was served again on 2026-11-18. Tests:
   `test_dashboard_tracking.py` (27) and `test_codesign_track.py` (7).
 
 See [the flow](flow.md) for where the dashboard sits in the loop and [the status page](status.md) for what is verified.

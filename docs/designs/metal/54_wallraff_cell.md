@@ -3,7 +3,7 @@
 A two-qubit cut-out (data qubit D5 and auxiliary qubit Z3) of the ETH 17-qubit surface-code chip, joined by their
 coupler line and cropped to the qubits plus a 350 µm margin. It is the Qiskit Metal "54" example (Apache-2.0,
 © Qiskit Metal contributors), built from the traced layout of notebook 53 after Krinner *et al.* (Nature 605, 669,
-2022): a mock-up, not a mask. The source meshes it for an Elmer capacitance matrix. The Quantcore rebuild is
+2022). It is a mock-up rather than a mask. The source meshes it for an Elmer capacitance matrix. The Quantcore rebuild is
 distributed under GPL-3.0.
 
 Build this one to see a small piece of the 17-qubit chip you can mesh and simulate quickly: two star-shaped transmons
@@ -18,11 +18,11 @@ and a 1.35 mm coupler line. It has no pads, readout or control lines.
 
 | | |
 |---|---|
-| Notebook | `examples/designs/metal/m54_wallraff_cell.ipynb` (the one-cell version before the rewrite: `m54_wallraff_cell.v1.ipynb`) |
+| Notebook | `examples/designs/metal/m54_wallraff_cell.ipynb` (an older one-cell version is kept as `m54_wallraff_cell.v1.ipynb`) |
 | Source | Qiskit Metal `54-Wallraff_TwoQubit_Cell_Mesh.ipynb`, © Qiskit Metal contributors, Apache-2.0 |
 | Chip | a 2.3 × 0.7 mm cut-out centred on the 7.5 mm Quantcore die |
 | On the chip | 2 star transmons (D5, Z3) · 1 coupler line (1349.7 µm, 8.5 / 5.5 µm CPW) |
-| Builds today | yes: layout run 2026-11-19, 6 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 6 s) |
 
 ## How the notebook builds it
 
@@ -61,13 +61,13 @@ Numbers are from a run of this notebook on 2026-11-19 (Setup, Design, Check and 
 :alt: LOM plot of m54_wallraff_cell
 ```
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates from component formulas and calibration, not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
 The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
 
-> **Update 2026-11-03:** frame = **source**: build with `chip={"die_frame": False, ...}` so the replica keeps its own size and frame (the Quantcore PDK die frame is for Quantcore chips only). `metal:<Class>` wrappers are READY (ports = Metal pin names, params = Metal options), so the `metal:` refs in this spec build as written; the Quantcore/KQC substitutions stay optional. Buildable now: **yes** (`metal:StarQubit` resolves; pins `pin_cpl1..4`, `pin_rdout`).
+> The `metal:` references in this spec build as written, through the `metal:` wrapper (ports are the Metal pin names, parameters the Metal options). `metal:StarQubit` resolves (pins `pin_cpl1..4`, `pin_rdout`). The Quantcore and KQC substitutions are optional.
 
 Source: Quantum Metal `docs/circuit-examples/F.Small-quantum-chips/54-Wallraff_TwoQubit_Cell_Mesh.ipynb`, which calls
 `wallraff_17q.build_cell(("D5", "Z3"), margin=0.35)` from `resources/wallraff_17q/`. Licence Apache-2.0.
@@ -76,7 +76,7 @@ geometry of `53_wallraff_17q`. It is a `MultiPlanar` design cropped for gmsh + E
 skipped). Mesh: min 5 µm, max 80 µm.
 Chip = the qubits' bounding box plus a 350 µm margin: 2309.2 × 700 µm. In Metal the chip is centred at (804.6, 0) µm
 with D5 at the origin, so **Designer = Metal + (350, 350)**.
-**Buildable now: metal**. It needs `metal:StarQubit`.
+The build needs `metal:StarQubit`.
 
 ### Components
 | instance | catalog ref | key params (µm) | at (x, y) | rot | notes |
@@ -106,20 +106,19 @@ prediction, because on the chip the free pads connect to resonators and couplers
 None. The notebook prints C_Σ, E_C and the coupler C from the Elmer run; the values are not given in the source text.
 
 ### Simplifications for a first rebuild
-1. This is the natural first test for `metal:StarQubit` and for the Designer ↔ LOM C-matrix path. Build it with a
+1. This is a good first test for `metal:StarQubit` and for the Designer ↔ LOM C-matrix path. Build it with a
    `sim_group` holding both qubits and the coupler route, analyses `q3d_cmatrix`, margin 0.
-2. Before StarQubit resolves, a geometry-only stand-in is two KQC `CircularTransmonSingleIsland` cells (coupler ports
-   at −20/60/−150°) joined by a straight cpw. That stand-in is for testing the meshing pipeline only, not as a
-   replacement.
+2. A geometry-only stand-in is two KQC `CircularTransmonSingleIsland` cells (coupler ports at −20/60/−150°) joined by
+   a straight cpw. It is only for testing the meshing pipeline and does not replace `metal:StarQubit`.
 3. Any other neighbour pair can be built the same way (e.g. X3–D8). Its pad angles follow the rule in the 53 spec.
 
-### Quantcore PDK rebuild (2026-11-03)
+### Quantcore PDK rebuild
 
-The notebook is a **Quantcore-PDK rebuild**, not a replica (design rule, 2026-11-03): the netlist, LOM and imported components are kept, the process is Quantcore's.
+The notebook is a Quantcore PDK rebuild of the source, not a replica: the netlist, LOM and imported components are kept, and the process is Quantcore's.
 
 Notebook: [`examples/designs/metal/m54_wallraff_cell.ipynb`](../../../examples/designs/metal/m54_wallraff_cell.ipynb).
 
-- **Chip:** the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), on the 7.5 × 7.5 mm Quantcore die; the source's 2.3092 × 0.7 mm chip area is centred in it (`box=(-2595.4, -3400, 4904.6, 4100)`), so every coordinate stays the source's.
-- **Stack:** sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); Metal's `DesignPlanar` default is silicon (εr 11.45, 750 µm), so the LOM capacitances, resonator frequencies and FEM jobs here are for sapphire, not the source's substrate.
-- **Junctions:** Quantcore Nb/AlOx/Nb trilayer junctions (`junction_type` from `layouts.registry.trilayer_junction`): fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient, sized on the PDK junction rule (Nb Δ = 1.4 meV, I_c·R_n = πΔ/2e, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed); both `StarQubit`s get the PDK nominal junction, 0.5 × 0.6 µm fingers → R_n = 45 kΩ, L_J = 6.73 nH, C_J = 15 fF (in the 40–50 kΩ window) (the source skips junctions: electrostatics only; the pre-rebuild build assumed 10 nH + 2 fF). Expected f_q ≈ 6.7 / 7.0 GHz from the LOM C_Σ (were 5.92 / 6.28 GHz); with the source's Elmer C-matrix (C_Σ ≈ 167 fF) ≈ 4.6 GHz.
-- **Kept:** the topology and every Metal component with the source's options (through the `metal:` wrapper), positions and orientations, every route's end pins and total length, the sim groups (the traced 31-point coupler line, 8.5 / 5.5 µm CPW).
+- Chip: the Quantcore die frame (L dicing markers 1000/0, 3 × 3 alignment grids 1001/0, chip boundary 100/0, device ID where an edge is free; any brand text is QCT), on the 7.5 × 7.5 mm Quantcore die; the source's 2.3092 × 0.7 mm chip area is centred in it (`box=(-2595.4, -3400, 4904.6, 4100)`), so every coordinate stays the source's.
+- Stack: sapphire 650 µm, εr 10.25 (the PDK default stack, used by the LOM estimates and every FEM export); Metal's `DesignPlanar` default is silicon (εr 11.45, 750 µm), so the LOM capacitances, resonator frequencies and FEM jobs here are for sapphire rather than the source's substrate.
+- Junctions: Quantcore Nb/AlOx/Nb trilayer junctions (`junction_type` from `layouts.registry.trilayer_junction`): fingers on 2/0 + 4/0, spacer 50/0 with the 51–53/0 gradient, sized on the PDK junction rule (Nb Δ = 1.4 meV, I_c·R_n = πΔ/2e, R_n·A 13.5 kΩ·µm² and C_J 50 fF/µm² assumed); both `StarQubit`s get the PDK nominal junction, 0.5 × 0.6 µm fingers → R_n = 45 kΩ, L_J = 6.73 nH, C_J = 15 fF (in the 40–50 kΩ window) (the source skips junctions and computes electrostatics only). Expected f_q ≈ 6.7 / 7.0 GHz from the LOM C_Σ; with the source's Elmer C-matrix (C_Σ ≈ 167 fF) ≈ 4.6 GHz.
+- Kept: the topology and every Metal component with the source's options (through the `metal:` wrapper), positions and orientations, every route's end pins and total length, the sim groups (the traced 31-point coupler line, 8.5 / 5.5 µm CPW).

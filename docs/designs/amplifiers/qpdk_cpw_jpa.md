@@ -2,7 +2,7 @@
 
 A Josephson parametric amplifier used in reflection: a λ/4 CPW resonator that couples to the signal line through a finger capacitor and ends in a DC SQUID to ground. The SQUID's flux-dependent inductance tunes the resonance, and a pump line next to it drives the amplification. The design is QPDK's `cpw_jpa` chip (MIT), rebuilt on the Quantcore PDK.
 
-Build this one to learn how a reflection amplifier is wired: a signal feed with a coupling capacitor, a meander resonator and a shorted pump line, with a SQUID termination at the end of the resonator.
+This notebook shows how a reflection amplifier is wired: a signal feed with a coupling capacitor, a meander resonator and a shorted pump line, with a SQUID termination at the end of the resonator.
 
 ```{image} ../../images/designs/amplifiers/qpdk_cpw_jpa.png
 :alt: The whole qpdk_cpw_jpa chip as the v2 notebook builds it
@@ -13,11 +13,11 @@ Build this one to learn how a reflection amplifier is wired: a signal feed with 
 
 | | |
 |---|---|
-| Notebook | `examples/designs/amplifiers/qpdk_cpw_jpa.ipynb` (the one-cell version before the rewrite: `qpdk_cpw_jpa.v1.ipynb`) |
+| Notebook | `examples/designs/amplifiers/qpdk_cpw_jpa.ipynb` (an older one-cell version is kept as `qpdk_cpw_jpa.v1.ipynb`) |
 | Source | QPDK `cpw_jpa` / `cpw_jpa_chip` (MIT) |
 | Chip | 7.5 × 7.5 mm Quantcore die, sapphire 650 µm, CPW 10 / 6 µm |
 | On the chip | 1 `SquidTermination` · 1 finger capacitor · 1 λ/4 meander (4664 µm) · signal and pump pads |
-| Builds today | yes: layout run 2026-11-19, 5 s, the saved design is byte-identical to the one before the rewrite |
+| Builds today | yes (layout built on 2026-11-19 in 5 s) |
 
 ## How the notebook builds it
 
@@ -64,13 +64,13 @@ Flux-pumped gain of the drawn SQUID against the pump strength r:
 :alt: Flux-pumped gain of the JPA
 ```
 
-These are lumped-model estimates (component formulas and calibration), not FEM results; see [the LOM page](../../library/lom.md) for how far to trust them.
+These are lumped-model estimates (component formulas and calibration), not FEM results. [The LOM page](../../library/lom.md) says how far to trust them.
 
 ## Build spec
 
-The rest of this page is the detailed spec the notebook was built from: every component, port, route and length.
+The rest of this page is the detailed spec the notebook was built from, with every component, port, route and length.
 
-Source · licence: gdsfactory/quantum-rf-pdk (MIT): `qpdk/cells/parametric_amplifier.py`, `qpdk/samples/cpw_jpa_chip.py`, notebook `vacask_cpw_parametric_amplifier` (Yamamoto 2008; Pogorzalek 2017). Group `amplifiers` (design decision #45). Die: 7.5 × 7.5 mm PDK die, PDK frame, sapphire 650 µm, Nb trilayer junctions. Status: built — `examples/designs/amplifiers/qpdk_cpw_jpa.ipynb` / `.json`.
+Source · licence: gdsfactory/quantum-rf-pdk (MIT): `qpdk/cells/parametric_amplifier.py`, `qpdk/samples/cpw_jpa_chip.py`, notebook `vacask_cpw_parametric_amplifier` (Yamamoto 2008; Pogorzalek 2017). Die: 7.5 × 7.5 mm PDK die, PDK frame, sapphire 650 µm, Nb trilayer junctions. Notebook and design: `examples/designs/amplifiers/qpdk_cpw_jpa.ipynb` / `.json`.
 
 ### Components
 
@@ -90,7 +90,7 @@ Source · licence: gdsfactory/quantum-rf-pdk (MIT): `qpdk/cells/parametric_ampli
 
 ### LOM node structure
 
-pad (50 Ω) — C_c — λ/4 TLres (route + termination at its equivalent length lead + L_s/L') ; pump = flux control
+pad (50 Ω), then C_c, then a λ/4 TLres (route plus a termination at its equivalent length lead + L_s/L'); the pump is a flux control
 
 ### Targets (from the source)
 
@@ -98,5 +98,4 @@ QPDK: 6.07 GHz at Φ = 0, Q_ext ≈ 290 (its stack, I_c 4.8 µA)
 
 ### Simplifications / PDK differences
 
-SQUID I_c 1.3 µA instead of 4.8 µA (PDK junction rule); sapphire + Nb kinetic inductance; bond pads instead of launchers
-; junctions are flagged `pdk_rn` where present (amplifier junctions are far below the qubit R_n window).
+SQUID I_c 1.3 µA instead of 4.8 µA (PDK junction rule); sapphire + Nb kinetic inductance; bond pads instead of launchers; junctions are flagged `pdk_rn` where present (amplifier junctions are far below the qubit R_n window).

@@ -20,8 +20,9 @@
       ]
     },
     "params": {
-      "with_grid": true,
-      "name_chip": "Simple"
+      "with_grid": false,
+      "name_chip": "Simple",
+      "cheese": "chip"
     }
   },
   "instances": {
