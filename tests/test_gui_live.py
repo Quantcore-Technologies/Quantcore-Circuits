@@ -341,6 +341,9 @@ def kl(monkeypatch, tmp_path):
     monkeypatch.setenv(klayout.GUI_ENV, "1")
     monkeypatch.setattr(klayout, "find_klayout", lambda: tmp_path / "klayout_app.exe")
     monkeypatch.setattr(klayout, "plugin_installed", lambda: False)
+    loader = tmp_path / "load_dev.py"  # the dev loader is in a checkout only, not in the installed wheel
+    loader.write_text("", encoding="utf-8")
+    monkeypatch.setattr(klayout, "PLUGIN_LOADER", loader)
     state = {"klive": [False], "pids": [[]], "spawned": [], "front": []}
 
     def klive():

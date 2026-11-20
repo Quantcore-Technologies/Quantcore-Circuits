@@ -18,7 +18,8 @@ def test_design_resource_is_a_valid_design():
 def test_pyproject_ships_the_selftest_design():
     from pathlib import Path
 
-    text = (Path(selftest.__file__).parents[2] / "pyproject.toml").read_text(encoding="utf-8")
+    # the repo's pyproject (the release job runs the tests against the installed wheel, not src/)
+    text = (Path(__file__).resolve().parents[1] / "pyproject.toml").read_text(encoding="utf-8")
     assert "data/*.json" in text
 
 
